@@ -1,6 +1,6 @@
 # @theconvospace/sdk
 
-SDK containing all the Hooks and Components reuqired to build on [theconvo.space](https://theconvo.space)
+SDK containing all the Hooks and Components required to build on [theconvo.space](https://theconvo.space)
 
 ## Installation
 
