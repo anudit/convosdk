@@ -1,4 +1,4 @@
-import { Convo } from '../src';
+import Convo from '../src';
 
 describe('index', () => {
 
@@ -6,7 +6,7 @@ describe('index', () => {
     it('should return a string containing the message', () => {
       const message = 'Hello';
 
-      const result = Convo(message);
+      const result = new Convo(message).getApiKey();
 
       expect(result).toMatch(message);
     });

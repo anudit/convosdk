@@ -1,9 +1,12 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { Convo } from "@theconvospace/sdk"
+import Convo from "@theconvospace/sdk"
 
 export default function Home() {
+
+  let ConvoInstance = new Convo('CSCpPwHnkB3niBJiUjy92YGP6xVkVZbWfK8xriDO');
+
   return (
     <div className={styles.container}>
       <Head>
@@ -14,7 +17,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://theconvo.space" target="_blank">Convo!</a>
+          Welcome to <a href="https://theconvo.space" target="_blank">Convo Space!</a>
         </h1>
 
         <p className={styles.description}>
@@ -22,17 +25,19 @@ export default function Home() {
         </p>
 
         <div className={styles.grid}>
-          <div onClick={()=>{
-            Convo('hello')
+          <div onClick={() => {
+            console.log(ConvoInstance.getApiKey())
           }} className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
+            <h2>Print API Key &rarr;</h2>
+            <p>Print the API key used to configure the Convo Instance.</p>
           </div>
 
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
+          <div onClick={() => {
+            ConvoInstance.auth.validate("0xa28992A6744e36f398DFe1b9407474e1D7A3066b", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiMHhhMjg5OTJBNjc0NGUzNmYzOThERmUxYjk0MDc0NzRlMUQ3QTMwNjZiIiwiY2hhaW4iOiJldGhlcmV1bSIsImlhdCI6MTYzMzExNDQwMywiZXhwIjoxNjMzMjAwODAzfQ.ki5DSchd08ujU4i1zRx2uUgXiSCMaLjfLpZRE9rOtRQ").then(console.log);
+          }} className={styles.card}>
+            <h2>Validate Auth &rarr;</h2>
+            <p>Validate an Authentication Token using the SDK.</p>
+          </div>
 
           <a
             href="https://github.com/vercel/next.js/tree/master/examples"

@@ -12,6 +12,7 @@
     "cm": "cz",
     "coverage": "codecov",
     "lint": "eslint ./src/ --fix",
+    "example": "cd examples/nextjs && next dev",
     "semantic-release": "semantic-release",
     "test:watch": "jest --watch",
     "test": "jest --coverage",
@@ -77,5 +78,9 @@
   "directories": {
     "lib": "lib",
     "test": "test"
+  },
+  "dependencies": {
+    "axios": "^0.22.0",
+    "node-fetch": "^3.0.0"
   }
 }
