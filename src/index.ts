@@ -12,10 +12,10 @@ class Convo extends ConvoBase {
 
   constructor(apikey: string) {
     super(apikey);
-    this.comments = new Comments(apikey);
-    this.auth = new Auth(apikey);
-    this.threads = new Threads(apikey);
-    this.identity = new Identity(apikey);
+    this.comments = new Comments(apikey, this.base);
+    this.auth = new Auth(apikey, this.base);
+    this.threads = new Threads(apikey, this.base);
+    this.identity = new Identity(apikey, this.base);
     return this;
   }
 }

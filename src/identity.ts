@@ -1,29 +1,26 @@
-import axios, { AxiosError } from 'axios';
-import { Dictionary, ErrorType } from './types';
-import ConvoBase from './base';
+import fetch, { Response } from 'cross-fetch';
+import { ErrorType } from './types';
 
-class Identity extends ConvoBase {
-  constructor(apikey: string) {
-    super(apikey);
+class Identity {
+  apikey: string;
+  base: string;
+
+  constructor(apikey: string, base: string) {
+    this.apikey = apikey;
+    this.base = base;
     return this;
   }
 
-  getTrustScore = async (
-    address: string,
-  ): Promise<AxiosError<never> | Dictionary<string> | ErrorType> => {
+  getTrustScore = async (address: string): Promise<Response | ErrorType> => {
     try {
-      const { data } = await axios.get(
+      let data = await fetch(
         `${this.base}/identity?address=${address}&apikey=${this.apikey}`
       );
+      data = await data.json();
       return data;
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log(error);
-        return error;
-      } else {
-        console.log(error);
-        return { error };
-      }
+      console.error(error);
+      return { error };
     }
   };
 }

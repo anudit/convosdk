@@ -1,10 +1,13 @@
-import ConvoBase from './base';
+class Threads {
+  apikey: string;
+  base: string;
 
-class Threads extends ConvoBase {
-  constructor(apikey: string) {
-    super(apikey);
+  constructor(apikey: string, base: string) {
+    this.apikey = apikey;
+    this.base = base;
     return this;
   }
+
   // create
   // delete
   // query

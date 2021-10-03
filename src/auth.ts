@@ -1,39 +1,39 @@
-import axios, { AxiosError } from 'axios';
-import {
-  AuthAuthenticateType,
-  AuthAuthenticateType2,
-  Dictionary,
-  ErrorType,
-} from './types';
-import ConvoBase from './base';
+import fetch, { Response } from 'cross-fetch';
+import { ErrorType } from './types';
 
-class Auth extends ConvoBase {
-  constructor(apikey: string) {
-    super(apikey);
+class Auth {
+  apikey: string;
+  base: string;
+
+  constructor(apikey: string, base: string) {
+    this.apikey = apikey;
+    this.base = base;
     return this;
   }
 
   validate = async (
     signerAddress: string,
     token: string
-  ): Promise<AxiosError<never> | Dictionary<string> | ErrorType> => {
+  ): Promise<Response | ErrorType> => {
     try {
-      const { data } = await axios.post(
+      let data = await fetch(
         `${this.base}/validateAuth?apikey=${this.apikey}`,
         {
-          signerAddress,
-          token,
+          method: 'POST',
+          body: JSON.stringify({
+            signerAddress,
+            token,
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
         }
       );
+      data = await data.json();
       return data;
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log(error);
-        return error;
-      } else {
-        console.log(error);
-        return { error };
-      }
+      console.error(error);
+      return { error };
     }
   };
 
@@ -43,50 +43,47 @@ class Auth extends ConvoBase {
     timestamp: number,
     chain: string,
     accountId: string | undefined
-  ): Promise<
-    | AxiosError<never>
-    | ErrorType
-    | Dictionary<boolean>
-    | AuthAuthenticateType2
-    | AuthAuthenticateType
-  > => {
+  ): Promise<Response | ErrorType> => {
     try {
       if (chain === 'ethereum') {
-        const { data } = await axios.post(
-          `${this.base}/auth?apikey=${this.apikey}`,
-          {
+        let data = await fetch(`${this.base}/auth?apikey=${this.apikey}`, {
+          method: 'POST',
+          body: JSON.stringify({
             signerAddress,
             signature,
             timestamp,
             chain,
-          }
-        );
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        data = await data.json();
         return data;
       } else if (chain === 'near') {
-        const { data } = await axios.post(
-          `${this.base}/auth?apikey=${this.apikey}`,
-          {
+        let data = await fetch(`${this.base}/auth?apikey=${this.apikey}`, {
+          method: 'POST',
+          body: JSON.stringify({
             signerAddress,
             signature,
             accountId,
             timestamp,
             chain,
-          }
-        );
+          }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        data = await data.json();
         return data;
       } else {
-        return {
-          success: false,
-        };
-      }
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log(error);
-        return error;
-      } else {
-        console.log(error);
+        const error = 'Invalid Chain Name';
+        console.error(error);
         return { error };
       }
+    } catch (error) {
+      console.error(error);
+      return { error };
     }
   };
 

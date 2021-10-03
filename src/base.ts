@@ -1,5 +1,5 @@
-import axios, { AxiosError } from 'axios';
-import { Dictionary, ErrorType, LogConfigType } from './types';
+import fetch, { Response } from 'cross-fetch';
+import { ErrorType, LogConfigType } from './types';
 
 class ConvoBase {
   apikey: string;
@@ -19,25 +19,19 @@ class ConvoBase {
     return {
       base: this.base,
       apikey: this.apikey,
-      version: '0.1.2',
+      version: '0.1.3',
       pingResult: pingResult,
     };
   };
 
-  ping = async (): Promise<
-    Dictionary<string> | AxiosError<never> | ErrorType
-  > => {
+  ping = async (): Promise<Response | ErrorType> => {
     try {
-      const { data } = await axios.get(`${this.base}/ping`);
+      let data = await fetch(`${this.base}/ping`);
+      data = await data.json();
       return data;
     } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log(error);
-        return { error };
-      } else {
-        console.log(error);
-        return { error };
-      }
+      console.error(error);
+      return { error };
     }
   };
 }

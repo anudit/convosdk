@@ -1,11 +1,43 @@
+import { useEffect, useState } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import Convo from "@theconvospace/sdk"
+import { ethers } from "ethers";
+import styles from '../styles/Home.module.css'
 
 export default function Home() {
 
   let ConvoInstance = new Convo('CSCpPwHnkB3niBJiUjy92YGP6xVkVZbWfK8xriDO');
+  let [web3, setWeb3] = useState(undefined);
+  let [accounts, setAccounts] = useState(undefined);
+
+  useEffect(() => {
+    authWeb3();
+  }, [])
+
+  async function authWeb3() {
+
+    if (Boolean(window.ethereum) == true) {
+
+      ethereum.autoRefreshOnNetworkChange = false;
+      let w3 = new ethers.providers.Web3Provider(window.ethereum);
+      setWeb3(w3);
+      ethereum.request({ method: 'eth_requestAccounts' }).then(setAccounts);
+
+    }
+    else if (window.web3) {
+      setWeb3(web3)
+      web3.currentProvider.enable().then(setAccounts);
+    }
+    else {
+      console.log('Get Web3.')
+    }
+  }
+
+  async function clearAuth() {
+    setWeb3(undefined);
+    setAccounts(undefined);
+  }
 
   return (
     <div className={styles.container}>
@@ -22,6 +54,19 @@ export default function Home() {
 
         <p className={styles.description}>
           Get started by opening the console <code className={styles.code}>Ctrl/Cmd+Shift+I</code> on this page.
+        </p>
+
+        <p className={styles.description}>
+          {
+            accounts === undefined ? (
+              <button onClick={authWeb3}>Authenticate</button>
+            ) : (
+              <>
+                {accounts[0]}
+                &nbsp;<button onClick={clearAuth}>X</button>
+              </>
+            )
+          }
         </p>
 
         <div className={styles.grid}>
@@ -55,21 +100,28 @@ export default function Home() {
 
         <div className={styles.grid}>
 
-          <div onClick={() => {
+          <div onClick={async () => {
+
             let timestamp = Date.now();
-            ConvoInstance.auth.authenticate(
-              "0xa28992A6744e36f398DFe1b9407474e1D7A3066b",
-              "Sig",
-              timestamp,
-              "ethereum",
-            ).then(console.log);
+            let data = ConvoInstance.auth.getSignatureData(accounts[0], timestamp);
+            let signature = await web3.send(
+              'personal_sign',
+              [ethers.utils.hexlify(ethers.utils.toUtf8Bytes(data)), accounts[0].toLowerCase()]
+            );
+            ConvoInstance.auth.authenticate(accounts[0], signature, timestamp, "ethereum").then(console.log);
+
           }} className={styles.card}>
             <h2>Authenticate &rarr;</h2>
             <p>Get an Authentication Token using the SDK.</p>
           </div>
 
           <div onClick={() => {
-            ConvoInstance.auth.validate("0xa28992A6744e36f398DFe1b9407474e1D7A3066b", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiMHhhMjg5OTJBNjc0NGUzNmYzOThERmUxYjk0MDc0NzRlMUQ3QTMwNjZiIiwiY2hhaW4iOiJldGhlcmV1bSIsImlhdCI6MTYzMzExNDQwMywiZXhwIjoxNjMzMjAwODAzfQ.ki5DSchd08ujU4i1zRx2uUgXiSCMaLjfLpZRE9rOtRQ").then(console.log);
+
+            ConvoInstance.auth.validate(
+              accounts[0],
+              ""
+            ).then(console.log);
+
           }} className={styles.card}>
             <h2>Validate Auth &rarr;</h2>
             <p>Validate an Authentication Token using the SDK.</p>
@@ -77,7 +129,7 @@ export default function Home() {
 
           <div onClick={() => {
             let timestamp = Date.now();
-            console.log(ConvoInstance.auth.getSignatureData("0xa28992A6744e36f398DFe1b9407474e1D7A3066b", timestamp));
+            console.log(ConvoInstance.auth.getSignatureData(accounts[0], timestamp));
           }} className={styles.card}>
             <h2>Get Signature Data &rarr;</h2>
             <p>Get the Data used for signing and authentication.</p>
@@ -92,21 +144,33 @@ export default function Home() {
         <div className={styles.grid}>
 
           <div onClick={() => {
-
+            ConvoInstance.comments.query({
+              threadId: "KIGZUnR4RzXDFheXoOwo"
+            }).then(console.log)
           }} className={styles.card}>
             <h2>Get Comments &rarr;</h2>
             <p>Get Comments using the SDK.</p>
           </div>
 
           <div onClick={() => {
-
+            ConvoInstance.comments.create(
+              accounts[0],
+              "",
+              "New",
+              "KIGZUnR4RzXDFheXoOwo",
+              encodeURIComponent('https://theconvo.space/')
+            ).then(console.log)
           }} className={styles.card}>
             <h2>Create Comment&rarr;</h2>
             <p>Create a new Comment using the SDK.</p>
           </div>
 
           <div onClick={() => {
-
+            ConvoInstance.comments.delete(
+              "",
+              accounts[0],
+              "01fh3enc55ppnh7g7r4sz9wvp5"
+            ).then(console.log)
           }} className={styles.card}>
             <h2>Delete Comments&rarr;</h2>
             <p>Delete a Comment using the SDK.</p>
