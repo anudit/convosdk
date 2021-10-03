@@ -1,18 +1,19 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.1.0",
-  "description": "SDK containing all the Hooks and Components reuqired to build on theconvo.space",
+  "version": "0.1.2",
+  "description": "SDK containing all the Hooks and Components required to build on theconvo.space",
   "main": "./lib/src/index.js",
   "files": [
     "lib/**/*"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && yarn build:browser",
+    "build:browser": "browserify ./src/index.ts -p [ tsify --noImplicitAny ] > ./dist/bundle.js --minified",
     "clean": "rm -rf ./lib/",
     "cm": "cz",
     "coverage": "codecov",
     "lint": "eslint ./src/ --fix",
-    "example": "cd examples/nextjs && next dev",
+    "example": "cd examples/nextjs && yarn dev",
     "semantic-release": "semantic-release",
     "test:watch": "jest --watch",
     "test": "jest --coverage",
@@ -60,6 +61,7 @@
     "semantic-release": "^17.4.2",
     "ts-jest": "^26.5.5",
     "ts-node": "^9.1.1",
+    "tsify": "^5.0.4",
     "typescript": "^4.2.4"
   },
   "config": {
@@ -80,7 +82,6 @@
     "test": "test"
   },
   "dependencies": {
-    "axios": "^0.22.0",
-    "node-fetch": "^3.0.0"
+    "axios": "^0.22.0"
   }
 }

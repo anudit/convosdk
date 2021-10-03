@@ -1,3 +1,5 @@
+import { AxiosError } from "axios";
+
 export interface Dictionary<T> {
   [Key: string]: T;
 }
@@ -16,4 +18,10 @@ export interface AuthAuthenticateType2 {
   signature: string;
   timestamp: number;
   chain: string;
+}
+export interface LogConfigType {
+  base: string;
+  apikey: string;
+  version: string;
+  pingResult: Dictionary<string> | AxiosError<never> | ErrorType;
 }
