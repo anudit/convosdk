@@ -1,4 +1,4 @@
-import fetch, { Response } from 'cross-fetch';
+import fetch from 'unfetch';
 import { CommentsQueryType, ErrorType } from './types';
 
 class Comments {
@@ -17,7 +17,7 @@ class Comments {
     comment: string,
     threadId: string,
     url: string
-  ): Promise<Response | ErrorType> => {
+  ): Promise<any | ErrorType> => {
     try {
       let data = await fetch(`${this.base}/comments?apikey=${this.apikey}`, {
         method: 'POST',
@@ -44,7 +44,7 @@ class Comments {
     token: string,
     signerAddress: string,
     commentId: string
-  ): Promise<Response | ErrorType> => {
+  ): Promise<any | ErrorType> => {
     try {
       let data = await fetch(`${this.base}/comments?apikey=${this.apikey}`, {
         method: 'DELETE',
@@ -65,7 +65,7 @@ class Comments {
     }
   };
 
-  query = async (query: CommentsQueryType): Promise<Response | ErrorType> => {
+  query = async (query: CommentsQueryType): Promise<any | ErrorType> => {
     const params = new URLSearchParams(query);
     params.append('apikey', this.apikey);
 

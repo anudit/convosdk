@@ -1,4 +1,4 @@
-import fetch, { Response } from 'cross-fetch';
+import fetch from 'unfetch';
 import { ErrorType } from './types';
 
 class Identity {
@@ -11,7 +11,7 @@ class Identity {
     return this;
   }
 
-  getTrustScore = async (address: string): Promise<Response | ErrorType> => {
+  getTrustScore = async (address: string): Promise<any | ErrorType> => {
     try {
       let data = await fetch(
         `${this.base}/identity?address=${address}&apikey=${this.apikey}`

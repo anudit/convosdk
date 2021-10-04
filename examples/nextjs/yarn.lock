@@ -550,10 +550,12 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.0.6.tgz#023d72a5c4531b4ce204528971700a78a85a0c50"
   integrity sha512-Myxw//kzromB9yWgS8qYGuGVf91oBUUJpNvy5eM50sqvmKLbKjwLxohJnkWGTeeI9v9IBMtPLxz5Gc60FIfvCA==
 
-"@theconvospace/sdk@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@theconvospace/sdk/-/sdk-0.1.0.tgz#d1c50a1df14430fa56ea2ce4fa1eb105d3c9986c"
-  integrity sha512-qCPnT8g0ojvd5sqwKXQm84mp/L7tijg1L5Ka8+gzcRwBg3ucZLwFwyy0Ehdf5QHesFQfnv7w5Wr0m3QXtwLPHQ==
+"@theconvospace/sdk@^0.1.5":
+  version "0.1.5"
+  resolved "https://registry.yarnpkg.com/@theconvospace/sdk/-/sdk-0.1.5.tgz#8a556a66c28b34d7baedb591a4e874e513a0b743"
+  integrity sha512-1kAqFiP+k1ousbG9CGRh7hAibAGUQ7siq115CbLFSVKIZRclu0hq48ysIAUjpKIYkza2SGqTd/XaTvJl917sXA==
+  dependencies:
+    unfetch "^4.2.0"
 
 "@types/json5@^0.0.29":
   version "0.0.29"
@@ -3469,6 +3471,11 @@ unbox-primitive@^1.0.1:
     has-bigints "^1.0.1"
     has-symbols "^1.0.2"
     which-boxed-primitive "^1.0.2"
+
+unfetch@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/unfetch/-/unfetch-4.2.0.tgz#7e21b0ef7d363d8d9af0fb929a5555f6ef97a3be"
+  integrity sha512-F9p7yYCn6cIW9El1zi0HI6vqpeIvBsr3dSuRO6Xuppb1u5rXpCPmMvLSyECLhybr9isec8Ohl0hPekMVrEinDA==
 
 unpipe@1.0.0:
   version "1.0.0"

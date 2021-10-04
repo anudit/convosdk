@@ -1,5 +1,3 @@
-import { Response } from 'cross-fetch';
-
 export interface Dictionary<T> {
   [Key: string]: T;
 }
@@ -10,9 +8,8 @@ export interface LogConfigType {
   base: string;
   apikey: string;
   version: string;
-  pingResult: Response | ErrorType;
+  pingResult: any | ErrorType;
 }
-
 export type CommentsQueryType = {
   threadId?: string;
   url?: string;
@@ -23,4 +20,4 @@ export type CommentsQueryType = {
   latestFirst?: string;
   page?: string;
   pageSize?: string;
-}
+};

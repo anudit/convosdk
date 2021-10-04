@@ -1,10 +1,11 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.1.3",
+  "version": "0.1.5",
   "description": "SDK containing all the Hooks and Components required to build on theconvo.space",
   "main": "./lib/src/index.js",
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "dist/**/*"
   ],
   "scripts": {
     "build": "tsc && yarn build:browser",
@@ -20,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/anudit/convosdk.git"
+    "url": "https://github.com/anudit/convosdk.git"
   },
   "license": "MIT",
   "author": "Anudit Nagar <nagaranudit@gmail.com> (https://github.com/anudit)",
@@ -80,6 +81,6 @@
     "test": "test"
   },
   "dependencies": {
-    "cross-fetch": "^3.1.4"
+    "unfetch": "^4.2.0"
   }
 }

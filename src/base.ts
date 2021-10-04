@@ -1,4 +1,4 @@
-import fetch, { Response } from 'cross-fetch';
+import fetch from 'unfetch';
 import { ErrorType, LogConfigType } from './types';
 
 class ConvoBase {
@@ -19,12 +19,12 @@ class ConvoBase {
     return {
       base: this.base,
       apikey: this.apikey,
-      version: '0.1.3',
+      version: '0.1.5',
       pingResult: pingResult,
     };
   };
 
-  ping = async (): Promise<Response | ErrorType> => {
+  ping = async (): Promise<any | ErrorType> => {
     try {
       let data = await fetch(`${this.base}/ping`);
       data = await data.json();

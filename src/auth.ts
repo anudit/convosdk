@@ -1,4 +1,4 @@
-import fetch, { Response } from 'cross-fetch';
+import fetch from 'unfetch';
 import { ErrorType } from './types';
 
 class Auth {
@@ -14,7 +14,7 @@ class Auth {
   validate = async (
     signerAddress: string,
     token: string
-  ): Promise<Response | ErrorType> => {
+  ): Promise<any | ErrorType> => {
     try {
       let data = await fetch(
         `${this.base}/validateAuth?apikey=${this.apikey}`,
@@ -43,7 +43,7 @@ class Auth {
     timestamp: number,
     chain: string,
     accountId: string | undefined
-  ): Promise<Response | ErrorType> => {
+  ): Promise<any | ErrorType> => {
     try {
       if (chain === 'ethereum') {
         let data = await fetch(`${this.base}/auth?apikey=${this.apikey}`, {
