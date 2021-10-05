@@ -1,4 +1,4 @@
-import fetch from 'unfetch';
+import { fetcher } from './utils';
 import { ErrorType } from './types';
 
 class Identity {
@@ -13,11 +13,11 @@ class Identity {
 
   getTrustScore = async (address: string): Promise<any | ErrorType> => {
     try {
-      let data = await fetch(
-        `${this.base}/identity?address=${address}&apikey=${this.apikey}`
+      return await fetcher(
+        'GET',
+        `${this.base}/identity?address=${address}&apikey=${this.apikey}`,
+        {}
       );
-      data = await data.json();
-      return data;
     } catch (error) {
       console.error(error);
       return { error };

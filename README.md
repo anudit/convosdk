@@ -6,10 +6,6 @@ SDK containing all the Hooks and Components required to build on [theconvo.space
 
 ```bash
 yarn add @theconvospace/sdk
-```
-
-or
-
-```bash
 npm i --save @theconvospace/sdk
+pnpm i --save @theconvospace/sdk
 ```

@@ -21,3 +21,18 @@ export type CommentsQueryType = {
   page?: string;
   pageSize?: string;
 };
+
+export type ThreadsQueryType = {
+  threadId?: string;
+  createdOn?: string;
+  creator?: string;
+  title?: string;
+  url?: string;
+  isReadPublic?: string;
+  isWritePublic?: string;
+  member?: string;
+  moderator?: string;
+  keyword?: string;
+  page?: string;
+  pageSize?: string;
+};

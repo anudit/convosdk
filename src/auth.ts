@@ -1,5 +1,5 @@
-import fetch from 'unfetch';
 import { ErrorType } from './types';
+import { fetcher } from './utils';
 
 class Auth {
   apikey: string;
@@ -16,21 +16,14 @@ class Auth {
     token: string
   ): Promise<any | ErrorType> => {
     try {
-      let data = await fetch(
+      return await fetcher(
+        'POST',
         `${this.base}/validateAuth?apikey=${this.apikey}`,
         {
-          method: 'POST',
-          body: JSON.stringify({
-            signerAddress,
-            token,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
+          signerAddress,
+          token,
         }
       );
-      data = await data.json();
-      return data;
     } catch (error) {
       console.error(error);
       return { error };
@@ -46,36 +39,28 @@ class Auth {
   ): Promise<any | ErrorType> => {
     try {
       if (chain === 'ethereum') {
-        let data = await fetch(`${this.base}/auth?apikey=${this.apikey}`, {
-          method: 'POST',
-          body: JSON.stringify({
+        return await fetcher(
+          'POST',
+          `${this.base}/auth?apikey=${this.apikey}`,
+          {
             signerAddress,
             signature,
             timestamp,
             chain,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        data = await data.json();
-        return data;
+          }
+        );
       } else if (chain === 'near') {
-        let data = await fetch(`${this.base}/auth?apikey=${this.apikey}`, {
-          method: 'POST',
-          body: JSON.stringify({
+        return await fetcher(
+          'POST',
+          `${this.base}/auth?apikey=${this.apikey}`,
+          {
             signerAddress,
             signature,
             accountId,
             timestamp,
             chain,
-          }),
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-        data = await data.json();
-        return data;
+          }
+        );
       } else {
         const error = 'Invalid Chain Name';
         console.error(error);

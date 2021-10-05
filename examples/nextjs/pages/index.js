@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head'
 import Image from 'next/image'
-import Convo from "@theconvospace/sdk"
+import { Convo } from "@theconvospace/sdk"
 import { ethers } from "ethers";
 import styles from '../styles/Home.module.css'
 

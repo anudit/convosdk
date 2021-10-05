@@ -13,27 +13,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const unfetch_1 = __importDefault(require("unfetch"));
+const utils_1 = require("./utils");
 class Auth {
     constructor(apikey, base) {
         this.validate = (signerAddress, token) => __awaiter(this, void 0, void 0, function* () {
             try {
-                let data = yield (0, unfetch_1.default)(`${this.base}/validateAuth?apikey=${this.apikey}`, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        signerAddress,
-                        token,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                return yield (0, utils_1.fetcher)('POST', `${this.base}/validateAuth?apikey=${this.apikey}`, {
+                    signerAddress,
+                    token,
                 });
-                data = yield data.json();
-                return data;
             }
             catch (error) {
                 console.error(error);
@@ -43,37 +32,21 @@ class Auth {
         this.authenticate = (signerAddress, signature, timestamp, chain, accountId) => __awaiter(this, void 0, void 0, function* () {
             try {
                 if (chain === 'ethereum') {
-                    let data = yield (0, unfetch_1.default)(`${this.base}/auth?apikey=${this.apikey}`, {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            signerAddress,
-                            signature,
-                            timestamp,
-                            chain,
-                        }),
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
+                    return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+                        signerAddress,
+                        signature,
+                        timestamp,
+                        chain,
                     });
-                    data = yield data.json();
-                    return data;
                 }
                 else if (chain === 'near') {
-                    let data = yield (0, unfetch_1.default)(`${this.base}/auth?apikey=${this.apikey}`, {
-                        method: 'POST',
-                        body: JSON.stringify({
-                            signerAddress,
-                            signature,
-                            accountId,
-                            timestamp,
-                            chain,
-                        }),
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
+                    return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+                        signerAddress,
+                        signature,
+                        accountId,
+                        timestamp,
+                        chain,
                     });
-                    data = yield data.json();
-                    return data;
                 }
                 else {
                     const error = 'Invalid Chain Name';
@@ -96,7 +69,7 @@ class Auth {
 }
 exports.default = Auth;
 
-},{"unfetch":1}],3:[function(require,module,exports){
+},{"./utils":8}],3:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -107,11 +80,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const unfetch_1 = __importDefault(require("unfetch"));
+const utils_1 = require("./utils");
 class ConvoBase {
     constructor(apikey) {
         this.base = 'https://theconvo.space/api';
@@ -120,15 +90,13 @@ class ConvoBase {
             return {
                 base: this.base,
                 apikey: this.apikey,
-                version: '0.1.4',
+                version: '0.1.5',
                 pingResult: pingResult,
             };
         });
         this.ping = () => __awaiter(this, void 0, void 0, function* () {
             try {
-                let data = yield (0, unfetch_1.default)(`${this.base}/ping`);
-                data = yield data.json();
-                return data;
+                return yield (0, utils_1.fetcher)('GET', `${this.base}/ping`, {});
             }
             catch (error) {
                 console.error(error);
@@ -144,7 +112,7 @@ class ConvoBase {
 }
 exports.default = ConvoBase;
 
-},{"unfetch":1}],4:[function(require,module,exports){
+},{"./utils":8}],4:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -155,30 +123,19 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const unfetch_1 = __importDefault(require("unfetch"));
+const utils_1 = require("./utils");
 class Comments {
     constructor(apikey, base) {
         this.create = (signerAddress, token, comment, threadId, url) => __awaiter(this, void 0, void 0, function* () {
             try {
-                let data = yield (0, unfetch_1.default)(`${this.base}/comments?apikey=${this.apikey}`, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        token,
-                        signerAddress,
-                        comment,
-                        threadId,
-                        url: encodeURIComponent(url),
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+                    token,
+                    signerAddress,
+                    comment,
+                    threadId,
+                    url: encodeURIComponent(url),
                 });
-                data = yield data.json();
-                return data;
             }
             catch (error) {
                 console.error(error);
@@ -187,19 +144,11 @@ class Comments {
         });
         this.delete = (token, signerAddress, commentId) => __awaiter(this, void 0, void 0, function* () {
             try {
-                let data = yield (0, unfetch_1.default)(`${this.base}/comments?apikey=${this.apikey}`, {
-                    method: 'DELETE',
-                    body: JSON.stringify({
-                        token,
-                        signerAddress,
-                        commentId,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                return yield (0, utils_1.fetcher)('DELETE', `${this.base}/comments?apikey=${this.apikey}`, {
+                    token,
+                    signerAddress,
+                    commentId,
                 });
-                data = yield data.json();
-                return data;
             }
             catch (error) {
                 console.error(error);
@@ -213,11 +162,7 @@ class Comments {
             //   params.append(key, value);
             // }
             try {
-                let data = yield (0, unfetch_1.default)(`${this.base}/comments?${params.toString()}`, {
-                    method: 'GET',
-                });
-                data = yield data.json();
-                return data;
+                return yield (0, utils_1.fetcher)('GET', `${this.base}/comments?${params.toString()}`, {});
             }
             catch (error) {
                 console.error(error);
@@ -231,7 +176,7 @@ class Comments {
 }
 exports.default = Comments;
 
-},{"unfetch":1}],5:[function(require,module,exports){
+},{"./utils":8}],5:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -242,18 +187,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const unfetch_1 = __importDefault(require("unfetch"));
+const utils_1 = require("./utils");
 class Identity {
     constructor(apikey, base) {
         this.getTrustScore = (address) => __awaiter(this, void 0, void 0, function* () {
             try {
-                let data = yield (0, unfetch_1.default)(`${this.base}/identity?address=${address}&apikey=${this.apikey}`);
-                data = yield data.json();
-                return data;
+                return yield (0, utils_1.fetcher)('GET', `${this.base}/identity?address=${address}&apikey=${this.apikey}`, {});
             }
             catch (error) {
                 console.error(error);
@@ -267,12 +207,13 @@ class Identity {
 }
 exports.default = Identity;
 
-},{"unfetch":1}],6:[function(require,module,exports){
+},{"./utils":8}],6:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Convo = void 0;
 const comments_1 = __importDefault(require("./comments"));
 const auth_1 = __importDefault(require("./auth"));
 const base_1 = __importDefault(require("./base"));
@@ -288,7 +229,7 @@ class Convo extends base_1.default {
         return this;
     }
 }
-exports.default = Convo;
+exports.Convo = Convo;
 
 },{"./auth":2,"./base":3,"./comments":4,"./identity":5,"./threads":7}],7:[function(require,module,exports){
 "use strict";
@@ -302,5 +243,46 @@ class Threads {
 }
 exports.default = Threads;
 
-},{}]},{},[6])(6)
+},{}],8:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.fetcher = void 0;
+const unfetch_1 = __importDefault(require("unfetch"));
+function fetcher(requestMethod, url, body) {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (requestMethod === 'GET') {
+            let data = yield (0, unfetch_1.default)(url);
+            data = yield data.json();
+            return data;
+        }
+        else if (requestMethod === 'POST' ||
+            requestMethod === 'UPDATE' ||
+            requestMethod === 'DELETE') {
+            let data = yield (0, unfetch_1.default)(url, {
+                method: requestMethod,
+                body: JSON.stringify(body),
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+            data = yield data.json();
+            return data;
+        }
+    });
+}
+exports.fetcher = fetcher;
+
+},{"unfetch":1}]},{},[6])(6)
 });

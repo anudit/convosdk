@@ -1,5 +1,5 @@
-import fetch from 'unfetch';
 import { CommentsQueryType, ErrorType } from './types';
+import { fetcher } from './utils';
 
 class Comments {
   apikey: string;
@@ -19,21 +19,17 @@ class Comments {
     url: string
   ): Promise<any | ErrorType> => {
     try {
-      let data = await fetch(`${this.base}/comments?apikey=${this.apikey}`, {
-        method: 'POST',
-        body: JSON.stringify({
+      return await fetcher(
+        'POST',
+        `${this.base}/comments?apikey=${this.apikey}`,
+        {
           token,
           signerAddress,
           comment,
           threadId,
           url: encodeURIComponent(url),
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      data = await data.json();
-      return data;
+        }
+      );
     } catch (error) {
       console.error(error);
       return { error };
@@ -46,19 +42,15 @@ class Comments {
     commentId: string
   ): Promise<any | ErrorType> => {
     try {
-      let data = await fetch(`${this.base}/comments?apikey=${this.apikey}`, {
-        method: 'DELETE',
-        body: JSON.stringify({
+      return await fetcher(
+        'DELETE',
+        `${this.base}/comments?apikey=${this.apikey}`,
+        {
           token,
           signerAddress,
           commentId,
-        }),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      data = await data.json();
-      return data;
+        }
+      );
     } catch (error) {
       console.error(error);
       return { error };
@@ -69,20 +61,19 @@ class Comments {
     const params = new URLSearchParams(query);
     params.append('apikey', this.apikey);
 
-    // for (const [key, value] of Object.entries(query)) {
-    //   params.append(key, value);
-    // }
-
     try {
-      let data = await fetch(`${this.base}/comments?${params.toString()}`, {
-        method: 'GET',
-      });
-      data = await data.json();
-      return data;
+      return await fetcher(
+        'GET',
+        `${this.base}/comments?${params.toString()}`,
+        {}
+      );
     } catch (error) {
       console.error(error);
       return { error };
     }
   };
+
+  //TODO: upvote
+  //TODO: downvote
 }
 export default Comments;

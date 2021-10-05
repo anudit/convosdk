@@ -20,4 +20,4 @@ class Convo extends ConvoBase {
   }
 }
 
-export default Convo;
+export { Convo };

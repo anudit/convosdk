@@ -1,5 +1,5 @@
-import fetch from 'unfetch';
 import { ErrorType, LogConfigType } from './types';
+import { fetcher } from './utils';
 
 class ConvoBase {
   apikey: string;
@@ -19,16 +19,14 @@ class ConvoBase {
     return {
       base: this.base,
       apikey: this.apikey,
-      version: '0.1.5',
+      version: '0.1.6',
       pingResult: pingResult,
     };
   };
 
   ping = async (): Promise<any | ErrorType> => {
     try {
-      let data = await fetch(`${this.base}/ping`);
-      data = await data.json();
-      return data;
+      return await fetcher('GET', `${this.base}/ping`, {});
     } catch (error) {
       console.error(error);
       return { error };
