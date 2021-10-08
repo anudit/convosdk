@@ -1,5 +1,5 @@
 import { CommentsQueryType, ErrorType } from './types';
-import { fetcher } from './utils';
+import { encodeQuery, fetcher } from './utils';
 
 class Comments {
   apikey: string;
@@ -58,13 +58,10 @@ class Comments {
   };
 
   query = async (query: CommentsQueryType): Promise<any | ErrorType> => {
-    const params = new URLSearchParams(query);
-    params.append('apikey', this.apikey);
-
     try {
       return await fetcher(
         'GET',
-        `${this.base}/comments?${params.toString()}`,
+        `${this.base}/comments?apikey=${this.apikey}&${encodeQuery(query)}`,
         {}
       );
     } catch (error) {
@@ -73,7 +70,40 @@ class Comments {
     }
   };
 
-  //TODO: upvote
-  //TODO: downvote
+  toggleUpvote = async (
+    token: string,
+    signerAddress: string,
+    commentId: string
+  ): Promise<any | ErrorType> => {
+    try {
+      return await fetcher('POST', `${this.base}/vote?apikey=${this.apikey}`, {
+        token,
+        signerAddress,
+        type: 'toggleupvote',
+        commentId,
+      });
+    } catch (error) {
+      console.error(error);
+      return { error };
+    }
+  };
+
+  toggleDownvote = async (
+    token: string,
+    signerAddress: string,
+    commentId: string
+  ): Promise<any | ErrorType> => {
+    try {
+      return await fetcher('POST', `${this.base}/vote?apikey=${this.apikey}`, {
+        token,
+        signerAddress,
+        type: 'toggledownvote',
+        commentId,
+      });
+    } catch (error) {
+      console.error(error);
+      return { error };
+    }
+  };
 }
 export default Comments;

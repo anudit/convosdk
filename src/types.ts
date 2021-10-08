@@ -1,15 +1,18 @@
 export interface Dictionary<T> {
   [Key: string]: T;
 }
+
 export interface ErrorType {
   error: any;
 }
+
 export interface LogConfigType {
   base: string;
   apikey: string;
   version: string;
   pingResult: any | ErrorType;
 }
+
 export type CommentsQueryType = {
   threadId?: string;
   url?: string;

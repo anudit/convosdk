@@ -8,7 +8,8 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "tsc && yarn build:browser",
+    "build": "yarn build:node && yarn build:browser",
+    "build:node": "tsc",
     "build:browser": "browserify ./src/index.ts -p [ tsify --noImplicitAny ] --standalone Convo > ./dist/bundle.js && terser ./dist/bundle.js -o ./dist/bundle.min.js -c -m",
     "dev": "tsc --watch",
     "example": "yarn build && cd examples/nextjs && yarn dev",
@@ -39,7 +40,7 @@
   },
   "homepage": "https://github.com/anudit/convosdk#readme",
   "devDependencies": {
-    "@types/node": "^16.10.2",
+    "@types/node": "^16.10.3",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.25.0",
