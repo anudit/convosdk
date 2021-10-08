@@ -23,27 +23,18 @@ class Threads {
     moderators: Array<string>,
     keywords: Array<string>
   ): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'POST',
-        `${this.base}/threads?apikey=${this.apikey}`,
-        {
-          signerAddress,
-          token,
-          action,
-          title,
-          url: encodeURIComponent(url),
-          isReadPublic,
-          isWritePublic,
-          members,
-          moderators,
-          keywords,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher('POST', `${this.base}/threads?apikey=${this.apikey}`, {
+      signerAddress,
+      token,
+      action,
+      title,
+      url: encodeURIComponent(url),
+      isReadPublic,
+      isWritePublic,
+      members,
+      moderators,
+      keywords,
+    });
   };
 
   delete = async (
@@ -51,33 +42,23 @@ class Threads {
     signerAddress: string,
     threadId: string
   ): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'DELETE',
-        `${this.base}/threads?apikey=${this.apikey}`,
-        {
-          token,
-          signerAddress,
-          threadId,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'DELETE',
+      `${this.base}/threads?apikey=${this.apikey}`,
+      {
+        token,
+        signerAddress,
+        threadId,
+      }
+    );
   };
 
   query = async (query: ThreadsQueryType): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'GET',
-        `${this.base}/comments?apikey=${this.apikey}&${encodeQuery(query)}`,
-        {}
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'GET',
+      `${this.base}/comments?apikey=${this.apikey}&${encodeQuery(query)}`,
+      {}
+    );
   };
 
   addMembers = async (
@@ -86,22 +67,17 @@ class Threads {
     threadId: string,
     members: Array<string>
   ): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'POST',
-        `${this.base}/comments?apikey=${this.apikey}`,
-        {
-          token,
-          signerAddress,
-          action: 'addMembers',
-          threadId,
-          members,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'POST',
+      `${this.base}/comments?apikey=${this.apikey}`,
+      {
+        token,
+        signerAddress,
+        action: 'addMembers',
+        threadId,
+        members,
+      }
+    );
   };
 
   removeMembers = async (
@@ -110,22 +86,17 @@ class Threads {
     threadId: string,
     members: Array<string>
   ): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'POST',
-        `${this.base}/comments?apikey=${this.apikey}`,
-        {
-          token,
-          signerAddress,
-          action: 'removeMembers',
-          threadId,
-          members,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'POST',
+      `${this.base}/comments?apikey=${this.apikey}`,
+      {
+        token,
+        signerAddress,
+        action: 'removeMembers',
+        threadId,
+        members,
+      }
+    );
   };
 
   addModerators = async (
@@ -134,22 +105,17 @@ class Threads {
     threadId: string,
     moderators: Array<string>
   ): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'POST',
-        `${this.base}/comments?apikey=${this.apikey}`,
-        {
-          token,
-          signerAddress,
-          action: 'addModerators',
-          threadId,
-          moderators,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'POST',
+      `${this.base}/comments?apikey=${this.apikey}`,
+      {
+        token,
+        signerAddress,
+        action: 'addModerators',
+        threadId,
+        moderators,
+      }
+    );
   };
 
   removeModerators = async (
@@ -158,22 +124,17 @@ class Threads {
     threadId: string,
     moderators: Array<string>
   ): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'POST',
-        `${this.base}/comments?apikey=${this.apikey}`,
-        {
-          token,
-          signerAddress,
-          action: 'removeModerators',
-          threadId,
-          moderators,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'POST',
+      `${this.base}/comments?apikey=${this.apikey}`,
+      {
+        token,
+        signerAddress,
+        action: 'removeModerators',
+        threadId,
+        moderators,
+      }
+    );
   };
 
   updateTitle = async (
@@ -182,22 +143,17 @@ class Threads {
     threadId: string,
     title: string
   ): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'POST',
-        `${this.base}/comments?apikey=${this.apikey}`,
-        {
-          token,
-          signerAddress,
-          action: 'updateTitle',
-          threadId,
-          title,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'POST',
+      `${this.base}/comments?apikey=${this.apikey}`,
+      {
+        token,
+        signerAddress,
+        action: 'updateTitle',
+        threadId,
+        title,
+      }
+    );
   };
 
   updateDescription = async (
@@ -206,66 +162,51 @@ class Threads {
     threadId: string,
     description: string
   ): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'POST',
-        `${this.base}/comments?apikey=${this.apikey}`,
-        {
-          token,
-          signerAddress,
-          action: 'updateDescription',
-          threadId,
-          description,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'POST',
+      `${this.base}/comments?apikey=${this.apikey}`,
+      {
+        token,
+        signerAddress,
+        action: 'updateDescription',
+        threadId,
+        description,
+      }
+    );
   };
 
   togglePublicRead = async (
     token: string,
     signerAddress: string,
-    threadId: string,
+    threadId: string
   ): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'POST',
-        `${this.base}/comments?apikey=${this.apikey}`,
-        {
-          token,
-          signerAddress,
-          action: 'togglePublicRead',
-          threadId,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'POST',
+      `${this.base}/comments?apikey=${this.apikey}`,
+      {
+        token,
+        signerAddress,
+        action: 'togglePublicRead',
+        threadId,
+      }
+    );
   };
 
   togglePublicWrite = async (
     token: string,
     signerAddress: string,
-    threadId: string,
+    threadId: string
   ): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'POST',
-        `${this.base}/comments?apikey=${this.apikey}`,
-        {
-          token,
-          signerAddress,
-          action: 'togglePublicWrite',
-          threadId,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'POST',
+      `${this.base}/comments?apikey=${this.apikey}`,
+      {
+        token,
+        signerAddress,
+        action: 'togglePublicWrite',
+        threadId,
+      }
+    );
   };
 }
 

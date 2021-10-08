@@ -1,9 +1,11 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "SDK containing all the Hooks and Components required to build on theconvo.space",
-  "main": "./lib/src/index.js",
-  "types": "./lib/src/index.d.ts",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "typings": "./lib/index.d.ts",
+  "sideEffects": false,
   "files": [
     "lib/**/*",
     "dist/**/*"

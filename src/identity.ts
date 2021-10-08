@@ -12,16 +12,11 @@ class Identity {
   }
 
   getTrustScore = async (address: string): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'GET',
-        `${this.base}/identity?address=${address}&apikey=${this.apikey}`,
-        {}
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'GET',
+      `${this.base}/identity?address=${address}&apikey=${this.apikey}`,
+      {}
+    );
   };
 }
 export default Identity;

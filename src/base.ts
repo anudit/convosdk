@@ -19,18 +19,13 @@ class ConvoBase {
     return {
       base: this.base,
       apikey: this.apikey,
-      version: '0.1.7',
+      version: '0.1.8',
       pingResult: pingResult,
     };
   };
 
   ping = async (): Promise<any | ErrorType> => {
-    try {
-      return await fetcher('GET', `${this.base}/ping`, {});
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher('GET', `${this.base}/ping`, {});
   };
 }
 

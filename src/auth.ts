@@ -15,19 +15,14 @@ class Auth {
     signerAddress: string,
     token: string
   ): Promise<any | ErrorType> => {
-    try {
-      return await fetcher(
-        'POST',
-        `${this.base}/validateAuth?apikey=${this.apikey}`,
-        {
-          signerAddress,
-          token,
-        }
-      );
-    } catch (error) {
-      console.error(error);
-      return { error };
-    }
+    return await fetcher(
+      'POST',
+      `${this.base}/validateAuth?apikey=${this.apikey}`,
+      {
+        signerAddress,
+        token,
+      }
+    );
   };
 
   authenticate = async (
@@ -37,36 +32,23 @@ class Auth {
     chain: string,
     accountId: string | undefined
   ): Promise<any | ErrorType> => {
-    try {
-      if (chain === 'ethereum') {
-        return await fetcher(
-          'POST',
-          `${this.base}/auth?apikey=${this.apikey}`,
-          {
-            signerAddress,
-            signature,
-            timestamp,
-            chain,
-          }
-        );
-      } else if (chain === 'near') {
-        return await fetcher(
-          'POST',
-          `${this.base}/auth?apikey=${this.apikey}`,
-          {
-            signerAddress,
-            signature,
-            accountId,
-            timestamp,
-            chain,
-          }
-        );
-      } else {
-        const error = 'Invalid Chain Name';
-        console.error(error);
-        return { error };
-      }
-    } catch (error) {
+    if (chain === 'ethereum') {
+      return await fetcher('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+        signerAddress,
+        signature,
+        timestamp,
+        chain,
+      });
+    } else if (chain === 'near') {
+      return await fetcher('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+        signerAddress,
+        signature,
+        accountId,
+        timestamp,
+        chain,
+      });
+    } else {
+      const error = 'Invalid Chain Name';
       console.error(error);
       return { error };
     }

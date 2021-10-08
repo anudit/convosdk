@@ -1,5 +1,6 @@
 # @theconvospace/sdk
 
+![npm/types](https://img.shields.io/npm/types/@theconvospace/sdk)
 ![npm/v](https://badgen.net/npm/v/@theconvospace/sdk)
 ![bundlephobia/dependency-count](https://badgen.net/bundlephobia/dependency-count/@theconvospace/sdk)
 ![bundlephobia/minzip](https://badgen.net/bundlephobia/minzip/@theconvospace/sdk)

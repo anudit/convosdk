@@ -18,43 +18,31 @@ const utils_1 = require("./utils");
 class Auth {
     constructor(apikey, base) {
         this.validate = (signerAddress, token) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/validateAuth?apikey=${this.apikey}`, {
-                    signerAddress,
-                    token,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/validateAuth?apikey=${this.apikey}`, {
+                signerAddress,
+                token,
+            });
         });
         this.authenticate = (signerAddress, signature, timestamp, chain, accountId) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                if (chain === 'ethereum') {
-                    return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
-                        signerAddress,
-                        signature,
-                        timestamp,
-                        chain,
-                    });
-                }
-                else if (chain === 'near') {
-                    return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
-                        signerAddress,
-                        signature,
-                        accountId,
-                        timestamp,
-                        chain,
-                    });
-                }
-                else {
-                    const error = 'Invalid Chain Name';
-                    console.error(error);
-                    return { error };
-                }
+            if (chain === 'ethereum') {
+                return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+                    signerAddress,
+                    signature,
+                    timestamp,
+                    chain,
+                });
             }
-            catch (error) {
+            else if (chain === 'near') {
+                return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+                    signerAddress,
+                    signature,
+                    accountId,
+                    timestamp,
+                    chain,
+                });
+            }
+            else {
+                const error = 'Invalid Chain Name';
                 console.error(error);
                 return { error };
             }
@@ -90,18 +78,12 @@ class ConvoBase {
             return {
                 base: this.base,
                 apikey: this.apikey,
-                version: '0.1.7',
+                version: '0.1.8',
                 pingResult: pingResult,
             };
         });
         this.ping = () => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('GET', `${this.base}/ping`, {});
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('GET', `${this.base}/ping`, {});
         });
         this.apikey = apikey;
         return this;
@@ -128,69 +110,39 @@ const utils_1 = require("./utils");
 class Comments {
     constructor(apikey, base) {
         this.create = (signerAddress, token, comment, threadId, url) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    comment,
-                    threadId,
-                    url: encodeURIComponent(url),
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                comment,
+                threadId,
+                url: encodeURIComponent(url),
+            });
         });
         this.delete = (token, signerAddress, commentId) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('DELETE', `${this.base}/comments?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    commentId,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('DELETE', `${this.base}/comments?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                commentId,
+            });
         });
         this.query = (query) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('GET', `${this.base}/comments?apikey=${this.apikey}&${(0, utils_1.encodeQuery)(query)}`, {});
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('GET', `${this.base}/comments?apikey=${this.apikey}&${(0, utils_1.encodeQuery)(query)}`, {});
         });
         this.toggleUpvote = (token, signerAddress, commentId) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/vote?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    type: 'toggleupvote',
-                    commentId,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/vote?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                type: 'toggleupvote',
+                commentId,
+            });
         });
         this.toggleDownvote = (token, signerAddress, commentId) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/vote?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    type: 'toggledownvote',
-                    commentId,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/vote?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                type: 'toggledownvote',
+                commentId,
+            });
         });
         this.apikey = apikey;
         this.base = base;
@@ -215,13 +167,7 @@ const utils_1 = require("./utils");
 class Identity {
     constructor(apikey, base) {
         this.getTrustScore = (address) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('GET', `${this.base}/identity?address=${address}&apikey=${this.apikey}`, {});
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('GET', `${this.base}/identity?address=${address}&apikey=${this.apikey}`, {});
         });
         this.apikey = apikey;
         this.base = base;
@@ -270,164 +216,98 @@ const utils_1 = require("./utils");
 class Threads {
     constructor(apikey, base) {
         this.create = (signerAddress, token, action, title, url, isReadPublic, isWritePublic, members, moderators, keywords) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/threads?apikey=${this.apikey}`, {
-                    signerAddress,
-                    token,
-                    action,
-                    title,
-                    url: encodeURIComponent(url),
-                    isReadPublic,
-                    isWritePublic,
-                    members,
-                    moderators,
-                    keywords,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/threads?apikey=${this.apikey}`, {
+                signerAddress,
+                token,
+                action,
+                title,
+                url: encodeURIComponent(url),
+                isReadPublic,
+                isWritePublic,
+                members,
+                moderators,
+                keywords,
+            });
         });
         this.delete = (token, signerAddress, threadId) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('DELETE', `${this.base}/threads?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    threadId,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('DELETE', `${this.base}/threads?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                threadId,
+            });
         });
         this.query = (query) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('GET', `${this.base}/comments?apikey=${this.apikey}&${(0, utils_1.encodeQuery)(query)}`, {});
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('GET', `${this.base}/comments?apikey=${this.apikey}&${(0, utils_1.encodeQuery)(query)}`, {});
         });
         this.addMembers = (token, signerAddress, threadId, members) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    action: 'addMembers',
-                    threadId,
-                    members,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                action: 'addMembers',
+                threadId,
+                members,
+            });
         });
         this.removeMembers = (token, signerAddress, threadId, members) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    action: 'removeMembers',
-                    threadId,
-                    members,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                action: 'removeMembers',
+                threadId,
+                members,
+            });
         });
         this.addModerators = (token, signerAddress, threadId, moderators) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    action: 'addModerators',
-                    threadId,
-                    moderators,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                action: 'addModerators',
+                threadId,
+                moderators,
+            });
         });
         this.removeModerators = (token, signerAddress, threadId, moderators) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    action: 'removeModerators',
-                    threadId,
-                    moderators,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                action: 'removeModerators',
+                threadId,
+                moderators,
+            });
         });
         this.updateTitle = (token, signerAddress, threadId, title) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    action: 'updateTitle',
-                    threadId,
-                    title,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                action: 'updateTitle',
+                threadId,
+                title,
+            });
         });
         this.updateDescription = (token, signerAddress, threadId, description) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    action: 'updateDescription',
-                    threadId,
-                    description,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                action: 'updateDescription',
+                threadId,
+                description,
+            });
         });
         this.togglePublicRead = (token, signerAddress, threadId) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    action: 'togglePublicRead',
-                    threadId,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                action: 'togglePublicRead',
+                threadId,
+            });
         });
         this.togglePublicWrite = (token, signerAddress, threadId) => __awaiter(this, void 0, void 0, function* () {
-            try {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
-                    token,
-                    signerAddress,
-                    action: 'togglePublicWrite',
-                    threadId,
-                });
-            }
-            catch (error) {
-                console.error(error);
-                return { error };
-            }
+            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+                token,
+                signerAddress,
+                action: 'togglePublicWrite',
+                threadId,
+            });
         });
         this.apikey = apikey;
         this.base = base;
@@ -455,23 +335,29 @@ exports.encodeQuery = exports.fetcher = void 0;
 const unfetch_1 = __importDefault(require("unfetch"));
 function fetcher(requestMethod, url, body) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (requestMethod === 'GET') {
-            let data = yield (0, unfetch_1.default)(url);
-            data = yield data.json();
-            return data;
+        try {
+            if (requestMethod === 'GET') {
+                let data = yield (0, unfetch_1.default)(url);
+                data = yield data.json();
+                return data;
+            }
+            else if (requestMethod === 'POST' ||
+                requestMethod === 'UPDATE' ||
+                requestMethod === 'DELETE') {
+                let data = yield (0, unfetch_1.default)(url, {
+                    method: requestMethod,
+                    body: JSON.stringify(body),
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                data = yield data.json();
+                return data;
+            }
         }
-        else if (requestMethod === 'POST' ||
-            requestMethod === 'UPDATE' ||
-            requestMethod === 'DELETE') {
-            let data = yield (0, unfetch_1.default)(url, {
-                method: requestMethod,
-                body: JSON.stringify(body),
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            data = yield data.json();
-            return data;
+        catch (error) {
+            console.error(error);
+            return { error };
         }
     });
 }
