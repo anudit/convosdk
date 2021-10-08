@@ -1,5 +1,10 @@
 # @theconvospace/sdk
 
+![npm/v](https://badgen.net/npm/v/@theconvospace/sdk)
+![bundlephobia/dependency-count](https://badgen.net/bundlephobia/dependency-count/@theconvospace/sdk)
+![bundlephobia/minzip](https://badgen.net/bundlephobia/minzip/@theconvospace/sdk)
+![bundlephobia/min/](https://badgen.net/bundlephobia/min/@theconvospace/sdk)
+
 SDK containing all the Hooks and Components required to build on [theconvo.space](https://theconvo.space)
 
 ## Installation
