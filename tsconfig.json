@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "target": "es2015",
+    "lib": [
+      "es2017"
+    ],
     "module": "commonjs",
     "strict": true,
     "outDir": "lib/",
@@ -8,7 +11,8 @@
     "skipLibCheck": true,
     "declaration": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*.ts"

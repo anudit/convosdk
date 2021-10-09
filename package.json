@@ -1,19 +1,30 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "SDK containing all the Hooks and Components required to build on theconvo.space",
-  "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
-  "typings": "./lib/index.d.ts",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "typings": "./lib/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./lib/cjs/index.js",
+      "node": "./lib/cjs/index.mjs",
+      "default": "./lib/esm/index.js"
+    }
+  },
   "sideEffects": false,
   "files": [
     "lib/**/*",
     "dist/**/*"
   ],
   "scripts": {
-    "build": "yarn build:node && yarn build:browser",
-    "build:node": "tsc",
-    "build:browser": "browserify ./src/index.ts -p [ tsify --noImplicitAny ] --standalone Convo > ./dist/bundle.js && terser ./dist/bundle.js -o ./dist/bundle.min.js -c -m",
+    "build": "yarn build:clean && yarn build:tsc && yarn build:browser",
+    "build:clean": "rimraf lib && rimraf dist",
+    "build:tsc": "run-p build:tsc:*",
+    "build:tsc:cjs": "tsc -p ./tsconfig.cjs.json",
+    "build:tsc:esm": "tsc -p ./tsconfig.esm.json",
+    "build:browser": "mkdir dist && browserify ./src/index.ts -p [ tsify --noImplicitAny ] --standalone Convo > ./dist/bundle.js && terser ./dist/bundle.js -o ./dist/bundle.min.js -c -m",
     "dev": "tsc --watch",
     "example": "yarn build && cd examples/nextjs && yarn dev",
     "clean": "rm -rf ./lib/",
@@ -56,6 +67,7 @@
     "terser": "^5.9.0",
     "ts-node": "^10.2.1",
     "tsify": "^5.0.4",
+    "rimraf": "^3.0.2",
     "typescript": "^4.2.4"
   },
   "lint-staged": {
@@ -67,8 +79,7 @@
     ]
   },
   "directories": {
-    "lib": "lib",
-    "test": "test"
+    "lib": "lib"
   },
   "dependencies": {
     "unfetch": "^4.2.0"
