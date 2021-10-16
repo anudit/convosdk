@@ -19,7 +19,7 @@ class ConvoBase {
     return {
       base: this.base,
       apikey: this.apikey,
-      version: '0.1.9',
+      version: '0.1.10',
       pingResult: pingResult,
     };
   };

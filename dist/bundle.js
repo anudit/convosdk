@@ -29,7 +29,7 @@ class Auth {
                     signerAddress,
                     signature,
                     timestamp,
-                    chain,
+                    chain: 'ethereum',
                 });
             }
             else if (chain === 'near') {
@@ -38,7 +38,15 @@ class Auth {
                     signature,
                     accountId,
                     timestamp,
-                    chain,
+                    chain: 'near',
+                });
+            }
+            else if (chain === 'flow') {
+                return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+                    signerAddress,
+                    signature,
+                    timestamp,
+                    chain: 'flow',
                 });
             }
             else {
@@ -78,7 +86,7 @@ class ConvoBase {
             return {
                 base: this.base,
                 apikey: this.apikey,
-                version: '0.1.9',
+                version: '0.1.10',
                 pingResult: pingResult,
             };
         });

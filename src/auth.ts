@@ -27,7 +27,7 @@ class Auth {
 
   authenticate = async (
     signerAddress: string,
-    signature: string,
+    signature: any,
     timestamp: number,
     chain: string,
     accountId: string | undefined
@@ -37,7 +37,7 @@ class Auth {
         signerAddress,
         signature,
         timestamp,
-        chain,
+        chain: 'ethereum',
       });
     } else if (chain === 'near') {
       return await fetcher('POST', `${this.base}/auth?apikey=${this.apikey}`, {
@@ -45,7 +45,14 @@ class Auth {
         signature,
         accountId,
         timestamp,
-        chain,
+        chain: 'near',
+      });
+    } else if (chain === 'flow') {
+      return await fetcher('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+        signerAddress,
+        signature,
+        timestamp,
+        chain: 'flow',
       });
     } else {
       const error = 'Invalid Chain Name';
