@@ -32,8 +32,8 @@ class Comments {
   };
 
   delete = async (
-    token: string,
     signerAddress: string,
+    token: string,
     commentId: string
   ): Promise<any | ErrorType> => {
     return await fetcher(
@@ -56,8 +56,8 @@ class Comments {
   };
 
   toggleUpvote = async (
-    token: string,
     signerAddress: string,
+    token: string,
     commentId: string
   ): Promise<any | ErrorType> => {
     return await fetcher('POST', `${this.base}/vote?apikey=${this.apikey}`, {
@@ -69,8 +69,8 @@ class Comments {
   };
 
   toggleDownvote = async (
-    token: string,
     signerAddress: string,
+    token: string,
     commentId: string
   ): Promise<any | ErrorType> => {
     return await fetcher('POST', `${this.base}/vote?apikey=${this.apikey}`, {

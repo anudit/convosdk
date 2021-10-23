@@ -167,8 +167,8 @@ export default function Home() {
 
           <div onClick={() => {
             ConvoInstance.comments.delete(
-              "",
               accounts[0],
+              "",
               "01fh3enc55ppnh7g7r4sz9wvp5"
             ).then(console.log)
           }} className={styles.card}>

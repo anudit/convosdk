@@ -134,7 +134,7 @@ class Comments {
                 url: decodeURIComponent(url),
             });
         });
-        this.delete = (token, signerAddress, commentId) => __awaiter(this, void 0, void 0, function* () {
+        this.delete = (signerAddress, token, commentId) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('DELETE', `${this.base}/comments?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
@@ -144,7 +144,7 @@ class Comments {
         this.query = (query) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('GET', `${this.base}/comments?apikey=${this.apikey}&${(0, utils_1.encodeQuery)(query)}`, {});
         });
-        this.toggleUpvote = (token, signerAddress, commentId) => __awaiter(this, void 0, void 0, function* () {
+        this.toggleUpvote = (signerAddress, token, commentId) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.base}/vote?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
@@ -152,7 +152,7 @@ class Comments {
                 commentId,
             });
         });
-        this.toggleDownvote = (token, signerAddress, commentId) => __awaiter(this, void 0, void 0, function* () {
+        this.toggleDownvote = (signerAddress, token, commentId) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.base}/vote?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
@@ -231,12 +231,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
 class Threads {
     constructor(apikey, base) {
-        this.create = (signerAddress, token, action, title, url, isReadPublic, isWritePublic, members, moderators, keywords) => __awaiter(this, void 0, void 0, function* () {
+        this.create = (signerAddress, token, title, description, url, isReadPublic, isWritePublic, members, moderators, keywords) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.base}/threads?apikey=${this.apikey}`, {
                 signerAddress,
                 token,
-                action,
-                title,
+                action: 'create',
+                title: encodeURIComponent(title),
+                description: encodeURIComponent(description),
                 url: encodeURIComponent(url),
                 isReadPublic,
                 isWritePublic,
@@ -245,7 +246,7 @@ class Threads {
                 keywords,
             });
         });
-        this.delete = (token, signerAddress, threadId) => __awaiter(this, void 0, void 0, function* () {
+        this.delete = (signerAddress, token, threadId) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('DELETE', `${this.base}/threads?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
@@ -255,7 +256,7 @@ class Threads {
         this.query = (query) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('GET', `${this.base}/comments?apikey=${this.apikey}&${(0, utils_1.encodeQuery)(query)}`, {});
         });
-        this.addMembers = (token, signerAddress, threadId, members) => __awaiter(this, void 0, void 0, function* () {
+        this.addMembers = (signerAddress, token, threadId, members) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
@@ -264,7 +265,7 @@ class Threads {
                 members,
             });
         });
-        this.removeMembers = (token, signerAddress, threadId, members) => __awaiter(this, void 0, void 0, function* () {
+        this.removeMembers = (signerAddress, token, threadId, members) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
@@ -273,7 +274,7 @@ class Threads {
                 members,
             });
         });
-        this.addModerators = (token, signerAddress, threadId, moderators) => __awaiter(this, void 0, void 0, function* () {
+        this.addModerators = (signerAddress, token, threadId, moderators) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
@@ -282,7 +283,7 @@ class Threads {
                 moderators,
             });
         });
-        this.removeModerators = (token, signerAddress, threadId, moderators) => __awaiter(this, void 0, void 0, function* () {
+        this.removeModerators = (signerAddress, token, threadId, moderators) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
@@ -291,7 +292,7 @@ class Threads {
                 moderators,
             });
         });
-        this.updateTitle = (token, signerAddress, threadId, title) => __awaiter(this, void 0, void 0, function* () {
+        this.updateTitle = (signerAddress, token, threadId, title) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
@@ -300,7 +301,7 @@ class Threads {
                 title,
             });
         });
-        this.updateDescription = (token, signerAddress, threadId, description) => __awaiter(this, void 0, void 0, function* () {
+        this.updateDescription = (signerAddress, token, threadId, description) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
@@ -309,7 +310,7 @@ class Threads {
                 description,
             });
         });
-        this.togglePublicRead = (token, signerAddress, threadId) => __awaiter(this, void 0, void 0, function* () {
+        this.togglePublicRead = (signerAddress, token, threadId) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
@@ -317,7 +318,7 @@ class Threads {
                 threadId,
             });
         });
-        this.togglePublicWrite = (token, signerAddress, threadId) => __awaiter(this, void 0, void 0, function* () {
+        this.togglePublicWrite = (signerAddress, token, threadId) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
                 token,
                 signerAddress,

@@ -14,8 +14,8 @@ class Threads {
   create = async (
     signerAddress: string,
     token: string,
-    action: string,
     title: string,
+    description: string,
     url: string,
     isReadPublic: boolean,
     isWritePublic: boolean,
@@ -26,8 +26,9 @@ class Threads {
     return await fetcher('POST', `${this.base}/threads?apikey=${this.apikey}`, {
       signerAddress,
       token,
-      action,
-      title,
+      action: 'create',
+      title: encodeURIComponent(title),
+      description: encodeURIComponent(description),
       url: encodeURIComponent(url),
       isReadPublic,
       isWritePublic,
@@ -38,8 +39,8 @@ class Threads {
   };
 
   delete = async (
-    token: string,
     signerAddress: string,
+    token: string,
     threadId: string
   ): Promise<any | ErrorType> => {
     return await fetcher(
@@ -62,8 +63,8 @@ class Threads {
   };
 
   addMembers = async (
-    token: string,
     signerAddress: string,
+    token: string,
     threadId: string,
     members: Array<string>
   ): Promise<any | ErrorType> => {
@@ -81,8 +82,8 @@ class Threads {
   };
 
   removeMembers = async (
-    token: string,
     signerAddress: string,
+    token: string,
     threadId: string,
     members: Array<string>
   ): Promise<any | ErrorType> => {
@@ -100,8 +101,8 @@ class Threads {
   };
 
   addModerators = async (
-    token: string,
     signerAddress: string,
+    token: string,
     threadId: string,
     moderators: Array<string>
   ): Promise<any | ErrorType> => {
@@ -119,8 +120,8 @@ class Threads {
   };
 
   removeModerators = async (
-    token: string,
     signerAddress: string,
+    token: string,
     threadId: string,
     moderators: Array<string>
   ): Promise<any | ErrorType> => {
@@ -138,8 +139,8 @@ class Threads {
   };
 
   updateTitle = async (
-    token: string,
     signerAddress: string,
+    token: string,
     threadId: string,
     title: string
   ): Promise<any | ErrorType> => {
@@ -157,8 +158,8 @@ class Threads {
   };
 
   updateDescription = async (
-    token: string,
     signerAddress: string,
+    token: string,
     threadId: string,
     description: string
   ): Promise<any | ErrorType> => {
@@ -176,8 +177,8 @@ class Threads {
   };
 
   togglePublicRead = async (
-    token: string,
     signerAddress: string,
+    token: string,
     threadId: string
   ): Promise<any | ErrorType> => {
     return await fetcher(
@@ -193,8 +194,8 @@ class Threads {
   };
 
   togglePublicWrite = async (
-    token: string,
     signerAddress: string,
+    token: string,
     threadId: string
   ): Promise<any | ErrorType> => {
     return await fetcher(
