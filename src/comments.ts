@@ -26,7 +26,7 @@ class Comments {
         signerAddress,
         comment,
         threadId,
-        url: encodeURIComponent(url),
+        url: decodeURIComponent(url),
       }
     );
   };

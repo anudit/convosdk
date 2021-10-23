@@ -54,6 +54,13 @@ class Auth {
         timestamp,
         chain: 'flow',
       });
+    } else if (chain === 'solana') {
+      return await fetcher('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+        signerAddress,
+        signature,
+        timestamp,
+        chain: 'solana',
+      });
     } else {
       const error = 'Invalid Chain Name';
       console.error(error);

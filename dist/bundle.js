@@ -49,6 +49,14 @@ class Auth {
                     chain: 'flow',
                 });
             }
+            else if (chain === 'solana') {
+                return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+                    signerAddress,
+                    signature,
+                    timestamp,
+                    chain: 'solana',
+                });
+            }
             else {
                 const error = 'Invalid Chain Name';
                 console.error(error);
@@ -86,7 +94,7 @@ class ConvoBase {
             return {
                 base: this.base,
                 apikey: this.apikey,
-                version: '0.1.10',
+                version: '0.1.11',
                 pingResult: pingResult,
             };
         });
@@ -123,7 +131,7 @@ class Comments {
                 signerAddress,
                 comment,
                 threadId,
-                url: encodeURIComponent(url),
+                url: decodeURIComponent(url),
             });
         });
         this.delete = (token, signerAddress, commentId) => __awaiter(this, void 0, void 0, function* () {
