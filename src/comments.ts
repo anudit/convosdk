@@ -3,11 +3,11 @@ import { encodeQuery, fetcher } from './utils';
 
 class Comments {
   apikey: string;
-  base: string;
+  node: string;
 
-  constructor(apikey: string, base: string) {
+  constructor(apikey: string, node: string) {
     this.apikey = apikey;
-    this.base = base;
+    this.node = node;
     return this;
   }
 
@@ -20,7 +20,7 @@ class Comments {
   ): Promise<any | ErrorType> => {
     return await fetcher(
       'POST',
-      `${this.base}/comments?apikey=${this.apikey}`,
+      `${this.node}/comments?apikey=${this.apikey}`,
       {
         token,
         signerAddress,
@@ -38,7 +38,7 @@ class Comments {
   ): Promise<any | ErrorType> => {
     return await fetcher(
       'DELETE',
-      `${this.base}/comments?apikey=${this.apikey}`,
+      `${this.node}/comments?apikey=${this.apikey}`,
       {
         token,
         signerAddress,
@@ -50,7 +50,7 @@ class Comments {
   query = async (query: CommentsQueryType): Promise<any | ErrorType> => {
     return await fetcher(
       'GET',
-      `${this.base}/comments?apikey=${this.apikey}&${encodeQuery(query)}`,
+      `${this.node}/comments?apikey=${this.apikey}&${encodeQuery(query)}`,
       {}
     );
   };
@@ -60,7 +60,7 @@ class Comments {
     token: string,
     commentId: string
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.base}/vote?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/vote?apikey=${this.apikey}`, {
       token,
       signerAddress,
       type: 'toggleupvote',
@@ -73,7 +73,7 @@ class Comments {
     token: string,
     commentId: string
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.base}/vote?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/vote?apikey=${this.apikey}`, {
       token,
       signerAddress,
       type: 'toggledownvote',

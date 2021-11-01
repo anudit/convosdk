@@ -3,10 +3,11 @@ import { fetcher } from './utils';
 
 class ConvoBase {
   apikey: string;
-  base = 'https://theconvo.space/api';
+  node: string;
 
-  constructor(apikey: string) {
+  constructor(apikey: string, node: string) {
     this.apikey = apikey;
+    this.node = node;
     return this;
   }
 
@@ -17,15 +18,15 @@ class ConvoBase {
   logConfig = async (): Promise<LogConfigType> => {
     const pingResult = await this.ping();
     return {
-      base: this.base,
+      node: this.node,
       apikey: this.apikey,
-      version: '0.1.11',
+      version: '0.1.16',
       pingResult: pingResult,
     };
   };
 
   ping = async (): Promise<any | ErrorType> => {
-    return await fetcher('GET', `${this.base}/ping`, {});
+    return await fetcher('GET', `${this.node}/ping`, {});
   };
 }
 

@@ -3,11 +3,11 @@ import { fetcher } from './utils';
 
 class Auth {
   apikey: string;
-  base: string;
+  node: string;
 
-  constructor(apikey: string, base: string) {
+  constructor(apikey: string, node: string) {
     this.apikey = apikey;
-    this.base = base;
+    this.node = node;
     return this;
   }
 
@@ -17,7 +17,7 @@ class Auth {
   ): Promise<any | ErrorType> => {
     return await fetcher(
       'POST',
-      `${this.base}/validateAuth?apikey=${this.apikey}`,
+      `${this.node}/validateAuth?apikey=${this.apikey}`,
       {
         signerAddress,
         token,
@@ -33,14 +33,14 @@ class Auth {
     accountId: string | undefined
   ): Promise<any | ErrorType> => {
     if (chain === 'ethereum') {
-      return await fetcher('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+      return await fetcher('POST', `${this.node}/auth?apikey=${this.apikey}`, {
         signerAddress,
         signature,
         timestamp,
         chain: 'ethereum',
       });
     } else if (chain === 'near') {
-      return await fetcher('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+      return await fetcher('POST', `${this.node}/auth?apikey=${this.apikey}`, {
         signerAddress,
         signature,
         accountId,
@@ -48,14 +48,14 @@ class Auth {
         chain: 'near',
       });
     } else if (chain === 'flow') {
-      return await fetcher('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+      return await fetcher('POST', `${this.node}/auth?apikey=${this.apikey}`, {
         signerAddress,
         signature,
         timestamp,
         chain: 'flow',
       });
     } else if (chain === 'solana') {
-      return await fetcher('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+      return await fetcher('POST', `${this.node}/auth?apikey=${this.apikey}`, {
         signerAddress,
         signature,
         timestamp,

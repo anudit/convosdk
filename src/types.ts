@@ -7,7 +7,7 @@ export interface ErrorType {
 }
 
 export interface LogConfigType {
-  base: string;
+  node: string;
   apikey: string;
   version: string;
   pingResult: any | ErrorType;

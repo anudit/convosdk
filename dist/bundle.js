@@ -16,16 +16,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
 class Auth {
-    constructor(apikey, base) {
+    constructor(apikey, node) {
         this.validate = (signerAddress, token) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/validateAuth?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/validateAuth?apikey=${this.apikey}`, {
                 signerAddress,
                 token,
             });
         });
         this.authenticate = (signerAddress, signature, timestamp, chain, accountId) => __awaiter(this, void 0, void 0, function* () {
             if (chain === 'ethereum') {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+                return yield (0, utils_1.fetcher)('POST', `${this.node}/auth?apikey=${this.apikey}`, {
                     signerAddress,
                     signature,
                     timestamp,
@@ -33,7 +33,7 @@ class Auth {
                 });
             }
             else if (chain === 'near') {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+                return yield (0, utils_1.fetcher)('POST', `${this.node}/auth?apikey=${this.apikey}`, {
                     signerAddress,
                     signature,
                     accountId,
@@ -42,7 +42,7 @@ class Auth {
                 });
             }
             else if (chain === 'flow') {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+                return yield (0, utils_1.fetcher)('POST', `${this.node}/auth?apikey=${this.apikey}`, {
                     signerAddress,
                     signature,
                     timestamp,
@@ -50,7 +50,7 @@ class Auth {
                 });
             }
             else if (chain === 'solana') {
-                return yield (0, utils_1.fetcher)('POST', `${this.base}/auth?apikey=${this.apikey}`, {
+                return yield (0, utils_1.fetcher)('POST', `${this.node}/auth?apikey=${this.apikey}`, {
                     signerAddress,
                     signature,
                     timestamp,
@@ -64,7 +64,7 @@ class Auth {
             }
         });
         this.apikey = apikey;
-        this.base = base;
+        this.node = node;
         return this;
     }
     getSignatureData(signerAddress, timestamp) {
@@ -87,21 +87,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
 class ConvoBase {
-    constructor(apikey) {
-        this.base = 'https://theconvo.space/api';
+    constructor(apikey, node) {
         this.logConfig = () => __awaiter(this, void 0, void 0, function* () {
             const pingResult = yield this.ping();
             return {
-                base: this.base,
+                node: this.node,
                 apikey: this.apikey,
-                version: '0.1.11',
+                version: '0.1.16',
                 pingResult: pingResult,
             };
         });
         this.ping = () => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('GET', `${this.base}/ping`, {});
+            return yield (0, utils_1.fetcher)('GET', `${this.node}/ping`, {});
         });
         this.apikey = apikey;
+        this.node = node;
         return this;
     }
     getApiKey() {
@@ -124,9 +124,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
 class Comments {
-    constructor(apikey, base) {
+    constructor(apikey, node) {
         this.create = (signerAddress, token, comment, threadId, url) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/comments?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 comment,
@@ -135,17 +135,17 @@ class Comments {
             });
         });
         this.delete = (signerAddress, token, commentId) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('DELETE', `${this.base}/comments?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('DELETE', `${this.node}/comments?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 commentId,
             });
         });
         this.query = (query) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('GET', `${this.base}/comments?apikey=${this.apikey}&${(0, utils_1.encodeQuery)(query)}`, {});
+            return yield (0, utils_1.fetcher)('GET', `${this.node}/comments?apikey=${this.apikey}&${(0, utils_1.encodeQuery)(query)}`, {});
         });
         this.toggleUpvote = (signerAddress, token, commentId) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/vote?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/vote?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 type: 'toggleupvote',
@@ -153,7 +153,7 @@ class Comments {
             });
         });
         this.toggleDownvote = (signerAddress, token, commentId) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/vote?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/vote?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 type: 'toggledownvote',
@@ -161,7 +161,7 @@ class Comments {
             });
         });
         this.apikey = apikey;
-        this.base = base;
+        this.node = node;
         return this;
     }
 }
@@ -181,12 +181,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
 class Identity {
-    constructor(apikey, base) {
+    constructor(apikey, node) {
         this.getTrustScore = (address) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('GET', `${this.base}/identity?address=${address}&apikey=${this.apikey}`, {});
+            return yield (0, utils_1.fetcher)('GET', `${this.node}/identity?address=${address}&apikey=${this.apikey}`, {});
         });
         this.apikey = apikey;
-        this.base = base;
+        this.node = node;
         return this;
     }
 }
@@ -205,12 +205,12 @@ const base_1 = __importDefault(require("./base"));
 const threads_1 = __importDefault(require("./threads"));
 const identity_1 = __importDefault(require("./identity"));
 class Convo extends base_1.default {
-    constructor(apikey) {
-        super(apikey);
-        this.comments = new comments_1.default(apikey, this.base);
-        this.auth = new auth_1.default(apikey, this.base);
-        this.threads = new threads_1.default(apikey, this.base);
-        this.identity = new identity_1.default(apikey, this.base);
+    constructor(apikey, node = 'https://theconvo.space/api') {
+        super(apikey, node);
+        this.comments = new comments_1.default(apikey, this.node);
+        this.auth = new auth_1.default(apikey, this.node);
+        this.threads = new threads_1.default(apikey, this.node);
+        this.identity = new identity_1.default(apikey, this.node);
         return this;
     }
 }
@@ -230,9 +230,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
 class Threads {
-    constructor(apikey, base) {
+    constructor(apikey, node) {
         this.create = (signerAddress, token, title, description, url, isReadPublic, isWritePublic, members, moderators, keywords) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/threads?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/threads?apikey=${this.apikey}`, {
                 signerAddress,
                 token,
                 action: 'create',
@@ -247,17 +247,17 @@ class Threads {
             });
         });
         this.delete = (signerAddress, token, threadId) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('DELETE', `${this.base}/threads?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('DELETE', `${this.node}/threads?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 threadId,
             });
         });
         this.query = (query) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('GET', `${this.base}/comments?apikey=${this.apikey}&${(0, utils_1.encodeQuery)(query)}`, {});
+            return yield (0, utils_1.fetcher)('GET', `${this.node}/threads?apikey=${this.apikey}&${(0, utils_1.encodeQuery)(query)}`, {});
         });
         this.addMembers = (signerAddress, token, threadId, members) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/threads?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 action: 'addMembers',
@@ -266,7 +266,7 @@ class Threads {
             });
         });
         this.removeMembers = (signerAddress, token, threadId, members) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/threads?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 action: 'removeMembers',
@@ -275,7 +275,7 @@ class Threads {
             });
         });
         this.addModerators = (signerAddress, token, threadId, moderators) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/threads?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 action: 'addModerators',
@@ -284,7 +284,7 @@ class Threads {
             });
         });
         this.removeModerators = (signerAddress, token, threadId, moderators) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/threads?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 action: 'removeModerators',
@@ -293,7 +293,7 @@ class Threads {
             });
         });
         this.updateTitle = (signerAddress, token, threadId, title) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/threads?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 action: 'updateTitle',
@@ -302,7 +302,7 @@ class Threads {
             });
         });
         this.updateDescription = (signerAddress, token, threadId, description) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/threads?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 action: 'updateDescription',
@@ -311,7 +311,7 @@ class Threads {
             });
         });
         this.togglePublicRead = (signerAddress, token, threadId) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/threads?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 action: 'togglePublicRead',
@@ -319,7 +319,7 @@ class Threads {
             });
         });
         this.togglePublicWrite = (signerAddress, token, threadId) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('POST', `${this.base}/comments?apikey=${this.apikey}`, {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/threads?apikey=${this.apikey}`, {
                 token,
                 signerAddress,
                 action: 'togglePublicWrite',
@@ -327,7 +327,7 @@ class Threads {
             });
         });
         this.apikey = apikey;
-        this.base = base;
+        this.node = node;
         return this;
     }
 }

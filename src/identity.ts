@@ -3,18 +3,18 @@ import { ErrorType } from './types';
 
 class Identity {
   apikey: string;
-  base: string;
+  node: string;
 
-  constructor(apikey: string, base: string) {
+  constructor(apikey: string, node: string) {
     this.apikey = apikey;
-    this.base = base;
+    this.node = node;
     return this;
   }
 
   getTrustScore = async (address: string): Promise<any | ErrorType> => {
     return await fetcher(
       'GET',
-      `${this.base}/identity?address=${address}&apikey=${this.apikey}`,
+      `${this.node}/identity?address=${address}&apikey=${this.apikey}`,
       {}
     );
   };
