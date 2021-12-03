@@ -35,7 +35,11 @@ export type ThreadsQueryType = {
   isWritePublic?: string;
   member?: string;
   moderator?: string;
-  keyword?: string;
+  keyword1?: string;
+  keyword2?: string;
+  keyword3?: string;
   page?: string;
   pageSize?: string;
+  latestFirst?: boolean;
+  countOnly?: boolean;
 };

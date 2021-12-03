@@ -20,13 +20,13 @@ class ConvoBase {
     return {
       node: this.node,
       apikey: this.apikey,
-      version: '0.1.16',
+      version: '0.2.0',
       pingResult: pingResult,
     };
   };
 
   ping = async (): Promise<any | ErrorType> => {
-    return await fetcher('GET', `${this.node}/ping`, {});
+    return await fetcher('GET', `${this.node}/ping`, this.apikey, {});
   };
 }
 

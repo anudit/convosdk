@@ -1,4 +1,4 @@
-import { CommentsQueryType, ErrorType } from './types';
+import { CommentsQueryType, Dictionary, ErrorType } from './types';
 import { encodeQuery, fetcher } from './utils';
 
 class Comments {
@@ -16,19 +16,17 @@ class Comments {
     token: string,
     comment: string,
     threadId: string,
-    url: string
+    url: string,
+    metadata: Dictionary<any> = {}
   ): Promise<any | ErrorType> => {
-    return await fetcher(
-      'POST',
-      `${this.node}/comments?apikey=${this.apikey}`,
-      {
-        token,
-        signerAddress,
-        comment,
-        threadId,
-        url: decodeURIComponent(url),
-      }
-    );
+    return await fetcher('POST', `${this.node}/comments`, this.apikey, {
+      token,
+      signerAddress,
+      comment,
+      threadId,
+      url: decodeURIComponent(url),
+      metadata,
+    });
   };
 
   delete = async (
@@ -36,22 +34,29 @@ class Comments {
     token: string,
     commentId: string
   ): Promise<any | ErrorType> => {
-    return await fetcher(
-      'DELETE',
-      `${this.node}/comments?apikey=${this.apikey}`,
-      {
-        token,
-        signerAddress,
-        commentId,
-      }
-    );
+    return await fetcher('DELETE', `${this.node}/comments`, this.apikey, {
+      token,
+      signerAddress,
+      commentId,
+    });
   };
 
   query = async (query: CommentsQueryType): Promise<any | ErrorType> => {
     return await fetcher(
       'GET',
-      `${this.node}/comments?apikey=${this.apikey}&${encodeQuery(query)}`,
+      `${this.node}/comments?${encodeQuery(query)}`,
+      this.apikey,
       {}
+    );
+  };
+
+  multiQuery = async (
+    queries: Array<CommentsQueryType>
+  ): Promise<any | ErrorType> => {
+    return await Promise.allSettled(
+      queries.map((q) => {
+        return this.query(q);
+      })
     );
   };
 
@@ -60,7 +65,7 @@ class Comments {
     token: string,
     commentId: string
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.node}/vote?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/vote`, this.apikey, {
       token,
       signerAddress,
       type: 'toggleupvote',
@@ -73,7 +78,7 @@ class Comments {
     token: string,
     commentId: string
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.node}/vote?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/vote`, this.apikey, {
       token,
       signerAddress,
       type: 'toggledownvote',

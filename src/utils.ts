@@ -4,11 +4,17 @@ import { Dictionary, ErrorType } from './types';
 export async function fetcher(
   requestMethod: string,
   url: string,
-  body: Dictionary<any>
+  apikey: string,
+  body: Dictionary<any> = {}
 ): Promise<any | ErrorType> {
   try {
     if (requestMethod === 'GET') {
-      let data = await fetch(url);
+      let data = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'x-api-key': apikey,
+        },
+      });
       data = await data.json();
       return data;
     } else if (
@@ -20,6 +26,7 @@ export async function fetcher(
         method: requestMethod,
         body: JSON.stringify(body),
         headers: {
+          'x-api-key': apikey,
           'Content-Type': 'application/json',
         },
       });

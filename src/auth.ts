@@ -15,14 +15,10 @@ class Auth {
     signerAddress: string,
     token: string
   ): Promise<any | ErrorType> => {
-    return await fetcher(
-      'POST',
-      `${this.node}/validateAuth?apikey=${this.apikey}`,
-      {
-        signerAddress,
-        token,
-      }
-    );
+    return await fetcher('POST', `${this.node}/validateAuth`, this.apikey, {
+      signerAddress,
+      token,
+    });
   };
 
   authenticate = async (
@@ -33,14 +29,14 @@ class Auth {
     accountId: string | undefined
   ): Promise<any | ErrorType> => {
     if (chain === 'ethereum') {
-      return await fetcher('POST', `${this.node}/auth?apikey=${this.apikey}`, {
+      return await fetcher('POST', `${this.node}/auth`, this.apikey, {
         signerAddress,
         signature,
         timestamp,
         chain: 'ethereum',
       });
     } else if (chain === 'near') {
-      return await fetcher('POST', `${this.node}/auth?apikey=${this.apikey}`, {
+      return await fetcher('POST', `${this.node}/auth`, this.apikey, {
         signerAddress,
         signature,
         accountId,
@@ -48,14 +44,14 @@ class Auth {
         chain: 'near',
       });
     } else if (chain === 'flow') {
-      return await fetcher('POST', `${this.node}/auth?apikey=${this.apikey}`, {
+      return await fetcher('POST', `${this.node}/auth`, this.apikey, {
         signerAddress,
         signature,
         timestamp,
         chain: 'flow',
       });
     } else if (chain === 'solana') {
-      return await fetcher('POST', `${this.node}/auth?apikey=${this.apikey}`, {
+      return await fetcher('POST', `${this.node}/auth`, this.apikey, {
         signerAddress,
         signature,
         timestamp,

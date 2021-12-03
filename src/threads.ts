@@ -1,4 +1,4 @@
-import { ErrorType, ThreadsQueryType } from './types';
+import { Dictionary, ErrorType, ThreadsQueryType } from './types';
 import { encodeQuery, fetcher } from './utils';
 
 class Threads {
@@ -21,9 +21,11 @@ class Threads {
     isWritePublic: boolean,
     members: Array<string>,
     moderators: Array<string>,
-    keywords: Array<string>
+    keywords: Array<string>,
+    metadata: Dictionary<any> = {},
+    threadId: boolean | string = false
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.node}/threads?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/threads`, this.apikey, {
       signerAddress,
       token,
       action: 'create',
@@ -35,7 +37,37 @@ class Threads {
       members,
       moderators,
       keywords,
+      threadId,
+      metadata,
     });
+  };
+
+  createPrivate = async (
+    signerAddress: string,
+    token: string,
+    title: string,
+    description: string,
+    url: string,
+    members: Array<string>,
+    moderators: Array<string>,
+    keywords: Array<string>,
+    metadata: Dictionary<any> = {},
+    threadId: boolean | string = false
+  ): Promise<any | ErrorType> => {
+    return await this.create(
+      signerAddress,
+      token,
+      title,
+      description,
+      url,
+      false,
+      false,
+      members,
+      moderators,
+      keywords,
+      metadata,
+      threadId
+    );
   };
 
   delete = async (
@@ -43,22 +75,45 @@ class Threads {
     token: string,
     threadId: string
   ): Promise<any | ErrorType> => {
-    return await fetcher(
-      'DELETE',
-      `${this.node}/threads?apikey=${this.apikey}`,
-      {
-        token,
-        signerAddress,
-        threadId,
-      }
-    );
+    return await fetcher('DELETE', `${this.node}/threads`, this.apikey, {
+      token,
+      signerAddress,
+      threadId,
+    });
   };
 
   query = async (query: ThreadsQueryType): Promise<any | ErrorType> => {
     return await fetcher(
       'GET',
-      `${this.node}/threads?apikey=${this.apikey}&${encodeQuery(query)}`,
+      `${this.node}/threads?${encodeQuery(query)}`,
+      this.apikey,
       {}
+    );
+  };
+
+  multiQuery = async (
+    queries: Array<ThreadsQueryType>
+  ): Promise<any | ErrorType> => {
+    return await Promise.allSettled(
+      queries.map((q) => {
+        return this.query(q);
+      })
+    );
+  };
+
+  getThread = async (threadId: string): Promise<any | ErrorType> => {
+    return await fetcher(
+      'GET',
+      `${this.node}/threads/${threadId}`,
+      this.apikey
+    );
+  };
+
+  getUserThreads = async (signerAddress: string): Promise<any | ErrorType> => {
+    return await fetcher(
+      'GET',
+      `${this.node}/threads/user/${signerAddress}`,
+      this.apikey
     );
   };
 
@@ -68,7 +123,7 @@ class Threads {
     threadId: string,
     members: Array<string>
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.node}/threads?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/threads`, this.apikey, {
       token,
       signerAddress,
       action: 'addMembers',
@@ -83,7 +138,7 @@ class Threads {
     threadId: string,
     members: Array<string>
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.node}/threads?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/threads`, this.apikey, {
       token,
       signerAddress,
       action: 'removeMembers',
@@ -98,7 +153,7 @@ class Threads {
     threadId: string,
     moderators: Array<string>
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.node}/threads?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/threads`, this.apikey, {
       token,
       signerAddress,
       action: 'addModerators',
@@ -113,7 +168,7 @@ class Threads {
     threadId: string,
     moderators: Array<string>
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.node}/threads?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/threads`, this.apikey, {
       token,
       signerAddress,
       action: 'removeModerators',
@@ -128,7 +183,7 @@ class Threads {
     threadId: string,
     title: string
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.node}/threads?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/threads`, this.apikey, {
       token,
       signerAddress,
       action: 'updateTitle',
@@ -143,7 +198,7 @@ class Threads {
     threadId: string,
     description: string
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.node}/threads?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/threads`, this.apikey, {
       token,
       signerAddress,
       action: 'updateDescription',
@@ -157,7 +212,7 @@ class Threads {
     token: string,
     threadId: string
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.node}/threads?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/threads`, this.apikey, {
       token,
       signerAddress,
       action: 'togglePublicRead',
@@ -170,7 +225,7 @@ class Threads {
     token: string,
     threadId: string
   ): Promise<any | ErrorType> => {
-    return await fetcher('POST', `${this.node}/threads?apikey=${this.apikey}`, {
+    return await fetcher('POST', `${this.node}/threads`, this.apikey, {
       token,
       signerAddress,
       action: 'togglePublicWrite',

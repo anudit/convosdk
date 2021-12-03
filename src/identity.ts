@@ -14,7 +14,8 @@ class Identity {
   getTrustScore = async (address: string): Promise<any | ErrorType> => {
     return await fetcher(
       'GET',
-      `${this.node}/identity?address=${address}&apikey=${this.apikey}`,
+      `${this.node}/identity?address=${address}`,
+      this.apikey,
       {}
     );
   };
