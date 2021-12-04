@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "SDK containing all the Hooks and Components required to build on theconvo.space",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -19,7 +19,7 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "yarn build:clean && yarn build:tsc && yarn build:browser",
+    "build": "yarn lint && yarn build:clean && yarn build:tsc && yarn build:browser",
     "build:clean": "rimraf lib && rimraf dist",
     "build:tsc": "run-p build:tsc:*",
     "build:tsc:cjs": "tsc -p ./tsconfig.cjs.json",
@@ -57,7 +57,7 @@
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",
     "browserify": "^17.0.0",
-    "eslint": "^8.3.0",
+    "eslint": "^8.4.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",

@@ -93,7 +93,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                version: '0.2.0',
+                version: '0.2.2',
                 pingResult: pingResult,
             };
         });
@@ -275,6 +275,9 @@ class Threads {
         this.getThread = (threadId) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('GET', `${this.node}/threads/${threadId}`, this.apikey);
         });
+        this.getThreads = (threadIds) => __awaiter(this, void 0, void 0, function* () {
+            return yield (0, utils_1.fetcher)('GET', `${this.node}/threads/${threadIds.toString()}`, this.apikey);
+        });
         this.getUserThreads = (signerAddress) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('GET', `${this.node}/threads/user/${signerAddress}`, this.apikey);
         });
@@ -375,24 +378,19 @@ const unfetch_1 = __importDefault(require("unfetch"));
 function fetcher(requestMethod, url, apikey, body = {}) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
+            const reqUrl = url + (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
             if (requestMethod === 'GET') {
-                let data = yield (0, unfetch_1.default)(url, {
-                    method: 'GET',
-                    headers: {
-                        'x-api-key': apikey,
-                    },
-                });
+                let data = yield (0, unfetch_1.default)(reqUrl);
                 data = yield data.json();
                 return data;
             }
             else if (requestMethod === 'POST' ||
                 requestMethod === 'UPDATE' ||
                 requestMethod === 'DELETE') {
-                let data = yield (0, unfetch_1.default)(url, {
+                let data = yield (0, unfetch_1.default)(reqUrl, {
                     method: requestMethod,
                     body: JSON.stringify(body),
                     headers: {
-                        'x-api-key': apikey,
                         'Content-Type': 'application/json',
                     },
                 });

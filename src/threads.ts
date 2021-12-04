@@ -109,6 +109,14 @@ class Threads {
     );
   };
 
+  getThreads = async (threadIds: Array<string>): Promise<any | ErrorType> => {
+    return await fetcher(
+      'GET',
+      `${this.node}/threads/${threadIds.toString()}`,
+      this.apikey
+    );
+  };
+
   getUserThreads = async (signerAddress: string): Promise<any | ErrorType> => {
     return await fetcher(
       'GET',

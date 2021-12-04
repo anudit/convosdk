@@ -8,13 +8,10 @@ export async function fetcher(
   body: Dictionary<any> = {}
 ): Promise<any | ErrorType> {
   try {
+    const reqUrl: string =
+      url + (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
     if (requestMethod === 'GET') {
-      let data = await fetch(url, {
-        method: 'GET',
-        headers: {
-          'x-api-key': apikey,
-        },
-      });
+      let data = await fetch(reqUrl);
       data = await data.json();
       return data;
     } else if (
@@ -22,11 +19,10 @@ export async function fetcher(
       requestMethod === 'UPDATE' ||
       requestMethod === 'DELETE'
     ) {
-      let data = await fetch(url, {
+      let data = await fetch(reqUrl, {
         method: requestMethod,
         body: JSON.stringify(body),
         headers: {
-          'x-api-key': apikey,
           'Content-Type': 'application/json',
         },
       });
@@ -39,7 +35,9 @@ export async function fetcher(
   }
 }
 
-export function encodeQuery(data: Dictionary<any>): string {
+export function encodeQuery(
+  data: Dictionary<string | number | boolean>
+): string {
   let query = '';
   for (const d in data)
     query += encodeURIComponent(d) + '=' + encodeURIComponent(data[d]) + '&';
