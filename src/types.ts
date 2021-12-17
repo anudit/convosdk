@@ -9,8 +9,9 @@ export interface ErrorType {
 export interface LogConfigType {
   node: string;
   apikey: string;
-  version: string;
   pingResult: any | ErrorType;
+  latestVersion: string;
+  currentVersion: string;
 }
 
 export type CommentsQueryType = {

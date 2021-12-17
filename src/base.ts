@@ -1,5 +1,7 @@
-import { ErrorType, LogConfigType } from './types';
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import { Dictionary, ErrorType, LogConfigType } from './types';
 import { fetcher } from './utils';
+import fetch from 'unfetch';
 
 class ConvoBase {
   apikey: string;
@@ -16,11 +18,17 @@ class ConvoBase {
   }
 
   logConfig = async (): Promise<LogConfigType> => {
-    const pingResult = await this.ping();
+    const pingResult: Dictionary<any> = await this.ping();
+    const versionInfo: any = await fetch(
+      'https://bundlephobia.com/api/size?package=@theconvospace/sdk@latest&record=true'
+    ).then((r) => {
+      return r.json();
+    });
     return {
       node: this.node,
       apikey: this.apikey,
-      version: '0.2.2',
+      currentVersion: '0.2.10',
+      latestVersion: versionInfo['version'],
       pingResult: pingResult,
     };
   };

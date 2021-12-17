@@ -3,4 +3,11 @@ module.exports = {
   images: {
     domains: ['theconvo.space'],
   },
+  webpack: (config) => {
+    config.resolve.fallback = {
+      fs: false,
+      path: false
+    };
+    return config;
+  }
 }

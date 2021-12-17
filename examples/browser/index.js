@@ -1,5 +1,6 @@
 window.accounts = [];
-
+let { Convo } = window.Convo;
+let convo = new Convo('CSCpPwHnkB3niBJiUjy92YGP6xVkVZbWfK8xriDO');
 window.addEventListener('load', async () => {
 
     if (Boolean(window.ethereum) == true) {

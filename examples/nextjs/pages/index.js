@@ -135,6 +135,17 @@ export default function Home() {
             <p>Get the Data used for signing and authentication.</p>
           </div>
 
+          <div onClick={() => {
+            console.log(ConvoInstance.auth.getSignatureDataV2(
+              'theconvo.space',
+              'https://theconvo.space/',
+              accounts[0],
+              '1')
+            );
+          }} className={styles.card}>
+            <h2>Signature Data V2 &rarr;</h2>
+            <p>Get the Data used for signing and authentication.</p>
+          </div>
         </div>
 
         <p className={styles.description}>
