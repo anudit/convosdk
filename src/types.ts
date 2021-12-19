@@ -44,3 +44,12 @@ export type ThreadsQueryType = {
   latestFirst?: boolean;
   countOnly?: boolean;
 };
+
+export type ComputeConfig = {
+  maticMainnetRpc?: string;
+  etherumMainnetRpc?: string;
+  avalancheMainnetRpc?: string;
+  ethereumPriceApi?: string;
+  maticPriceApi?: string;
+  etherumAndMaticPriceApi?: string;
+};

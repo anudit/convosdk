@@ -76,18 +76,21 @@ class Auth {
   }
 
   getSignatureDataV2(
-    domain: string,
     uri: string,
     signerAddress: string,
     chainId: string,
     resources: Array<string> = []
   ): string {
+    const domains = uri.match(
+      /^https?:\/\/([^/?#]+)(?:[/?#]|$)/i
+    ) as RegExpMatchArray;
+    console.log(domains);
     const now = new Date();
     const tom = now;
     tom.setDate(now.getDate() + 1);
     resources.push('https://theconvo.space/privacy-policy');
     const message = new SiweMessage({
-      domain: domain,
+      domain: domains[1],
       address: signerAddress,
       chainId: chainId,
       uri: uri,
@@ -99,7 +102,11 @@ class Auth {
       expirationTime: tom.toISOString(),
       resources: resources,
     });
-    return message.toMessage();
+    return message.signMessage();
+  }
+
+  parseSignatureV2(message: string): SiweMessage {
+    return new SiweMessage(message);
   }
 }
 export default Auth;

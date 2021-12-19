@@ -4,7 +4,7 @@ import { Dictionary, ErrorType } from './types';
 export async function fetcher(
   requestMethod: string,
   url: string,
-  apikey: string,
+  apikey = '',
   body: Dictionary<any> = {}
 ): Promise<any | ErrorType> {
   try {
@@ -42,4 +42,26 @@ export function encodeQuery(
   for (const d in data)
     query += encodeURIComponent(d) + '=' + encodeURIComponent(data[d]) + '&';
   return query.slice(0, -1);
+}
+
+export async function gqlFetcher(
+  url: string,
+  query: string
+): Promise<Dictionary<any> | ErrorType> {
+  try {
+    const req = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query,
+        variables: {},
+      }),
+    });
+    return await req.json();
+  } catch (error) {
+    console.error(error);
+    return { error };
+  }
 }

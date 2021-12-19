@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.11
+- Improved SIWE Integration
+- Start Identity Adaptor Framework
+
 ## 0.2.10
 - Add V2 Auth Endpoints
 - Improvements

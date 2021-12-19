@@ -1,5 +1,6 @@
 import { fetcher } from './utils';
-import { ErrorType } from './types';
+import { ComputeConfig, ErrorType } from './types';
+import * as adaptors from './adaptors';
 
 class Identity {
   apikey: string;
@@ -18,6 +19,21 @@ class Identity {
       this.apikey,
       {}
     );
+  };
+
+  computeTrustScore = async (
+    address: string,
+    computeConfig: ComputeConfig
+  ): Promise<any | ErrorType> => {
+    const promiseArray = [
+      adaptors.checkPoH(address),
+      adaptors.getAge(address),
+      adaptors.getAaveData(address, computeConfig),
+    ];
+    const resp: Array<PromiseSettledResult<any>> = await Promise.allSettled(
+      promiseArray
+    );
+    return resp;
   };
 }
 export default Identity;
