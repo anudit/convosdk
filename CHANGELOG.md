@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.2.12
+-  Improve Auth Functions.
+
 ## 0.2.11
 - Improved SIWE Integration
 - Start Identity Adaptor Framework

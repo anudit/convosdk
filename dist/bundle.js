@@ -48356,19 +48356,14 @@ const siwe_1 = require("siwe");
 const utils_1 = require("./utils");
 class Auth {
     constructor(apikey, node) {
-        this.validate = (signerAddress, token, version = 1) => __awaiter(this, void 0, void 0, function* () {
-            let ep = `${this.node}/validateAuth`;
-            if (version === 2)
-                ep = `${this.node}/validateAuthV2`;
-            return yield (0, utils_1.fetcher)('POST', ep, this.apikey, {
+        this.validate = (signerAddress, token) => __awaiter(this, void 0, void 0, function* () {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/validateAuth`, this.apikey, {
                 signerAddress,
                 token,
             });
         });
-        this.authenticate = (signerAddress, signature, timestamp, chain, accountId = '', version = 1) => __awaiter(this, void 0, void 0, function* () {
-            let ep = `${this.node}/auth`;
-            if (version === 2)
-                ep = `${this.node}/authV2`;
+        this.authenticate = (signerAddress, signature, timestamp, chain, accountId = '') => __awaiter(this, void 0, void 0, function* () {
+            const ep = `${this.node}/auth`;
             if (chain === 'ethereum') {
                 return yield (0, utils_1.fetcher)('POST', ep, this.apikey, {
                     signerAddress,
@@ -48408,6 +48403,13 @@ class Auth {
                 return { error };
             }
         });
+        this.authenticateV2 = (message, signature) => __awaiter(this, void 0, void 0, function* () {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/authV2`, this.apikey, {
+                message,
+                signature,
+                chain: 'ethereum',
+            });
+        });
         this.apikey = apikey;
         this.node = node;
         return this;
@@ -48417,7 +48419,6 @@ class Auth {
     }
     getSignatureDataV2(uri, signerAddress, chainId, resources = []) {
         const domains = uri.match(/^https?:\/\/([^/?#]+)(?:[/?#]|$)/i);
-        console.log(domains);
         const now = new Date();
         const tom = now;
         tom.setDate(now.getDate() + 1);
@@ -48470,7 +48471,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.2.11',
+                currentVersion: '0.2.12',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };

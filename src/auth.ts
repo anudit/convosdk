@@ -14,12 +14,9 @@ class Auth {
 
   validate = async (
     signerAddress: string,
-    token: string,
-    version = 1
+    token: string
   ): Promise<any | ErrorType> => {
-    let ep = `${this.node}/validateAuth`;
-    if (version === 2) ep = `${this.node}/validateAuthV2`;
-    return await fetcher('POST', ep, this.apikey, {
+    return await fetcher('POST', `${this.node}/validateAuth`, this.apikey, {
       signerAddress,
       token,
     });
@@ -30,11 +27,9 @@ class Auth {
     signature: any,
     timestamp: number,
     chain: string,
-    accountId = '',
-    version = 1
+    accountId = ''
   ): Promise<any | ErrorType> => {
-    let ep = `${this.node}/auth`;
-    if (version === 2) ep = `${this.node}/authV2`;
+    const ep = `${this.node}/auth`;
     if (chain === 'ethereum') {
       return await fetcher('POST', ep, this.apikey, {
         signerAddress,
@@ -71,6 +66,17 @@ class Auth {
     }
   };
 
+  authenticateV2 = async (
+    message: string,
+    signature: string
+  ): Promise<any | ErrorType> => {
+    return await fetcher('POST', `${this.node}/authV2`, this.apikey, {
+      message,
+      signature,
+      chain: 'ethereum',
+    });
+  };
+
   getSignatureData(signerAddress: string, timestamp: number): string {
     return `I allow this site to access my data on The Convo Space using the account ${signerAddress}. Timestamp:${timestamp}`;
   }
@@ -84,7 +90,6 @@ class Auth {
     const domains = uri.match(
       /^https?:\/\/([^/?#]+)(?:[/?#]|$)/i
     ) as RegExpMatchArray;
-    console.log(domains);
     const now = new Date();
     const tom = now;
     tom.setDate(now.getDate() + 1);
