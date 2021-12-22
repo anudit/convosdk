@@ -1,6 +1,7 @@
 import { fetcher } from './utils';
 import { ComputeConfig, ErrorType } from './types';
 import * as adaptors from './adaptors';
+import { isAddress } from 'ethers/lib/utils';
 
 class Identity {
   apikey: string;
@@ -25,15 +26,28 @@ class Identity {
     address: string,
     computeConfig: ComputeConfig
   ): Promise<any | ErrorType> => {
-    const promiseArray = [
-      adaptors.checkPoH(address),
-      adaptors.getAge(address),
-      adaptors.getAaveData(address, computeConfig),
-    ];
-    const resp: Array<PromiseSettledResult<any>> = await Promise.allSettled(
-      promiseArray
-    );
-    return resp;
+    if (isAddress(address) === true) {
+      const promiseArray = [
+        adaptors.getAaveData(address, computeConfig),
+        adaptors.getAge(address),
+        adaptors.checkBrightId(address),
+        adaptors.getCoordinapeData(address),
+        adaptors.getDeepDaoData(address, computeConfig),
+        adaptors.addressToEns(address),
+        adaptors.getMetagameData(address),
+        adaptors.getPoapData(address),
+        adaptors.checkPoH(address),
+        adaptors.getPolygonData(address),
+        adaptors.getRabbitholeData(address),
+        adaptors.getShowtimeData(address, computeConfig),
+      ];
+      const resp: Array<PromiseSettledResult<any>> = await Promise.allSettled(
+        promiseArray
+      );
+      return resp;
+    } else {
+      throw new Error('Not a Valid Ethereum Address');
+    }
   };
 }
 export default Identity;

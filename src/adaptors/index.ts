@@ -1,3 +1,13 @@
-export { default as getAge } from './age';
-export { default as checkPoH } from './poh';
 export { default as getAaveData } from './aave';
+export { default as getAge } from './age';
+export { default as checkBrightId } from './brightid';
+export { default as getCoordinapeData } from './coordinape';
+export { default as getDeepDaoData } from './deepdao';
+export { default as addressToEns } from './ens';
+export { default as getAllGitcoinData } from './gitcoin';
+export { default as getMetagameData } from './metagame';
+export { default as getPoapData } from './poap';
+export { default as checkPoH } from './poh';
+export { default as getPolygonData } from './polygon';
+export { default as getRabbitholeData } from './rabbithole';
+export { default as getShowtimeData } from './showtime';

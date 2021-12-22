@@ -27,7 +27,7 @@ class ConvoBase {
     return {
       node: this.node,
       apikey: this.apikey,
-      currentVersion: '0.2.12',
+      currentVersion: '0.2.13',
       latestVersion: versionInfo['version'],
       pingResult: pingResult,
     };

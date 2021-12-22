@@ -5,13 +5,18 @@ export async function fetcher(
   requestMethod: string,
   url: string,
   apikey = '',
-  body: Dictionary<any> = {}
+  body: Dictionary<any> = {},
+  customHeaders: Dictionary<any> = {}
 ): Promise<any | ErrorType> {
   try {
     const reqUrl: string =
       url + (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
     if (requestMethod === 'GET') {
-      let data = await fetch(reqUrl);
+      let data = await fetch(reqUrl, {
+        headers: {
+          ...customHeaders,
+        },
+      });
       data = await data.json();
       return data;
     } else if (
@@ -23,6 +28,7 @@ export async function fetcher(
         method: requestMethod,
         body: JSON.stringify(body),
         headers: {
+          ...customHeaders,
           'Content-Type': 'application/json',
         },
       });

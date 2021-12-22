@@ -48296,21 +48296,109 @@ function getAge(address) {
 }
 exports.default = getAge;
 
-},{"../utils":252}],244:[function(require,module,exports){
+},{"../utils":255}],244:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function checkBrightId(address) {
+    var _a;
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = yield (0, utils_1.fetcher)('GET', `https://app.brightid.org/node/v5/verifications/Convo/${address.toLowerCase()}`);
+        return Boolean((_a = data['data']) === null || _a === void 0 ? void 0 : _a.unique);
+    });
+}
+exports.default = checkBrightId;
+
+},{"../utils":255}],245:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function addressToEns(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const resp = (yield (0, utils_1.gqlFetcher)('https://api.thegraph.com/subgraphs/name/ensdomains/ens', `
+    {
+        domains (where: {resolvedAddress: "${address.toLowerCase()}"}){
+            name
+        }
+    }
+    `));
+        if (resp['data']['domains'].length === 0) {
+            return false;
+        }
+        else {
+            let finalDomain = false;
+            for (let index = 0; index < resp['data']['domains'].length; index++) {
+                const domain = resp['data']['domains'][index];
+                if (domain.name.split('.').length == 2) {
+                    finalDomain = domain.name;
+                }
+            }
+            return finalDomain;
+        }
+    });
+}
+exports.default = addressToEns;
+
+},{"../utils":255}],246:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getAaveData = exports.checkPoH = exports.getAge = void 0;
+exports.addressToEns = exports.getPoapData = exports.checkBrightId = exports.getAaveData = exports.checkPoH = exports.getAge = void 0;
 var age_1 = require("./age");
 Object.defineProperty(exports, "getAge", { enumerable: true, get: function () { return __importDefault(age_1).default; } });
 var poh_1 = require("./poh");
 Object.defineProperty(exports, "checkPoH", { enumerable: true, get: function () { return __importDefault(poh_1).default; } });
 var aave_1 = require("./aave");
 Object.defineProperty(exports, "getAaveData", { enumerable: true, get: function () { return __importDefault(aave_1).default; } });
+var brightid_1 = require("./brightid");
+Object.defineProperty(exports, "checkBrightId", { enumerable: true, get: function () { return __importDefault(brightid_1).default; } });
+var poap_1 = require("./poap");
+Object.defineProperty(exports, "getPoapData", { enumerable: true, get: function () { return __importDefault(poap_1).default; } });
+var ens_1 = require("./ens");
+Object.defineProperty(exports, "addressToEns", { enumerable: true, get: function () { return __importDefault(ens_1).default; } });
 
-},{"./aave":242,"./age":243,"./poh":245}],245:[function(require,module,exports){
+},{"./aave":242,"./age":243,"./brightid":244,"./ens":245,"./poap":247,"./poh":248}],247:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getPoapData(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = yield (0, utils_1.fetcher)('GET', `https://api.poap.xyz/actions/scan/${address}`);
+        return data;
+    });
+}
+exports.default = getPoapData;
+
+},{"../utils":255}],248:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48326,7 +48414,7 @@ const utils_1 = require("../utils");
 function checkPoH(address) {
     return __awaiter(this, void 0, void 0, function* () {
         const req = yield (0, utils_1.gqlFetcher)('https://api.thegraph.com/subgraphs/name/kleros/proof-of-humanity-mainnet', `{
-      submissions(where: {id: "${address}"} ) {
+      submissions(where: {id: "${address.toLowerCase()}"} ) {
         vouchesReceived {
           id
         }
@@ -48340,7 +48428,7 @@ function checkPoH(address) {
 }
 exports.default = checkPoH;
 
-},{"../utils":252}],246:[function(require,module,exports){
+},{"../utils":255}],249:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48356,19 +48444,14 @@ const siwe_1 = require("siwe");
 const utils_1 = require("./utils");
 class Auth {
     constructor(apikey, node) {
-        this.validate = (signerAddress, token, version = 1) => __awaiter(this, void 0, void 0, function* () {
-            let ep = `${this.node}/validateAuth`;
-            if (version === 2)
-                ep = `${this.node}/validateAuthV2`;
-            return yield (0, utils_1.fetcher)('POST', ep, this.apikey, {
+        this.validate = (signerAddress, token) => __awaiter(this, void 0, void 0, function* () {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/validateAuth`, this.apikey, {
                 signerAddress,
                 token,
             });
         });
-        this.authenticate = (signerAddress, signature, timestamp, chain, accountId = '', version = 1) => __awaiter(this, void 0, void 0, function* () {
-            let ep = `${this.node}/auth`;
-            if (version === 2)
-                ep = `${this.node}/authV2`;
+        this.authenticate = (signerAddress, signature, timestamp, chain, accountId = '') => __awaiter(this, void 0, void 0, function* () {
+            const ep = `${this.node}/auth`;
             if (chain === 'ethereum') {
                 return yield (0, utils_1.fetcher)('POST', ep, this.apikey, {
                     signerAddress,
@@ -48408,6 +48491,13 @@ class Auth {
                 return { error };
             }
         });
+        this.authenticateV2 = (message, signature) => __awaiter(this, void 0, void 0, function* () {
+            return yield (0, utils_1.fetcher)('POST', `${this.node}/authV2`, this.apikey, {
+                message,
+                signature,
+                chain: 'ethereum',
+            });
+        });
         this.apikey = apikey;
         this.node = node;
         return this;
@@ -48417,7 +48507,6 @@ class Auth {
     }
     getSignatureDataV2(uri, signerAddress, chainId, resources = []) {
         const domains = uri.match(/^https?:\/\/([^/?#]+)(?:[/?#]|$)/i);
-        console.log(domains);
         const now = new Date();
         const tom = now;
         tom.setDate(now.getDate() + 1);
@@ -48443,7 +48532,7 @@ class Auth {
 }
 exports.default = Auth;
 
-},{"./utils":252,"siwe":235}],247:[function(require,module,exports){
+},{"./utils":255,"siwe":235}],250:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48470,7 +48559,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.2.10',
+                currentVersion: '0.2.12',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -48488,7 +48577,7 @@ class ConvoBase {
 }
 exports.default = ConvoBase;
 
-},{"./utils":252,"unfetch":237}],248:[function(require,module,exports){
+},{"./utils":255,"unfetch":237}],251:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48551,7 +48640,7 @@ class Comments {
 }
 exports.default = Comments;
 
-},{"./utils":252}],249:[function(require,module,exports){
+},{"./utils":255}],252:[function(require,module,exports){
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -48584,19 +48673,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
 const adaptors = __importStar(require("./adaptors"));
+const utils_2 = require("ethers/lib/utils");
 class Identity {
     constructor(apikey, node) {
         this.getTrustScore = (address) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('GET', `${this.node}/identity?address=${address}`, this.apikey, {});
         });
         this.computeTrustScore = (address, computeConfig) => __awaiter(this, void 0, void 0, function* () {
-            const promiseArray = [
-                adaptors.checkPoH(address),
-                adaptors.getAge(address),
-                adaptors.getAaveData(address, computeConfig),
-            ];
-            const resp = yield Promise.allSettled(promiseArray);
-            return resp;
+            if ((0, utils_2.isAddress)(address) === true) {
+                const promiseArray = [
+                    adaptors.checkPoH(address),
+                    adaptors.getAge(address),
+                    adaptors.getAaveData(address, computeConfig),
+                    adaptors.checkBrightId(address),
+                    adaptors.getPoapData(address),
+                    adaptors.addressToEns(address),
+                ];
+                const resp = yield Promise.allSettled(promiseArray);
+                return resp;
+            }
+            else {
+                throw new Error('Not a Valid Ethereum Address');
+            }
         });
         this.apikey = apikey;
         this.node = node;
@@ -48605,7 +48703,7 @@ class Identity {
 }
 exports.default = Identity;
 
-},{"./adaptors":244,"./utils":252}],250:[function(require,module,exports){
+},{"./adaptors":246,"./utils":255,"ethers/lib/utils":199}],253:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -48629,7 +48727,7 @@ class Convo extends base_1.default {
 }
 exports.Convo = Convo;
 
-},{"./auth":246,"./base":247,"./comments":248,"./identity":249,"./threads":251}],251:[function(require,module,exports){
+},{"./auth":249,"./base":250,"./comments":251,"./identity":252,"./threads":254}],254:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48765,7 +48863,7 @@ class Threads {
 }
 exports.default = Threads;
 
-},{"./utils":252}],252:[function(require,module,exports){
+},{"./utils":255}],255:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48842,5 +48940,5 @@ function gqlFetcher(url, query) {
 }
 exports.gqlFetcher = gqlFetcher;
 
-},{"unfetch":237}]},{},[250])(250)
+},{"unfetch":237}]},{},[253])(253)
 });

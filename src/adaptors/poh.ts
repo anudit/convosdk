@@ -5,7 +5,7 @@ export default async function checkPoH(address: string) {
   const req: Dictionary<any> = await gqlFetcher(
     'https://api.thegraph.com/subgraphs/name/kleros/proof-of-humanity-mainnet',
     `{
-      submissions(where: {id: "${address}"} ) {
+      submissions(where: {id: "${address.toLowerCase()}"} ) {
         vouchesReceived {
           id
         }
