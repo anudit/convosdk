@@ -48296,7 +48296,146 @@ function getAge(address) {
 }
 exports.default = getAge;
 
-},{"../utils":255}],244:[function(require,module,exports){
+},{"../utils":276}],244:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getArcxData(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const data = (yield (0, utils_1.fetcher)('GET', `https://api.arcx.money/scores/${address}`));
+            let totalScore = 0;
+            const details = {};
+            for (let index = 0; index < data.length; index++) {
+                const scoreData = data[index];
+                if (scoreData['score'] !== null) {
+                    const sc = (parseFloat(scoreData['score']) /
+                        (parseFloat(scoreData['metadata']['maxValue']) -
+                            parseFloat(scoreData['metadata']['minValue']))) *
+                        10;
+                    totalScore += sc;
+                    details[scoreData['metadata'].name] = sc;
+                }
+            }
+            return {
+                totalScore,
+                details,
+            };
+        }
+        catch (error) {
+            return {
+                totalScore: 0,
+                details: [],
+            };
+        }
+    });
+}
+exports.default = getArcxData;
+
+},{"../utils":276}],245:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getAsyncartData(address) {
+    var _a, _b;
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const response = (yield (0, utils_1.fetcher)('GET', 'https://async-2.appspot.com/users/' +
+                address.toLowerCase() +
+                '/arts?rel=artist&type=masters&artType=visual'));
+            const artworks = response['arts'];
+            // console.log(artworks);
+            let totalCountSold = artworks.length;
+            let totalAmountSold = 0;
+            for (let index = 0; index < artworks.length; index++) {
+                if (Boolean((_a = artworks[index]['lastSale']) === null || _a === void 0 ? void 0 : _a.buyer) === true) {
+                    totalAmountSold += artworks[index]['lastSale']['sale']['amount'];
+                }
+                else if (artworks[index]['auction'].hasReserve === true &&
+                    Boolean((_b = artworks[index]['auction']) === null || _b === void 0 ? void 0 : _b.endTime) === true) {
+                    totalAmountSold += artworks[index]['auction']['reservePrice'];
+                }
+                else {
+                    totalCountSold -= 1;
+                }
+            }
+            return {
+                totalCountSold,
+                totalAmountSold,
+            };
+        }
+        catch (error) {
+            return {
+                totalCountSold: 0,
+                totalAmountSold: 0,
+            };
+        }
+    });
+}
+exports.default = getAsyncartData;
+
+},{"../utils":276}],246:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getBoardroomData(address) {
+    var _a;
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = (yield (0, utils_1.fetcher)('GET', `https://api.boardroom.info/v1/voters/${address}/votes`));
+        let totalVotes = 0;
+        const daos = [];
+        const votes = [];
+        for (let index = 0; index < data['data'].length; index++) {
+            const doc = data['data'][index];
+            if (((_a = doc === null || doc === void 0 ? void 0 : doc.proposalInfo) === null || _a === void 0 ? void 0 : _a.currentState) === 'executed') {
+                totalVotes += 1;
+                if (daos.includes(doc.protocol) === false) {
+                    daos.push(doc.protocol);
+                }
+                votes.push({
+                    dao: doc.protocol,
+                    vote: doc.proposalInfo.choices[doc.choice],
+                    proposalLink: `https://app.boardroom.info/compound/proposal/${doc.proposalRefId}`,
+                });
+            }
+        }
+        return {
+            totalVotes,
+            daos,
+            votes,
+        };
+    });
+}
+exports.default = getBoardroomData;
+
+},{"../utils":276}],247:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48312,13 +48451,198 @@ const utils_1 = require("../utils");
 function checkBrightId(address) {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
-        const data = yield (0, utils_1.fetcher)('GET', `https://app.brightid.org/node/v5/verifications/Convo/${address.toLowerCase()}`);
-        return Boolean((_a = data['data']) === null || _a === void 0 ? void 0 : _a.unique);
+        try {
+            const data = yield (0, utils_1.fetcher)('GET', `https://app.brightid.org/node/v5/verifications/Convo/${address.toLowerCase()}`);
+            return Boolean((_a = data['data']) === null || _a === void 0 ? void 0 : _a.unique);
+        }
+        catch (error) {
+            return false;
+        }
     });
 }
 exports.default = checkBrightId;
 
-},{"../utils":255}],245:[function(require,module,exports){
+},{"../utils":276}],248:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getCeloData(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = (yield (0, utils_1.gqlFetcher)('https://api.thegraph.com/subgraphs/id/QmWDxPtNrngVfeMjXCCKvWVuof7DbJQv1thAbnz4MDV6Xc', `{
+        attestationsCompleteds (where: {id: "${address.toLowerCase()}"}) {
+            id
+            count
+        }
+    }`));
+        if (response['data']['attestationsCompleteds'].length > 0) {
+            return {
+                attestations: response['data']['attestationsCompleteds'][0]['count'],
+            };
+        }
+        else {
+            return {
+                attestations: 0,
+            };
+        }
+    });
+}
+exports.default = getCeloData;
+
+},{"../utils":276}],249:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getContextData(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = (yield (0, utils_1.fetcher)('GET', 'https://context.app/api/profile/' + address));
+        return {
+            followerCount: data.followerCount,
+            followingCount: data.followingCount,
+        };
+    });
+}
+exports.default = getContextData;
+
+},{"../utils":276}],250:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getCoordinapeData(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const json = (yield (0, utils_1.fetcher)('GET', `https://api.coordinape.com/api/v2/profile/${address}`, '', {}, {
+                authorization: 'Bearer 1693|Ku84NovTfLAyhjvWAIlTdwH0PBuGHwTWHRhtcsww',
+            }));
+            let teammates = 0;
+            if (Boolean(json === null || json === void 0 ? void 0 : json.users) === true) {
+                json['users'].forEach((user) => {
+                    teammates += user.teammates.length;
+                });
+            }
+            return {
+                teammates,
+            };
+        }
+        catch (error) {
+            console.log(error);
+            return {};
+        }
+    });
+}
+exports.default = getCoordinapeData;
+
+},{"../utils":276}],251:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getCryptoscamdbData(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = yield (0, utils_1.fetcher)('GET', `https://api.cryptoscamdb.org/v1/check/${address}`);
+        return data;
+    });
+}
+exports.default = getCryptoscamdbData;
+
+},{"../utils":276}],252:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getCyberconnectData(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = yield (0, utils_1.gqlFetcher)('https://api.cybertino.io/connect/', `{
+        identity(address: "${address.toString()}") {
+            displayName
+            address
+            followingCount
+            followerCount
+            social {
+                twitter
+            }
+        }
+    }`);
+        return data;
+    });
+}
+exports.default = getCyberconnectData;
+
+},{"../utils":276}],253:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getDeepDaoData(address, computeConfig) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const json = yield (0, utils_1.fetcher)('GET', `https://api.deepdao.io/v0.1/participation-score/address/${address}`, '', {}, {
+            'x-api-key': computeConfig.deepdaoApiKey,
+        });
+        let resp = {
+            score: 0,
+            rank: 0,
+            relativeScore: 0,
+            daos: 0,
+            proposals: 0,
+            votes: 0,
+        };
+        resp = Object.assign(Object.assign({}, resp), json['data']);
+        return resp;
+    });
+}
+exports.default = getDeepDaoData;
+
+},{"../utils":276}],254:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48357,27 +48681,485 @@ function addressToEns(address) {
 }
 exports.default = addressToEns;
 
-},{"../utils":255}],246:[function(require,module,exports){
+},{"../utils":276}],255:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getFoundationData(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const resp = (yield (0, utils_1.gqlFetcher)('https://hasura2.foundation.app/v1/graphql', `{
+            artworks: artwork(
+              where: {publicKey: {_eq: "${address}"}, contractAddress: {_eq: "0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405"}, isIndexed: {_in: [true]}, tokenId: {_is_null: false}, deletedAt: {_is_null: true}}
+              order_by: {tokenId: desc_nulls_last}
+              limit: 10000
+              offset: 0
+            ) {
+              ...ArtworkFragmentExtended
+              artworkUserVisibilities(
+                where: {publicKey: {_eq:  "${address}"}, hiddenAt: {_is_null: false}}
+              ) {
+                hiddenAt
+              }
+            }
+          }
+
+              fragment ArtworkFragmentExtended on artwork {
+            ...ArtworkFragment
+            ...LatestArtworkEventFragment
+            ...ArtworkSplitRecipientsFragment
+            ...MostRecentAuctionFragment
+            owner {
+              ...UserFragment
+            }
+            creator: user {
+              ...UserFragment
+            }
+            collection {
+              symbol
+              contractAddress
+              slug
+              name
+              collectionImageUrl
+              coverImageUrl
+            }
+          }
+
+              fragment ArtworkFragment on artwork {
+            id
+            name
+            description
+            assetScheme
+            assetHost
+            assetPath
+            assetIPFSPath
+            metadataScheme
+            metadataHost
+            metadataPath
+            metadataIPFSPath
+            width
+            height
+            duration
+            mimeType
+            mintTxHash
+            assetId
+            assetStatus
+            mintTxHash
+            tokenId
+            status
+            hiddenAt
+            deletedAt
+            moderationStatus
+            moderationFrom
+            latestTxDate
+            assetVersion
+            ownerPublicKey
+            publicKey
+            tags
+            contractAddress
+            activeSalePriceInETH
+            lastSalePriceInETH
+            isIndexed
+            privateSales {
+              ipfsPath
+              deadlineAt
+              soldAt
+              price: saleAmountInETH
+              buyer
+              seller
+            }
+          }
+
+
+              fragment LatestArtworkEventFragment on artwork {
+            latestEvents: event(
+              where: {eventType: {_nin: ["MIGRATE_CREATOR", "MIGRATE_CREATOR_PAYMENT_ADDRESS", "MIGRATE_OWNER", "MIGRATE_SELLER", "SELL", "PRICE_CHANGE"]}}
+              limit: 1
+              order_by: {blockTimestamp: desc_nulls_last}
+            ) {
+              id
+              eventType
+              data
+            }
+          }
+
+
+              fragment ArtworkSplitRecipientsFragment on artwork {
+            splitRecipients: splitRecipients_aggregate {
+              aggregate {
+                count
+              }
+            }
+          }
+
+
+              fragment MostRecentAuctionFragment on artwork {
+            auctions(
+              where: {status: {_in: ["OPEN", "FINALIZED", "ENDED"]}}
+              order_by: {endsAt: desc_nulls_first}
+              limit: 1
+            ) {
+              ...AuctionFragment
+            }
+          }
+
+              fragment AuctionFragment on auction {
+            auctionId
+            canceledAt
+            createdAt
+            endsAt
+            finalizedAt
+            highestBidAmount
+            highestBidder
+            id
+            isPrimarySale
+            reservePriceInETH
+            seller
+            startsAt
+            status
+            tokenId
+            updatedAt
+            highestBidderUser {
+              userIndex
+              publicKey
+              username
+              profileImageUrl
+              coverImageUrl
+              name
+            }
+            bidCount: bids_aggregate {
+              aggregate {
+                count
+              }
+            }
+          }
+
+
+        fragment UserFragment on user {
+            followerCount: follows_aggregate(where: {isFollowing: {_eq: true}}) {
+                aggregate {
+                    count
+                }
+            }
+            followingCount: following_aggregate(where: {isFollowing: {_eq: true}}) {
+                aggregate {
+                    count
+                }
+            }
+            userIndex
+            publicKey
+            username
+            profileImageUrl
+            coverImageUrl
+            name
+            bio
+            isApprovedCreator
+            moderationStatus
+            joinedWaitlistAt
+            createdAt
+            migratedToUser
+            isApprovedForMigrationAt
+            isAdmin
+            links
+        }`));
+        const artworks = resp['data']['artworks'];
+        let totalAmountSold = 0;
+        let totalCountSold = 0;
+        let followerCount = 0;
+        let followingCount = 0;
+        for (let index = 0; index < artworks.length; index++) {
+            if (Boolean(artworks[index].lastSalePriceInETH) === true) {
+                totalAmountSold += artworks[index].lastSalePriceInETH;
+                totalCountSold += 1;
+            }
+            if (index === 0) {
+                followerCount = artworks[index].creator.followerCount.aggregate.count;
+                followingCount = artworks[index].creator.followingCount.aggregate.count;
+            }
+        }
+        return {
+            totalCountSold,
+            totalAmountSold,
+            followerCount,
+            followingCount,
+        };
+    });
+}
+exports.default = getFoundationData;
+
+},{"../utils":276}],256:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.getGitcoinData = exports.getAllGitcoinData = void 0;
+const utils_1 = require("ethers/lib/utils");
+const utils_2 = require("../utils");
+function getAllGitcoinData() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = (yield (0, utils_2.fetcher)('GET', 'https://theconvo.space/gitcoindata.json'));
+        const addDb = [];
+        for (let index = 0; index < data['addresses'].length; index++) {
+            if ((0, utils_1.isAddress)(data['addresses'][index][0]) === true) {
+                addDb.push(data['addresses'][index][0]);
+            }
+        }
+        return addDb;
+    });
+}
+exports.getAllGitcoinData = getAllGitcoinData;
+function getGitcoinData(address, computeConfig) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const json = yield (0, utils_2.fetcher)('GET', `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=gitcoin&address=${address}`);
+        return json;
+    });
+}
+exports.getGitcoinData = getGitcoinData;
+
+},{"../utils":276,"ethers/lib/utils":199}],257:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function checkIdena(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const json = (yield (0, utils_1.fetcher)('GET', `https://api.idena.io/api/Address/${address}`));
+        return json.value.result;
+    });
+}
+exports.default = checkIdena;
+
+},{"../utils":276}],258:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addressToEns = exports.getPoapData = exports.checkBrightId = exports.getAaveData = exports.checkPoH = exports.getAge = void 0;
-var age_1 = require("./age");
-Object.defineProperty(exports, "getAge", { enumerable: true, get: function () { return __importDefault(age_1).default; } });
-var poh_1 = require("./poh");
-Object.defineProperty(exports, "checkPoH", { enumerable: true, get: function () { return __importDefault(poh_1).default; } });
+exports.resolveUnstoppableDomains = exports.getShowtimeData = exports.getRss3Data = exports.getRabbitholeData = exports.checkPoH = exports.getProjectGalaxyData = exports.getPolygonData = exports.getPoapData = exports.getMirrorData = exports.getMetagameData = exports.getKnownOriginData = exports.checkIdena = exports.getGitcoinData = exports.getAllGitcoinData = exports.getFoundationData = exports.addressToEns = exports.getDeepDaoData = exports.getCyberconnectData = exports.getCryptoscamdbData = exports.getCoordinapeData = exports.getContextData = exports.getCeloData = exports.checkBrightId = exports.getBoardroomData = exports.getAsyncartData = exports.getArcxData = exports.getAge = exports.getAaveData = void 0;
 var aave_1 = require("./aave");
 Object.defineProperty(exports, "getAaveData", { enumerable: true, get: function () { return __importDefault(aave_1).default; } });
+var age_1 = require("./age");
+Object.defineProperty(exports, "getAge", { enumerable: true, get: function () { return __importDefault(age_1).default; } });
+var arcx_1 = require("./arcx");
+Object.defineProperty(exports, "getArcxData", { enumerable: true, get: function () { return __importDefault(arcx_1).default; } });
+var asyncart_1 = require("./asyncart");
+Object.defineProperty(exports, "getAsyncartData", { enumerable: true, get: function () { return __importDefault(asyncart_1).default; } });
+var boardroom_1 = require("./boardroom");
+Object.defineProperty(exports, "getBoardroomData", { enumerable: true, get: function () { return __importDefault(boardroom_1).default; } });
 var brightid_1 = require("./brightid");
 Object.defineProperty(exports, "checkBrightId", { enumerable: true, get: function () { return __importDefault(brightid_1).default; } });
-var poap_1 = require("./poap");
-Object.defineProperty(exports, "getPoapData", { enumerable: true, get: function () { return __importDefault(poap_1).default; } });
+var celo_1 = require("./celo");
+Object.defineProperty(exports, "getCeloData", { enumerable: true, get: function () { return __importDefault(celo_1).default; } });
+//Coinvise
+var context_1 = require("./context");
+Object.defineProperty(exports, "getContextData", { enumerable: true, get: function () { return __importDefault(context_1).default; } });
+var coordinape_1 = require("./coordinape");
+Object.defineProperty(exports, "getCoordinapeData", { enumerable: true, get: function () { return __importDefault(coordinape_1).default; } });
+var cryptoscamdb_1 = require("./cryptoscamdb");
+Object.defineProperty(exports, "getCryptoscamdbData", { enumerable: true, get: function () { return __importDefault(cryptoscamdb_1).default; } });
+var cyberconnect_1 = require("./cyberconnect");
+Object.defineProperty(exports, "getCyberconnectData", { enumerable: true, get: function () { return __importDefault(cyberconnect_1).default; } });
+var deepdao_1 = require("./deepdao");
+Object.defineProperty(exports, "getDeepDaoData", { enumerable: true, get: function () { return __importDefault(deepdao_1).default; } });
 var ens_1 = require("./ens");
 Object.defineProperty(exports, "addressToEns", { enumerable: true, get: function () { return __importDefault(ens_1).default; } });
+var foundation_1 = require("./foundation");
+Object.defineProperty(exports, "getFoundationData", { enumerable: true, get: function () { return __importDefault(foundation_1).default; } });
+var gitcoin_1 = require("./gitcoin");
+Object.defineProperty(exports, "getAllGitcoinData", { enumerable: true, get: function () { return gitcoin_1.getAllGitcoinData; } });
+Object.defineProperty(exports, "getGitcoinData", { enumerable: true, get: function () { return gitcoin_1.getGitcoinData; } });
+var idena_1 = require("./idena");
+Object.defineProperty(exports, "checkIdena", { enumerable: true, get: function () { return __importDefault(idena_1).default; } });
+var knownorigin_1 = require("./knownorigin");
+Object.defineProperty(exports, "getKnownOriginData", { enumerable: true, get: function () { return __importDefault(knownorigin_1).default; } });
+var metagame_1 = require("./metagame");
+Object.defineProperty(exports, "getMetagameData", { enumerable: true, get: function () { return __importDefault(metagame_1).default; } });
+var mirror_1 = require("./mirror");
+Object.defineProperty(exports, "getMirrorData", { enumerable: true, get: function () { return __importDefault(mirror_1).default; } });
+var poap_1 = require("./poap");
+Object.defineProperty(exports, "getPoapData", { enumerable: true, get: function () { return __importDefault(poap_1).default; } });
+var polygon_1 = require("./polygon");
+Object.defineProperty(exports, "getPolygonData", { enumerable: true, get: function () { return __importDefault(polygon_1).default; } });
+var projectgalaxy_1 = require("./projectgalaxy");
+Object.defineProperty(exports, "getProjectGalaxyData", { enumerable: true, get: function () { return __importDefault(projectgalaxy_1).default; } });
+var poh_1 = require("./poh");
+Object.defineProperty(exports, "checkPoH", { enumerable: true, get: function () { return __importDefault(poh_1).default; } });
+var rabbithole_1 = require("./rabbithole");
+Object.defineProperty(exports, "getRabbitholeData", { enumerable: true, get: function () { return __importDefault(rabbithole_1).default; } });
+//Rarible
+var rss3_1 = require("./rss3");
+Object.defineProperty(exports, "getRss3Data", { enumerable: true, get: function () { return __importDefault(rss3_1).default; } });
+var showtime_1 = require("./showtime");
+Object.defineProperty(exports, "getShowtimeData", { enumerable: true, get: function () { return __importDefault(showtime_1).default; } });
+//Superrare
+//sybil
+var unstoppable_1 = require("./unstoppable");
+Object.defineProperty(exports, "resolveUnstoppableDomains", { enumerable: true, get: function () { return __importDefault(unstoppable_1).default; } });
+// zora
 
-},{"./aave":242,"./age":243,"./brightid":244,"./ens":245,"./poap":247,"./poh":248}],247:[function(require,module,exports){
+},{"./aave":242,"./age":243,"./arcx":244,"./asyncart":245,"./boardroom":246,"./brightid":247,"./celo":248,"./context":249,"./coordinape":250,"./cryptoscamdb":251,"./cyberconnect":252,"./deepdao":253,"./ens":254,"./foundation":255,"./gitcoin":256,"./idena":257,"./knownorigin":259,"./metagame":260,"./mirror":261,"./poap":262,"./poh":263,"./polygon":264,"./projectgalaxy":265,"./rabbithole":266,"./rss3":267,"./showtime":268,"./unstoppable":269}],259:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("ethers/lib/utils");
+const utils_2 = require("../utils");
+function getKnownOriginData(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const jsonData = (yield (0, utils_2.gqlFetcher)('https://api.thegraph.com/subgraphs/name/knownorigin/known-origin', `
+        {
+            editions(orderBy: "createdTimestamp", orderDirection: "desc", where: {collaborators_contains: ["${address.toLowerCase()}"], active: true, remainingSupply_lte: 10000, remainingSupply_gte: 0}) {
+                id
+                version
+                salesType
+                startDate
+                artistAccount
+                totalSupply
+                totalAvailable
+                totalSold
+                priceInWei
+                remainingSupply
+                optionalCommissionAccount
+                offersOnly
+                startDate
+                stepSaleStepPrice
+                totalEthSpentOnEdition
+                metadata {
+                    id
+                    name
+                    image
+                    artist
+                    image_type
+                    image_sphere
+                    __typename
+                }
+                reservePrice
+                reserveAuctionBid
+                reserveAuctionStartDate
+                previousReserveAuctionEndTimestamp
+                reserveAuctionEndTimestamp
+                __typename
+            }
+        }
+    `));
+        const artworks = jsonData['data']['editions'];
+        let totalAmountSold = 0;
+        for (let index = 0; index < artworks.length; index++) {
+            const artwork = artworks[index];
+            if (parseInt(artwork['totalSold']) >= 1) {
+                totalAmountSold += parseFloat((0, utils_1.formatEther)(artwork['priceInWei']));
+            }
+        }
+        return {
+            totalCountSold: artworks.length,
+            totalAmountSold,
+        };
+    });
+}
+exports.default = getKnownOriginData;
+
+},{"../utils":276,"ethers/lib/utils":199}],260:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getMetagameData(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const data = (yield (0, utils_1.gqlFetcher)('https://hasura-7s6e.onrender.com/v1/graphql', `
+  {
+    player(where:{ ethereum_address: {_eq: "${address.toLowerCase()}"}}){
+      box_profile {
+        name
+        job
+        location
+        website
+        emoji
+        coverImageURL
+      }
+      total_xp
+      username
+      season_xp
+      role
+      rank
+    }
+  }
+  `));
+        if (data['data']['player'].length > 0) {
+            return data['data']['player'][0];
+        }
+        else {
+            return {};
+        }
+    });
+}
+exports.default = getMetagameData;
+
+},{"../utils":276}],261:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getMirrorData(address = '') {
+    return __awaiter(this, void 0, void 0, function* () {
+        const jsonData = (yield (0, utils_1.gqlFetcher)('https://mirror-api.com/graphql', `{
+        addressInfo(address: "${address}") {
+            ens
+            writeTokens
+            hasOnboarded
+        }
+    }`));
+        return jsonData['data']['addressInfo']['hasOnboarded'];
+    });
+}
+exports.default = getMirrorData;
+
+},{"../utils":276}],262:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48392,13 +49174,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function getPoapData(address) {
     return __awaiter(this, void 0, void 0, function* () {
-        const data = yield (0, utils_1.fetcher)('GET', `https://api.poap.xyz/actions/scan/${address}`);
-        return data;
+        const data = (yield (0, utils_1.fetcher)('GET', `https://api.poap.xyz/actions/scan/${address}`));
+        return data.length;
     });
 }
 exports.default = getPoapData;
 
-},{"../utils":255}],248:[function(require,module,exports){
+},{"../utils":276}],263:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48428,7 +49210,209 @@ function checkPoH(address) {
 }
 exports.default = checkPoH;
 
-},{"../utils":255}],249:[function(require,module,exports){
+},{"../utils":276}],264:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getPolygonData(address = '') {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const json = (yield (0, utils_1.fetcher)('POST', `https://analytics.polygon.technology/score/user-latest?address=${address}`));
+            if (json.length > 0) {
+                return json[0];
+            }
+            else {
+                return {
+                    Score100: 0,
+                };
+            }
+        }
+        catch (error) {
+            return {
+                Score100: 0,
+            };
+        }
+    });
+}
+exports.default = getPolygonData;
+
+},{"../utils":276}],265:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getProjectGalaxyData(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const jsonData = (yield (0, utils_1.gqlFetcher)('https://graphigo.prd.galaxy.eco/query', `{
+      addressInfo(address: "${address.toLowerCase()}") {
+        id
+        avatar
+        username
+        eligibleCredentials {
+            list {
+                id
+                name
+            }
+        }
+      }
+    }`));
+        return jsonData['data']['addressInfo'];
+    });
+}
+exports.default = getProjectGalaxyData;
+
+},{"../utils":276}],266:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getRabbitholeData(address = '') {
+    var _a;
+    return __awaiter(this, void 0, void 0, function* () {
+        const jsonData = yield (0, utils_1.fetcher)('GET', `https://h8p3c8m7bg.execute-api.us-east-1.amazonaws.com/app/task_progress?address=${address.toLowerCase()}`);
+        const taskList = Object.keys(jsonData['taskData']['taskProgress']);
+        const tasksCompleted = [];
+        for (let index = 0; index < taskList.length; index++) {
+            const taskData = jsonData['taskData']['taskProgress'][taskList[index]];
+            if (taskData['points'] === taskData['progress']) {
+                tasksCompleted.push(taskList[index]);
+            }
+        }
+        const level = (_a = jsonData.taskData) === null || _a === void 0 ? void 0 : _a.level;
+        return {
+            level: level,
+            score: jsonData['taskData']['taskProgress']['score'],
+            tasksCompleted,
+        };
+    });
+}
+exports.default = getRabbitholeData;
+
+},{"../utils":276}],267:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getRss3Data(address) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const jsonData = (yield (0, utils_1.fetcher)('GET', `https://hub.pass3.me/${address}`));
+        return {
+            profile: Boolean(jsonData['profile']) === true ? jsonData['profile'] : {},
+            backlinks: Boolean(jsonData['@backlinks']) === true ? jsonData['@backlinks'] : [],
+            accounts: Boolean(jsonData['accounts']) === true ? jsonData['accounts'] : [],
+            links: Boolean(jsonData['links']) === true ? jsonData['links'] : [],
+        };
+    });
+}
+exports.default = getRss3Data;
+
+},{"../utils":276}],268:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getShowtimeData(address, computeConfig) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const json = yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=1b8c&address=${address}`);
+        return json;
+    });
+}
+exports.default = getShowtimeData;
+
+},{"../utils":276}],269:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function resolveUnstoppableDomains(address) {
+    var _a, _b, _c;
+    return __awaiter(this, void 0, void 0, function* () {
+        const queryResult = (yield (0, utils_1.gqlFetcher)('https://api.thegraph.com/subgraphs/name/unstoppable-domains-integrations/dot-crypto-registry', `
+        {
+            domains(where: {owner: "${address === null || address === void 0 ? void 0 : address.toLowerCase()}"}) {
+                name
+                resolver {
+                    records (where :{key:"crypto.ETH.address"}) {
+                        key
+                        value
+                    }
+                }
+            }
+        }
+    `));
+        if (Boolean((_a = queryResult.data.domains) === null || _a === void 0 ? void 0 : _a.length) === true &&
+            queryResult.data.domains.length > 0) {
+            for (let index = 0; index < queryResult.data.domains.length; index++) {
+                const domain = queryResult.data.domains[index];
+                if (domain.name.split('.').length === 2 &&
+                    ((_b = domain.resolver) === null || _b === void 0 ? void 0 : _b.records.length) > 0) {
+                    for (let i = 0; i < domain.resolver.records.length; i++) {
+                        if (((_c = domain.resolver.records[i].value) === null || _c === void 0 ? void 0 : _c.toLowerCase()) ===
+                            address.toLowerCase()) {
+                            return domain.name;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+        else {
+            return false;
+        }
+    });
+}
+exports.default = resolveUnstoppableDomains;
+
+},{"../utils":276}],270:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48532,7 +49516,7 @@ class Auth {
 }
 exports.default = Auth;
 
-},{"./utils":255,"siwe":235}],250:[function(require,module,exports){
+},{"./utils":276,"siwe":235}],271:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48559,7 +49543,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.2.12',
+                currentVersion: '0.3.0',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -48577,7 +49561,7 @@ class ConvoBase {
 }
 exports.default = ConvoBase;
 
-},{"./utils":255,"unfetch":237}],251:[function(require,module,exports){
+},{"./utils":276,"unfetch":237}],272:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48640,7 +49624,31 @@ class Comments {
 }
 exports.default = Comments;
 
-},{"./utils":255}],252:[function(require,module,exports){
+},{"./utils":276}],273:[function(require,module,exports){
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Convo = void 0;
+const comments_1 = __importDefault(require("./comments"));
+const auth_1 = __importDefault(require("./auth"));
+const base_1 = __importDefault(require("./base"));
+const threads_1 = __importDefault(require("./threads"));
+const omnid_1 = __importDefault(require("./omnid"));
+class Convo extends base_1.default {
+    constructor(apikey, node = 'https://theconvo.space/api') {
+        super(apikey, node);
+        this.comments = new comments_1.default(apikey, this.node);
+        this.auth = new auth_1.default(apikey, this.node);
+        this.threads = new threads_1.default(apikey, this.node);
+        this.omnid = new omnid_1.default(apikey, this.node);
+        return this;
+    }
+}
+exports.Convo = Convo;
+
+},{"./auth":270,"./base":271,"./comments":272,"./omnid":274,"./threads":275}],274:[function(require,module,exports){
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -48660,6 +49668,9 @@ var __importStar = (this && this.__importStar) || function (mod) {
     if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
     __setModuleDefault(result, mod);
     return result;
+};
+var __exportStar = (this && this.__exportStar) || function(m, exports) {
+    for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48682,12 +49693,33 @@ class Identity {
         this.computeTrustScore = (address, computeConfig) => __awaiter(this, void 0, void 0, function* () {
             if ((0, utils_2.isAddress)(address) === true) {
                 const promiseArray = [
-                    adaptors.checkPoH(address),
-                    adaptors.getAge(address),
                     adaptors.getAaveData(address, computeConfig),
+                    adaptors.getAge(address),
+                    adaptors.getArcxData(address),
+                    adaptors.getAsyncartData(address),
+                    adaptors.getBoardroomData(address),
                     adaptors.checkBrightId(address),
-                    adaptors.getPoapData(address),
+                    adaptors.getCeloData(address),
+                    adaptors.getContextData(address),
+                    // adaptors.getCoordinapeData(address),
+                    adaptors.getCryptoscamdbData(address),
+                    adaptors.getCyberconnectData(address),
+                    adaptors.getDeepDaoData(address, computeConfig),
                     adaptors.addressToEns(address),
+                    adaptors.getFoundationData(address),
+                    adaptors.getGitcoinData(address, computeConfig),
+                    adaptors.checkIdena(address),
+                    adaptors.getKnownOriginData(address),
+                    adaptors.getMetagameData(address),
+                    adaptors.getMirrorData(address),
+                    adaptors.getPoapData(address),
+                    adaptors.getPolygonData(address),
+                    adaptors.getProjectGalaxyData(address),
+                    adaptors.checkPoH(address),
+                    adaptors.getRabbitholeData(address),
+                    adaptors.getRss3Data(address),
+                    adaptors.getShowtimeData(address, computeConfig),
+                    adaptors.resolveUnstoppableDomains(address),
                 ];
                 const resp = yield Promise.allSettled(promiseArray);
                 return resp;
@@ -48702,32 +49734,9 @@ class Identity {
     }
 }
 exports.default = Identity;
+__exportStar(require("./adaptors"), exports);
 
-},{"./adaptors":246,"./utils":255,"ethers/lib/utils":199}],253:[function(require,module,exports){
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.Convo = void 0;
-const comments_1 = __importDefault(require("./comments"));
-const auth_1 = __importDefault(require("./auth"));
-const base_1 = __importDefault(require("./base"));
-const threads_1 = __importDefault(require("./threads"));
-const identity_1 = __importDefault(require("./identity"));
-class Convo extends base_1.default {
-    constructor(apikey, node = 'https://theconvo.space/api') {
-        super(apikey, node);
-        this.comments = new comments_1.default(apikey, this.node);
-        this.auth = new auth_1.default(apikey, this.node);
-        this.threads = new threads_1.default(apikey, this.node);
-        this.identity = new identity_1.default(apikey, this.node);
-        return this;
-    }
-}
-exports.Convo = Convo;
-
-},{"./auth":249,"./base":250,"./comments":251,"./identity":252,"./threads":254}],254:[function(require,module,exports){
+},{"./adaptors":258,"./utils":276,"ethers/lib/utils":199}],275:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48863,7 +49872,7 @@ class Threads {
 }
 exports.default = Threads;
 
-},{"./utils":255}],255:[function(require,module,exports){
+},{"./utils":276}],276:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48880,12 +49889,14 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.gqlFetcher = exports.encodeQuery = exports.fetcher = void 0;
 const unfetch_1 = __importDefault(require("unfetch"));
-function fetcher(requestMethod, url, apikey = '', body = {}) {
+function fetcher(requestMethod, url, apikey = '', body = {}, customHeaders = {}) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const reqUrl = url + (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
             if (requestMethod === 'GET') {
-                let data = yield (0, unfetch_1.default)(reqUrl);
+                let data = yield (0, unfetch_1.default)(reqUrl, {
+                    headers: Object.assign({}, customHeaders),
+                });
                 data = yield data.json();
                 return data;
             }
@@ -48895,9 +49906,7 @@ function fetcher(requestMethod, url, apikey = '', body = {}) {
                 let data = yield (0, unfetch_1.default)(reqUrl, {
                     method: requestMethod,
                     body: JSON.stringify(body),
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: Object.assign(Object.assign({}, customHeaders), { 'Content-Type': 'application/json' }),
                 });
                 data = yield data.json();
                 return data;
@@ -48940,5 +49949,5 @@ function gqlFetcher(url, query) {
 }
 exports.gqlFetcher = gqlFetcher;
 
-},{"unfetch":237}]},{},[253])(253)
+},{"unfetch":237}]},{},[273])(273)
 });

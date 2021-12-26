@@ -21,6 +21,7 @@ export default async function getRabbitholeData(address = '') {
 
   return {
     level: level,
+    score: jsonData['taskData']['taskProgress']['score'],
     tasksCompleted,
   };
 }

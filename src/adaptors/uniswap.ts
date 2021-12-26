@@ -24,7 +24,7 @@ export async function getGitcoinData(
 ) {
   const json = await fetcher(
     'GET',
-    `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=gitcoin&address=${address}`
+    `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=uniswap&address=${address}`
   );
   return json;
 }

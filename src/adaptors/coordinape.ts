@@ -5,7 +5,12 @@ export default async function getCoordinapeData(address: string) {
   try {
     const json = (await fetcher(
       'GET',
-      `https://coordinape.com/api/profile/${address}`
+      `https://api.coordinape.com/api/v2/profile/${address}`,
+      '',
+      {},
+      {
+        authorization: 'Bearer 1693|Ku84NovTfLAyhjvWAIlTdwH0PBuGHwTWHRhtcsww',
+      }
     )) as Dictionary<Array<Dictionary<Array<string>>>>;
     let teammates = 0;
 

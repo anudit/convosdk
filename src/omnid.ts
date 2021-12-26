@@ -30,16 +30,31 @@ class Identity {
       const promiseArray = [
         adaptors.getAaveData(address, computeConfig),
         adaptors.getAge(address),
+        adaptors.getArcxData(address),
+        adaptors.getAsyncartData(address),
+        adaptors.getBoardroomData(address),
         adaptors.checkBrightId(address),
-        adaptors.getCoordinapeData(address),
+        adaptors.getCeloData(address),
+        adaptors.getContextData(address),
+        // adaptors.getCoordinapeData(address),
+        adaptors.getCryptoscamdbData(address),
+        adaptors.getCyberconnectData(address),
         adaptors.getDeepDaoData(address, computeConfig),
         adaptors.addressToEns(address),
+        adaptors.getFoundationData(address),
+        adaptors.getGitcoinData(address, computeConfig),
+        adaptors.checkIdena(address),
+        adaptors.getKnownOriginData(address),
         adaptors.getMetagameData(address),
+        adaptors.getMirrorData(address),
         adaptors.getPoapData(address),
-        adaptors.checkPoH(address),
         adaptors.getPolygonData(address),
+        adaptors.getProjectGalaxyData(address),
+        adaptors.checkPoH(address),
         adaptors.getRabbitholeData(address),
+        adaptors.getRss3Data(address),
         adaptors.getShowtimeData(address, computeConfig),
+        adaptors.resolveUnstoppableDomains(address),
       ];
       const resp: Array<PromiseSettledResult<any>> = await Promise.allSettled(
         promiseArray
@@ -51,3 +66,4 @@ class Identity {
   };
 }
 export default Identity;
+export * from './adaptors';

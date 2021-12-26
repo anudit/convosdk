@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.0
+-  Add Identity Adaptors
+
 ## 0.2.12
 -  Improve Auth Functions.
 
