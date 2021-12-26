@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.3.0",
+  "version": "0.3.3",
   "description": "SDK containing all the functions you'll need to build on theconvo.space",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -87,8 +87,8 @@
     "lib": "lib"
   },
   "dependencies": {
+    "cross-fetch": "^3.1.4",
     "ethers": "^5.5.2",
-    "siwe": "^0.1.2",
-    "unfetch": "^4.2.0"
+    "siwe": "^0.1.2"
   }
 }

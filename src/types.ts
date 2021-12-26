@@ -54,4 +54,5 @@ export type ComputeConfig = {
   etherumAndMaticPriceApi?: string;
   deepdaoApiKey: string;
   CNVSEC_ID: string;
+  DEBUG: boolean;
 };

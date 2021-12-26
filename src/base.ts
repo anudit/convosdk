@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Dictionary, ErrorType, LogConfigType } from './types';
 import { fetcher } from './utils';
-import fetch from 'unfetch';
+import fetch from 'cross-fetch';
 
 class ConvoBase {
   apikey: string;
@@ -27,7 +27,7 @@ class ConvoBase {
     return {
       node: this.node,
       apikey: this.apikey,
-      currentVersion: '0.3.0',
+      currentVersion: '0.3.3',
       latestVersion: versionInfo['version'],
       pingResult: pingResult,
     };

@@ -2,7 +2,7 @@ import { isAddress } from 'ethers/lib/utils';
 import { ComputeConfig, Dictionary } from '../types';
 import { fetcher } from '../utils';
 
-export async function getAllGitcoinData() {
+export async function getAllSybilData() {
   const data = (await fetcher(
     'GET',
     'https://theconvo.space/gitcoindata.json'
@@ -18,7 +18,7 @@ export async function getAllGitcoinData() {
   return addDb;
 }
 
-export async function getGitcoinData(
+export async function getSybilData(
   address: string,
   computeConfig: ComputeConfig
 ) {

@@ -18,13 +18,20 @@ export async function getAllGitcoinData() {
   return addDb;
 }
 
+interface GitcoinResult {
+  success: boolean;
+  error: string;
+}
+
 export async function getGitcoinData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  const json = await fetcher(
+  const json = (await fetcher(
     'GET',
     `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=gitcoin&address=${address}`
-  );
-  return json;
+  )) as GitcoinResult;
+  return {
+    funder: Boolean(json.success) === false ? false : true,
+  };
 }

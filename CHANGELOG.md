@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.3
+-  Add more Identity Adaptors
+
+## 0.3.2
+-  Bug Fixes
+
+## 0.3.1
+-  Update NodeJS Fetcher Module
+
 ## 0.3.0
 -  Add Identity Adaptors
 

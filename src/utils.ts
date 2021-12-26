@@ -1,4 +1,4 @@
-import fetch from 'unfetch';
+import fetch from 'cross-fetch';
 import { Dictionary, ErrorType } from './types';
 
 export async function fetcher(

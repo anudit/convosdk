@@ -52,18 +52,24 @@ class Identity {
         adaptors.getProjectGalaxyData(address),
         adaptors.checkPoH(address),
         adaptors.getRabbitholeData(address),
+        adaptors.getRaribleData(address),
         adaptors.getRss3Data(address),
         adaptors.getShowtimeData(address, computeConfig),
+        adaptors.getSuperrareData(address),
         adaptors.resolveUnstoppableDomains(address),
+        adaptors.getZoraData(address),
       ];
+      if (Boolean(computeConfig?.DEBUG) === true) console.time('computeTime');
       const resp: Array<PromiseSettledResult<any>> = await Promise.allSettled(
         promiseArray
       );
+      if (Boolean(computeConfig?.DEBUG) === true)
+        console.timeEnd('computeTime');
       return resp;
     } else {
       throw new Error('Not a Valid Ethereum Address');
     }
   };
 }
+export { adaptors };
 export default Identity;
-export * from './adaptors';
