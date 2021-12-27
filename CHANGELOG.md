@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.4
+-  Add more Identity Adaptors
+-  Expose all Adaptors at `convoinstance.omnid.adaptors.*`
+-  Update Examples
+
 ## 0.3.3
 -  Add more Identity Adaptors
 

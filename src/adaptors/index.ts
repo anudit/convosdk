@@ -5,7 +5,7 @@ export { default as getAsyncartData } from './asyncart';
 export { default as getBoardroomData } from './boardroom';
 export { default as checkBrightId } from './brightid';
 export { default as getCeloData } from './celo';
-// Coinvise
+export { default as getCoinviseData } from './coinvise';
 export { default as getContextData } from './context';
 export { default as getCoordinapeData } from './coordinape';
 export { default as getCryptoscamdbData } from './cryptoscamdb';

@@ -8,14 +8,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@theconvospace/sdk": "^0.2.10",
+    "@theconvospace/sdk": "^0.3.4",
     "ethers": "^5.4.7",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
-    "eslint": "8.4.1",
+    "eslint": "8.5.0",
     "eslint-config-next": "12.0.7"
   },
   "license": "MIT",
