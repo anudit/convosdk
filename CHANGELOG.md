@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.6
+- Move Price Calculation to Config.
+
 ## 0.3.5
 -  Update Age Adaptor to Support Polygon Network.
 -  Improved Error Handling.

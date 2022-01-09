@@ -20,9 +20,9 @@ export default async function getAaveData(
       'getAaveData: computeConfig does not contain etherumMainnetRpc'
     );
   }
-  if (Boolean(computeConfig?.maticMainnetRpc) === false) {
+  if (Boolean(computeConfig?.polygonMainnetRpc) === false) {
     throw new Error(
-      'getAaveData: computeConfig does not contain maticMainnetRpc'
+      'getAaveData: computeConfig does not contain polygonMainnetRpc'
     );
   }
   if (Boolean(computeConfig?.avalancheMainnetRpc) === false) {
@@ -35,7 +35,7 @@ export default async function getAaveData(
     computeConfig.etherumMainnetRpc
   );
   const providerMatic = new ethers.providers.JsonRpcProvider(
-    computeConfig.maticMainnetRpc
+    computeConfig.polygonMainnetRpc
   );
   const providerAvalanche = new ethers.providers.JsonRpcProvider(
     computeConfig.avalancheMainnetRpc

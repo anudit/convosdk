@@ -48,10 +48,6 @@ interface UserResult {
   };
 }
 
-interface PriceResult {
-  price: number;
-}
-
 interface SendsResult {
   data: Array<{
     senderAddr: string;
@@ -64,9 +60,9 @@ export default async function getCoinviseData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.maticPriceApi) === false) {
+  if (Boolean(computeConfig?.maticPriceInUsd) === false) {
     throw new Error(
-      'getCoinviseData: computeConfig does not contain maticPriceApi'
+      'getCoinviseData: computeConfig does not contain maticPriceInUsd'
     );
   }
 
@@ -100,7 +96,6 @@ export default async function getCoinviseData(
     ),
     fetcher('GET', 'https://coinvise-prod.herokuapp.com/sends?size=1000'),
     fetcher('GET', `https://coinvise-prod.herokuapp.com/user?slug=${address}`),
-    fetcher('GET', computeConfig.maticPriceApi),
   ];
   const data = await Promise.allSettled(promiseArray);
 
@@ -141,10 +136,6 @@ export default async function getCoinviseData(
   let totalCountNft = 0;
   let totalCountSold = 0;
   let totalAmountSold = 0;
-  const GLOBAL_MATIC_PRICE_obj = data[4] as PromiseFulfilledResult<
-    Array<PriceResult>
-  >;
-  const GLOBAL_MATIC_PRICE = GLOBAL_MATIC_PRICE_obj.value[0].price;
   if (data[1].status === 'fulfilled') {
     const nfts = data[1] as PromiseFulfilledResult<NftResult>;
     totalCountNft = nfts.value.nfts.length;
@@ -153,7 +144,8 @@ export default async function getCoinviseData(
       if (nft.sold === true) {
         totalCountSold += 1;
         if (nft.symbol === 'MATIC') {
-          totalAmountSold += parseFloat(nft.price) * GLOBAL_MATIC_PRICE;
+          totalAmountSold +=
+            parseFloat(nft.price) * computeConfig.maticPriceInUsd;
         }
         if (nft.symbol === 'USDC') {
           totalAmountSold += parseFloat(nft.price);

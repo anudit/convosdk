@@ -1,4 +1,5 @@
 import { formatEther } from 'ethers/lib/utils';
+import { ComputeConfig } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface ZoraResult {
@@ -14,7 +15,15 @@ interface ZoraResult {
   };
 }
 
-export default async function getZoraData(address: string) {
+export default async function getZoraData(
+  address: string,
+  computeConfig: ComputeConfig
+) {
+  if (Boolean(computeConfig?.etherumPriceInUsd) === false) {
+    throw new Error(
+      'getZoraData: computeConfig does not contain etherumPriceInUsd'
+    );
+  }
   const data = (await gqlFetcher(
     'https://indexer-prod-mainnet.zora.co/v1/graphql',
     `query Tokens {
@@ -44,13 +53,14 @@ export default async function getZoraData(address: string) {
         ]
     ) {
       totalCountSold += 1;
-      totalAmountSold += parseFloat(
-        formatEther(
-          artworks[index]['auctions'][artworks[index]['auctions'].length - 1][
-            'lastBidAmount'
-          ]
-        )
-      );
+      totalAmountSold +=
+        parseFloat(
+          formatEther(
+            artworks[index]['auctions'][artworks[index]['auctions'].length - 1][
+              'lastBidAmount'
+            ]
+          )
+        ) * computeConfig.etherumPriceInUsd;
     }
   }
 

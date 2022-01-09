@@ -1,3 +1,4 @@
+import { ComputeConfig } from '../types';
 import { fetcher } from '../utils';
 
 interface AsyncResult {
@@ -18,7 +19,15 @@ interface AsyncResult {
   }>;
 }
 
-export default async function getAsyncartData(address: string) {
+export default async function getAsyncartData(
+  address: string,
+  computeConfig: ComputeConfig
+) {
+  if (Boolean(computeConfig?.etherumPriceInUsd) === false) {
+    throw new Error(
+      'getAsyncartData: computeConfig does not contain etherumPriceInUsd'
+    );
+  }
   try {
     const response = (await fetcher(
       'GET',
@@ -46,7 +55,7 @@ export default async function getAsyncartData(address: string) {
     }
     return {
       totalCountSold,
-      totalAmountSold,
+      totalAmountSold: totalAmountSold * computeConfig.etherumPriceInUsd,
     };
   } catch (error) {
     return {

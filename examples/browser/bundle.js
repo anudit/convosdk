@@ -48742,14 +48742,14 @@ function getAaveData(address, computeConfig) {
         if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.etherumMainnetRpc) === false) {
             throw new Error('getAaveData: computeConfig does not contain etherumMainnetRpc');
         }
-        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.maticMainnetRpc) === false) {
-            throw new Error('getAaveData: computeConfig does not contain maticMainnetRpc');
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.polygonMainnetRpc) === false) {
+            throw new Error('getAaveData: computeConfig does not contain polygonMainnetRpc');
         }
         if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.avalancheMainnetRpc) === false) {
             throw new Error('getAaveData: computeConfig does not contain avalancheMainnetRpc');
         }
         const providerEth = new ethers_1.ethers.providers.JsonRpcProvider(computeConfig.etherumMainnetRpc);
-        const providerMatic = new ethers_1.ethers.providers.JsonRpcProvider(computeConfig.maticMainnetRpc);
+        const providerMatic = new ethers_1.ethers.providers.JsonRpcProvider(computeConfig.polygonMainnetRpc);
         const providerAvalanche = new ethers_1.ethers.providers.JsonRpcProvider(computeConfig.avalancheMainnetRpc);
         const lendingPoolAbi = [
             {
@@ -48964,9 +48964,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
-function getAsyncartData(address) {
+function getAsyncartData(address, computeConfig) {
     var _a, _b;
     return __awaiter(this, void 0, void 0, function* () {
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.etherumPriceInUsd) === false) {
+            throw new Error('getAsyncartData: computeConfig does not contain etherumPriceInUsd');
+        }
         try {
             const response = (yield (0, utils_1.fetcher)('GET', 'https://async-2.appspot.com/users/' +
                 address.toLowerCase() +
@@ -48989,7 +48992,7 @@ function getAsyncartData(address) {
             }
             return {
                 totalCountSold,
-                totalAmountSold,
+                totalAmountSold: totalAmountSold * computeConfig.etherumPriceInUsd,
             };
         }
         catch (error) {
@@ -49122,8 +49125,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function getCoinviseData(address, computeConfig) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.maticPriceApi) === false) {
-            throw new Error('getCoinviseData: computeConfig does not contain maticPriceApi');
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.maticPriceInUsd) === false) {
+            throw new Error('getCoinviseData: computeConfig does not contain maticPriceInUsd');
         }
         function getPoolData(tokenAddress) {
             return __awaiter(this, void 0, void 0, function* () {
@@ -49147,7 +49150,6 @@ function getCoinviseData(address, computeConfig) {
             (0, utils_1.fetcher)('GET', `https://www.coinvise.co/api/nft?chain=137&address=${address}`),
             (0, utils_1.fetcher)('GET', 'https://coinvise-prod.herokuapp.com/sends?size=1000'),
             (0, utils_1.fetcher)('GET', `https://coinvise-prod.herokuapp.com/user?slug=${address}`),
-            (0, utils_1.fetcher)('GET', computeConfig.maticPriceApi),
         ];
         const data = yield Promise.allSettled(promiseArray);
         // 0 - social tokens
@@ -49179,8 +49181,6 @@ function getCoinviseData(address, computeConfig) {
         let totalCountNft = 0;
         let totalCountSold = 0;
         let totalAmountSold = 0;
-        const GLOBAL_MATIC_PRICE_obj = data[4];
-        const GLOBAL_MATIC_PRICE = GLOBAL_MATIC_PRICE_obj.value[0].price;
         if (data[1].status === 'fulfilled') {
             const nfts = data[1];
             totalCountNft = nfts.value.nfts.length;
@@ -49189,7 +49189,8 @@ function getCoinviseData(address, computeConfig) {
                 if (nft.sold === true) {
                     totalCountSold += 1;
                     if (nft.symbol === 'MATIC') {
-                        totalAmountSold += parseFloat(nft.price) * GLOBAL_MATIC_PRICE;
+                        totalAmountSold +=
+                            parseFloat(nft.price) * computeConfig.maticPriceInUsd;
                     }
                     if (nft.symbol === 'USDC') {
                         totalAmountSold += parseFloat(nft.price);
@@ -49434,8 +49435,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
-function getFoundationData(address) {
+function getFoundationData(address, computeConfig) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.etherumPriceInUsd) === false) {
+            throw new Error('getFoundationData: computeConfig does not contain etherumPriceInUsd');
+        }
         const resp = (yield (0, utils_1.gqlFetcher)('https://hasura2.foundation.app/v1/graphql', `{
             artworks: artwork(
               where: {publicKey: {_eq: "${address}"}, contractAddress: {_eq: "0x3B3ee1931Dc30C1957379FAc9aba94D1C48a5405"}, isIndexed: {_in: [true]}, tokenId: {_is_null: false}, deletedAt: {_is_null: true}}
@@ -49611,14 +49615,15 @@ function getFoundationData(address) {
             links
         }`));
         const artworks = resp['data']['artworks'];
-        let totalAmountSold = 0;
         let totalCountSold = 0;
+        let totalAmountSold = 0;
         let followerCount = 0;
         let followingCount = 0;
         for (let index = 0; index < artworks.length; index++) {
             if (Boolean(artworks[index].lastSalePriceInETH) === true) {
-                totalAmountSold += artworks[index].lastSalePriceInETH;
                 totalCountSold += 1;
+                totalAmountSold +=
+                    artworks[index].lastSalePriceInETH * computeConfig.etherumPriceInUsd;
             }
             if (index === 0) {
                 followerCount = artworks[index].creator.followerCount.aggregate.count;
@@ -49785,8 +49790,11 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("ethers/lib/utils");
 const utils_2 = require("../utils");
-function getKnownOriginData(address) {
+function getKnownOriginData(address, computeConfig) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.etherumPriceInUsd) === false) {
+            throw new Error('getKnownOriginData: computeConfig does not contain etherumPriceInUsd');
+        }
         const jsonData = (yield (0, utils_2.gqlFetcher)('https://api.thegraph.com/subgraphs/name/knownorigin/known-origin', `
         {
             editions(orderBy: "createdTimestamp", orderDirection: "desc", where: {collaborators_contains: ["${address.toLowerCase()}"], active: true, remainingSupply_lte: 10000, remainingSupply_gte: 0}) {
@@ -49828,7 +49836,9 @@ function getKnownOriginData(address) {
         for (let index = 0; index < artworks.length; index++) {
             const artwork = artworks[index];
             if (parseInt(artwork['totalSold']) >= 1) {
-                totalAmountSold += parseFloat((0, utils_1.formatEther)(artwork['priceInWei']));
+                totalAmountSold +=
+                    parseFloat((0, utils_1.formatEther)(artwork['priceInWei'])) *
+                        computeConfig.etherumPriceInUsd;
             }
         }
         return {
@@ -49899,13 +49909,24 @@ const utils_1 = require("../utils");
 function getMirrorData(address = '') {
     return __awaiter(this, void 0, void 0, function* () {
         const jsonData = (yield (0, utils_1.gqlFetcher)('https://mirror-api.com/graphql', `{
-        addressInfo(address: "${address}") {
-            ens
-            writeTokens
-            hasOnboarded
+      addressInfo(address: "${address}") {
+        ens
+        writeTokens
+        hasOnboarded
+      }
+      userProfile(address: "${address}") {
+        displayName
+        ens
+        domain
+        contributor {
+          publications {
+            ensLabel
+            displayName
+          }
         }
+      }
     }`));
-        return jsonData['data']['addressInfo']['hasOnboarded'];
+        return jsonData['data'];
     });
 }
 exports.default = getMirrorData;
@@ -50077,9 +50098,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
-function getRaribleData(address) {
+function getRaribleData(address, computeConfig) {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.etherumPriceInUsd) === false) {
+            throw new Error('getRaribleData: computeConfig does not contain etherumPriceInUsd');
+        }
         const promiseArray = [
             (0, utils_1.fetcher)('POST', 'https://api-mainnet.rarible.com/marketplace/api/v4/items', '', {
                 filter: {
@@ -50109,7 +50133,9 @@ function getRaribleData(address) {
         let totalAmountSold = 0;
         for (let index = 0; index < artworks.length; index++) {
             if (((_a = artworks[index]['ownership']) === null || _a === void 0 ? void 0 : _a.status) === 'FIXED_PRICE') {
-                totalAmountSold += artworks[index]['ownership']['priceEth'];
+                totalAmountSold +=
+                    artworks[index]['ownership']['priceEth'] *
+                        computeConfig.etherumPriceInUsd;
             }
             else {
                 totalCountSold -= 1;
@@ -50340,9 +50366,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("ethers/lib/utils");
 const utils_2 = require("../utils");
-function getZoraData(address) {
+function getZoraData(address, computeConfig) {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.etherumPriceInUsd) === false) {
+            throw new Error('getZoraData: computeConfig does not contain etherumPriceInUsd');
+        }
         const data = (yield (0, utils_2.gqlFetcher)('https://indexer-prod-mainnet.zora.co/v1/graphql', `query Tokens {
         Token(limit: 10000, where:{minter:{_eq:"${address.toLowerCase()}"}}){
           minter
@@ -50362,7 +50391,8 @@ function getZoraData(address) {
                 artworks[index]['owner'] ===
                     artworks[index]['auctions'][artworks[index]['auctions'].length - 1]['winner']) {
                 totalCountSold += 1;
-                totalAmountSold += parseFloat((0, utils_1.formatEther)(artworks[index]['auctions'][artworks[index]['auctions'].length - 1]['lastBidAmount']));
+                totalAmountSold +=
+                    parseFloat((0, utils_1.formatEther)(artworks[index]['auctions'][artworks[index]['auctions'].length - 1]['lastBidAmount'])) * computeConfig.etherumPriceInUsd;
             }
         }
         return {
@@ -50504,7 +50534,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.5',
+                currentVersion: '0.3.6',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -50655,7 +50685,7 @@ class Identity {
                     adaptorList.getAaveData(address, computeConfig),
                     adaptorList.getAge(address, computeConfig),
                     adaptorList.getArcxData(address),
-                    adaptorList.getAsyncartData(address),
+                    adaptorList.getAsyncartData(address, computeConfig),
                     adaptorList.getBoardroomData(address),
                     adaptorList.checkBrightId(address),
                     adaptorList.getCeloData(address),
@@ -50666,10 +50696,10 @@ class Identity {
                     adaptorList.getCyberconnectData(address),
                     adaptorList.getDeepDaoData(address, computeConfig),
                     adaptorList.addressToEns(address),
-                    adaptorList.getFoundationData(address),
+                    adaptorList.getFoundationData(address, computeConfig),
                     adaptorList.getGitcoinData(address, computeConfig),
                     adaptorList.checkIdena(address),
-                    adaptorList.getKnownOriginData(address),
+                    adaptorList.getKnownOriginData(address, computeConfig),
                     adaptorList.getMetagameData(address),
                     adaptorList.getMirrorData(address),
                     adaptorList.getPoapData(address),
@@ -50677,13 +50707,13 @@ class Identity {
                     adaptorList.getProjectGalaxyData(address),
                     adaptorList.checkPoH(address),
                     adaptorList.getRabbitholeData(address),
-                    adaptorList.getRaribleData(address),
+                    adaptorList.getRaribleData(address, computeConfig),
                     adaptorList.getRss3Data(address),
                     adaptorList.getShowtimeData(address, computeConfig),
                     adaptorList.getSuperrareData(address),
                     adaptorList.getSybilData(address, computeConfig),
                     adaptorList.resolveUnstoppableDomains(address),
-                    adaptorList.getZoraData(address),
+                    adaptorList.getZoraData(address, computeConfig),
                 ];
                 if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG) === true)
                     console.time('computeTime');

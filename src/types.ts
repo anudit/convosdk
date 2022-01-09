@@ -46,12 +46,11 @@ export type ThreadsQueryType = {
 };
 
 export type ComputeConfig = {
-  maticMainnetRpc: string;
+  polygonMainnetRpc: string;
   etherumMainnetRpc: string;
   avalancheMainnetRpc: string;
-  ethereumPriceApi: string;
-  maticPriceApi: string;
-  etherumAndMaticPriceApi: string;
+  maticPriceInUsd: number;
+  etherumPriceInUsd: number;
   deepdaoApiKey: string;
   etherscanApiKey: string;
   polygonscanApiKey: string;

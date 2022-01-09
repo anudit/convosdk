@@ -1,4 +1,5 @@
 import { formatEther } from 'ethers/lib/utils';
+import { ComputeConfig } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface QueryResult {
@@ -11,7 +12,15 @@ interface QueryResult {
   };
 }
 
-export default async function getKnownOriginData(address: string) {
+export default async function getKnownOriginData(
+  address: string,
+  computeConfig: ComputeConfig
+) {
+  if (Boolean(computeConfig?.etherumPriceInUsd) === false) {
+    throw new Error(
+      'getKnownOriginData: computeConfig does not contain etherumPriceInUsd'
+    );
+  }
   const jsonData = (await gqlFetcher(
     'https://api.thegraph.com/subgraphs/name/knownorigin/known-origin',
     `
@@ -58,7 +67,9 @@ export default async function getKnownOriginData(address: string) {
   for (let index = 0; index < artworks.length; index++) {
     const artwork = artworks[index];
     if (parseInt(artwork['totalSold']) >= 1) {
-      totalAmountSold += parseFloat(formatEther(artwork['priceInWei']));
+      totalAmountSold +=
+        parseFloat(formatEther(artwork['priceInWei'])) *
+        computeConfig.etherumPriceInUsd;
     }
   }
   return {

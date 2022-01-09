@@ -1,3 +1,4 @@
+import { ComputeConfig } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface FoundationQueryResult {
@@ -20,7 +21,16 @@ interface FoundationQueryResult {
   };
 }
 
-export default async function getFoundationData(address: string) {
+export default async function getFoundationData(
+  address: string,
+  computeConfig: ComputeConfig
+) {
+  if (Boolean(computeConfig?.etherumPriceInUsd) === false) {
+    throw new Error(
+      'getFoundationData: computeConfig does not contain etherumPriceInUsd'
+    );
+  }
+
   const resp = (await gqlFetcher(
     'https://hasura2.foundation.app/v1/graphql',
     `{
@@ -200,15 +210,16 @@ export default async function getFoundationData(address: string) {
   )) as FoundationQueryResult;
   const artworks = resp['data']['artworks'];
 
-  let totalAmountSold = 0;
   let totalCountSold = 0;
+  let totalAmountSold = 0;
   let followerCount = 0;
   let followingCount = 0;
 
   for (let index = 0; index < artworks.length; index++) {
     if (Boolean(artworks[index].lastSalePriceInETH) === true) {
-      totalAmountSold += artworks[index].lastSalePriceInETH;
       totalCountSold += 1;
+      totalAmountSold +=
+        artworks[index].lastSalePriceInETH * computeConfig.etherumPriceInUsd;
     }
     if (index === 0) {
       followerCount = artworks[index].creator.followerCount.aggregate.count;

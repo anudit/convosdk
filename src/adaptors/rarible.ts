@@ -1,3 +1,4 @@
+import { ComputeConfig } from '../types';
 import { fetcher } from '../utils';
 
 interface RaribleResult {
@@ -14,7 +15,15 @@ interface ProfileResult {
   shortUrl: string;
 }
 
-export default async function getRaribleData(address: string) {
+export default async function getRaribleData(
+  address: string,
+  computeConfig: ComputeConfig
+) {
+  if (Boolean(computeConfig?.etherumPriceInUsd) === false) {
+    throw new Error(
+      'getRaribleData: computeConfig does not contain etherumPriceInUsd'
+    );
+  }
   const promiseArray = [
     fetcher(
       'POST',
@@ -57,7 +66,9 @@ export default async function getRaribleData(address: string) {
   let totalAmountSold = 0;
   for (let index = 0; index < artworks.length; index++) {
     if (artworks[index]['ownership']?.status === 'FIXED_PRICE') {
-      totalAmountSold += artworks[index]['ownership']['priceEth'];
+      totalAmountSold +=
+        artworks[index]['ownership']['priceEth'] *
+        computeConfig.etherumPriceInUsd;
     } else {
       totalCountSold -= 1;
     }
