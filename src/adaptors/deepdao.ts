@@ -5,6 +5,11 @@ export default async function getDeepDaoData(
   address: string,
   computeConfig: ComputeConfig
 ) {
+  if (Boolean(computeConfig?.deepdaoApiKey) === false) {
+    throw new Error(
+      'computeConfig: computeConfig does not contain deepdaoApiKey'
+    );
+  }
   const json: Dictionary<Dictionary<any>> = await fetcher(
     'GET',
     `https://api.deepdao.io/v0.1/participation-score/address/${address}`,

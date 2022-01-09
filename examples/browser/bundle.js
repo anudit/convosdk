@@ -7835,7 +7835,7 @@ exports.Logger = Logger;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "networks/5.5.1";
+exports.version = "networks/5.5.2";
 
 },{}],57:[function(require,module,exports){
 "use strict";
@@ -7966,6 +7966,7 @@ var networks = {
         name: "goerli",
         _defaultProvider: ethDefaultProvider("goerli")
     },
+    kintsugi: { chainId: 1337702, name: "kintsugi" },
     // ETC (See: #351)
     classic: {
         chainId: 61,
@@ -8301,7 +8302,7 @@ exports.Description = Description;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "providers/5.5.1";
+exports.version = "providers/5.5.2";
 
 },{}],63:[function(require,module,exports){
 "use strict";
@@ -8674,10 +8675,11 @@ function bytes32ify(value) {
 function base58Encode(data) {
     return basex_1.Base58.encode((0, bytes_1.concat)([data, (0, bytes_1.hexDataSlice)((0, sha2_1.sha256)((0, sha2_1.sha256)(data)), 0, 4)]));
 }
+var matcherIpfs = new RegExp("^(ipfs):/\/(.*)$", "i");
 var matchers = [
     new RegExp("^(https):/\/(.*)$", "i"),
     new RegExp("^(data):(.*)$", "i"),
-    new RegExp("^(ipfs):/\/(.*)$", "i"),
+    matcherIpfs,
     new RegExp("^eip155:[0-9]+/(erc[0-9]+):(.*)$", "i"),
 ];
 function _parseString(result) {
@@ -8694,6 +8696,10 @@ function _parseBytes(result) {
     var offset = bignumber_1.BigNumber.from((0, bytes_1.hexDataSlice)(result, 0, 32)).toNumber();
     var length = bignumber_1.BigNumber.from((0, bytes_1.hexDataSlice)(result, offset, offset + 32)).toNumber();
     return (0, bytes_1.hexDataSlice)(result, offset + 32, offset + 32 + length);
+}
+// Trim off the ipfs:// prefix and return the default gateway URL
+function getIpfsLink(link) {
+    return "https://gateway.ipfs.io/ipfs/" + link.substring(7);
 }
 var Resolver = /** @class */ (function () {
     // The resolvedAddress is only for creating a ReverseLookup resolver
@@ -8835,11 +8841,11 @@ var Resolver = /** @class */ (function () {
     };
     Resolver.prototype.getAvatar = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var linkage, avatar, i, match, _a, selector, owner, _b, comps, addr, tokenId, tokenOwner, _c, _d, balance, _e, _f, tx, metadataUrl, _g, metadata, error_3;
+            var linkage, avatar, i, match, scheme, _a, selector, owner, _b, comps, addr, tokenId, tokenOwner, _c, _d, balance, _e, _f, tx, metadataUrl, _g, metadata, imageUrl, ipfs, error_3;
             return __generator(this, function (_h) {
                 switch (_h.label) {
                     case 0:
-                        linkage = [];
+                        linkage = [{ type: "name", content: this.name }];
                         _h.label = 1;
                     case 1:
                         _h.trys.push([1, 19, , 20]);
@@ -8857,7 +8863,8 @@ var Resolver = /** @class */ (function () {
                         if (match == null) {
                             return [3 /*break*/, 17];
                         }
-                        _a = match[1];
+                        scheme = match[1].toLowerCase();
+                        _a = scheme;
                         switch (_a) {
                             case "https": return [3 /*break*/, 4];
                             case "data": return [3 /*break*/, 5];
@@ -8874,10 +8881,10 @@ var Resolver = /** @class */ (function () {
                         return [2 /*return*/, { linkage: linkage, url: avatar }];
                     case 6:
                         linkage.push({ type: "ipfs", content: avatar });
-                        return [2 /*return*/, { linkage: linkage, url: "https://gateway.ipfs.io/ipfs/" + avatar.substring(7) }];
+                        return [2 /*return*/, { linkage: linkage, url: getIpfsLink(avatar) }];
                     case 7:
-                        selector = (match[1] === "erc721") ? "0xc87b56dd" : "0x0e89341c";
-                        linkage.push({ type: match[1], content: avatar });
+                        selector = (scheme === "erc721") ? "0xc87b56dd" : "0x0e89341c";
+                        linkage.push({ type: scheme, content: avatar });
                         _b = this._resolvedAddress;
                         if (_b) return [3 /*break*/, 9];
                         return [4 /*yield*/, this.getAddress()];
@@ -8894,7 +8901,7 @@ var Resolver = /** @class */ (function () {
                     case 10:
                         addr = _h.sent();
                         tokenId = (0, bytes_1.hexZeroPad)(bignumber_1.BigNumber.from(comps[1]).toHexString(), 32);
-                        if (!(match[1] === "erc721")) return [3 /*break*/, 12];
+                        if (!(scheme === "erc721")) return [3 /*break*/, 12];
                         _d = (_c = this.provider.formatter).callAddress;
                         return [4 /*yield*/, this.provider.call({
                                 to: addr, data: (0, bytes_1.hexConcat)(["0x6352211e", tokenId])
@@ -8907,7 +8914,7 @@ var Resolver = /** @class */ (function () {
                         linkage.push({ type: "owner", content: tokenOwner });
                         return [3 /*break*/, 14];
                     case 12:
-                        if (!(match[1] === "erc1155")) return [3 /*break*/, 14];
+                        if (!(scheme === "erc1155")) return [3 /*break*/, 14];
                         _f = (_e = bignumber_1.BigNumber).from;
                         return [4 /*yield*/, this.provider.call({
                                 to: addr, data: (0, bytes_1.hexConcat)(["0x00fdd58e", (0, bytes_1.hexZeroPad)(owner, 32), tokenId])
@@ -8933,19 +8940,34 @@ var Resolver = /** @class */ (function () {
                         }
                         linkage.push({ type: "metadata-url", content: metadataUrl });
                         // ERC-1155 allows a generic {id} in the URL
-                        if (match[1] === "erc1155") {
+                        if (scheme === "erc1155") {
                             metadataUrl = metadataUrl.replace("{id}", tokenId.substring(2));
+                            linkage.push({ type: "metadata-url-expanded", content: metadataUrl });
                         }
                         return [4 /*yield*/, (0, web_1.fetchJson)(metadataUrl)];
                     case 16:
                         metadata = _h.sent();
-                        // Pull the image URL out
-                        if (!metadata || typeof (metadata.image) !== "string" || !metadata.image.match(/^(https:\/\/|data:)/i)) {
+                        if (!metadata) {
                             return [2 /*return*/, null];
                         }
                         linkage.push({ type: "metadata", content: JSON.stringify(metadata) });
-                        linkage.push({ type: "url", content: metadata.image });
-                        return [2 /*return*/, { linkage: linkage, url: metadata.image }];
+                        imageUrl = metadata.image;
+                        if (typeof (imageUrl) !== "string") {
+                            return [2 /*return*/, null];
+                        }
+                        if (imageUrl.match(/^(https:\/\/|data:)/i)) {
+                            // Allow
+                        }
+                        else {
+                            ipfs = imageUrl.match(matcherIpfs);
+                            if (ipfs == null) {
+                                return [2 /*return*/, null];
+                            }
+                            linkage.push({ type: "url-ipfs", content: imageUrl });
+                            imageUrl = getIpfsLink(imageUrl);
+                        }
+                        linkage.push({ type: "url", content: imageUrl });
+                        return [2 /*return*/, { linkage: linkage, url: imageUrl }];
                     case 17:
                         i++;
                         return [3 /*break*/, 3];
@@ -10395,7 +10417,7 @@ var BaseProvider = /** @class */ (function (_super) {
                         if (error_9.code === logger_1.Logger.errors.CALL_EXCEPTION) {
                             return [2 /*return*/, null];
                         }
-                        return [2 /*return*/, null];
+                        throw error_9;
                     case 3: return [2 /*return*/];
                 }
             });
@@ -14465,7 +14487,7 @@ exports.WebSocketProvider = WebSocketProvider;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "random/5.5.0";
+exports.version = "random/5.5.1";
 
 },{}],81:[function(require,module,exports){
 (function (global){(function (){
@@ -14478,24 +14500,21 @@ var _version_1 = require("./_version");
 var logger = new logger_1.Logger(_version_1.version);
 // Debugging line for testing browser lib in node
 //const window = { crypto: { getRandomValues: () => { } } };
-var anyGlobal = null;
-try {
-    anyGlobal = window;
-    if (anyGlobal == null) {
-        throw new Error("try next");
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/globalThis
+function getGlobal() {
+    if (typeof self !== 'undefined') {
+        return self;
     }
+    if (typeof window !== 'undefined') {
+        return window;
+    }
+    if (typeof global !== 'undefined') {
+        return global;
+    }
+    throw new Error('unable to locate global object');
 }
-catch (error) {
-    try {
-        anyGlobal = global;
-        if (anyGlobal == null) {
-            throw new Error("try next");
-        }
-    }
-    catch (error) {
-        anyGlobal = {};
-    }
-}
+;
+var anyGlobal = getGlobal();
 var crypto = anyGlobal.crypto || anyGlobal.msCrypto;
 if (!crypto || !crypto.getRandomValues) {
     logger.warn("WARNING: Missing strong random number source");
@@ -42617,7 +42636,7 @@ module.exports = $gOPD;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "ethers/5.5.2";
+exports.version = "ethers/5.5.3";
 
 },{}],197:[function(require,module,exports){
 "use strict";
@@ -47450,15 +47469,25 @@ exports.generateNonce = generateNonce;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ParsedMessage = void 0;
-const DOMAIN = '([^/?#]*)';
-const ADDRESS = '0x[a-zA-Z0-9]{40}';
-const URI = '(([^:/?#]+):)?(//([^/?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))?';
-const DATETIME = '([0-9]+)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])[Tt]([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60)(\\.[0-9]+)?(([Zz])|([\\+|\\-]([01][0-9]|2[0-3]):[0-5][0-9]))';
-const REQUESTID = "[-._~!$&'()*+,;=:@%a-zA-Z0-9]*";
+const DOMAIN = '(?<domain>([^?#]*)) wants you to sign in with your Ethereum account:';
+const ADDRESS = '\\n(?<address>0x[a-zA-Z0-9]{40})\\n\\n';
+const STATEMENT = '((?<statement>[^\\n]+)\\n)?';
+const URI = '(([^:?#]+):)?(([^?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))';
+const URI_LINE = `\\nURI: (?<uri>${URI}?)`;
+const VERSION = '\\nVersion: (?<version>1)';
+const CHAIN_ID = '\\nChain ID: (?<chainId>[0-9]+)';
+const NONCE = '\\nNonce: (?<nonce>[a-zA-Z0-9]{8,})';
+const DATETIME = `([0-9]+)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])[Tt]([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60)(\.[0-9]+)?(([Zz])|([\+|\-]([01][0-9]|2[0-3]):[0-5][0-9]))`;
+const ISSUED_AT = `\\nIssued At: (?<issuedAt>${DATETIME})`;
+const EXPIRATION_TIME = `(\\nExpiration Time: (?<expirationTime>${DATETIME}))?`;
+const NOT_BEFORE = `(\\nNot Before: (?<notBefore>${DATETIME}))?`;
+const REQUEST_ID = "(\\nRequest ID: (?<requestId>[-._~!$&'()*+,;=:@%a-zA-Z0-9]*))?";
+const RESOURCES = `(\\nResources:(?<resources>(\\n- ${URI}?)+))?`;
+const MESSAGE = `^${DOMAIN}${ADDRESS}${STATEMENT}${URI_LINE}${VERSION}${CHAIN_ID}${NONCE}${ISSUED_AT}${EXPIRATION_TIME}${NOT_BEFORE}${REQUEST_ID}${RESOURCES}$`;
 class ParsedMessage {
     constructor(msg) {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
-        const REGEX = new RegExp(`^(?<domain>${DOMAIN})\\ wants\\ you\\ to\\ sign\\ in\\ with\\ your\\ Ethereum\\ account\\:\\n(?<address>${ADDRESS})\\n\\n((?<statement>[^\\n]+)\\n)?\\nURI\\:\\ (?<uri>${URI})\\nVersion\\:\\ (?<version>1)\\nChain\\ ID\\:\\ (?<chainId>[0-9]+)\\nNonce\\:\\ (?<nonce>[a-zA-Z0-9]{8})\\nIssued\\ At\\:\\ (?<issuedAt>${DATETIME})(\\nExpiration\\ Time\\:\\ (?<expirationTime>${DATETIME}))?(\\nNot\\ Before\\:\\ (?<notBefore>${DATETIME}))?(\\nRequest\\ ID\\:\\ (?<requestId>${REQUESTID}))?(\\nResources\\:(?<resources>(\\n-\\ ${URI})+))?$`, 'g');
+        const REGEX = new RegExp(MESSAGE, 'g');
         let match = REGEX.exec(msg);
         if (!match) {
             throw new Error('Message did not match the regular expression.');
@@ -48710,6 +48739,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const ethers_1 = require("ethers");
 function getAaveData(address, computeConfig) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.etherumMainnetRpc) === false) {
+            throw new Error('getAaveData: computeConfig does not contain etherumMainnetRpc');
+        }
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.maticMainnetRpc) === false) {
+            throw new Error('getAaveData: computeConfig does not contain maticMainnetRpc');
+        }
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.avalancheMainnetRpc) === false) {
+            throw new Error('getAaveData: computeConfig does not contain avalancheMainnetRpc');
+        }
         const providerEth = new ethers_1.ethers.providers.JsonRpcProvider(computeConfig.etherumMainnetRpc);
         const providerMatic = new ethers_1.ethers.providers.JsonRpcProvider(computeConfig.maticMainnetRpc);
         const providerAvalanche = new ethers_1.ethers.providers.JsonRpcProvider(computeConfig.avalancheMainnetRpc);
@@ -48832,18 +48870,38 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
-function getAge(address) {
+function getAge(address, computeConfig) {
     return __awaiter(this, void 0, void 0, function* () {
-        const data = yield (0, utils_1.fetcher)('GET', `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=U1XY38A3E61KRFG2DEM8JQJ1XPCNFRZ79R`);
-        if (data['result'].length > 0) {
-            const past = new Date(parseInt(data['result'][0].timeStamp) * 1000);
-            const now = new Date();
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.etherscanApiKey) === false) {
+            throw new Error('getAaveData: computeConfig does not contain etherscanApiKey');
+        }
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.polygonscanApiKey) === false) {
+            throw new Error('getAaveData: computeConfig does not contain polygonscanApiKey');
+        }
+        const promiseArray = [
+            (0, utils_1.fetcher)('GET', `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${computeConfig.etherscanApiKey}`),
+            (0, utils_1.fetcher)('GET', `https://api.polygonscan.com/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${computeConfig.polygonscanApiKey}`),
+        ];
+        const data = yield Promise.allSettled(promiseArray);
+        const now = new Date();
+        let ethereumAge = 0;
+        let polygonAge = 0;
+        if (data[0].status === 'fulfilled') {
+            const respData = data[0].value;
+            const past = new Date(parseInt(respData.result[0].timeStamp) * 1000);
             const days = Math.floor((now.getTime() - past.getTime()) / (1000 * 3600 * 24));
-            return days;
+            ethereumAge = days;
         }
-        else {
-            return 0;
+        if (data[1].status === 'fulfilled') {
+            const respData2 = data[1].value;
+            const past = new Date(parseInt(respData2.result[0].timeStamp) * 1000);
+            const days2 = Math.floor((now.getTime() - past.getTime()) / (1000 * 3600 * 24));
+            polygonAge = days2;
         }
+        return {
+            polygon: polygonAge,
+            ethereum: ethereumAge,
+        };
     });
 }
 exports.default = getAge;
@@ -49064,6 +49122,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function getCoinviseData(address, computeConfig) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.maticPriceApi) === false) {
+            throw new Error('getCoinviseData: computeConfig does not contain maticPriceApi');
+        }
         function getPoolData(tokenAddress) {
             return __awaiter(this, void 0, void 0, function* () {
                 const response = (yield (0, utils_1.gqlFetcher)('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3', `{
@@ -49301,6 +49362,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function getDeepDaoData(address, computeConfig) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.deepdaoApiKey) === false) {
+            throw new Error('computeConfig: computeConfig does not contain deepdaoApiKey');
+        }
         const json = yield (0, utils_1.fetcher)('GET', `https://api.deepdao.io/v0.1/participation-score/address/${address}`, '', {}, {
             'x-api-key': computeConfig.deepdaoApiKey,
         });
@@ -49601,6 +49665,9 @@ function getAllGitcoinData() {
 exports.getAllGitcoinData = getAllGitcoinData;
 function getGitcoinData(address, computeConfig) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.CNVSEC_ID) === false) {
+            throw new Error('getAllGitcoinData: computeConfig does not contain CNVSEC_ID');
+        }
         const json = (yield (0, utils_2.fetcher)('GET', `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=gitcoin&address=${address}`));
         return {
             funder: Boolean(json.success) === false ? false : true,
@@ -50095,6 +50162,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function getShowtimeData(address, computeConfig) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.CNVSEC_ID) === false) {
+            throw new Error('getShowtimeData: computeConfig does not contain CNVSEC_ID');
+        }
         const json = yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=1b8c&address=${address}`);
         return json;
     });
@@ -50195,6 +50265,9 @@ function getAllSybilData() {
 exports.getAllSybilData = getAllSybilData;
 function getSybilData(address, computeConfig) {
     return __awaiter(this, void 0, void 0, function* () {
+        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.CNVSEC_ID) === false) {
+            throw new Error('getSybilData: computeConfig does not contain CNVSEC_ID');
+        }
         const json = yield (0, utils_2.fetcher)('GET', `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=uniswap&address=${address}`);
         return json;
     });
@@ -50431,7 +50504,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.4',
+                currentVersion: '0.3.5',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -50580,7 +50653,7 @@ class Identity {
             if ((0, utils_2.isAddress)(address) === true) {
                 const promiseArray = [
                     adaptorList.getAaveData(address, computeConfig),
-                    adaptorList.getAge(address),
+                    adaptorList.getAge(address, computeConfig),
                     adaptorList.getArcxData(address),
                     adaptorList.getAsyncartData(address),
                     adaptorList.getBoardroomData(address),

@@ -64,6 +64,12 @@ export default async function getCoinviseData(
   address: string,
   computeConfig: ComputeConfig
 ) {
+  if (Boolean(computeConfig?.maticPriceApi) === false) {
+    throw new Error(
+      'getCoinviseData: computeConfig does not contain maticPriceApi'
+    );
+  }
+
   async function getPoolData(tokenAddress: string) {
     const response = (await gqlFetcher(
       'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
@@ -94,7 +100,7 @@ export default async function getCoinviseData(
     ),
     fetcher('GET', 'https://coinvise-prod.herokuapp.com/sends?size=1000'),
     fetcher('GET', `https://coinvise-prod.herokuapp.com/user?slug=${address}`),
-    fetcher('GET', computeConfig.maticPriceApi as string),
+    fetcher('GET', computeConfig.maticPriceApi),
   ];
   const data = await Promise.allSettled(promiseArray);
 

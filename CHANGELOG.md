@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.5
+-  Update Age Adaptor to Support Polygon Network.
+-  Improved Error Handling.
+-  Update Dependencies.
+
 ## 0.3.4
 -  Add more Identity Adaptors
 -  Expose all Adaptors at `convoinstance.omnid.adaptors.*`

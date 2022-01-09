@@ -46,13 +46,15 @@ export type ThreadsQueryType = {
 };
 
 export type ComputeConfig = {
-  maticMainnetRpc?: string;
-  etherumMainnetRpc?: string;
-  avalancheMainnetRpc?: string;
-  ethereumPriceApi?: string;
-  maticPriceApi?: string;
-  etherumAndMaticPriceApi?: string;
+  maticMainnetRpc: string;
+  etherumMainnetRpc: string;
+  avalancheMainnetRpc: string;
+  ethereumPriceApi: string;
+  maticPriceApi: string;
+  etherumAndMaticPriceApi: string;
   deepdaoApiKey: string;
+  etherscanApiKey: string;
+  polygonscanApiKey: string;
   CNVSEC_ID: string;
   DEBUG: boolean;
 };

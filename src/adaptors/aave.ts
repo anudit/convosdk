@@ -15,6 +15,22 @@ export default async function getAaveData(
   address: string,
   computeConfig: ComputeConfig
 ) {
+  if (Boolean(computeConfig?.etherumMainnetRpc) === false) {
+    throw new Error(
+      'getAaveData: computeConfig does not contain etherumMainnetRpc'
+    );
+  }
+  if (Boolean(computeConfig?.maticMainnetRpc) === false) {
+    throw new Error(
+      'getAaveData: computeConfig does not contain maticMainnetRpc'
+    );
+  }
+  if (Boolean(computeConfig?.avalancheMainnetRpc) === false) {
+    throw new Error(
+      'getAaveData: computeConfig does not contain avalancheMainnetRpc'
+    );
+  }
+
   const providerEth = new ethers.providers.JsonRpcProvider(
     computeConfig.etherumMainnetRpc
   );

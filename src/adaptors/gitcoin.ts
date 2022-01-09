@@ -27,6 +27,11 @@ export async function getGitcoinData(
   address: string,
   computeConfig: ComputeConfig
 ) {
+  if (Boolean(computeConfig?.CNVSEC_ID) === false) {
+    throw new Error(
+      'getAllGitcoinData: computeConfig does not contain CNVSEC_ID'
+    );
+  }
   const json = (await fetcher(
     'GET',
     `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=gitcoin&address=${address}`

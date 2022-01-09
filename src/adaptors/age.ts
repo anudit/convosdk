@@ -1,20 +1,63 @@
-import { Dictionary } from '../types';
+import { ComputeConfig } from '../types';
 import { fetcher } from '../utils';
 
-export default async function getAge(address: string) {
-  const data: Dictionary<Array<Dictionary<string>>> = await fetcher(
-    'GET',
-    `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=U1XY38A3E61KRFG2DEM8JQJ1XPCNFRZ79R`
-  );
+interface ScanResp {
+  status: string;
+  message: string;
+  result: Array<{ timeStamp: string }>;
+}
 
-  if (data['result'].length > 0) {
-    const past = new Date(parseInt(data['result'][0].timeStamp) * 1000);
-    const now = new Date();
+export default async function getAge(
+  address: string,
+  computeConfig: ComputeConfig
+) {
+  if (Boolean(computeConfig?.etherscanApiKey) === false) {
+    throw new Error(
+      'getAaveData: computeConfig does not contain etherscanApiKey'
+    );
+  }
+  if (Boolean(computeConfig?.polygonscanApiKey) === false) {
+    throw new Error(
+      'getAaveData: computeConfig does not contain polygonscanApiKey'
+    );
+  }
+
+  const promiseArray = [
+    fetcher(
+      'GET',
+      `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${computeConfig.etherscanApiKey}`
+    ),
+    fetcher(
+      'GET',
+      `https://api.polygonscan.com/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${computeConfig.polygonscanApiKey}`
+    ),
+  ];
+
+  const data = await Promise.allSettled(promiseArray);
+  const now = new Date();
+  let ethereumAge = 0;
+  let polygonAge = 0;
+
+  if (data[0].status === 'fulfilled') {
+    const respData = data[0].value as ScanResp;
+    const past = new Date(parseInt(respData.result[0].timeStamp) * 1000);
     const days: number = Math.floor(
       (now.getTime() - past.getTime()) / (1000 * 3600 * 24)
     );
-    return days;
-  } else {
-    return 0;
+    ethereumAge = days;
   }
+
+  if (data[1].status === 'fulfilled') {
+    const respData2 = data[1].value as ScanResp;
+    const past = new Date(parseInt(respData2.result[0].timeStamp) * 1000);
+    const days2: number = Math.floor(
+      (now.getTime() - past.getTime()) / (1000 * 3600 * 24)
+    );
+    polygonAge = days2;
+  }
+
+  return {
+    polygon: polygonAge,
+    ethereum: ethereumAge,
+  };
 }

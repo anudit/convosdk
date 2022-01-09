@@ -30,7 +30,7 @@ class Identity {
     if (isAddress(address) === true) {
       const promiseArray = [
         adaptorList.getAaveData(address, computeConfig),
-        adaptorList.getAge(address),
+        adaptorList.getAge(address, computeConfig),
         adaptorList.getArcxData(address),
         adaptorList.getAsyncartData(address),
         adaptorList.getBoardroomData(address),
