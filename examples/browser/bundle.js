@@ -48888,15 +48888,25 @@ function getAge(address, computeConfig) {
         let polygonAge = 0;
         if (data[0].status === 'fulfilled') {
             const respData = data[0].value;
-            const past = new Date(parseInt(respData.result[0].timeStamp) * 1000);
-            const days = Math.floor((now.getTime() - past.getTime()) / (1000 * 3600 * 24));
-            ethereumAge = days;
+            if (respData.result.length > 0) {
+                const past = new Date(parseInt(respData.result[0].timeStamp) * 1000);
+                const days = Math.floor((now.getTime() - past.getTime()) / (1000 * 3600 * 24));
+                ethereumAge = days;
+            }
+            else {
+                ethereumAge = 0;
+            }
         }
         if (data[1].status === 'fulfilled') {
             const respData2 = data[1].value;
-            const past = new Date(parseInt(respData2.result[0].timeStamp) * 1000);
-            const days2 = Math.floor((now.getTime() - past.getTime()) / (1000 * 3600 * 24));
-            polygonAge = days2;
+            if (respData2.result.length > 0) {
+                const past = new Date(parseInt(respData2.result[0].timeStamp) * 1000);
+                const days2 = Math.floor((now.getTime() - past.getTime()) / (1000 * 3600 * 24));
+                polygonAge = days2;
+            }
+            else {
+                polygonAge = 0;
+            }
         }
         return {
             polygon: polygonAge,
@@ -49201,14 +49211,16 @@ function getCoinviseData(address, computeConfig) {
         // 2 - sends
         let multisendCount = 0;
         let airdropCount = 0;
-        const sendsData = data[2];
-        for (let index = 0; index < sendsData.value.data.length; index++) {
-            const item = sendsData.value.data[index];
-            if (item.type === 'multisend' && item.senderAddr === address) {
-                multisendCount += 1;
-            }
-            else if (item.type === 'airdrop' && item.user_addr === address) {
-                airdropCount += 1;
+        if (data[2].status === 'fulfilled') {
+            const sendsData = data[2];
+            for (let index = 0; index < sendsData.value.data.length; index++) {
+                const item = sendsData.value.data[index];
+                if (item.type === 'multisend' && item.senderAddr === address) {
+                    multisendCount += 1;
+                }
+                else if (item.type === 'airdrop' && item.user_addr === address) {
+                    airdropCount += 1;
+                }
             }
         }
         // 3 - user
@@ -49695,9 +49707,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function checkIdena(address) {
+    var _a;
     return __awaiter(this, void 0, void 0, function* () {
-        const json = (yield (0, utils_1.fetcher)('GET', `https://api.idena.io/api/Address/${address}`));
-        return json.value.result;
+        try {
+            const json = (yield (0, utils_1.fetcher)('GET', `https://api.idena.io/api/Address/${address}`));
+            if (Boolean(json.error) === true) {
+                return false;
+            }
+            else {
+                return Boolean((_a = json === null || json === void 0 ? void 0 : json.value) === null || _a === void 0 ? void 0 : _a.result);
+            }
+        }
+        catch (error) {
+            return false;
+        }
     });
 }
 exports.default = checkIdena;
@@ -50067,20 +50090,24 @@ function getRabbitholeData(address = '') {
     var _a;
     return __awaiter(this, void 0, void 0, function* () {
         const jsonData = yield (0, utils_1.fetcher)('GET', `https://h8p3c8m7bg.execute-api.us-east-1.amazonaws.com/app/task_progress?address=${address.toLowerCase()}`);
-        const taskList = Object.keys(jsonData['taskData']['taskProgress']);
-        const tasksCompleted = [];
-        for (let index = 0; index < taskList.length; index++) {
-            const taskData = jsonData['taskData']['taskProgress'][taskList[index]];
-            if (taskData['points'] === taskData['progress']) {
-                tasksCompleted.push(taskList[index]);
+        if (jsonData.message === 'success') {
+            const tasksCompleted = [];
+            for (const task in jsonData.taskData.taskProgress) {
+                const taskData = jsonData.taskData.taskProgress[task];
+                if (taskData['redeemed'] === taskData['progress']) {
+                    tasksCompleted.push(task);
+                }
             }
+            const level = (_a = jsonData.taskData) === null || _a === void 0 ? void 0 : _a.level;
+            return {
+                level: level,
+                score: jsonData.taskData.taskProgress['score'],
+                tasksCompleted,
+            };
         }
-        const level = (_a = jsonData.taskData) === null || _a === void 0 ? void 0 : _a.level;
-        return {
-            level: level,
-            score: jsonData['taskData']['taskProgress']['score'],
-            tasksCompleted,
-        };
+        else {
+            return {};
+        }
     });
 }
 exports.default = getRabbitholeData;
@@ -50227,7 +50254,7 @@ function getSuperrareData(address) {
         const artworks = jsonData['result']['collectibles'];
         let followers = 0;
         let following = 0;
-        let username = undefined;
+        let username = null;
         if (artworks.length > 0) {
             username = artworks[0].creator.username;
             const metadata = (yield (0, utils_1.fetcher)('GET', `https://superrare.com/api/v2/user?username=${username}`));
@@ -50534,7 +50561,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.6',
+                currentVersion: '0.3.7',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };

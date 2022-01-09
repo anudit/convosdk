@@ -1,27 +1,43 @@
 import { Dictionary } from '../types';
 import { fetcher } from '../utils';
 
-export default async function getRabbitholeData(address = '') {
-  const jsonData: Dictionary<Dictionary<Dictionary<Dictionary<string>>>> =
-    await fetcher(
-      'GET',
-      `https://h8p3c8m7bg.execute-api.us-east-1.amazonaws.com/app/task_progress?address=${address.toLowerCase()}`
-    );
-
-  const taskList = Object.keys(jsonData['taskData']['taskProgress']);
-  const tasksCompleted = [];
-
-  for (let index = 0; index < taskList.length; index++) {
-    const taskData = jsonData['taskData']['taskProgress'][taskList[index]];
-    if (taskData['points'] === taskData['progress']) {
-      tasksCompleted.push(taskList[index]);
-    }
-  }
-  const level = jsonData.taskData?.level;
-
-  return {
-    level: level,
-    score: jsonData['taskData']['taskProgress']['score'],
-    tasksCompleted,
+interface RabbitholeResult {
+  message: string;
+  taskData: {
+    taskProgress: Dictionary<{
+      projectId: string;
+      progress: number;
+      redeemed: number;
+      isDisabled: boolean;
+    }>;
+    level: number;
+    score: number;
   };
+}
+
+export default async function getRabbitholeData(address = '') {
+  const jsonData: RabbitholeResult = await fetcher(
+    'GET',
+    `https://h8p3c8m7bg.execute-api.us-east-1.amazonaws.com/app/task_progress?address=${address.toLowerCase()}`
+  );
+
+  if (jsonData.message === 'success') {
+    const tasksCompleted = [];
+
+    for (const task in jsonData.taskData.taskProgress) {
+      const taskData = jsonData.taskData.taskProgress[task];
+      if (taskData['redeemed'] === taskData['progress']) {
+        tasksCompleted.push(task);
+      }
+    }
+    const level = jsonData.taskData?.level;
+
+    return {
+      level: level,
+      score: jsonData.taskData.taskProgress['score'],
+      tasksCompleted,
+    };
+  } else {
+    return {};
+  }
 }

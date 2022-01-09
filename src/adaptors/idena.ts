@@ -1,16 +1,27 @@
 import { fetcher } from '../utils';
 
 interface IdenaResult {
-  value: {
+  error?: {
+    message: string;
+  };
+  value?: {
     result: boolean;
   };
 }
 
 export default async function checkIdena(address: string) {
-  const json = (await fetcher(
-    'GET',
-    `https://api.idena.io/api/Address/${address}`
-  )) as IdenaResult;
+  try {
+    const json = (await fetcher(
+      'GET',
+      `https://api.idena.io/api/Address/${address}`
+    )) as IdenaResult;
 
-  return json.value.result;
+    if (Boolean(json.error) === true) {
+      return false;
+    } else {
+      return Boolean(json?.value?.result);
+    }
+  } catch (error) {
+    return false;
+  }
 }

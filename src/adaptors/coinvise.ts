@@ -158,14 +158,16 @@ export default async function getCoinviseData(
 
   let multisendCount = 0;
   let airdropCount = 0;
-  const sendsData = data[2] as PromiseFulfilledResult<SendsResult>;
+  if (data[2].status === 'fulfilled') {
+    const sendsData = data[2] as PromiseFulfilledResult<SendsResult>;
 
-  for (let index = 0; index < sendsData.value.data.length; index++) {
-    const item = sendsData.value.data[index];
-    if (item.type === 'multisend' && item.senderAddr === address) {
-      multisendCount += 1;
-    } else if (item.type === 'airdrop' && item.user_addr === address) {
-      airdropCount += 1;
+    for (let index = 0; index < sendsData.value.data.length; index++) {
+      const item = sendsData.value.data[index];
+      if (item.type === 'multisend' && item.senderAddr === address) {
+        multisendCount += 1;
+      } else if (item.type === 'airdrop' && item.user_addr === address) {
+        airdropCount += 1;
+      }
     }
   }
 

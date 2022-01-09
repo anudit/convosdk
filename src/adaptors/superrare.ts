@@ -67,7 +67,7 @@ export default async function getSuperrareData(address: string) {
 
   let followers = 0;
   let following = 0;
-  let username = undefined;
+  let username = null;
   if (artworks.length > 0) {
     username = artworks[0].creator.username;
     const metadata = (await fetcher(

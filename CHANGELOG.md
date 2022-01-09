@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.7
+- Improve Age, Coinvise, Idena, Rabbithold, Superrare Adaptors.
+
 ## 0.3.6
 - Move Price Calculation to Config.
 
