@@ -9,8 +9,11 @@ export async function fetcher(
   customHeaders: Dictionary<any> = {}
 ): Promise<any | ErrorType> {
   try {
-    const reqUrl: string =
-      url + (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
+    let reqUrl = url;
+    if (apikey !== '') {
+      reqUrl += (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
+    }
+
     if (requestMethod === 'GET') {
       let data = await fetch(reqUrl, {
         headers: {

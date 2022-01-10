@@ -49162,6 +49162,7 @@ function getCoinviseData(address, computeConfig) {
             (0, utils_1.fetcher)('GET', `https://coinvise-prod.herokuapp.com/user?slug=${address}`),
         ];
         const data = yield Promise.allSettled(promiseArray);
+        console.log(data);
         // 0 - social tokens
         let totalPoolCount = 0;
         let totalPoolTvl = 0;
@@ -49193,17 +49194,19 @@ function getCoinviseData(address, computeConfig) {
         let totalAmountSold = 0;
         if (data[1].status === 'fulfilled') {
             const nfts = data[1];
-            totalCountNft = nfts.value.nfts.length;
-            for (let index = 0; index < nfts.value.nfts.length; index++) {
-                const nft = nfts.value.nfts[index];
-                if (nft.sold === true) {
-                    totalCountSold += 1;
-                    if (nft.symbol === 'MATIC') {
-                        totalAmountSold +=
-                            parseFloat(nft.price) * computeConfig.maticPriceInUsd;
-                    }
-                    if (nft.symbol === 'USDC') {
-                        totalAmountSold += parseFloat(nft.price);
+            if (Object.keys(nfts.value).includes('error') === false) {
+                totalCountNft = nfts.value.nfts.length;
+                for (let index = 0; index < nfts.value.nfts.length; index++) {
+                    const nft = nfts.value.nfts[index];
+                    if (nft.sold === true) {
+                        totalCountSold += 1;
+                        if (nft.symbol === 'MATIC') {
+                            totalAmountSold +=
+                                parseFloat(nft.price) * computeConfig.maticPriceInUsd;
+                        }
+                        if (nft.symbol === 'USDC') {
+                            totalAmountSold += parseFloat(nft.price);
+                        }
                     }
                 }
             }
@@ -50604,7 +50607,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.8',
+                currentVersion: '0.3.9',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -50960,7 +50963,10 @@ const cross_fetch_1 = __importDefault(require("cross-fetch"));
 function fetcher(requestMethod, url, apikey = '', body = {}, customHeaders = {}) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const reqUrl = url + (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
+            let reqUrl = url;
+            if (apikey !== '') {
+                reqUrl += (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
+            }
             if (requestMethod === 'GET') {
                 let data = yield (0, cross_fetch_1.default)(reqUrl, {
                     headers: Object.assign({}, customHeaders),

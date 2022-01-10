@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.9
+- Improve Coinvise Adaptor
+
 ## 0.3.8
 - Add Hive.one Adaptor.
 

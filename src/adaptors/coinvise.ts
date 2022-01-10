@@ -98,6 +98,7 @@ export default async function getCoinviseData(
     fetcher('GET', `https://coinvise-prod.herokuapp.com/user?slug=${address}`),
   ];
   const data = await Promise.allSettled(promiseArray);
+  console.log(data);
 
   // 0 - social tokens
   let totalPoolCount = 0;
@@ -138,24 +139,25 @@ export default async function getCoinviseData(
   let totalAmountSold = 0;
   if (data[1].status === 'fulfilled') {
     const nfts = data[1] as PromiseFulfilledResult<NftResult>;
-    totalCountNft = nfts.value.nfts.length;
-    for (let index = 0; index < nfts.value.nfts.length; index++) {
-      const nft = nfts.value.nfts[index];
-      if (nft.sold === true) {
-        totalCountSold += 1;
-        if (nft.symbol === 'MATIC') {
-          totalAmountSold +=
-            parseFloat(nft.price) * computeConfig.maticPriceInUsd;
-        }
-        if (nft.symbol === 'USDC') {
-          totalAmountSold += parseFloat(nft.price);
+    if (Object.keys(nfts.value).includes('error') === false) {
+      totalCountNft = nfts.value.nfts.length;
+      for (let index = 0; index < nfts.value.nfts.length; index++) {
+        const nft = nfts.value.nfts[index];
+        if (nft.sold === true) {
+          totalCountSold += 1;
+          if (nft.symbol === 'MATIC') {
+            totalAmountSold +=
+              parseFloat(nft.price) * computeConfig.maticPriceInUsd;
+          }
+          if (nft.symbol === 'USDC') {
+            totalAmountSold += parseFloat(nft.price);
+          }
         }
       }
     }
   }
 
   // 2 - sends
-
   let multisendCount = 0;
   let airdropCount = 0;
   if (data[2].status === 'fulfilled') {
