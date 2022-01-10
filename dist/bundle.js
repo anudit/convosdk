@@ -49348,9 +49348,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function getCyberconnectData(address) {
     return __awaiter(this, void 0, void 0, function* () {
-        const data = yield (0, utils_1.gqlFetcher)('https://api.cybertino.io/connect/', `query {
+        const data = yield (0, utils_1.gqlFetcher)('https://api.cybertino.io/connect/', `{
       identity(address: "${address.toString()}") {
-        displayName
         address
         followingCount
         followerCount
@@ -50141,7 +50140,8 @@ function getRabbitholeData(address = '') {
             const tasksCompleted = [];
             for (const task in jsonData.taskData.taskProgress) {
                 const taskData = jsonData.taskData.taskProgress[task];
-                if (taskData['redeemed'] === taskData['progress']) {
+                if (taskData['redeemed'] === taskData['progress'] &&
+                    taskData['redeemed'] != 0) {
                     tasksCompleted.push(task);
                 }
             }
@@ -50608,7 +50608,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.11',
+                currentVersion: '0.3.12',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };

@@ -1,15 +1,18 @@
 # Changelog
 
+## 0.3.12
+- Update RabbitHole, CyberConnect Adaptors.
+
 ## 0.3.11
 - Improve Omnid's return type.
 - Update SIWE.
 
 ## 0.3.10
 - Improve API key detection.
-- Improve Coinvise Adaptor
+- Improve Coinvise Adaptor.
 
 ## 0.3.9
-- Improve Coinvise Adaptor
+- Improve Coinvise Adaptor.
 
 ## 0.3.8
 - Add Hive.one Adaptor.

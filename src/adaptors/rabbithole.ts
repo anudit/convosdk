@@ -26,7 +26,10 @@ export default async function getRabbitholeData(address = '') {
 
     for (const task in jsonData.taskData.taskProgress) {
       const taskData = jsonData.taskData.taskProgress[task];
-      if (taskData['redeemed'] === taskData['progress']) {
+      if (
+        taskData['redeemed'] === taskData['progress'] &&
+        taskData['redeemed'] != 0
+      ) {
         tasksCompleted.push(task);
       }
     }
