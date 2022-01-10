@@ -10,7 +10,7 @@ export async function fetcher(
 ): Promise<any | ErrorType> {
   try {
     let reqUrl = url;
-    if (apikey !== '') {
+    if (apikey != '') {
       reqUrl += (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
     }
 

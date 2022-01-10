@@ -98,7 +98,6 @@ export default async function getCoinviseData(
     fetcher('GET', `https://coinvise-prod.herokuapp.com/user?slug=${address}`),
   ];
   const data = await Promise.allSettled(promiseArray);
-  console.log(data);
 
   // 0 - social tokens
   let totalPoolCount = 0;
@@ -178,8 +177,10 @@ export default async function getCoinviseData(
   let following = 0;
   if (data[3].status === 'fulfilled') {
     const userData = data[3] as PromiseFulfilledResult<UserResult>;
-    followers = userData.value.user.followers;
-    following = userData.value.user.following;
+    if (Object.keys(userData.value).includes('code') === false) {
+      followers = userData.value.user.followers;
+      following = userData.value.user.following;
+    }
   }
 
   return {

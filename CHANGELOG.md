@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.10
+- Improve API key detection.
+- Improve Coinvise Adaptor
+
 ## 0.3.9
 - Improve Coinvise Adaptor
 

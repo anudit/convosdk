@@ -49162,7 +49162,6 @@ function getCoinviseData(address, computeConfig) {
             (0, utils_1.fetcher)('GET', `https://coinvise-prod.herokuapp.com/user?slug=${address}`),
         ];
         const data = yield Promise.allSettled(promiseArray);
-        console.log(data);
         // 0 - social tokens
         let totalPoolCount = 0;
         let totalPoolTvl = 0;
@@ -49231,8 +49230,10 @@ function getCoinviseData(address, computeConfig) {
         let following = 0;
         if (data[3].status === 'fulfilled') {
             const userData = data[3];
-            followers = userData.value.user.followers;
-            following = userData.value.user.following;
+            if (Object.keys(userData.value).includes('code') === false) {
+                followers = userData.value.user.followers;
+                following = userData.value.user.following;
+            }
         }
         return {
             tokensCreated: totalTokens,
@@ -50607,7 +50608,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.9',
+                currentVersion: '0.3.10',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -50964,7 +50965,7 @@ function fetcher(requestMethod, url, apikey = '', body = {}, customHeaders = {})
     return __awaiter(this, void 0, void 0, function* () {
         try {
             let reqUrl = url;
-            if (apikey !== '') {
+            if (apikey != '') {
                 reqUrl += (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
             }
             if (requestMethod === 'GET') {
