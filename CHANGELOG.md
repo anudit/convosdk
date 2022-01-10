@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.8
+- Add Hive.one Adaptor.
+
 ## 0.3.7
 - Improve Age, Coinvise, Idena, Rabbithold, Superrare Adaptors.
 

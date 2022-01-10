@@ -14,6 +14,7 @@ export { default as getDeepDaoData } from './deepdao';
 export { default as addressToEns } from './ens';
 export { default as getFoundationData } from './foundation';
 export { getAllGitcoinData, getGitcoinData } from './gitcoin';
+export { default as getHiveOneData } from './hiveone';
 export { default as checkIdena } from './idena';
 export { default as getKnownOriginData } from './knownorigin';
 export { default as getMetagameData } from './metagame';

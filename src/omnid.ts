@@ -45,6 +45,7 @@ class Identity {
         adaptorList.addressToEns(address),
         adaptorList.getFoundationData(address, computeConfig),
         adaptorList.getGitcoinData(address, computeConfig),
+        adaptorList.getHiveOneData(address, computeConfig),
         adaptorList.checkIdena(address),
         adaptorList.getKnownOriginData(address, computeConfig),
         adaptorList.getMetagameData(address),

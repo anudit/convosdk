@@ -6,7 +6,7 @@
 ![bundlephobia/minzip](https://badgen.net/bundlephobia/minzip/@theconvospace/sdk)
 ![bundlephobia/min/](https://badgen.net/bundlephobia/min/@theconvospace/sdk)
 
-SDK containing all the Hooks and Components required to build on [theconvo.space](https://theconvo.space)
+SDK containing all the functions you'll need to build on [theconvo.space](https://theconvo.space)
 
 ## Installation
 
