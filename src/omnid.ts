@@ -67,9 +67,43 @@ class Identity {
       const resp: Array<PromiseSettledResult<any>> = await Promise.allSettled(
         promiseArray
       );
+      const respDict = {
+        aave: resp[0],
+        age: resp[1],
+        arcx: resp[2],
+        asyncart: resp[3],
+        boardroom: resp[4],
+        brightid: resp[5],
+        celo: resp[6],
+        coinvise: resp[7],
+        context: resp[8],
+        cryptoscamdb: resp[9],
+        cyberconnect: resp[10],
+        deepdao: resp[11],
+        ens: resp[12],
+        foundation: resp[13],
+        gitcoin: resp[14],
+        hiveone: resp[15],
+        idena: resp[16],
+        knownorigin: resp[17],
+        metagame: resp[18],
+        mirror: resp[19],
+        poap: resp[20],
+        polygon: resp[21],
+        projectgalaxy: resp[22],
+        poh: resp[23],
+        rabbithole: resp[24],
+        rarible: resp[25],
+        rss3: resp[26],
+        showtime: resp[27],
+        superrare: resp[28],
+        uniswap: resp[29],
+        unstoppable: resp[30],
+        zora: resp[31],
+      };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');
-      return resp;
+      return respDict;
     } else {
       throw new Error('Not a Valid Ethereum Address');
     }

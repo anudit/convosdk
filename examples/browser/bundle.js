@@ -47469,21 +47469,21 @@ exports.generateNonce = generateNonce;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ParsedMessage = void 0;
-const DOMAIN = '(?<domain>([^?#]*)) wants you to sign in with your Ethereum account:';
-const ADDRESS = '\\n(?<address>0x[a-zA-Z0-9]{40})\\n\\n';
-const STATEMENT = '((?<statement>[^\\n]+)\\n)?';
+const DOMAIN = '^(?<domain>([^?#]*)) wants you to sign in with your Ethereum account:\\n';
+const ADDRESS = '(?<address>0x[a-zA-Z0-9]{40})\\n\\n';
+const STATEMENT = '((?<statement>[^\\n]+)\\n)?\\n';
 const URI = '(([^:?#]+):)?(([^?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))';
-const URI_LINE = `\\nURI: (?<uri>${URI}?)`;
-const VERSION = '\\nVersion: (?<version>1)';
-const CHAIN_ID = '\\nChain ID: (?<chainId>[0-9]+)';
-const NONCE = '\\nNonce: (?<nonce>[a-zA-Z0-9]{8,})';
+const URI_LINE = `URI: (?<uri>${URI}?)\\n`;
+const VERSION = 'Version: (?<version>1)\\n';
+const CHAIN_ID = 'Chain ID: (?<chainId>[0-9]+)\\n';
+const NONCE = 'Nonce: (?<nonce>[a-zA-Z0-9]{8,})\\n';
 const DATETIME = `([0-9]+)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])[Tt]([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60)(\.[0-9]+)?(([Zz])|([\+|\-]([01][0-9]|2[0-3]):[0-5][0-9]))`;
-const ISSUED_AT = `\\nIssued At: (?<issuedAt>${DATETIME})`;
+const ISSUED_AT = `Issued At: (?<issuedAt>${DATETIME})`;
 const EXPIRATION_TIME = `(\\nExpiration Time: (?<expirationTime>${DATETIME}))?`;
 const NOT_BEFORE = `(\\nNot Before: (?<notBefore>${DATETIME}))?`;
 const REQUEST_ID = "(\\nRequest ID: (?<requestId>[-._~!$&'()*+,;=:@%a-zA-Z0-9]*))?";
-const RESOURCES = `(\\nResources:(?<resources>(\\n- ${URI}?)+))?`;
-const MESSAGE = `^${DOMAIN}${ADDRESS}${STATEMENT}${URI_LINE}${VERSION}${CHAIN_ID}${NONCE}${ISSUED_AT}${EXPIRATION_TIME}${NOT_BEFORE}${REQUEST_ID}${RESOURCES}$`;
+const RESOURCES = `(\\nResources:(?<resources>(\\n- ${URI}?)+))?$`;
+const MESSAGE = `${DOMAIN}${ADDRESS}${STATEMENT}${URI_LINE}${VERSION}${CHAIN_ID}${NONCE}${ISSUED_AT}${EXPIRATION_TIME}${NOT_BEFORE}${REQUEST_ID}${RESOURCES}`;
 class ParsedMessage {
     constructor(msg) {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
@@ -50608,7 +50608,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.9',
+                currentVersion: '0.3.11',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -50793,9 +50793,43 @@ class Identity {
                 if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG) === true)
                     console.time('computeTime');
                 const resp = yield Promise.allSettled(promiseArray);
+                const respDict = {
+                    aave: resp[0],
+                    age: resp[1],
+                    arcx: resp[2],
+                    asyncart: resp[3],
+                    boardroom: resp[4],
+                    brightid: resp[5],
+                    celo: resp[6],
+                    coinvise: resp[7],
+                    context: resp[8],
+                    cryptoscamdb: resp[9],
+                    cyberconnect: resp[10],
+                    deepdao: resp[11],
+                    ens: resp[12],
+                    foundation: resp[13],
+                    gitcoin: resp[14],
+                    hiveone: resp[15],
+                    idena: resp[16],
+                    knownorigin: resp[17],
+                    metagame: resp[18],
+                    mirror: resp[19],
+                    poap: resp[20],
+                    polygon: resp[21],
+                    projectgalaxy: resp[22],
+                    poh: resp[23],
+                    rabbithole: resp[24],
+                    rarible: resp[25],
+                    rss3: resp[26],
+                    showtime: resp[27],
+                    superrare: resp[28],
+                    uniswap: resp[29],
+                    unstoppable: resp[30],
+                    zora: resp[31],
+                };
                 if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG) === true)
                     console.timeEnd('computeTime');
-                return resp;
+                return respDict;
             }
             else {
                 throw new Error('Not a Valid Ethereum Address');

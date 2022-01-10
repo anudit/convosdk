@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.11
+- Improve Omnid's return type.
+- Update SIWE.
+
 ## 0.3.10
 - Improve API key detection.
 - Improve Coinvise Adaptor

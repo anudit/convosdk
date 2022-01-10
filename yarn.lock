@@ -2879,10 +2879,10 @@ simple-concat@^1.0.0:
   resolved "https://registry.yarnpkg.com/simple-concat/-/simple-concat-1.0.1.tgz#f46976082ba35c2263f1c8ab5edfe26c41c9552f"
   integrity sha512-cSFtAPtRhljv69IK0hTVZQ+OfE9nePi/rtJmw5UjHeVyVroEqJXP1sFztKUy1qU+xvz3u/sfYJLa947b7nAN2Q==
 
-siwe@^0.1.3:
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/siwe/-/siwe-0.1.3.tgz#a5e42b3830faf240dc49db679ab5b5b26af1310b"
-  integrity sha512-uPB3bMOFJ0Jt7YZzynwe+zegj5ljcvnteWG2JWYYyhQ+Pt3LVOjO9Z8C0p9U8jv9Hoq0IOlTl8sNubdB7aJMqg==
+siwe@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/siwe/-/siwe-0.1.4.tgz#4cce181134001a3829506683a659f3dc861586b7"
+  integrity sha512-FI5LsUdoB/hJiMs4REqBOsOXRQrylIm1LyJuNYbVvTUd9oVzr75NhtIYLITmwwceN8ZX/TGe4kL4UQ2BZOiXOg==
   dependencies:
     "@stablelib/random" "^1.0.1"
     apg-js "^4.1.1"
