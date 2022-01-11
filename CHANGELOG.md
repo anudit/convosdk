@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.13
+- Improved Error Handling of Fetcher.
+- Update Dependencies
+
 ## 0.3.12
 - Update RabbitHole, CyberConnect Adaptors.
 

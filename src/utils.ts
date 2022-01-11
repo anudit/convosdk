@@ -15,19 +15,28 @@ export async function fetcher(
     }
 
     if (requestMethod === 'GET') {
-      let data = await fetch(reqUrl, {
+      const response = await fetch(reqUrl, {
         headers: {
           ...customHeaders,
         },
       });
-      data = await data.json();
-      return data;
+
+      if (
+        response.ok === true &&
+        response.status >= 200 &&
+        response.status < 300
+      ) {
+        const data = await response.json();
+        return data;
+      } else {
+        return {};
+      }
     } else if (
       requestMethod === 'POST' ||
       requestMethod === 'UPDATE' ||
       requestMethod === 'DELETE'
     ) {
-      let data = await fetch(reqUrl, {
+      const response = await fetch(reqUrl, {
         method: requestMethod,
         body: JSON.stringify(body),
         headers: {
@@ -35,8 +44,16 @@ export async function fetcher(
           'Content-Type': 'application/json',
         },
       });
-      data = await data.json();
-      return data;
+      if (
+        response.ok === true &&
+        response.status >= 200 &&
+        response.status < 300
+      ) {
+        const data = await response.json();
+        return data;
+      } else {
+        return {};
+      }
     }
   } catch (error) {
     console.error(error);

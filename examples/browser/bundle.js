@@ -50608,7 +50608,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.12',
+                currentVersion: '0.3.13',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -51003,22 +51003,36 @@ function fetcher(requestMethod, url, apikey = '', body = {}, customHeaders = {})
                 reqUrl += (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
             }
             if (requestMethod === 'GET') {
-                let data = yield (0, cross_fetch_1.default)(reqUrl, {
+                const response = yield (0, cross_fetch_1.default)(reqUrl, {
                     headers: Object.assign({}, customHeaders),
                 });
-                data = yield data.json();
-                return data;
+                if (response.ok === true &&
+                    response.status >= 200 &&
+                    response.status < 300) {
+                    const data = yield response.json();
+                    return data;
+                }
+                else {
+                    return {};
+                }
             }
             else if (requestMethod === 'POST' ||
                 requestMethod === 'UPDATE' ||
                 requestMethod === 'DELETE') {
-                let data = yield (0, cross_fetch_1.default)(reqUrl, {
+                const response = yield (0, cross_fetch_1.default)(reqUrl, {
                     method: requestMethod,
                     body: JSON.stringify(body),
                     headers: Object.assign(Object.assign({}, customHeaders), { 'Content-Type': 'application/json' }),
                 });
-                data = yield data.json();
-                return data;
+                if (response.ok === true &&
+                    response.status >= 200 &&
+                    response.status < 300) {
+                    const data = yield response.json();
+                    return data;
+                }
+                else {
+                    return {};
+                }
             }
         }
         catch (error) {
