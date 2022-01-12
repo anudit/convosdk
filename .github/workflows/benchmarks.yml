@@ -23,6 +23,8 @@ jobs:
       - name: Install Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
+      - name: Build Package
+        run: yarn build
       - name: Run Benchmarks
         env:
           DEEPDAO_API_KEY: ${{ secrets.DEEPDAO_API_KEY }}
