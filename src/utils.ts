@@ -1,5 +1,6 @@
 import fetch from 'cross-fetch';
 import { Dictionary, ErrorType } from './types';
+import AbortController from 'abort-controller';
 
 export async function fetcher(
   requestMethod: string,
@@ -8,6 +9,11 @@ export async function fetcher(
   body: Dictionary<any> = {},
   customHeaders: Dictionary<any> = {}
 ): Promise<any | ErrorType> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => {
+    controller.abort();
+  }, 10000);
+
   try {
     let reqUrl = url;
     if (apikey != '') {
@@ -19,6 +25,7 @@ export async function fetcher(
         headers: {
           ...customHeaders,
         },
+        signal: controller.signal,
       });
 
       if (
@@ -43,6 +50,7 @@ export async function fetcher(
           ...customHeaders,
           'Content-Type': 'application/json',
         },
+        signal: controller.signal,
       });
       if (
         response.ok === true &&
@@ -58,6 +66,8 @@ export async function fetcher(
   } catch (error) {
     console.error(error);
     return { error };
+  } finally {
+    clearTimeout(timeout);
   }
 }
 
@@ -74,6 +84,11 @@ export async function gqlFetcher(
   url: string,
   query: string
 ): Promise<Dictionary<any> | ErrorType> {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => {
+    controller.abort();
+  }, 5000);
+
   try {
     const req = await fetch(url, {
       method: 'POST',
@@ -84,10 +99,13 @@ export async function gqlFetcher(
         query,
         variables: {},
       }),
+      signal: controller.signal,
     });
     return await req.json();
   } catch (error) {
     console.error(error);
     return { error };
+  } finally {
+    clearTimeout(timeout);
   }
 }

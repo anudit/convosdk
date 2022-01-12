@@ -57,3 +57,17 @@ export type ComputeConfig = {
   CNVSEC_ID: string;
   DEBUG: boolean;
 };
+
+export type AdaptorFunctionParamsType = {
+  address: string;
+};
+export type AdaptorFunctionParamsWithConfigType = {
+  address: string;
+  computeConfig: ComputeConfig;
+};
+
+export type AdaptorFunctionType = (address: string) => Promise<any>;
+export type AdaptorFunctionWithConfigType = (
+  address: string,
+  computeConfig: ComputeConfig
+) => Promise<any>;

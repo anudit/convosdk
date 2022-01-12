@@ -1,5 +1,10 @@
 import { fetcher } from './utils';
-import { ComputeConfig, ErrorType } from './types';
+import {
+  ComputeConfig,
+  ErrorType,
+  AdaptorFunctionType,
+  AdaptorFunctionWithConfigType,
+} from './types';
 import * as adaptorList from './adaptors';
 import { isAddress } from 'ethers/lib/utils';
 
@@ -13,6 +18,28 @@ class Identity {
     this.node = node;
     return this;
   }
+
+  timeit = async (
+    callback: AdaptorFunctionType,
+    params: [address: string],
+    debug = false
+  ) => {
+    if (Boolean(debug) == true) console.time(callback.name);
+    const resp = await callback.apply(this, params);
+    if (Boolean(debug) == true) console.timeEnd(callback.name);
+    return resp;
+  };
+
+  timeitWithConfig = async (
+    callback: AdaptorFunctionWithConfigType,
+    params: [address: string, computeConfig: ComputeConfig],
+    debug = false
+  ) => {
+    if (Boolean(debug) == true) console.time(callback.name);
+    const resp = await callback.apply(this, params);
+    if (Boolean(debug) == true) console.timeEnd(callback.name);
+    return resp;
+  };
 
   getTrustScore = async (address: string): Promise<any | ErrorType> => {
     return await fetcher(
@@ -29,39 +56,131 @@ class Identity {
   ): Promise<any | ErrorType> => {
     if (isAddress(address) === true) {
       const promiseArray = [
-        adaptorList.getAaveData(address, computeConfig),
-        adaptorList.getAge(address, computeConfig),
-        adaptorList.getArcxData(address),
-        adaptorList.getAsyncartData(address, computeConfig),
-        adaptorList.getBoardroomData(address),
-        adaptorList.checkBrightId(address),
-        adaptorList.getCeloData(address),
-        adaptorList.getCoinviseData(address, computeConfig),
-        adaptorList.getContextData(address),
-        // adaptorList.getCoordinapeData(address),
-        adaptorList.getCryptoscamdbData(address),
-        adaptorList.getCyberconnectData(address),
-        adaptorList.getDeepDaoData(address, computeConfig),
-        adaptorList.addressToEns(address),
-        adaptorList.getFoundationData(address, computeConfig),
-        adaptorList.getGitcoinData(address, computeConfig),
-        adaptorList.getHiveOneData(address, computeConfig),
-        adaptorList.checkIdena(address),
-        adaptorList.getKnownOriginData(address, computeConfig),
-        adaptorList.getMetagameData(address),
-        adaptorList.getMirrorData(address),
-        adaptorList.getPoapData(address),
-        adaptorList.getPolygonData(address),
-        adaptorList.getProjectGalaxyData(address),
-        adaptorList.checkPoH(address),
-        adaptorList.getRabbitholeData(address),
-        adaptorList.getRaribleData(address, computeConfig),
-        adaptorList.getRss3Data(address),
-        adaptorList.getShowtimeData(address, computeConfig),
-        adaptorList.getSuperrareData(address),
-        adaptorList.getSybilData(address, computeConfig),
-        adaptorList.resolveUnstoppableDomains(address),
-        adaptorList.getZoraData(address, computeConfig),
+        this.timeitWithConfig(
+          adaptorList.getAaveData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeitWithConfig(
+          adaptorList.getAge,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(adaptorList.getArcxData, [address], computeConfig?.DEBUG),
+        this.timeitWithConfig(
+          adaptorList.getAsyncartData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(
+          adaptorList.getBoardroomData,
+          [address],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(adaptorList.checkBrightId, [address], computeConfig?.DEBUG),
+        this.timeit(adaptorList.getCeloData, [address], computeConfig?.DEBUG),
+        this.timeitWithConfig(
+          adaptorList.getCoinviseData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(
+          adaptorList.getContextData,
+          [address],
+          computeConfig?.DEBUG
+        ),
+        // timeit[adaptorList.getCoordinapeData(address)],
+        this.timeit(
+          adaptorList.getCryptoscamdbData,
+          [address],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(
+          adaptorList.getCyberconnectData,
+          [address],
+          computeConfig?.DEBUG
+        ),
+        this.timeitWithConfig(
+          adaptorList.getDeepDaoData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(adaptorList.addressToEns, [address], computeConfig?.DEBUG),
+        this.timeitWithConfig(
+          adaptorList.getFoundationData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeitWithConfig(
+          adaptorList.getGitcoinData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeitWithConfig(
+          adaptorList.getHiveOneData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(adaptorList.checkIdena, [address], computeConfig?.DEBUG),
+        this.timeitWithConfig(
+          adaptorList.getKnownOriginData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(
+          adaptorList.getMetagameData,
+          [address],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(adaptorList.getMirrorData, [address], computeConfig?.DEBUG),
+        this.timeit(adaptorList.getPoapData, [address], computeConfig?.DEBUG),
+        this.timeit(
+          adaptorList.getPolygonData,
+          [address],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(
+          adaptorList.getProjectGalaxyData,
+          [address],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(adaptorList.checkPoH, [address], computeConfig?.DEBUG),
+        this.timeit(
+          adaptorList.getRabbitholeData,
+          [address],
+          computeConfig?.DEBUG
+        ),
+        this.timeitWithConfig(
+          adaptorList.getRaribleData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(adaptorList.getRss3Data, [address], computeConfig?.DEBUG),
+        this.timeitWithConfig(
+          adaptorList.getShowtimeData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(
+          adaptorList.getSuperrareData,
+          [address],
+          computeConfig?.DEBUG
+        ),
+        this.timeitWithConfig(
+          adaptorList.getSybilData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
+        this.timeit(
+          adaptorList.resolveUnstoppableDomains,
+          [address],
+          computeConfig?.DEBUG
+        ),
+        this.timeitWithConfig(
+          adaptorList.getZoraData,
+          [address, computeConfig],
+          computeConfig?.DEBUG
+        ),
       ];
       if (Boolean(computeConfig?.DEBUG) === true) console.time('computeTime');
       const resp: Array<PromiseSettledResult<any>> = await Promise.allSettled(

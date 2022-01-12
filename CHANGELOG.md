@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.14
+- Update Superrare, Coinvise, Celo Adaptors.
+- Add inline Debuging.
+- Add AbortController.
+- Add Benchmarking to better analyse adaptors.
+
+## 0.3.13
+- Improved Error Handling of Fetcher.
+- Update Dependencies
+
 ## 0.3.13
 - Improved Error Handling of Fetcher.
 - Update Dependencies
