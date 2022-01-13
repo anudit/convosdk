@@ -12,7 +12,7 @@ export async function fetcher(
   const controller = new AbortController();
   const timeout = setTimeout(() => {
     controller.abort();
-  }, 10000);
+  }, 8000);
 
   try {
     let reqUrl = url;
@@ -82,7 +82,8 @@ export function encodeQuery(
 
 export async function gqlFetcher(
   url: string,
-  query: string
+  query: string,
+  variables: Dictionary<any> = {}
 ): Promise<Dictionary<any> | ErrorType> {
   const controller = new AbortController();
   const timeout = setTimeout(() => {
@@ -97,7 +98,7 @@ export async function gqlFetcher(
       },
       body: JSON.stringify({
         query,
-        variables: {},
+        variables,
       }),
       signal: controller.signal,
     });

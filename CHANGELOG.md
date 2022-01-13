@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.15
+- Add Support for Forta Alerts.
+
 ## 0.3.14
 - Update Superrare, Coinvise, Celo Adaptors.
 - Add inline Debuging.

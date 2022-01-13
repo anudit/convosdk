@@ -12,6 +12,7 @@ export { default as getCryptoscamdbData } from './cryptoscamdb';
 export { default as getCyberconnectData } from './cyberconnect';
 export { default as getDeepDaoData } from './deepdao';
 export { default as addressToEns } from './ens';
+export { default as getFortaData } from './forta';
 export { default as getFoundationData } from './foundation';
 export { getAllGitcoinData, getGitcoinData } from './gitcoin';
 export { default as getHiveOneData } from './hiveone';

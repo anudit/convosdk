@@ -136,7 +136,7 @@ async function tests() {
     await runBenchmark([
         { fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getAge, withConfig: true },
-        { fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false },
+        // { fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getBoardroomData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false },
@@ -148,6 +148,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getCyberconnectData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getDeepDaoData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.addressToEns, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getFortaData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getFoundationData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getGitcoinData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getHiveOneData, withConfig: true },
@@ -167,6 +168,9 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getSybilData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true },
+    ])
+
+    await runBenchmark([
         { fn: convoInstance.omnid.computeTrustScore, withConfig: true },
     ])
 
