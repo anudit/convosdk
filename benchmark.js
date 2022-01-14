@@ -211,6 +211,8 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true },
     ])
 
+    runBenchmarkManual();
+
 }
 
 tests();
