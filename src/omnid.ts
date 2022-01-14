@@ -19,7 +19,7 @@ class Identity {
     return this;
   }
 
-  timeit = async (
+  #timeit = async (
     callback: AdaptorFunctionType,
     params: [address: string],
     debug = false
@@ -30,7 +30,7 @@ class Identity {
     return resp;
   };
 
-  timeitWithConfig = async (
+  #timeitWithConfig = async (
     callback: AdaptorFunctionWithConfigType,
     params: [address: string, computeConfig: ComputeConfig],
     debug = false
@@ -39,6 +39,15 @@ class Identity {
     const resp = await callback.apply(this, params);
     if (Boolean(debug) == true) console.timeEnd(callback.name);
     return resp;
+  };
+
+  #disabledPromise = async () => {
+    const resp = new Promise((res) =>
+      setTimeout(() => {
+        res({ disabled: true });
+      }, 0)
+    );
+    return await resp;
   };
 
   getTrustScore = async (address: string): Promise<any | ErrorType> => {
@@ -52,136 +61,245 @@ class Identity {
 
   computeTrustScore = async (
     address: string,
-    computeConfig: ComputeConfig
+    computeConfig: ComputeConfig,
+    disabledAdaptors: Array<string> = []
   ): Promise<any | ErrorType> => {
     if (isAddress(address) === true) {
       const promiseArray = [
-        this.timeitWithConfig(
-          adaptorList.getAaveData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        this.timeitWithConfig(
-          adaptorList.getAge,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        // this.timeit(adaptorList.getArcxData, [address], computeConfig?.DEBUG),
-        this.timeitWithConfig(
-          adaptorList.getAsyncartData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(
-          adaptorList.getBoardroomData,
-          [address],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(adaptorList.checkBrightId, [address], computeConfig?.DEBUG),
-        this.timeit(adaptorList.getCeloData, [address], computeConfig?.DEBUG),
-        this.timeitWithConfig(
-          adaptorList.getCoinviseData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(
-          adaptorList.getContextData,
-          [address],
-          computeConfig?.DEBUG
-        ),
-        // timeit[adaptorList.getCoordinapeData(address)],
-        this.timeit(
-          adaptorList.getCryptoscamdbData,
-          [address],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(
-          adaptorList.getCyberconnectData,
-          [address],
-          computeConfig?.DEBUG
-        ),
-        this.timeitWithConfig(
-          adaptorList.getDeepDaoData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(adaptorList.addressToEns, [address], computeConfig?.DEBUG),
-        this.timeit(adaptorList.getFortaData, [address], computeConfig?.DEBUG),
-        this.timeitWithConfig(
-          adaptorList.getFoundationData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        this.timeitWithConfig(
-          adaptorList.getGitcoinData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        this.timeitWithConfig(
-          adaptorList.getHiveOneData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(adaptorList.checkIdena, [address], computeConfig?.DEBUG),
-        this.timeitWithConfig(
-          adaptorList.getKnownOriginData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(
-          adaptorList.getMetagameData,
-          [address],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(adaptorList.getMirrorData, [address], computeConfig?.DEBUG),
-        this.timeit(adaptorList.getPoapData, [address], computeConfig?.DEBUG),
-        this.timeit(
-          adaptorList.getPolygonData,
-          [address],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(
-          adaptorList.getProjectGalaxyData,
-          [address],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(adaptorList.checkPoH, [address], computeConfig?.DEBUG),
-        this.timeit(
-          adaptorList.getRabbitholeData,
-          [address],
-          computeConfig?.DEBUG
-        ),
-        this.timeitWithConfig(
-          adaptorList.getRaribleData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(adaptorList.getRss3Data, [address], computeConfig?.DEBUG),
-        this.timeitWithConfig(
-          adaptorList.getShowtimeData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(
-          adaptorList.getSuperrareData,
-          [address],
-          computeConfig?.DEBUG
-        ),
-        this.timeitWithConfig(
-          adaptorList.getSybilData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
-        this.timeit(
-          adaptorList.resolveUnstoppableDomains,
-          [address],
-          computeConfig?.DEBUG
-        ),
-        this.timeitWithConfig(
-          adaptorList.getZoraData,
-          [address, computeConfig],
-          computeConfig?.DEBUG
-        ),
+        disabledAdaptors.includes('aave')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getAaveData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('age')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getAge,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('arcx')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getArcxData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('asyncart')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getAsyncartData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('boardroom')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getBoardroomData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('brightid')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.checkBrightId,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('celo')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getCeloData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('coinvise')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getCoinviseData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('context')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getContextData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('coordinape')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getCoordinapeData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('cryptoscamdb')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getCryptoscamdbData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('cyberconnect')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getCyberconnectData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('deepdao')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getDeepDaoData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('ens')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.addressToEns,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('forta')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getFortaData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('foundation')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getFoundationData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('gitcoin')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getGitcoinData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('hiveone')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getHiveOneData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('idena')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.checkIdena,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('knownorigin')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getKnownOriginData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('metagame')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getMetagameData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('mirror')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getMirrorData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('poap')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getPoapData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('poh')
+          ? this.#disabledPromise()
+          : this.#timeit(adaptorList.checkPoH, [address], computeConfig?.DEBUG),
+        disabledAdaptors.includes('polygon')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getPolygonData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('projectgalaxy')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getProjectGalaxyData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('rabbithole')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getRabbitholeData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('rarible')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getRaribleData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('rss3')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getRss3Data,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('showtime')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getShowtimeData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('superrare')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getSuperrareData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('uniswap')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getSybilData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('unstoppable')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.resolveUnstoppableDomains,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('zora')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getZoraData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
       ];
       if (Boolean(computeConfig?.DEBUG) === true) console.time('computeTime');
       const resp: Array<PromiseSettledResult<any>> = await Promise.allSettled(
@@ -190,38 +308,38 @@ class Identity {
       const respDict = {
         aave: resp[0],
         age: resp[1],
-        // arcx: resp[2],
-        asyncart: resp[2],
-        boardroom: resp[3],
-        brightid: resp[4],
-        celo: resp[5],
-        coinvise: resp[6],
-        context: resp[7],
-        // coordinape: resp[7],
-        cryptoscamdb: resp[8],
-        cyberconnect: resp[9],
-        deepdao: resp[10],
-        ens: resp[11],
-        forta: resp[12],
-        foundation: resp[13],
-        gitcoin: resp[14],
-        hiveone: resp[15],
-        idena: resp[16],
-        knownorigin: resp[17],
-        metagame: resp[18],
-        mirror: resp[19],
-        poap: resp[20],
-        polygon: resp[21],
-        projectgalaxy: resp[22],
+        arcx: resp[2],
+        asyncart: resp[3],
+        boardroom: resp[4],
+        brightid: resp[5],
+        celo: resp[6],
+        coinvise: resp[7],
+        context: resp[8],
+        coordinape: resp[9],
+        cryptoscamdb: resp[10],
+        cyberconnect: resp[11],
+        deepdao: resp[12],
+        ens: resp[13],
+        forta: resp[14],
+        foundation: resp[15],
+        gitcoin: resp[16],
+        hiveone: resp[17],
+        idena: resp[18],
+        knownorigin: resp[19],
+        metagame: resp[20],
+        mirror: resp[21],
+        poap: resp[22],
         poh: resp[23],
-        rabbithole: resp[24],
-        rarible: resp[25],
-        rss3: resp[26],
-        showtime: resp[27],
-        superrare: resp[28],
-        uniswap: resp[29],
-        unstoppable: resp[30],
-        zora: resp[31],
+        polygon: resp[24],
+        projectgalaxy: resp[25],
+        rabbithole: resp[26],
+        rarible: resp[27],
+        rss3: resp[28],
+        showtime: resp[29],
+        superrare: resp[30],
+        uniswap: resp[31],
+        unstoppable: resp[32],
+        zora: resp[33],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');

@@ -49881,7 +49881,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getZoraData = exports.resolveUnstoppableDomains = exports.getSybilData = exports.getAllSybilData = exports.getSuperrareData = exports.getShowtimeData = exports.getRss3Data = exports.getRaribleData = exports.getRabbitholeData = exports.checkPoH = exports.getProjectGalaxyData = exports.getPolygonData = exports.getPoapData = exports.getMirrorData = exports.getMetagameData = exports.getKnownOriginData = exports.checkIdena = exports.getHiveOneData = exports.getGitcoinData = exports.getAllGitcoinData = exports.getFoundationData = exports.getFortaData = exports.addressToEns = exports.getDeepDaoData = exports.getCyberconnectData = exports.getCryptoscamdbData = exports.getCoordinapeData = exports.getContextData = exports.getCoinviseData = exports.getCeloData = exports.checkBrightId = exports.getBoardroomData = exports.getAsyncartData = exports.getArcxData = exports.getAge = exports.getAaveData = void 0;
+exports.getZoraData = exports.resolveUnstoppableDomains = exports.getSybilData = exports.getAllSybilData = exports.getSuperrareData = exports.getShowtimeData = exports.getRss3Data = exports.getRaribleData = exports.getRabbitholeData = exports.getProjectGalaxyData = exports.getPolygonData = exports.checkPoH = exports.getPoapData = exports.getMirrorData = exports.getMetagameData = exports.getKnownOriginData = exports.checkIdena = exports.getHiveOneData = exports.getGitcoinData = exports.getAllGitcoinData = exports.getFoundationData = exports.getFortaData = exports.addressToEns = exports.getDeepDaoData = exports.getCyberconnectData = exports.getCryptoscamdbData = exports.getCoordinapeData = exports.getContextData = exports.getCoinviseData = exports.getCeloData = exports.checkBrightId = exports.getBoardroomData = exports.getAsyncartData = exports.getArcxData = exports.getAge = exports.getAaveData = void 0;
 var aave_1 = require("./aave");
 Object.defineProperty(exports, "getAaveData", { enumerable: true, get: function () { return __importDefault(aave_1).default; } });
 var age_1 = require("./age");
@@ -49929,12 +49929,12 @@ var mirror_1 = require("./mirror");
 Object.defineProperty(exports, "getMirrorData", { enumerable: true, get: function () { return __importDefault(mirror_1).default; } });
 var poap_1 = require("./poap");
 Object.defineProperty(exports, "getPoapData", { enumerable: true, get: function () { return __importDefault(poap_1).default; } });
+var poh_1 = require("./poh");
+Object.defineProperty(exports, "checkPoH", { enumerable: true, get: function () { return __importDefault(poh_1).default; } });
 var polygon_1 = require("./polygon");
 Object.defineProperty(exports, "getPolygonData", { enumerable: true, get: function () { return __importDefault(polygon_1).default; } });
 var projectgalaxy_1 = require("./projectgalaxy");
 Object.defineProperty(exports, "getProjectGalaxyData", { enumerable: true, get: function () { return __importDefault(projectgalaxy_1).default; } });
-var poh_1 = require("./poh");
-Object.defineProperty(exports, "checkPoH", { enumerable: true, get: function () { return __importDefault(poh_1).default; } });
 var rabbithole_1 = require("./rabbithole");
 Object.defineProperty(exports, "getRabbitholeData", { enumerable: true, get: function () { return __importDefault(rabbithole_1).default; } });
 var rarible_1 = require("./rarible");
@@ -50735,7 +50735,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.15',
+                currentVersion: '0.3.16',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -50870,6 +50870,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
+    if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
+    if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
+    return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+};
+var _Identity_timeit, _Identity_timeitWithConfig, _Identity_disabledPromise;
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
 const adaptorList = __importStar(require("./adaptors"));
@@ -50877,62 +50883,136 @@ const utils_2 = require("ethers/lib/utils");
 class Identity {
     constructor(apikey, node) {
         this.adaptors = adaptorList;
-        this.timeit = (callback, params, debug = false) => __awaiter(this, void 0, void 0, function* () {
+        _Identity_timeit.set(this, (callback, params, debug = false) => __awaiter(this, void 0, void 0, function* () {
             if (Boolean(debug) == true)
                 console.time(callback.name);
             const resp = yield callback.apply(this, params);
             if (Boolean(debug) == true)
                 console.timeEnd(callback.name);
             return resp;
-        });
-        this.timeitWithConfig = (callback, params, debug = false) => __awaiter(this, void 0, void 0, function* () {
+        }));
+        _Identity_timeitWithConfig.set(this, (callback, params, debug = false) => __awaiter(this, void 0, void 0, function* () {
             if (Boolean(debug) == true)
                 console.time(callback.name);
             const resp = yield callback.apply(this, params);
             if (Boolean(debug) == true)
                 console.timeEnd(callback.name);
             return resp;
-        });
+        }));
+        _Identity_disabledPromise.set(this, () => __awaiter(this, void 0, void 0, function* () {
+            const resp = new Promise((res) => setTimeout(() => {
+                res({ disabled: true });
+            }, 0));
+            return yield resp;
+        }));
         this.getTrustScore = (address) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('GET', `${this.node}/identity?address=${address}`, this.apikey, {});
         });
-        this.computeTrustScore = (address, computeConfig) => __awaiter(this, void 0, void 0, function* () {
+        this.computeTrustScore = (address, computeConfig, disabledAdaptors = []) => __awaiter(this, void 0, void 0, function* () {
             if ((0, utils_2.isAddress)(address) === true) {
                 const promiseArray = [
-                    this.timeitWithConfig(adaptorList.getAaveData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeitWithConfig(adaptorList.getAge, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    // this.timeit(adaptorList.getArcxData, [address], computeConfig?.DEBUG),
-                    this.timeitWithConfig(adaptorList.getAsyncartData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getBoardroomData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.checkBrightId, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getCeloData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeitWithConfig(adaptorList.getCoinviseData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getContextData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    // timeit[adaptorList.getCoordinapeData(address)],
-                    this.timeit(adaptorList.getCryptoscamdbData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getCyberconnectData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeitWithConfig(adaptorList.getDeepDaoData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.addressToEns, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getFortaData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeitWithConfig(adaptorList.getFoundationData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeitWithConfig(adaptorList.getGitcoinData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeitWithConfig(adaptorList.getHiveOneData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.checkIdena, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeitWithConfig(adaptorList.getKnownOriginData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getMetagameData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getMirrorData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getPoapData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getPolygonData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getProjectGalaxyData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.checkPoH, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getRabbitholeData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeitWithConfig(adaptorList.getRaribleData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getRss3Data, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeitWithConfig(adaptorList.getShowtimeData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.getSuperrareData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeitWithConfig(adaptorList.getSybilData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeit(adaptorList.resolveUnstoppableDomains, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
-                    this.timeitWithConfig(adaptorList.getZoraData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('aave')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getAaveData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('age')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getAge, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('arcx')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getArcxData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('asyncart')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getAsyncartData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('boardroom')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getBoardroomData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('brightid')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.checkBrightId, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('celo')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getCeloData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('coinvise')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getCoinviseData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('context')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getContextData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('coordinape')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getCoordinapeData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('cryptoscamdb')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getCryptoscamdbData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('cyberconnect')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getCyberconnectData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('deepdao')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getDeepDaoData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('ens')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.addressToEns, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('forta')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getFortaData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('foundation')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getFoundationData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('gitcoin')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getGitcoinData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('hiveone')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getHiveOneData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('idena')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.checkIdena, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('knownorigin')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getKnownOriginData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('metagame')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getMetagameData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('mirror')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getMirrorData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('poap')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getPoapData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('poh')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.checkPoH, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('polygon')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getPolygonData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('projectgalaxy')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getProjectGalaxyData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('rabbithole')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getRabbitholeData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('rarible')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getRaribleData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('rss3')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getRss3Data, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('showtime')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getShowtimeData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('superrare')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getSuperrareData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('uniswap')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getSybilData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('unstoppable')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.resolveUnstoppableDomains, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('zora')
+                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getZoraData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                 ];
                 if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG) === true)
                     console.time('computeTime');
@@ -50940,38 +51020,38 @@ class Identity {
                 const respDict = {
                     aave: resp[0],
                     age: resp[1],
-                    // arcx: resp[2],
-                    asyncart: resp[2],
-                    boardroom: resp[3],
-                    brightid: resp[4],
-                    celo: resp[5],
-                    coinvise: resp[6],
-                    context: resp[7],
-                    // coordinape: resp[7],
-                    cryptoscamdb: resp[8],
-                    cyberconnect: resp[9],
-                    deepdao: resp[10],
-                    ens: resp[11],
-                    forta: resp[12],
-                    foundation: resp[13],
-                    gitcoin: resp[14],
-                    hiveone: resp[15],
-                    idena: resp[16],
-                    knownorigin: resp[17],
-                    metagame: resp[18],
-                    mirror: resp[19],
-                    poap: resp[20],
-                    polygon: resp[21],
-                    projectgalaxy: resp[22],
+                    arcx: resp[2],
+                    asyncart: resp[3],
+                    boardroom: resp[4],
+                    brightid: resp[5],
+                    celo: resp[6],
+                    coinvise: resp[7],
+                    context: resp[8],
+                    coordinape: resp[9],
+                    cryptoscamdb: resp[10],
+                    cyberconnect: resp[11],
+                    deepdao: resp[12],
+                    ens: resp[13],
+                    forta: resp[14],
+                    foundation: resp[15],
+                    gitcoin: resp[16],
+                    hiveone: resp[17],
+                    idena: resp[18],
+                    knownorigin: resp[19],
+                    metagame: resp[20],
+                    mirror: resp[21],
+                    poap: resp[22],
                     poh: resp[23],
-                    rabbithole: resp[24],
-                    rarible: resp[25],
-                    rss3: resp[26],
-                    showtime: resp[27],
-                    superrare: resp[28],
-                    uniswap: resp[29],
-                    unstoppable: resp[30],
-                    zora: resp[31],
+                    polygon: resp[24],
+                    projectgalaxy: resp[25],
+                    rabbithole: resp[26],
+                    rarible: resp[27],
+                    rss3: resp[28],
+                    showtime: resp[29],
+                    superrare: resp[30],
+                    uniswap: resp[31],
+                    unstoppable: resp[32],
+                    zora: resp[33],
                 };
                 if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG) === true)
                     console.timeEnd('computeTime');
@@ -50986,6 +51066,7 @@ class Identity {
         return this;
     }
 }
+_Identity_timeit = new WeakMap(), _Identity_timeitWithConfig = new WeakMap(), _Identity_disabledPromise = new WeakMap();
 exports.default = Identity;
 
 },{"./adaptors":262,"./utils":284,"ethers/lib/utils":200}],283:[function(require,module,exports){
@@ -51147,7 +51228,7 @@ function fetcher(requestMethod, url, apikey = '', body = {}, customHeaders = {})
         const controller = new abort_controller_1.default();
         const timeout = setTimeout(() => {
             controller.abort();
-        }, 8000);
+        }, 6000);
         try {
             let reqUrl = url;
             if (apikey != '') {
@@ -51189,7 +51270,7 @@ function fetcher(requestMethod, url, apikey = '', body = {}, customHeaders = {})
             }
         }
         catch (error) {
-            console.error(error);
+            console.error(url, error);
             return { error };
         }
         finally {
@@ -51226,7 +51307,7 @@ function gqlFetcher(url, query, variables = {}) {
             return yield req.json();
         }
         catch (error) {
-            console.error(error);
+            console.error(url, error);
             return { error };
         }
         finally {

@@ -33,6 +33,8 @@ const addresssTable = [
     "0x707aC3937A9B31C225D8C240F5917Be97cab9F20"
 ];
 
+const convoInstance = new Convo('CSCpPwHnkB3niBJiUjy92YGP6xVkVZbWfK8xriDO');
+
 const timeit = async (callback, params) => {
     let startDate = new Date();
 
@@ -72,7 +74,7 @@ function max(array) {
 }
 
 function colForTime(time) {
-    return time > 5 ? colors['danger'] : time > 2 ? colors['warn'] : colors['success'];
+    return time > 4 ? colors['danger'] : time > 2 ? colors['warn'] : time > 1 ? colors['success'] : colors['reset'];
 }
 
 async function runTestOn(callback, addConfig) {
@@ -91,14 +93,15 @@ async function runTestOn(callback, addConfig) {
 
 async function runBenchmark(functionList) {
 
-    console.log(`Omnid : Benchmarking ${functionList.length} Adaptors against ${addresssTable.length} Addresses.`);
+    console.log(`\nOmnid : Benchmarking ${functionList.length} Adaptors against ${addresssTable.length} Addresses.`);
 
     const stream = createStream({
         columnDefault: {
             width: 28
         },
-        columnCount: 4,
+        columnCount: 5,
         columns: [
+            { alignment: 'center', width: 3 },
             { alignment: 'center' },
             { alignment: 'center', width: 12 },
             { alignment: 'center', width: 12 },
@@ -107,7 +110,7 @@ async function runBenchmark(functionList) {
     });
 
     stream.write(
-        ["Function", "Min Time", "Avg Time", "Max Time"],
+        ["#", "Function", "Min Time", "Avg Time", "Max Time"],
     )
 
     for (let index = 0; index < functionList.length; index++) {
@@ -120,6 +123,7 @@ async function runBenchmark(functionList) {
         const maxTime = max(times).toFixed(3);
 
         stream.write([
+            index + 1,
             functionList[index].fn.name,
             `${colForTime(minTime)} ${minTime}s ${colors['reset']}`,
             `${colForTime(avgTime)} ${avgTime}s ${colors['reset']}`,
@@ -129,14 +133,51 @@ async function runBenchmark(functionList) {
 
 }
 
-async function tests() {
+async function runBenchmarkManual() {
 
-    const convoInstance = new Convo('CSCpPwHnkB3niBJiUjy92YGP6xVkVZbWfK8xriDO');
+    const stream = createStream({
+        columnDefault: {
+            width: 28
+        },
+        columnCount: 3,
+        columns: [
+            { alignment: 'center', width: 12 },
+            { alignment: 'center', width: 12 },
+            { alignment: 'center', width: 12 }
+        ]
+    });
+
+    stream.write(
+        ["Min Time", "Avg Time", "Max Time"],
+    )
+
+    let times = []
+    for (let index = 0; index < addresssTable.length; index++) {
+        const address = addresssTable[index];
+        let time = await timeit(
+            convoInstance.omnid.computeTrustScore, // update function here
+            [address, config, ['coordinape', 'arcx', 'superrare']],
+        );
+        times.push(time);
+    }
+    const minTime = min(times).toFixed(3);
+    const avgTime = avg(times).toFixed(3);
+    const maxTime = max(times).toFixed(3);
+
+    stream.write([
+        `${colForTime(minTime)} ${minTime}s ${colors['reset']}`,
+        `${colForTime(avgTime)} ${avgTime}s ${colors['reset']}`,
+        `${colForTime(maxTime)} ${maxTime}s ${colors['reset']}`
+    ])
+
+}
+
+async function tests() {
 
     await runBenchmark([
         { fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getAge, withConfig: true },
-        // { fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getBoardroomData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false },
@@ -170,10 +211,8 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true },
     ])
 
-    await runBenchmark([
-        { fn: convoInstance.omnid.computeTrustScore, withConfig: true },
-    ])
-
 }
 
 tests();
+
+// runBenchmarkManual();

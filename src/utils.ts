@@ -12,7 +12,7 @@ export async function fetcher(
   const controller = new AbortController();
   const timeout = setTimeout(() => {
     controller.abort();
-  }, 8000);
+  }, 6000);
 
   try {
     let reqUrl = url;
@@ -64,7 +64,7 @@ export async function fetcher(
       }
     }
   } catch (error) {
-    console.error(error);
+    console.error(url, error);
     return { error };
   } finally {
     clearTimeout(timeout);
@@ -104,7 +104,7 @@ export async function gqlFetcher(
     });
     return await req.json();
   } catch (error) {
-    console.error(error);
+    console.error(url, error);
     return { error };
   } finally {
     clearTimeout(timeout);

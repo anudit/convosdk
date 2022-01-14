@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.16
+- Add the ability to disable adaptors while computing score.
+
 ## 0.3.15
 - Add Support for Forta Alerts.
 
@@ -11,11 +14,7 @@
 
 ## 0.3.13
 - Improved Error Handling of Fetcher.
-- Update Dependencies
-
-## 0.3.13
-- Improved Error Handling of Fetcher.
-- Update Dependencies
+- Update Dependencies.
 
 ## 0.3.12
 - Update RabbitHole, CyberConnect Adaptors.
