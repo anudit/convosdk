@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.17
+- Add Etherscan Labels Adaptors.
+
 ## 0.3.16
 - Add the ability to disable adaptors while computing score.
 

@@ -189,6 +189,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getCyberconnectData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getDeepDaoData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.addressToEns, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getEtherscanData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getFortaData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getFoundationData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getGitcoinData, withConfig: true },

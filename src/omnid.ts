@@ -164,6 +164,13 @@ class Identity {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('etherscan')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getEtherscanData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('forta')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -320,26 +327,27 @@ class Identity {
         cyberconnect: resp[11],
         deepdao: resp[12],
         ens: resp[13],
-        forta: resp[14],
-        foundation: resp[15],
-        gitcoin: resp[16],
-        hiveone: resp[17],
-        idena: resp[18],
-        knownorigin: resp[19],
-        metagame: resp[20],
-        mirror: resp[21],
-        poap: resp[22],
-        poh: resp[23],
-        polygon: resp[24],
-        projectgalaxy: resp[25],
-        rabbithole: resp[26],
-        rarible: resp[27],
-        rss3: resp[28],
-        showtime: resp[29],
-        superrare: resp[30],
-        uniswap: resp[31],
-        unstoppable: resp[32],
-        zora: resp[33],
+        etherscan: resp[14],
+        forta: resp[15],
+        foundation: resp[16],
+        gitcoin: resp[17],
+        hiveone: resp[18],
+        idena: resp[19],
+        knownorigin: resp[20],
+        metagame: resp[21],
+        mirror: resp[22],
+        poap: resp[23],
+        poh: resp[24],
+        polygon: resp[25],
+        projectgalaxy: resp[26],
+        rabbithole: resp[27],
+        rarible: resp[28],
+        rss3: resp[29],
+        showtime: resp[30],
+        superrare: resp[31],
+        uniswap: resp[32],
+        unstoppable: resp[33],
+        zora: resp[34],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');
