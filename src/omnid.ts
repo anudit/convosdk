@@ -8,7 +8,7 @@ import {
 import * as adaptorList from './adaptors';
 import { isAddress } from 'ethers/lib/utils';
 
-class Identity {
+class Omnid {
   apikey: string;
   node: string;
   adaptors = adaptorList;
@@ -50,10 +50,26 @@ class Identity {
     return await resp;
   };
 
-  getTrustScore = async (address: string): Promise<any | ErrorType> => {
+  getTrustScore = async (
+    address: string,
+    noCache?: boolean
+  ): Promise<any | ErrorType> => {
     return await fetcher(
       'GET',
-      `${this.node}/identity?address=${address}`,
+      `${this.node}/identity?address=${address}${
+        Boolean(noCache) == true ? '&noCache=true' : ''
+      }`,
+      this.apikey,
+      {}
+    );
+  };
+
+  getTrustScoreWithProof = async (
+    address: string
+  ): Promise<any | ErrorType> => {
+    return await fetcher(
+      'GET',
+      `${this.node}/zkidentity?address=${address}`,
       this.apikey,
       {}
     );
@@ -358,4 +374,4 @@ class Identity {
   };
 }
 
-export default Identity;
+export default Omnid;

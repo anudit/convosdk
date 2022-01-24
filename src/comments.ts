@@ -17,7 +17,10 @@ class Comments {
     comment: string,
     threadId: string,
     url: string,
-    metadata: Dictionary<any> = {}
+    metadata: Dictionary<any> = {},
+    replyTo?: boolean,
+    tag1?: string,
+    tag2?: string
   ): Promise<any | ErrorType> => {
     return await fetcher('POST', `${this.node}/comments`, this.apikey, {
       token,
@@ -26,6 +29,9 @@ class Comments {
       threadId,
       url: decodeURIComponent(url),
       metadata,
+      replyTo,
+      tag1,
+      tag2,
     });
   };
 
@@ -45,6 +51,15 @@ class Comments {
     return await fetcher(
       'GET',
       `${this.node}/comments?${encodeQuery(query)}`,
+      this.apikey,
+      {}
+    );
+  };
+
+  getComment = async (commentId: string): Promise<any | ErrorType> => {
+    return await fetcher(
+      'GET',
+      `${this.node}/comment?commentId=${commentId}`,
       this.apikey,
       {}
     );

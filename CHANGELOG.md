@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.18
+- Add `convo.getWebsocketToken`
+- Add `convo.omnid.getTrustScoreWithProof`
+- Add `convo.comments.getComment`
+- Add `replyTo`, `tag1`, `tag2` to `convo.comments.create` ([#4](https://github.com/anudit/convosdk/issues/4))
+- Update Age Adaptor.
+- Update Dependencies.
+
 ## 0.3.17
 - Add Etherscan Labels Adaptors.
 

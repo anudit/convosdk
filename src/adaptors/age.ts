@@ -40,7 +40,7 @@ export default async function getAge(
 
   if (data[0].status === 'fulfilled') {
     const respData = data[0].value as ScanResp;
-    if (respData.result.length > 0) {
+    if (Boolean(respData?.result) === true && respData.result.length > 0) {
       const past = new Date(parseInt(respData.result[0].timeStamp) * 1000);
       const days: number = Math.floor(
         (now.getTime() - past.getTime()) / (1000 * 3600 * 24)
@@ -53,7 +53,7 @@ export default async function getAge(
 
   if (data[1].status === 'fulfilled') {
     const respData2 = data[1].value as ScanResp;
-    if (respData2.result.length > 0) {
+    if (Boolean(respData2?.result) === true && respData2.result.length > 0) {
       const past = new Date(parseInt(respData2.result[0].timeStamp) * 1000);
       const days2: number = Math.floor(
         (now.getTime() - past.getTime()) / (1000 * 3600 * 24)

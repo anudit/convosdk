@@ -38660,7 +38660,7 @@ var irrelevant = (function (exports) {
 
   return exports;
 
-}({}));
+})({});
 })(__self__);
 __self__.fetch.ponyfill = true;
 // Remove "polyfill" property added by whatwg-fetch
@@ -48903,7 +48903,7 @@ function getAge(address, computeConfig) {
         let polygonAge = 0;
         if (data[0].status === 'fulfilled') {
             const respData = data[0].value;
-            if (respData.result.length > 0) {
+            if (Boolean(respData === null || respData === void 0 ? void 0 : respData.result) === true && respData.result.length > 0) {
                 const past = new Date(parseInt(respData.result[0].timeStamp) * 1000);
                 const days = Math.floor((now.getTime() - past.getTime()) / (1000 * 3600 * 24));
                 ethereumAge = days;
@@ -48914,7 +48914,7 @@ function getAge(address, computeConfig) {
         }
         if (data[1].status === 'fulfilled') {
             const respData2 = data[1].value;
-            if (respData2.result.length > 0) {
+            if (Boolean(respData2 === null || respData2 === void 0 ? void 0 : respData2.result) === true && respData2.result.length > 0) {
                 const past = new Date(parseInt(respData2.result[0].timeStamp) * 1000);
                 const days2 = Math.floor((now.getTime() - past.getTime()) / (1000 * 3600 * 24));
                 polygonAge = days2;
@@ -50763,10 +50763,13 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.17',
+                currentVersion: '0.3.18',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
+        });
+        this.getWebsocketToken = () => __awaiter(this, void 0, void 0, function* () {
+            return yield (0, utils_1.fetcher)('GET', `${this.node}/getAblyAuth`, this.apikey, {});
         });
         this.ping = () => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('GET', `${this.node}/ping`, this.apikey, {});
@@ -50796,7 +50799,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
 class Comments {
     constructor(apikey, node) {
-        this.create = (signerAddress, token, comment, threadId, url, metadata = {}) => __awaiter(this, void 0, void 0, function* () {
+        this.create = (signerAddress, token, comment, threadId, url, metadata = {}, replyTo, tag1, tag2) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.node}/comments`, this.apikey, {
                 token,
                 signerAddress,
@@ -50804,6 +50807,9 @@ class Comments {
                 threadId,
                 url: decodeURIComponent(url),
                 metadata,
+                replyTo,
+                tag1,
+                tag2,
             });
         });
         this.delete = (signerAddress, token, commentId) => __awaiter(this, void 0, void 0, function* () {
@@ -50815,6 +50821,9 @@ class Comments {
         });
         this.query = (query) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('GET', `${this.node}/comments?${(0, utils_1.encodeQuery)(query)}`, this.apikey, {});
+        });
+        this.getComment = (commentId) => __awaiter(this, void 0, void 0, function* () {
+            return yield (0, utils_1.fetcher)('GET', `${this.node}/comment?commentId=${commentId}`, this.apikey, {});
         });
         this.multiQuery = (queries) => __awaiter(this, void 0, void 0, function* () {
             return yield Promise.allSettled(queries.map((q) => {
@@ -50903,15 +50912,15 @@ var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
     return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
 };
-var _Identity_timeit, _Identity_timeitWithConfig, _Identity_disabledPromise;
+var _Omnid_timeit, _Omnid_timeitWithConfig, _Omnid_disabledPromise;
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
 const adaptorList = __importStar(require("./adaptors"));
 const utils_2 = require("ethers/lib/utils");
-class Identity {
+class Omnid {
     constructor(apikey, node) {
         this.adaptors = adaptorList;
-        _Identity_timeit.set(this, (callback, params, debug = false) => __awaiter(this, void 0, void 0, function* () {
+        _Omnid_timeit.set(this, (callback, params, debug = false) => __awaiter(this, void 0, void 0, function* () {
             if (Boolean(debug) == true)
                 console.time(callback.name);
             const resp = yield callback.apply(this, params);
@@ -50919,7 +50928,7 @@ class Identity {
                 console.timeEnd(callback.name);
             return resp;
         }));
-        _Identity_timeitWithConfig.set(this, (callback, params, debug = false) => __awaiter(this, void 0, void 0, function* () {
+        _Omnid_timeitWithConfig.set(this, (callback, params, debug = false) => __awaiter(this, void 0, void 0, function* () {
             if (Boolean(debug) == true)
                 console.time(callback.name);
             const resp = yield callback.apply(this, params);
@@ -50927,123 +50936,126 @@ class Identity {
                 console.timeEnd(callback.name);
             return resp;
         }));
-        _Identity_disabledPromise.set(this, () => __awaiter(this, void 0, void 0, function* () {
+        _Omnid_disabledPromise.set(this, () => __awaiter(this, void 0, void 0, function* () {
             const resp = new Promise((res) => setTimeout(() => {
                 res({ disabled: true });
             }, 0));
             return yield resp;
         }));
-        this.getTrustScore = (address) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('GET', `${this.node}/identity?address=${address}`, this.apikey, {});
+        this.getTrustScore = (address, noCache) => __awaiter(this, void 0, void 0, function* () {
+            return yield (0, utils_1.fetcher)('GET', `${this.node}/identity?address=${address}${Boolean(noCache) == true ? '&noCache=true' : ''}`, this.apikey, {});
+        });
+        this.getTrustScoreWithProof = (address) => __awaiter(this, void 0, void 0, function* () {
+            return yield (0, utils_1.fetcher)('GET', `${this.node}/zkidentity?address=${address}`, this.apikey, {});
         });
         this.computeTrustScore = (address, computeConfig, disabledAdaptors = []) => __awaiter(this, void 0, void 0, function* () {
             if ((0, utils_2.isAddress)(address) === true) {
                 const promiseArray = [
                     disabledAdaptors.includes('aave')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getAaveData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getAaveData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('age')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getAge, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getAge, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('arcx')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getArcxData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getArcxData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('asyncart')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getAsyncartData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getAsyncartData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('boardroom')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getBoardroomData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getBoardroomData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('brightid')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.checkBrightId, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.checkBrightId, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('celo')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getCeloData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getCeloData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('coinvise')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getCoinviseData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getCoinviseData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('context')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getContextData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getContextData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('coordinape')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getCoordinapeData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getCoordinapeData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('cryptoscamdb')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getCryptoscamdbData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getCryptoscamdbData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('cyberconnect')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getCyberconnectData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getCyberconnectData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('deepdao')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getDeepDaoData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getDeepDaoData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('ens')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.addressToEns, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.addressToEns, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('etherscan')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getEtherscanData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getEtherscanData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('forta')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getFortaData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getFortaData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('foundation')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getFoundationData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getFoundationData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('gitcoin')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getGitcoinData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getGitcoinData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('hiveone')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getHiveOneData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getHiveOneData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('idena')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.checkIdena, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.checkIdena, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('knownorigin')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getKnownOriginData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getKnownOriginData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('metagame')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getMetagameData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getMetagameData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('mirror')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getMirrorData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getMirrorData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('poap')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getPoapData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getPoapData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('poh')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.checkPoH, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.checkPoH, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('polygon')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getPolygonData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getPolygonData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('projectgalaxy')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getProjectGalaxyData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getProjectGalaxyData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('rabbithole')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getRabbitholeData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getRabbitholeData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('rarible')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getRaribleData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getRaribleData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('rss3')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getRss3Data, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getRss3Data, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('showtime')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getShowtimeData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getShowtimeData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('superrare')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.getSuperrareData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getSuperrareData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('uniswap')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getSybilData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getSybilData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('unstoppable')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeit, "f").call(this, adaptorList.resolveUnstoppableDomains, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.resolveUnstoppableDomains, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('zora')
-                        ? __classPrivateFieldGet(this, _Identity_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Identity_timeitWithConfig, "f").call(this, adaptorList.getZoraData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getZoraData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                 ];
                 if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG) === true)
                     console.time('computeTime');
@@ -51098,8 +51110,8 @@ class Identity {
         return this;
     }
 }
-_Identity_timeit = new WeakMap(), _Identity_timeitWithConfig = new WeakMap(), _Identity_disabledPromise = new WeakMap();
-exports.default = Identity;
+_Omnid_timeit = new WeakMap(), _Omnid_timeitWithConfig = new WeakMap(), _Omnid_disabledPromise = new WeakMap();
+exports.default = Omnid;
 
 },{"./adaptors":263,"./utils":285,"ethers/lib/utils":200}],284:[function(require,module,exports){
 "use strict";
@@ -51129,8 +51141,8 @@ class Threads {
                 members,
                 moderators,
                 keywords,
-                threadId,
                 metadata,
+                threadId,
             });
         });
         this.createPrivate = (signerAddress, token, title, description, url, members, moderators, keywords, metadata = {}, threadId = false) => __awaiter(this, void 0, void 0, function* () {

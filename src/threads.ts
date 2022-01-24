@@ -37,8 +37,8 @@ class Threads {
       members,
       moderators,
       keywords,
-      threadId,
       metadata,
+      threadId,
     });
   };
 
