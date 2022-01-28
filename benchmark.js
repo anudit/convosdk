@@ -135,6 +135,8 @@ async function runBenchmark(functionList) {
 
 async function runBenchmarkManual() {
 
+    console.log('');
+
     const stream = createStream({
         columnDefault: {
             width: 28
@@ -187,6 +189,7 @@ async function tests() {
         // { fn: convoInstance.omnid.adaptors.getCoordinapeData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getCryptoscamdbData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getCyberconnectData, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getDapplistData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getDeepDaoData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.addressToEns, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getEtherscanData, withConfig: true },

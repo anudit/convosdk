@@ -166,6 +166,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('dapplist')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getDapplistData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('deepdao')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -341,29 +348,30 @@ class Omnid {
         coordinape: resp[9],
         cryptoscamdb: resp[10],
         cyberconnect: resp[11],
-        deepdao: resp[12],
-        ens: resp[13],
-        etherscan: resp[14],
-        forta: resp[15],
-        foundation: resp[16],
-        gitcoin: resp[17],
-        hiveone: resp[18],
-        idena: resp[19],
-        knownorigin: resp[20],
-        metagame: resp[21],
-        mirror: resp[22],
-        poap: resp[23],
-        poh: resp[24],
-        polygon: resp[25],
-        projectgalaxy: resp[26],
-        rabbithole: resp[27],
-        rarible: resp[28],
-        rss3: resp[29],
-        showtime: resp[30],
-        superrare: resp[31],
-        uniswap: resp[32],
-        unstoppable: resp[33],
-        zora: resp[34],
+        dapplist: resp[12],
+        deepdao: resp[13],
+        ens: resp[14],
+        etherscan: resp[15],
+        forta: resp[16],
+        foundation: resp[17],
+        gitcoin: resp[18],
+        hiveone: resp[19],
+        idena: resp[20],
+        knownorigin: resp[21],
+        metagame: resp[22],
+        mirror: resp[23],
+        poap: resp[24],
+        poh: resp[25],
+        polygon: resp[26],
+        projectgalaxy: resp[27],
+        rabbithole: resp[28],
+        rarible: resp[29],
+        rss3: resp[30],
+        showtime: resp[31],
+        superrare: resp[32],
+        uniswap: resp[33],
+        unstoppable: resp[34],
+        zora: resp[35],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');

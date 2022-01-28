@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.19
+- Add Dapplist Adaptor to Omind.
+- Update Dependencies.
+
 ## 0.3.18
 - Add `convo.getWebsocketToken`
 - Add `convo.omnid.getTrustScoreWithProof`
@@ -9,7 +13,7 @@
 - Update Dependencies.
 
 ## 0.3.17
-- Add Etherscan Labels Adaptors.
+- Add Etherscan Labels Adaptor.
 
 ## 0.3.16
 - Add the ability to disable adaptors while computing score.
