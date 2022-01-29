@@ -1,4 +1,4 @@
-import { SignatureType, SiweMessage, generateNonce } from 'siwe';
+import { SiweMessage, generateNonce } from 'siwe';
 import { ErrorType } from './types';
 import { fetcher } from './utils';
 
@@ -101,13 +101,12 @@ class Auth {
       uri: uri,
       version: '1',
       statement: 'I allow this site to access my data on The Convo Space.',
-      type: SignatureType.PERSONAL_SIGNATURE,
       nonce: generateNonce(),
       issuedAt: now.toISOString(),
       expirationTime: tom.toISOString(),
       resources: resources,
     });
-    return message.signMessage();
+    return message.prepareMessage();
   }
 
   parseSignatureV2(message: string): SiweMessage {

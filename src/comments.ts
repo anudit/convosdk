@@ -18,7 +18,7 @@ class Comments {
     threadId: string,
     url: string,
     metadata: Dictionary<any> = {},
-    replyTo?: boolean,
+    replyTo?: string,
     tag1?: string,
     tag2?: string
   ): Promise<any | ErrorType> => {

@@ -1,13 +1,19 @@
 import { Dictionary, ErrorType, ThreadsQueryType } from './types';
 import { encodeQuery, fetcher } from './utils';
+import Ably from 'ably/promises';
+import { useEffect } from 'react';
 
 class Threads {
   apikey: string;
   node: string;
+  ably;
 
   constructor(apikey: string, node: string) {
     this.apikey = apikey;
     this.node = node;
+    this.ably = new Ably.Realtime.Promise({
+      authUrl: `https://theconvo.space/api/getAblyAuth?apikey=${apikey}`,
+    });
     return this;
   }
 
@@ -239,6 +245,30 @@ class Threads {
       action: 'togglePublicWrite',
       threadId,
     });
+  };
+
+  subscribe = (threadId: string, callbackOnMessage: any) => {
+    const channel = this.ably.channels.get(threadId);
+
+    const onMount = () => {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+      void channel.subscribe(callbackOnMessage);
+    };
+
+    const onUnmount = () => {
+      channel.unsubscribe();
+    };
+
+    const useEffectHook = () => {
+      onMount();
+      return () => {
+        onUnmount();
+      };
+    };
+
+    useEffect(useEffectHook);
+
+    return [channel, this.ably];
   };
 }
 

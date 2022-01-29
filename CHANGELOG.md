@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.20
+- [WIP] Add `convo.threads.subscribe` React hook for Websocket updates.
+- Remove `convo.getWebsocketToken`.
+- Update SIWE API.
+- Update Dependencies.
+
 ## 0.3.19
 - Add Dapplist Adaptor to Omind.
 - Update Dependencies.

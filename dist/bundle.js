@@ -3820,7 +3820,7 @@ function _base16To36(value) {
 }
 exports._base16To36 = _base16To36;
 
-},{"./_version":26,"@ethersproject/bytes":31,"@ethersproject/logger":55,"bn.js":172}],28:[function(require,module,exports){
+},{"./_version":26,"@ethersproject/bytes":31,"@ethersproject/logger":55,"bn.js":158}],28:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FixedNumber = exports.FixedFormat = exports.parseFixed = exports.formatFixed = void 0;
@@ -6929,7 +6929,7 @@ function decrypt(json, password) {
 }
 exports.decrypt = decrypt;
 
-},{"./_version":47,"./utils":52,"@ethersproject/address":22,"@ethersproject/bytes":31,"@ethersproject/keccak256":53,"@ethersproject/logger":55,"@ethersproject/pbkdf2":59,"@ethersproject/properties":61,"@ethersproject/strings":98,"aes-js":129}],49:[function(require,module,exports){
+},{"./_version":47,"./utils":52,"@ethersproject/address":22,"@ethersproject/bytes":31,"@ethersproject/keccak256":53,"@ethersproject/logger":55,"@ethersproject/pbkdf2":59,"@ethersproject/properties":61,"@ethersproject/strings":98,"aes-js":131}],49:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.decryptJsonWalletSync = exports.decryptJsonWallet = exports.getJsonWalletAddress = exports.isKeystoreWallet = exports.isCrowdsaleWallet = exports.encryptKeystore = exports.decryptKeystoreSync = exports.decryptKeystore = exports.decryptCrowdsale = void 0;
@@ -7407,7 +7407,7 @@ function encrypt(account, password, options, progressCallback) {
 }
 exports.encrypt = encrypt;
 
-},{"./_version":47,"./utils":52,"@ethersproject/address":22,"@ethersproject/bytes":31,"@ethersproject/hdnode":46,"@ethersproject/keccak256":53,"@ethersproject/logger":55,"@ethersproject/pbkdf2":59,"@ethersproject/properties":61,"@ethersproject/random":82,"@ethersproject/transactions":101,"aes-js":129,"scrypt-js":233}],52:[function(require,module,exports){
+},{"./_version":47,"./utils":52,"@ethersproject/address":22,"@ethersproject/bytes":31,"@ethersproject/hdnode":46,"@ethersproject/keccak256":53,"@ethersproject/logger":55,"@ethersproject/pbkdf2":59,"@ethersproject/properties":61,"@ethersproject/random":82,"@ethersproject/transactions":101,"aes-js":131,"scrypt-js":207}],52:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.uuidV4 = exports.searchPath = exports.getPassword = exports.zpad = exports.looseArrayify = void 0;
@@ -7492,7 +7492,7 @@ function keccak256(data) {
 }
 exports.keccak256 = keccak256;
 
-},{"@ethersproject/bytes":31,"js-sha3":228}],54:[function(require,module,exports){
+},{"@ethersproject/bytes":31,"js-sha3":199}],54:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
@@ -10687,7 +10687,7 @@ var BaseProvider = /** @class */ (function (_super) {
 }(abstract_provider_1.Provider));
 exports.BaseProvider = BaseProvider;
 
-},{"./_version":62,"./formatter":70,"@ethersproject/abstract-provider":18,"@ethersproject/basex":25,"@ethersproject/bignumber":29,"@ethersproject/bytes":31,"@ethersproject/constants":35,"@ethersproject/hash":41,"@ethersproject/logger":55,"@ethersproject/networks":57,"@ethersproject/properties":61,"@ethersproject/sha2":88,"@ethersproject/strings":98,"@ethersproject/web":108,"bech32":171}],65:[function(require,module,exports){
+},{"./_version":62,"./formatter":70,"@ethersproject/abstract-provider":18,"@ethersproject/basex":25,"@ethersproject/bignumber":29,"@ethersproject/bytes":31,"@ethersproject/constants":35,"@ethersproject/hash":41,"@ethersproject/logger":55,"@ethersproject/networks":57,"@ethersproject/properties":61,"@ethersproject/sha2":88,"@ethersproject/strings":98,"@ethersproject/web":108,"bech32":157}],65:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IpcProvider = void 0;
@@ -14737,7 +14737,7 @@ function computeHmac(algorithm, key, data) {
 }
 exports.computeHmac = computeHmac;
 
-},{"./_version":86,"./types":89,"@ethersproject/bytes":31,"@ethersproject/logger":55,"hash.js":209}],88:[function(require,module,exports){
+},{"./_version":86,"./types":89,"@ethersproject/bytes":31,"@ethersproject/logger":55,"hash.js":183}],88:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SupportedAlgorithm = exports.sha512 = exports.sha256 = exports.ripemd160 = exports.computeHmac = void 0;
@@ -14777,7 +14777,7 @@ var elliptic_1 = __importDefault(require("elliptic"));
 var EC = elliptic_1.default.ec;
 exports.EC = EC;
 
-},{"elliptic":180}],92:[function(require,module,exports){
+},{"elliptic":163}],92:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.computePublicKey = exports.recoverPublicKey = exports.SigningKey = void 0;
@@ -18253,7 +18253,7 @@ var NodeRandomSource = /** @class */ (function () {
 }());
 exports.NodeRandomSource = NodeRandomSource;
 
-},{"@stablelib/wipe":127,"crypto":174}],126:[function(require,module,exports){
+},{"@stablelib/wipe":127,"crypto":160}],126:[function(require,module,exports){
 "use strict";
 // Copyright (C) 2016 Dmitry Chestnykh
 // MIT License. See LICENSE file for details.
@@ -18320,6 +18320,15551 @@ function wipe(array) {
 exports.wipe = wipe;
 
 },{}],128:[function(require,module,exports){
+(function (Buffer){(function (){
+/*!
+ * @license Copyright 2021, Ably
+ * 
+ * Ably JavaScript Library v1.2.17
+ * https://github.com/ably/ably-js
+ * 
+ * Ably Realtime Messaging
+ * https://www.ably.com
+ * 
+ * Released under the Apache Licence v2.0
+ */
+(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else if(typeof exports === 'object')
+		exports["Ably"] = factory();
+	else
+		root["Ably"] = factory();
+})(window, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 51);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+
+
+var Logger = (function() {
+	var consoleLogger, errorLogger;
+
+	/* Can't just check for console && console.log; fails in IE <=9 */
+	if((typeof Window === 'undefined' && typeof WorkerGlobalScope === 'undefined') /* node */ ||
+		 (global.console && global.console.log && (typeof global.console.log.apply === 'function')) /* sensible browsers */) {
+		consoleLogger = function() { console.log.apply(console, arguments); };
+		errorLogger = console.warn ? function() { console.warn.apply(console, arguments); } : consoleLogger;
+	} else if(global.console && global.console.log) {
+		/* IE <= 9 with the console open -- console.log does not
+		 * inherit from Function, so has no apply method */
+		consoleLogger = errorLogger = function() { Function.prototype.apply.call(console.log, console, arguments); };
+	} else {
+		/* IE <= 9 when dev tools are closed - window.console not even defined */
+		consoleLogger = errorLogger = function() {};
+	}
+
+	function pad(str, three) {
+		return ('000' + str).slice(-2-(three || 0));
+	}
+
+	var LOG_NONE  = 0,
+	LOG_ERROR = 1,
+	LOG_MAJOR = 2,
+	LOG_MINOR = 3,
+	LOG_MICRO = 4;
+
+	var LOG_DEFAULT = LOG_ERROR,
+	LOG_DEBUG   = LOG_MICRO;
+
+	var logLevel = LOG_DEFAULT;
+
+	function getHandler(logger) {
+		return platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].logTimestamps ?
+			function(msg) {
+				var time = new Date();
+				logger(pad(time.getHours()) + ':' + pad(time.getMinutes()) + ':' + pad(time.getSeconds()) + '.' + pad(time.getMilliseconds(), true) + ' ' + msg);
+			} : logger;
+	}
+
+	var logHandler = getHandler(consoleLogger),
+		logErrorHandler = getHandler(errorLogger);
+
+	/* public constructor */
+	function Logger(args) {}
+
+	/* public constants */
+	Logger.LOG_NONE    = LOG_NONE,
+	Logger.LOG_ERROR   = LOG_ERROR,
+	Logger.LOG_MAJOR   = LOG_MAJOR,
+	Logger.LOG_MINOR   = LOG_MINOR,
+	Logger.LOG_MICRO   = LOG_MICRO;
+
+	Logger.LOG_DEFAULT = LOG_DEFAULT,
+	Logger.LOG_DEBUG   = LOG_DEBUG;
+
+	/* public static functions */
+	Logger.logAction = function(level, action, message) {
+		if (Logger.shouldLog(level)) {
+			(level === LOG_ERROR ? logErrorHandler : logHandler)('Ably: ' + action + ': ' + message);
+		}
+	};
+
+	Logger.deprecated = function(original, replacement) {
+		Logger.deprecatedWithMsg(original, "Please use '" + replacement + "' instead.");
+	}
+
+	Logger.deprecatedWithMsg = function(funcName, msg) {
+		if (Logger.shouldLog(LOG_ERROR)) {
+			logErrorHandler("Ably: Deprecation warning - '" + funcName + "' is deprecated and will be removed from a future version. " + msg);
+		}
+	}
+
+	/* Where a logging operation is expensive, such as serialisation of data, use shouldLog will prevent
+	   the object being serialised if the log level will not output the message */
+	Logger.shouldLog = function(level) {
+		return level <= logLevel;
+	};
+
+	Logger.setLog = function(level, handler) {
+		if(level !== undefined) logLevel = level;
+		if(handler !== undefined) logHandler = logErrorHandler = handler;
+	};
+
+	return Logger;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (Logger);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(17)))
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _defaults__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+/* harmony import */ var platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
+
+
+
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+var Utils = (function() {
+	var msgpack = platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].msgpack;
+
+	function Utils() {}
+
+	function randomPosn(arrOrStr) {
+		return Math.floor(Math.random() * arrOrStr.length);
+	}
+
+	/*
+	 * Add a set of properties to a target object
+	 * target: the target object
+	 * props:  an object whose enumerable properties are
+	 *         added, by reference only
+	 */
+	Utils.mixin = function(target) {
+		for(var i = 1; i < arguments.length; i++) {
+			var source = arguments[i];
+			if(!source) { break; }
+			for(var key in source) {
+				if(hasOwnProperty.call(source, key)) {
+					target[key] = source[key];
+				}
+			}
+		}
+		return target;
+	};
+
+	/*
+	 * Add a set of properties to a target object
+	 * target: the target object
+	 * props:  an object whose enumerable properties are
+	 *         added, by reference only
+	 */
+	Utils.copy = function(src) {
+		return Utils.mixin({}, src);
+	};
+
+	/*
+	 * Determine whether or not a given object is
+	 * an array.
+	 */
+	Utils.isArray = Array.isArray || function(ob) {
+		return Object.prototype.toString.call(ob) == '[object Array]';
+	};
+
+	/*
+	 * Ensures that an Array object is always returned
+	 * returning the original Array of obj is an Array
+	 * else wrapping the obj in a single element Array
+	 */
+	Utils.ensureArray = function(obj) {
+		if(Utils.isEmptyArg(obj)) {
+			return [];
+		}
+		if(Utils.isArray(obj)) {
+			return obj;
+		}
+		return [obj];
+	}
+
+	/* ...Or an Object (in the narrow sense) */
+	Utils.isObject = function(ob) {
+		return Object.prototype.toString.call(ob) == '[object Object]';
+	};
+
+	/*
+	 * Determine whether or not an object contains
+	 * any enumerable properties.
+	 * ob: the object
+	 */
+	Utils.isEmpty = function(ob) {
+		for(var prop in ob)
+			return false;
+		return true;
+	};
+
+	Utils.isOnlyPropIn = function(ob, property) {
+		for(var prop in ob) {
+			if(prop !== property) {
+				return false;
+			}
+		}
+		return true;
+	};
+
+	/*
+	 * Determine whether or not an argument to an overloaded function is
+	 * undefined (missing) or null.
+	 * This method is useful when constructing functions such as (WebIDL terminology):
+	 *   off([TreatUndefinedAs=Null] DOMString? event)
+	 * as you can then confirm the argument using:
+	 *   Utils.isEmptyArg(event)
+	 */
+
+	Utils.isEmptyArg = function(arg) {
+		return arg === null || arg === undefined;
+	}
+
+	/*
+	 * Perform a simple shallow clone of an object.
+	 * Result is an object irrespective of whether
+	 * the input is an object or array. All
+	 * enumerable properties are copied.
+	 * ob: the object
+	 */
+	Utils.shallowClone = function(ob) {
+		var result = new Object();
+		for(var prop in ob)
+			result[prop] = ob[prop];
+		return result;
+	};
+
+	/*
+	 * Clone an object by creating a new object with the
+	 * given object as its prototype. Optionally
+	 * a set of additional own properties can be
+	 * supplied to be added to the newly created clone.
+	 * ob:            the object to be cloned
+	 * ownProperties: optional object with additional
+	 *                properties to add
+	 */
+	Utils.prototypicalClone = function(ob, ownProperties) {
+		function F() {}
+		F.prototype = ob;
+		var result = new F();
+		if(ownProperties)
+			Utils.mixin(result, ownProperties);
+		return result;
+	};
+
+	/*
+	 * Declare a constructor to represent a subclass
+	 * of another constructor
+	 * If platform has a built-in version we use that from Platform, else we
+	 * define here (so can make use of other Utils fns)
+	 * See node.js util.inherits
+	 */
+	Utils.inherits = platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inherits || function(ctor, superCtor) {
+		ctor.super_ = superCtor;
+		ctor.prototype = Utils.prototypicalClone(superCtor.prototype, { constructor: ctor });
+	};
+
+	/*
+	 * Determine whether or not an object has an enumerable
+	 * property whose value equals a given value.
+	 * ob:  the object
+	 * val: the value to find
+	 */
+	Utils.containsValue = function(ob, val) {
+		for(var i in ob) {
+			if(ob[i] == val)
+				return true;
+		}
+		return false;
+	};
+
+	Utils.intersect = function(arr, ob) { return Utils.isArray(ob) ? Utils.arrIntersect(arr, ob) : Utils.arrIntersectOb(arr, ob); };
+
+	Utils.arrIntersect = function(arr1, arr2) {
+		var result = [];
+		for(var i = 0; i < arr1.length; i++) {
+			var member = arr1[i];
+			if(Utils.arrIndexOf(arr2, member) != -1)
+				result.push(member);
+		}
+		return result;
+	};
+
+	Utils.arrIntersectOb = function(arr, ob) {
+		var result = [];
+		for(var i = 0; i < arr.length; i++) {
+			var member = arr[i];
+			if(member in ob)
+				result.push(member);
+		}
+		return result;
+	};
+
+	Utils.arrSubtract = function(arr1, arr2) {
+		var result = [];
+		for(var i = 0; i < arr1.length; i++) {
+			var element = arr1[i];
+			if(Utils.arrIndexOf(arr2, element) == -1)
+				result.push(element);
+		}
+		return result;
+	};
+
+	Utils.arrIndexOf = Array.prototype.indexOf
+		? function(arr, elem, fromIndex) {
+			return arr.indexOf(elem,  fromIndex);
+		}
+		: function(arr, elem, fromIndex) {
+			fromIndex = fromIndex || 0;
+			var len = arr.length;
+			for(;fromIndex < len; fromIndex++) {
+				if(arr[fromIndex] === elem) {
+					return fromIndex;
+				}
+			}
+			return -1;
+		};
+
+	Utils.arrIn = function(arr, val) {
+		return Utils.arrIndexOf(arr, val) !== -1;
+	};
+
+	Utils.arrDeleteValue = function(arr, val) {
+		var idx = Utils.arrIndexOf(arr, val);
+		var res = (idx != -1);
+		if(res)
+			arr.splice(idx, 1);
+		return res;
+	};
+
+	Utils.arrWithoutValue = function(arr, val) {
+		var newArr = arr.slice();
+		Utils.arrDeleteValue(newArr, val);
+		return newArr;
+	};
+
+	/*
+	 * Construct an array of the keys of the enumerable
+	 * properties of a given object, optionally limited
+	 * to only the own properties.
+	 * ob:      the object
+	 * ownOnly: boolean, get own properties only
+	 */
+	Utils.keysArray = function(ob, ownOnly) {
+		var result = [];
+		for(var prop in ob) {
+			if(ownOnly && !hasOwnProperty.call(ob, prop)) continue;
+			result.push(prop);
+		}
+		return result;
+	};
+
+	/*
+	 * Construct an array of the values of the enumerable
+	 * properties of a given object, optionally limited
+	 * to only the own properties.
+	 * ob:      the object
+	 * ownOnly: boolean, get own properties only
+	 */
+	Utils.valuesArray = function(ob, ownOnly) {
+		var result = [];
+		for(var prop in ob) {
+			if(ownOnly && !hasOwnProperty.call(ob, prop)) continue;
+			result.push(ob[prop]);
+		}
+		return result;
+	};
+
+	Utils.forInOwnNonNullProps = function(ob, fn) {
+		for (var prop in ob) {
+			if (hasOwnProperty.call(ob, prop) && ob[prop]) {
+				fn(prop);
+			}
+		}
+	};
+
+	Utils.arrForEach = Array.prototype.forEach ?
+		function(arr, fn) {
+			arr.forEach(fn);
+		} :
+		function(arr, fn) {
+			var len = arr.length;
+			for(var i = 0; i < len; i++) {
+				fn(arr[i], i, arr);
+			}
+		};
+
+	/* Useful when the function may mutate the array */
+	Utils.safeArrForEach = function(arr, fn) {
+		return Utils.arrForEach(arr.slice(), fn);
+	};
+
+	Utils.arrMap = Array.prototype.map ?
+		function(arr, fn) {
+			return arr.map(fn);
+		} :
+		function(arr, fn)	{
+			var result = [],
+				len = arr.length;
+			for(var i = 0; i < len; i++) {
+				result.push(fn(arr[i], i, arr));
+			}
+			return result;
+		};
+
+	Utils.arrFilter = Array.prototype.filter ?
+		function(arr, fn) {
+			return arr.filter(fn);
+		} :
+		function(arr, fn)	{
+			var result = [],
+				len = arr.length;
+			for(var i = 0; i < len; i++) {
+				if(fn(arr[i])) {
+					result.push(arr[i]);
+				}
+			}
+			return result;
+		};
+
+	Utils.arrEvery = Array.prototype.every ?
+		function(arr, fn) {
+			return arr.every(fn);
+		} : function(arr, fn) {
+			var len = arr.length;
+			for(var i = 0; i < len; i++) {
+				if(!fn(arr[i], i, arr)) {
+					return false;
+				};
+			}
+			return true;
+		};
+
+	Utils.allSame = function(arr, prop) {
+		if(arr.length === 0) {
+			return true;
+		}
+		var first = arr[0][prop];
+		return Utils.arrEvery(arr, function(item) {
+			return item[prop] === first;
+		});
+	};
+
+	Utils.nextTick = platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].nextTick;
+
+	var contentTypes = {
+		json:   'application/json',
+		jsonp:  'application/javascript',
+		xml:    'application/xml',
+		html:   'text/html',
+		msgpack: 'application/x-msgpack'
+	};
+
+	Utils.defaultGetHeaders = function(format) {
+		var accept = contentTypes[format || 'json'];
+		return {
+			accept: accept,
+			'X-Ably-Version': _defaults__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].apiVersion,
+			'Ably-Agent': _defaults__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].agent
+		};
+	};
+
+	Utils.defaultPostHeaders = function(format) {
+		var accept, contentType;
+		accept = contentType = contentTypes[format || 'json'];
+
+		return {
+			accept: accept,
+			'content-type': contentType,
+			'X-Ably-Version': _defaults__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].apiVersion,
+			'Ably-Agent': _defaults__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].agent
+		};
+	};
+
+	Utils.arrPopRandomElement = function(arr) {
+		return arr.splice(randomPosn(arr), 1)[0];
+	};
+
+	Utils.toQueryString = function(params) {
+		var parts = [];
+		if(params) {
+			for(var key in params)
+				parts.push(encodeURIComponent(key) + '=' + encodeURIComponent(params[key]));
+		}
+		return parts.length ? '?' + parts.join('&') : '';
+	};
+
+	Utils.parseQueryString = function(query) {
+		var match,
+			search = /([^?&=]+)=?([^&]*)/g,
+			result = {};
+
+		while (match = search.exec(query))
+			result[decodeURIComponent(match[1])] = decodeURIComponent(match[2]);
+
+ 		return result;
+	};
+
+	Utils.now = Date.now || function() {
+		/* IE 8 */
+		return new Date().getTime();
+	};
+
+	Utils.inspect = platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inspect;
+
+	Utils.isErrorInfo = function(err) {
+		return err.constructor.name == 'ErrorInfo'
+	};
+
+	Utils.inspectError = function(x) {
+		/* redundant, but node vmcontext issue makes instanceof unreliable, and
+		 * can't use just constructor test as could be a TypeError constructor etc. */
+		return (x && (Utils.isErrorInfo(x) ||
+			x.constructor.name == 'Error' ||
+			x instanceof Error)) ?
+			x.toString() :
+			Utils.inspect(x);
+	};
+
+	Utils.inspectBody = function(body) {
+		if(platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].isBuffer(body)) {
+			return body.toString();
+		} else if(typeof body === 'string') {
+			return body;
+		} else {
+			return platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inspect(body);
+		}
+	};
+
+	/* Data is assumed to be either a string or a buffer. */
+	Utils.dataSizeBytes = function(data) {
+		if(platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].isBuffer(data)) {
+			return platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].byteLength(data);
+		}
+		if(typeof data === 'string') {
+			return platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].stringByteSize(data);
+		}
+		throw new Error("Expected input of Utils.dataSizeBytes to be a buffer or string, but was: " + (typeof data));
+	};
+
+	Utils.cheapRandStr = function() {
+		return String(Math.random()).substr(2);
+	};
+
+	/* Takes param the minimum number of bytes of entropy the string must
+	 * include, not the length of the string. String length produced is not
+	 * guaranteed. */
+	Utils.randomString = (platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].getRandomValues && typeof Uint8Array !== 'undefined') ?
+		function(numBytes) {
+			var uIntArr = new Uint8Array(numBytes);
+			platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].getRandomValues(uIntArr);
+			return platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].base64Encode(uIntArr);
+		} : function(numBytes) {
+			/* Old browser; fall back to Math.random. Could just use a
+			 * CryptoJS version of the above, but want this to still work in nocrypto
+			 * versions of the library */
+			var charset = platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].base64CharSet;
+			/* base64 has 33% overhead; round length up */
+			var length = Math.round(numBytes * 4/3);
+			var result = '';
+			for(var i=0; i<length; i++) {
+				result += charset[randomPosn(charset)];
+			}
+			return result;
+		};
+
+	Utils.randomHexString = (platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].getRandomValues && typeof Uint8Array !== 'undefined') ?
+		function(numBytes) {
+			var uIntArr = new Uint8Array(numBytes);
+			platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].getRandomValues(uIntArr);
+			return platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].hexEncode(uIntArr);
+		} : function(numBytes) {
+			var charset = platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].hexCharSet;
+			var length = numBytes * 2;
+			var result = '';
+			for(var i=0; i<length; i++) {
+				result += charset[randomPosn(charset)];
+			}
+			return result;
+		};
+
+	/* Pick n elements at random without replacement from an array */
+	Utils.arrChooseN = function(arr, n) {
+		var numItems = Math.min(n, arr.length),
+			mutableArr = arr.slice(),
+			result = [];
+		for(var i = 0; i < numItems; i++) {
+			result.push(Utils.arrPopRandomElement(mutableArr));
+		}
+		return result;
+	};
+
+	Utils.trim = String.prototype.trim ? function(str) {
+		return str.trim();
+	} : function(str) {
+		return str.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
+	};
+
+	Utils.promisify = function(ob, fnName, args) {
+		return new Promise(function(resolve, reject) {
+			ob[fnName].apply(ob, Array.prototype.slice.call(args).concat(function(err, res) {
+				err ? reject(err) : resolve(res);
+			}));
+		});
+	};
+
+	Utils.decodeBody = function(body, format) {
+		return (format == 'msgpack') ? msgpack.decode(body) : JSON.parse(String(body));
+	};
+
+	Utils.encodeBody = function(body, format) {
+		return (format == 'msgpack') ? msgpack.encode(body, true) : JSON.stringify(body);
+	};
+
+	Utils.allToLowerCase = function(arr) {
+		return Utils.arrMap(arr, function(element) {
+			return element && element.toLowerCase();
+		});
+	};
+
+	Utils.allToUpperCase = function(arr) {
+		return Utils.arrMap(arr, function(element) {
+			return element && element.toUpperCase();
+		});
+	};
+
+	return Utils;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (Utils);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+
+
+var ErrorInfo = (function() {
+
+	function ErrorInfo(message, code, statusCode, cause) {
+		this.message = message;
+		this.code = code;
+		this.statusCode = statusCode;
+		this.cause = cause;
+		this.href = undefined;
+	}
+
+	ErrorInfo.prototype.toString = function() {
+		var result = '[' + this.constructor.name;
+		if(this.message) result += ': ' + this.message;
+		if(this.statusCode) result += '; statusCode=' + this.statusCode;
+		if(this.code) result += '; code=' + this.code;
+		if(this.cause) result += '; cause=' + _util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inspectError(this.cause);
+		if(this.href && !(this.message && this.message.indexOf('help.ably.io') > -1)) result += '; see ' + this.href + ' ';
+		result += ']';
+		return result;
+	};
+
+	ErrorInfo.fromValues = function(values) {
+		var result = _util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].mixin(new ErrorInfo(), values);
+		if (values instanceof Error) {
+			/* Error.message is not enumerable, so mixin loses the message */
+			result.message = values.message;
+		}
+		if(result.code && !result.href) {
+			result.href = 'https://help.ably.io/error/' + result.code;
+		}
+		return result;
+	};
+
+	return ErrorInfo;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (ErrorInfo);
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global, setImmediate) {/* harmony import */ var _lib_util_msgpack__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
+
+
+if(typeof Window === 'undefined' && typeof WorkerGlobalScope === 'undefined') {
+	console.log("Warning: this distribution of Ably is intended for browsers. On nodejs, please use the 'ably' package on npm");
+}
+
+function allowComet() {
+	/* xhr requests from local files are unreliable in some browsers, such as Chrome 65 and higher -- see eg
+	 * https://stackoverflow.com/questions/49256429/chrome-65-unable-to-make-post-requests-from-local-files-to-flask
+	 * So if websockets are supported, then just forget about comet transports and use that */
+	var loc = global.location;
+	return (!global.WebSocket || !loc || !loc.origin || loc.origin.indexOf("http") > -1);
+}
+
+var userAgent = global.navigator && global.navigator.userAgent.toString();
+var currentUrl = global.location && global.location.href;
+
+var Platform = {
+        agent: 'browser',
+	logTimestamps: true,
+	userAgent: userAgent,
+	currentUrl: currentUrl,
+	noUpgrade: userAgent && userAgent.match(/MSIE\s8\.0/),
+	binaryType: 'arraybuffer',
+	WebSocket: global.WebSocket || global.MozWebSocket,
+	xhrSupported: global.XMLHttpRequest && 'withCredentials' in new XMLHttpRequest(),
+	jsonpSupported: typeof(document) !== 'undefined',
+	allowComet: allowComet(),
+	streamingSupported: true,
+	useProtocolHeartbeats: true,
+	createHmac: null,
+	msgpack: _lib_util_msgpack__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"],
+	supportsBinary: !!global.TextDecoder,
+	preferBinary: false,
+	ArrayBuffer: global.ArrayBuffer,
+	atob: global.atob,
+	nextTick: typeof setImmediate !== 'undefined' ? global.setImmediate.bind(global) : function(f) { setTimeout(f, 0); },
+	addEventListener: global.addEventListener,
+	inspect: JSON.stringify,
+	stringByteSize: function(str) {
+		/* str.length will be an underestimate for non-ascii strings. But if we're
+		 * in a browser too old to support TextDecoder, not much we can do. Better
+		 * to underestimate, so if we do go over-size, the server will reject the
+		 * message */
+		return global.TextDecoder &&
+			(new global.TextEncoder().encode(str)).length ||
+			str.length;
+	},
+	TextEncoder: global.TextEncoder,
+	TextDecoder: global.TextDecoder,
+	Promise: global.Promise,
+	getRandomValues: (function(crypto) {
+		if (crypto === undefined) {
+			return undefined;
+		}
+		return function(arr, callback) {
+			crypto.getRandomValues(arr);
+			if(callback) {
+				callback(null);
+			}
+		};
+	})(global.crypto || global.msCrypto) // mscrypto for IE11
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (Platform);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(17), __webpack_require__(43).setImmediate))
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXTERNAL MODULE: ./browser/fragments/platform-browser.js
+var platform_browser = __webpack_require__(3);
+
+// CONCATENATED MODULE: ./browser/lib/util/defaults.js
+
+
+var Defaults = {
+	internetUpUrl: 'https://internet-up.ably-realtime.com/is-the-internet-up.txt',
+	jsonpInternetUpUrl: 'https://internet-up.ably-realtime.com/is-the-internet-up-0-9.js',
+	/* Order matters here: the base transport is the leftmost one in the
+	 * intersection of baseTransportOrder and the transports clientOption that's
+	 * supported.  This is not quite the same as the preference order -- e.g.
+	 * xhr_polling is preferred to jsonp, but for browsers that support it we want
+	 * the base transport to be xhr_polling, not jsonp */
+	defaultTransports: ['xhr_polling', 'xhr_streaming', 'jsonp', 'web_socket'],
+	baseTransportOrder: ['xhr_polling', 'xhr_streaming', 'jsonp', 'web_socket'],
+	transportPreferenceOrder: ['jsonp', 'xhr_polling', 'xhr_streaming', 'web_socket'],
+	upgradeTransports: ['xhr_streaming', 'web_socket']
+};
+
+/* If using IE8, don't attempt to upgrade from xhr_polling to xhr_streaming -
+* while it can do streaming, the low max http-connections-per-host limit means
+* that the polling transport is crippled during the upgrade process. So just
+* leave it at the base transport */
+if(platform_browser["a" /* default */].noUpgrade) {
+	Defaults.upgradeTransports = [];
+}
+
+/* harmony default export */ var defaults = (Defaults);
+
+// EXTERNAL MODULE: ./common/lib/util/utils.js
+var utils = __webpack_require__(1);
+
+// EXTERNAL MODULE: ./browser/lib/util/bufferutils.js
+var bufferutils = __webpack_require__(5);
+
+// EXTERNAL MODULE: ./common/lib/util/logger.js
+var logger = __webpack_require__(0);
+
+// EXTERNAL MODULE: ./common/lib/types/errorinfo.js
+var errorinfo = __webpack_require__(2);
+
+// EXTERNAL MODULE: ./package.json
+var package_0 = __webpack_require__(38);
+
+// CONCATENATED MODULE: ./common/lib/util/defaults.js
+
+
+
+
+
+
+
+
+defaults.ENVIRONMENT              = '';
+defaults.REST_HOST                = 'rest.ably.io';
+defaults.REALTIME_HOST            = 'realtime.ably.io';
+defaults.FALLBACK_HOSTS           = ['A.ably-realtime.com', 'B.ably-realtime.com', 'C.ably-realtime.com', 'D.ably-realtime.com', 'E.ably-realtime.com'];
+defaults.PORT                     = 80;
+defaults.TLS_PORT                 = 443;
+defaults.TIMEOUTS = {
+	/* Documented as options params: */
+	disconnectedRetryTimeout   : 15000,
+	suspendedRetryTimeout      : 30000,
+	/* Undocumented, but part of the api and can be used by customers: */
+	httpRequestTimeout         : 15000,
+	channelRetryTimeout        : 15000,
+	fallbackRetryTimeout       : 600000,
+	/* For internal / test use only: */
+	connectionStateTtl         : 120000,
+	realtimeRequestTimeout     : 10000,
+	recvTimeout                : 90000,
+	preferenceConnectTimeout   : 6000,
+	parallelUpgradeDelay       : 6000
+};
+defaults.httpMaxRetryCount = 3;
+defaults.maxMessageSize    = 65536;
+
+defaults.errorReportingUrl = 'https://errors.ably.io/api/15/store/';
+defaults.errorReportingHeaders = {
+	"X-Sentry-Auth": "Sentry sentry_version=7, sentry_key=a04e33c8674c451f8a310fbec029acf5, sentry_client=ably-js/0.1",
+	"Content-Type": "application/json"
+};
+
+defaults.version          = package_0["a" /* version */];
+defaults.apiVersion       = '1.2';
+
+var agent = 'ably-js/' + defaults.version;
+if (platform_browser["a" /* default */].agent) {
+	agent += ' ' + platform_browser["a" /* default */].agent;
+} 
+defaults.agent = agent;
+
+defaults.getHost = function(options, host, ws) {
+	if(ws)
+		host = ((host == options.restHost) && options.realtimeHost) || host || options.realtimeHost;
+	else
+		host = host || options.restHost;
+
+	return host;
+};
+
+defaults.getPort = function(options, tls) {
+	return (tls || options.tls) ? options.tlsPort : options.port;
+};
+
+defaults.getHttpScheme = function(options) {
+	return options.tls ? 'https://' : 'http://';
+};
+
+// construct environment fallback hosts as per RSC15i
+defaults.environmentFallbackHosts = function(environment) {
+	return [
+		environment + '-a-fallback.ably-realtime.com',
+		environment + '-b-fallback.ably-realtime.com',
+		environment + '-c-fallback.ably-realtime.com',
+		environment + '-d-fallback.ably-realtime.com',
+		environment + '-e-fallback.ably-realtime.com'
+	];
+};
+
+defaults.getFallbackHosts = function(options) {
+	var fallbackHosts = options.fallbackHosts,
+		httpMaxRetryCount = typeof(options.httpMaxRetryCount) !== 'undefined' ? options.httpMaxRetryCount : defaults.httpMaxRetryCount;
+
+	return fallbackHosts ? utils["a" /* default */].arrChooseN(fallbackHosts, httpMaxRetryCount) : [];
+};
+
+defaults.getHosts = function(options) {
+	return [options.restHost].concat(defaults.getFallbackHosts(options));
+};
+
+function checkHost(host) {
+	if(typeof host !== 'string') {
+		throw new errorinfo["a" /* default */]('host must be a string; was a ' + typeof host, 40000, 400);
+	};
+	if(!host.length) {
+		throw new errorinfo["a" /* default */]('host must not be zero-length', 40000, 400);
+	};
+}
+
+defaults.objectifyOptions = function(options) {
+	if(typeof options == 'string') {
+		return (options.indexOf(':') == -1) ? {token: options} : {key: options};
+	}
+	return options;
+};
+
+defaults.normaliseOptions = function(options) {
+	/* Deprecated options */
+	if(options.host) {
+		logger["a" /* default */].deprecated('host', 'restHost');
+		options.restHost = options.host;
+	}
+	if(options.wsHost) {
+		logger["a" /* default */].deprecated('wsHost', 'realtimeHost');
+		options.realtimeHost = options.wsHost;
+	}
+	if(options.queueEvents) {
+		logger["a" /* default */].deprecated('queueEvents', 'queueMessages');
+		options.queueMessages = options.queueEvents;
+	}
+
+	if(options.fallbackHostsUseDefault) {
+		/* fallbackHostsUseDefault and fallbackHosts are mutually exclusive as per TO3k7 */
+		if(options.fallbackHosts) {
+			var msg = 'fallbackHosts and fallbackHostsUseDefault cannot both be set';
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Defaults.normaliseOptions', msg);
+			throw new errorinfo["a" /* default */](msg, 40000, 400);
+		}
+
+		/* default fallbacks can't be used with custom ports */
+		if(options.port || options.tlsPort) {
+			var msg = 'fallbackHostsUseDefault cannot be set when port or tlsPort are set';
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Defaults.normaliseOptions', msg);
+			throw new errorinfo["a" /* default */](msg, 40000, 400);
+		}
+
+		/* emit an appropriate deprecation warning */
+		if(options.environment) {
+			logger["a" /* default */].deprecatedWithMsg('fallbackHostsUseDefault', 'There is no longer a need to set this when the environment option is also set since the library will now generate the correct fallback hosts using the environment option.');
+		} else {
+			logger["a" /* default */].deprecated('fallbackHostsUseDefault', 'fallbackHosts: Ably.Defaults.FALLBACK_HOSTS');
+		}
+
+		/* use the default fallback hosts as requested */
+		options.fallbackHosts = defaults.FALLBACK_HOSTS;
+	}
+
+	if(options.recover === true) {
+		logger["a" /* default */].deprecated('{recover: true}', '{recover: function(lastConnectionDetails, cb) { cb(true); }}');
+		options.recover = function(lastConnectionDetails, cb) { cb(true); };
+	}
+
+	if(typeof options.recover === 'function' && options.closeOnUnload === true) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Defaults.normaliseOptions', 'closeOnUnload was true and a session recovery function was set - these are mutually exclusive, so unsetting the latter');
+		options.recover = null;
+	}
+
+	if(!('closeOnUnload' in options)) {
+		/* Have closeOnUnload default to true unless we have any indication that
+		 * the user may want to recover the connection */
+		options.closeOnUnload = !options.recover;
+	}
+
+	if(options.transports && utils["a" /* default */].arrIn(options.transports, 'xhr')) {
+		logger["a" /* default */].deprecated('transports: ["xhr"]', 'transports: ["xhr_streaming"]');
+		utils["a" /* default */].arrDeleteValue(options.transports, 'xhr');
+		options.transports.push('xhr_streaming');
+	}
+
+	if(!('queueMessages' in options))
+		options.queueMessages = true;
+
+	/* infer hosts and fallbacks based on the configured environment */
+	var environment = (options.environment && String(options.environment).toLowerCase()) || defaults.ENVIRONMENT;
+	var production = !environment || (environment === 'production');
+
+	if(!options.fallbackHosts && !options.restHost && !options.realtimeHost && !options.port && !options.tlsPort) {
+		options.fallbackHosts = production ? defaults.FALLBACK_HOSTS : defaults.environmentFallbackHosts(environment);
+	}
+
+	if(!options.realtimeHost) {
+		/* prefer setting realtimeHost to restHost as a custom restHost typically indicates
+		 * a development environment is being used that can't be inferred by the library */
+		if(options.restHost) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_WARN, 'Defaults.normaliseOptions', 'restHost is set to "' + options.restHost + '" but realtimeHost is not set, so setting realtimeHost to "' + options.restHost + '" too. If this is not what you want, please set realtimeHost explicitly.');
+			options.realtimeHost = options.restHost
+		} else {
+			options.realtimeHost = production ? defaults.REALTIME_HOST : environment + '-' + defaults.REALTIME_HOST;
+		}
+	}
+
+	if(!options.restHost) {
+		options.restHost = production ? defaults.REST_HOST : environment + '-' + defaults.REST_HOST;
+	}
+
+	utils["a" /* default */].arrForEach((options.fallbackHosts || []).concat(options.restHost, options.realtimeHost), checkHost);
+
+	options.port = options.port || defaults.PORT;
+	options.tlsPort = options.tlsPort || defaults.TLS_PORT;
+	options.maxMessageSize = options.maxMessageSize || defaults.maxMessageSize;
+	if(!('tls' in options)) options.tls = true;
+
+	/* Allow values passed in options to override default timeouts */
+	options.timeouts = {};
+	for(var prop in defaults.TIMEOUTS) {
+		options.timeouts[prop] = options[prop] || defaults.TIMEOUTS[prop];
+	};
+
+	if('useBinaryProtocol' in options) {
+		options.useBinaryProtocol = platform_browser["a" /* default */].supportsBinary && options.useBinaryProtocol;
+	} else {
+		options.useBinaryProtocol = platform_browser["a" /* default */].preferBinary;
+	}
+
+	if(options.clientId) {
+		var headers = options.headers = options.headers || {};
+		headers['X-Ably-ClientId'] = bufferutils["a" /* default */].base64Encode(bufferutils["a" /* default */].utf8Encode(options.clientId));
+	}
+
+	if(!('idempotentRestPublishing' in options)) {
+		options.idempotentRestPublishing = true;
+	}
+
+	if(options.promises && !platform_browser["a" /* default */].Promise) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Defaults.normaliseOptions', '{promises: true} was specified, but no Promise constructor found; disabling promises');
+		options.promises = false;
+	}
+
+        if(options.agents) {
+          for(var key in options.agents) {
+            defaults.agent += ' ' + key + '/' + options.agents[key];
+          }
+        }
+
+	return options;
+};
+
+/* harmony default export */ var util_defaults = __webpack_exports__["a"] = (defaults);
+
+
+/***/ }),
+/* 5 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var crypto_js_build_enc_hex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(32);
+/* harmony import */ var crypto_js_build_enc_hex__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(crypto_js_build_enc_hex__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var crypto_js_build_enc_utf8__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(33);
+/* harmony import */ var crypto_js_build_enc_utf8__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(crypto_js_build_enc_utf8__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(18);
+/* harmony import */ var crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(10);
+/* harmony import */ var crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
+
+
+
+
+
+
+var BufferUtils = (function() {
+	var ArrayBuffer = platform__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].ArrayBuffer;
+	var atob = platform__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].atob;
+	var TextEncoder = platform__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].TextEncoder;
+	var TextDecoder = platform__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].TextDecoder;
+	var base64CharSet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
+	var hexCharSet = '0123456789abcdef';
+
+	function isWordArray(ob) { return ob !== null && ob !== undefined && ob.sigBytes !== undefined; }
+	function isArrayBuffer(ob) { return ob !== null && ob !== undefined && ob.constructor === ArrayBuffer; }
+	function isTypedArray(ob) { return ArrayBuffer && ArrayBuffer.isView && ArrayBuffer.isView(ob); }
+
+	// https://gist.githubusercontent.com/jonleighton/958841/raw/f200e30dfe95212c0165ccf1ae000ca51e9de803/gistfile1.js
+	function uint8ViewToBase64(bytes) {
+		var base64    = ''
+		var encodings = base64CharSet;
+
+		var byteLength    = bytes.byteLength
+		var byteRemainder = byteLength % 3
+		var mainLength    = byteLength - byteRemainder
+
+		var a, b, c, d
+		var chunk
+
+		// Main loop deals with bytes in chunks of 3
+		for (var i = 0; i < mainLength; i = i + 3) {
+			// Combine the three bytes into a single integer
+			chunk = (bytes[i] << 16) | (bytes[i + 1] << 8) | bytes[i + 2]
+
+			// Use bitmasks to extract 6-bit segments from the triplet
+			a = (chunk & 16515072) >> 18 // 16515072 = (2^6 - 1) << 18
+			b = (chunk & 258048)   >> 12 // 258048   = (2^6 - 1) << 12
+			c = (chunk & 4032)     >>  6 // 4032     = (2^6 - 1) << 6
+			d = chunk & 63               // 63       = 2^6 - 1
+
+			// Convert the raw binary segments to the appropriate ASCII encoding
+			base64 += encodings[a] + encodings[b] + encodings[c] + encodings[d]
+		}
+
+		// Deal with the remaining bytes and padding
+		if (byteRemainder == 1) {
+			chunk = bytes[mainLength]
+
+			a = (chunk & 252) >> 2 // 252 = (2^6 - 1) << 2
+
+			// Set the 4 least significant bits to zero
+			b = (chunk & 3)   << 4 // 3   = 2^2 - 1
+
+			base64 += encodings[a] + encodings[b] + '=='
+		} else if (byteRemainder == 2) {
+			chunk = (bytes[mainLength] << 8) | bytes[mainLength + 1]
+
+			a = (chunk & 64512) >> 10 // 64512 = (2^6 - 1) << 10
+			b = (chunk & 1008)  >>  4 // 1008  = (2^6 - 1) << 4
+
+			// Set the 2 least significant bits to zero
+			c = (chunk & 15)    <<  2 // 15    = 2^4 - 1
+
+			base64 += encodings[a] + encodings[b] + encodings[c] + '='
+		}
+
+		return base64
+	}
+
+	function base64ToArrayBuffer(base64) {
+		var binary_string =  atob(base64);
+		var len = binary_string.length;
+		var bytes = new Uint8Array( len );
+		for (var i = 0; i < len; i++)        {
+			var ascii = binary_string.charCodeAt(i);
+			bytes[i] = ascii;
+		}
+		return bytes.buffer;
+	}
+
+	/* Most BufferUtils methods that return a binary object return an ArrayBuffer
+	 * if supported, else a CryptoJS WordArray. The exception is toBuffer, which
+	 * returns a Uint8Array (and won't work on browsers too old to support it) */
+	function BufferUtils() {}
+
+	BufferUtils.base64CharSet = base64CharSet;
+	BufferUtils.hexCharSet = hexCharSet;
+
+	var isBuffer = BufferUtils.isBuffer = function(buf) { return isArrayBuffer(buf) || isWordArray(buf) || isTypedArray(buf); };
+
+	/* In browsers, returns a Uint8Array */
+	var toBuffer = BufferUtils.toBuffer = function(buf) {
+		if(!ArrayBuffer) {
+			throw new Error("Can't convert to Buffer: browser does not support the necessary types");
+		}
+
+		if(isArrayBuffer(buf)) {
+			return new Uint8Array(buf);
+		}
+
+		if(isTypedArray(buf)) {
+			return new Uint8Array(buf.buffer);
+		}
+
+		if(isWordArray(buf)) {
+			/* Backported from unreleased CryptoJS
+			* https://code.google.com/p/crypto-js/source/browse/branches/3.x/src/lib-typedarrays.js?r=661 */
+			var arrayBuffer = new ArrayBuffer(buf.sigBytes);
+			var uint8View = new Uint8Array(arrayBuffer);
+
+			for (var i = 0; i < buf.sigBytes; i++) {
+				uint8View[i] = (buf.words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
+			}
+
+			return uint8View;
+		};
+
+		throw new Error("BufferUtils.toBuffer expected an arraybuffer, typed array, or CryptoJS wordarray");
+	};
+
+	BufferUtils.toArrayBuffer = function(buf) {
+		if(isArrayBuffer(buf)) {
+			return buf;
+		}
+		return toBuffer(buf).buffer;
+	};
+
+	BufferUtils.toWordArray = function(buf) {
+		if(isTypedArray(buf)) {
+			buf = buf.buffer;
+		}
+		return isWordArray(buf) ? buf : crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_3___default.a.create(buf);
+	};
+
+	BufferUtils.base64Encode = function(buf) {
+		if(isWordArray(buf)) {
+			return Object(crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_2__["stringify"])(buf);
+		}
+		return uint8ViewToBase64(toBuffer(buf));
+	};
+
+	BufferUtils.base64Decode = function(str) {
+		if(ArrayBuffer && atob) {
+			return base64ToArrayBuffer(str);
+		}
+		return Object(crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_2__["parse"])(str);
+	};
+
+	BufferUtils.hexEncode = function(buf) {
+		buf = BufferUtils.toWordArray(buf);
+		return Object(crypto_js_build_enc_hex__WEBPACK_IMPORTED_MODULE_0__["stringify"])(buf);
+	};
+
+	BufferUtils.hexDecode = function(string) {
+		var wordArray = Object(crypto_js_build_enc_hex__WEBPACK_IMPORTED_MODULE_0__["parse"])(string);
+		return ArrayBuffer ? BufferUtils.toArrayBuffer(wordArray) : wordArray;
+	};
+
+	BufferUtils.utf8Encode = function(string) {
+		if(TextEncoder) {
+			return (new TextEncoder()).encode(string).buffer;
+		}
+		return Object(crypto_js_build_enc_utf8__WEBPACK_IMPORTED_MODULE_1__["parse"])(string);
+	};
+
+	/* For utf8 decoding we apply slightly stricter input validation than to
+	 * hexEncode/base64Encode/etc: in those we accept anything that Buffer.from
+	 * can take (in particular allowing strings, which are just interpreted as
+	 * binary); here we ensure that the input is actually a buffer since trying
+	 * to utf8-decode a string to another string is almost certainly a mistake */
+	BufferUtils.utf8Decode = function(buf) {
+		if(!isBuffer(buf)) {
+			throw new Error("Expected input of utf8decode to be an arraybuffer, typed array, or CryptoJS wordarray");
+		}
+		if(TextDecoder && !isWordArray(buf)) {
+			return (new TextDecoder()).decode(buf);
+		}
+		buf = BufferUtils.toWordArray(buf);
+		return Object(crypto_js_build_enc_utf8__WEBPACK_IMPORTED_MODULE_1__["stringify"])(buf);
+	};
+
+	BufferUtils.bufferCompare = function(buf1, buf2) {
+		if(!buf1) return -1;
+		if(!buf2) return 1;
+		buf1 = BufferUtils.toWordArray(buf1);
+		buf2 = BufferUtils.toWordArray(buf2);
+		buf1.clamp(); buf2.clamp();
+
+		var cmp = buf1.sigBytes - buf2.sigBytes;
+		if(cmp != 0) return cmp;
+		buf1 = buf1.words; buf2 = buf2.words;
+		for(var i = 0; i < buf1.length; i++) {
+			cmp = buf1[i] - buf2[i];
+			if(cmp != 0) return cmp;
+		}
+		return 0;
+	};
+
+	BufferUtils.byteLength = function(buf) {
+		if(isArrayBuffer(buf) || isTypedArray(buf)) {
+			return buf.byteLength
+		} else if(isWordArray(buf)) {
+			return buf.sigBytes;
+		}
+	};
+
+	/* Returns ArrayBuffer on browser and Buffer on Node.js */
+	BufferUtils.typedArrayToBuffer = function(typedArray) {
+		return typedArray.buffer;
+	};
+
+	return BufferUtils;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (BufferUtils);
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _common_lib_util_defaults__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+
+
+
+var Http = (function() {
+	var noop = function() {};
+
+	function Http() {}
+
+	var now = Date.now || function() {
+		/* IE 8 */
+		return new Date().getTime();
+	};
+
+	function shouldFallback(err) {
+		var statusCode = err.statusCode;
+		/* 400 + no code = a generic xhr onerror. Browser doesn't give us enough
+		 * detail to know whether it's fallback-fixable, but it may be (eg if a
+		 * network issue), so try just in case */
+		return (statusCode === 408 && !err.code) ||
+			(statusCode === 400 && !err.code)      ||
+			(statusCode >= 500 && statusCode <= 504);
+	}
+
+	function getHosts(client) {
+		/* If we're a connected realtime client, try the endpoint we're connected
+		 * to first -- but still have fallbacks, being connected is not an absolute
+		 * guarantee that a datacenter has free capacity to service REST requests. */
+		var connection = client.connection,
+			connectionHost = connection && connection.connectionManager.host;
+
+		if(connectionHost) {
+			return [connectionHost].concat(_common_lib_util_defaults__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].getFallbackHosts(client.options));
+		}
+
+		return _common_lib_util_defaults__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].getHosts(client.options);
+	}
+	Http._getHosts = getHosts;
+
+	Http.methods = ['get', 'delete', 'post', 'put', 'patch'];
+	Http.methodsWithoutBody = ['get', 'delete'];
+	Http.methodsWithBody = _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrSubtract(Http.methods, Http.methodsWithoutBody);
+
+	/* - Http.get, Http.post, Http.put, ...
+	 * Perform an HTTP request for a given path against prime and fallback Ably hosts
+	 * @param rest
+	 * @param path the full path
+	 * @param headers optional hash of headers
+	 * [only for methods with body: @param body object or buffer containing request body]
+	 * @param params optional hash of params
+	 * @param callback (err, response)
+	 *
+	 * - Http.getUri, Http.postUri, Http.putUri, ...
+	 * Perform an HTTP request for a given full URI
+	 * @param rest
+	 * @param uri the full URI
+	 * @param headers optional hash of headers
+	 * [only for methods with body: @param body object or buffer containing request body]
+	 * @param params optional hash of params
+	 * @param callback (err, response)
+	 */
+	_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrForEach(Http.methodsWithoutBody, function(method) {
+		Http[method] = function(rest, path, headers, params, callback) {
+			Http['do'](method, rest, path, headers, null, params, callback);
+		};
+		Http[method + 'Uri'] = function(rest, uri, headers, params, callback) {
+			Http.doUri(method, rest, uri, headers, null, params, callback);
+		};
+	});
+
+	_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrForEach(Http.methodsWithBody, function(method) {
+		Http[method] = function(rest, path, headers, body, params, callback) {
+			Http['do'](method, rest, path, headers, body, params, callback);
+		};
+		Http[method + 'Uri'] = function(rest, uri, headers, body, params, callback) {
+			Http.doUri(method, rest, uri, headers, body, params, callback);
+		};
+	});
+
+	/* Unlike for doUri, the 'rest' param here is mandatory, as it's used to generate the hosts */
+	Http['do'] = function(method, rest, path, headers, body, params, callback) {
+		callback = callback || noop;
+		var uriFromHost = (typeof(path) == 'function') ? path : function(host) { return rest.baseUri(host) + path; };
+		var binary = (headers && headers.accept != 'application/json');
+		var doArgs = arguments;
+
+		var currentFallback = rest._currentFallback;
+		if(currentFallback) {
+			if(currentFallback.validUntil > now()) {
+				/* Use stored fallback */
+				Http.Request(method, rest, uriFromHost(currentFallback.host), headers, params, body, function(err) {
+					if(err && shouldFallback(err)) {
+						/* unstore the fallback and start from the top with the default sequence */
+						rest._currentFallback = null;
+						Http['do'].apply(Http, doArgs);
+						return;
+					}
+					callback.apply(null, arguments);
+				});
+				return;
+			} else {
+				/* Fallback expired; remove it and fallthrough to normal sequence */
+				rest._currentFallback = null;
+			}
+		}
+
+		var hosts = getHosts(rest);
+
+		/* if there is only one host do it */
+		if(hosts.length == 1) {
+			Http.doUri(method, rest, uriFromHost(hosts[0]), headers, body, params, callback);
+			return;
+		}
+
+		/* hosts is an array with preferred host plus at least one fallback */
+		var tryAHost = function(candidateHosts, persistOnSuccess) {
+			var host = candidateHosts.shift();
+			Http.doUri(method, rest, uriFromHost(host), headers, body, params, function(err) {
+				if(err && shouldFallback(err) && candidateHosts.length) {
+					tryAHost(candidateHosts, true);
+					return;
+				}
+				if(persistOnSuccess) {
+					/* RSC15f */
+					rest._currentFallback = {
+						host: host,
+						validUntil: now() + rest.options.timeouts.fallbackRetryTimeout
+					};
+				}
+				callback.apply(null, arguments);
+			});
+		};
+		tryAHost(hosts);
+	};
+
+	Http.doUri = function(method, rest, uri, headers, body, params, callback) {
+		Http.Request(method, rest, uri, headers, params, body, callback);
+	};
+
+	Http.supportsAuthHeaders = false;
+	Http.supportsLinkHeaders = false;
+	return Http;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (Http);
+
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+
+
+
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+var EventEmitter = (function() {
+
+	/* public constructor */
+	function EventEmitter() {
+		this.any = [];
+		this.events = Object.create(null);
+		this.anyOnce = [];
+		this.eventsOnce = Object.create(null);
+	}
+
+	/* Call the listener, catch any exceptions and log, but continue operation*/
+	function callListener(eventThis, listener, args) {
+		try {
+			listener.apply(eventThis, args);
+		} catch(e) {
+			_logger__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].logAction(_logger__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].LOG_ERROR, 'EventEmitter.emit()', 'Unexpected listener exception: ' + e + '; stack = ' + (e && e.stack));
+		}
+	}
+
+	/**
+	 * Remove listeners that match listener
+	 * @param targetListeners is an array of listener arrays or event objects with arrays of listeners
+	 * @param listener the listener callback to remove
+	 * @param eventFilter (optional) event name instructing the function to only remove listeners for the specified event
+	 */
+	function removeListener(targetListeners, listener, eventFilter) {
+		var listeners, idx, eventName, targetListenersIndex;
+
+		for (targetListenersIndex = 0; targetListenersIndex < targetListeners.length; targetListenersIndex++) {
+			listeners = targetListeners[targetListenersIndex];
+			if (eventFilter) { listeners = listeners[eventFilter]; }
+
+			if (_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isArray(listeners)) {
+				while ((idx = _utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrIndexOf(listeners, listener)) !== -1) {
+					listeners.splice(idx, 1);
+				}
+				/* If events object has an event name key with no listeners then
+				   remove the key to stop the list growing indefinitely */
+				if (eventFilter && (listeners.length === 0)) {
+					delete targetListeners[targetListenersIndex][eventFilter];
+				}
+			} else if (_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isObject(listeners)) {
+				/* events */
+				for (eventName in listeners) {
+					if (hasOwnProperty.call(listeners, eventName) && _utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isArray(listeners[eventName])) {
+						removeListener([listeners], listener, eventName);
+					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * Add an event listener
+	 * @param event (optional) the name of the event to listen to
+	 *        if not supplied, all events trigger a call to the listener
+	 * @param listener the listener to be called
+	 */
+	EventEmitter.prototype.on = function(event, listener) {
+		if(arguments.length == 1 && typeof(event) == 'function') {
+			this.any.push(event);
+		} else if(_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isEmptyArg(event)) {
+			this.any.push(listener);
+		} else if(_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isArray(event)) {
+			var self = this;
+			_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrForEach(event, function(ev) {
+				self.on(ev, listener);
+			});
+		} else {
+			var listeners = (this.events[event] || (this.events[event] = []));
+			listeners.push(listener);
+		}
+	};
+
+	/**
+	 * Remove one or more event listeners
+	 * @param event (optional) the name of the event whose listener
+	 *        is to be removed. If not supplied, the listener is
+	 *        treated as an 'any' listener
+	 * @param listener (optional) the listener to remove. If not
+	 *        supplied, all listeners are removed.
+	 */
+	EventEmitter.prototype.off = function(event, listener) {
+		if(arguments.length == 0 || (_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isEmptyArg(event) && _utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isEmptyArg(listener))) {
+			this.any = [];
+			this.events = Object.create(null);
+			this.anyOnce = [];
+			this.eventsOnce = Object.create(null);
+			return;
+		}
+		if(arguments.length == 1) {
+			if(typeof(event) == 'function') {
+				/* we take this to be the listener and treat the event as "any" .. */
+				listener = event;
+				event = null;
+			}
+			/* ... or we take event to be the actual event name and listener to be all */
+		}
+
+		if(listener && _utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isEmptyArg(event)) {
+			removeListener([this.any, this.events, this.anyOnce, this.eventsOnce], listener);
+			return;
+		}
+
+		if(_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isArray(event)) {
+			var self = this;
+			_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrForEach(event, function(ev) {
+				self.off(ev, listener);
+			});
+		}
+
+		/* "normal" case where event is an actual event */
+		if(listener) {
+			removeListener([this.events, this.eventsOnce], listener, event);
+		} else {
+			delete this.events[event];
+			delete this.eventsOnce[event];
+		}
+	};
+
+	/**
+	 * Get the array of listeners for a given event; excludes once events
+	 * @param event (optional) the name of the event, or none for 'any'
+	 * @return array of events, or null if none
+	 */
+	EventEmitter.prototype.listeners = function(event) {
+		if(event) {
+			var listeners = (this.events[event] || []);
+			if(this.eventsOnce[event])
+				Array.prototype.push.apply(listeners, this.eventsOnce[event]);
+			return listeners.length ? listeners : null;
+		}
+		return this.any.length ? this.any : null;
+	};
+
+	/**
+	 * Emit an event
+	 * @param event the event name
+	 * @param args the arguments to pass to the listener
+	 */
+	EventEmitter.prototype.emit = function(event  /* , args... */) {
+		var args = Array.prototype.slice.call(arguments, 1);
+		var eventThis = {event:event};
+		var listeners = [];
+
+		if(this.anyOnce.length) {
+			Array.prototype.push.apply(listeners, this.anyOnce);
+			this.anyOnce = [];
+		}
+		if(this.any.length) {
+			Array.prototype.push.apply(listeners, this.any);
+		}
+		var eventsOnceListeners = this.eventsOnce[event];
+		if(eventsOnceListeners) {
+			Array.prototype.push.apply(listeners, eventsOnceListeners);
+			delete this.eventsOnce[event];
+		}
+		var eventsListeners = this.events[event];
+		if(eventsListeners) {
+			Array.prototype.push.apply(listeners, eventsListeners);
+		}
+
+		_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrForEach(listeners, function(listener) {
+			callListener(eventThis, listener, args);
+		});
+	};
+
+	/**
+	 * Listen for a single occurrence of an event
+	 * @param event the name of the event to listen to
+	 * @param listener the listener to be called
+	 */
+	EventEmitter.prototype.once = function(event, listener) {
+		var argCount = arguments.length, self = this;
+		if((argCount === 0 || (argCount === 1 && typeof event !== 'function')) && platform__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].Promise) {
+			return new platform__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].Promise(function(resolve) {
+				self.once(event, resolve);
+			});
+		}
+		if(arguments.length == 1 && typeof(event) == 'function') {
+			this.anyOnce.push(event);
+		} else if(_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isEmptyArg(event)) {
+			this.anyOnce.push(listener);
+		} else if(_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isArray(event)){
+			var listenerWrapper = function() {
+				var args = Array.prototype.slice.call(arguments);
+				_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrForEach(event, function(ev) {
+					self.off(ev, listenerWrapper);
+				});
+				listener.apply(this, args);
+			};
+			_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrForEach(event, function(ev) {
+				self.on(ev, listenerWrapper);
+			});
+		} else {
+			var listeners = (this.eventsOnce[event] || (this.eventsOnce[event] = []));
+			listeners.push(listener);
+		}
+	};
+
+	/**
+	 * Private API
+	 *
+	 * Listen for a single occurrence of a state event and fire immediately if currentState matches targetState
+	 * @param targetState the name of the state event to listen to
+	 * @param currentState the name of the current state of this object
+	 * @param listener the listener to be called
+	 */
+	EventEmitter.prototype.whenState = function(targetState, currentState, listener /* ...listenerArgs */) {
+		var eventThis = {event:targetState},
+			self = this,
+			listenerArgs = Array.prototype.slice.call(arguments, 3);
+
+		if((typeof(targetState) !== 'string') || (typeof(currentState) !== 'string')) {
+			throw("whenState requires a valid event String argument");
+		}
+		if(typeof listener !== 'function' && platform__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].Promise) {
+			return new platform__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].Promise(function(resolve) {
+				EventEmitter.prototype.whenState.apply(self, [targetState, currentState, resolve].concat(listenerArgs));
+			});
+		}
+		if(targetState === currentState) {
+			callListener(eventThis, listener, listenerArgs);
+		} else {
+			this.once(targetState, listener);
+		}
+	}
+
+	return EventEmitter;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (EventEmitter);
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _errorinfo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _message__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(9);
+/* harmony import */ var _presencemessage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(11);
+
+
+
+
+
+var ProtocolMessage = (function() {
+
+	function ProtocolMessage() {
+		this.action = undefined;
+		this.flags = undefined;
+		this.id = undefined;
+		this.timestamp = undefined;
+		this.count = undefined;
+		this.error = undefined;
+		this.connectionId = undefined;
+		this.connectionKey = undefined;
+		this.connectionSerial = undefined;
+		this.channel = undefined;
+		this.channelSerial = undefined;
+		this.msgSerial = undefined;
+		this.messages = undefined;
+		this.presence = undefined;
+		this.auth = undefined;
+		this.params = undefined;
+	}
+
+	var actions = ProtocolMessage.Action = {
+		'HEARTBEAT' : 0,
+		'ACK' : 1,
+		'NACK' : 2,
+		'CONNECT' : 3,
+		'CONNECTED' : 4,
+		'DISCONNECT' : 5,
+		'DISCONNECTED' : 6,
+		'CLOSE' : 7,
+		'CLOSED' : 8,
+		'ERROR' : 9,
+		'ATTACH' : 10,
+		'ATTACHED' : 11,
+		'DETACH' : 12,
+		'DETACHED' : 13,
+		'PRESENCE' : 14,
+		'MESSAGE' : 15,
+		'SYNC' : 16,
+		'AUTH' : 17
+	};
+
+	ProtocolMessage.channelModes = [ 'PRESENCE', 'PUBLISH', 'SUBSCRIBE', 'PRESENCE_SUBSCRIBE' ];
+
+	ProtocolMessage.ActionName = [];
+	_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrForEach(_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].keysArray(ProtocolMessage.Action, true), function(name) {
+		ProtocolMessage.ActionName[actions[name]] = name;
+	});
+
+	var flags = {
+		/* Channel attach state flags */
+		'HAS_PRESENCE':       1 << 0,
+		'HAS_BACKLOG':        1 << 1,
+		'RESUMED':            1 << 2,
+		'TRANSIENT':          1 << 4,
+		'ATTACH_RESUME':      1 << 5,
+		/* Channel mode flags */
+		'PRESENCE':           1 << 16,
+		'PUBLISH':            1 << 17,
+		'SUBSCRIBE':          1 << 18,
+		'PRESENCE_SUBSCRIBE': 1 << 19
+	};
+	var flagNames = _util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].keysArray(flags);
+	flags.MODE_ALL = flags.PRESENCE | flags.PUBLISH | flags.SUBSCRIBE | flags.PRESENCE_SUBSCRIBE;
+
+	ProtocolMessage.prototype.hasFlag = function(flag) {
+		return ((this.flags & flags[flag]) > 0);
+	};
+
+	ProtocolMessage.prototype.setFlag = function(flag) {
+		return this.flags = this.flags | flags[flag];
+	};
+
+	ProtocolMessage.prototype.getMode = function() {
+		return this.flags && (this.flags & flags.MODE_ALL);
+	};
+
+	ProtocolMessage.prototype.encodeModesToFlags = function(modes) {
+		var self = this;
+		_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrForEach(modes, function(mode) {
+			self.setFlag(mode);
+		});
+	};
+
+	ProtocolMessage.prototype.decodeModesFromFlags = function() {
+		var modes = [],
+			self = this;
+		_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrForEach(ProtocolMessage.channelModes, function(mode) {
+			if(self.hasFlag(mode)) {
+				modes.push(mode);
+			}
+		});
+		return modes.length > 0 ? modes : undefined;
+	};
+
+	ProtocolMessage.serialize = _util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].encodeBody;
+
+	ProtocolMessage.deserialize = function(serialized, format) {
+		var deserialized = _util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].decodeBody(serialized, format);
+		return ProtocolMessage.fromDeserialized(deserialized);
+	};
+
+	ProtocolMessage.fromDeserialized = function(deserialized) {
+		var error = deserialized.error;
+		if(error) deserialized.error = _errorinfo__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].fromValues(error);
+		var messages = deserialized.messages;
+		if(messages) for(var i = 0; i < messages.length; i++) messages[i] = _message__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].fromValues(messages[i]);
+		var presence = deserialized.presence;
+		if(presence) for(var i = 0; i < presence.length; i++) presence[i] = _presencemessage__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].fromValues(presence[i], true);
+		return _util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].mixin(new ProtocolMessage(), deserialized);
+	};
+
+	ProtocolMessage.fromValues = function(values) {
+		return _util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].mixin(new ProtocolMessage(), values);
+	};
+
+	function toStringArray(array) {
+		var result = [];
+		if (array) {
+			for (var i = 0; i < array.length; i++) {
+				result.push(array[i].toString());
+			}
+		}
+		return '[ ' + result.join(', ') + ' ]';
+	}
+
+	var simpleAttributes = 'id channel channelSerial connectionId connectionKey connectionSerial count msgSerial timestamp'.split(' ');
+
+	ProtocolMessage.stringify = function(msg) {
+		var result = '[ProtocolMessage';
+		if(msg.action !== undefined)
+			result += '; action=' + ProtocolMessage.ActionName[msg.action] || false;
+
+		var attribute;
+		for (var attribIndex = 0; attribIndex < simpleAttributes.length; attribIndex++) {
+			attribute = simpleAttributes[attribIndex];
+			if(msg[attribute] !== undefined)
+				result += '; ' + attribute + '=' + msg[attribute];
+		}
+
+		if(msg.messages)
+			result += '; messages=' + toStringArray(_message__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].fromValuesArray(msg.messages));
+		if(msg.presence)
+			result += '; presence=' + toStringArray(_presencemessage__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].fromValuesArray(msg.presence));
+		if(msg.error)
+			result += '; error=' + _errorinfo__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].fromValues(msg.error).toString();
+		if(msg.auth && msg.auth.accessToken)
+			result += '; token=' + msg.auth.accessToken;
+		if(msg.flags)
+			result += '; flags=' + _util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrFilter(flagNames, function(flag) {
+				return msg.hasFlag(flag);
+			}).join(',');
+		if(msg.params) {
+			var stringifiedParams = '';
+			_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].forInOwnNonNullProps(msg.params, function(prop) {
+				if (stringifiedParams.length > 0) {
+					stringifiedParams += '; ';
+				}
+				stringifiedParams += prop + '=' + msg.params[prop];
+			});
+			if (stringifiedParams.length > 0) {
+				result += '; params=[' + stringifiedParams + ']';
+			}
+		}
+		result += ']';
+		return result;
+	};
+
+	/* Only valid for channel messages */
+	ProtocolMessage.isDuplicate = function(a, b) {
+		if (a && b) {
+			if ((a.action === actions.MESSAGE || a.action === actions.PRESENCE) &&
+				(a.action === b.action) &&
+				(a.channel === b.channel) &&
+				(a.id === b.id)) {
+				if (a.action === actions.PRESENCE) {
+					return true;
+				} else if (a.messages.length === b.messages.length) {
+					for (var i = 0; i < a.messages.length; i++) {
+						var aMessage = a.messages[i];
+						var bMessage = b.messages[i];
+						if ((aMessage.extras && aMessage.extras.delta && aMessage.extras.delta.format) !==
+							(bMessage.extras && bMessage.extras.delta && bMessage.extras.delta.format)) {
+							return false;
+						}
+					}
+
+					return true;
+				}
+			}
+		}
+
+		return false;
+	};
+
+	return ProtocolMessage;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (ProtocolMessage);
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+/* harmony import */ var _util_logger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
+/* harmony import */ var platform_crypto__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(19);
+/* harmony import */ var _errorinfo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(2);
+
+
+
+
+
+
+var Message = (function() {
+
+	function Message() {
+		this.name = undefined;
+		this.id = undefined;
+		this.timestamp = undefined;
+		this.clientId = undefined;
+		this.connectionId = undefined;
+		this.connectionKey = undefined;
+		this.data = undefined;
+		this.encoding = undefined;
+		this.extras = undefined;
+		this.size = undefined;
+	}
+
+	/**
+	 * Overload toJSON() to intercept JSON.stringify()
+	 * @return {*}
+	 */
+	Message.prototype.toJSON = function() {
+		var result = {
+			name: this.name,
+			id: this.id,
+			clientId: this.clientId,
+			connectionId: this.connectionId,
+			connectionKey: this.connectionKey,
+			encoding: this.encoding,
+			extras: this.extras
+		};
+
+		/* encode data to base64 if present and we're returning real JSON;
+		 * although msgpack calls toJSON(), we know it is a stringify()
+		 * call if it has a non-empty arguments list */
+		var data = this.data;
+		if(data && platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isBuffer(data)) {
+			if(arguments.length > 0) {
+				/* stringify call */
+				var encoding = this.encoding;
+				result.encoding = encoding ? (encoding + '/base64') : 'base64';
+				data = platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].base64Encode(data);
+			} else {
+				/* Called by msgpack. toBuffer returns a datatype understandable by
+				 * that platform's msgpack implementation (Buffer in node, Uint8Array
+				 * in browsers) */
+				data = platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].toBuffer(data);
+			}
+		}
+		result.data = data;
+		return result;
+	};
+
+	Message.prototype.toString = function() {
+		var result = '[Message';
+		if(this.name)
+			result += '; name=' + this.name;
+		if(this.id)
+			result += '; id=' + this.id;
+		if(this.timestamp)
+			result += '; timestamp=' + this.timestamp;
+		if(this.clientId)
+			result += '; clientId=' + this.clientId;
+		if(this.connectionId)
+			result += '; connectionId=' + this.connectionId;
+		if(this.encoding)
+			result += '; encoding=' + this.encoding;
+		if(this.extras)
+			result += '; extras =' + JSON.stringify(this.extras);
+		if(this.data) {
+			if (typeof(this.data) == 'string')
+				result += '; data=' + this.data;
+			else if (platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isBuffer(this.data))
+				result += '; data (buffer)=' + platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].base64Encode(this.data);
+			else
+				result += '; data (json)=' + JSON.stringify(this.data);
+		}
+		if(this.extras)
+			result += '; extras=' + JSON.stringify(this.extras);
+		result += ']';
+		return result;
+	};
+
+	Message.encrypt = function(msg, options, callback) {
+		var data = msg.data,
+			encoding = msg.encoding,
+			cipher = options.channelCipher;
+
+		encoding = encoding ? (encoding + '/') : '';
+		if(!platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isBuffer(data)) {
+			data = platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].utf8Encode(String(data));
+			encoding = encoding + 'utf-8/';
+		}
+		cipher.encrypt(data, function(err, data) {
+			if (err) {
+				callback(err);
+				return;
+			}
+			msg.data = data;
+			msg.encoding = encoding + 'cipher+' + cipher.algorithm;
+			callback(null, msg);
+		});
+	};
+
+	Message.encode = function(msg, options, callback) {
+		var data = msg.data, encoding,
+			nativeDataType = typeof(data) == 'string' || platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isBuffer(data) || data === null || data === undefined;
+
+		if (!nativeDataType) {
+			if (_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].isObject(data) || _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].isArray(data)) {
+				msg.data = JSON.stringify(data);
+				msg.encoding = (encoding = msg.encoding) ? (encoding + '/json') : 'json';
+			} else {
+				throw new _errorinfo__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"]('Data type is unsupported', 40013, 400);
+			}
+		}
+
+		if(options != null && options.cipher) {
+			Message.encrypt(msg, options, callback);
+		} else {
+			callback(null, msg);
+		}
+	};
+
+	Message.encodeArray = function(messages, options, callback) {
+		var processed = 0;
+		for (var i = 0; i < messages.length; i++) {
+			Message.encode(messages[i], options, function(err, msg) {
+				if (err) {
+					callback(err);
+					return;
+				}
+				processed++;
+				if (processed == messages.length) {
+					callback(null, messages);
+				}
+			});
+		}
+	};
+
+	Message.serialize = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].encodeBody;
+
+	Message.decode = function(message, context) {
+		/* The second argument could be either EncodingDecodingContext that contains ChannelOptions or ChannelOptions */
+		if(!context || !context.channelOptions) {
+			var channelOptions = context;
+			context = {
+				channelOptions: channelOptions,
+				plugins: { },
+				baseEncodedPreviousPayload: undefined
+			};
+		}
+
+		var lastPayload = message.data;
+		var encoding = message.encoding;
+		if(encoding) {
+			var xforms = encoding.split('/'),
+				lastProcessedEncodingIndex, encodingsToProcess = xforms.length,
+				data = message.data;
+
+			try {
+				while((lastProcessedEncodingIndex = encodingsToProcess) > 0) {
+					var match = xforms[--encodingsToProcess].match(/([\-\w]+)(\+([\w\-]+))?/);
+					if(!match) break;
+					var xform = match[1];
+					switch(xform) {
+						case 'base64':
+							data = platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].base64Decode(String(data));
+							if(lastProcessedEncodingIndex == xforms.length) {
+								lastPayload = data;
+							}
+							continue;
+						case 'utf-8':
+							data = platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].utf8Decode(data);
+							continue;
+						case 'json':
+							data = JSON.parse(data);
+							continue;
+						case 'cipher':
+							if(context.channelOptions != null && context.channelOptions.cipher) {
+								var xformAlgorithm = match[3], cipher = context.channelOptions.channelCipher;
+								/* don't attempt to decrypt unless the cipher params are compatible */
+								if(xformAlgorithm != cipher.algorithm) {
+									throw new Error('Unable to decrypt message with given cipher; incompatible cipher params');
+								}
+								data = cipher.decrypt(data);
+								continue;
+							} else {
+								throw new Error('Unable to decrypt message; not an encrypted channel');
+							}
+						case 'vcdiff':
+							if(!context.plugins || !context.plugins.vcdiff) {
+								throw new _errorinfo__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"]('Missing Vcdiff decoder (https://github.com/ably-forks/vcdiff-decoder)', 40019, 400);
+							}
+							if(typeof Uint8Array === 'undefined') {
+								throw new _errorinfo__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"]('Delta decoding not supported on this browser (need ArrayBuffer & Uint8Array)', 40020, 400);
+							}
+							try {
+								var deltaBase = context.baseEncodedPreviousPayload;
+								if(typeof deltaBase === 'string') {
+									deltaBase = platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].utf8Encode(deltaBase);
+								}
+
+								/* vcdiff expects Uint8Arrays, can't copy with ArrayBuffers. (also, if we
+								 * don't have a TextDecoder, deltaBase might be a WordArray here, so need
+								 * to process it into a buffer anyway) */
+								deltaBase = platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].toBuffer(deltaBase);
+								data = platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].toBuffer(data);
+
+								data = platform_bufferutils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].typedArrayToBuffer(context.plugins.vcdiff.decode(data, deltaBase));
+								lastPayload = data;
+							} catch(e) {
+								throw new _errorinfo__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"]('Vcdiff delta decode failed with ' + e, 40018, 400);
+							}
+							continue;
+						default:
+							throw new Error("Unknown encoding");
+					}
+					break;
+				}
+			} catch(e) {
+				throw new _errorinfo__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"]('Error processing the ' + xform + ' encoding, decoder returned ‘' + e.message + '’', e.code || 40013, 400);
+			} finally {
+				message.encoding = (lastProcessedEncodingIndex <= 0) ? null : xforms.slice(0, lastProcessedEncodingIndex).join('/');
+				message.data = data;
+			}
+		}
+		context.baseEncodedPreviousPayload = lastPayload;
+	};
+
+	Message.fromResponseBody = function(body, options, format) {
+		if(format) {
+			body = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].decodeBody(body, format);
+		}
+
+		for(var i = 0; i < body.length; i++) {
+			var msg = body[i] = Message.fromValues(body[i]);
+			try {
+				Message.decode(msg, options);
+			} catch (e) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].LOG_ERROR, 'Message.fromResponseBody()', e.toString());
+			}
+		}
+		return body;
+	};
+
+	Message.fromValues = function(values) {
+		return _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].mixin(new Message(), values);
+	};
+
+	Message.fromValuesArray = function(values) {
+		var count = values.length, result = new Array(count);
+		for(var i = 0; i < count; i++) result[i] = Message.fromValues(values[i]);
+		return result;
+	};
+
+	function normalizeCipherOptions(options) {
+		if(options && options.cipher && !options.cipher.channelCipher) {
+			if(!platform_crypto__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]) throw new Error('Encryption not enabled; use ably.encryption.js instead');
+			var cipher = platform_crypto__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].getCipher(options.cipher);
+			options.cipher = cipher.cipherParams;
+			options.channelCipher = cipher.cipher;
+		}
+	}
+
+	Message.fromEncoded = function(encoded, options) {
+		var msg = Message.fromValues(encoded);
+		normalizeCipherOptions(options);
+		/* if decoding fails at any point, catch and return the message decoded to
+		 * the fullest extent possible */
+		try {
+			Message.decode(msg, options);
+		} catch(e) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].LOG_ERROR, 'Message.fromEncoded()', e.toString());
+		}
+		return msg;
+	};
+
+	Message.fromEncodedArray = function(encodedArray, options) {
+		normalizeCipherOptions(options);
+		return _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrMap(encodedArray, function(encoded) {
+			return Message.fromEncoded(encoded, options);
+		});
+	};
+
+	function getMessageSize(msg) {
+		var size = 0;
+		if(msg.name) {
+			size += msg.name.length;
+		}
+		if(msg.clientId) {
+			size += msg.clientId.length;
+		}
+		if(msg.extras) {
+			size += JSON.stringify(msg.extras).length;
+		}
+		if(msg.data) {
+			size += _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].dataSizeBytes(msg.data);
+		}
+		return size;
+	};
+
+	/* This should be called on encode()d (and encrypt()d) Messages (as it
+	 * assumes the data is a string or buffer) */
+	Message.getMessagesSize = function(messages) {
+		var msg, total = 0;
+		for(var i=0; i<messages.length; i++) {
+			msg = messages[i];
+			total += (msg.size || (msg.size = getMessageSize(msg)))
+		}
+		return total;
+	};
+
+	return Message;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (Message);
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	(function () {
+	    // Check if typed arrays are supported
+	    if (typeof ArrayBuffer != 'function') {
+	        return;
+	    }
+
+	    // Shortcuts
+	    var C = CryptoJS;
+	    var C_lib = C.lib;
+	    var WordArray = C_lib.WordArray;
+
+	    // Reference original init
+	    var superInit = WordArray.init;
+
+	    // Augment WordArray.init to handle typed arrays
+	    var subInit = WordArray.init = function (typedArray) {
+	        // Convert buffers to uint8
+	        if (typedArray instanceof ArrayBuffer) {
+	            typedArray = new Uint8Array(typedArray);
+	        }
+
+	        // Convert other array views to uint8
+	        if (
+	            typedArray instanceof Int8Array ||
+	            (typeof Uint8ClampedArray !== "undefined" && typedArray instanceof Uint8ClampedArray) ||
+	            typedArray instanceof Int16Array ||
+	            typedArray instanceof Uint16Array ||
+	            typedArray instanceof Int32Array ||
+	            typedArray instanceof Uint32Array ||
+	            typedArray instanceof Float32Array ||
+	            typedArray instanceof Float64Array
+	        ) {
+	            typedArray = new Uint8Array(typedArray.buffer, typedArray.byteOffset, typedArray.byteLength);
+	        }
+
+	        // Handle Uint8Array
+	        if (typedArray instanceof Uint8Array) {
+	            // Shortcut
+	            var typedArrayByteLength = typedArray.byteLength;
+
+	            // Extract bytes
+	            var words = [];
+	            for (var i = 0; i < typedArrayByteLength; i++) {
+	                words[i >>> 2] |= typedArray[i] << (24 - (i % 4) * 8);
+	            }
+
+	            // Initialize this word array
+	            superInit.call(this, words, typedArrayByteLength);
+	        } else {
+	            // Else call normal init
+	            superInit.apply(this, arguments);
+	        }
+	    };
+
+	    subInit.prototype = WordArray;
+	}());
+
+
+	return CryptoJS.lib.WordArray;
+
+}));
+
+/***/ }),
+/* 11 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _util_logger__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(5);
+/* harmony import */ var _message__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(9);
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(1);
+
+
+
+
+
+
+var PresenceMessage = (function() {
+	var msgpack = platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].msgpack;
+
+	function toActionValue(actionString) {
+		return _util_utils__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].arrIndexOf(PresenceMessage.Actions, actionString)
+	}
+
+	function PresenceMessage() {
+		this.action = undefined;
+		this.id = undefined;
+		this.timestamp = undefined;
+		this.clientId = undefined;
+		this.connectionId = undefined;
+		this.data = undefined;
+		this.encoding = undefined;
+		this.size = undefined;
+	}
+
+	PresenceMessage.Actions = [
+		'absent',
+		'present',
+		'enter',
+		'leave',
+		'update'
+	];
+
+	/* Returns whether this presenceMessage is synthesized, i.e. was not actually
+	 * sent by the connection (usually means a leave event sent 15s after a
+	 * disconnection). This is useful because synthesized messages cannot be
+	 * compared for newness by id lexicographically - RTP2b1
+	 */
+	PresenceMessage.prototype.isSynthesized = function() {
+		return this.id.substring(this.connectionId.length, 0) !== this.connectionId;
+	};
+
+	/* RTP2b2 */
+	PresenceMessage.prototype.parseId = function() {
+		var parts = this.id.split(':');
+		return {
+			connectionId: parts[0],
+			msgSerial: parseInt(parts[1], 10),
+			index: parseInt(parts[2], 10)
+		};
+	};
+
+	/**
+	 * Overload toJSON() to intercept JSON.stringify()
+	 * @return {*}
+	 */
+	PresenceMessage.prototype.toJSON = function() {
+		var result = {
+			clientId: this.clientId,
+			/* Convert presence action back to an int for sending to Ably */
+			action: toActionValue(this.action),
+			encoding: this.encoding
+		};
+
+		/* encode data to base64 if present and we're returning real JSON;
+		 * although msgpack calls toJSON(), we know it is a stringify()
+		 * call if it has a non-empty arguments list */
+		var data = this.data;
+		if(data && platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].isBuffer(data)) {
+			if(arguments.length > 0) {
+				/* stringify call */
+				var encoding = this.encoding;
+				result.encoding = encoding ? (encoding + '/base64') : 'base64';
+				data = platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].base64Encode(data);
+			} else {
+				/* Called by msgpack. toBuffer returns a datatype understandable by
+				 * that platform's msgpack implementation (Buffer in node, Uint8Array
+				 * in browsers) */
+				data = platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].toBuffer(data);
+			}
+		}
+		result.data = data;
+		return result;
+	};
+
+	PresenceMessage.prototype.toString = function() {
+		var result = '[PresenceMessage';
+		result += '; action=' + this.action;
+		if(this.id)
+			result += '; id=' + this.id;
+		if(this.timestamp)
+			result += '; timestamp=' + this.timestamp;
+		if(this.clientId)
+			result += '; clientId=' + this.clientId;
+		if(this.connectionId)
+			result += '; connectionId=' + this.connectionId;
+		if(this.encoding)
+			result += '; encoding=' + this.encoding;
+		if(this.data) {
+			if (typeof(this.data) == 'string')
+				result += '; data=' + this.data;
+			else if (platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].isBuffer(this.data))
+				result += '; data (buffer)=' + platform_bufferutils__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].base64Encode(this.data);
+			else
+				result += '; data (json)=' + JSON.stringify(this.data);
+		}
+		result += ']';
+		return result;
+	};
+	PresenceMessage.encode = _message__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].encode;
+	PresenceMessage.decode = _message__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].decode;
+
+	PresenceMessage.fromResponseBody = function(body, options, format) {
+		if(format) {
+			body = _util_utils__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].decodeBody(body, format);
+		}
+
+		for(var i = 0; i < body.length; i++) {
+			var msg = body[i] = PresenceMessage.fromValues(body[i], true);
+			try {
+				PresenceMessage.decode(msg, options);
+			} catch (e) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].LOG_ERROR, 'PresenceMessage.fromResponseBody()', e.toString());
+			}
+		}
+		return body;
+	};
+
+	/* Creates a PresenceMessage from specified values, with a string presence action */
+	PresenceMessage.fromValues = function(values, stringifyAction) {
+		if(stringifyAction) {
+			values.action = PresenceMessage.Actions[values.action]
+		}
+		return _util_utils__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].mixin(new PresenceMessage(), values);
+	};
+
+	PresenceMessage.fromValuesArray = function(values) {
+		var count = values.length, result = new Array(count);
+		for(var i = 0; i < count; i++) result[i] = PresenceMessage.fromValues(values[i]);
+		return result;
+	};
+
+	PresenceMessage.fromEncoded = function(encoded, options) {
+		var msg = PresenceMessage.fromValues(encoded, true);
+		/* if decoding fails at any point, catch and return the message decoded to
+		 * the fullest extent possible */
+		try {
+			PresenceMessage.decode(msg, options);
+		} catch(e) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].LOG_ERROR, 'PresenceMessage.fromEncoded()', e.toString());
+		}
+		return msg;
+	};
+
+	PresenceMessage.fromEncodedArray = function(encodedArray, options) {
+		return _util_utils__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].arrMap(encodedArray, function(encoded) {
+			return PresenceMessage.fromEncoded(encoded, options);
+		});
+	};
+
+	PresenceMessage.getMessagesSize = _message__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].getMessagesSize;
+
+	return PresenceMessage;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (PresenceMessage);
+
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory();
+	}
+	else {}
+}(this, function () {
+
+	/*globals window, global, require*/
+
+	/**
+	 * CryptoJS core components.
+	 */
+	var CryptoJS = CryptoJS || (function (Math, undefined) {
+
+	    var crypto;
+
+	    // Native crypto from window (Browser)
+	    if (typeof window !== 'undefined' && window.crypto) {
+	        crypto = window.crypto;
+	    }
+
+	    // Native (experimental IE 11) crypto from window (Browser)
+	    if (!crypto && typeof window !== 'undefined' && window.msCrypto) {
+	        crypto = window.msCrypto;
+	    }
+
+	    // Native crypto from global (NodeJS)
+	    if (!crypto && typeof global !== 'undefined' && global.crypto) {
+	        crypto = global.crypto;
+	    }
+
+	    // Native crypto import via require (NodeJS)
+	    if (!crypto && "function" === 'function') {
+	        try {
+	            crypto = __webpack_require__(46);
+	        } catch (err) {}
+	    }
+
+	    /*
+	     * Cryptographically secure pseudorandom number generator
+	     *
+	     * As Math.random() is cryptographically not safe to use
+	     */
+	    var cryptoSecureRandomInt = function () {
+	        if (crypto) {
+	            // Use getRandomValues method (Browser)
+	            if (typeof crypto.getRandomValues === 'function') {
+	                try {
+	                    return crypto.getRandomValues(new Uint32Array(1))[0];
+	                } catch (err) {}
+	            }
+
+	            // Use randomBytes method (NodeJS)
+	            if (typeof crypto.randomBytes === 'function') {
+	                try {
+	                    return crypto.randomBytes(4).readInt32LE();
+	                } catch (err) {}
+	            }
+	        }
+
+	        throw new Error('Native crypto module could not be used to get secure random number.');
+	    };
+
+	    /*
+	     * Local polyfill of Object.create
+
+	     */
+	    var create = Object.create || (function () {
+	        function F() {}
+
+	        return function (obj) {
+	            var subtype;
+
+	            F.prototype = obj;
+
+	            subtype = new F();
+
+	            F.prototype = null;
+
+	            return subtype;
+	        };
+	    }())
+
+	    /**
+	     * CryptoJS namespace.
+	     */
+	    var C = {};
+
+	    /**
+	     * Library namespace.
+	     */
+	    var C_lib = C.lib = {};
+
+	    /**
+	     * Base object for prototypal inheritance.
+	     */
+	    var Base = C_lib.Base = (function () {
+
+
+	        return {
+	            /**
+	             * Creates a new object that inherits from this object.
+	             *
+	             * @param {Object} overrides Properties to copy into the new object.
+	             *
+	             * @return {Object} The new object.
+	             *
+	             * @static
+	             *
+	             * @example
+	             *
+	             *     var MyType = CryptoJS.lib.Base.extend({
+	             *         field: 'value',
+	             *
+	             *         method: function () {
+	             *         }
+	             *     });
+	             */
+	            extend: function (overrides) {
+	                // Spawn
+	                var subtype = create(this);
+
+	                // Augment
+	                if (overrides) {
+	                    subtype.mixIn(overrides);
+	                }
+
+	                // Create default initializer
+	                if (!subtype.hasOwnProperty('init') || this.init === subtype.init) {
+	                    subtype.init = function () {
+	                        subtype.$super.init.apply(this, arguments);
+	                    };
+	                }
+
+	                // Initializer's prototype is the subtype object
+	                subtype.init.prototype = subtype;
+
+	                // Reference supertype
+	                subtype.$super = this;
+
+	                return subtype;
+	            },
+
+	            /**
+	             * Extends this object and runs the init method.
+	             * Arguments to create() will be passed to init().
+	             *
+	             * @return {Object} The new object.
+	             *
+	             * @static
+	             *
+	             * @example
+	             *
+	             *     var instance = MyType.create();
+	             */
+	            create: function () {
+	                var instance = this.extend();
+	                instance.init.apply(instance, arguments);
+
+	                return instance;
+	            },
+
+	            /**
+	             * Initializes a newly created object.
+	             * Override this method to add some logic when your objects are created.
+	             *
+	             * @example
+	             *
+	             *     var MyType = CryptoJS.lib.Base.extend({
+	             *         init: function () {
+	             *             // ...
+	             *         }
+	             *     });
+	             */
+	            init: function () {
+	            },
+
+	            /**
+	             * Copies properties into this object.
+	             *
+	             * @param {Object} properties The properties to mix in.
+	             *
+	             * @example
+	             *
+	             *     MyType.mixIn({
+	             *         field: 'value'
+	             *     });
+	             */
+	            mixIn: function (properties) {
+	                for (var propertyName in properties) {
+	                    if (properties.hasOwnProperty(propertyName)) {
+	                        this[propertyName] = properties[propertyName];
+	                    }
+	                }
+
+	                // IE won't copy toString using the loop above
+	                if (properties.hasOwnProperty('toString')) {
+	                    this.toString = properties.toString;
+	                }
+	            },
+
+	            /**
+	             * Creates a copy of this object.
+	             *
+	             * @return {Object} The clone.
+	             *
+	             * @example
+	             *
+	             *     var clone = instance.clone();
+	             */
+	            clone: function () {
+	                return this.init.prototype.extend(this);
+	            }
+	        };
+	    }());
+
+	    /**
+	     * An array of 32-bit words.
+	     *
+	     * @property {Array} words The array of 32-bit words.
+	     * @property {number} sigBytes The number of significant bytes in this word array.
+	     */
+	    var WordArray = C_lib.WordArray = Base.extend({
+	        /**
+	         * Initializes a newly created word array.
+	         *
+	         * @param {Array} words (Optional) An array of 32-bit words.
+	         * @param {number} sigBytes (Optional) The number of significant bytes in the words.
+	         *
+	         * @example
+	         *
+	         *     var wordArray = CryptoJS.lib.WordArray.create();
+	         *     var wordArray = CryptoJS.lib.WordArray.create([0x00010203, 0x04050607]);
+	         *     var wordArray = CryptoJS.lib.WordArray.create([0x00010203, 0x04050607], 6);
+	         */
+	        init: function (words, sigBytes) {
+	            words = this.words = words || [];
+
+	            if (sigBytes != undefined) {
+	                this.sigBytes = sigBytes;
+	            } else {
+	                this.sigBytes = words.length * 4;
+	            }
+	        },
+
+	        /**
+	         * Converts this word array to a string.
+	         *
+	         * @param {Encoder} encoder (Optional) The encoding strategy to use. Default: CryptoJS.enc.Hex
+	         *
+	         * @return {string} The stringified word array.
+	         *
+	         * @example
+	         *
+	         *     var string = wordArray + '';
+	         *     var string = wordArray.toString();
+	         *     var string = wordArray.toString(CryptoJS.enc.Utf8);
+	         */
+	        toString: function (encoder) {
+	            return (encoder || Hex).stringify(this);
+	        },
+
+	        /**
+	         * Concatenates a word array to this word array.
+	         *
+	         * @param {WordArray} wordArray The word array to append.
+	         *
+	         * @return {WordArray} This word array.
+	         *
+	         * @example
+	         *
+	         *     wordArray1.concat(wordArray2);
+	         */
+	        concat: function (wordArray) {
+	            // Shortcuts
+	            var thisWords = this.words;
+	            var thatWords = wordArray.words;
+	            var thisSigBytes = this.sigBytes;
+	            var thatSigBytes = wordArray.sigBytes;
+
+	            // Clamp excess bits
+	            this.clamp();
+
+	            // Concat
+	            if (thisSigBytes % 4) {
+	                // Copy one byte at a time
+	                for (var i = 0; i < thatSigBytes; i++) {
+	                    var thatByte = (thatWords[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
+	                    thisWords[(thisSigBytes + i) >>> 2] |= thatByte << (24 - ((thisSigBytes + i) % 4) * 8);
+	                }
+	            } else {
+	                // Copy one word at a time
+	                for (var i = 0; i < thatSigBytes; i += 4) {
+	                    thisWords[(thisSigBytes + i) >>> 2] = thatWords[i >>> 2];
+	                }
+	            }
+	            this.sigBytes += thatSigBytes;
+
+	            // Chainable
+	            return this;
+	        },
+
+	        /**
+	         * Removes insignificant bits.
+	         *
+	         * @example
+	         *
+	         *     wordArray.clamp();
+	         */
+	        clamp: function () {
+	            // Shortcuts
+	            var words = this.words;
+	            var sigBytes = this.sigBytes;
+
+	            // Clamp
+	            words[sigBytes >>> 2] &= 0xffffffff << (32 - (sigBytes % 4) * 8);
+	            words.length = Math.ceil(sigBytes / 4);
+	        },
+
+	        /**
+	         * Creates a copy of this word array.
+	         *
+	         * @return {WordArray} The clone.
+	         *
+	         * @example
+	         *
+	         *     var clone = wordArray.clone();
+	         */
+	        clone: function () {
+	            var clone = Base.clone.call(this);
+	            clone.words = this.words.slice(0);
+
+	            return clone;
+	        },
+
+	        /**
+	         * Creates a word array filled with random bytes.
+	         *
+	         * @param {number} nBytes The number of random bytes to generate.
+	         *
+	         * @return {WordArray} The random word array.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var wordArray = CryptoJS.lib.WordArray.random(16);
+	         */
+	        random: function (nBytes) {
+	            var words = [];
+
+	            for (var i = 0; i < nBytes; i += 4) {
+	                words.push(cryptoSecureRandomInt());
+	            }
+
+	            return new WordArray.init(words, nBytes);
+	        }
+	    });
+
+	    /**
+	     * Encoder namespace.
+	     */
+	    var C_enc = C.enc = {};
+
+	    /**
+	     * Hex encoding strategy.
+	     */
+	    var Hex = C_enc.Hex = {
+	        /**
+	         * Converts a word array to a hex string.
+	         *
+	         * @param {WordArray} wordArray The word array.
+	         *
+	         * @return {string} The hex string.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var hexString = CryptoJS.enc.Hex.stringify(wordArray);
+	         */
+	        stringify: function (wordArray) {
+	            // Shortcuts
+	            var words = wordArray.words;
+	            var sigBytes = wordArray.sigBytes;
+
+	            // Convert
+	            var hexChars = [];
+	            for (var i = 0; i < sigBytes; i++) {
+	                var bite = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
+	                hexChars.push((bite >>> 4).toString(16));
+	                hexChars.push((bite & 0x0f).toString(16));
+	            }
+
+	            return hexChars.join('');
+	        },
+
+	        /**
+	         * Converts a hex string to a word array.
+	         *
+	         * @param {string} hexStr The hex string.
+	         *
+	         * @return {WordArray} The word array.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var wordArray = CryptoJS.enc.Hex.parse(hexString);
+	         */
+	        parse: function (hexStr) {
+	            // Shortcut
+	            var hexStrLength = hexStr.length;
+
+	            // Convert
+	            var words = [];
+	            for (var i = 0; i < hexStrLength; i += 2) {
+	                words[i >>> 3] |= parseInt(hexStr.substr(i, 2), 16) << (24 - (i % 8) * 4);
+	            }
+
+	            return new WordArray.init(words, hexStrLength / 2);
+	        }
+	    };
+
+	    /**
+	     * Latin1 encoding strategy.
+	     */
+	    var Latin1 = C_enc.Latin1 = {
+	        /**
+	         * Converts a word array to a Latin1 string.
+	         *
+	         * @param {WordArray} wordArray The word array.
+	         *
+	         * @return {string} The Latin1 string.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var latin1String = CryptoJS.enc.Latin1.stringify(wordArray);
+	         */
+	        stringify: function (wordArray) {
+	            // Shortcuts
+	            var words = wordArray.words;
+	            var sigBytes = wordArray.sigBytes;
+
+	            // Convert
+	            var latin1Chars = [];
+	            for (var i = 0; i < sigBytes; i++) {
+	                var bite = (words[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
+	                latin1Chars.push(String.fromCharCode(bite));
+	            }
+
+	            return latin1Chars.join('');
+	        },
+
+	        /**
+	         * Converts a Latin1 string to a word array.
+	         *
+	         * @param {string} latin1Str The Latin1 string.
+	         *
+	         * @return {WordArray} The word array.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var wordArray = CryptoJS.enc.Latin1.parse(latin1String);
+	         */
+	        parse: function (latin1Str) {
+	            // Shortcut
+	            var latin1StrLength = latin1Str.length;
+
+	            // Convert
+	            var words = [];
+	            for (var i = 0; i < latin1StrLength; i++) {
+	                words[i >>> 2] |= (latin1Str.charCodeAt(i) & 0xff) << (24 - (i % 4) * 8);
+	            }
+
+	            return new WordArray.init(words, latin1StrLength);
+	        }
+	    };
+
+	    /**
+	     * UTF-8 encoding strategy.
+	     */
+	    var Utf8 = C_enc.Utf8 = {
+	        /**
+	         * Converts a word array to a UTF-8 string.
+	         *
+	         * @param {WordArray} wordArray The word array.
+	         *
+	         * @return {string} The UTF-8 string.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var utf8String = CryptoJS.enc.Utf8.stringify(wordArray);
+	         */
+	        stringify: function (wordArray) {
+	            try {
+	                return decodeURIComponent(escape(Latin1.stringify(wordArray)));
+	            } catch (e) {
+	                throw new Error('Malformed UTF-8 data');
+	            }
+	        },
+
+	        /**
+	         * Converts a UTF-8 string to a word array.
+	         *
+	         * @param {string} utf8Str The UTF-8 string.
+	         *
+	         * @return {WordArray} The word array.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var wordArray = CryptoJS.enc.Utf8.parse(utf8String);
+	         */
+	        parse: function (utf8Str) {
+	            return Latin1.parse(unescape(encodeURIComponent(utf8Str)));
+	        }
+	    };
+
+	    /**
+	     * Abstract buffered block algorithm template.
+	     *
+	     * The property blockSize must be implemented in a concrete subtype.
+	     *
+	     * @property {number} _minBufferSize The number of blocks that should be kept unprocessed in the buffer. Default: 0
+	     */
+	    var BufferedBlockAlgorithm = C_lib.BufferedBlockAlgorithm = Base.extend({
+	        /**
+	         * Resets this block algorithm's data buffer to its initial state.
+	         *
+	         * @example
+	         *
+	         *     bufferedBlockAlgorithm.reset();
+	         */
+	        reset: function () {
+	            // Initial values
+	            this._data = new WordArray.init();
+	            this._nDataBytes = 0;
+	        },
+
+	        /**
+	         * Adds new data to this block algorithm's buffer.
+	         *
+	         * @param {WordArray|string} data The data to append. Strings are converted to a WordArray using UTF-8.
+	         *
+	         * @example
+	         *
+	         *     bufferedBlockAlgorithm._append('data');
+	         *     bufferedBlockAlgorithm._append(wordArray);
+	         */
+	        _append: function (data) {
+	            // Convert string to WordArray, else assume WordArray already
+	            if (typeof data == 'string') {
+	                data = Utf8.parse(data);
+	            }
+
+	            // Append
+	            this._data.concat(data);
+	            this._nDataBytes += data.sigBytes;
+	        },
+
+	        /**
+	         * Processes available data blocks.
+	         *
+	         * This method invokes _doProcessBlock(offset), which must be implemented by a concrete subtype.
+	         *
+	         * @param {boolean} doFlush Whether all blocks and partial blocks should be processed.
+	         *
+	         * @return {WordArray} The processed data.
+	         *
+	         * @example
+	         *
+	         *     var processedData = bufferedBlockAlgorithm._process();
+	         *     var processedData = bufferedBlockAlgorithm._process(!!'flush');
+	         */
+	        _process: function (doFlush) {
+	            var processedWords;
+
+	            // Shortcuts
+	            var data = this._data;
+	            var dataWords = data.words;
+	            var dataSigBytes = data.sigBytes;
+	            var blockSize = this.blockSize;
+	            var blockSizeBytes = blockSize * 4;
+
+	            // Count blocks ready
+	            var nBlocksReady = dataSigBytes / blockSizeBytes;
+	            if (doFlush) {
+	                // Round up to include partial blocks
+	                nBlocksReady = Math.ceil(nBlocksReady);
+	            } else {
+	                // Round down to include only full blocks,
+	                // less the number of blocks that must remain in the buffer
+	                nBlocksReady = Math.max((nBlocksReady | 0) - this._minBufferSize, 0);
+	            }
+
+	            // Count words ready
+	            var nWordsReady = nBlocksReady * blockSize;
+
+	            // Count bytes ready
+	            var nBytesReady = Math.min(nWordsReady * 4, dataSigBytes);
+
+	            // Process blocks
+	            if (nWordsReady) {
+	                for (var offset = 0; offset < nWordsReady; offset += blockSize) {
+	                    // Perform concrete-algorithm logic
+	                    this._doProcessBlock(dataWords, offset);
+	                }
+
+	                // Remove processed words
+	                processedWords = dataWords.splice(0, nWordsReady);
+	                data.sigBytes -= nBytesReady;
+	            }
+
+	            // Return processed words
+	            return new WordArray.init(processedWords, nBytesReady);
+	        },
+
+	        /**
+	         * Creates a copy of this object.
+	         *
+	         * @return {Object} The clone.
+	         *
+	         * @example
+	         *
+	         *     var clone = bufferedBlockAlgorithm.clone();
+	         */
+	        clone: function () {
+	            var clone = Base.clone.call(this);
+	            clone._data = this._data.clone();
+
+	            return clone;
+	        },
+
+	        _minBufferSize: 0
+	    });
+
+	    /**
+	     * Abstract hasher template.
+	     *
+	     * @property {number} blockSize The number of 32-bit words this hasher operates on. Default: 16 (512 bits)
+	     */
+	    var Hasher = C_lib.Hasher = BufferedBlockAlgorithm.extend({
+	        /**
+	         * Configuration options.
+	         */
+	        cfg: Base.extend(),
+
+	        /**
+	         * Initializes a newly created hasher.
+	         *
+	         * @param {Object} cfg (Optional) The configuration options to use for this hash computation.
+	         *
+	         * @example
+	         *
+	         *     var hasher = CryptoJS.algo.SHA256.create();
+	         */
+	        init: function (cfg) {
+	            // Apply config defaults
+	            this.cfg = this.cfg.extend(cfg);
+
+	            // Set initial values
+	            this.reset();
+	        },
+
+	        /**
+	         * Resets this hasher to its initial state.
+	         *
+	         * @example
+	         *
+	         *     hasher.reset();
+	         */
+	        reset: function () {
+	            // Reset data buffer
+	            BufferedBlockAlgorithm.reset.call(this);
+
+	            // Perform concrete-hasher logic
+	            this._doReset();
+	        },
+
+	        /**
+	         * Updates this hasher with a message.
+	         *
+	         * @param {WordArray|string} messageUpdate The message to append.
+	         *
+	         * @return {Hasher} This hasher.
+	         *
+	         * @example
+	         *
+	         *     hasher.update('message');
+	         *     hasher.update(wordArray);
+	         */
+	        update: function (messageUpdate) {
+	            // Append
+	            this._append(messageUpdate);
+
+	            // Update the hash
+	            this._process();
+
+	            // Chainable
+	            return this;
+	        },
+
+	        /**
+	         * Finalizes the hash computation.
+	         * Note that the finalize operation is effectively a destructive, read-once operation.
+	         *
+	         * @param {WordArray|string} messageUpdate (Optional) A final message update.
+	         *
+	         * @return {WordArray} The hash.
+	         *
+	         * @example
+	         *
+	         *     var hash = hasher.finalize();
+	         *     var hash = hasher.finalize('message');
+	         *     var hash = hasher.finalize(wordArray);
+	         */
+	        finalize: function (messageUpdate) {
+	            // Final message update
+	            if (messageUpdate) {
+	                this._append(messageUpdate);
+	            }
+
+	            // Perform concrete-hasher logic
+	            var hash = this._doFinalize();
+
+	            return hash;
+	        },
+
+	        blockSize: 512/32,
+
+	        /**
+	         * Creates a shortcut function to a hasher's object interface.
+	         *
+	         * @param {Hasher} hasher The hasher to create a helper for.
+	         *
+	         * @return {Function} The shortcut function.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var SHA256 = CryptoJS.lib.Hasher._createHelper(CryptoJS.algo.SHA256);
+	         */
+	        _createHelper: function (hasher) {
+	            return function (message, cfg) {
+	                return new hasher.init(cfg).finalize(message);
+	            };
+	        },
+
+	        /**
+	         * Creates a shortcut function to the HMAC's object interface.
+	         *
+	         * @param {Hasher} hasher The hasher to use in this HMAC helper.
+	         *
+	         * @return {Function} The shortcut function.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var HmacSHA256 = CryptoJS.lib.Hasher._createHmacHelper(CryptoJS.algo.SHA256);
+	         */
+	        _createHmacHelper: function (hasher) {
+	            return function (message, key) {
+	                return new C_algo.HMAC.init(hasher, key).finalize(message);
+	            };
+	        }
+	    });
+
+	    /**
+	     * Algorithm namespace.
+	     */
+	    var C_algo = C.algo = {};
+
+	    return C;
+	}(Math));
+
+
+	return CryptoJS;
+
+}));
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(17)))
+
+/***/ }),
+/* 13 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _types_errorinfo__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+
+
+
+var ConnectionError = {
+	disconnected: _types_errorinfo__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues({
+		statusCode: 400,
+		code: 80003,
+		message: 'Connection to server temporarily unavailable'
+	}),
+	suspended: _types_errorinfo__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues({
+		statusCode: 400,
+		code: 80002,
+		message: 'Connection to server unavailable'
+	}),
+	failed: _types_errorinfo__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues({
+		statusCode: 400,
+		code: 80000,
+		message: 'Connection failed or disconnected by server'
+	}),
+	closing: _types_errorinfo__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues({
+		statusCode: 400,
+		code: 80017,
+		message: 'Connection closing'
+	}),
+	closed: _types_errorinfo__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues({
+		statusCode: 400,
+		code: 80017,
+		message: 'Connection closed'
+	}),
+	unknownConnectionErr: _types_errorinfo__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues({
+		statusCode: 500,
+		code: 50002,
+		message: 'Internal connection error'
+	}),
+	unknownChannelErr: _types_errorinfo__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues({
+		statusCode: 500,
+		code: 50001,
+		message: 'Internal channel error'
+	})
+};
+
+ConnectionError.isRetriable = function(err) {
+	if (!err.statusCode || !err.code || err.statusCode >= 500) {
+		return true;
+	}
+	var retriable = false;
+	_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].valuesArray(ConnectionError).forEach(function(connErr) {
+		if (connErr.code && connErr.code == err.code) {
+			retriable = true;
+		}
+	});
+	return retriable;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (ConnectionError);
+
+
+/***/ }),
+/* 14 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXTERNAL MODULE: ./common/lib/util/logger.js
+var logger = __webpack_require__(0);
+
+// EXTERNAL MODULE: ./browser/fragments/platform-browser.js
+var platform_browser = __webpack_require__(3);
+
+// EXTERNAL MODULE: ./common/lib/util/utils.js
+var utils = __webpack_require__(1);
+
+// EXTERNAL MODULE: ./browser/lib/util/http.js
+var http = __webpack_require__(6);
+
+// EXTERNAL MODULE: ./common/lib/util/multicaster.js
+var multicaster = __webpack_require__(22);
+
+// EXTERNAL MODULE: ./browser/lib/util/bufferutils.js
+var bufferutils = __webpack_require__(5);
+
+// EXTERNAL MODULE: ./common/lib/types/errorinfo.js
+var errorinfo = __webpack_require__(2);
+
+// CONCATENATED MODULE: ./browser/lib/util/base64.js
+/*
+ Copyright (c) 2008 Fred Palmer fred.palmer_at_gmail.com
+
+ Permission is hereby granted, free of charge, to any person
+ obtaining a copy of this software and associated documentation
+ files (the "Software"), to deal in the Software without
+ restriction, including without limitation the rights to use,
+ copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the
+ Software is furnished to do so, subject to the following
+ conditions:
+
+ The above copyright notice and this permission notice shall be
+ included in all copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ */
+var Base64 = (function() {
+	function StringBuffer()
+	{
+		this.buffer = [];
+	}
+
+	StringBuffer.prototype.append = function append(string)
+	{
+		this.buffer.push(string);
+		return this;
+	};
+
+	StringBuffer.prototype.toString = function toString()
+	{
+		return this.buffer.join("");
+	};
+
+	var Base64 =
+	{
+		codex : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+
+		encode : function (input)
+		{
+			var output = new StringBuffer();
+			var codex = Base64.codex;
+
+			var enumerator = new Utf8EncodeEnumerator(input);
+			while (enumerator.moveNext())
+			{
+				var chr1 = enumerator.current;
+
+				enumerator.moveNext();
+				var chr2 = enumerator.current;
+
+				enumerator.moveNext();
+				var chr3 = enumerator.current;
+
+				var enc1 = chr1 >> 2;
+				var enc2 = ((chr1 & 3) << 4) | (chr2 >> 4);
+				var enc3 = ((chr2 & 15) << 2) | (chr3 >> 6);
+				var enc4 = chr3 & 63;
+
+				if (isNaN(chr2))
+				{
+					enc3 = enc4 = 64;
+				}
+				else if (isNaN(chr3))
+				{
+					enc4 = 64;
+				}
+
+				output.append(codex.charAt(enc1) + codex.charAt(enc2) + codex.charAt(enc3) + codex.charAt(enc4));
+			}
+
+			return output.toString();
+		},
+
+		decode : function (input)
+		{
+			var output = new StringBuffer();
+
+			var enumerator = new Base64DecodeEnumerator(input);
+			while (enumerator.moveNext())
+			{
+				var charCode = enumerator.current;
+
+				if (charCode < 128)
+					output.append(String.fromCharCode(charCode));
+				else if ((charCode > 191) && (charCode < 224))
+				{
+					enumerator.moveNext();
+					var charCode2 = enumerator.current;
+
+					output.append(String.fromCharCode(((charCode & 31) << 6) | (charCode2 & 63)));
+				}
+				else
+				{
+					enumerator.moveNext();
+					var charCode2 = enumerator.current;
+
+					enumerator.moveNext();
+					var charCode3 = enumerator.current;
+
+					output.append(String.fromCharCode(((charCode & 15) << 12) | ((charCode2 & 63) << 6) | (charCode3 & 63)));
+				}
+			}
+
+			return output.toString();
+		}
+	};
+
+	function Utf8EncodeEnumerator(input)
+	{
+		this._input = input;
+		this._index = -1;
+		this._buffer = [];
+	}
+
+	Utf8EncodeEnumerator.prototype =
+	{
+		current: Number.NaN,
+
+		moveNext: function()
+		{
+			if (this._buffer.length > 0)
+			{
+				this.current = this._buffer.shift();
+				return true;
+			}
+			else if (this._index >= (this._input.length - 1))
+			{
+				this.current = Number.NaN;
+				return false;
+			}
+			else
+			{
+				var charCode = this._input.charCodeAt(++this._index);
+
+				// "\r\n" -> "\n"
+				//
+				if ((charCode == 13) && (this._input.charCodeAt(this._index + 1) == 10))
+				{
+					charCode = 10;
+					this._index += 2;
+				}
+
+				if (charCode < 128)
+				{
+					this.current = charCode;
+				}
+				else if ((charCode > 127) && (charCode < 2048))
+				{
+					this.current = (charCode >> 6) | 192;
+					this._buffer.push((charCode & 63) | 128);
+				}
+				else
+				{
+					this.current = (charCode >> 12) | 224;
+					this._buffer.push(((charCode >> 6) & 63) | 128);
+					this._buffer.push((charCode & 63) | 128);
+				}
+
+				return true;
+			}
+		}
+	};
+
+	function Base64DecodeEnumerator(input)
+	{
+		this._input = input;
+		this._index = -1;
+		this._buffer = [];
+	}
+
+	Base64DecodeEnumerator.prototype =
+	{
+		current: 64,
+
+		moveNext: function()
+		{
+			if (this._buffer.length > 0)
+			{
+				this.current = this._buffer.shift();
+				return true;
+			}
+			else if (this._index >= (this._input.length - 1))
+			{
+				this.current = 64;
+				return false;
+			}
+			else
+			{
+				var enc1 = Base64.codex.indexOf(this._input.charAt(++this._index));
+				var enc2 = Base64.codex.indexOf(this._input.charAt(++this._index));
+				var enc3 = Base64.codex.indexOf(this._input.charAt(++this._index));
+				var enc4 = Base64.codex.indexOf(this._input.charAt(++this._index));
+
+				var chr1 = (enc1 << 2) | (enc2 >> 4);
+				var chr2 = ((enc2 & 15) << 4) | (enc3 >> 2);
+				var chr3 = ((enc3 & 3) << 6) | enc4;
+
+				this.current = chr1;
+
+				if (enc3 != 64)
+					this._buffer.push(chr2);
+
+				if (enc4 != 64)
+					this._buffer.push(chr3);
+
+				return true;
+			}
+		}
+	};
+
+	return Base64;
+})();
+
+/* harmony default export */ var base64 = (Base64);
+
+// EXTERNAL MODULE: ./node_modules/crypto-js/build/hmac-sha256.js
+var hmac_sha256 = __webpack_require__(39);
+var hmac_sha256_default = /*#__PURE__*/__webpack_require__.n(hmac_sha256);
+
+// EXTERNAL MODULE: ./node_modules/crypto-js/build/enc-base64.js
+var enc_base64 = __webpack_require__(18);
+
+// CONCATENATED MODULE: ./common/lib/client/auth.js
+
+
+
+
+
+
+
+
+
+
+
+var auth_Auth = (function() {
+	var MAX_TOKEN_LENGTH = Math.pow(2, 17);
+	function noop() {}
+	function random() { return ('000000' + Math.floor(Math.random() * 1E16)).slice(-16); }
+	function normaliseAuthcallbackError(err) {
+		/* A client auth callback may give errors in any number of formats; normalise to an errorinfo */
+		if(!utils["a" /* default */].isErrorInfo(err)) {
+			return new errorinfo["a" /* default */](utils["a" /* default */].inspectError(err), err.code || 40170, err.statusCode || 401);
+		}
+		/* network errors will not have an inherent error code */
+		if(!err.code) {
+			if(err.statusCode === 403) {
+				err.code = 40300;
+			} else {
+				err.code = 40170;
+				/* normalise statusCode to 401 per RSA4e */
+				err.statusCode = 401;
+			}
+		}
+		return err;
+	}
+
+	var hmac, toBase64;
+	if(platform_browser["a" /* default */].createHmac) {
+		toBase64 = function(str) { return (Buffer.from(str, 'ascii')).toString('base64'); };
+		hmac = function(text, key) {
+			var inst = platform_browser["a" /* default */].createHmac('SHA256', key);
+			inst.update(text);
+			return inst.digest('base64');
+		};
+	} else {
+		toBase64 = base64.encode;
+		hmac = function(text, key) {
+			return Object(enc_base64["stringify"])(hmac_sha256_default()(text, key));
+		};
+	}
+
+	function c14n(capability) {
+		if(!capability)
+			return '';
+
+		if(typeof(capability) == 'string')
+			capability = JSON.parse(capability);
+
+		var c14nCapability = Object.create(null);
+		var keys = utils["a" /* default */].keysArray(capability, true);
+		if(!keys)
+			return '';
+		keys.sort();
+		for(var i = 0; i < keys.length; i++) {
+			c14nCapability[keys[i]] = capability[keys[i]].sort();
+		}
+		return JSON.stringify(c14nCapability);
+	}
+
+	function logAndValidateTokenAuthMethod(authOptions) {
+		if(authOptions.authCallback) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth()', 'using token auth with authCallback');
+		} else if(authOptions.authUrl) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth()', 'using token auth with authUrl');
+		} else if(authOptions.key) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth()', 'using token auth with client-side signing');
+		} else if(authOptions.tokenDetails) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth()', 'using token auth with supplied token only');
+		} else {
+			var msg = 'authOptions must include valid authentication parameters';
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth()', msg);
+			throw new Error(msg);
+		}
+	}
+
+	function basicAuthForced(options) {
+		return 'useTokenAuth' in options && !options.useTokenAuth;
+	}
+
+	/* RSA4 */
+	function useTokenAuth(options) {
+		return options.useTokenAuth ||
+			(!basicAuthForced(options) &&
+			 (options.authCallback ||
+			  options.authUrl      ||
+			  options.token        ||
+			  options.tokenDetails))
+	}
+
+	/* RSA4a */
+	function noWayToRenew(options) {
+		return !options.key &&
+			!options.authCallback &&
+			!options.authUrl;
+	}
+
+	var trId = 0;
+	function getTokenRequestId() {
+		return trId++;
+	}
+
+	function Auth(client, options) {
+		this.client = client;
+		this.tokenParams = options.defaultTokenParams || {};
+		/* The id of the current token request if one is in progress, else null */
+		this.currentTokenRequestId = null;
+		this.waitingForTokenRequest = null;
+
+		if(useTokenAuth(options)) {
+			/* Token auth */
+			if(options.key && !hmac) {
+				var msg = 'client-side token request signing not supported';
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth()', msg);
+				throw new Error(msg);
+			}
+			if(noWayToRenew(options)) {
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth()', 'Warning: library initialized with a token literal without any way to renew the token when it expires (no authUrl, authCallback, or key). See https://help.ably.io/error/40171 for help');
+			}
+			this._saveTokenOptions(options.defaultTokenParams, options);
+			logAndValidateTokenAuthMethod(this.authOptions);
+		} else {
+			/* Basic auth */
+			if(!options.key) {
+				var msg = 'No authentication options provided; need one of: key, authUrl, or authCallback (or for testing only, token or tokenDetails)';
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth()', msg);
+				throw new errorinfo["a" /* default */](msg, 40160, 401);
+			}
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth()', 'anonymous, using basic auth');
+			this._saveBasicOptions(options);
+		}
+	}
+
+	/**
+	 * Instructs the library to get a token immediately and ensures Token Auth
+	 * is used for all future requests, storing the tokenParams and authOptions
+	 * given as the new defaults for subsequent use.
+	 *
+	 * @param tokenParams
+	 * an object containing the parameters for the requested token:
+	 *
+	 * - ttl:        (optional) the requested life of any new token in ms. If none
+	 *               is specified a default of 1 hour is provided. The maximum lifetime
+	 *               is 24hours; any request exceeeding that lifetime will be rejected
+	 *               with an error.
+	 *
+	 * - capability: (optional) the capability to associate with the access token.
+	 *               If none is specified, a token will be requested with all of the
+	 *               capabilities of the specified key.
+	 *
+	 * - clientId:   (optional) a client Id to associate with the token
+	 *
+	 * - timestamp:  (optional) the time in ms since the epoch. If none is specified,
+	 *               the system will be queried for a time value to use.
+	 *
+	 * @param authOptions
+	 * an object containing auth options relevant to token auth:
+	 *
+	 * - queryTime   (optional) boolean indicating that the Ably system should be
+	 *               queried for the current time when none is specified explicitly.
+	 *
+	 * - tokenDetails: (optional) object: An authenticated TokenDetails object.
+	 *
+	 * - token:        (optional) string: the `token` property of a tokenDetails object
+	 *
+	 * - authCallback:  (optional) a JavaScript callback to be called to get auth information.
+	 *                  authCallback should be a function of (tokenParams, callback) that calls
+	 *                  the callback with (err, result), where result is any of:
+	 *                  - a tokenRequest object (ie the result of a rest.auth.createTokenRequest call),
+	 *                  - a tokenDetails object (ie the result of a rest.auth.requestToken call),
+	 *                  - a token string
+	 *
+	 * - authUrl:       (optional) a URL to be used to GET or POST a set of token request
+	 *                  params, to obtain a signed token request.
+	 *
+	 * - authHeaders:   (optional) a set of application-specific headers to be added to any request
+	 *                  made to the authUrl.
+	 *
+	 * - authParams:    (optional) a set of application-specific query params to be added to any
+	 *                  request made to the authUrl.
+	 *
+	 *
+	 * - requestHeaders (optional, unsupported, for testing only) extra headers to add to the
+	 *                  requestToken request
+	 *
+	 * @param callback (err, tokenDetails)
+	 */
+	Auth.prototype.authorize = function(tokenParams, authOptions, callback) {
+		/* shuffle and normalise arguments as necessary */
+		if(typeof(tokenParams) == 'function' && !callback) {
+			callback = tokenParams;
+			authOptions = tokenParams = null;
+		} else if(typeof(authOptions) == 'function' && !callback) {
+			callback = authOptions;
+			authOptions = null;
+		}
+		if(!callback) {
+			if(this.client.options.promises) {
+				return utils["a" /* default */].promisify(this, 'authorize', arguments);
+			}
+			callback = noop;
+		}
+		var self = this;
+
+		/* RSA10a: authorize() call implies token auth. If a key is passed it, we
+		 * just check if it doesn't clash and assume we're generating a token from it */
+		if(authOptions && authOptions.key && (this.authOptions.key !== authOptions.key)) {
+			throw new errorinfo["a" /* default */]('Unable to update auth options with incompatible key', 40102, 401);
+		}
+
+		if(authOptions && ('force' in authOptions)) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth.authorize', 'Deprecation warning: specifying {force: true} in authOptions is no longer necessary, authorize() now always gets a new token. Please remove this, as in version 1.0 and later, having a non-null authOptions will overwrite stored library authOptions, which may not be what you want');
+			/* Emulate the old behaviour: if 'force' was the only member of authOptions,
+			 * set it to null so it doesn't overwrite stored. TODO: remove in version 1.0 */
+			if(utils["a" /* default */].isOnlyPropIn(authOptions, 'force')) {
+				authOptions = null;
+			}
+		}
+
+		this._forceNewToken(tokenParams, authOptions, function(err, tokenDetails) {
+			if(err) {
+				if(self.client.connection) {
+					/* We interpret RSA4d as including requests made by a client lib to
+					 * authenticate triggered by an explicit authorize() or an AUTH received from
+					 * ably, not just connect-sequence-triggered token fetches */
+					self.client.connection.connectionManager.actOnErrorFromAuthorize(err);
+				}
+				callback(err);
+				return;
+			}
+
+			/* RTC8
+			 * - When authorize called by an end user and have a realtime connection,
+			 * don't call back till new token has taken effect.
+			 * - Use self.client.connection as a proxy for (self.client instanceof Realtime),
+			 * which doesn't work in node as Realtime isn't part of the vm context for Rest clients */
+			if(self.client.connection) {
+				self.client.connection.connectionManager.onAuthUpdated(tokenDetails, callback);
+			} else {
+				callback(null, tokenDetails);
+			}
+		})
+	};
+
+	Auth.prototype.authorise = function() {
+		logger["a" /* default */].deprecated('Auth.authorise', 'Auth.authorize');
+		this.authorize.apply(this, arguments);
+	};
+
+	/* For internal use, eg by connectionManager - useful when want to call back
+	 * as soon as we have the new token, rather than waiting for it to take
+	 * effect on the connection as #authorize does */
+	Auth.prototype._forceNewToken = function(tokenParams, authOptions, callback) {
+		var self = this;
+
+		/* get rid of current token even if still valid */
+		this.tokenDetails = null;
+
+		/* _save normalises the tokenParams and authOptions and updates the auth
+		 * object. All subsequent operations should use the values on `this`,
+		 * not the passed in ones. */
+		this._saveTokenOptions(tokenParams, authOptions);
+
+		logAndValidateTokenAuthMethod(this.authOptions);
+
+		this._ensureValidAuthCredentials(true, function(err, tokenDetails) {
+			/* RSA10g */
+			delete self.tokenParams.timestamp;
+			delete self.authOptions.queryTime;
+			callback(err, tokenDetails);
+		});
+	}
+
+	/**
+	 * Request an access token
+	 * @param authOptions
+	 * an object containing the request options:
+	 * - key:           the key to use.
+	 *
+	 * - authCallback:  (optional) a JavaScript callback to be called to get auth information.
+	 *                  authCallback should be a function of (tokenParams, callback) that calls
+	 *                  the callback with (err, result), where result is any of:
+	 *                  - a tokenRequest object (ie the result of a rest.auth.createTokenRequest call),
+	 *                  - a tokenDetails object (ie the result of a rest.auth.requestToken call),
+	 *                  - a token string
+	 *
+	 * - authUrl:       (optional) a URL to be used to GET or POST a set of token request
+	 *                  params, to obtain a signed token request.
+	 *
+	 * - authHeaders:   (optional) a set of application-specific headers to be added to any request
+	 *                  made to the authUrl.
+	 *
+	 * - authParams:    (optional) a set of application-specific query params to be added to any
+	 *                  request made to the authUrl.
+	 *
+	 * - queryTime      (optional) boolean indicating that the ably system should be
+	 *                  queried for the current time when none is specified explicitly
+	 *
+	 * - requestHeaders (optional, unsupported, for testing only) extra headers to add to the
+	 *                  requestToken request
+	 *
+	 * @param tokenParams
+	 * an object containing the parameters for the requested token:
+	 * - ttl:          (optional) the requested life of the token in milliseconds. If none is specified
+	 *                  a default of 1 hour is provided. The maximum lifetime is 24hours; any request
+	 *                  exceeeding that lifetime will be rejected with an error.
+	 *
+	 * - capability:    (optional) the capability to associate with the access token.
+	 *                  If none is specified, a token will be requested with all of the
+	 *                  capabilities of the specified key.
+	 *
+	 * - clientId:      (optional) a client Id to associate with the token; if not
+	 *                  specified, a clientId passed in constructing the Rest interface will be used
+	 *
+	 * - timestamp:     (optional) the time in ms since the epoch. If none is specified,
+	 *                  the system will be queried for a time value to use.
+	 *
+	 * @param callback (err, tokenDetails)
+	 */
+	Auth.prototype.requestToken = function(tokenParams, authOptions, callback) {
+		/* shuffle and normalise arguments as necessary */
+		if(typeof(tokenParams) == 'function' && !callback) {
+			callback = tokenParams;
+			authOptions = tokenParams = null;
+		}
+		else if(typeof(authOptions) == 'function' && !callback) {
+			callback = authOptions;
+			authOptions = null;
+		}
+		if(!callback && this.client.options.promises) {
+			return utils["a" /* default */].promisify(this, 'requestToken', arguments);
+		}
+
+		/* RSA8e: if authOptions passed in, they're used instead of stored, don't merge them */
+		authOptions = authOptions || this.authOptions;
+		tokenParams = tokenParams || utils["a" /* default */].copy(this.tokenParams);
+		callback = callback || noop;
+
+		/* first set up whatever callback will be used to get signed
+		 * token requests */
+		var tokenRequestCallback, client = this.client;
+
+		if(authOptions.authCallback) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth.requestToken()', 'using token auth with authCallback');
+			tokenRequestCallback = authOptions.authCallback;
+		} else if(authOptions.authUrl) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth.requestToken()', 'using token auth with authUrl');
+			tokenRequestCallback = function(params, cb) {
+				var authHeaders = utils["a" /* default */].mixin({accept: 'application/json, text/plain'}, authOptions.authHeaders),
+					usePost = authOptions.authMethod && authOptions.authMethod.toLowerCase() === 'post',
+					providedQsParams;
+				/* Combine authParams with any qs params given in the authUrl */
+				var queryIdx = authOptions.authUrl.indexOf('?');
+				if(queryIdx > -1) {
+					providedQsParams = utils["a" /* default */].parseQueryString(authOptions.authUrl.slice(queryIdx));
+					authOptions.authUrl = authOptions.authUrl.slice(0, queryIdx);
+					if (!usePost) {
+						/* In case of conflict, authParams take precedence over qs params in the authUrl */
+						authOptions.authParams = utils["a" /* default */].mixin(providedQsParams, authOptions.authParams);
+					}
+				}
+				/* RSA8c2 */
+				var authParams = utils["a" /* default */].mixin({}, authOptions.authParams || {}, params);
+				var authUrlRequestCallback = function(err, body, headers, unpacked) {
+					var contentType;
+					if (err) {
+						logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Auth.requestToken().tokenRequestCallback', 'Received Error: ' + utils["a" /* default */].inspectError(err));
+					} else {
+						contentType = headers['content-type'];
+						logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Auth.requestToken().tokenRequestCallback', 'Received; content-type: ' + contentType + '; body: ' + utils["a" /* default */].inspectBody(body));
+					}
+					if(err || unpacked) return cb(err, body);
+					if(bufferutils["a" /* default */].isBuffer(body)) body = body.toString();
+					if(!contentType) {
+						cb(new errorinfo["a" /* default */]('authUrl response is missing a content-type header', 40170, 401));
+						return;
+					}
+					var json = contentType.indexOf('application/json') > -1,
+						text = contentType.indexOf('text/plain') > -1 || contentType.indexOf('application/jwt') > -1;
+					if(!json && !text) {
+						cb(new errorinfo["a" /* default */]('authUrl responded with unacceptable content-type ' + contentType + ', should be either text/plain, application/jwt or application/json', 40170, 401));
+						return;
+					}
+					if(json) {
+						if(body.length > MAX_TOKEN_LENGTH) {
+							cb(new errorinfo["a" /* default */]('authUrl response exceeded max permitted length', 40170, 401));
+							return;
+						}
+						try {
+							body = JSON.parse(body);
+						} catch(e) {
+							cb(new errorinfo["a" /* default */]('Unexpected error processing authURL response; err = ' + e.message, 40170, 401));
+							return;
+						}
+					}
+					cb(null, body, contentType);
+				};
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Auth.requestToken().tokenRequestCallback', 'Requesting token from ' + authOptions.authUrl + '; Params: ' + JSON.stringify(authParams) + '; method: ' + (usePost ? 'POST' : 'GET'));
+				if(usePost) {
+					/* send body form-encoded */
+					var headers = authHeaders || {};
+					headers['content-type'] = 'application/x-www-form-urlencoded';
+					var body = utils["a" /* default */].toQueryString(authParams).slice(1); /* slice is to remove the initial '?' */
+					http["a" /* default */].postUri(client, authOptions.authUrl, headers, body, providedQsParams, authUrlRequestCallback);
+				} else {
+					http["a" /* default */].getUri(client, authOptions.authUrl, authHeaders || {}, authParams, authUrlRequestCallback);
+				}
+			};
+		} else if(authOptions.key) {
+			var self = this;
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth.requestToken()', 'using token auth with client-side signing');
+			tokenRequestCallback = function(params, cb) { self.createTokenRequest(params, authOptions, cb); };
+		} else {
+			var msg = "Need a new token, but authOptions does not include any way to request one (no authUrl, authCallback, or key)";
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth()', 'library initialized with a token literal without any way to renew the token when it expires (no authUrl, authCallback, or key). See https://help.ably.io/error/40171 for help');
+			callback(new errorinfo["a" /* default */](msg, 40171, 403));
+			return;
+		}
+
+		/* normalise token params */
+		if('capability' in tokenParams)
+			tokenParams.capability = c14n(tokenParams.capability);
+
+		var tokenRequest = function(signedTokenParams, tokenCb) {
+			var keyName = signedTokenParams.keyName,
+				path = '/keys/' + keyName + '/requestToken',
+				tokenUri = function(host) { return client.baseUri(host) + path; };
+
+			var requestHeaders = utils["a" /* default */].defaultPostHeaders();
+			if(authOptions.requestHeaders) utils["a" /* default */].mixin(requestHeaders, authOptions.requestHeaders);
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Auth.requestToken().requestToken', 'Sending POST to ' + path + '; Token params: ' + JSON.stringify(signedTokenParams));
+			signedTokenParams = JSON.stringify(signedTokenParams);
+			http["a" /* default */].post(client, tokenUri, requestHeaders, signedTokenParams, null, tokenCb);
+		};
+
+		var tokenRequestCallbackTimeoutExpired = false,
+			timeoutLength = this.client.options.timeouts.realtimeRequestTimeout,
+			tokenRequestCallbackTimeout = setTimeout(function() {
+				tokenRequestCallbackTimeoutExpired = true;
+				var msg = 'Token request callback timed out after ' + (timeoutLength / 1000) + ' seconds';
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth.requestToken()', msg);
+				callback(new errorinfo["a" /* default */](msg, 40170, 401));
+			}, timeoutLength);
+
+		tokenRequestCallback(tokenParams, function(err, tokenRequestOrDetails, contentType) {
+			if(tokenRequestCallbackTimeoutExpired) return;
+			clearTimeout(tokenRequestCallbackTimeout);
+
+			if(err) {
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth.requestToken()', 'token request signing call returned error; err = ' + utils["a" /* default */].inspectError(err));
+				callback(normaliseAuthcallbackError(err));
+				return;
+			}
+			/* the response from the callback might be a token string, a signed request or a token details */
+			if(typeof(tokenRequestOrDetails) === 'string') {
+				if(tokenRequestOrDetails.length === 0) {
+					callback(new errorinfo["a" /* default */]('Token string is empty', 40170, 401));
+				} else if(tokenRequestOrDetails.length > MAX_TOKEN_LENGTH) {
+					callback(new errorinfo["a" /* default */]('Token string exceeded max permitted length (was ' + tokenRequestOrDetails.length + ' bytes)', 40170, 401));
+				} else if(tokenRequestOrDetails === 'undefined' || tokenRequestOrDetails === 'null') {
+					/* common failure mode with poorly-implemented authCallbacks */
+					callback(new errorinfo["a" /* default */]('Token string was literal null/undefined', 40170, 401));
+				} else if((tokenRequestOrDetails[0] === '{') && !(contentType && contentType.indexOf('application/jwt') > -1)) {
+					callback(new errorinfo["a" /* default */]('Token was double-encoded; make sure you\'re not JSON-encoding an already encoded token request or details', 40170, 401));
+				} else {
+					callback(null, {token: tokenRequestOrDetails});
+				}
+				return;
+			}
+			if(typeof(tokenRequestOrDetails) !== 'object') {
+				var msg = 'Expected token request callback to call back with a token string or token request/details object, but got a ' + typeof(tokenRequestOrDetails);
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth.requestToken()', msg);
+				callback(new errorinfo["a" /* default */](msg, 40170, 401));
+				return;
+			}
+			var objectSize = JSON.stringify(tokenRequestOrDetails).length;
+			if(objectSize > MAX_TOKEN_LENGTH && !authOptions.suppressMaxLengthCheck) {
+				callback(new errorinfo["a" /* default */]('Token request/details object exceeded max permitted stringified size (was ' + objectSize + ' bytes)', 40170, 401));
+				return;
+			}
+			if('issued' in tokenRequestOrDetails) {
+				/* a tokenDetails object */
+				callback(null, tokenRequestOrDetails);
+				return;
+			}
+			if(!('keyName' in tokenRequestOrDetails)) {
+				var msg = 'Expected token request callback to call back with a token string, token request object, or token details object';
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth.requestToken()', msg);
+				callback(new errorinfo["a" /* default */](msg, 40170, 401));
+				return;
+			}
+			/* it's a token request, so make the request */
+			tokenRequest(tokenRequestOrDetails, function(err, tokenResponse, headers, unpacked) {
+				if(err) {
+					logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth.requestToken()', 'token request API call returned error; err = ' + utils["a" /* default */].inspectError(err));
+					callback(normaliseAuthcallbackError(err));
+					return;
+				}
+				if(!unpacked) tokenResponse = JSON.parse(tokenResponse);
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth.getToken()', 'token received');
+				callback(null, tokenResponse);
+			});
+		});
+	};
+
+	/**
+	 * Create and sign a token request based on the given options.
+	 * NOTE this can only be used when the key value is available locally.
+	 * Otherwise, signed token requests must be obtained from the key
+	 * owner (either using the token request callback or url).
+	 *
+	 * @param authOptions
+	 * an object containing the request options:
+	 * - key:           the key to use. If not specified, a key passed in constructing
+	 *                  the Rest interface will be used
+	 *
+	 * - queryTime      (optional) boolean indicating that the ably system should be
+	 *                  queried for the current time when none is specified explicitly
+	 *
+	 * - requestHeaders (optional, unsupported, for testing only) extra headers to add to the
+	 *                  requestToken request
+	 *
+	 * @param tokenParams
+	 * an object containing the parameters for the requested token:
+	 * - ttl:       (optional) the requested life of the token in ms. If none is specified
+	 *                  a default of 1 hour is provided. The maximum lifetime is 24hours; any request
+	 *                  exceeeding that lifetime will be rejected with an error.
+	 *
+	 * - capability:    (optional) the capability to associate with the access token.
+	 *                  If none is specified, a token will be requested with all of the
+	 *                  capabilities of the specified key.
+	 *
+	 * - clientId:      (optional) a client Id to associate with the token; if not
+	 *                  specified, a clientId passed in constructing the Rest interface will be used
+	 *
+	 * - timestamp:     (optional) the time in ms since the epoch. If none is specified,
+	 *                  the system will be queried for a time value to use.
+	 *
+	 */
+	Auth.prototype.createTokenRequest = function(tokenParams, authOptions, callback) {
+		/* shuffle and normalise arguments as necessary */
+		if(typeof(tokenParams) == 'function' && !callback) {
+			callback = tokenParams;
+			authOptions = tokenParams = null;
+		} else if(typeof(authOptions) == 'function' && !callback) {
+			callback = authOptions;
+			authOptions = null;
+		}
+		if(!callback && this.client.options.promises) {
+			return utils["a" /* default */].promisify(this, 'createTokenRequest', arguments);
+		}
+
+		/* RSA9h: if authOptions passed in, they're used instead of stored, don't merge them */
+		authOptions = authOptions || this.authOptions;
+		tokenParams = tokenParams || utils["a" /* default */].copy(this.tokenParams);
+
+		var key = authOptions.key;
+		if(!key) {
+			callback(new errorinfo["a" /* default */]('No key specified', 40101, 403));
+			return;
+		}
+		var keyParts = key.split(':'),
+			keyName = keyParts[0],
+			keySecret = keyParts[1];
+
+		if(!keySecret) {
+			callback(new errorinfo["a" /* default */]('Invalid key specified', 40101, 403));
+			return;
+		}
+
+		if(tokenParams.clientId === '') {
+			callback(new errorinfo["a" /* default */]('clientId can’t be an empty string', 40012, 400));
+			return;
+		}
+
+		if('capability' in tokenParams) {
+			tokenParams.capability = c14n(tokenParams.capability);
+		}
+
+		var request = utils["a" /* default */].mixin({ keyName: keyName }, tokenParams),
+			clientId = tokenParams.clientId || '',
+			ttl = tokenParams.ttl || '',
+			capability = tokenParams.capability || '',
+			self = this;
+
+		(function(authoriseCb) {
+			if(request.timestamp) {
+				authoriseCb();
+				return;
+			};
+			self.getTimestamp(authOptions && authOptions.queryTime, function(err, time) {
+				if(err) {callback(err); return;}
+				request.timestamp = time;
+				authoriseCb();
+			});
+		})(function() {
+			/* nonce */
+			/* NOTE: there is no expectation that the client
+			 * specifies the nonce; this is done by the library
+			 * However, this can be overridden by the client
+			 * simply for testing purposes. */
+			var nonce = request.nonce || (request.nonce = random()),
+				timestamp = request.timestamp;
+
+			var signText
+			=	request.keyName + '\n'
+			+	ttl + '\n'
+			+	capability + '\n'
+			+	clientId + '\n'
+			+	timestamp + '\n'
+			+	nonce + '\n';
+
+			/* mac */
+			/* NOTE: there is no expectation that the client
+			 * specifies the mac; this is done by the library
+			 * However, this can be overridden by the client
+			 * simply for testing purposes. */
+			request.mac = request.mac || hmac(signText, keySecret);
+
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth.getTokenRequest()', 'generated signed request');
+			callback(null, request);
+		});
+	};
+
+	/**
+	 * Get the auth query params to use for a websocket connection,
+	 * based on the current auth parameters
+	 */
+	Auth.prototype.getAuthParams = function(callback) {
+		if(this.method == 'basic')
+			callback(null, {key: this.key});
+		else
+			this._ensureValidAuthCredentials(false, function(err, tokenDetails) {
+				if(err) {
+					callback(err);
+					return;
+				}
+				callback(null, {access_token: tokenDetails.token});
+			});
+	};
+
+	/**
+	 * Get the authorization header to use for a REST or comet request,
+	 * based on the current auth parameters
+	 */
+	Auth.prototype.getAuthHeaders = function(callback) {
+		if(this.method == 'basic') {
+			callback(null, {authorization: 'Basic ' + this.basicKey});
+		} else {
+			this._ensureValidAuthCredentials(false, function(err, tokenDetails) {
+				if(err) {
+					callback(err);
+					return;
+				}
+				callback(null, {authorization: 'Bearer ' + toBase64(tokenDetails.token)});
+			});
+		}
+	};
+
+	/**
+	 * Get the current time based on the local clock,
+	 * or if the option queryTime is true, return the server time.
+	 * The server time offset from the local time is stored so that
+	 * only one request to the server to get the time is ever needed
+	 */
+	Auth.prototype.getTimestamp = function(queryTime, callback) {
+		if (!this.isTimeOffsetSet() && (queryTime || this.authOptions.queryTime)) {
+			this.client.time(callback);
+		} else {
+			callback(null, this.getTimestampUsingOffset());
+		}
+	};
+
+	Auth.prototype.getTimestampUsingOffset = function() {
+		return utils["a" /* default */].now() + (this.client.serverTimeOffset || 0);
+	};
+
+	Auth.prototype.isTimeOffsetSet = function() {
+		return this.client.serverTimeOffset !== null;
+	};
+
+	Auth.prototype._saveBasicOptions = function(authOptions) {
+		this.method = 'basic';
+		this.key = authOptions.key;
+		this.basicKey = toBase64(authOptions.key);
+		this.authOptions = authOptions || {};
+		if('clientId' in authOptions) {
+			this._userSetClientId(authOptions.clientId);
+		}
+	}
+
+	Auth.prototype._saveTokenOptions = function(tokenParams, authOptions) {
+		this.method = 'token';
+
+		if(tokenParams) {
+			/* We temporarily persist tokenParams.timestamp in case a new token needs
+			 * to be requested, then null it out in the callback of
+			 * _ensureValidAuthCredentials for RSA10g compliance */
+			this.tokenParams = tokenParams;
+		}
+
+		if(authOptions) {
+			/* normalise */
+			if(authOptions.token) {
+				/* options.token may contain a token string or, for convenience, a TokenDetails */
+				authOptions.tokenDetails = (typeof(authOptions.token) === 'string') ? {token: authOptions.token} : authOptions.token;
+			}
+
+			if(authOptions.tokenDetails) {
+				this.tokenDetails = authOptions.tokenDetails;
+			}
+
+			if('clientId' in authOptions) {
+				this._userSetClientId(authOptions.clientId);
+			}
+
+			this.authOptions = authOptions;
+		}
+	};
+
+	/* @param forceSupersede: force a new token request even if there's one in
+	 * progress, making all pending callbacks wait for the new one */
+	Auth.prototype._ensureValidAuthCredentials = function(forceSupersede, callback) {
+		var self = this,
+			token = this.tokenDetails;
+
+		if(token) {
+			if(this._tokenClientIdMismatch(token.clientId)) {
+				/* 403 to trigger a permanently failed client - RSA15c */
+				callback(new errorinfo["a" /* default */]('Mismatch between clientId in token (' + token.clientId + ') and current clientId (' + this.clientId + ')', 40102, 403));
+				return;
+			}
+			/* RSA4b1 -- if we have a server time offset set already, we can
+			 * autoremove expired tokens. Else just use the cached token. If it is
+			 * expired Ably will tell us and we'll discard it then. */
+			if(!this.isTimeOffsetSet() || !token.expires || (token.expires >= this.getTimestampUsingOffset())) {
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth.getToken()', 'using cached token; expires = ' + token.expires);
+				callback(null, token);
+				return;
+			}
+			/* expired, so remove and fallthrough to getting a new one */
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth.getToken()', 'deleting expired token');
+			this.tokenDetails = null;
+		}
+
+		(this.waitingForTokenRequest || (this.waitingForTokenRequest = Object(multicaster["a" /* default */])())).push(callback);
+		if(this.currentTokenRequestId !== null && !forceSupersede) {
+			return;
+		}
+
+		/* Request a new token */
+		var tokenRequestId = this.currentTokenRequestId = getTokenRequestId();
+		this.requestToken(this.tokenParams, this.authOptions, function(err, tokenResponse) {
+			if(self.currentTokenRequestId > tokenRequestId) {
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Auth._ensureValidAuthCredentials()', 'Discarding token request response; overtaken by newer one');
+				return;
+			}
+			self.currentTokenRequestId = null;
+			var callbacks = self.waitingForTokenRequest || noop;
+			self.waitingForTokenRequest = null;
+			if(err) {
+				callbacks(err);
+				return;
+			}
+			callbacks(null, (self.tokenDetails = tokenResponse));
+		});
+	};
+
+
+	/* User-set: check types, '*' is disallowed, throw any errors */
+	Auth.prototype._userSetClientId = function(clientId) {
+		if(!(typeof(clientId) === 'string' || clientId === null)) {
+			throw new errorinfo["a" /* default */]('clientId must be either a string or null', 40012, 400);
+		} else if(clientId === '*') {
+			throw new errorinfo["a" /* default */]('Can’t use "*" as a clientId as that string is reserved. (To change the default token request behaviour to use a wildcard clientId, instantiate the library with {defaultTokenParams: {clientId: "*"}}), or if calling authorize(), pass it in as a tokenParam: authorize({clientId: "*"}, authOptions)', 40012, 400);
+		} else {
+			var err = this._uncheckedSetClientId(clientId);
+			if(err) throw err;
+		}
+	};
+
+	/* Ably-set: no typechecking, '*' is allowed but not set on this.clientId), return errors to the caller */
+	Auth.prototype._uncheckedSetClientId = function(clientId) {
+		if(this._tokenClientIdMismatch(clientId)) {
+			/* Should never happen in normal circumstances as realtime should
+			 * recognise mismatch and return an error */
+			var msg = 'Unexpected clientId mismatch: client has ' + this.clientId + ', requested ' + clientId;
+			var err = new errorinfo["a" /* default */](msg, 40102, 401);
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Auth._uncheckedSetClientId()', msg);
+			return err;
+		} else {
+			/* RSA7a4: if options.clientId is provided and is not
+			 * null, it overrides defaultTokenParams.clientId */
+			this.clientId = this.tokenParams.clientId = clientId;
+			return null;
+		}
+	};
+
+	Auth.prototype._tokenClientIdMismatch = function(tokenClientId) {
+		return this.clientId &&
+			(this.clientId !== '*') &&
+			tokenClientId &&
+			(tokenClientId !== '*') &&
+			(this.clientId !== tokenClientId);
+	};
+
+	Auth.isTokenErr = function(error) {
+		return error.code && (error.code >= 40140) && (error.code < 40150);
+	};
+
+	return Auth;
+})();
+
+/* harmony default export */ var auth = __webpack_exports__["a"] = (auth_Auth);
+
+
+/***/ }),
+/* 15 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _types_protocolmessage__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(8);
+/* harmony import */ var _transport_transport__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20);
+/* harmony import */ var _util_logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
+/* harmony import */ var _util_defaults__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(4);
+/* harmony import */ var _connectionerror__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(13);
+/* harmony import */ var _client_auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(14);
+/* harmony import */ var _types_errorinfo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(2);
+
+
+
+
+
+
+
+
+
+var CometTransport = (function() {
+
+	var REQ_SEND = 0,
+		REQ_RECV = 1,
+		REQ_RECV_POLL = 2,
+		REQ_RECV_STREAM = 3;
+
+	/* TODO: can remove once realtime sends protocol message responses for comet errors */
+	function shouldBeErrorAction(err) {
+		var UNRESOLVABLE_ERROR_CODES = [80015, 80017, 80030];
+		if(err.code) {
+			if(_client_auth__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].isTokenErr(err)) return false;
+			if(_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrIn(UNRESOLVABLE_ERROR_CODES, err.code)) return true;
+			return (err.code >= 40000 && err.code < 50000);
+		} else {
+			/* Likely a network or transport error of some kind. Certainly not fatal to the connection */
+			return false;
+		}
+	}
+
+	function protocolMessageFromRawError(err) {
+		/* err will be either a legacy (non-protocolmessage) comet error response
+		 * (which will have an err.code), or a xhr/network error (which won't). */
+		if(shouldBeErrorAction(err)) {
+			return [_types_protocolmessage__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].fromValues({action: _types_protocolmessage__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].Action.ERROR, error: err})];
+		} else {
+			return [_types_protocolmessage__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].fromValues({action: _types_protocolmessage__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].Action.DISCONNECTED, error: err})];
+		}
+	}
+
+	/*
+	 * A base comet transport class
+	 */
+	function CometTransport(connectionManager, auth, params) {
+		/* binary not supported for comet, so just fall back to default */
+		params.format = undefined;
+		params.heartbeats = true;
+		_transport_transport__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].call(this, connectionManager, auth, params);
+		/* streaming defaults to true */
+		this.stream = ('stream' in params) ? params.stream : true;
+		this.sendRequest = null;
+		this.recvRequest = null;
+		this.pendingCallback = null;
+		this.pendingItems = null;
+	}
+	_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inherits(CometTransport, _transport_transport__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"]);
+
+	CometTransport.REQ_SEND = REQ_SEND;
+	CometTransport.REQ_RECV = REQ_RECV;
+	CometTransport.REQ_RECV_POLL = REQ_RECV_POLL;
+	CometTransport.REQ_RECV_STREAM = REQ_RECV_STREAM;
+
+	/* public instance methods */
+	CometTransport.prototype.connect = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'CometTransport.connect()', 'starting');
+		_transport_transport__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].prototype.connect.call(this);
+		var self = this, params = this.params, options = params.options;
+		var host = _util_defaults__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].getHost(options, params.host);
+		var port = _util_defaults__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].getPort(options);
+		var cometScheme = options.tls ? 'https://' : 'http://';
+
+		this.baseUri = cometScheme + host + ':' + port + '/comet/';
+		var connectUri = this.baseUri + 'connect';
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'CometTransport.connect()', 'uri: ' + connectUri);
+		this.auth.getAuthParams(function(err, authParams) {
+			if(err) {
+				self.disconnect(err);
+				return;
+			}
+			if(self.isDisposed) {
+				return;
+			}
+			self.authParams = authParams;
+			var connectParams = self.params.getConnectParams(authParams);
+			if('stream' in connectParams) self.stream = connectParams.stream;
+			_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'CometTransport.connect()', 'connectParams:' + _util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].toQueryString(connectParams));
+
+			/* this will be the 'recvRequest' so this connection can stream messages */
+			var preconnected = false,
+				connectRequest = self.recvRequest = self.createRequest(connectUri, null, connectParams, null, (self.stream ? REQ_RECV_STREAM : REQ_RECV));
+
+			connectRequest.on('data', function(data) {
+				if(!self.recvRequest) {
+					/* the transport was disposed before we connected */
+					return;
+				}
+				if(!preconnected) {
+					preconnected = true;
+					self.emit('preconnect');
+				}
+				self.onData(data);
+			});
+			connectRequest.on('complete', function(err, _body, headers) {
+				if(!self.recvRequest) {
+					/* the transport was disposed before we connected */
+					err = err || new _types_errorinfo__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"]('Request cancelled', 80003, 400);
+				}
+				self.recvRequest = null;
+				/* Connect request may complete without a emitting 'data' event since that is not
+				 * emitted for e.g. a non-streamed error response. Still implies preconnect. */
+				if(!preconnected && !err) {
+					preconnected = true;
+					self.emit('preconnect');
+				}
+				self.onActivity();
+				if(err) {
+					if(err.code) {
+						/* A protocol error received from realtime. TODO: once realtime
+						 * consistendly sends errors wrapped in protocol messages, should be
+						 * able to remove this */
+						self.onData(protocolMessageFromRawError(err));
+					} else {
+						/* A network/xhr error. Don't bother wrapping in a protocol message,
+						 * just disconnect the transport */
+						self.disconnect(err);
+					}
+					return;
+				}
+				_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].nextTick(function() {
+					self.recv();
+				});
+			});
+			connectRequest.exec();
+		});
+	};
+
+	CometTransport.prototype.requestClose = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'CometTransport.requestClose()');
+		this._requestCloseOrDisconnect(true);
+	};
+
+	CometTransport.prototype.requestDisconnect = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'CometTransport.requestDisconnect()');
+		this._requestCloseOrDisconnect(false);
+	};
+
+	CometTransport.prototype._requestCloseOrDisconnect = function(closing) {
+		var closeOrDisconnectUri = closing ? this.closeUri : this.disconnectUri;
+		if(closeOrDisconnectUri) {
+			var self = this,
+				request = this.createRequest(closeOrDisconnectUri, null, this.authParams, null, REQ_SEND);
+
+			request.on('complete', function (err) {
+				if(err) {
+					_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_ERROR, 'CometTransport.request' + (closing ? 'Close()' : 'Disconnect()'), 'request returned err = ' + _util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inspectError(err));
+					self.finish('disconnected', err);
+				}
+			});
+			request.exec();
+		}
+	};
+
+	CometTransport.prototype.dispose = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'CometTransport.dispose()', '');
+		if(!this.isDisposed) {
+			this.isDisposed = true;
+			if(this.recvRequest) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'CometTransport.dispose()', 'aborting recv request');
+				this.recvRequest.abort();
+				this.recvRequest = null;
+			}
+			/* In almost all cases the transport will be finished before it's
+			 * disposed. Finish here just to make sure. */
+			this.finish('disconnected', _connectionerror__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].disconnected);
+			var self = this;
+			_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].nextTick(function() {
+				self.emit('disposed');
+			});
+		}
+	};
+
+	CometTransport.prototype.onConnect = function(message) {
+		/* if this transport has been disposed whilst awaiting connection, do nothing */
+		if(this.isDisposed) {
+			return;
+		}
+
+		/* the connectionKey in a comet connected response is really
+		 * <instId>-<connectionKey> */
+		var connectionStr = message.connectionKey;
+		_transport_transport__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].prototype.onConnect.call(this, message);
+
+		var baseConnectionUri =  this.baseUri + connectionStr;
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MICRO, 'CometTransport.onConnect()', 'baseUri = ' + baseConnectionUri + '; connectionKey = ' + message.connectionKey);
+		this.sendUri = baseConnectionUri + '/send';
+		this.recvUri = baseConnectionUri + '/recv';
+		this.closeUri = baseConnectionUri + '/close';
+		this.disconnectUri = baseConnectionUri + '/disconnect';
+	};
+
+	CometTransport.prototype.send = function(message) {
+		if(this.sendRequest) {
+			/* there is a pending send, so queue this message */
+			this.pendingItems = this.pendingItems || [];
+			this.pendingItems.push(message);
+			return;
+		}
+		/* send this, plus any pending, now */
+		var pendingItems = this.pendingItems || [];
+		pendingItems.push(message);
+		this.pendingItems = null;
+
+		this.sendItems(pendingItems);
+	};
+
+	CometTransport.prototype.sendAnyPending = function() {
+		var pendingItems = this.pendingItems;
+
+		if(!pendingItems) {
+			return;
+		}
+
+		this.pendingItems = null;
+		this.sendItems(pendingItems);
+	}
+
+	CometTransport.prototype.sendItems = function(items) {
+		var self = this,
+			sendRequest = this.sendRequest = self.createRequest(self.sendUri, null, self.authParams, this.encodeRequest(items), REQ_SEND);
+
+		sendRequest.on('complete', function(err, data) {
+			if(err) _util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_ERROR, 'CometTransport.sendItems()', 'on complete: err = ' + _util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inspectError(err));
+			self.sendRequest = null;
+
+			/* the result of the request, even if a nack, is usually a protocol response
+			 * contained in the data. An err is anomolous, and indicates some issue with the
+			 * network,transport, or connection */
+			if(err) {
+				if(err.code) {
+					/* A protocol error received from realtime. TODO: once realtime
+					 * consistendly sends errors wrapped in protocol messages, should be
+					 * able to remove this */
+					self.onData(protocolMessageFromRawError(err));
+				} else {
+					/* A network/xhr error. Don't bother wrapping in a protocol message,
+					 * just disconnect the transport */
+					self.disconnect(err);
+				}
+				return;
+			}
+
+			if(data) {
+				self.onData(data);
+			}
+
+			if(self.pendingItems) {
+				_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].nextTick(function() {
+					/* If there's a new send request by now, any pending items will have
+					 * been picked up by that; any new ones added since then will be
+					 * picked up after that one completes */
+					if(!self.sendRequest) {
+						self.sendAnyPending();
+					}
+				});
+			}
+		});
+		sendRequest.exec();
+	};
+
+	CometTransport.prototype.recv = function() {
+		/* do nothing if there is an active request, which might be streaming */
+		if(this.recvRequest)
+			return;
+
+		/* If we're no longer connected, do nothing */
+		if(!this.isConnected)
+			return;
+
+		var self = this,
+			recvRequest = this.recvRequest = this.createRequest(this.recvUri, null, this.authParams, null, (self.stream ? REQ_RECV_STREAM : REQ_RECV_POLL));
+
+		recvRequest.on('data', function(data) {
+			self.onData(data);
+		});
+		recvRequest.on('complete', function(err) {
+			self.recvRequest = null;
+			/* A request completing must be considered activity, as realtime sends
+			 * heartbeats every 15s since a request began, not every 15s absolutely */
+			self.onActivity();
+			if(err) {
+				if(err.code) {
+					/* A protocol error received from realtime. TODO: once realtime
+					 * consistendly sends errors wrapped in protocol messages, should be
+					 * able to remove this */
+					self.onData(protocolMessageFromRawError(err));
+				} else {
+					/* A network/xhr error. Don't bother wrapping in a protocol message,
+					 * just disconnect the transport */
+					self.disconnect(err);
+				}
+				return;
+			}
+			_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].nextTick(function() {
+				self.recv();
+			});
+		});
+		recvRequest.exec();
+	};
+
+	CometTransport.prototype.onData = function(responseData) {
+		try {
+			var items = this.decodeResponse(responseData);
+			if(items && items.length)
+				for(var i = 0; i < items.length; i++)
+					this.onProtocolMessage(_types_protocolmessage__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].fromDeserialized(items[i]));
+		} catch (e) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_ERROR, 'CometTransport.onData()', 'Unexpected exception handing channel event: ' + e.stack);
+		}
+	};
+
+	CometTransport.prototype.encodeRequest = function(requestItems) {
+		return JSON.stringify(requestItems);
+	};
+
+	CometTransport.prototype.decodeResponse = function(responseData) {
+		if(typeof(responseData) == 'string')
+			responseData = JSON.parse(responseData);
+		return responseData;
+	};
+
+	/* For comet, we could do the auth update by aborting the current recv and
+	 * starting a new one with the new token, that'd be sufficient for realtime.
+	 * Problem is JSONP - you can't cancel truly abort a recv once started. So
+	 * we need to send an AUTH for jsonp. In which case it's simpler to keep all
+	 * comet transports the same and do it for all of them. So we send the AUTH
+	 * instead, and don't need to abort the recv */
+	CometTransport.prototype.onAuthUpdated = function(tokenDetails) {
+		this.authParams = {access_token: tokenDetails.token};
+	};
+
+	return CometTransport;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (CometTransport);
+
+
+/***/ }),
+/* 16 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+
+
+var WebStorage = (function() {
+	var sessionSupported,
+		localSupported,
+		test = 'ablyjs-storage-test';
+
+	/* Even just accessing the session/localStorage object can throw a
+	 * security exception in some circumstances with some browsers. In
+	 * others, calling setItem will throw. So have to check in this
+	 * somewhat roundabout way. (If unsupported or no global object,
+	 * will throw on accessing a property of undefined) */
+	try {
+		global.sessionStorage.setItem(test, test);
+		global.sessionStorage.removeItem(test);
+		sessionSupported = true;
+	} catch(e) {
+		sessionSupported = false;
+	}
+
+	try {
+		global.localStorage.setItem(test, test);
+		global.localStorage.removeItem(test);
+		localSupported = true;
+	} catch(e) {
+		localSupported = false;
+	}
+
+	function WebStorage() {}
+
+	function storageInterface(session) {
+		return session ? global.sessionStorage : global.localStorage;
+	}
+
+	function set(name, value, ttl, session) {
+		var wrappedValue = {value: value};
+		if(ttl) {
+			wrappedValue.expires = _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].now() + ttl;
+		}
+		return storageInterface(session).setItem(name, JSON.stringify(wrappedValue));
+	}
+
+	function get(name, session) {
+		var rawItem = storageInterface(session).getItem(name);
+		if(!rawItem) return null;
+		var wrappedValue = JSON.parse(rawItem);
+		if(wrappedValue.expires && (wrappedValue.expires < _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].now())) {
+			storageInterface(session).removeItem(name);
+			return null;
+		}
+		return wrappedValue.value;
+	}
+
+	function remove(name, session) {
+		return storageInterface(session).removeItem(name);
+	}
+
+	if(localSupported) {
+		WebStorage.set    = function(name, value, ttl) { return set(name, value, ttl, false); };
+		WebStorage.get    = function(name) { return get(name, false); };
+		WebStorage.remove = function(name) { return remove(name, false); };
+	}
+
+	if(sessionSupported) {
+		WebStorage.setSession    = function(name, value, ttl) { return set(name, value, ttl, true); };
+		WebStorage.getSession    = function(name) { return get(name, true); };
+		WebStorage.removeSession = function(name) { return remove(name, true); };
+	}
+
+	return WebStorage;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (WebStorage);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(17)))
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	(function () {
+	    // Shortcuts
+	    var C = CryptoJS;
+	    var C_lib = C.lib;
+	    var WordArray = C_lib.WordArray;
+	    var C_enc = C.enc;
+
+	    /**
+	     * Base64 encoding strategy.
+	     */
+	    var Base64 = C_enc.Base64 = {
+	        /**
+	         * Converts a word array to a Base64 string.
+	         *
+	         * @param {WordArray} wordArray The word array.
+	         *
+	         * @return {string} The Base64 string.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var base64String = CryptoJS.enc.Base64.stringify(wordArray);
+	         */
+	        stringify: function (wordArray) {
+	            // Shortcuts
+	            var words = wordArray.words;
+	            var sigBytes = wordArray.sigBytes;
+	            var map = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+
+	            // Clamp excess bits
+	            wordArray.clamp();
+
+	            // Convert
+	            var base64Chars = [];
+	            for (var i = 0; i < sigBytes; i += 3) {
+	                var byte1 = (words[i >>> 2]       >>> (24 - (i % 4) * 8))       & 0xff;
+	                var byte2 = (words[(i + 1) >>> 2] >>> (24 - ((i + 1) % 4) * 8)) & 0xff;
+	                var byte3 = (words[(i + 2) >>> 2] >>> (24 - ((i + 2) % 4) * 8)) & 0xff;
+
+	                var triplet = (byte1 << 16) | (byte2 << 8) | byte3;
+
+	                for (var j = 0; (j < 4) && (i + j * 0.75 < sigBytes); j++) {
+	                    base64Chars.push(map.charAt((triplet >>> (6 * (3 - j))) & 0x3f));
+	                }
+	            }
+
+	            // Add padding
+	            var paddingChar = map.charAt(64);
+	            if (paddingChar) {
+	                while (base64Chars.length % 4) {
+	                    base64Chars.push(paddingChar);
+	                }
+	            }
+
+	            return base64Chars.join('');
+	        },
+
+	        /**
+	         * Converts a Base64 string to a word array.
+	         *
+	         * @param {string} base64Str The Base64 string.
+	         *
+	         * @return {WordArray} The word array.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var wordArray = CryptoJS.enc.Base64.parse(base64String);
+	         */
+	        parse: function (base64Str) {
+	            // Shortcuts
+	            var base64StrLength = base64Str.length;
+	            var map = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+	            var reverseMap = this._reverseMap;
+
+	            if (!reverseMap) {
+	                    reverseMap = this._reverseMap = [];
+	                    for (var j = 0; j < map.length; j++) {
+	                        reverseMap[map.charCodeAt(j)] = j;
+	                    }
+	            }
+
+	            // Ignore padding
+	            var paddingChar = map.charAt(64);
+	            if (paddingChar) {
+	                var paddingIndex = base64Str.indexOf(paddingChar);
+	                if (paddingIndex !== -1) {
+	                    base64StrLength = paddingIndex;
+	                }
+	            }
+
+	            // Convert
+	            return parseLoop(base64Str, base64StrLength, reverseMap);
+
+	        }
+	    };
+
+	    function parseLoop(base64Str, base64StrLength, reverseMap) {
+	      var words = [];
+	      var nBytes = 0;
+	      for (var i = 0; i < base64StrLength; i++) {
+	          if (i % 4) {
+	              var bits1 = reverseMap[base64Str.charCodeAt(i - 1)] << ((i % 4) * 2);
+	              var bits2 = reverseMap[base64Str.charCodeAt(i)] >>> (6 - (i % 4) * 2);
+	              var bitsCombined = bits1 | bits2;
+	              words[nBytes >>> 2] |= bitsCombined << (24 - (nBytes % 4) * 8);
+	              nBytes++;
+	          }
+	      }
+	      return WordArray.create(words, nBytes);
+	    }
+	}());
+
+
+	return CryptoJS.enc.Base64;
+
+}));
+
+/***/ }),
+/* 19 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(10);
+/* harmony import */ var crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(18);
+/* harmony import */ var crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var crypto_js_build__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(28);
+/* harmony import */ var crypto_js_build__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(crypto_js_build__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3);
+/* harmony import */ var _common_lib_util_logger__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(0);
+/* harmony import */ var platform_bufferutils__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(5);
+
+
+
+
+
+
+
+var Crypto = (function() {
+	var DEFAULT_ALGORITHM = 'aes';
+	var DEFAULT_KEYLENGTH = 256; // bits
+	var DEFAULT_MODE = 'cbc';
+	var DEFAULT_BLOCKLENGTH = 16; // bytes
+	var DEFAULT_BLOCKLENGTH_WORDS = 4; // 32-bit words
+	var UINT32_SUP = 0x100000000;
+	var INT32_SUP = 0x80000000;
+
+	/**
+	 * Internal: generate an array of secure random words corresponding to the given length of bytes
+	 * @param bytes
+	 * @param callback
+	 */
+	var generateRandom;
+	if(platform__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].getRandomWordArray) {
+		generateRandom = platform__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].getRandomWordArray;
+	} else if(typeof Uint32Array !== 'undefined' && platform__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].getRandomValues) {
+		var blockRandomArray = new Uint32Array(DEFAULT_BLOCKLENGTH_WORDS);
+		generateRandom = function(bytes, callback) {
+			var words = bytes / 4, nativeArray = (words == DEFAULT_BLOCKLENGTH_WORDS) ? blockRandomArray : new Uint32Array(words);
+			platform__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].getRandomValues(nativeArray, function(err) {
+				callback(err, platform_bufferutils__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].toWordArray(nativeArray))
+			});
+		};
+	} else {
+		generateRandom = function(bytes, callback) {
+			_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MAJOR, 'Ably.Crypto.generateRandom()', 'Warning: the browser you are using does not support secure cryptographically secure randomness generation; falling back to insecure Math.random()');
+			var words = bytes / 4, array = new Array(words);
+			for(var i = 0; i < words; i++) {
+				/* cryptojs wordarrays use signed ints. When WordArray.create is fed a
+				* Uint32Array unsigned are converted to signed automatically, but when
+				* fed a normal array they aren't, so need to do so ourselves by
+				* subtracting INT32_SUP */
+				array[i] = Math.floor(Math.random() * UINT32_SUP) - INT32_SUP;
+			}
+
+			callback(null, crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create(array));
+		};
+	}
+
+	/**
+	 * Internal: calculate the padded length of a given plaintext
+	 * using PKCS5.
+	 * @param plaintextLength
+	 * @return
+	 */
+	function getPaddedLength(plaintextLength) {
+		return (plaintextLength + DEFAULT_BLOCKLENGTH) & -DEFAULT_BLOCKLENGTH;
+	}
+
+	/**
+	 * Internal: checks that the cipherParams are a valid combination. Currently
+	 * just checks that the calculated keyLength is a valid one for aes-cbc
+	 */
+	function validateCipherParams(params) {
+		if(params.algorithm === 'aes' && params.mode === 'cbc') {
+			if(params.keyLength === 128 || params.keyLength === 256) {
+				return;
+			}
+			throw new Error('Unsupported key length ' + params.keyLength + ' for aes-cbc encryption. Encryption key must be 128 or 256 bits (16 or 32 ASCII characters)');
+		}
+	}
+
+	function normaliseBase64(string) {
+		/* url-safe base64 strings use _ and - instread of / and + */
+		return string.replace('_', '/').replace('-', '+');
+	}
+
+	/**
+	 * Internal: a block containing zeros
+	 */
+	var emptyBlock = crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0,0,0,0]);
+
+	/**
+	 * Internal: obtain the pkcs5 padding string for a given padded length;
+	 */
+	var pkcs5Padding = [
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x10101010,0x10101010,0x10101010,0x10101010], 16),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x01000000], 1),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x02020000], 2),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x03030300], 3),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x04040404], 4),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x05050505,0x05000000], 5),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x06060606,0x06060000], 6),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x07070707,0x07070700], 7),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x08080808,0x08080808], 8),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x09090909,0x09090909,0x09000000], 9),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x0a0a0a0a,0x0a0a0a0a,0x0a0a0000], 10),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x0b0b0b0b,0x0b0b0b0b,0x0b0b0b00], 11),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x0c0c0c0c,0x0c0c0c0c,0x0c0c0c0c], 12),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x0d0d0d0d,0x0d0d0d0d,0x0d0d0d0d,0x0d000000], 13),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x0e0e0e0e,0x0e0e0e0e,0x0e0e0e0e,0x0e0e0000], 14),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x0f0f0f0f,0x0f0f0f0f,0x0f0f0f0f,0x0f0f0f0f], 15),
+		crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create([0x10101010,0x10101010,0x10101010,0x10101010], 16)
+	];
+
+	/**
+	 * Utility classes and interfaces for message payload encryption.
+	 *
+	 * This class supports AES/CBC/PKCS5 with a default keylength of 128 bits
+	 * but supporting other keylengths. Other algorithms and chaining modes are
+	 * not supported directly, but supportable by extending/implementing the base
+	 * classes and interfaces here.
+	 *
+	 * Secure random data for creation of Initialization Vectors (IVs) and keys
+	 * is obtained from window.crypto.getRandomValues if available, or from
+	 * Math.random() if not. Clients who do not want to depend on Math.random()
+	 * should polyfill window.crypto.getRandomValues with a library that seeds
+	 * a PRNG with real entropy.
+	 *
+	 * Each message payload is encrypted with an IV in CBC mode, and the IV is
+	 * concatenated with the resulting raw ciphertext to construct the "ciphertext"
+	 * data passed to the recipient.
+	 */
+	function Crypto() {}
+
+	/**
+	 * A class encapsulating the client-specifiable parameters for
+	 * the cipher.
+	 *
+	 * algorithm is the name of the algorithm in the default system provider,
+	 * or the lower-cased version of it; eg "aes" or "AES".
+	 *
+	 * Clients are recommended to not call this directly, but instead to use the
+	 * Crypto.getDefaultParams helper, which will fill in any fields not supplied
+	 * with default values and validation the result.
+	 */
+	function CipherParams() {
+		this.algorithm = null;
+		this.keyLength = null;
+		this.mode = null;
+		this.key = null;
+	}
+	Crypto.CipherParams = CipherParams;
+
+	/**
+	 * Obtain a complete CipherParams instance from the provided params, filling
+	 * in any not provided with default values, calculating a keyLength from
+	 * the supplied key, and validating the result.
+	 * @param params an object containing at a minimum a `key` key with value the
+	 * key, as either a binary (ArrayBuffer, Array, WordArray) or a
+	 * base64-encoded string. May optionally also contain: algorithm (defaults to
+	 * AES), mode (defaults to 'cbc')
+	 */
+	Crypto.getDefaultParams = function(params) {
+		var key;
+		/* Backward compatibility */
+		if((typeof(params) === 'function') || (typeof(params) === 'string')) {
+			_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].deprecated('Crypto.getDefaultParams(key, callback)', 'Crypto.getDefaultParams({key: key})');
+			if(typeof(params) === 'function') {
+				Crypto.generateRandomKey(function(key) {
+					params(null, Crypto.getDefaultParams({key: key}));
+				})
+			} else if(typeof arguments[1] === 'function') {
+				arguments[1](null, Crypto.getDefaultParams({key: params}));
+			} else {
+				throw new Error('Invalid arguments for Crypto.getDefaultParams');
+			}
+			return;
+		}
+
+		if(!params.key) {
+			throw new Error('Crypto.getDefaultParams: a key is required');
+		}
+
+		if (typeof(params.key) === 'string') {
+			key = Object(crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_1__["parse"])(normaliseBase64(params.key));
+		} else {
+			key = platform_bufferutils__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].toWordArray(params.key); // Expect key to be an Array, ArrayBuffer, or WordArray at this point
+		}
+
+		var cipherParams = new CipherParams();
+		cipherParams.key = key;
+		cipherParams.algorithm = params.algorithm || DEFAULT_ALGORITHM;
+		cipherParams.keyLength = key.words.length * (4 * 8);
+		cipherParams.mode = params.mode || DEFAULT_MODE;
+
+		if(params.keyLength && params.keyLength !== cipherParams.keyLength) {
+			throw new Error('Crypto.getDefaultParams: a keyLength of ' + params.keyLength + ' was specified, but the key actually has length ' + cipherParams.keyLength);
+		}
+
+		validateCipherParams(cipherParams);
+		return cipherParams;
+	};
+
+	/**
+	 * Generate a random encryption key from the supplied keylength (or the
+	 * default keyLength if none supplied) as a CryptoJS WordArray
+	 * @param keyLength (optional) the required keyLength in bits
+	 * @param callback (err, key)
+	 */
+	Crypto.generateRandomKey = function(keyLength, callback) {
+		if(arguments.length == 1 && typeof(keyLength) == 'function') {
+			callback = keyLength;
+			keyLength = undefined;
+		}
+		generateRandom((keyLength || DEFAULT_KEYLENGTH) / 8, callback);
+	};
+
+	/**
+	 * Internal; get a ChannelCipher instance based on the given cipherParams
+	 * @param params either a CipherParams instance or some subset of its
+	 * fields that includes a key
+	 */
+	Crypto.getCipher = function(params) {
+		var cipherParams = (params instanceof CipherParams) ?
+		                   params :
+		                   Crypto.getDefaultParams(params);
+
+		return {cipherParams: cipherParams, cipher: new CBCCipher(cipherParams, DEFAULT_BLOCKLENGTH_WORDS, params.iv)};
+	};
+
+	function CBCCipher(params, blockLengthWords, iv) {
+		this.algorithm = params.algorithm + '-' + String(params.keyLength) + '-' + params.mode;
+		this.cjsAlgorithm = params.algorithm.toUpperCase().replace(/-\d+$/, '');
+		this.key = platform_bufferutils__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].toWordArray(params.key);
+		if(iv) {
+			this.iv = platform_bufferutils__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].toWordArray(iv).clone();
+		}
+		this.blockLengthWords = blockLengthWords;
+	}
+
+	CBCCipher.prototype.encrypt = function(plaintext, callback) {
+		_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MICRO, 'CBCCipher.encrypt()', '');
+		plaintext = platform_bufferutils__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].toWordArray(plaintext);
+		var plaintextLength = plaintext.sigBytes,
+			paddedLength = getPaddedLength(plaintextLength),
+			self = this;
+
+		var then = function() {
+			self.getIv(function(err, iv) {
+				if (err) {
+					callback(err);
+					return;
+				}
+				var cipherOut = self.encryptCipher.process(plaintext.concat(pkcs5Padding[paddedLength - plaintextLength]));
+				var ciphertext = iv.concat(cipherOut);
+				callback(null, ciphertext);
+			});
+		};
+
+		if (!this.encryptCipher) {
+			if(this.iv) {
+				this.encryptCipher = crypto_js_build__WEBPACK_IMPORTED_MODULE_2___default.a.algo[this.cjsAlgorithm].createEncryptor(this.key, { iv: this.iv });
+				then();
+			} else {
+				generateRandom(DEFAULT_BLOCKLENGTH, function(err, iv) {
+					if (err) {
+						callback(err);
+						return;
+					}
+					self.encryptCipher = crypto_js_build__WEBPACK_IMPORTED_MODULE_2___default.a.algo[self.cjsAlgorithm].createEncryptor(self.key, { iv: iv });
+					self.iv = iv;
+					then();
+				});
+			}
+		} else {
+			then();
+		}
+	};
+
+	CBCCipher.prototype.decrypt = function(ciphertext) {
+		_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MICRO, 'CBCCipher.decrypt()', '');
+		ciphertext = platform_bufferutils__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].toWordArray(ciphertext);
+		var blockLengthWords = this.blockLengthWords,
+			ciphertextWords = ciphertext.words,
+			iv = crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create(ciphertextWords.slice(0, blockLengthWords)),
+			ciphertextBody = crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default.a.create(ciphertextWords.slice(blockLengthWords));
+
+		var decryptCipher = crypto_js_build__WEBPACK_IMPORTED_MODULE_2___default.a.algo[this.cjsAlgorithm].createDecryptor(this.key, { iv: iv });
+		var plaintext = decryptCipher.process(ciphertextBody);
+		var epilogue = decryptCipher.finalize();
+		decryptCipher.reset();
+		if(epilogue && epilogue.sigBytes) plaintext.concat(epilogue);
+		return plaintext;
+	};
+
+	CBCCipher.prototype.getIv = function(callback) {
+		if(this.iv) {
+			var iv = this.iv;
+			this.iv = null;
+			callback(null, iv);
+			return;
+		}
+
+		/* Since the iv for a new block is the ciphertext of the last, this
+		* sets a new iv (= aes(randomBlock XOR lastCipherText)) as well as
+		* returning it */
+		var self = this;
+		generateRandom(DEFAULT_BLOCKLENGTH, function(err, randomBlock) {
+			if (err) {
+				callback(err);
+				return;
+			} 
+			callback(null, self.encryptCipher.process(randomBlock));
+		});
+	};
+
+	return Crypto;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (Crypto);
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+/* harmony import */ var _util_eventemitter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
+/* harmony import */ var _util_logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
+/* harmony import */ var _transport_connectionerror__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(13);
+/* harmony import */ var _types_errorinfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2);
+
+
+
+
+
+
+
+var Transport = (function() {
+	var actions = _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].Action;
+	var closeMessage = _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues({action: actions.CLOSE});
+	var disconnectMessage = _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues({action: actions.DISCONNECT});
+	var noop = function() {};
+
+	/*
+	 * EventEmitter, generates the following events:
+	 *
+	 * event name       data
+	 * closed           error
+	 * failed           error
+	 * disposed
+	 * connected        null error, connectionSerial, connectionId, connectionDetails
+	 * sync             connectionSerial, connectionId
+	 * event            channel message object
+	 */
+
+	/* public constructor */
+	function Transport(connectionManager, auth, params) {
+		_util_eventemitter__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].call(this);
+		this.connectionManager = connectionManager;
+		connectionManager.registerProposedTransport(this);
+		this.auth = auth;
+		this.params = params;
+		this.timeouts = params.options.timeouts;
+		this.format = params.format;
+		this.isConnected = false;
+		this.isFinished = false;
+		this.isDisposed = false;
+		this.maxIdleInterval = null;
+		this.idleTimer = null;
+		this.lastActivity = null;
+	}
+	_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inherits(Transport, _util_eventemitter__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"]);
+
+	Transport.prototype.connect = function() {};
+
+	Transport.prototype.close = function() {
+		if(this.isConnected) {
+			this.requestClose();
+		}
+		this.finish('closed', _transport_connectionerror__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].closed);
+	};
+
+	Transport.prototype.disconnect = function(err) {
+		/* Used for network/transport issues that need to result in the transport
+		 * being disconnected, but should not affect the connection */
+		if(this.isConnected) {
+			this.requestDisconnect();
+		}
+		this.finish('disconnected', err || _transport_connectionerror__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].disconnected);
+	};
+
+	Transport.prototype.fail = function(err) {
+		/* Used for client-side-detected fatal connection issues */
+		if(this.isConnected) {
+			this.requestDisconnect();
+		}
+		this.finish('failed', err || _transport_connectionerror__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].failed);
+	};
+
+	Transport.prototype.finish = function(event, err) {
+		if(this.isFinished) {
+			return;
+		}
+
+		this.isFinished = true;
+		this.isConnected = false;
+		this.maxIdleInterval = null;
+		clearTimeout(this.idleTimer);
+		this.idleTimer = null;
+		this.emit(event, err);
+		this.dispose();
+	};
+
+	Transport.prototype.onProtocolMessage = function(message) {
+		if (_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].shouldLog(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MICRO)) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MICRO, 'Transport.onProtocolMessage()', 'received on ' + this.shortName + ': ' + _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].stringify(message) + '; connectionId = ' + this.connectionManager.connectionId);
+		}
+		this.onActivity();
+
+		switch(message.action) {
+		case actions.HEARTBEAT:
+			_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MICRO, 'Transport.onProtocolMessage()', this.shortName + ' heartbeat; connectionId = ' + this.connectionManager.connectionId);
+			this.emit('heartbeat', message.id);
+			break;
+		case actions.CONNECTED:
+			this.onConnect(message);
+			this.emit('connected', message.error, message.connectionId, message.connectionDetails, message);
+			break;
+		case actions.CLOSED:
+			this.onClose(message);
+			break;
+		case actions.DISCONNECTED:
+			this.onDisconnect(message);
+			break;
+		case actions.ACK:
+			this.emit('ack', message.msgSerial, message.count);
+			break;
+		case actions.NACK:
+			this.emit('nack', message.msgSerial, message.count, message.error);
+			break;
+		case actions.SYNC:
+			if(message.connectionId !== undefined) {
+				/* a transport SYNC */
+				this.emit('sync', message.connectionId, message);
+				break;
+			}
+			/* otherwise it's a channel SYNC, so handle it in the channel */
+			this.connectionManager.onChannelMessage(message, this);
+			break;
+		case actions.AUTH:
+			this.auth.authorize(function(err) {
+				if(err) {
+					_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_ERROR, 'Transport.onProtocolMessage()', 'Ably requested re-authentication, but unable to obtain a new token: ' + _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inspectError(err));
+				}
+			});
+			break;
+		case actions.ERROR:
+			_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'Transport.onProtocolMessage()', 'received error action; connectionId = ' + this.connectionManager.connectionId + '; err = ' + _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inspect(message.error) + (message.channel ? (', channel: ' +  message.channel) : ''));
+			if(message.channel === undefined) {
+				this.onFatalError(message);
+				break;
+			}
+			/* otherwise it's a channel-specific error, so handle it in the channel */
+			this.connectionManager.onChannelMessage(message, this);
+			break;
+		default:
+			/* all other actions are channel-specific */
+			this.connectionManager.onChannelMessage(message, this);
+		}
+	};
+
+	Transport.prototype.onConnect = function(message) {
+		this.isConnected = true;
+		var maxPromisedIdle = message.connectionDetails.maxIdleInterval;
+		if(maxPromisedIdle) {
+			this.maxIdleInterval = maxPromisedIdle + this.timeouts.realtimeRequestTimeout;
+			this.onActivity();
+		}
+		/* else Realtime declines to guarantee any maximum idle interval - CD2h */
+	};
+
+	Transport.prototype.onDisconnect = function(message) {
+		/* Used for when the server has disconnected the client (usually with a
+		 * DISCONNECTED action) */
+		var err = message && message.error;
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'Transport.onDisconnect()', 'err = ' + _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inspectError(err));
+		this.finish('disconnected', err);
+	};
+
+	Transport.prototype.onFatalError = function(message) {
+		/* On receipt of a fatal connection error, we can assume that the server
+		 * will close the connection and the transport, and do not need to request
+		 * a disconnection - RTN15i */
+		var err = message && message.error;
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'Transport.onFatalError()', 'err = ' + _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inspectError(err));
+		this.finish('failed', err);
+	};
+
+	Transport.prototype.onClose = function(message) {
+		var err = message && message.error;
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'Transport.onClose()', 'err = ' + _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inspectError(err));
+		this.finish('closed', err);
+	};
+
+	Transport.prototype.requestClose = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'Transport.requestClose()', '');
+		this.send(closeMessage);
+	};
+
+	Transport.prototype.requestDisconnect = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'Transport.requestDisconnect()', '');
+		this.send(disconnectMessage);
+	};
+
+	Transport.prototype.ping = function(id) {
+		var msg = {action: _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].Action.HEARTBEAT};
+		if(id) msg.id = id;
+		this.send(_types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues(msg));
+	};
+
+	Transport.prototype.dispose = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MINOR, 'Transport.dispose()', '');
+		this.isDisposed = true;
+		this.off();
+	};
+
+	Transport.prototype.onActivity = function() {
+		if(!this.maxIdleInterval) { return; }
+		this.lastActivity = this.connectionManager.lastActivity = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].now();
+		this.setIdleTimer(this.maxIdleInterval + 100);
+	};
+
+	Transport.prototype.setIdleTimer = function(timeout) {
+		var self = this;
+		if(!this.idleTimer) {
+			this.idleTimer = setTimeout(function() {
+				self.onIdleTimerExpire();
+			}, timeout);
+		}
+	};
+
+	Transport.prototype.onIdleTimerExpire = function() {
+		this.idleTimer = null;
+		var sinceLast = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].now() - this.lastActivity,
+			timeRemaining = this.maxIdleInterval - sinceLast;
+		if(timeRemaining <= 0) {
+			var msg = 'No activity seen from realtime in ' + sinceLast + 'ms; assuming connection has dropped';
+			_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_ERROR, 'Transport.onIdleTimerExpire()', msg);
+			this.disconnect(new _types_errorinfo__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"](msg, 80003, 408));
+		} else {
+			this.setIdleTimer(timeRemaining + 100);
+		}
+	};
+
+	Transport.prototype.onAuthUpdated = function() {};
+
+	return Transport;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (Transport);
+
+
+/***/ }),
+/* 21 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var ConnectionStateChange = (function() {
+
+	/* public constructor */
+	function ConnectionStateChange(previous, current, retryIn, reason) {
+		this.previous = previous;
+		this.current = current;
+		if(retryIn) this.retryIn = retryIn;
+		if(reason) this.reason = reason;
+	}
+
+	return ConnectionStateChange;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (ConnectionStateChange);
+
+
+/***/ }),
+/* 22 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+
+
+var Multicaster = (function() {
+
+	function Multicaster(members) {
+		members = members || [];
+
+		var handler = function() {
+			for(var i = 0; i < members.length; i++) {
+				var member = members[i];
+				if(member) {
+					try {
+						member.apply(null, arguments);
+					} catch(e){
+						_logger__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].logAction(_logger__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].LOG_ERROR, 'Multicaster multiple callback handler', 'Unexpected exception: ' + e + '; stack = ' + e.stack);
+					}
+				}
+			}
+		};
+
+		handler.push = function() {
+			Array.prototype.push.apply(members, arguments);
+		};
+		return handler;
+	}
+
+	return Multicaster;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (Multicaster);
+
+
+/***/ }),
+/* 23 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _util_defaults__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony import */ var _logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
+/* harmony import */ var platform_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
+
+
+
+
+
+
+var ErrorReporter = (function() {
+	function ErrorReporter() {}
+
+	var levels = ErrorReporter.levels = [
+		'fatal',
+		'error',
+		'warning',
+		'info',
+		'debug'
+	];
+
+	/* (level: typeof ErrorReporter.levels[number], message: string, fingerprint?: string, tags?: {[key: string]: string}): void */
+	ErrorReporter.report = function(level, message, fingerprint, tags) {
+		var eventId = _utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].randomHexString(16);
+
+		var event = {
+			event_id: eventId,
+			tags: _utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].mixin({
+				ablyAgent: _util_defaults__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].agent
+			}, tags),
+			platform: 'javascript',
+			level: level,
+			release: _util_defaults__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].version,
+			fingerprint: fingerprint && [ fingerprint ],
+			message: message,
+			request: {
+				headers: {
+					'User-Agent': platform__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].userAgent
+				},
+				url: platform__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].currentUrl
+			}
+		};
+
+		_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MICRO, 'ErrorReporter', 'POSTing to error reporter: ' + message);
+		platform_http__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].postUri(null, _util_defaults__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].errorReportingUrl, _util_defaults__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].errorReportingHeaders, JSON.stringify(event), {}, function(err, res) {
+			_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MICRO, 'ErrorReporter', 'POSTing to error reporter resulted in: ' +
+				(err ? _utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inspectError(err) : _utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inspectBody(res))
+			);
+		});
+	};
+
+	return ErrorReporter;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (ErrorReporter);
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var msgpack = (function() {
+	"use strict";
+
+	var exports = {};
+
+	exports.inspect = inspect;
+	function inspect(buffer) {
+		if (buffer === undefined)
+			return "undefined";
+		var view;
+		var type;
+		if ( buffer instanceof ArrayBuffer) {
+			type = "ArrayBuffer";
+			view = new DataView(buffer);
+		} else if ( buffer instanceof DataView) {
+			type = "DataView";
+			view = buffer;
+		}
+		if (!view)
+			return JSON.stringify(buffer);
+		var bytes = [];
+		for (var i = 0; i < buffer.byteLength; i++) {
+			if (i > 20) {
+				bytes.push("...");
+				break;
+			}
+			var byte_ = view.getUint8(i).toString(16);
+			if (byte_.length === 1)
+				byte_ = "0" + byte_;
+			bytes.push(byte_);
+		}
+		return "<" + type + " " + bytes.join(" ") + ">";
+	}
+
+	// Encode string as utf8 into dataview at offset
+	exports.utf8Write = utf8Write;
+	function utf8Write(view, offset, string) {
+		var byteLength = view.byteLength;
+		for (var i = 0, l = string.length; i < l; i++) {
+			var codePoint = string.charCodeAt(i);
+
+			// One byte of UTF-8
+			if (codePoint < 0x80) {
+				view.setUint8(offset++, codePoint >>> 0 & 0x7f | 0x00);
+				continue;
+			}
+
+			// Two bytes of UTF-8
+			if (codePoint < 0x800) {
+				view.setUint8(offset++, codePoint >>> 6 & 0x1f | 0xc0);
+				view.setUint8(offset++, codePoint >>> 0 & 0x3f | 0x80);
+				continue;
+			}
+
+			// Three bytes of UTF-8.
+			if (codePoint < 0x10000) {
+				view.setUint8(offset++, codePoint >>> 12 & 0x0f | 0xe0);
+				view.setUint8(offset++, codePoint >>> 6 & 0x3f | 0x80);
+				view.setUint8(offset++, codePoint >>> 0 & 0x3f | 0x80);
+				continue;
+			}
+
+			// Four bytes of UTF-8
+			if (codePoint < 0x110000) {
+				view.setUint8(offset++, codePoint >>> 18 & 0x07 | 0xf0);
+				view.setUint8(offset++, codePoint >>> 12 & 0x3f | 0x80);
+				view.setUint8(offset++, codePoint >>> 6 & 0x3f | 0x80);
+				view.setUint8(offset++, codePoint >>> 0 & 0x3f | 0x80);
+				continue;
+			}
+			throw new Error("bad codepoint " + codePoint);
+		}
+	}
+
+
+	exports.utf8Read = utf8Read;
+	function utf8Read(view, offset, length) {
+		var string = "";
+		for (var i = offset, end = offset + length; i < end; i++) {
+			var byte_ = view.getUint8(i);
+			// One byte character
+			if ((byte_ & 0x80) === 0x00) {
+				string += String.fromCharCode(byte_);
+				continue;
+			}
+			// Two byte character
+			if ((byte_ & 0xe0) === 0xc0) {
+				string += String.fromCharCode(((byte_ & 0x0f) << 6) | (view.getUint8(++i) & 0x3f));
+				continue;
+			}
+			// Three byte character
+			if ((byte_ & 0xf0) === 0xe0) {
+				string += String.fromCharCode(((byte_ & 0x0f) << 12) | ((view.getUint8(++i) & 0x3f) << 6) | ((view.getUint8(++i) & 0x3f) << 0));
+				continue;
+			}
+			// Four byte character
+			if ((byte_ & 0xf8) === 0xf0) {
+				string += String.fromCharCode(((byte_ & 0x07) << 18) | ((view.getUint8(++i) & 0x3f) << 12) | ((view.getUint8(++i) & 0x3f) << 6) | ((view.getUint8(++i) & 0x3f) << 0));
+				continue;
+			}
+			throw new Error("Invalid byte " + byte_.toString(16));
+		}
+		return string;
+	}
+
+
+	exports.utf8ByteCount = utf8ByteCount;
+	function utf8ByteCount(string) {
+		var count = 0;
+		for (var i = 0, l = string.length; i < l; i++) {
+			var codePoint = string.charCodeAt(i);
+			if (codePoint < 0x80) {
+				count += 1;
+				continue;
+			}
+			if (codePoint < 0x800) {
+				count += 2;
+				continue;
+			}
+			if (codePoint < 0x10000) {
+				count += 3;
+				continue;
+			}
+			if (codePoint < 0x110000) {
+				count += 4;
+				continue;
+			}
+			throw new Error("bad codepoint " + codePoint);
+		}
+		return count;
+	}
+
+
+	exports.encode = function(value, sparse) {
+		var size = sizeof(value, sparse);
+		if(size == 0)
+			return undefined;
+		var buffer = new ArrayBuffer(size);
+		var view = new DataView(buffer);
+		encode(value, view, 0, sparse);
+		return buffer;
+	};
+
+	exports.decode = decode;
+
+	var SH_L_32 = (1 << 16) * (1 << 16), SH_R_32 = 1 / SH_L_32;
+	function getInt64(view, offset) {
+		offset = offset || 0;
+		return view.getInt32(offset) * SH_L_32 + view.getUint32(offset + 4);
+	}
+
+	function getUint64(view, offset) {
+		offset = offset || 0;
+		return view.getUint32(offset) * SH_L_32 + view.getUint32(offset + 4);
+	}
+
+	function setInt64(view, offset, val) {
+		if (val < 0x8000000000000000) {
+			view.setInt32(offset, Math.floor(val * SH_R_32));
+			view.setInt32(offset + 4, val & -1);
+		} else {
+			view.setUint32(offset, 0x7fffffff);
+			view.setUint32(offset + 4, 0x7fffffff);
+		}
+	}
+
+	function setUint64(view, offset, val) {
+		if (val < 0x10000000000000000) {
+			view.setUint32(offset, Math.floor(val * SH_R_32));
+			view.setInt32(offset + 4, val & -1);
+		} else {
+			view.setUint32(offset, 0xffffffff);
+			view.setUint32(offset + 4, 0xffffffff);
+		}
+	}
+
+// https://gist.github.com/frsyuki/5432559 - v5 spec
+//
+// I've used one extension point from `fixext 1` to store `undefined`. On the wire this
+// should translate to exactly 0xd40000
+//
+// +--------+--------+--------+
+// |  0xd4  |  0x00  |  0x00  |
+// +--------+--------+--------+
+//    ^ fixext |        ^ value part unused (fixed to be 0)
+//             ^ indicates undefined value
+//
+
+	function Decoder(view, offset) {
+		this.offset = offset || 0;
+		this.view = view;
+	}
+
+
+	Decoder.prototype.map = function(length) {
+		var value = {};
+		for (var i = 0; i < length; i++) {
+			var key = this.parse();
+			value[key] = this.parse();
+		}
+		return value;
+	};
+
+	Decoder.prototype.bin = Decoder.prototype.buf = function(length) {
+		var value = new ArrayBuffer(length);
+		(new Uint8Array(value)).set(new Uint8Array(this.view.buffer, this.offset, length), 0);
+		this.offset += length;
+		return value;
+	};
+
+	Decoder.prototype.str = function(length) {
+		var value = utf8Read(this.view, this.offset, length);
+		this.offset += length;
+		return value;
+	};
+
+	Decoder.prototype.array = function(length) {
+		var value = new Array(length);
+		for (var i = 0; i < length; i++) {
+			value[i] = this.parse();
+		}
+		return value;
+	};
+
+	Decoder.prototype.ext = function(length) {
+		var value = {};
+		// Get the type byte
+		value['type'] = this.view.getInt8(this.offset);
+		this.offset++;
+		// Get the data array (length)
+		value['data'] = this.buf(length);
+		this.offset += length;
+		return value;
+	};
+
+	Decoder.prototype.parse = function() {
+		var type = this.view.getUint8(this.offset);
+		var value, length;
+
+		// Positive FixInt - 0xxxxxxx
+		if ((type & 0x80) === 0x00) {
+			this.offset++;
+			return type;
+		}
+
+		// FixMap - 1000xxxx
+		if ((type & 0xf0) === 0x80) {
+			length = type & 0x0f;
+			this.offset++;
+			return this.map(length);
+		}
+
+		// FixArray - 1001xxxx
+		if ((type & 0xf0) === 0x90) {
+			length = type & 0x0f;
+			this.offset++;
+			return this.array(length);
+		}
+
+		// FixStr - 101xxxxx
+		if ((type & 0xe0) === 0xa0) {
+			length = type & 0x1f;
+			this.offset++;
+			return this.str(length);
+		}
+
+		// Negative FixInt - 111xxxxx
+		if ((type & 0xe0) === 0xe0) {
+			value = this.view.getInt8(this.offset);
+			this.offset++;
+			return value;
+		}
+
+		switch (type) {
+
+			// nil
+			case 0xc0:
+				this.offset++;
+				return null;
+
+			// 0xc1 never used - use for undefined (NON-STANDARD)
+			case 0xc1:
+				this.offset++;
+				return undefined;
+
+			// false
+			case 0xc2:
+				this.offset++;
+				return false;
+
+			// true
+			case 0xc3:
+				this.offset++;
+				return true;
+
+			// bin 8
+			case 0xc4:
+				length = this.view.getUint8(this.offset + 1);
+				this.offset += 2;
+				return this.bin(length);
+
+			// bin 16
+			case 0xc5:
+				length = this.view.getUint16(this.offset + 1);
+				this.offset += 3;
+				return this.bin(length);
+
+			// bin 32
+			case 0xc6:
+				length = this.view.getUint32(this.offset + 1);
+				this.offset += 5;
+				return this.bin(length);
+
+			// ext 8
+			case 0xc7:
+				length = this.view.getUint8(this.offset + 1);
+				this.offset += 2;
+				return this.ext(length);
+
+			// ext 16
+			case 0xc8:
+				length = this.view.getUint16(this.offset + 1);
+				this.offset += 3;
+				return this.ext(length);
+
+			// ext 32
+			case 0xc9:
+				length = this.view.getUint32(this.offset + 1);
+				this.offset += 5;
+				return this.ext(length);
+
+			// float 32
+			case 0xca:
+				value = this.view.getFloat32(this.offset + 1);
+				this.offset += 5;
+				return value;
+
+			// float 64
+			case 0xcb:
+				value = this.view.getFloat64(this.offset + 1);
+				this.offset += 9;
+				return value;
+
+			// uint8
+			case 0xcc:
+				value = this.view.getUint8(this.offset + 1);
+				this.offset += 2;
+				return value;
+
+			// uint 16
+			case 0xcd:
+				value = this.view.getUint16(this.offset + 1);
+				this.offset += 3;
+				return value;
+
+			// uint 32
+			case 0xce:
+				value = this.view.getUint32(this.offset + 1);
+				this.offset += 5;
+				return value;
+
+			// uint 64
+			case 0xcf:
+				value = getUint64(this.view, this.offset + 1);
+				this.offset += 9;
+				return value;
+
+			// int 8
+			case 0xd0:
+				value = this.view.getInt8(this.offset + 1);
+				this.offset += 2;
+				return value;
+
+			// int 16
+			case 0xd1:
+				value = this.view.getInt16(this.offset + 1);
+				this.offset += 3;
+				return value;
+
+			// int 32
+			case 0xd2:
+				value = this.view.getInt32(this.offset + 1);
+				this.offset += 5;
+				return value;
+
+			// int 64
+			case 0xd3:
+				value = getInt64(this.view, this.offset + 1);
+				this.offset += 9;
+				return value;
+
+			// fixext 1
+			case 0xd4:
+				length = 1;
+				this.offset++;
+				return this.ext(length);
+
+			// fixext 2
+			case 0xd5:
+				length = 2;
+				this.offset++;
+				return this.ext(length);
+
+			// fixext 4
+			case 0xd6:
+				length = 4;
+				this.offset++;
+				return this.ext(length);
+
+			// fixext 8
+			case 0xd7:
+				length = 8;
+				this.offset++;
+				return this.ext(length);
+
+			// fixext 16
+			case 0xd8:
+				length = 16;
+				this.offset++;
+				return this.ext(length);
+
+			// str8
+			case 0xd9:
+				length = this.view.getUint8(this.offset + 1);
+				this.offset += 2;
+				return this.str(length);
+
+			// str 16
+			case 0xda:
+				length = this.view.getUint16(this.offset + 1);
+				this.offset += 3;
+				return this.str(length);
+
+			// str 32
+			case 0xdb:
+				length = this.view.getUint32(this.offset + 1);
+				this.offset += 5;
+				return this.str(length);
+
+			// array 16
+			case 0xdc:
+				length = this.view.getUint16(this.offset + 1);
+				this.offset += 3;
+				return this.array(length);
+
+			// array 32
+			case 0xdd:
+				length = this.view.getUint32(this.offset + 1);
+				this.offset += 5;
+				return this.array(length);
+
+			// map 16
+			case 0xde:
+				length = this.view.getUint16(this.offset + 1);
+				this.offset += 3;
+				return this.map(length);
+
+			// map 32
+			case 0xdf:
+				length = this.view.getUint32(this.offset + 1);
+				this.offset += 5;
+				return this.map(length);
+		}
+		throw new Error("Unknown type 0x" + type.toString(16));
+	};
+
+	function decode(buffer) {
+		var view = new DataView(buffer);
+		var decoder = new Decoder(view);
+		var value = decoder.parse();
+		if (decoder.offset !== buffer.byteLength)
+			throw new Error((buffer.byteLength - decoder.offset) + " trailing bytes");
+		return value;
+	}
+
+	function encodeableKeys(value, sparse) {
+		var keys = []; // TODO: use Object.keys when we are able to transpile to ES3
+		for (var key in value) {
+			if (!value.hasOwnProperty(key)) continue;
+			keys.push(key);
+		}
+		return keys.filter(function (e) {
+			var val = value[e], type = typeof(val);
+			return (!sparse || (val !== undefined && val !== null)) && ('function' !== type || !!val.toJSON);
+		})
+	}
+
+	function encode(value, view, offset, sparse) {
+		var type = typeof value;
+
+		// Strings Bytes
+		// There are four string types: fixstr/str8/str16/str32
+		if (type === "string") {
+			var length = utf8ByteCount(value);
+
+			// fixstr
+			if (length < 0x20) {
+				view.setUint8(offset, length | 0xa0);
+				utf8Write(view, offset + 1, value);
+				return 1 + length;
+			}
+
+			// str8
+			if (length < 0x100) {
+				view.setUint8(offset, 0xd9);
+				view.setUint8(offset + 1, length);
+				utf8Write(view, offset + 2, value);
+				return 2 + length;
+			}
+
+			// str16
+			if (length < 0x10000) {
+				view.setUint8(offset, 0xda);
+				view.setUint16(offset + 1, length);
+				utf8Write(view, offset + 3, value);
+				return 3 + length;
+			}
+			// str32
+			if (length < 0x100000000) {
+				view.setUint8(offset, 0xdb);
+				view.setUint32(offset + 1, length);
+				utf8Write(view, offset + 5, value);
+				return 5 + length;
+			}
+		}
+
+		if(ArrayBuffer.isView && ArrayBuffer.isView(value)) {
+			// extract the arraybuffer and fallthrough
+			value = value.buffer;
+		}
+
+		// There are three bin types: bin8/bin16/bin32
+		if (value instanceof ArrayBuffer) {
+			var length = value.byteLength;
+
+			// bin8
+			if (length < 0x100) {
+				view.setUint8(offset, 0xc4);
+				view.setUint8(offset + 1, length);
+				(new Uint8Array(view.buffer)).set(new Uint8Array(value), offset + 2);
+				return 2 + length;
+			}
+
+			// bin16
+			if (length < 0x10000) {
+				view.setUint8(offset, 0xc5);
+				view.setUint16(offset + 1, length);
+				(new Uint8Array(view.buffer)).set(new Uint8Array(value), offset + 3);
+				return 3 + length;
+			}
+
+			// bin 32
+			if (length < 0x100000000) {
+				view.setUint8(offset, 0xc6);
+				view.setUint32(offset + 1, length);
+				(new Uint8Array(view.buffer)).set(new Uint8Array(value), offset + 5);
+				return 5 + length;
+			}
+		}
+
+		if (type === "number") {
+
+			// Floating Point
+			// NOTE: We're always using float64
+			if (Math.floor(value) !== value) {
+				view.setUint8(offset, 0xcb);
+				view.setFloat64(offset + 1, value);
+				return 9;
+			}
+
+			// Integers
+			if (value >= 0) {
+				// positive fixnum
+				if (value < 0x80) {
+					view.setUint8(offset, value);
+					return 1;
+				}
+				// uint 8
+				if (value < 0x100) {
+					view.setUint8(offset, 0xcc);
+					view.setUint8(offset + 1, value);
+					return 2;
+				}
+				// uint 16
+				if (value < 0x10000) {
+					view.setUint8(offset, 0xcd);
+					view.setUint16(offset + 1, value);
+					return 3;
+				}
+				// uint 32
+				if (value < 0x100000000) {
+					view.setUint8(offset, 0xce);
+					view.setUint32(offset + 1, value);
+					return 5;
+				}
+				// uint 64
+				if (value < 0x10000000000000000) {
+					view.setUint8(offset, 0xcf);
+					setUint64(view, offset + 1, value);
+					return 9;
+				}
+				throw new Error("Number too big 0x" + value.toString(16));
+			}
+
+			// negative fixnum
+			if (value >= -0x20) {
+				view.setInt8(offset, value);
+				return 1;
+			}
+			// int 8
+			if (value >= -0x80) {
+				view.setUint8(offset, 0xd0);
+				view.setInt8(offset + 1, value);
+				return 2;
+			}
+			// int 16
+			if (value >= -0x8000) {
+				view.setUint8(offset, 0xd1);
+				view.setInt16(offset + 1, value);
+				return 3;
+			}
+			// int 32
+			if (value >= -0x80000000) {
+				view.setUint8(offset, 0xd2);
+				view.setInt32(offset + 1, value);
+				return 5;
+			}
+			// int 64
+			if (value >= -0x8000000000000000) {
+				view.setUint8(offset, 0xd3);
+				setInt64(view, offset + 1, value);
+				return 9;
+			}
+			throw new Error("Number too small -0x" + (-value).toString(16).substr(1));
+		}
+
+		// undefined - use d4 (NON-STANDARD)
+		if (type === "undefined") {
+			if(sparse) return 0;
+			view.setUint8(offset, 0xd4);
+			view.setUint8(offset + 1, 0x00);
+			view.setUint8(offset + 2, 0x00);
+			return 3;
+		}
+
+		// null
+		if (value === null) {
+			if(sparse) return 0;
+			view.setUint8(offset, 0xc0);
+			return 1;
+		}
+
+		// Boolean
+		if (type === "boolean") {
+			view.setUint8(offset, value ? 0xc3 : 0xc2);
+			return 1;
+		}
+
+		if('function' === typeof value.toJSON)
+			return encode(value.toJSON(), view, offset, sparse);
+
+		// Container Types
+		if (type === "object") {
+			var length, size = 0;
+			var isArray = Array.isArray(value);
+
+			if (isArray) {
+				length = value.length;
+			} else {
+				var keys = encodeableKeys(value, sparse);
+				length = keys.length;
+			}
+
+			var size;
+			if (length < 0x10) {
+				view.setUint8(offset, length | ( isArray ? 0x90 : 0x80));
+				size = 1;
+			} else if (length < 0x10000) {
+				view.setUint8(offset, isArray ? 0xdc : 0xde);
+				view.setUint16(offset + 1, length);
+				size = 3;
+			} else if (length < 0x100000000) {
+				view.setUint8(offset, isArray ? 0xdd : 0xdf);
+				view.setUint32(offset + 1, length);
+				size = 5;
+			}
+
+			if (isArray) {
+				for (var i = 0; i < length; i++) {
+					size += encode(value[i], view, offset + size, sparse);
+				}
+			} else {
+				for (var i = 0; i < length; i++) {
+					var key = keys[i];
+					size += encode(key, view, offset + size);
+					size += encode(value[key], view, offset + size, sparse);
+				}
+			}
+
+			return size;
+		}
+		if(type === "function")
+			return 0;
+
+		throw new Error("Unknown type " + type);
+	}
+
+	function sizeof(value, sparse) {
+		var type = typeof value;
+
+		// fixstr or str8 or str16 or str32
+		if (type === "string") {
+			var length = utf8ByteCount(value);
+			if (length < 0x20) {
+				return 1 + length;
+			}
+			if (length < 0x100) {
+				return 2 + length;
+			}
+			if (length < 0x10000) {
+				return 3 + length;
+			}
+			if (length < 0x100000000) {
+				return 5 + length;
+			}
+		}
+
+		if(ArrayBuffer.isView && ArrayBuffer.isView(value)) {
+			// extract the arraybuffer and fallthrough
+			value = value.buffer;
+		}
+
+		// bin8 or bin16 or bin32
+		if (value instanceof ArrayBuffer) {
+			var length = value.byteLength;
+			if (length < 0x100) {
+				return 2 + length;
+			}
+			if (length < 0x10000) {
+				return 3 + length;
+			}
+			if (length < 0x100000000) {
+				return 5 + length;
+			}
+		}
+
+		if (type === "number") {
+			// Floating Point (32 bits)
+			// double
+			if (Math.floor(value) !== value)
+				return 9;
+
+			// Integers
+			if (value >= 0) {
+				// positive fixint
+				if (value < 0x80)
+					return 1;
+				// uint 8
+				if (value < 0x100)
+					return 2;
+				// uint 16
+				if (value < 0x10000)
+					return 3;
+				// uint 32
+				if (value < 0x100000000)
+					return 5;
+				// uint 64
+				if (value < 0x10000000000000000)
+					return 9;
+				// Too big
+				throw new Error("Number too big 0x" + value.toString(16));
+			}
+			// negative fixint
+			if (value >= -0x20)
+				return 1;
+			// int 8
+			if (value >= -0x80)
+				return 2;
+			// int 16
+			if (value >= -0x8000)
+				return 3;
+			// int 32
+			if (value >= -0x80000000)
+				return 5;
+			// int 64
+			if (value >= -0x8000000000000000)
+				return 9;
+			// Too small
+			throw new Error("Number too small -0x" + value.toString(16).substr(1));
+		}
+
+		// Boolean
+		if (type === "boolean") return 1;
+
+		// undefined, null
+		if (value === null) return sparse ? 0 : 1;
+		if (value === undefined) return sparse ? 0 : 3;
+
+		if('function' === typeof value.toJSON)
+			return sizeof(value.toJSON(), sparse);
+
+		// Container Types
+		if (type === "object") {
+			var length, size = 0;
+			if (Array.isArray(value)) {
+				length = value.length;
+				for (var i = 0; i < length; i++) {
+					size += sizeof(value[i], sparse);
+				}
+			} else {
+				var keys = encodeableKeys(value, sparse)
+				length = keys.length;
+				for (var i = 0; i < length; i++) {
+					var key = keys[i];
+					size += sizeof(key) + sizeof(value[key], sparse);
+				}
+			}
+			if (length < 0x10) {
+				return 1 + size;
+			}
+			if (length < 0x10000) {
+				return 3 + size;
+			}
+			if (length < 0x100000000) {
+				return 5 + size;
+			}
+			throw new Error("Array or object too long 0x" + length.toString(16));
+		}
+		if(type === "function")
+			return 0;
+
+		throw new Error("Unknown type " + type);
+	}
+
+	return exports;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (msgpack);
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+/* harmony import */ var _protocol__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(34);
+/* harmony import */ var _util_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(3);
+/* harmony import */ var _util_eventemitter__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(7);
+/* harmony import */ var _messagequeue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(26);
+/* harmony import */ var _util_logger__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(0);
+/* harmony import */ var _client_connectionstatechange__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(21);
+/* harmony import */ var _transport_connectionerror__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(13);
+/* harmony import */ var _types_errorinfo__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(2);
+/* harmony import */ var _client_auth__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(14);
+/* harmony import */ var platform_http__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(6);
+/* harmony import */ var _types_message__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(9);
+/* harmony import */ var _util_multicaster__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(22);
+/* harmony import */ var _util_errorreporter__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(23);
+/* harmony import */ var platform_webstorage__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(16);
+/* harmony import */ var platform_transports__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(42);
+/* harmony import */ var _websockettransport__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(41);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var ConnectionManager = (function() {
+	var haveWebStorage = !!(typeof(platform_webstorage__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"]) !== 'undefined' && platform_webstorage__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"].get);
+	var haveSessionStorage = !!(typeof(platform_webstorage__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"]) !== 'undefined' && platform_webstorage__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"].getSession);
+	var actions = _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].Action;
+	var PendingMessage = _protocol__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].PendingMessage;
+	var noop = function() {};
+	var transportPreferenceOrder = _util_defaults__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].transportPreferenceOrder;
+	var optimalTransport = transportPreferenceOrder[transportPreferenceOrder.length - 1];
+	var transportPreferenceName = 'ably-transport-preference';
+
+	var sessionRecoveryName = 'ably-connection-recovery';
+	function getSessionRecoverData() {
+		return haveSessionStorage && platform_webstorage__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"].getSession(sessionRecoveryName);
+	}
+	function setSessionRecoverData(value) {
+		return haveSessionStorage && platform_webstorage__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"].setSession(sessionRecoveryName, value);
+	}
+	function clearSessionRecoverData() {
+		return haveSessionStorage && platform_webstorage__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"].removeSession(sessionRecoveryName);
+	}
+
+	function betterTransportThan(a, b) {
+		return _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrIndexOf(transportPreferenceOrder, a.shortName) >
+		   _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrIndexOf(transportPreferenceOrder, b.shortName);
+	}
+
+	function TransportParams(options, host, mode, connectionKey) {
+		this.options = options;
+		this.host = host;
+		this.mode = mode;
+		this.connectionKey = connectionKey;
+		this.format = options.useBinaryProtocol ? 'msgpack' : 'json';
+
+		this.connectionSerial = undefined;
+		this.timeSerial = undefined;
+	}
+
+	TransportParams.prototype.getConnectParams = function(authParams) {
+		var params = authParams ? _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].copy(authParams) : {};
+		var options = this.options;
+		switch(this.mode) {
+			case 'upgrade':
+				params.upgrade = this.connectionKey;
+				break;
+			case 'resume':
+				params.resume = this.connectionKey;
+				if(this.timeSerial !== undefined) {
+					params.timeSerial = this.timeSerial;
+				} else if(this.connectionSerial !== undefined) {
+					params.connectionSerial = this.connectionSerial;
+				}
+				break;
+			case 'recover':
+				var match = options.recover.split(':');
+				if(match) {
+					params.recover = match[0];
+					var recoverSerial = match[1];
+					if(isNaN(recoverSerial)) {
+						params.timeSerial = recoverSerial;
+					} else {
+						params.connectionSerial = recoverSerial;
+					}
+				}
+				break;
+			default:
+		}
+		if(options.clientId !== undefined) {
+			params.clientId = options.clientId;
+		}
+		if(options.echoMessages === false) {
+			params.echo = 'false';
+		}
+		if(this.format !== undefined) {
+			params.format = this.format;
+		}
+		if(this.stream !== undefined) {
+			params.stream = this.stream;
+		}
+		if(this.heartbeats !== undefined) {
+			params.heartbeats = this.heartbeats;
+		}
+		params.v = _util_defaults__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].apiVersion;
+		params.agent = _util_defaults__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].agent;
+		if(options.transportParams !== undefined) {
+			_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].mixin(params, options.transportParams);
+		}
+		return params;
+	};
+
+	TransportParams.prototype.toString = function() {
+		var result = '[mode=' + this.mode;
+		if(this.host) { result += (',host=' + this.host); }
+		if(this.connectionKey) { result += (',connectionKey=' + this.connectionKey); }
+		if(this.connectionSerial !== undefined) { result += (',connectionSerial=' + this.connectionSerial); }
+		if(this.timeSerial) { result += (',timeSerial=' + this.timeSerial); }
+		if(this.format) { result += (',format=' + this.format); }
+		result += ']';
+
+		return result;
+	};
+
+	/* public constructor */
+	function ConnectionManager(realtime, options) {
+		_util_eventemitter__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].call(this);
+		this.realtime = realtime;
+		this.options = options;
+		var timeouts = options.timeouts;
+		var self = this;
+		/* connectingTimeout: leave preferenceConnectTimeout (~6s) to try the
+		 * preference transport, then realtimeRequestTimeout (~10s) to establish
+		 * the base transport in case that fails */
+		var connectingTimeout = timeouts.preferenceConnectTimeout + timeouts.realtimeRequestTimeout;
+		this.states = {
+			initialized:   {state: 'initialized',   terminal: false, queueEvents: true,  sendEvents: false, failState: 'disconnected'},
+			connecting:    {state: 'connecting',    terminal: false, queueEvents: true,  sendEvents: false, retryDelay: connectingTimeout, failState: 'disconnected'},
+			connected:     {state: 'connected',     terminal: false, queueEvents: false, sendEvents: true,  failState: 'disconnected'},
+			synchronizing: {state: 'connected',     terminal: false, queueEvents: true,  sendEvents: false, forceQueueEvents: true, failState: 'disconnected'},
+			disconnected:  {state: 'disconnected',  terminal: false, queueEvents: true,  sendEvents: false, retryDelay: timeouts.disconnectedRetryTimeout, failState: 'disconnected'},
+			suspended:     {state: 'suspended',     terminal: false, queueEvents: false, sendEvents: false, retryDelay: timeouts.suspendedRetryTimeout, failState: 'suspended'},
+			closing:       {state: 'closing',       terminal: false, queueEvents: false, sendEvents: false, retryDelay: timeouts.realtimeRequestTimeout, failState: 'closed'},
+			closed:        {state: 'closed',        terminal: true,  queueEvents: false, sendEvents: false, failState: 'closed'},
+			failed:        {state: 'failed',        terminal: true,  queueEvents: false, sendEvents: false, failState: 'failed'}
+		};
+		this.state = this.states.initialized;
+		this.errorReason = null;
+
+		this.queuedMessages = new _messagequeue__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"]();
+		this.msgSerial = 0;
+		this.connectionDetails = undefined;
+		this.connectionId = undefined;
+		this.connectionKey = undefined;
+		this.timeSerial = undefined;
+		this.connectionSerial = undefined;
+		this.connectionStateTtl = timeouts.connectionStateTtl;
+		this.maxIdleInterval = null;
+
+		this.transports = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].intersect((options.transports || _util_defaults__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].defaultTransports), ConnectionManager.supportedTransports);
+		/* baseTransports selects the leftmost transport in the Defaults.baseTransportOrder list
+		* that's both requested and supported. Normally this will be xhr_polling;
+		* if xhr isn't supported it will be jsonp. If the user has forced a
+		* transport, it'll just be that one. */
+		this.baseTransport = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].intersect(_util_defaults__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].baseTransportOrder, this.transports)[0];
+		this.upgradeTransports = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].intersect(this.transports, _util_defaults__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].upgradeTransports);
+		this.transportPreference = null;
+
+		this.httpHosts = _util_defaults__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].getHosts(options);
+		this.activeProtocol = null;
+		this.proposedTransports = [];
+		this.pendingTransports = [];
+		this.host = null;
+		this.lastAutoReconnectAttempt = null;
+		this.lastActivity = null;
+		this.mostRecentMsg = null;
+		this.forceFallbackHost = false;
+		this.connectCounter = 0;
+
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'Realtime.ConnectionManager()', 'started');
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'Realtime.ConnectionManager()', 'requested transports = [' + (options.transports || _util_defaults__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].defaultTransports) + ']');
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'Realtime.ConnectionManager()', 'available transports = [' + this.transports + ']');
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'Realtime.ConnectionManager()', 'http hosts = [' + this.httpHosts + ']');
+
+		if(!this.transports.length) {
+			var msg = 'no requested transports available';
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'realtime.ConnectionManager()', msg);
+			throw new Error(msg);
+		}
+
+		var addEventListener = platform__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].addEventListener;
+		if(addEventListener) {
+			/* intercept close event in browser to persist connection id if requested */
+			if(haveSessionStorage && typeof options.recover === 'function') {
+				/* Usually can't use bind as not supported in IE8, but IE doesn't support sessionStorage, so... */
+				addEventListener('beforeunload', this.persistConnection.bind(this));
+			}
+
+			if(options.closeOnUnload === true) {
+				addEventListener('beforeunload', function() {
+					_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MAJOR, 'Realtime.ConnectionManager()', 'beforeunload event has triggered the connection to close as closeOnUnload is true');
+					self.requestState({state: 'closing'});
+				});
+			}
+
+			/* Listen for online and offline events */
+			addEventListener('online', function() {
+				if(self.state == self.states.disconnected || self.state == self.states.suspended) {
+					_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager caught browser ‘online’ event', 'reattempting connection');
+					self.requestState({state: 'connecting'});
+				}
+			});
+			addEventListener('offline', function() {
+				if(self.state == self.states.connected) {
+					_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager caught browser ‘offline’ event', 'disconnecting active transport');
+					// Not sufficient to just go to the 'disconnected' state, want to
+					// force all transports to reattempt the connection. Will immediately
+					// retry.
+					self.disconnectAllTransports();
+				}
+			});
+		}
+	}
+	_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inherits(ConnectionManager, _util_eventemitter__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]);
+
+	/*********************
+	 * transport management
+	 *********************/
+
+	ConnectionManager.supportedTransports = {};
+
+	Object(_websockettransport__WEBPACK_IMPORTED_MODULE_18__[/* default */ "a"])(ConnectionManager);
+	_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrForEach(platform_transports__WEBPACK_IMPORTED_MODULE_17__[/* default */ "a"], function (initFn) {
+		initFn(ConnectionManager);
+	});
+
+	ConnectionManager.prototype.createTransportParams = function(host, mode) {
+		var params = new TransportParams(this.options, host, mode, this.connectionKey);
+		if(this.timeSerial) {
+			params.timeSerial = this.timeSerial;
+		} else if(this.connectionSerial !== undefined) {
+			params.connectionSerial = this.connectionSerial;
+		}
+		return params;
+	};
+
+	ConnectionManager.prototype.getTransportParams = function(callback) {
+		var self = this;
+
+		function decideMode(modeCb) {
+			if(self.connectionKey) {
+				modeCb('resume');
+				return;
+			}
+
+			if(typeof self.options.recover === 'string') {
+				modeCb('recover');
+				return;
+			}
+
+			var recoverFn = self.options.recover,
+				lastSessionData = getSessionRecoverData();
+			if(lastSessionData && typeof(recoverFn) === 'function') {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.getTransportParams()', 'Calling clientOptions-provided recover function with last session data');
+				recoverFn(lastSessionData, function(shouldRecover) {
+					if(shouldRecover) {
+						self.options.recover = lastSessionData.recoveryKey;
+						modeCb('recover');
+					} else {
+						modeCb('clean');
+					}
+				});
+				return;
+			}
+			modeCb('clean');
+		}
+
+		decideMode(function(mode) {
+			var transportParams = self.createTransportParams(null, mode);
+			if(mode === 'recover') {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.getTransportParams()', 'Transport recovery mode = recover; recoveryKey = ' + self.options.recover);
+				var match = self.options.recover.split(':');
+				if(match && match[2]) {
+					self.msgSerial = match[2];
+				}
+			} else {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.getTransportParams()', 'Transport params = ' + transportParams.toString());
+			}
+			callback(transportParams);
+		});
+	};
+
+	/**
+	 * Attempt to connect using a given transport
+	 * @param transportParams
+	 * @param candidate, the transport to try
+	 * @param callback
+	 */
+	ConnectionManager.prototype.tryATransport = function(transportParams, candidate, callback) {
+		var self = this, host = transportParams.host;
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.tryATransport()', 'trying ' + candidate);
+		(ConnectionManager.supportedTransports[candidate]).tryConnect(this, this.realtime.auth, transportParams, function(wrappedErr, transport) {
+			var state = self.state;
+			if(state == self.states.closing || state == self.states.closed || state == self.states.failed) {
+				if(transport) {
+					_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.tryATransport()', 'connection ' + state.state + ' while we were attempting the transport; closing ' + transport);
+					transport.close();
+				}
+				callback(true);
+				return;
+			}
+
+			if(wrappedErr) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.tryATransport()', 'transport ' + candidate + ' ' + wrappedErr.event + ', err: ' + wrappedErr.error.toString());
+
+				/* Comet transport onconnect token errors can be dealt with here.
+				* Websocket ones only happen after the transport claims to be viable,
+				* so are dealt with as non-onconnect token errors */
+				if(_client_auth__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"].isTokenErr(wrappedErr.error) && !(self.errorReason && _client_auth__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"].isTokenErr(self.errorReason))) {
+					self.errorReason = wrappedErr.error;
+					/* re-get a token and try again */
+					self.realtime.auth._forceNewToken(null, null, function(err) {
+						if(err) {
+							self.actOnErrorFromAuthorize(err);
+							return;
+						}
+						self.tryATransport(transportParams, candidate, callback);
+					});
+				} else if(wrappedErr.event === 'failed') {
+					/* Error that's fatal to the connection */
+					self.notifyState({state: 'failed', error: wrappedErr.error});
+					callback(true);
+				} else if(wrappedErr.event === 'disconnected') {
+					if(!_transport_connectionerror__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"].isRetriable(wrappedErr.error)) {
+						/* Error received from the server that does not call for trying a fallback host, eg a rate limit */
+						self.notifyState({state: self.states.connecting.failState, error: wrappedErr.error});
+						callback(true);
+					} else {
+						/* Error with that transport only; continue trying other fallback hosts */
+						callback(false);
+					}
+				}
+				return;
+			}
+
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.tryATransport()', 'viable transport ' + candidate + '; setting pending');
+			self.setTransportPending(transport, transportParams);
+			callback(null, transport);
+		});
+	};
+
+
+	/**
+	 * Called when a transport is indicated to be viable, and the connectionmanager
+	 * expects to activate this transport as soon as it is connected.
+	 * @param host
+	 * @param transportParams
+	 */
+	ConnectionManager.prototype.setTransportPending = function(transport, transportParams) {
+		var mode = transportParams.mode;
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.setTransportPending()', 'transport = ' + transport + '; mode = ' + mode);
+
+		_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrDeleteValue(this.proposedTransports, transport);
+		this.pendingTransports.push(transport);
+
+		var self = this;
+		transport.once('connected', function(error, connectionId, connectionDetails, connectionPosition) {
+			if(mode == 'upgrade' && self.activeProtocol) {
+				/*  if ws and xhrs are connecting in parallel, delay xhrs activation to let ws go ahead */
+				if(transport.shortName !== optimalTransport && _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrIn(self.getUpgradePossibilities(), optimalTransport)) {
+					setTimeout(function() {
+						self.scheduleTransportActivation(error, transport, connectionId, connectionDetails, connectionPosition);
+					}, self.options.timeouts.parallelUpgradeDelay);
+				} else {
+					self.scheduleTransportActivation(error, transport, connectionId, connectionDetails, connectionPosition);
+				}
+			} else {
+				self.activateTransport(error, transport, connectionId, connectionDetails, connectionPosition);
+
+				/* allow connectImpl to start the upgrade process if needed, but allow
+				 * other event handlers, including activating the transport, to run first */
+				_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].nextTick(function() {
+					self.connectImpl(transportParams);
+				});
+			}
+
+			if(mode === 'recover' && self.options.recover) {
+				/* After a successful recovery, we unpersist, as a recovery key cannot
+				* be used more than once */
+				self.options.recover = null;
+				self.unpersistConnection();
+			}
+		});
+
+		transport.on(['disconnected', 'closed', 'failed'], function(error) {
+			self.deactivateTransport(transport, this.event, error);
+		});
+
+		this.emit('transport.pending', transport);
+	};
+
+	/**
+	 * Called when an upgrade transport is connected,
+	 * to schedule the activation of that transport.
+	 * @param error
+	 * @param transport
+	 * @param connectionId
+	 * @param connectionDetails
+	 * @param connectedMessage
+	 */
+	ConnectionManager.prototype.scheduleTransportActivation = function(error, transport, connectionId, connectionDetails, upgradeConnectionPosition) {
+		var self = this,
+			currentTransport = this.activeProtocol && this.activeProtocol.getTransport(),
+			abandon = function() {
+				transport.disconnect();
+				_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrDeleteValue(self.pendingTransports, transport);
+			};
+
+		if(this.state !== this.states.connected && this.state !== this.states.connecting) {
+			/* This is most likely to happen for the delayed xhrs, when xhrs and ws are scheduled in parallel*/
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.scheduleTransportActivation()', 'Current connection state (' + this.state.state + (this.state === this.states.synchronizing ? ', but with an upgrade already in progress' : '') + ') is not valid to upgrade in; abandoning upgrade to ' + transport.shortName);
+			abandon();
+			return;
+		}
+
+		if(currentTransport && !betterTransportThan(transport, currentTransport)) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.scheduleTransportActivation()', 'Proposed transport ' + transport.shortName + ' is no better than current active transport ' + currentTransport.shortName + ' - abandoning upgrade');
+			abandon();
+			return;
+		}
+
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.scheduleTransportActivation()', 'Scheduling transport upgrade; transport = ' + transport);
+
+		this.realtime.channels.onceNopending(function(err) {
+			var oldProtocol;
+			if(err) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.scheduleTransportActivation()', 'Unable to activate transport; transport = ' + transport + '; err = ' + err);
+				return;
+			}
+
+			if(!transport.isConnected) {
+				/* This is only possible if the xhr streaming transport was disconnected during the parallelUpgradeDelay */
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.scheduleTransportActivation()', 'Proposed transport ' + transport.shortName + 'is no longer connected; abandoning upgrade');
+				abandon();
+				return;
+			}
+
+			if(self.state === self.states.connected) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.scheduleTransportActivation()', 'Currently connected, so temporarily pausing events until the upgrade is complete');
+				self.state = self.states.synchronizing;
+				oldProtocol = self.activeProtocol;
+			} else if(self.state !== self.states.connecting) {
+				/* Note: upgrading from the connecting state is valid if the old active
+				* transport was deactivated after the upgrade transport first connected;
+				* see logic in deactivateTransport */
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.scheduleTransportActivation()', 'Current connection state (' + self.state.state + (self.state === self.states.synchronizing ? ', but with an upgrade already in progress' : '') + ') is not valid to upgrade in; abandoning upgrade to ' + transport.shortName);
+				abandon();
+				return;
+			}
+
+			/* If the connectionId has changed, the upgrade hasn't worked. But as
+			* it's still an upgrade, realtime still expects a sync - it just needs to
+			* be a sync with the new connection position. (And it
+			* needs to be set in the library, which is done by activateTransport). */
+			var connectionReset = connectionId !== self.connectionId,
+				syncPosition = connectionReset ? upgradeConnectionPosition : self;
+
+			if(connectionReset) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.scheduleTransportActivation()', 'Upgrade resulted in new connectionId; resetting library connection position from ' + (self.timeSerial || self.connectionSerial) + ' to ' + (syncPosition.timeSerial || syncPosition.connectionSerial) + '; upgrade error was ' + error);
+			}
+
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.scheduleTransportActivation()', 'Syncing transport; transport = ' + transport);
+			self.sync(transport, syncPosition, function(syncErr, connectionId, postSyncPosition) {
+				/* If there's been some problem with syncing (and the connection hasn't
+				 * closed or something in the meantime), we have a problem -- we can't
+				 * just fall back on the old transport, as we don't know whether
+				 * realtime got the sync -- if it did, the old transport is no longer
+				 * valid. To be safe, we disconnect both and start again from scratch. */
+				if(syncErr) {
+					if(self.state === self.states.synchronizing) {
+						_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.scheduleTransportActivation()', 'Unexpected error attempting to sync transport; transport = ' + transport + '; err = ' + syncErr);
+						self.disconnectAllTransports();
+					}
+					return;
+				}
+				var finishUpgrade = function() {
+					_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.scheduleTransportActivation()', 'Activating transport; transport = ' + transport);
+					self.activateTransport(error, transport, connectionId, connectionDetails, postSyncPosition);
+					/* Restore pre-sync state. If state has changed in the meantime,
+					 * don't touch it -- since the websocket transport waits a tick before
+					 * disposing itself, it's possible for it to have happily synced
+					 * without err while, unknown to it, the connection has closed in the
+					 * meantime and the ws transport is scheduled for death */
+					if(self.state === self.states.synchronizing) {
+						_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.scheduleTransportActivation()', 'Pre-upgrade protocol idle, sending queued messages on upgraded transport; transport = ' + transport);
+						self.state = self.states.connected;
+					} else {
+						_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.scheduleTransportActivation()', 'Pre-upgrade protocol idle, but state is now ' + self.state.state + ', so leaving unchanged');
+					}
+					if(self.state.sendEvents) {
+						self.sendQueuedMessages();
+					}
+				};
+
+				/* Wait until sync is done and old transport is idle before activating new transport. This
+				 * guarantees that messages arrive at realtime in the same order they are sent.
+				 *
+				 * If a message times out on the old transport, since it's still the active transport the
+				 * message will be requeued. deactivateTransport will see the pending transport and notify
+				 * the `connecting` state without starting a new connection, so the new transport can take
+				 * over once deactivateTransport clears the old protocol's queue.
+				 *
+				 * If there is no old protocol, that meant that we weren't in the connected state at the
+				 * beginning of the sync - likely the base transport died just before the sync. So can just
+				 * finish the upgrade. If we're actually in closing/failed rather than connecting, that's
+				 * fine, activatetransport will deal with that. */
+				if(oldProtocol) {
+				 /* Most of the time this will be already true: the new-transport sync will have given
+				 * enough time for in-flight messages on the old transport to complete. */
+					oldProtocol.onceIdle(finishUpgrade);
+				} else {
+					finishUpgrade();
+				}
+			});
+		});
+	};
+
+	/**
+	 * Called when a transport is connected, and the connectionmanager decides that
+	 * it will now be the active transport. Returns whether or not it activated
+	 * the transport (if the connection is closing/closed it will choose not to).
+	 * @param transport the transport instance
+	 * @param connectionId the id of the new active connection
+	 * @param connectionDetails the details of the new active connection
+	 * @param connectionPosition the position at the point activation; either {connectionSerial: <serial>} or {timeSerial: <serial>}
+	 */
+	ConnectionManager.prototype.activateTransport = function(error, transport, connectionId, connectionDetails, connectionPosition) {
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.activateTransport()', 'transport = ' + transport);
+		if(error) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.activateTransport()', 'error = ' + error);
+		}
+		if(connectionId) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.activateTransport()', 'connectionId =  ' + connectionId);
+		}
+		if(connectionDetails) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.activateTransport()', 'connectionDetails =  ' + JSON.stringify(connectionDetails));
+		}
+		if(connectionPosition) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.activateTransport()', 'serial =  ' + (connectionPosition.timeSerial || connectionPosition.connectionSerial));
+		}
+
+		this.persistTransportPreference(transport);
+
+		/* if the connectionmanager moved to the closing/closed state before this
+		 * connection event, then we won't activate this transport */
+		var existingState = this.state,
+			connectedState = this.states.connected.state;
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.activateTransport()', 'current state = ' + existingState.state);
+		if(existingState.state == this.states.closing.state || existingState.state == this.states.closed.state || existingState.state == this.states.failed.state) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.activateTransport()', 'Disconnecting transport and abandoning');
+			transport.disconnect();
+			return false;
+		}
+
+		/* remove this transport from pending transports */
+		_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrDeleteValue(this.pendingTransports, transport);
+
+		/* if the transport is not connected (eg because it failed during a
+		 * scheduleTransportActivation#onceNoPending wait) then don't activate it */
+		if(!transport.isConnected) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.activateTransport()', 'Declining to activate transport ' + transport + ' since it appears to no longer be connected');
+			return false;
+		}
+
+		/* the given transport is connected; this will immediately
+		 * take over as the active transport */
+		var existingActiveProtocol = this.activeProtocol;
+		this.activeProtocol = new _protocol__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"](transport);
+		this.host = transport.params.host;
+
+		var connectionKey = connectionDetails.connectionKey;
+		if(connectionKey && this.connectionKey != connectionKey)  {
+			this.setConnection(connectionId, connectionDetails, connectionPosition, !!error);
+		}
+
+		/* Rebroadcast any new connectionDetails from the active transport, which
+		 * can come at any time (eg following a reauth), and emit an RTN24 UPDATE
+		 * event. (Listener added on nextTick because we're in a transport.on('connected')
+		 * callback at the moment; if we add it now we'll be adding it to the end
+		 * of the listeners array and it'll be called immediately) */
+		this.onConnectionDetailsUpdate(connectionDetails, transport);
+		var self = this;
+		_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].nextTick(function() {
+			transport.on('connected', function(connectedErr, _connectionId, connectionDetails) {
+				self.onConnectionDetailsUpdate(connectionDetails, transport);
+				self.emit('update', new _client_connectionstatechange__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"](connectedState, connectedState, null, connectedErr));
+			});
+		})
+
+		/* If previously not connected, notify the state change (including any
+		 * error). */
+		if(existingState.state === this.states.connected.state) {
+			if(error) {
+				/* if upgrading without error, leave any existing errorReason alone */
+				this.errorReason = this.realtime.connection.errorReason = error;
+				/* Only bother emitting an upgrade if there's an error; otherwise it's
+				 * just a transport upgrade, so auth details won't have changed */
+				this.emit('update', new _client_connectionstatechange__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"](connectedState, connectedState, null, error));
+			}
+		} else {
+			this.notifyState({state: 'connected', error: error});
+			this.errorReason = this.realtime.connection.errorReason = error || null;
+		}
+
+		/* Send after the connection state update, as Channels hooks into this to
+		 * resend attaches on a new transport if necessary */
+		this.emit('transport.active', transport);
+
+		/* Gracefully terminate existing protocol */
+		if(existingActiveProtocol) {
+			if(existingActiveProtocol.messageQueue.count() > 0) {
+				/* We could just requeue pending messages on the new transport, but
+				 * actually this should never happen: transports should only take over
+				 * from other active transports when upgrading, and upgrading waits for
+				 * the old transport to be idle. So log an error. */
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.activateTransport()', 'Previous active protocol (for transport ' + existingActiveProtocol.transport.shortName + ', new one is ' + transport.shortName + ') finishing with ' + existingActiveProtocol.messageQueue.count() + ' messages still pending');
+			}
+			if(existingActiveProtocol.transport === transport) {
+				var msg = 'Assumption violated: activating a transport that was also the transport for the previous active protocol; transport = ' + transport.shortName + '; stack = ' + new Error().stack;
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.activateTransport()', msg);
+				_util_errorreporter__WEBPACK_IMPORTED_MODULE_15__[/* default */ "a"].report('error', msg, 'transport-previously-active');
+			} else {
+				existingActiveProtocol.finish();
+			}
+		}
+
+		/* Terminate any other pending transport(s), and
+		 * abort any not-yet-pending transport attempts */
+		_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].safeArrForEach(this.pendingTransports, function(pendingTransport) {
+			if(pendingTransport === transport) {
+				var msg = 'Assumption violated: activating a transport that is still marked as a pending transport; transport = ' + transport.shortName + '; stack = ' + new Error().stack;
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.activateTransport()', msg);
+				_util_errorreporter__WEBPACK_IMPORTED_MODULE_15__[/* default */ "a"].report('error', msg, 'transport-activating-pending');
+				_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrDeleteValue(self.pendingTransports, transport);
+			} else {
+				pendingTransport.disconnect();
+			}
+		});
+		_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].safeArrForEach(this.proposedTransports, function(proposedTransport) {
+			if(proposedTransport === transport) {
+				var msg = 'Assumption violated: activating a transport that is still marked as a proposed transport; transport = ' + transport.shortName + '; stack = ' + new Error().stack;
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.activateTransport()', msg);
+				_util_errorreporter__WEBPACK_IMPORTED_MODULE_15__[/* default */ "a"].report('error', msg, 'transport-activating-proposed');
+				_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrDeleteValue(self.proposedTransports, transport);
+			} else {
+				proposedTransport.dispose();
+			}
+		});
+
+		return true;
+	};
+
+	/**
+	 * Called when a transport is no longer the active transport. This can occur
+	 * in any transport connection state.
+	 * @param transport
+	 */
+	ConnectionManager.prototype.deactivateTransport = function(transport, state, error) {
+		var currentProtocol = this.activeProtocol,
+			wasActive = currentProtocol && currentProtocol.getTransport() === transport,
+			wasPending = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrDeleteValue(this.pendingTransports, transport),
+			wasProposed = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrDeleteValue(this.proposedTransports, transport),
+			noTransportsScheduledForActivation = this.noTransportsScheduledForActivation();
+
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.deactivateTransport()', 'transport = ' + transport);
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.deactivateTransport()', 'state = ' + state + (wasActive ? '; was active' : wasPending ? '; was pending' : wasProposed ? '; was proposed' : '') + (noTransportsScheduledForActivation ? '' : '; another transport is scheduled for activation'));
+		if(error && error.message)
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.deactivateTransport()', 'reason =  ' + error.message);
+
+		if(wasActive) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.deactivateTransport()', 'Getting, clearing, and requeuing ' + this.activeProtocol.messageQueue.count() + ' pending messages');
+			this.queuePendingMessages(currentProtocol.getPendingMessages());
+			/* Clear any messages we requeue to allow the protocol to become idle.
+			 * In case of an upgrade, this will trigger an immediate activation of
+			 * the upgrade transport, so delay a tick so this transport can finish
+			 * deactivating */
+			_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].nextTick(function() {
+				currentProtocol.clearPendingMessages();
+			});
+			this.activeProtocol = this.host = null;
+			clearTimeout(this.channelResumeCheckTimer);
+		}
+
+		this.emit('transport.inactive', transport);
+
+		/* this transport state change is a state change for the connectionmanager if
+		 * - the transport was the active transport and there are no transports
+		 *   which are connected and scheduled for activation, just waiting for the
+		 *   active transport to finish what its doing; or
+		 * - the transport was the active transport and the error was fatal (so
+		 *   unhealable by another transport); or
+		 * - there is no active transport, and this is the last remaining
+		 *   pending transport (so we were in the connecting state)
+		 */
+		if((wasActive && noTransportsScheduledForActivation) ||
+			(wasActive && (state === 'failed') || (state === 'closed')) ||
+			(currentProtocol === null && wasPending && this.pendingTransports.length === 0)) {
+
+			/* If we're disconnected with a 5xx we need to try fallback hosts
+			 * (RTN14d), but (a) due to how the upgrade sequence works, the
+			 * host/transport selection sequence only cares about getting to
+			 * `preconnect` (eg establishing a websocket) getting a `disconnected`
+			 * protocol message afterwards is too late; and (b) host retry only
+			 * applies to connectBase unless the stored preference transport doesn't
+			 * work. We solve this by unpersisting the transport preference and
+			 * setting an instance variable to force fallback hosts to be used (if
+			 * any) here. Bit of a kludge, but no real better alternatives without
+			 * rewriting the entire thing */
+			if(state === 'disconnected' && error && error.statusCode > 500 && this.httpHosts.length > 1) {
+				this.unpersistTransportPreference();
+				this.forceFallbackHost = true;
+				/* and try to connect again to try a fallback host without waiting for the usual 15s disconnectedRetryTimeout */
+				this.notifyState({state: state, error: error, retryImmediately: true});
+				return;
+			}
+
+			/* TODO remove below line once realtime sends token errors as DISCONNECTEDs */
+			var newConnectionState = (state === 'failed' && _client_auth__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"].isTokenErr(error)) ? 'disconnected' : state;
+			this.notifyState({state: newConnectionState, error: error});
+			return;
+		}
+
+		if(wasActive && (state === 'disconnected') && (this.state !== this.states.synchronizing)) {
+			/* If we were active but there is another transport scheduled for
+			* activation, go into to the connecting state until that transport
+			* activates and sets us back to connected. (manually starting the
+			* transition timers in case that never happens). (If we were in the
+			* synchronizing state, then that's fine, the old transport just got its
+			* disconnected before the new one got the sync -- ignore it and keep
+			* waiting for the sync. If it fails we have a separate sync timer that
+			* will expire). */
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.deactivateTransport()', 'wasActive but another transport is connected and scheduled for activation, so going into the connecting state until it activates');
+			this.startSuspendTimer();
+			this.startTransitionTimer(this.states.connecting);
+			this.notifyState({state: 'connecting', error: error});
+		}
+	};
+
+	/* Helper that returns true if there are no transports which are pending,
+	* have been connected, and are just waiting for onceNoPending to fire before
+	* being activated */
+	ConnectionManager.prototype.noTransportsScheduledForActivation = function() {
+		return _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].isEmpty(this.pendingTransports) ||
+			this.pendingTransports.every(function(transport) {
+				return !transport.isConnected;
+			});
+	};
+
+	/**
+	 * Called when activating a new transport, to ensure message delivery
+	 * on the new transport synchronises with the messages already received
+	 */
+	ConnectionManager.prototype.sync = function(transport, requestedSyncPosition, callback) {
+		var timeout = setTimeout(function () {
+			transport.off('sync');
+			callback(new _types_errorinfo__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]('Timeout waiting for sync response', 50000, 500));
+		}, this.options.timeouts.realtimeRequestTimeout);
+
+		/* send sync request */
+		var syncMessage = _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues({
+			action: actions.SYNC,
+			connectionKey: this.connectionKey
+		});
+
+		if(requestedSyncPosition.timeSerial) {
+			syncMessage.timeSerial = requestedSyncPosition.timeSerial;
+		} else if(requestedSyncPosition.connectionSerial !== undefined) {
+			syncMessage.connectionSerial = requestedSyncPosition.connectionSerial;
+		}
+		transport.send(syncMessage);
+
+		transport.once('sync', function(connectionId, syncPosition) {
+			clearTimeout(timeout);
+			callback(null, connectionId, syncPosition);
+		});
+	};
+
+	ConnectionManager.prototype.setConnection = function(connectionId, connectionDetails, connectionPosition, hasConnectionError) {
+		/* if connectionKey changes but connectionId stays the same, then just a
+		 * transport change on the same connection. If connectionId changes, we're
+		 * on a new connection, with implications for msgSerial and channel state,
+		 * and resetting the connectionSerial position */
+		var self = this;
+		/* If no previous connectionId, don't reset the msgSerial as it may have
+		 * been set by recover data (unless the recover failed) */
+		var prevConnId = this.connectionid,
+			connIdChanged = prevConnId && (prevConnId !== connectionId),
+			recoverFailure = !prevConnId && hasConnectionError;
+		if(connIdChanged || recoverFailure)  {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.setConnection()', 'Resetting msgSerial');
+			this.msgSerial = 0;
+		}
+		/* but do need to reattach channels, for channels that were previously in
+		 * the attached state even though the connection mode was 'clean' due to a
+		 * freshness check - see https://github.com/ably/ably-js/issues/394 */
+		if(this.connectionId !== connectionId)  {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.setConnection()', 'New connectionId; reattaching any attached channels');
+			/* Wait till next tick before reattaching channels, so that connection
+			 * state will be updated and so that it will be applied after
+			 * Channels#onTransportUpdate, else channels will not have an ATTACHED
+			 * sent twice (once from this and once from that). */
+			_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].nextTick(function() {
+				self.realtime.channels.reattach();
+			});
+		} else if(this.options.checkChannelsOnResume) {
+			/* For attached channels, set the attached msg indicator variable to false,
+			 * wait 30s, and check we got an attached for each one.
+			 * 30s was chosen to be 5s longer than the transport idle timeout expire
+			 * time, in an attempt to avoid false positives due to a transport
+			 * silently failing immediately after a resume */
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.setConnection()', 'Same connectionId; checkChannelsOnResume is enabled');
+			clearTimeout(this.channelResumeCheckTimer);
+			this.realtime.channels.resetAttachedMsgIndicators();
+			this.channelResumeCheckTimer = setTimeout(function() {
+				self.realtime.channels.checkAttachedMsgIndicators(connectionId);
+			}, 30000);
+		}
+		this.realtime.connection.id = this.connectionId = connectionId;
+		this.realtime.connection.key = this.connectionKey = connectionDetails.connectionKey;
+		var forceResetMessageSerial = connIdChanged || !prevConnId;
+		this.setConnectionSerial(connectionPosition, forceResetMessageSerial);
+	};
+
+	ConnectionManager.prototype.clearConnection = function() {
+		this.realtime.connection.id = this.connectionId = undefined;
+		this.realtime.connection.key = this.connectionKey = undefined;
+		this.clearConnectionSerial();
+		this.msgSerial = 0;
+		this.unpersistConnection();
+	};
+
+	/* force: set the connectionSerial even if it's less than the current
+	 * connectionSerial. Used for new connections.
+	 * Returns true iff the message was rejected as a duplicate. */
+	ConnectionManager.prototype.setConnectionSerial = function(connectionPosition, force) {
+		var timeSerial = connectionPosition.timeSerial,
+			connectionSerial = connectionPosition.connectionSerial;
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.setConnectionSerial()', 'Updating connection serial; serial = ' + connectionSerial + '; timeSerial = ' + timeSerial + '; force = ' + force + '; previous = ' + this.connectionSerial);
+		if(timeSerial !== undefined) {
+			if(timeSerial <= this.timeSerial && !force) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.setConnectionSerial()', 'received message with timeSerial ' + timeSerial + ', but current timeSerial is ' + this.timeSerial + '; assuming message is a duplicate and discarding it');
+				return true;
+			}
+			this.realtime.connection.timeSerial = this.timeSerial = timeSerial;
+			this.setRecoveryKey();
+			return;
+		}
+		if(connectionSerial !== undefined) {
+			if(connectionSerial <= this.connectionSerial && !force) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.setConnectionSerial()', 'received message with connectionSerial ' + connectionSerial + ', but current connectionSerial is ' + this.connectionSerial + '; assuming message is a duplicate and discarding it');
+				return true;
+			}
+			this.realtime.connection.serial = this.connectionSerial = connectionSerial;
+			this.setRecoveryKey();
+		}
+	};
+
+	ConnectionManager.prototype.clearConnectionSerial = function() {
+		this.realtime.connection.serial = this.connectionSerial = undefined;
+		this.realtime.connection.timeSerial = this.timeSerial = undefined;
+		this.clearRecoveryKey();
+	};
+
+	ConnectionManager.prototype.setRecoveryKey = function() {
+		this.realtime.connection.recoveryKey = this.connectionKey + ':' + (this.timeSerial || this.connectionSerial) + ':' + this.msgSerial;
+	};
+
+	ConnectionManager.prototype.clearRecoveryKey = function() {
+		this.realtime.connection.recoveryKey = null;
+	};
+
+	ConnectionManager.prototype.checkConnectionStateFreshness = function() {
+		if(!this.lastActivity || !this.connectionId) { return; }
+
+		var sinceLast = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].now() - this.lastActivity;
+		if(sinceLast > this.connectionStateTtl + this.maxIdleInterval) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.checkConnectionStateFreshness()', 'Last known activity from realtime was ' + sinceLast + 'ms ago; discarding connection state');
+			this.clearConnection();
+			this.states.connecting.failState = 'suspended';
+			this.states.connecting.queueEvents = false;
+		}
+	};
+
+	/**
+	 * Called when the connectionmanager wants to persist transport
+	 * state for later recovery. Only applicable in the browser context.
+	 */
+	ConnectionManager.prototype.persistConnection = function() {
+		if(haveSessionStorage) {
+			var recoveryKey = this.realtime.connection.recoveryKey;
+			if(recoveryKey) {
+				setSessionRecoverData({
+					recoveryKey: recoveryKey,
+					disconnectedAt: _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].now(),
+					location: global.location,
+					clientId: this.realtime.auth.clientId
+				}, this.connectionStateTtl);
+			}
+		}
+	};
+
+	/**
+	 * Called when the connectionmanager wants to persist transport
+	 * state for later recovery. Only applicable in the browser context.
+	 */
+	ConnectionManager.prototype.unpersistConnection = function() {
+		clearSessionRecoverData();
+	};
+
+	/*********************
+	 * state management
+	 *********************/
+
+	ConnectionManager.prototype.getError = function() {
+		return this.errorReason || this.getStateError();
+	};
+
+	ConnectionManager.prototype.getStateError = function() {
+		return _transport_connectionerror__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"][this.state.state];
+	};
+
+	ConnectionManager.prototype.activeState = function() {
+		return this.state.queueEvents || this.state.sendEvents;
+	};
+
+	ConnectionManager.prototype.enactStateChange = function(stateChange) {
+		var logLevel = stateChange.current === 'failed' ? _util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR : _util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MAJOR;
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(logLevel, 'Connection state', stateChange.current + (stateChange.reason ? ('; reason: ' + stateChange.reason) : ''));
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.enactStateChange', 'setting new state: ' + stateChange.current + '; reason = ' + (stateChange.reason && stateChange.reason.message));
+		var newState = this.state = this.states[stateChange.current];
+		if(stateChange.reason) {
+			this.errorReason = stateChange.reason;
+			this.realtime.connection.errorReason = stateChange.reason;
+		}
+		if(newState.terminal || newState.state === 'suspended') {
+			/* suspended is nonterminal, but once in the suspended state, realtime
+			 * will have discarded our connection state, so futher connection
+			 * attempts should start from scratch */
+			this.clearConnection();
+		}
+		this.emit('connectionstate', stateChange);
+	};
+
+	/****************************************
+	 * ConnectionManager connection lifecycle
+	 ****************************************/
+
+	ConnectionManager.prototype.startTransitionTimer = function(transitionState) {
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.startTransitionTimer()', 'transitionState: ' + transitionState.state);
+
+		if(this.transitionTimer) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.startTransitionTimer()', 'clearing already-running timer');
+			clearTimeout(this.transitionTimer);
+		}
+
+		var self = this;
+		this.transitionTimer = setTimeout(function() {
+			if(self.transitionTimer) {
+				self.transitionTimer = null;
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager ' + transitionState.state + ' timer expired', 'requesting new state: ' + transitionState.failState);
+				self.notifyState({state: transitionState.failState});
+			}
+		}, transitionState.retryDelay);
+	};
+
+	ConnectionManager.prototype.cancelTransitionTimer = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.cancelTransitionTimer()', '');
+		if(this.transitionTimer) {
+			clearTimeout(this.transitionTimer);
+			this.transitionTimer = null;
+		}
+	};
+
+	ConnectionManager.prototype.startSuspendTimer = function() {
+		var self = this;
+		if(this.suspendTimer)
+			return;
+		this.suspendTimer = setTimeout(function() {
+			if(self.suspendTimer) {
+				self.suspendTimer = null;
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager suspend timer expired', 'requesting new state: suspended');
+				self.states.connecting.failState = 'suspended';
+				self.states.connecting.queueEvents = false;
+				self.notifyState({state: 'suspended'});
+			}
+		}, this.connectionStateTtl);
+	};
+
+	ConnectionManager.prototype.checkSuspendTimer = function(state) {
+		if(state !== 'disconnected' && state !== 'suspended' && state !== 'connecting')
+			this.cancelSuspendTimer();
+	};
+
+	ConnectionManager.prototype.cancelSuspendTimer = function() {
+		this.states.connecting.failState = 'disconnected';
+		this.states.connecting.queueEvents = true;
+		if(this.suspendTimer) {
+			clearTimeout(this.suspendTimer);
+			this.suspendTimer = null;
+		}
+	};
+
+	ConnectionManager.prototype.startRetryTimer = function(interval) {
+		var self = this;
+		this.retryTimer = setTimeout(function() {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager retry timer expired', 'retrying');
+			self.retryTimer = null;
+			self.requestState({state: 'connecting'});
+		}, interval);
+	};
+
+	ConnectionManager.prototype.cancelRetryTimer = function() {
+		if(this.retryTimer) {
+			clearTimeout(this.retryTimer);
+			this.retryTimer = null;
+		}
+	};
+
+	ConnectionManager.prototype.notifyState = function(indicated) {
+		var state = indicated.state,
+			self = this;
+
+		/* We retry immediately if:
+		 * - something disconnects us while we're connected, or
+		 * - a viable (but not yet active) transport fails due to a token error (so
+		 *   this.errorReason will be set, and startConnect will do a forced
+		 *   authorize). If this.errorReason is already set (to a token error),
+		 *   then there has been at least one previous attempt to connect that also
+		 *   failed for a token error, so by RTN14b we go to DISCONNECTED and wait
+		 *   before trying again */
+		var retryImmediately = (state === 'disconnected' &&
+			(this.state === this.states.connected     ||
+			 this.state === this.states.synchronizing ||
+			 indicated.retryImmediately               ||
+				(this.state === this.states.connecting &&
+					indicated.error && _client_auth__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"].isTokenErr(indicated.error) &&
+					!(this.errorReason && _client_auth__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"].isTokenErr(this.errorReason)))));
+
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.notifyState()', 'new state: ' + state + (retryImmediately ? '; will retry connection immediately' : ''));
+		/* do nothing if we're already in the indicated state */
+		if(state == this.state.state)
+			return;
+
+		/* kill timers (possibly excepting suspend timer depending on the notified
+		* state), as these are superseded by this notification */
+		this.cancelTransitionTimer();
+		this.cancelRetryTimer();
+		this.checkSuspendTimer(indicated.state);
+
+		/* do nothing if we're unable to move from the current state */
+		if(this.state.terminal)
+			return;
+
+		/* process new state */
+		var newState = this.states[indicated.state],
+			change = new _client_connectionstatechange__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"](this.state.state, newState.state, newState.retryDelay, (indicated.error || _transport_connectionerror__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"][newState.state]));
+
+		if(retryImmediately) {
+			var autoReconnect = function() {
+				if(self.state === self.states.disconnected) {
+					self.lastAutoReconnectAttempt = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].now();
+					self.requestState({state: 'connecting'});
+				}
+			};
+			var sinceLast = this.lastAutoReconnectAttempt && (_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].now() - this.lastAutoReconnectAttempt + 1);
+			if(sinceLast && (sinceLast < 1000)) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.notifyState()', 'Last reconnect attempt was only ' + sinceLast + 'ms ago, waiting another ' + (1000 - sinceLast) + 'ms before trying again');
+				setTimeout(autoReconnect, 1000 - sinceLast);
+			} else {
+				_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].nextTick(autoReconnect);
+			}
+		} else if(state === 'disconnected' || state === 'suspended') {
+			this.startRetryTimer(newState.retryDelay);
+		}
+
+		 /* If going into disconnect/suspended (and not retrying immediately), or a
+			* terminal state, ensure there are no orphaned transports hanging around. */
+		if((state === 'disconnected' && !retryImmediately) ||
+			 (state === 'suspended') ||
+			 newState.terminal) {
+				 /* Wait till the next tick so the connection state change is enacted,
+				 * so aborting transports doesn't trigger redundant state changes */
+				 _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].nextTick(function() {
+					 self.disconnectAllTransports();
+				 });
+		 }
+
+		if(state == 'connected' && !this.activeProtocol) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.notifyState()', 'Broken invariant: attempted to go into connected state, but there is no active protocol');
+		}
+
+		/* implement the change and notify */
+		this.enactStateChange(change);
+		if(this.state.sendEvents) {
+			this.sendQueuedMessages();
+		} else if(!this.state.queueEvents) {
+			this.realtime.channels.propogateConnectionInterruption(state, change.reason);
+			this.failQueuedMessages(change.reason); // RTN7c
+		}
+	};
+
+	ConnectionManager.prototype.requestState = function(request) {
+		var state = request.state, self = this;
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.requestState()', 'requested state: ' + state + '; current state: ' + this.state.state);
+		if(state == this.state.state)
+			return; /* silently do nothing */
+
+		/* kill running timers, as this request supersedes them */
+		this.cancelTransitionTimer();
+		this.cancelRetryTimer();
+		/* for suspend timer check rather than cancel -- eg requesting a connecting
+		* state should not reset the suspend timer */
+		this.checkSuspendTimer(state);
+
+		if(state == 'connecting' && this.state.state == 'connected') return;
+		if(state == 'closing' && this.state.state == 'closed') return;
+
+		var newState = this.states[state],
+			change = new _client_connectionstatechange__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"](this.state.state, newState.state, null, (request.error || _transport_connectionerror__WEBPACK_IMPORTED_MODULE_9__[/* default */ "a"][newState.state]));
+
+		this.enactStateChange(change);
+
+		if(state == 'connecting') {
+			_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].nextTick(function() { self.startConnect(); });
+		}
+		if(state == 'closing') {
+			this.closeImpl();
+		}
+	};
+
+
+	ConnectionManager.prototype.startConnect = function() {
+		if(this.state !== this.states.connecting) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.startConnect()', 'Must be in connecting state to connect, but was ' + this.state.state);
+			return;
+		}
+
+		var auth = this.realtime.auth,
+			self = this;
+
+		/* The point of the connectCounter mechanism is to ensure that the
+		 * connection procedure can be cancelled. We want disconnectAllTransports
+		 * to be able to stop any in-progress connection, even before it gets to
+		 * the stage of having a pending (or even a proposed) transport that it can
+		 * dispose() of. So we check that it's still current after any async stage,
+		 * up until the stage that is synchronous with instantiating a transport */
+		var connectCount = ++this.connectCounter;
+
+		var connect = function() {
+			self.checkConnectionStateFreshness();
+			self.getTransportParams(function(transportParams) {
+				if(connectCount !== self.connectCounter) {
+					return;
+				}
+				self.connectImpl(transportParams, connectCount);
+			});
+		};
+
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.startConnect()', 'starting connection');
+		this.startSuspendTimer();
+		this.startTransitionTimer(this.states.connecting);
+
+		if(auth.method === 'basic') {
+			connect();
+		} else {
+			var authCb = function(err) {
+				if(connectCount !== self.connectCounter) {
+					return;
+				}
+				if(err) {
+					self.actOnErrorFromAuthorize(err);
+				} else {
+					connect();
+				}
+			};
+			if(this.errorReason && _client_auth__WEBPACK_IMPORTED_MODULE_11__[/* default */ "a"].isTokenErr(this.errorReason)) {
+				/* Force a refetch of a new token */
+				auth._forceNewToken(null, null, authCb);
+			} else {
+				auth._ensureValidAuthCredentials(false, authCb);
+			}
+		}
+	};
+
+	/**
+	 * There are three stages in connecting:
+	 * - preference: if there is a cached transport preference, we try to connect
+	 *   on that. If that fails or times out we abort the attempt, remove the
+	 *   preference and fall back to base. If it succeeds, we try upgrading it if
+	 *   needed (will only be in the case where the preference is xhrs and the
+	 *   browser supports ws).
+	 * - base: we try to connect with the best transport that we think will
+	 *   never fail for this browser (usually this is xhr_polling; for very old
+	 *   browsers will be jsonp, for node will be comet). If it doesn't work, we
+	 *   try fallback hosts.
+	 * - upgrade: given a connected transport, we see if there are any better
+	 *   ones, and if so, try to upgrade to them.
+	 *
+	 * connectImpl works out what stage you're at (which is purely a function of
+	 * the current connection state and whether there are any stored preferences),
+	 * and dispatches accordingly. After a transport has been set pending,
+	 * tryATransport calls connectImpl to see if there's another stage to be done.
+	 * */
+	ConnectionManager.prototype.connectImpl = function(transportParams, connectCount) {
+		var state = this.state.state;
+
+		if(state !== this.states.connecting.state && state !== this.states.connected.state) {
+			/* Only keep trying as long as in the 'connecting' state (or 'connected'
+			 * for upgrading). Any operation can put us into 'disconnected' to cancel
+			 * connection attempts and wait before retrying, or 'failed' to fail. */
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.connectImpl()', 'Must be in connecting state to connect (or connected to upgrade), but was ' + state);
+		} else if(this.pendingTransports.length) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.connectImpl()', 'Transports ' + this.pendingTransports[0].toString() + ' currently pending; taking no action');
+		} else if(state == this.states.connected.state) {
+			this.upgradeIfNeeded(transportParams);
+		} else if(this.transports.length > 1 && this.getTransportPreference()) {
+			this.connectPreference(transportParams);
+		} else {
+			this.connectBase(transportParams, connectCount);
+		}
+	};
+
+
+	ConnectionManager.prototype.connectPreference = function(transportParams) {
+		var preference = this.getTransportPreference(),
+			self = this,
+			preferenceTimeoutExpired = false;
+
+		if(!_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrIn(this.transports, preference)) {
+			this.unpersistTransportPreference();
+			this.connectImpl(transportParams);
+		}
+
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.connectPreference()', 'Trying to connect with stored transport preference ' + preference);
+
+		var preferenceTimeout = setTimeout(function() {
+			preferenceTimeoutExpired = true;
+			if(!(self.state.state === self.states.connected.state)) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.connectPreference()', 'Shortcircuit connection attempt with ' + preference + ' failed; clearing preference and trying from scratch');
+				/* Abort all connection attempts. (This also disconnects the active
+				 * protocol, but none exists if we're not in the connected state) */
+				self.disconnectAllTransports();
+				/* Be quite agressive about clearing the stored preference if ever it doesn't work */
+				self.unpersistTransportPreference();
+			}
+			self.connectImpl(transportParams);
+		}, this.options.timeouts.preferenceConnectTimeout);
+
+		/* For connectPreference, just use the main host. If host fallback is needed, do it in connectBase.
+		 * The wstransport it will substitute the httphost for an appropriate wshost */
+		transportParams.host = self.httpHosts[0];
+		self.tryATransport(transportParams, preference, function(fatal, transport) {
+			clearTimeout(preferenceTimeout);
+			if(preferenceTimeoutExpired && transport) {
+				/* Viable, but too late - connectImpl() will already be trying
+				* connectBase, and we weren't in upgrade mode. Just remove the
+				* onconnected listener and get rid of it */
+				transport.off();
+				transport.disconnect();
+				_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrDeleteValue(this.pendingTransports, transport);
+			} else if(!transport && !fatal) {
+				/* Preference failed in a transport-specific way. Try more */
+				self.unpersistTransportPreference();
+				self.connectImpl(transportParams);
+			}
+			/* If suceeded, or failed fatally, nothing to do */
+		});
+	};
+
+
+	/**
+	 * Try to establish a transport on the base transport (the best transport
+	 * such that if it doesn't work, nothing will work) as determined through
+	 * static feature detection, checking for network connectivity and trying
+	 * fallback hosts if applicable.
+	 * @param transportParams
+	 */
+	ConnectionManager.prototype.connectBase = function(transportParams, connectCount) {
+		var self = this,
+			giveUp = function(err) {
+				self.notifyState({state: self.states.connecting.failState, error: err});
+			},
+			candidateHosts = this.httpHosts.slice(),
+			hostAttemptCb = function(fatal, transport) {
+				if(connectCount !== self.connectCounter) {
+					return;
+				}
+				if(!transport && !fatal) {
+					tryFallbackHosts();
+				}
+			};
+
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.connectBase()', 'Trying to connect with base transport ' + this.baseTransport);
+
+		/* first try to establish a connection with the priority host with http transport */
+		var host = candidateHosts.shift();
+		if(!host) {
+			giveUp(new _types_errorinfo__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]('Unable to connect (no available host)', 80003, 404));
+			return;
+		}
+		transportParams.host = host;
+
+		/* this is what we'll be doing if the attempt for the main host fails */
+		function tryFallbackHosts() {
+			/* if there aren't any fallback hosts, fail */
+			if(!candidateHosts.length) {
+				giveUp(new _types_errorinfo__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]('Unable to connect (and no more fallback hosts to try)', 80003, 404));
+				return;
+			}
+			/* before trying any fallback (or any remaining fallback) we decide if
+			 * there is a problem with the ably host, or there is a general connectivity
+			 * problem */
+			platform_http__WEBPACK_IMPORTED_MODULE_12__[/* default */ "a"].checkConnectivity(function(err, connectivity) {
+				if(connectCount !== self.connectCounter) {
+					return;
+				}
+				/* we know err won't happen but handle it here anyway */
+				if(err) {
+					giveUp(err);
+					return;
+				}
+				if(!connectivity) {
+					/* the internet isn't reachable, so don't try the fallback hosts */
+					giveUp(new _types_errorinfo__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]('Unable to connect (network unreachable)', 80003, 404));
+					return;
+				}
+				/* the network is there, so there's a problem with the main host, or
+				 * its dns. Try the fallback hosts. We could try them simultaneously but
+				 * that would potentially cause a huge spike in load on the load balancer */
+				transportParams.host = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrPopRandomElement(candidateHosts);
+				self.tryATransport(transportParams, self.baseTransport, hostAttemptCb);
+			});
+		}
+
+		if(this.forceFallbackHost && candidateHosts.length) {
+			this.forceFallbackHost = false;
+			tryFallbackHosts();
+			return;
+		}
+
+		this.tryATransport(transportParams, this.baseTransport, hostAttemptCb);
+	};
+
+
+	ConnectionManager.prototype.getUpgradePossibilities = function() {
+		/* returns the subset of upgradeTransports to the right of the current
+		 * transport in upgradeTransports (if it's in there - if not, currentPosition
+		 * will be -1, so return upgradeTransports.slice(0) == upgradeTransports */
+		var current = this.activeProtocol.getTransport().shortName;
+		var currentPosition = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrIndexOf(this.upgradeTransports, current);
+		return this.upgradeTransports.slice(currentPosition + 1);
+	};
+
+
+	ConnectionManager.prototype.upgradeIfNeeded = function(transportParams) {
+		var upgradePossibilities = this.getUpgradePossibilities(),
+			self = this;
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.upgradeIfNeeded()', 'upgrade possibilities: ' + _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inspect(upgradePossibilities));
+
+		if(!upgradePossibilities.length) {
+			return;
+		}
+
+		_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrForEach(upgradePossibilities, function(upgradeTransport) {
+			/* Note: the transport may mutate the params, so give each transport a fresh one */
+			var upgradeTransportParams = self.createTransportParams(transportParams.host, 'upgrade');
+			self.tryATransport(upgradeTransportParams, upgradeTransport, noop);
+		});
+	};
+
+
+	ConnectionManager.prototype.closeImpl = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.closeImpl()', 'closing connection');
+		this.cancelSuspendTimer();
+		this.startTransitionTimer(this.states.closing);
+
+		_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].safeArrForEach(this.pendingTransports, function(transport) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.closeImpl()', 'Closing pending transport: ' + transport);
+			if(transport) transport.close();
+		});
+
+		_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].safeArrForEach(this.proposedTransports, function(transport) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.closeImpl()', 'Disposing of proposed transport: ' + transport);
+			if(transport) transport.dispose();
+		});
+
+		if(this.activeProtocol) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.closeImpl()', 'Closing active transport: ' + this.activeProtocol.getTransport());
+			this.activeProtocol.getTransport().close();
+		}
+
+		/* If there was an active transport, this will probably be
+		 * preempted by the notifyState call in deactivateTransport */
+		this.notifyState({state: 'closed'});
+	};
+
+	ConnectionManager.prototype.onAuthUpdated = function(tokenDetails, callback) {
+		var self = this;
+		switch(this.state.state) {
+			case 'connected':
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.onAuthUpdated()', 'Sending AUTH message on active transport');
+				/* If there are any proposed/pending transports (eg an upgrade that
+				 * isn't yet scheduled for activation) that hasn't yet started syncing,
+				 * just to get rid of them & restart the upgrade with the new token, to
+				 * avoid a race condition. (If it has started syncing, the AUTH will be
+				 * queued until the upgrade is complete, so everything's fine) */
+				if((this.pendingTransports.length || this.proposedTransports.length) &&
+					self.state !== self.states.synchronizing) {
+					this.disconnectAllTransports(/* exceptActive: */true);
+					var transportParams = this.activeProtocol.getTransport().params;
+					_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].nextTick(function() {
+						if(self.state.state === 'connected') {
+							self.upgradeIfNeeded(transportParams);
+						}
+					});
+				}
+
+				/* Do any transport-specific new-token action */
+				this.activeProtocol.getTransport().onAuthUpdated(tokenDetails);
+
+				var authMsg = _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].fromValues({
+					action: actions.AUTH,
+					auth: {
+						accessToken: tokenDetails.token
+					}
+				});
+				this.send(authMsg);
+
+				/* The answer will come back as either a connectiondetails event
+				 * (realtime sends a CONNECTED to asknowledge the reauth) or a
+				 * statechange to failed */
+				var successListener = function() {
+					self.off(failureListener);
+					callback(null, tokenDetails);
+				};
+				var failureListener = function(stateChange) {
+					if(stateChange.current === 'failed') {
+						self.off(successListener);
+						self.off(failureListener);
+						callback(stateChange.reason || self.getStateError());
+					}
+				};
+				this.once('connectiondetails', successListener);
+				this.on('connectionstate', failureListener);
+				break;
+
+			case 'connecting':
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.onAuthUpdated()',
+					'Aborting current connection attempts in order to start again with the new auth details');
+				this.disconnectAllTransports();
+				/* fallthrough to add statechange listener */
+
+			default:
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.onAuthUpdated()',
+					'Connection state is ' + this.state.state + '; waiting until either connected or failed');
+				var listener = function(stateChange) {
+					switch(stateChange.current) {
+						case 'connected':
+							self.off(listener);
+							callback(null, tokenDetails);
+							break;
+						case 'failed':
+						case 'closed':
+						case 'suspended':
+							self.off(listener);
+							callback(stateChange.reason || self.getStateError());
+							break;
+						default:
+							/* ignore till we get either connected or failed */
+							break;
+					}
+				};
+				self.on('connectionstate', listener);
+				if(this.state.state === 'connecting') {
+					/* can happen if in the connecting state but no transport was pending
+					 * yet, so disconnectAllTransports did not trigger a disconnected state */
+					self.startConnect();
+				} else {
+					self.requestState({state: 'connecting'});
+				}
+		}
+	};
+
+	ConnectionManager.prototype.disconnectAllTransports = function(exceptActive) {
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.disconnectAllTransports()', 'Disconnecting all transports' + (exceptActive ? ' except the active transport' : ''));
+
+		/* This will prevent any connection procedure in an async part of one of its early stages from continuing */
+		this.connectCounter++;
+
+		_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].safeArrForEach(this.pendingTransports, function(transport) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.disconnectAllTransports()', 'Disconnecting pending transport: ' + transport);
+			if(transport) transport.disconnect();
+		});
+		this.pendingTransports = [];
+
+		_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].safeArrForEach(this.proposedTransports, function(transport) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.disconnectAllTransports()', 'Disposing of proposed transport: ' + transport);
+			if(transport) transport.dispose();
+		});
+		this.proposedTransports = [];
+
+		if(this.activeProtocol && !exceptActive) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.disconnectAllTransports()', 'Disconnecting active transport: ' + this.activeProtocol.getTransport());
+			this.activeProtocol.getTransport().disconnect();
+		}
+		/* No need to notify state disconnected; disconnecting the active transport
+		 * will have that effect */
+	};
+
+	/******************
+	 * event queueing
+	 ******************/
+
+	ConnectionManager.prototype.send = function(msg, queueEvent, callback) {
+		callback = callback || noop;
+		var state = this.state;
+
+		if(state.sendEvents) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.send()', 'sending event');
+			this.sendImpl(new PendingMessage(msg, callback));
+			return;
+		}
+		var shouldQueue = (queueEvent && state.queueEvents) || state.forceQueueEvents;
+		if(!shouldQueue) {
+			var err = 'rejecting event, queueEvent was ' + queueEvent + ', state was ' + state.state;
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.send()', err);
+			callback(this.errorReason || new _types_errorinfo__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"](err, 90000, 400));
+			return;
+		}
+		if(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].shouldLog(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO)) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.send()', 'queueing msg; ' + _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].stringify(msg));
+		}
+		this.queue(msg, callback);
+	};
+
+	ConnectionManager.prototype.sendImpl = function(pendingMessage) {
+		var msg = pendingMessage.message;
+		/* If have already attempted to send this, resend with the same msgSerial,
+		 * so Ably can dedup if the previous send succeeded */
+		if(pendingMessage.ackRequired && !pendingMessage.sendAttempted) {
+			msg.msgSerial = this.msgSerial++;
+			this.setRecoveryKey();
+		}
+		try {
+			this.activeProtocol.send(pendingMessage);
+		} catch(e) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.sendImpl()', 'Unexpected exception in transport.send(): ' + e.stack);
+		}
+	};
+
+	function bundleWith(dest, src, maxSize) {
+		var action;
+		if(dest.channel !== src.channel) {
+			/* RTL6d3 */
+			return false;
+		}
+		if((action = dest.action) !== actions.PRESENCE && action !== actions.MESSAGE) {
+			/* RTL6d - can only bundle messages or presence */
+			return false;
+		}
+		if(action !== src.action) {
+			/* RTL6d4 */
+			return false;
+		}
+		var kind = (action === actions.PRESENCE) ? 'presence' : 'messages',
+			proposed = dest[kind].concat(src[kind]),
+			size = _types_message__WEBPACK_IMPORTED_MODULE_13__[/* default */ "a"].getMessagesSize(proposed);
+		if(size > maxSize) {
+			/* RTL6d1 */
+			return false;
+		}
+		if(!_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].allSame(proposed, 'clientId')) {
+			/* RTL6d2 */
+			return false;
+		}
+		if(!_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrEvery(proposed, function(msg) {
+			return !msg.id;
+		})) {
+			/* RTL6d7 */
+			return false;
+		}
+		/* we're good to go! */
+		dest[kind] = proposed;
+		return true;
+	};
+
+	ConnectionManager.prototype.queue = function(msg, callback) {
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.queue()', 'queueing event');
+		var lastQueued = this.queuedMessages.last();
+		var maxSize = this.options.maxMessageSize;
+		/* If have already attempted to send a message, don't merge more messages
+		 * into it, as if the previous send actually succeeded and realtime ignores
+		 * the dup, they'll be lost */
+		if(lastQueued && !lastQueued.sendAttempted && bundleWith(lastQueued.message, msg, maxSize)) {
+			if(!lastQueued.merged) {
+				lastQueued.callback = Object(_util_multicaster__WEBPACK_IMPORTED_MODULE_14__[/* default */ "a"])([lastQueued.callback]);
+				lastQueued.merged = true;
+			}
+			lastQueued.callback.push(callback);
+		} else {
+			this.queuedMessages.push(new PendingMessage(msg, callback));
+		}
+	};
+
+	ConnectionManager.prototype.sendQueuedMessages = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.sendQueuedMessages()', 'sending ' + this.queuedMessages.count() + ' queued messages');
+		var pendingMessage;
+		while(pendingMessage = this.queuedMessages.shift())
+			this.sendImpl(pendingMessage);
+	};
+
+	ConnectionManager.prototype.queuePendingMessages = function(pendingMessages) {
+		if(pendingMessages && pendingMessages.length) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.queuePendingMessages()', 'queueing ' + pendingMessages.length + ' pending messages');
+			this.queuedMessages.prepend(pendingMessages);
+		}
+	};
+
+	ConnectionManager.prototype.failQueuedMessages = function(err) {
+		var numQueued = this.queuedMessages.count();
+		if(numQueued > 0) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.failQueuedMessages()', 'failing ' + numQueued + ' queued messages, err = ' + _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inspectError(err));
+			this.queuedMessages.completeAllMessages(err);
+		}
+	};
+
+	ConnectionManager.prototype.onChannelMessage = function(message, transport) {
+		var onActiveTransport = this.activeProtocol && transport === this.activeProtocol.getTransport(),
+			onUpgradeTransport = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrIn(this.pendingTransports, transport) && this.state == this.states.synchronizing,
+			notControlMsg = message.action === actions.MESSAGE || message.action === actions.PRESENCE;
+
+		/* As the lib now has a period where the upgrade transport is synced but
+		 * before it's become active (while waiting for the old one to become
+		 * idle), message can validly arrive on it even though it isn't active */
+		if(onActiveTransport || onUpgradeTransport) {
+			if(notControlMsg) {
+				var suppressed = this.setConnectionSerial(message);
+				if(suppressed) {
+					return;
+				}
+				if(_types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isDuplicate(message, this.mostRecentMsg)) {
+					_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.onChannelMessage()', 'received message with different connectionSerial, but same message id as a previous; discarding; id = ' + message.id);
+					return;
+				}
+				this.mostRecentMsg = message;
+			}
+			this.realtime.channels.onChannelMessage(message);
+		} else {
+			// Message came in on a defunct transport. Allow only acks, nacks, & errors for outstanding
+			// messages,  no new messages (as sync has been sent on new transport so new messages will
+			// be resent there, or connection has been closed so don't want new messages)
+			if(_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrIndexOf([actions.ACK, actions.NACK, actions.ERROR], message.action) > -1) {
+				this.realtime.channels.onChannelMessage(message);
+			} else {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, 'ConnectionManager.onChannelMessage()', 'received message ' + JSON.stringify(message) + 'on defunct transport; discarding');
+			}
+		}
+	};
+
+	ConnectionManager.prototype.ping = function(transport, callback) {
+		/* if transport is specified, try that */
+		if(transport) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.ping()', 'transport = ' + transport);
+
+			var onTimeout = function () {
+				transport.off('heartbeat', onHeartbeat);
+				callback(new _types_errorinfo__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]('Timeout waiting for heartbeat response', 50000, 500));
+			};
+
+			var pingStart = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].now(),
+				id = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].cheapRandStr();
+
+			var onHeartbeat = function (responseId) {
+				if(responseId === id) {
+					transport.off('heartbeat', onHeartbeat);
+					clearTimeout(timer);
+					var responseTime = _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].now() - pingStart;
+					callback(null, responseTime);
+				}
+			};
+
+			var timer = setTimeout(onTimeout, this.options.timeouts.realtimeRequestTimeout);
+
+			transport.on('heartbeat', onHeartbeat);
+			transport.ping(id);
+			return;
+		}
+
+		/* if we're not connected, don't attempt */
+		if(this.state.state !== 'connected') {
+			callback(new _types_errorinfo__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"]('Unable to ping service; not connected', 40000, 400));
+			return;
+		}
+
+		/* no transport was specified, so use the current (connected) one
+		 * but ensure that we retry if the transport is superseded before we complete */
+		var completed = false, self = this;
+
+		var onPingComplete = function(err, responseTime) {
+			self.off('transport.active', onTransportActive);
+			if(!completed) {
+				completed = true;
+				callback(err, responseTime);
+			}
+		};
+
+		var onTransportActive = function() {
+			if(!completed) {
+				/* ensure that no callback happens for the currently outstanding operation */
+				completed = true;
+				/* repeat but picking up the new transport */
+				_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].nextTick(function() {
+					self.ping(null, callback);
+				});
+			}
+		};
+
+		this.on('transport.active', onTransportActive);
+		this.ping(this.activeProtocol.getTransport(), onPingComplete);
+	};
+
+	ConnectionManager.prototype.abort = function(error) {
+		this.activeProtocol.getTransport().fail(error);
+	};
+
+	ConnectionManager.prototype.registerProposedTransport = function(transport) {
+		this.proposedTransports.push(transport);
+	};
+
+	ConnectionManager.prototype.getTransportPreference = function() {
+		return this.transportPreference || (haveWebStorage && platform_webstorage__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"].get(transportPreferenceName));
+	};
+
+	ConnectionManager.prototype.persistTransportPreference = function(transport) {
+		if(_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].arrIn(_util_defaults__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].upgradeTransports, transport.shortName)) {
+			this.transportPreference = transport.shortName;
+			if(haveWebStorage) {
+				platform_webstorage__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"].set(transportPreferenceName, transport.shortName);
+			}
+		}
+	};
+
+	ConnectionManager.prototype.unpersistTransportPreference = function() {
+		this.transportPreference = null;
+		if(haveWebStorage) {
+			platform_webstorage__WEBPACK_IMPORTED_MODULE_16__[/* default */ "a"].remove(transportPreferenceName);
+		}
+	};
+
+	/* This method is only used during connection attempts, so implements RSA4c1,
+	 * RSA4c2, and RSA4d. In particular it is not invoked for
+	 * serverside-triggered reauths or manual reauths, so RSA4c3 does not apply */
+	ConnectionManager.prototype.actOnErrorFromAuthorize = function(err) {
+		if(err.code === 40171) {
+			/* No way to reauth */
+			this.notifyState({state: 'failed', error: err});
+		} else if(err.statusCode === 403) {
+			var msg = 'Client configured authentication provider returned 403; failing the connection';
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.actOnErrorFromAuthorize()', msg);
+			this.notifyState({state: 'failed', error: new _types_errorinfo__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"](msg, 80019, 403, err)});
+		} else {
+			var msg = 'Client configured authentication provider request failed';
+			_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'ConnectionManager.actOnErrorFromAuthorize', msg);
+			this.notifyState({state: this.state.failState, error: new _types_errorinfo__WEBPACK_IMPORTED_MODULE_10__[/* default */ "a"](msg, 80019, 401, err)});
+		}
+	};
+
+	ConnectionManager.prototype.onConnectionDetailsUpdate = function(connectionDetails, transport) {
+		if(!connectionDetails) {
+			return;
+		}
+		this.connectionDetails = connectionDetails;
+		if(connectionDetails.maxMessageSize) {
+			this.options.maxMessageSize = connectionDetails.maxMessageSize;
+		}
+		var clientId = connectionDetails.clientId;
+		if(clientId) {
+			var err = this.realtime.auth._uncheckedSetClientId(clientId);
+			if(err) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'ConnectionManager.onConnectionDetailsUpdate()', err.message);
+				/* Errors setting the clientId are fatal to the connection */
+				transport.fail(err);
+				return;
+			}
+		}
+		var connectionStateTtl = connectionDetails.connectionStateTtl;
+		if(connectionStateTtl) {
+			this.connectionStateTtl = connectionStateTtl;
+		}
+		this.maxIdleInterval = connectionDetails.maxIdleInterval;
+		this.emit('connectiondetails', connectionDetails);
+	};
+
+	return ConnectionManager;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (ConnectionManager);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(17)))
+
+/***/ }),
+/* 26 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _util_eventemitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var _util_logger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
+
+
+
+
+var MessageQueue = (function() {
+	function MessageQueue() {
+		_util_eventemitter__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].call(this);
+		this.messages = [];
+	}
+	_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inherits(MessageQueue, _util_eventemitter__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]);
+
+	MessageQueue.prototype.count = function() {
+		return this.messages.length;
+	};
+
+	MessageQueue.prototype.push = function(message) {
+		this.messages.push(message);
+	};
+
+	MessageQueue.prototype.shift = function() {
+		return this.messages.shift();
+	};
+
+	MessageQueue.prototype.last = function() {
+		return this.messages[this.messages.length - 1];
+	};
+
+	MessageQueue.prototype.copyAll = function() {
+		return this.messages.slice();
+	};
+
+	MessageQueue.prototype.append = function(messages) {
+		this.messages.push.apply(this.messages, messages);
+	};
+
+	MessageQueue.prototype.prepend = function(messages) {
+		this.messages.unshift.apply(this.messages, messages);
+	};
+
+	MessageQueue.prototype.completeMessages = function(serial, count, err) {
+		_util_logger__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].LOG_MICRO, 'MessageQueue.completeMessages()', 'serial = ' + serial + '; count = ' + count);
+		err = err || null;
+		var messages = this.messages;
+		var first = messages[0];
+		if(first) {
+			var startSerial = first.message.msgSerial;
+			var endSerial = serial + count; /* the serial of the first message that is *not* the subject of this call */
+			if(endSerial > startSerial) {
+				var completeMessages = messages.splice(0, (endSerial - startSerial));
+				for(var i = 0; i < completeMessages.length; i++) {
+					completeMessages[i].callback(err);
+				}
+			}
+			if(messages.length == 0)
+				this.emit('idle');
+		}
+	};
+
+	MessageQueue.prototype.completeAllMessages = function(err) {
+		this.completeMessages(0, Number.MAX_SAFE_INTEGER || Number.MAX_VALUE, err);
+	};
+
+	MessageQueue.prototype.clear = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].LOG_MICRO, 'MessageQueue.clear()', 'clearing ' + this.messages.length + ' messages');
+		this.messages = [];
+		this.emit('idle');
+	};
+
+	return MessageQueue;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (MessageQueue);
+
+
+/***/ }),
+/* 27 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _common_lib_util_eventemitter__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
+/* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _common_lib_types_errorinfo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(2);
+/* harmony import */ var platform_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
+/* harmony import */ var _common_lib_util_logger__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(0);
+/* harmony import */ var _common_lib_util_defaults__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(4);
+/* harmony import */ var platform_bufferutils__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(5);
+/* harmony import */ var _util_domevent__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(35);
+
+
+
+
+
+
+
+
+
+
+function getAblyError(responseBody, headers) {
+	if (_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrIn(_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].allToLowerCase(_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].keysArray(headers)), 'x-ably-errorcode')) {
+		return responseBody.error && _common_lib_types_errorinfo__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].fromValues(responseBody.error);
+	}
+}
+
+var XHRRequest = (function() {
+	var noop = function() {};
+	var idCounter = 0;
+	var pendingRequests = {};
+
+	var REQ_SEND = 0,
+		REQ_RECV = 1,
+		REQ_RECV_POLL = 2,
+		REQ_RECV_STREAM = 3;
+
+	function clearPendingRequests() {
+		for(var id in pendingRequests)
+			pendingRequests[id].dispose();
+	}
+
+	var isIE = typeof global !== 'undefined' && global.XDomainRequest;
+
+	function ieVersion() {
+		var match = navigator.userAgent.toString().match(/MSIE\s([\d.]+)/);
+		return match && Number(match[1]);
+	}
+
+	function needJsonEnvelope() {
+		/* IE 10 xhr bug: http://stackoverflow.com/a/16320339 */
+		var version;
+		return isIE && (version = ieVersion()) && version === 10;
+	}
+
+	function getHeader(xhr, header) {
+		return xhr.getResponseHeader && xhr.getResponseHeader(header);
+	}
+
+	/* Safari mysteriously returns 'Identity' for transfer-encoding when in fact
+	 * it is 'chunked'. So instead, decide that it is chunked when
+	 * transfer-encoding is present or content-length is absent.  ('or' because
+	 * when using http2 streaming, there's no transfer-encoding header, but can
+	 * still deduce streaming from lack of content-length) */
+	function isEncodingChunked(xhr) {
+		return xhr.getResponseHeader
+			&& (xhr.getResponseHeader('transfer-encoding')
+			|| !xhr.getResponseHeader('content-length'));
+	}
+
+	function getHeadersAsObject(xhr) {
+		var headerPairs = _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].trim(xhr.getAllResponseHeaders()).split('\r\n'),
+			headers = {};
+		for (var i = 0; i < headerPairs.length; i++) {
+			var parts = _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].arrMap(headerPairs[i].split(':'), _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].trim);
+			headers[parts[0].toLowerCase()] = parts[1];
+		}
+		return headers;
+	}
+
+	function XHRRequest(uri, headers, params, body, requestMode, timeouts, method) {
+		_common_lib_util_eventemitter__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].call(this);
+		params = params || {};
+		params.rnd = _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].cheapRandStr();
+		if(needJsonEnvelope() && !params.envelope)
+			params.envelope = 'json';
+		this.uri = uri + _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].toQueryString(params);
+		this.headers = headers || {};
+		this.body = body;
+		this.method = method ? method.toUpperCase() : (_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isEmptyArg(body) ? 'GET' : 'POST');
+		this.requestMode = requestMode;
+		this.timeouts = timeouts;
+		this.timedOut = false;
+		this.requestComplete = false;
+		pendingRequests[this.id = String(++idCounter)] = this;
+	}
+	_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inherits(XHRRequest, _common_lib_util_eventemitter__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]);
+
+	var createRequest = XHRRequest.createRequest = function(uri, headers, params, body, requestMode, timeouts, method) {
+		/* XHR requests are used either with the context being a realtime
+		 * transport, or with timeouts passed in (for when used by a rest client),
+		 * or completely standalone.  Use the appropriate timeouts in each case */
+		timeouts = timeouts || _common_lib_util_defaults__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].TIMEOUTS;
+		return new XHRRequest(uri, headers, _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].copy(params), body, requestMode, timeouts, method);
+	};
+
+	XHRRequest.prototype.complete = function(err, body, headers, unpacked, statusCode) {
+		if(!this.requestComplete) {
+			this.requestComplete = true;
+			if(!err && body) {
+				this.emit('data', body);
+			}
+			this.emit('complete', err, body, headers, unpacked, statusCode);
+			this.dispose();
+		}
+	};
+
+	XHRRequest.prototype.abort = function() {
+		this.dispose();
+	};
+
+	XHRRequest.prototype.exec = function() {
+		var timeout = (this.requestMode == REQ_SEND) ? this.timeouts.httpRequestTimeout : this.timeouts.recvTimeout,
+			self = this,
+			timer = this.timer = setTimeout(function() {
+				self.timedOut = true;
+				xhr.abort();
+			}, timeout),
+			body = this.body,
+			method = this.method,
+			headers = this.headers,
+			xhr = this.xhr = new XMLHttpRequest(),
+			accept = headers['accept'],
+			responseType = 'text';
+
+		if(!accept) {
+			headers['accept'] = 'application/json';
+		} else if(accept.indexOf('application/x-msgpack') === 0) {
+			responseType = 'arraybuffer';
+		}
+
+		if(body) {
+			var contentType = headers['content-type'] || (headers['content-type'] = 'application/json');
+			if(contentType.indexOf('application/json') > -1 && typeof(body) != 'string')
+				body = JSON.stringify(body);
+		}
+
+		// Can probably remove this directive if https://github.com/nodesecurity/eslint-plugin-security/issues/26 is resolved
+		// eslint-disable-next-line security/detect-non-literal-fs-filename
+		xhr.open(method, this.uri, true);
+		xhr.responseType = responseType;
+
+		if ('authorization' in headers) {
+			xhr.withCredentials = true;
+		}
+
+		for(var h in headers)
+			xhr.setRequestHeader(h, headers[h]);
+
+		var errorHandler = function(errorEvent, message, code, statusCode) {
+			var errorMessage = message + ' (event type: ' + errorEvent.type + ')' + (self.xhr.statusText ? ', current statusText is ' + self.xhr.statusText : '');
+			_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].logAction(_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].LOG_ERROR, 'Request.on' + errorEvent.type + '()', errorMessage);
+			self.complete(new _common_lib_types_errorinfo__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"](errorMessage, code, statusCode));
+		};
+		xhr.onerror = function(errorEvent) {
+			errorHandler(errorEvent, 'XHR error occurred', null, 400);
+		}
+		xhr.onabort = function(errorEvent) {
+			if(self.timedOut) {
+				errorHandler(errorEvent, 'Request aborted due to request timeout expiring', null, 408);
+			} else {
+				errorHandler(errorEvent, 'Request cancelled', null, 400);
+			}
+		};
+		xhr.ontimeout = function(errorEvent) {
+			errorHandler(errorEvent, 'Request timed out', null, 408);
+		};
+
+		var streaming,
+			statusCode,
+			responseBody,
+			contentType,
+			successResponse,
+			streamPos = 0,
+			unpacked = false;
+
+		function onResponse() {
+			clearTimeout(timer);
+			successResponse = (statusCode < 400);
+			if(statusCode == 204) {
+				self.complete(null, null, null, null, statusCode);
+				return;
+			}
+			streaming = (self.requestMode == REQ_RECV_STREAM && successResponse && isEncodingChunked(xhr));
+		}
+
+		function onEnd() {
+			try {
+				var contentType = getHeader(xhr, 'content-type'),
+					headers,
+					responseBody,
+					/* Be liberal in what we accept; buggy auth servers may respond
+					 * without the correct contenttype, but assume they're still
+					 * responding with json */
+					json = contentType ? (contentType.indexOf('application/json') >= 0) : (xhr.responseType == 'text');
+
+				if(json) {
+					/* If we requested msgpack but server responded with json, then since
+					 * we set the responseType expecting msgpack, the response will be
+					 * an ArrayBuffer containing json */
+					responseBody = (xhr.responseType === 'arraybuffer') ? platform_bufferutils__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].utf8Decode(xhr.response) : String(xhr.responseText);
+					if(responseBody.length) {
+						responseBody = JSON.parse(responseBody);
+					}
+					unpacked = true;
+				} else {
+					responseBody = xhr.response;
+				}
+
+				if(responseBody.response !== undefined) {
+					/* unwrap JSON envelope */
+					statusCode = responseBody.statusCode;
+					successResponse = (statusCode < 400);
+					headers = responseBody.headers;
+					responseBody = responseBody.response;
+				} else {
+					headers = getHeadersAsObject(xhr);
+				}
+			} catch(e) {
+				self.complete(new _common_lib_types_errorinfo__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]('Malformed response body from server: ' + e.message, null, 400));
+				return;
+			}
+
+			/* If response is an array, it's an array of protocol messages -- even if
+			 * is contains an error action (hence the nonsuccess statuscode), we can
+			 * consider the request to have succeeded, just pass it on to
+			 * onProtocolMessage to decide what to do */
+			if(successResponse || _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isArray(responseBody)) {
+				self.complete(null, responseBody, headers, unpacked, statusCode);
+				return;
+			}
+
+			var err = getAblyError(responseBody, headers);
+			if(!err) {
+				err = new _common_lib_types_errorinfo__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]('Error response received from server: ' + statusCode + ' body was: ' + _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inspect(responseBody), null, statusCode);
+			}
+			self.complete(err, responseBody, headers, unpacked, statusCode);
+		}
+
+		function onProgress() {
+			responseBody = xhr.responseText;
+			var bodyEnd = responseBody.length - 1, idx, chunk;
+			while((streamPos < bodyEnd) && (idx = responseBody.indexOf('\n', streamPos)) > -1) {
+				chunk = responseBody.slice(streamPos, idx);
+				streamPos = idx + 1;
+				onChunk(chunk);
+			}
+		}
+
+		function onChunk(chunk) {
+			try {
+				chunk = JSON.parse(chunk);
+			} catch(e) {
+				self.complete(new _common_lib_types_errorinfo__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]('Malformed response body from server: ' + e.message, null, 400));
+				return;
+			}
+			self.emit('data', chunk);
+		}
+
+		function onStreamEnd() {
+			onProgress();
+			self.streamComplete = true;
+			_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].nextTick(function() {
+				self.complete();
+			});
+		}
+
+		xhr.onreadystatechange = function() {
+			var readyState = xhr.readyState;
+			if(readyState < 3) return;
+			if(xhr.status !== 0) {
+				if(statusCode === undefined) {
+					statusCode = xhr.status;
+					/* IE returns 1223 for 204: http://bugs.jquery.com/ticket/1450 */
+					if(statusCode === 1223) statusCode = 204;
+					onResponse();
+				}
+				if(readyState == 3 && streaming) {
+					onProgress();
+				} else if(readyState == 4) {
+					if(streaming)
+						onStreamEnd();
+					else
+						onEnd();
+				}
+			}
+		};
+		xhr.send(body);
+	};
+
+	XHRRequest.prototype.dispose = function() {
+		var xhr = this.xhr;
+		if(xhr) {
+			xhr.onreadystatechange = xhr.onerror = xhr.onabort = xhr.ontimeout = noop;
+			this.xhr = null;
+			var timer = this.timer;
+			if(timer) {
+				clearTimeout(timer);
+				this.timer = null;
+			}
+			if(!this.requestComplete)
+				xhr.abort();
+		}
+		delete pendingRequests[this.id];
+	};
+
+	if(platform__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].xhrSupported) {
+		if(typeof _util_domevent__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"] === 'object') {
+			_util_domevent__WEBPACK_IMPORTED_MODULE_8__[/* default */ "a"].addUnloadListener(clearPendingRequests);
+		}
+		if(typeof(platform_http__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"]) !== 'undefined') {
+			platform_http__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].supportsAuthHeaders = true;
+			platform_http__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].Request = function(method, rest, uri, headers, params, body, callback) {
+				var req = createRequest(uri, headers, params, body, REQ_SEND, rest && rest.options.timeouts, method);
+				req.once('complete', callback);
+				req.exec();
+				return req;
+			};
+
+			platform_http__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].checkConnectivity = function(callback) {
+				var upUrl = _common_lib_util_defaults__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].internetUpUrl;
+				_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].logAction(_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].LOG_MICRO, '(XHRRequest)Http.checkConnectivity()', 'Sending; ' + upUrl);
+				platform_http__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].getUri(null, upUrl, null, null, function(err, responseText) {
+					var result = (!err && responseText.replace(/\n/, '') == 'yes');
+					_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].logAction(_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].LOG_MICRO, '(XHRRequest)Http.checkConnectivity()', 'Result: ' + result);
+					callback(null, result);
+				});
+			};
+		}
+	}
+
+	return XHRRequest;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (XHRRequest);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(17)))
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12), __webpack_require__(10), __webpack_require__(47), __webpack_require__(18), __webpack_require__(37), __webpack_require__(36), __webpack_require__(29), __webpack_require__(30), __webpack_require__(31), __webpack_require__(48), __webpack_require__(49));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	return CryptoJS;
+
+}));
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	(function () {
+	    // Shortcuts
+	    var C = CryptoJS;
+	    var C_lib = C.lib;
+	    var Base = C_lib.Base;
+	    var C_enc = C.enc;
+	    var Utf8 = C_enc.Utf8;
+	    var C_algo = C.algo;
+
+	    /**
+	     * HMAC algorithm.
+	     */
+	    var HMAC = C_algo.HMAC = Base.extend({
+	        /**
+	         * Initializes a newly created HMAC.
+	         *
+	         * @param {Hasher} hasher The hash algorithm to use.
+	         * @param {WordArray|string} key The secret key.
+	         *
+	         * @example
+	         *
+	         *     var hmacHasher = CryptoJS.algo.HMAC.create(CryptoJS.algo.SHA256, key);
+	         */
+	        init: function (hasher, key) {
+	            // Init hasher
+	            hasher = this._hasher = new hasher.init();
+
+	            // Convert string to WordArray, else assume WordArray already
+	            if (typeof key == 'string') {
+	                key = Utf8.parse(key);
+	            }
+
+	            // Shortcuts
+	            var hasherBlockSize = hasher.blockSize;
+	            var hasherBlockSizeBytes = hasherBlockSize * 4;
+
+	            // Allow arbitrary length keys
+	            if (key.sigBytes > hasherBlockSizeBytes) {
+	                key = hasher.finalize(key);
+	            }
+
+	            // Clamp excess bits
+	            key.clamp();
+
+	            // Clone key for inner and outer pads
+	            var oKey = this._oKey = key.clone();
+	            var iKey = this._iKey = key.clone();
+
+	            // Shortcuts
+	            var oKeyWords = oKey.words;
+	            var iKeyWords = iKey.words;
+
+	            // XOR keys with pad constants
+	            for (var i = 0; i < hasherBlockSize; i++) {
+	                oKeyWords[i] ^= 0x5c5c5c5c;
+	                iKeyWords[i] ^= 0x36363636;
+	            }
+	            oKey.sigBytes = iKey.sigBytes = hasherBlockSizeBytes;
+
+	            // Set initial values
+	            this.reset();
+	        },
+
+	        /**
+	         * Resets this HMAC to its initial state.
+	         *
+	         * @example
+	         *
+	         *     hmacHasher.reset();
+	         */
+	        reset: function () {
+	            // Shortcut
+	            var hasher = this._hasher;
+
+	            // Reset
+	            hasher.reset();
+	            hasher.update(this._iKey);
+	        },
+
+	        /**
+	         * Updates this HMAC with a message.
+	         *
+	         * @param {WordArray|string} messageUpdate The message to append.
+	         *
+	         * @return {HMAC} This HMAC instance.
+	         *
+	         * @example
+	         *
+	         *     hmacHasher.update('message');
+	         *     hmacHasher.update(wordArray);
+	         */
+	        update: function (messageUpdate) {
+	            this._hasher.update(messageUpdate);
+
+	            // Chainable
+	            return this;
+	        },
+
+	        /**
+	         * Finalizes the HMAC computation.
+	         * Note that the finalize operation is effectively a destructive, read-once operation.
+	         *
+	         * @param {WordArray|string} messageUpdate (Optional) A final message update.
+	         *
+	         * @return {WordArray} The HMAC.
+	         *
+	         * @example
+	         *
+	         *     var hmac = hmacHasher.finalize();
+	         *     var hmac = hmacHasher.finalize('message');
+	         *     var hmac = hmacHasher.finalize(wordArray);
+	         */
+	        finalize: function (messageUpdate) {
+	            // Shortcut
+	            var hasher = this._hasher;
+
+	            // Compute HMAC
+	            var innerHash = hasher.finalize(messageUpdate);
+	            hasher.reset();
+	            var hmac = hasher.finalize(this._oKey.clone().concat(innerHash));
+
+	            return hmac;
+	        }
+	    });
+	}());
+
+
+}));
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12), __webpack_require__(37), __webpack_require__(29));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	(function () {
+	    // Shortcuts
+	    var C = CryptoJS;
+	    var C_lib = C.lib;
+	    var Base = C_lib.Base;
+	    var WordArray = C_lib.WordArray;
+	    var C_algo = C.algo;
+	    var MD5 = C_algo.MD5;
+
+	    /**
+	     * This key derivation function is meant to conform with EVP_BytesToKey.
+	     * www.openssl.org/docs/crypto/EVP_BytesToKey.html
+	     */
+	    var EvpKDF = C_algo.EvpKDF = Base.extend({
+	        /**
+	         * Configuration options.
+	         *
+	         * @property {number} keySize The key size in words to generate. Default: 4 (128 bits)
+	         * @property {Hasher} hasher The hash algorithm to use. Default: MD5
+	         * @property {number} iterations The number of iterations to perform. Default: 1
+	         */
+	        cfg: Base.extend({
+	            keySize: 128/32,
+	            hasher: MD5,
+	            iterations: 1
+	        }),
+
+	        /**
+	         * Initializes a newly created key derivation function.
+	         *
+	         * @param {Object} cfg (Optional) The configuration options to use for the derivation.
+	         *
+	         * @example
+	         *
+	         *     var kdf = CryptoJS.algo.EvpKDF.create();
+	         *     var kdf = CryptoJS.algo.EvpKDF.create({ keySize: 8 });
+	         *     var kdf = CryptoJS.algo.EvpKDF.create({ keySize: 8, iterations: 1000 });
+	         */
+	        init: function (cfg) {
+	            this.cfg = this.cfg.extend(cfg);
+	        },
+
+	        /**
+	         * Derives a key from a password.
+	         *
+	         * @param {WordArray|string} password The password.
+	         * @param {WordArray|string} salt A salt.
+	         *
+	         * @return {WordArray} The derived key.
+	         *
+	         * @example
+	         *
+	         *     var key = kdf.compute(password, salt);
+	         */
+	        compute: function (password, salt) {
+	            var block;
+
+	            // Shortcut
+	            var cfg = this.cfg;
+
+	            // Init hasher
+	            var hasher = cfg.hasher.create();
+
+	            // Initial values
+	            var derivedKey = WordArray.create();
+
+	            // Shortcuts
+	            var derivedKeyWords = derivedKey.words;
+	            var keySize = cfg.keySize;
+	            var iterations = cfg.iterations;
+
+	            // Generate key
+	            while (derivedKeyWords.length < keySize) {
+	                if (block) {
+	                    hasher.update(block);
+	                }
+	                block = hasher.update(password).finalize(salt);
+	                hasher.reset();
+
+	                // Iterations
+	                for (var i = 1; i < iterations; i++) {
+	                    block = hasher.finalize(block);
+	                    hasher.reset();
+	                }
+
+	                derivedKey.concat(block);
+	            }
+	            derivedKey.sigBytes = keySize * 4;
+
+	            return derivedKey;
+	        }
+	    });
+
+	    /**
+	     * Derives a key from a password.
+	     *
+	     * @param {WordArray|string} password The password.
+	     * @param {WordArray|string} salt A salt.
+	     * @param {Object} cfg (Optional) The configuration options to use for this computation.
+	     *
+	     * @return {WordArray} The derived key.
+	     *
+	     * @static
+	     *
+	     * @example
+	     *
+	     *     var key = CryptoJS.EvpKDF(password, salt);
+	     *     var key = CryptoJS.EvpKDF(password, salt, { keySize: 8 });
+	     *     var key = CryptoJS.EvpKDF(password, salt, { keySize: 8, iterations: 1000 });
+	     */
+	    C.EvpKDF = function (password, salt, cfg) {
+	        return EvpKDF.create(cfg).compute(password, salt);
+	    };
+	}());
+
+
+	return CryptoJS.EvpKDF;
+
+}));
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12), __webpack_require__(30));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	/**
+	 * Cipher core components.
+	 */
+	CryptoJS.lib.Cipher || (function (undefined) {
+	    // Shortcuts
+	    var C = CryptoJS;
+	    var C_lib = C.lib;
+	    var Base = C_lib.Base;
+	    var WordArray = C_lib.WordArray;
+	    var BufferedBlockAlgorithm = C_lib.BufferedBlockAlgorithm;
+	    var C_enc = C.enc;
+	    var Utf8 = C_enc.Utf8;
+	    var Base64 = C_enc.Base64;
+	    var C_algo = C.algo;
+	    var EvpKDF = C_algo.EvpKDF;
+
+	    /**
+	     * Abstract base cipher template.
+	     *
+	     * @property {number} keySize This cipher's key size. Default: 4 (128 bits)
+	     * @property {number} ivSize This cipher's IV size. Default: 4 (128 bits)
+	     * @property {number} _ENC_XFORM_MODE A constant representing encryption mode.
+	     * @property {number} _DEC_XFORM_MODE A constant representing decryption mode.
+	     */
+	    var Cipher = C_lib.Cipher = BufferedBlockAlgorithm.extend({
+	        /**
+	         * Configuration options.
+	         *
+	         * @property {WordArray} iv The IV to use for this operation.
+	         */
+	        cfg: Base.extend(),
+
+	        /**
+	         * Creates this cipher in encryption mode.
+	         *
+	         * @param {WordArray} key The key.
+	         * @param {Object} cfg (Optional) The configuration options to use for this operation.
+	         *
+	         * @return {Cipher} A cipher instance.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var cipher = CryptoJS.algo.AES.createEncryptor(keyWordArray, { iv: ivWordArray });
+	         */
+	        createEncryptor: function (key, cfg) {
+	            return this.create(this._ENC_XFORM_MODE, key, cfg);
+	        },
+
+	        /**
+	         * Creates this cipher in decryption mode.
+	         *
+	         * @param {WordArray} key The key.
+	         * @param {Object} cfg (Optional) The configuration options to use for this operation.
+	         *
+	         * @return {Cipher} A cipher instance.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var cipher = CryptoJS.algo.AES.createDecryptor(keyWordArray, { iv: ivWordArray });
+	         */
+	        createDecryptor: function (key, cfg) {
+	            return this.create(this._DEC_XFORM_MODE, key, cfg);
+	        },
+
+	        /**
+	         * Initializes a newly created cipher.
+	         *
+	         * @param {number} xformMode Either the encryption or decryption transormation mode constant.
+	         * @param {WordArray} key The key.
+	         * @param {Object} cfg (Optional) The configuration options to use for this operation.
+	         *
+	         * @example
+	         *
+	         *     var cipher = CryptoJS.algo.AES.create(CryptoJS.algo.AES._ENC_XFORM_MODE, keyWordArray, { iv: ivWordArray });
+	         */
+	        init: function (xformMode, key, cfg) {
+	            // Apply config defaults
+	            this.cfg = this.cfg.extend(cfg);
+
+	            // Store transform mode and key
+	            this._xformMode = xformMode;
+	            this._key = key;
+
+	            // Set initial values
+	            this.reset();
+	        },
+
+	        /**
+	         * Resets this cipher to its initial state.
+	         *
+	         * @example
+	         *
+	         *     cipher.reset();
+	         */
+	        reset: function () {
+	            // Reset data buffer
+	            BufferedBlockAlgorithm.reset.call(this);
+
+	            // Perform concrete-cipher logic
+	            this._doReset();
+	        },
+
+	        /**
+	         * Adds data to be encrypted or decrypted.
+	         *
+	         * @param {WordArray|string} dataUpdate The data to encrypt or decrypt.
+	         *
+	         * @return {WordArray} The data after processing.
+	         *
+	         * @example
+	         *
+	         *     var encrypted = cipher.process('data');
+	         *     var encrypted = cipher.process(wordArray);
+	         */
+	        process: function (dataUpdate) {
+	            // Append
+	            this._append(dataUpdate);
+
+	            // Process available blocks
+	            return this._process();
+	        },
+
+	        /**
+	         * Finalizes the encryption or decryption process.
+	         * Note that the finalize operation is effectively a destructive, read-once operation.
+	         *
+	         * @param {WordArray|string} dataUpdate The final data to encrypt or decrypt.
+	         *
+	         * @return {WordArray} The data after final processing.
+	         *
+	         * @example
+	         *
+	         *     var encrypted = cipher.finalize();
+	         *     var encrypted = cipher.finalize('data');
+	         *     var encrypted = cipher.finalize(wordArray);
+	         */
+	        finalize: function (dataUpdate) {
+	            // Final data update
+	            if (dataUpdate) {
+	                this._append(dataUpdate);
+	            }
+
+	            // Perform concrete-cipher logic
+	            var finalProcessedData = this._doFinalize();
+
+	            return finalProcessedData;
+	        },
+
+	        keySize: 128/32,
+
+	        ivSize: 128/32,
+
+	        _ENC_XFORM_MODE: 1,
+
+	        _DEC_XFORM_MODE: 2,
+
+	        /**
+	         * Creates shortcut functions to a cipher's object interface.
+	         *
+	         * @param {Cipher} cipher The cipher to create a helper for.
+	         *
+	         * @return {Object} An object with encrypt and decrypt shortcut functions.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var AES = CryptoJS.lib.Cipher._createHelper(CryptoJS.algo.AES);
+	         */
+	        _createHelper: (function () {
+	            function selectCipherStrategy(key) {
+	                if (typeof key == 'string') {
+	                    return PasswordBasedCipher;
+	                } else {
+	                    return SerializableCipher;
+	                }
+	            }
+
+	            return function (cipher) {
+	                return {
+	                    encrypt: function (message, key, cfg) {
+	                        return selectCipherStrategy(key).encrypt(cipher, message, key, cfg);
+	                    },
+
+	                    decrypt: function (ciphertext, key, cfg) {
+	                        return selectCipherStrategy(key).decrypt(cipher, ciphertext, key, cfg);
+	                    }
+	                };
+	            };
+	        }())
+	    });
+
+	    /**
+	     * Abstract base stream cipher template.
+	     *
+	     * @property {number} blockSize The number of 32-bit words this cipher operates on. Default: 1 (32 bits)
+	     */
+	    var StreamCipher = C_lib.StreamCipher = Cipher.extend({
+	        _doFinalize: function () {
+	            // Process partial blocks
+	            var finalProcessedBlocks = this._process(!!'flush');
+
+	            return finalProcessedBlocks;
+	        },
+
+	        blockSize: 1
+	    });
+
+	    /**
+	     * Mode namespace.
+	     */
+	    var C_mode = C.mode = {};
+
+	    /**
+	     * Abstract base block cipher mode template.
+	     */
+	    var BlockCipherMode = C_lib.BlockCipherMode = Base.extend({
+	        /**
+	         * Creates this mode for encryption.
+	         *
+	         * @param {Cipher} cipher A block cipher instance.
+	         * @param {Array} iv The IV words.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var mode = CryptoJS.mode.CBC.createEncryptor(cipher, iv.words);
+	         */
+	        createEncryptor: function (cipher, iv) {
+	            return this.Encryptor.create(cipher, iv);
+	        },
+
+	        /**
+	         * Creates this mode for decryption.
+	         *
+	         * @param {Cipher} cipher A block cipher instance.
+	         * @param {Array} iv The IV words.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var mode = CryptoJS.mode.CBC.createDecryptor(cipher, iv.words);
+	         */
+	        createDecryptor: function (cipher, iv) {
+	            return this.Decryptor.create(cipher, iv);
+	        },
+
+	        /**
+	         * Initializes a newly created mode.
+	         *
+	         * @param {Cipher} cipher A block cipher instance.
+	         * @param {Array} iv The IV words.
+	         *
+	         * @example
+	         *
+	         *     var mode = CryptoJS.mode.CBC.Encryptor.create(cipher, iv.words);
+	         */
+	        init: function (cipher, iv) {
+	            this._cipher = cipher;
+	            this._iv = iv;
+	        }
+	    });
+
+	    /**
+	     * Cipher Block Chaining mode.
+	     */
+	    var CBC = C_mode.CBC = (function () {
+	        /**
+	         * Abstract base CBC mode.
+	         */
+	        var CBC = BlockCipherMode.extend();
+
+	        /**
+	         * CBC encryptor.
+	         */
+	        CBC.Encryptor = CBC.extend({
+	            /**
+	             * Processes the data block at offset.
+	             *
+	             * @param {Array} words The data words to operate on.
+	             * @param {number} offset The offset where the block starts.
+	             *
+	             * @example
+	             *
+	             *     mode.processBlock(data.words, offset);
+	             */
+	            processBlock: function (words, offset) {
+	                // Shortcuts
+	                var cipher = this._cipher;
+	                var blockSize = cipher.blockSize;
+
+	                // XOR and encrypt
+	                xorBlock.call(this, words, offset, blockSize);
+	                cipher.encryptBlock(words, offset);
+
+	                // Remember this block to use with next block
+	                this._prevBlock = words.slice(offset, offset + blockSize);
+	            }
+	        });
+
+	        /**
+	         * CBC decryptor.
+	         */
+	        CBC.Decryptor = CBC.extend({
+	            /**
+	             * Processes the data block at offset.
+	             *
+	             * @param {Array} words The data words to operate on.
+	             * @param {number} offset The offset where the block starts.
+	             *
+	             * @example
+	             *
+	             *     mode.processBlock(data.words, offset);
+	             */
+	            processBlock: function (words, offset) {
+	                // Shortcuts
+	                var cipher = this._cipher;
+	                var blockSize = cipher.blockSize;
+
+	                // Remember this block to use with next block
+	                var thisBlock = words.slice(offset, offset + blockSize);
+
+	                // Decrypt and XOR
+	                cipher.decryptBlock(words, offset);
+	                xorBlock.call(this, words, offset, blockSize);
+
+	                // This block becomes the previous block
+	                this._prevBlock = thisBlock;
+	            }
+	        });
+
+	        function xorBlock(words, offset, blockSize) {
+	            var block;
+
+	            // Shortcut
+	            var iv = this._iv;
+
+	            // Choose mixing block
+	            if (iv) {
+	                block = iv;
+
+	                // Remove IV for subsequent blocks
+	                this._iv = undefined;
+	            } else {
+	                block = this._prevBlock;
+	            }
+
+	            // XOR blocks
+	            for (var i = 0; i < blockSize; i++) {
+	                words[offset + i] ^= block[i];
+	            }
+	        }
+
+	        return CBC;
+	    }());
+
+	    /**
+	     * Padding namespace.
+	     */
+	    var C_pad = C.pad = {};
+
+	    /**
+	     * PKCS #5/7 padding strategy.
+	     */
+	    var Pkcs7 = C_pad.Pkcs7 = {
+	        /**
+	         * Pads data using the algorithm defined in PKCS #5/7.
+	         *
+	         * @param {WordArray} data The data to pad.
+	         * @param {number} blockSize The multiple that the data should be padded to.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     CryptoJS.pad.Pkcs7.pad(wordArray, 4);
+	         */
+	        pad: function (data, blockSize) {
+	            // Shortcut
+	            var blockSizeBytes = blockSize * 4;
+
+	            // Count padding bytes
+	            var nPaddingBytes = blockSizeBytes - data.sigBytes % blockSizeBytes;
+
+	            // Create padding word
+	            var paddingWord = (nPaddingBytes << 24) | (nPaddingBytes << 16) | (nPaddingBytes << 8) | nPaddingBytes;
+
+	            // Create padding
+	            var paddingWords = [];
+	            for (var i = 0; i < nPaddingBytes; i += 4) {
+	                paddingWords.push(paddingWord);
+	            }
+	            var padding = WordArray.create(paddingWords, nPaddingBytes);
+
+	            // Add padding
+	            data.concat(padding);
+	        },
+
+	        /**
+	         * Unpads data that had been padded using the algorithm defined in PKCS #5/7.
+	         *
+	         * @param {WordArray} data The data to unpad.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     CryptoJS.pad.Pkcs7.unpad(wordArray);
+	         */
+	        unpad: function (data) {
+	            // Get number of padding bytes from last byte
+	            var nPaddingBytes = data.words[(data.sigBytes - 1) >>> 2] & 0xff;
+
+	            // Remove padding
+	            data.sigBytes -= nPaddingBytes;
+	        }
+	    };
+
+	    /**
+	     * Abstract base block cipher template.
+	     *
+	     * @property {number} blockSize The number of 32-bit words this cipher operates on. Default: 4 (128 bits)
+	     */
+	    var BlockCipher = C_lib.BlockCipher = Cipher.extend({
+	        /**
+	         * Configuration options.
+	         *
+	         * @property {Mode} mode The block mode to use. Default: CBC
+	         * @property {Padding} padding The padding strategy to use. Default: Pkcs7
+	         */
+	        cfg: Cipher.cfg.extend({
+	            mode: CBC,
+	            padding: Pkcs7
+	        }),
+
+	        reset: function () {
+	            var modeCreator;
+
+	            // Reset cipher
+	            Cipher.reset.call(this);
+
+	            // Shortcuts
+	            var cfg = this.cfg;
+	            var iv = cfg.iv;
+	            var mode = cfg.mode;
+
+	            // Reset block mode
+	            if (this._xformMode == this._ENC_XFORM_MODE) {
+	                modeCreator = mode.createEncryptor;
+	            } else /* if (this._xformMode == this._DEC_XFORM_MODE) */ {
+	                modeCreator = mode.createDecryptor;
+	                // Keep at least one block in the buffer for unpadding
+	                this._minBufferSize = 1;
+	            }
+
+	            if (this._mode && this._mode.__creator == modeCreator) {
+	                this._mode.init(this, iv && iv.words);
+	            } else {
+	                this._mode = modeCreator.call(mode, this, iv && iv.words);
+	                this._mode.__creator = modeCreator;
+	            }
+	        },
+
+	        _doProcessBlock: function (words, offset) {
+	            this._mode.processBlock(words, offset);
+	        },
+
+	        _doFinalize: function () {
+	            var finalProcessedBlocks;
+
+	            // Shortcut
+	            var padding = this.cfg.padding;
+
+	            // Finalize
+	            if (this._xformMode == this._ENC_XFORM_MODE) {
+	                // Pad data
+	                padding.pad(this._data, this.blockSize);
+
+	                // Process final blocks
+	                finalProcessedBlocks = this._process(!!'flush');
+	            } else /* if (this._xformMode == this._DEC_XFORM_MODE) */ {
+	                // Process final blocks
+	                finalProcessedBlocks = this._process(!!'flush');
+
+	                // Unpad data
+	                padding.unpad(finalProcessedBlocks);
+	            }
+
+	            return finalProcessedBlocks;
+	        },
+
+	        blockSize: 128/32
+	    });
+
+	    /**
+	     * A collection of cipher parameters.
+	     *
+	     * @property {WordArray} ciphertext The raw ciphertext.
+	     * @property {WordArray} key The key to this ciphertext.
+	     * @property {WordArray} iv The IV used in the ciphering operation.
+	     * @property {WordArray} salt The salt used with a key derivation function.
+	     * @property {Cipher} algorithm The cipher algorithm.
+	     * @property {Mode} mode The block mode used in the ciphering operation.
+	     * @property {Padding} padding The padding scheme used in the ciphering operation.
+	     * @property {number} blockSize The block size of the cipher.
+	     * @property {Format} formatter The default formatting strategy to convert this cipher params object to a string.
+	     */
+	    var CipherParams = C_lib.CipherParams = Base.extend({
+	        /**
+	         * Initializes a newly created cipher params object.
+	         *
+	         * @param {Object} cipherParams An object with any of the possible cipher parameters.
+	         *
+	         * @example
+	         *
+	         *     var cipherParams = CryptoJS.lib.CipherParams.create({
+	         *         ciphertext: ciphertextWordArray,
+	         *         key: keyWordArray,
+	         *         iv: ivWordArray,
+	         *         salt: saltWordArray,
+	         *         algorithm: CryptoJS.algo.AES,
+	         *         mode: CryptoJS.mode.CBC,
+	         *         padding: CryptoJS.pad.PKCS7,
+	         *         blockSize: 4,
+	         *         formatter: CryptoJS.format.OpenSSL
+	         *     });
+	         */
+	        init: function (cipherParams) {
+	            this.mixIn(cipherParams);
+	        },
+
+	        /**
+	         * Converts this cipher params object to a string.
+	         *
+	         * @param {Format} formatter (Optional) The formatting strategy to use.
+	         *
+	         * @return {string} The stringified cipher params.
+	         *
+	         * @throws Error If neither the formatter nor the default formatter is set.
+	         *
+	         * @example
+	         *
+	         *     var string = cipherParams + '';
+	         *     var string = cipherParams.toString();
+	         *     var string = cipherParams.toString(CryptoJS.format.OpenSSL);
+	         */
+	        toString: function (formatter) {
+	            return (formatter || this.formatter).stringify(this);
+	        }
+	    });
+
+	    /**
+	     * Format namespace.
+	     */
+	    var C_format = C.format = {};
+
+	    /**
+	     * OpenSSL formatting strategy.
+	     */
+	    var OpenSSLFormatter = C_format.OpenSSL = {
+	        /**
+	         * Converts a cipher params object to an OpenSSL-compatible string.
+	         *
+	         * @param {CipherParams} cipherParams The cipher params object.
+	         *
+	         * @return {string} The OpenSSL-compatible string.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var openSSLString = CryptoJS.format.OpenSSL.stringify(cipherParams);
+	         */
+	        stringify: function (cipherParams) {
+	            var wordArray;
+
+	            // Shortcuts
+	            var ciphertext = cipherParams.ciphertext;
+	            var salt = cipherParams.salt;
+
+	            // Format
+	            if (salt) {
+	                wordArray = WordArray.create([0x53616c74, 0x65645f5f]).concat(salt).concat(ciphertext);
+	            } else {
+	                wordArray = ciphertext;
+	            }
+
+	            return wordArray.toString(Base64);
+	        },
+
+	        /**
+	         * Converts an OpenSSL-compatible string to a cipher params object.
+	         *
+	         * @param {string} openSSLStr The OpenSSL-compatible string.
+	         *
+	         * @return {CipherParams} The cipher params object.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var cipherParams = CryptoJS.format.OpenSSL.parse(openSSLString);
+	         */
+	        parse: function (openSSLStr) {
+	            var salt;
+
+	            // Parse base64
+	            var ciphertext = Base64.parse(openSSLStr);
+
+	            // Shortcut
+	            var ciphertextWords = ciphertext.words;
+
+	            // Test for salt
+	            if (ciphertextWords[0] == 0x53616c74 && ciphertextWords[1] == 0x65645f5f) {
+	                // Extract salt
+	                salt = WordArray.create(ciphertextWords.slice(2, 4));
+
+	                // Remove salt from ciphertext
+	                ciphertextWords.splice(0, 4);
+	                ciphertext.sigBytes -= 16;
+	            }
+
+	            return CipherParams.create({ ciphertext: ciphertext, salt: salt });
+	        }
+	    };
+
+	    /**
+	     * A cipher wrapper that returns ciphertext as a serializable cipher params object.
+	     */
+	    var SerializableCipher = C_lib.SerializableCipher = Base.extend({
+	        /**
+	         * Configuration options.
+	         *
+	         * @property {Formatter} format The formatting strategy to convert cipher param objects to and from a string. Default: OpenSSL
+	         */
+	        cfg: Base.extend({
+	            format: OpenSSLFormatter
+	        }),
+
+	        /**
+	         * Encrypts a message.
+	         *
+	         * @param {Cipher} cipher The cipher algorithm to use.
+	         * @param {WordArray|string} message The message to encrypt.
+	         * @param {WordArray} key The key.
+	         * @param {Object} cfg (Optional) The configuration options to use for this operation.
+	         *
+	         * @return {CipherParams} A cipher params object.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key);
+	         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key, { iv: iv });
+	         *     var ciphertextParams = CryptoJS.lib.SerializableCipher.encrypt(CryptoJS.algo.AES, message, key, { iv: iv, format: CryptoJS.format.OpenSSL });
+	         */
+	        encrypt: function (cipher, message, key, cfg) {
+	            // Apply config defaults
+	            cfg = this.cfg.extend(cfg);
+
+	            // Encrypt
+	            var encryptor = cipher.createEncryptor(key, cfg);
+	            var ciphertext = encryptor.finalize(message);
+
+	            // Shortcut
+	            var cipherCfg = encryptor.cfg;
+
+	            // Create and return serializable cipher params
+	            return CipherParams.create({
+	                ciphertext: ciphertext,
+	                key: key,
+	                iv: cipherCfg.iv,
+	                algorithm: cipher,
+	                mode: cipherCfg.mode,
+	                padding: cipherCfg.padding,
+	                blockSize: cipher.blockSize,
+	                formatter: cfg.format
+	            });
+	        },
+
+	        /**
+	         * Decrypts serialized ciphertext.
+	         *
+	         * @param {Cipher} cipher The cipher algorithm to use.
+	         * @param {CipherParams|string} ciphertext The ciphertext to decrypt.
+	         * @param {WordArray} key The key.
+	         * @param {Object} cfg (Optional) The configuration options to use for this operation.
+	         *
+	         * @return {WordArray} The plaintext.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var plaintext = CryptoJS.lib.SerializableCipher.decrypt(CryptoJS.algo.AES, formattedCiphertext, key, { iv: iv, format: CryptoJS.format.OpenSSL });
+	         *     var plaintext = CryptoJS.lib.SerializableCipher.decrypt(CryptoJS.algo.AES, ciphertextParams, key, { iv: iv, format: CryptoJS.format.OpenSSL });
+	         */
+	        decrypt: function (cipher, ciphertext, key, cfg) {
+	            // Apply config defaults
+	            cfg = this.cfg.extend(cfg);
+
+	            // Convert string to CipherParams
+	            ciphertext = this._parse(ciphertext, cfg.format);
+
+	            // Decrypt
+	            var plaintext = cipher.createDecryptor(key, cfg).finalize(ciphertext.ciphertext);
+
+	            return plaintext;
+	        },
+
+	        /**
+	         * Converts serialized ciphertext to CipherParams,
+	         * else assumed CipherParams already and returns ciphertext unchanged.
+	         *
+	         * @param {CipherParams|string} ciphertext The ciphertext.
+	         * @param {Formatter} format The formatting strategy to use to parse serialized ciphertext.
+	         *
+	         * @return {CipherParams} The unserialized ciphertext.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var ciphertextParams = CryptoJS.lib.SerializableCipher._parse(ciphertextStringOrParams, format);
+	         */
+	        _parse: function (ciphertext, format) {
+	            if (typeof ciphertext == 'string') {
+	                return format.parse(ciphertext, this);
+	            } else {
+	                return ciphertext;
+	            }
+	        }
+	    });
+
+	    /**
+	     * Key derivation function namespace.
+	     */
+	    var C_kdf = C.kdf = {};
+
+	    /**
+	     * OpenSSL key derivation function.
+	     */
+	    var OpenSSLKdf = C_kdf.OpenSSL = {
+	        /**
+	         * Derives a key and IV from a password.
+	         *
+	         * @param {string} password The password to derive from.
+	         * @param {number} keySize The size in words of the key to generate.
+	         * @param {number} ivSize The size in words of the IV to generate.
+	         * @param {WordArray|string} salt (Optional) A 64-bit salt to use. If omitted, a salt will be generated randomly.
+	         *
+	         * @return {CipherParams} A cipher params object with the key, IV, and salt.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var derivedParams = CryptoJS.kdf.OpenSSL.execute('Password', 256/32, 128/32);
+	         *     var derivedParams = CryptoJS.kdf.OpenSSL.execute('Password', 256/32, 128/32, 'saltsalt');
+	         */
+	        execute: function (password, keySize, ivSize, salt) {
+	            // Generate random salt
+	            if (!salt) {
+	                salt = WordArray.random(64/8);
+	            }
+
+	            // Derive key and IV
+	            var key = EvpKDF.create({ keySize: keySize + ivSize }).compute(password, salt);
+
+	            // Separate key and IV
+	            var iv = WordArray.create(key.words.slice(keySize), ivSize * 4);
+	            key.sigBytes = keySize * 4;
+
+	            // Return params
+	            return CipherParams.create({ key: key, iv: iv, salt: salt });
+	        }
+	    };
+
+	    /**
+	     * A serializable cipher wrapper that derives the key from a password,
+	     * and returns ciphertext as a serializable cipher params object.
+	     */
+	    var PasswordBasedCipher = C_lib.PasswordBasedCipher = SerializableCipher.extend({
+	        /**
+	         * Configuration options.
+	         *
+	         * @property {KDF} kdf The key derivation function to use to generate a key and IV from a password. Default: OpenSSL
+	         */
+	        cfg: SerializableCipher.cfg.extend({
+	            kdf: OpenSSLKdf
+	        }),
+
+	        /**
+	         * Encrypts a message using a password.
+	         *
+	         * @param {Cipher} cipher The cipher algorithm to use.
+	         * @param {WordArray|string} message The message to encrypt.
+	         * @param {string} password The password.
+	         * @param {Object} cfg (Optional) The configuration options to use for this operation.
+	         *
+	         * @return {CipherParams} A cipher params object.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var ciphertextParams = CryptoJS.lib.PasswordBasedCipher.encrypt(CryptoJS.algo.AES, message, 'password');
+	         *     var ciphertextParams = CryptoJS.lib.PasswordBasedCipher.encrypt(CryptoJS.algo.AES, message, 'password', { format: CryptoJS.format.OpenSSL });
+	         */
+	        encrypt: function (cipher, message, password, cfg) {
+	            // Apply config defaults
+	            cfg = this.cfg.extend(cfg);
+
+	            // Derive key and other params
+	            var derivedParams = cfg.kdf.execute(password, cipher.keySize, cipher.ivSize);
+
+	            // Add IV to config
+	            cfg.iv = derivedParams.iv;
+
+	            // Encrypt
+	            var ciphertext = SerializableCipher.encrypt.call(this, cipher, message, derivedParams.key, cfg);
+
+	            // Mix in derived params
+	            ciphertext.mixIn(derivedParams);
+
+	            return ciphertext;
+	        },
+
+	        /**
+	         * Decrypts serialized ciphertext using a password.
+	         *
+	         * @param {Cipher} cipher The cipher algorithm to use.
+	         * @param {CipherParams|string} ciphertext The ciphertext to decrypt.
+	         * @param {string} password The password.
+	         * @param {Object} cfg (Optional) The configuration options to use for this operation.
+	         *
+	         * @return {WordArray} The plaintext.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var plaintext = CryptoJS.lib.PasswordBasedCipher.decrypt(CryptoJS.algo.AES, formattedCiphertext, 'password', { format: CryptoJS.format.OpenSSL });
+	         *     var plaintext = CryptoJS.lib.PasswordBasedCipher.decrypt(CryptoJS.algo.AES, ciphertextParams, 'password', { format: CryptoJS.format.OpenSSL });
+	         */
+	        decrypt: function (cipher, ciphertext, password, cfg) {
+	            // Apply config defaults
+	            cfg = this.cfg.extend(cfg);
+
+	            // Convert string to CipherParams
+	            ciphertext = this._parse(ciphertext, cfg.format);
+
+	            // Derive key and other params
+	            var derivedParams = cfg.kdf.execute(password, cipher.keySize, cipher.ivSize, ciphertext.salt);
+
+	            // Add IV to config
+	            cfg.iv = derivedParams.iv;
+
+	            // Decrypt
+	            var plaintext = SerializableCipher.decrypt.call(this, cipher, ciphertext, derivedParams.key, cfg);
+
+	            return plaintext;
+	        }
+	    });
+	}());
+
+
+}));
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	return CryptoJS.enc.Hex;
+
+}));
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	return CryptoJS.enc.Utf8;
+
+}));
+
+/***/ }),
+/* 34 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(8);
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+/* harmony import */ var _util_eventemitter__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(7);
+/* harmony import */ var _util_logger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(0);
+/* harmony import */ var _messagequeue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(26);
+/* harmony import */ var _types_errorinfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2);
+
+
+
+
+
+
+
+var Protocol = (function() {
+	var actions = _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].Action;
+
+	function Protocol(transport) {
+		_util_eventemitter__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].call(this);
+		this.transport = transport;
+		this.messageQueue = new _messagequeue__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"]();
+		var self = this;
+		transport.on('ack', function(serial, count) { self.onAck(serial, count); });
+		transport.on('nack', function(serial, count, err) { self.onNack(serial, count, err); });
+	}
+	_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inherits(Protocol, _util_eventemitter__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"]);
+
+	Protocol.prototype.onAck = function(serial, count) {
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MICRO, 'Protocol.onAck()', 'serial = ' + serial + '; count = ' + count);
+		this.messageQueue.completeMessages(serial, count);
+	};
+
+	Protocol.prototype.onNack = function(serial, count, err) {
+		_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_ERROR, 'Protocol.onNack()', 'serial = ' + serial + '; count = ' + count + '; err = ' + _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inspectError(err));
+		if(!err) {
+			err = new _types_errorinfo__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]('Unable to send message; channel not responding', 50001, 500);
+		}
+		this.messageQueue.completeMessages(serial, count, err);
+	};
+
+	Protocol.prototype.onceIdle = function(listener) {
+		var messageQueue = this.messageQueue;
+		if(messageQueue.count() === 0) {
+			listener();
+			return;
+		}
+		messageQueue.once('idle', listener);
+	};
+
+	Protocol.prototype.send = function(pendingMessage) {
+		if(pendingMessage.ackRequired) {
+			this.messageQueue.push(pendingMessage);
+		}
+		if (_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].shouldLog(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MICRO)) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].LOG_MICRO, 'Protocol.send()', 'sending msg; ' + _types_protocolmessage__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].stringify(pendingMessage.message));
+		}
+		pendingMessage.sendAttempted = true;
+		this.transport.send(pendingMessage.message);
+	};
+
+	Protocol.prototype.getTransport = function() {
+		return this.transport;
+	};
+
+	Protocol.prototype.getPendingMessages = function() {
+		return this.messageQueue.copyAll();
+	};
+
+	Protocol.prototype.clearPendingMessages = function() {
+		return this.messageQueue.clear();
+	};
+
+	Protocol.prototype.finish = function() {
+		var transport = this.transport;
+		this.onceIdle(function() {
+			transport.disconnect();
+		});
+	};
+
+	function PendingMessage(message, callback) {
+		this.message = message;
+		this.callback = callback;
+		this.merged = false;
+		var action = message.action;
+		this.sendAttempted = false;
+		this.ackRequired = (action == actions.MESSAGE || action == actions.PRESENCE);
+	}
+	Protocol.PendingMessage = PendingMessage;
+
+	return Protocol;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (Protocol);
+
+
+/***/ }),
+/* 35 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {var DomEvent = (function() {
+	function DomEvent() {}
+
+	DomEvent.addListener = function(target, event, listener) {
+		if(target.addEventListener) {
+			target.addEventListener(event, listener, false);
+		} else {
+			target.attachEvent('on'+event, function() { listener.apply(target, arguments); });
+		}
+	};
+
+	DomEvent.removeListener = function(target, event, listener) {
+		if(target.removeEventListener) {
+			target.removeEventListener(event, listener, false);
+		} else {
+			target.detachEvent('on'+event, function() { listener.apply(target, arguments); });
+		}
+	};
+
+	DomEvent.addMessageListener = function(target, listener) {
+		DomEvent.addListener(target, 'message', listener);
+	};
+
+	DomEvent.removeMessageListener = function(target, listener) {
+		DomEvent.removeListener(target, 'message', listener);
+	};
+
+	DomEvent.addUnloadListener = function(listener) {
+		DomEvent.addListener(global, 'unload', listener);
+	};
+
+	return DomEvent;
+})();
+
+/* harmony default export */ __webpack_exports__["a"] = (DomEvent);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(17)))
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	(function (Math) {
+	    // Shortcuts
+	    var C = CryptoJS;
+	    var C_lib = C.lib;
+	    var WordArray = C_lib.WordArray;
+	    var Hasher = C_lib.Hasher;
+	    var C_algo = C.algo;
+
+	    // Initialization and round constants tables
+	    var H = [];
+	    var K = [];
+
+	    // Compute constants
+	    (function () {
+	        function isPrime(n) {
+	            var sqrtN = Math.sqrt(n);
+	            for (var factor = 2; factor <= sqrtN; factor++) {
+	                if (!(n % factor)) {
+	                    return false;
+	                }
+	            }
+
+	            return true;
+	        }
+
+	        function getFractionalBits(n) {
+	            return ((n - (n | 0)) * 0x100000000) | 0;
+	        }
+
+	        var n = 2;
+	        var nPrime = 0;
+	        while (nPrime < 64) {
+	            if (isPrime(n)) {
+	                if (nPrime < 8) {
+	                    H[nPrime] = getFractionalBits(Math.pow(n, 1 / 2));
+	                }
+	                K[nPrime] = getFractionalBits(Math.pow(n, 1 / 3));
+
+	                nPrime++;
+	            }
+
+	            n++;
+	        }
+	    }());
+
+	    // Reusable object
+	    var W = [];
+
+	    /**
+	     * SHA-256 hash algorithm.
+	     */
+	    var SHA256 = C_algo.SHA256 = Hasher.extend({
+	        _doReset: function () {
+	            this._hash = new WordArray.init(H.slice(0));
+	        },
+
+	        _doProcessBlock: function (M, offset) {
+	            // Shortcut
+	            var H = this._hash.words;
+
+	            // Working variables
+	            var a = H[0];
+	            var b = H[1];
+	            var c = H[2];
+	            var d = H[3];
+	            var e = H[4];
+	            var f = H[5];
+	            var g = H[6];
+	            var h = H[7];
+
+	            // Computation
+	            for (var i = 0; i < 64; i++) {
+	                if (i < 16) {
+	                    W[i] = M[offset + i] | 0;
+	                } else {
+	                    var gamma0x = W[i - 15];
+	                    var gamma0  = ((gamma0x << 25) | (gamma0x >>> 7))  ^
+	                                  ((gamma0x << 14) | (gamma0x >>> 18)) ^
+	                                   (gamma0x >>> 3);
+
+	                    var gamma1x = W[i - 2];
+	                    var gamma1  = ((gamma1x << 15) | (gamma1x >>> 17)) ^
+	                                  ((gamma1x << 13) | (gamma1x >>> 19)) ^
+	                                   (gamma1x >>> 10);
+
+	                    W[i] = gamma0 + W[i - 7] + gamma1 + W[i - 16];
+	                }
+
+	                var ch  = (e & f) ^ (~e & g);
+	                var maj = (a & b) ^ (a & c) ^ (b & c);
+
+	                var sigma0 = ((a << 30) | (a >>> 2)) ^ ((a << 19) | (a >>> 13)) ^ ((a << 10) | (a >>> 22));
+	                var sigma1 = ((e << 26) | (e >>> 6)) ^ ((e << 21) | (e >>> 11)) ^ ((e << 7)  | (e >>> 25));
+
+	                var t1 = h + sigma1 + ch + K[i] + W[i];
+	                var t2 = sigma0 + maj;
+
+	                h = g;
+	                g = f;
+	                f = e;
+	                e = (d + t1) | 0;
+	                d = c;
+	                c = b;
+	                b = a;
+	                a = (t1 + t2) | 0;
+	            }
+
+	            // Intermediate hash value
+	            H[0] = (H[0] + a) | 0;
+	            H[1] = (H[1] + b) | 0;
+	            H[2] = (H[2] + c) | 0;
+	            H[3] = (H[3] + d) | 0;
+	            H[4] = (H[4] + e) | 0;
+	            H[5] = (H[5] + f) | 0;
+	            H[6] = (H[6] + g) | 0;
+	            H[7] = (H[7] + h) | 0;
+	        },
+
+	        _doFinalize: function () {
+	            // Shortcuts
+	            var data = this._data;
+	            var dataWords = data.words;
+
+	            var nBitsTotal = this._nDataBytes * 8;
+	            var nBitsLeft = data.sigBytes * 8;
+
+	            // Add padding
+	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32);
+	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 14] = Math.floor(nBitsTotal / 0x100000000);
+	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 15] = nBitsTotal;
+	            data.sigBytes = dataWords.length * 4;
+
+	            // Hash final blocks
+	            this._process();
+
+	            // Return final computed hash
+	            return this._hash;
+	        },
+
+	        clone: function () {
+	            var clone = Hasher.clone.call(this);
+	            clone._hash = this._hash.clone();
+
+	            return clone;
+	        }
+	    });
+
+	    /**
+	     * Shortcut function to the hasher's object interface.
+	     *
+	     * @param {WordArray|string} message The message to hash.
+	     *
+	     * @return {WordArray} The hash.
+	     *
+	     * @static
+	     *
+	     * @example
+	     *
+	     *     var hash = CryptoJS.SHA256('message');
+	     *     var hash = CryptoJS.SHA256(wordArray);
+	     */
+	    C.SHA256 = Hasher._createHelper(SHA256);
+
+	    /**
+	     * Shortcut function to the HMAC's object interface.
+	     *
+	     * @param {WordArray|string} message The message to hash.
+	     * @param {WordArray|string} key The secret key.
+	     *
+	     * @return {WordArray} The HMAC.
+	     *
+	     * @static
+	     *
+	     * @example
+	     *
+	     *     var hmac = CryptoJS.HmacSHA256(message, key);
+	     */
+	    C.HmacSHA256 = Hasher._createHmacHelper(SHA256);
+	}(Math));
+
+
+	return CryptoJS.SHA256;
+
+}));
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	(function () {
+	    // Shortcuts
+	    var C = CryptoJS;
+	    var C_lib = C.lib;
+	    var WordArray = C_lib.WordArray;
+	    var Hasher = C_lib.Hasher;
+	    var C_algo = C.algo;
+
+	    // Reusable object
+	    var W = [];
+
+	    /**
+	     * SHA-1 hash algorithm.
+	     */
+	    var SHA1 = C_algo.SHA1 = Hasher.extend({
+	        _doReset: function () {
+	            this._hash = new WordArray.init([
+	                0x67452301, 0xefcdab89,
+	                0x98badcfe, 0x10325476,
+	                0xc3d2e1f0
+	            ]);
+	        },
+
+	        _doProcessBlock: function (M, offset) {
+	            // Shortcut
+	            var H = this._hash.words;
+
+	            // Working variables
+	            var a = H[0];
+	            var b = H[1];
+	            var c = H[2];
+	            var d = H[3];
+	            var e = H[4];
+
+	            // Computation
+	            for (var i = 0; i < 80; i++) {
+	                if (i < 16) {
+	                    W[i] = M[offset + i] | 0;
+	                } else {
+	                    var n = W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16];
+	                    W[i] = (n << 1) | (n >>> 31);
+	                }
+
+	                var t = ((a << 5) | (a >>> 27)) + e + W[i];
+	                if (i < 20) {
+	                    t += ((b & c) | (~b & d)) + 0x5a827999;
+	                } else if (i < 40) {
+	                    t += (b ^ c ^ d) + 0x6ed9eba1;
+	                } else if (i < 60) {
+	                    t += ((b & c) | (b & d) | (c & d)) - 0x70e44324;
+	                } else /* if (i < 80) */ {
+	                    t += (b ^ c ^ d) - 0x359d3e2a;
+	                }
+
+	                e = d;
+	                d = c;
+	                c = (b << 30) | (b >>> 2);
+	                b = a;
+	                a = t;
+	            }
+
+	            // Intermediate hash value
+	            H[0] = (H[0] + a) | 0;
+	            H[1] = (H[1] + b) | 0;
+	            H[2] = (H[2] + c) | 0;
+	            H[3] = (H[3] + d) | 0;
+	            H[4] = (H[4] + e) | 0;
+	        },
+
+	        _doFinalize: function () {
+	            // Shortcuts
+	            var data = this._data;
+	            var dataWords = data.words;
+
+	            var nBitsTotal = this._nDataBytes * 8;
+	            var nBitsLeft = data.sigBytes * 8;
+
+	            // Add padding
+	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32);
+	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 14] = Math.floor(nBitsTotal / 0x100000000);
+	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 15] = nBitsTotal;
+	            data.sigBytes = dataWords.length * 4;
+
+	            // Hash final blocks
+	            this._process();
+
+	            // Return final computed hash
+	            return this._hash;
+	        },
+
+	        clone: function () {
+	            var clone = Hasher.clone.call(this);
+	            clone._hash = this._hash.clone();
+
+	            return clone;
+	        }
+	    });
+
+	    /**
+	     * Shortcut function to the hasher's object interface.
+	     *
+	     * @param {WordArray|string} message The message to hash.
+	     *
+	     * @return {WordArray} The hash.
+	     *
+	     * @static
+	     *
+	     * @example
+	     *
+	     *     var hash = CryptoJS.SHA1('message');
+	     *     var hash = CryptoJS.SHA1(wordArray);
+	     */
+	    C.SHA1 = Hasher._createHelper(SHA1);
+
+	    /**
+	     * Shortcut function to the HMAC's object interface.
+	     *
+	     * @param {WordArray|string} message The message to hash.
+	     * @param {WordArray|string} key The secret key.
+	     *
+	     * @return {WordArray} The HMAC.
+	     *
+	     * @static
+	     *
+	     * @example
+	     *
+	     *     var hmac = CryptoJS.HmacSHA1(message, key);
+	     */
+	    C.HmacSHA1 = Hasher._createHmacHelper(SHA1);
+	}());
+
+
+	return CryptoJS.SHA1;
+
+}));
+
+/***/ }),
+/* 38 */
+/***/ (function(module) {
+
+module.exports = JSON.parse("{\"a\":\"1.2.17\"}");
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12), __webpack_require__(36), __webpack_require__(29));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	return CryptoJS.HmacSHA256;
+
+}));
+
+/***/ }),
+/* 40 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(global) {/* harmony import */ var _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _common_lib_transport_comettransport__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(15);
+/* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _common_lib_util_eventemitter__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(7);
+/* harmony import */ var platform_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(6);
+/* harmony import */ var _common_lib_types_errorinfo__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(2);
+/* harmony import */ var _common_lib_util_defaults__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(4);
+/* harmony import */ var _common_lib_util_logger__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(0);
+
+
+
+
+
+
+
+
+
+var JSONPTransport = function(connectionManager) {
+	var noop = function() {};
+	/* Can't just use window.Ably, as that won't exist if using the commonjs version. */
+	var _ = global._ablyjs_jsonp = {};
+
+	/* express strips out parantheses from the callback!
+	 * Kludge to still alow its responses to work, while not keeping the
+	 * function form for normal use and not cluttering window.Ably
+	 * https://github.com/expressjs/express/blob/5b4d4b4ab1324743534fbcd4709f4e75bb4b4e9d/lib/response.js#L305
+	 */
+	_._ = function(id) { return _['_' + id] || noop; };
+	var idCounter = 1;
+	var head = null;
+	var shortName = 'jsonp';
+
+	/* public constructor */
+	function JSONPTransport(connectionManager, auth, params) {
+		params.stream = false;
+		_common_lib_transport_comettransport__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].call(this, connectionManager, auth, params);
+		this.shortName = shortName;
+	}
+	_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inherits(JSONPTransport, _common_lib_transport_comettransport__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]);
+
+	JSONPTransport.isAvailable = function() {
+		return platform__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].jsonpSupported && platform__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].allowComet;
+	};
+	if(JSONPTransport.isAvailable()) {
+		connectionManager.supportedTransports[shortName] = JSONPTransport;
+	}
+	if(platform__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].jsonpSupported) {
+		head = document.getElementsByTagName('head')[0];
+	}
+
+	/* connectivity check; since this has a hard-coded callback id,
+	 * we just make sure that we handle concurrent requests (but the
+	 * connectionmanager should ensure this doesn't happen anyway */
+	var checksInProgress = null;
+	global.JSONPTransport = JSONPTransport
+
+	JSONPTransport.tryConnect = function(connectionManager, auth, params, callback) {
+		var transport = new JSONPTransport(connectionManager, auth, params);
+		var errorCb = function(err) { callback({event: this.event, error: err}); };
+		transport.on(['failed', 'disconnected'], errorCb);
+		transport.on('preconnect', function() {
+			_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MINOR, 'JSONPTransport.tryConnect()', 'viable transport ' + transport);
+			transport.off(['failed', 'disconnected'], errorCb);
+			callback(null, transport);
+		});
+		transport.connect();
+	};
+
+	JSONPTransport.prototype.toString = function() {
+		return 'JSONPTransport; uri=' + this.baseUri + '; isConnected=' + this.isConnected;
+	};
+
+	var createRequest = JSONPTransport.prototype.createRequest = function(uri, headers, params, body, requestMode, timeouts, method) {
+		/* JSONP requests are used either with the context being a realtime
+		 * transport, or with timeouts passed in (for when used by a rest client),
+		 * or completely standalone.  Use the appropriate timeouts in each case */
+		timeouts = (this && this.timeouts) || timeouts || _common_lib_util_defaults__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].TIMEOUTS;
+		return new Request(undefined, uri, headers, _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].copy(params), body, requestMode, timeouts, method);
+	};
+
+	function Request(id, uri, headers, params, body, requestMode, timeouts, method) {
+		_common_lib_util_eventemitter__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].call(this);
+		if(id === undefined) id = idCounter++;
+		this.id = id;
+		this.uri = uri;
+		this.params = params || {};
+		this.params.rnd = _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].cheapRandStr();
+		if(headers) {
+			/* JSONP doesn't allow headers. Cherry-pick a couple to turn into qs params */
+			if(headers['X-Ably-Version']) this.params.v = headers['X-Ably-Version'];
+			if(headers['Ably-Agent']) this.params.agent = headers['Ably-Agent'];
+		}
+		this.body = body;
+		this.method = method;
+		this.requestMode = requestMode;
+		this.timeouts = timeouts;
+		this.requestComplete = false;
+	}
+	_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inherits(Request, _common_lib_util_eventemitter__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"]);
+
+	Request.prototype.exec = function() {
+		var id = this.id,
+			body = this.body,
+			method = this.method,
+			uri = this.uri,
+			params = this.params,
+			self = this;
+
+		params.callback = '_ablyjs_jsonp._(' + id + ')';
+
+		params.envelope = 'jsonp';
+		if(body) {
+			params.body = body;
+		}
+		if(method && method !== 'get') {
+			params.method = method;
+		}
+
+		var script = this.script = document.createElement('script');
+		var src = uri + _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].toQueryString(params);
+		script.src = src;
+		if(script.src.split('/').slice(-1)[0] !== src.split('/').slice(-1)[0]) {
+			/* The src has been truncated. Can't abort, but can at least emit an
+			 * error so the user knows what's gone wrong. (Can't compare strings
+			 * directly as src may have a port, script.src won't) */
+			_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_ERROR, 'JSONP Request.exec()', 'Warning: the browser appears to have truncated the script URI. This will likely result in the request failing due to an unparseable body param');
+		}
+		script.async = true;
+		script.type = 'text/javascript';
+		script.charset = 'UTF-8';
+		script.onerror = function(err) {
+			self.complete(new _common_lib_types_errorinfo__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]('JSONP script error (event: ' + _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].inspect(err) + ')', null, 400));
+		};
+
+		_['_' + id] = function(message) {
+			if(message.statusCode) {
+				/* Handle as enveloped jsonp, as all jsonp transport uses should be */
+				var response = message.response;
+				if(message.statusCode == 204) {
+					self.complete(null, null, null, message.statusCode);
+				} else if(!response) {
+					self.complete(new _common_lib_types_errorinfo__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]('Invalid server response: no envelope detected', null, 500));
+				} else if(message.statusCode < 400 || _common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].isArray(response)) {
+					/* If response is an array, it's an array of protocol messages -- even if
+					 * it contains an error action (hence the nonsuccess statuscode), we can
+					 * consider the request to have succeeded, just pass it on to
+					 * onProtocolMessage to decide what to do */
+					self.complete(null, response, message.headers, message.statusCode);
+				} else {
+					var err = response.error || new _common_lib_types_errorinfo__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"]('Error response received from server', null, message.statusCode);
+					self.complete(err);
+				}
+			} else {
+				/* Handle as non-enveloped -- as will be eg from a customer's authUrl server */
+				self.complete(null, message);
+			}
+		};
+
+		var timeout = (this.requestMode == _common_lib_transport_comettransport__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].REQ_SEND) ? this.timeouts.httpRequestTimeout : this.timeouts.recvTimeout;
+		this.timer = setTimeout(function() { self.abort(); }, timeout);
+		head.insertBefore(script, head.firstChild);
+	};
+
+	Request.prototype.complete = function(err, body, headers, statusCode) {
+		headers = headers || {};
+		if(!this.requestComplete) {
+			this.requestComplete = true;
+			var contentType;
+			if(body) {
+				contentType = (typeof(body) == 'string') ? 'text/plain' : 'application/json';
+				headers['content-type'] = contentType;
+				this.emit('data', body);
+			}
+
+			this.emit('complete', err, body, headers, /* unpacked: */ true, statusCode);
+			this.dispose();
+		}
+	};
+
+	Request.prototype.abort = function() {
+		this.dispose();
+	};
+
+	Request.prototype.dispose = function() {
+		var timer = this.timer;
+		if(timer) {
+			clearTimeout(timer);
+			this.timer = null;
+		}
+		var script = this.script;
+		if(script.parentNode) script.parentNode.removeChild(script);
+		delete _[this.id];
+		this.emit('disposed');
+	};
+
+	if(platform__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].jsonpSupported && !platform_http__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].Request) {
+		platform_http__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].Request = function(method, rest, uri, headers, params, body, callback) {
+			var req = createRequest(uri, headers, params, body, _common_lib_transport_comettransport__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].REQ_SEND, rest && rest.options.timeouts, method);
+			req.once('complete', callback);
+			_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].nextTick(function() {
+				req.exec();
+			});
+			return req;
+		};
+
+		platform_http__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].checkConnectivity = function(callback) {
+			var upUrl = _common_lib_util_defaults__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].jsonpInternetUpUrl;
+
+			if(checksInProgress) {
+				checksInProgress.push(callback);
+				return;
+			}
+			checksInProgress = [callback];
+			_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, '(JSONP)Http.checkConnectivity()', 'Sending; ' + upUrl);
+
+			var req = new Request('isTheInternetUp', upUrl, null, null, null, _common_lib_transport_comettransport__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].REQ_SEND, _common_lib_util_defaults__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"].TIMEOUTS);
+			req.once('complete', function(err, response) {
+				var result = !err && response;
+				_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].logAction(_common_lib_util_logger__WEBPACK_IMPORTED_MODULE_7__[/* default */ "a"].LOG_MICRO, '(JSONP)Http.checkConnectivity()', 'Result: ' + result);
+				for(var i = 0; i < checksInProgress.length; i++) checksInProgress[i](null, result);
+				checksInProgress = null;
+			});
+			_common_lib_util_utils__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].nextTick(function() {
+				req.exec();
+			});
+		};
+	}
+
+	return JSONPTransport;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (JSONPTransport);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(17)))
+
+/***/ }),
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _util_utils__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
+/* harmony import */ var _transport__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(20);
+/* harmony import */ var _util_defaults__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(4);
+/* harmony import */ var _util_logger__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(0);
+/* harmony import */ var _types_protocolmessage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(8);
+/* harmony import */ var _types_errorinfo__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(2);
+
+
+
+
+
+
+
+
+var WebSocketTransport = function(connectionManager) {
+	var WebSocket = platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].WebSocket;
+	var shortName = 'web_socket';
+
+	/* public constructor */
+	function WebSocketTransport(connectionManager, auth, params) {
+		this.shortName = shortName;
+		/* If is a browser, can't detect pings, so request protocol heartbeats */
+		params.heartbeats = platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].useProtocolHeartbeats;
+		_transport__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].call(this, connectionManager, auth, params);
+		this.wsHost = _util_defaults__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].getHost(params.options, params.host, true);
+	}
+	_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inherits(WebSocketTransport, _transport__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"]);
+
+	WebSocketTransport.isAvailable = function() {
+		return !!WebSocket;
+	};
+
+	if(WebSocketTransport.isAvailable())
+		connectionManager.supportedTransports[shortName] = WebSocketTransport;
+
+	WebSocketTransport.tryConnect = function(connectionManager, auth, params, callback) {
+		var transport = new WebSocketTransport(connectionManager, auth, params);
+		var errorCb = function(err) { callback({event: this.event, error: err}); };
+		transport.on(['failed', 'disconnected'], errorCb);
+		transport.on('wsopen', function() {
+			_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MINOR, 'WebSocketTransport.tryConnect()', 'viable transport ' + transport);
+			transport.off(['failed', 'disconnected'], errorCb);
+			callback(null, transport);
+		});
+		transport.connect();
+	};
+
+	WebSocketTransport.prototype.createWebSocket = function(uri, connectParams) {
+		this.uri = uri + _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].toQueryString(connectParams)
+		return new WebSocket(this.uri);
+	};
+
+	WebSocketTransport.prototype.toString = function() {
+		return 'WebSocketTransport; uri=' + this.uri;
+	};
+
+	WebSocketTransport.prototype.connect = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MINOR, 'WebSocketTransport.connect()', 'starting');
+		_transport__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"].prototype.connect.call(this);
+		var self = this, params = this.params, options = params.options;
+		var wsScheme = options.tls ? 'wss://' : 'ws://';
+		var wsUri = wsScheme + this.wsHost + ':' + _util_defaults__WEBPACK_IMPORTED_MODULE_3__[/* default */ "a"].getPort(options) + '/';
+		_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MINOR, 'WebSocketTransport.connect()', 'uri: ' + wsUri);
+		this.auth.getAuthParams(function(err, authParams) {
+			if(self.isDisposed) {
+				return;
+			}
+			var paramStr = ''; for(var param in authParams) paramStr += ' ' + param + ': ' + authParams[param] + ';';
+			_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MINOR, 'WebSocketTransport.connect()', 'authParams:' + paramStr + ' err: ' + err);
+			if(err) {
+				self.disconnect(err);
+				return;
+			}
+			var connectParams = params.getConnectParams(authParams);
+			try {
+				var wsConnection = self.wsConnection = self.createWebSocket(wsUri, connectParams);
+				wsConnection.binaryType = platform__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"].binaryType;
+				wsConnection.onopen = function() { self.onWsOpen(); };
+				wsConnection.onclose = function(ev) { self.onWsClose(ev); };
+				wsConnection.onmessage = function(ev) { self.onWsData(ev.data); };
+				wsConnection.onerror = function(ev) { self.onWsError(ev); };
+				if(wsConnection.on) {
+					/* node; browsers currently don't have a general eventemitter and can't detect
+					 * pings. Also, no need to reply with a pong explicitly, ws lib handles that */
+					wsConnection.on('ping', function() { self.onActivity(); });
+				}
+			} catch(e) {
+				_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_ERROR, 'WebSocketTransport.connect()', 'Unexpected exception creating websocket: err = ' + (e.stack || e.message));
+				self.disconnect(e);
+			}
+		});
+	};
+
+	WebSocketTransport.prototype.send = function(message) {
+		var wsConnection = this.wsConnection;
+		if(!wsConnection) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_ERROR, 'WebSocketTransport.send()', 'No socket connection');
+			return;
+		}
+		try {
+			wsConnection.send(_types_protocolmessage__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].serialize(message, this.params.format));
+		} catch (e) {
+			var msg = 'Exception from ws connection when trying to send: ' + _util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].inspectError(e);
+			_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_ERROR, 'WebSocketTransport.send()', msg);
+			/* Don't try to request a disconnect, that'll just involve sending data
+			 * down the websocket again. Just finish the transport. */
+			this.finish('disconnected', new _types_errorinfo__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"](msg, 50000, 500));
+		}
+	};
+
+	WebSocketTransport.prototype.onWsData = function(data) {
+		_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MICRO, 'WebSocketTransport.onWsData()', 'data received; length = ' + data.length + '; type = ' + typeof(data));
+		try {
+			this.onProtocolMessage(_types_protocolmessage__WEBPACK_IMPORTED_MODULE_5__[/* default */ "a"].deserialize(data, this.format));
+		} catch (e) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_ERROR, 'WebSocketTransport.onWsData()', 'Unexpected exception handing channel message: ' + e.stack);
+		}
+	};
+
+	WebSocketTransport.prototype.onWsOpen = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MINOR, 'WebSocketTransport.onWsOpen()', 'opened WebSocket');
+		this.emit('wsopen');
+	};
+
+	WebSocketTransport.prototype.onWsClose = function(ev) {
+		var wasClean, code, reason;
+		if(typeof(ev) == 'object') {
+			/* W3C spec-compatible */
+			wasClean = ev.wasClean;
+			code = ev.code;
+		} else /*if(typeof(ev) == 'number')*/ {
+			/* ws in node */
+			code = ev;
+			wasClean = (code == 1000);
+		}
+		delete this.wsConnection;
+		if(wasClean) {
+			_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MINOR, 'WebSocketTransport.onWsClose()', 'Cleanly closed WebSocket');
+			var err = new _types_errorinfo__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"]('Websocket closed', 80003, 400);
+			this.finish('disconnected', err);
+		} else {
+			var msg = 'Unclean disconnection of WebSocket ; code = ' + code,
+				err = new _types_errorinfo__WEBPACK_IMPORTED_MODULE_6__[/* default */ "a"](msg, 80003, 400);
+			_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MINOR, 'WebSocketTransport.onWsClose()', msg);
+			this.finish('disconnected', err);
+		}
+		this.emit('disposed');
+	};
+
+	WebSocketTransport.prototype.onWsError = function(err) {
+		_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MINOR, 'WebSocketTransport.onError()', 'Error from WebSocket: ' + err.message);
+		/* Wait a tick before aborting: if the websocket was connected, this event
+		 * will be immediately followed by an onclose event with a close code. Allow
+		 * that to close it (so we see the close code) rather than anticipating it */
+		var self = this;
+		_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].nextTick(function() {
+			self.disconnect(err);
+		});
+	};
+
+	WebSocketTransport.prototype.dispose = function() {
+		_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MINOR, 'WebSocketTransport.dispose()', '');
+		this.isDisposed = true;
+		var wsConnection = this.wsConnection;
+		if(wsConnection) {
+			/* Ignore any messages that come through after dispose() is called but before
+			 * websocket is actually closed. (mostly would be harmless, but if it's a
+			 * CONNECTED, it'll re-tick isConnected and cause all sorts of havoc) */
+			wsConnection.onmessage = function() {};
+			delete this.wsConnection;
+			/* defer until the next event loop cycle before closing the socket,
+			 * giving some implementations the opportunity to send any outstanding close message */
+			_util_utils__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"].nextTick(function() {
+				_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].logAction(_util_logger__WEBPACK_IMPORTED_MODULE_4__[/* default */ "a"].LOG_MICRO, 'WebSocketTransport.dispose()', 'closing websocket');
+				wsConnection.close();
+			});
+		}
+	};
+
+	return WebSocketTransport;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (WebSocketTransport);
+
+
+/***/ }),
+/* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// EXTERNAL MODULE: ./browser/lib/transport/jsonptransport.js
+var jsonptransport = __webpack_require__(40);
+
+// EXTERNAL MODULE: ./common/lib/util/utils.js
+var utils = __webpack_require__(1);
+
+// EXTERNAL MODULE: ./common/lib/util/logger.js
+var logger = __webpack_require__(0);
+
+// EXTERNAL MODULE: ./browser/fragments/platform-browser.js
+var platform_browser = __webpack_require__(3);
+
+// EXTERNAL MODULE: ./common/lib/transport/comettransport.js
+var comettransport = __webpack_require__(15);
+
+// EXTERNAL MODULE: ./browser/lib/transport/xhrrequest.js
+var xhrrequest = __webpack_require__(27);
+
+// CONCATENATED MODULE: ./browser/lib/transport/xhrpollingtransport.js
+
+
+
+
+
+
+var xhrpollingtransport_XHRPollingTransport = function(connectionManager) {
+	var shortName = 'xhr_polling';
+
+	function XHRPollingTransport(connectionManager, auth, params) {
+		params.stream = false;
+		comettransport["a" /* default */].call(this, connectionManager, auth, params);
+		this.shortName = shortName;
+	}
+	utils["a" /* default */].inherits(XHRPollingTransport, comettransport["a" /* default */]);
+
+	XHRPollingTransport.isAvailable = function() {
+		return platform_browser["a" /* default */].xhrSupported && platform_browser["a" /* default */].allowComet;
+	};
+
+	XHRPollingTransport.tryConnect = function(connectionManager, auth, params, callback) {
+		var transport = new XHRPollingTransport(connectionManager, auth, params);
+		var errorCb = function(err) { callback({event: this.event, error: err}); };
+		transport.on(['failed', 'disconnected'], errorCb);
+		transport.on('preconnect', function() {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'XHRPollingTransport.tryConnect()', 'viable transport ' + transport);
+			transport.off(['failed', 'disconnected'], errorCb);
+			callback(null, transport);
+		});
+		transport.connect();
+	};
+
+	XHRPollingTransport.prototype.toString = function() {
+		return 'XHRPollingTransport; uri=' + this.baseUri + '; isConnected=' + this.isConnected;
+	};
+
+	XHRPollingTransport.prototype.createRequest = function(uri, headers, params, body, requestMode) {
+		return xhrrequest["a" /* default */].createRequest(uri, headers, params, body, requestMode, this.timeouts);
+	};
+
+	if(typeof(connectionManager) !== 'undefined' && XHRPollingTransport.isAvailable()) {
+		connectionManager.supportedTransports[shortName] = XHRPollingTransport;
+	}
+
+	return XHRPollingTransport;
+};
+
+/* harmony default export */ var xhrpollingtransport = (xhrpollingtransport_XHRPollingTransport);
+
+// CONCATENATED MODULE: ./browser/lib/transport/xhrstreamingtransport.js
+
+
+
+
+
+
+var xhrstreamingtransport_XHRStreamingTransport = function(connectionManager) {
+	var shortName = 'xhr_streaming';
+
+	/* public constructor */
+	function XHRStreamingTransport(connectionManager, auth, params) {
+		comettransport["a" /* default */].call(this, connectionManager, auth, params);
+		this.shortName = shortName;
+	}
+	utils["a" /* default */].inherits(XHRStreamingTransport, comettransport["a" /* default */]);
+
+	XHRStreamingTransport.isAvailable = function() {
+		return platform_browser["a" /* default */].xhrSupported && platform_browser["a" /* default */].streamingSupported && platform_browser["a" /* default */].allowComet;
+	};
+
+	XHRStreamingTransport.tryConnect = function(connectionManager, auth, params, callback) {
+		var transport = new XHRStreamingTransport(connectionManager, auth, params);
+		var errorCb = function(err) { callback({event: this.event, error: err}); };
+		transport.on(['failed', 'disconnected'], errorCb);
+		transport.on('preconnect', function() {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'XHRStreamingTransport.tryConnect()', 'viable transport ' + transport);
+			transport.off(['failed', 'disconnected'], errorCb);
+			callback(null, transport);
+		});
+		transport.connect();
+	};
+
+	XHRStreamingTransport.prototype.toString = function() {
+		return 'XHRStreamingTransport; uri=' + this.baseUri + '; isConnected=' + this.isConnected;
+	};
+
+	XHRStreamingTransport.prototype.createRequest = function(uri, headers, params, body, requestMode) {
+		return xhrrequest["a" /* default */].createRequest(uri, headers, params, body, requestMode, this.timeouts);
+	};
+
+	if(typeof(connectionManager) !== 'undefined' && XHRStreamingTransport.isAvailable()) {
+		connectionManager.supportedTransports[shortName] = XHRStreamingTransport;
+	}
+
+	return XHRStreamingTransport;
+};
+
+/* harmony default export */ var xhrstreamingtransport = (xhrstreamingtransport_XHRStreamingTransport);
+
+// CONCATENATED MODULE: ./browser/lib/transport/index.js
+
+
+
+
+/* harmony default export */ var lib_transport = __webpack_exports__["a"] = ([
+  jsonptransport["a" /* default */],
+  xhrpollingtransport,
+  xhrstreamingtransport
+]);
+
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
+            (typeof self !== "undefined" && self) ||
+            window;
+var apply = Function.prototype.apply;
+
+// DOM APIs, for completeness
+
+exports.setTimeout = function() {
+  return new Timeout(apply.call(setTimeout, scope, arguments), clearTimeout);
+};
+exports.setInterval = function() {
+  return new Timeout(apply.call(setInterval, scope, arguments), clearInterval);
+};
+exports.clearTimeout =
+exports.clearInterval = function(timeout) {
+  if (timeout) {
+    timeout.close();
+  }
+};
+
+function Timeout(id, clearFn) {
+  this._id = id;
+  this._clearFn = clearFn;
+}
+Timeout.prototype.unref = Timeout.prototype.ref = function() {};
+Timeout.prototype.close = function() {
+  this._clearFn.call(scope, this._id);
+};
+
+// Does not start the time, just sets up the members needed.
+exports.enroll = function(item, msecs) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = msecs;
+};
+
+exports.unenroll = function(item) {
+  clearTimeout(item._idleTimeoutId);
+  item._idleTimeout = -1;
+};
+
+exports._unrefActive = exports.active = function(item) {
+  clearTimeout(item._idleTimeoutId);
+
+  var msecs = item._idleTimeout;
+  if (msecs >= 0) {
+    item._idleTimeoutId = setTimeout(function onTimeout() {
+      if (item._onTimeout)
+        item._onTimeout();
+    }, msecs);
+  }
+};
+
+// setimmediate attaches itself to the global object
+__webpack_require__(44);
+// On some exotic environments, it's not clear which object `setimmediate` was
+// able to install onto.  Search each possibility in the same order as the
+// `setimmediate` library.
+exports.setImmediate = (typeof self !== "undefined" && self.setImmediate) ||
+                       (typeof global !== "undefined" && global.setImmediate) ||
+                       (this && this.setImmediate);
+exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
+                         (typeof global !== "undefined" && global.clearImmediate) ||
+                         (this && this.clearImmediate);
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(17)))
+
+/***/ }),
+/* 44 */
+/***/ (function(module, exports, __webpack_require__) {
+
+/* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
+    "use strict";
+
+    if (global.setImmediate) {
+        return;
+    }
+
+    var nextHandle = 1; // Spec says greater than zero
+    var tasksByHandle = {};
+    var currentlyRunningATask = false;
+    var doc = global.document;
+    var registerImmediate;
+
+    function setImmediate(callback) {
+      // Callback can either be a function or a string
+      if (typeof callback !== "function") {
+        callback = new Function("" + callback);
+      }
+      // Copy function arguments
+      var args = new Array(arguments.length - 1);
+      for (var i = 0; i < args.length; i++) {
+          args[i] = arguments[i + 1];
+      }
+      // Store and register the task
+      var task = { callback: callback, args: args };
+      tasksByHandle[nextHandle] = task;
+      registerImmediate(nextHandle);
+      return nextHandle++;
+    }
+
+    function clearImmediate(handle) {
+        delete tasksByHandle[handle];
+    }
+
+    function run(task) {
+        var callback = task.callback;
+        var args = task.args;
+        switch (args.length) {
+        case 0:
+            callback();
+            break;
+        case 1:
+            callback(args[0]);
+            break;
+        case 2:
+            callback(args[0], args[1]);
+            break;
+        case 3:
+            callback(args[0], args[1], args[2]);
+            break;
+        default:
+            callback.apply(undefined, args);
+            break;
+        }
+    }
+
+    function runIfPresent(handle) {
+        // From the spec: "Wait until any invocations of this algorithm started before this one have completed."
+        // So if we're currently running a task, we'll need to delay this invocation.
+        if (currentlyRunningATask) {
+            // Delay by doing a setTimeout. setImmediate was tried instead, but in Firefox 7 it generated a
+            // "too much recursion" error.
+            setTimeout(runIfPresent, 0, handle);
+        } else {
+            var task = tasksByHandle[handle];
+            if (task) {
+                currentlyRunningATask = true;
+                try {
+                    run(task);
+                } finally {
+                    clearImmediate(handle);
+                    currentlyRunningATask = false;
+                }
+            }
+        }
+    }
+
+    function installNextTickImplementation() {
+        registerImmediate = function(handle) {
+            process.nextTick(function () { runIfPresent(handle); });
+        };
+    }
+
+    function canUsePostMessage() {
+        // The test against `importScripts` prevents this implementation from being installed inside a web worker,
+        // where `global.postMessage` means something completely different and can't be used for this purpose.
+        if (global.postMessage && !global.importScripts) {
+            var postMessageIsAsynchronous = true;
+            var oldOnMessage = global.onmessage;
+            global.onmessage = function() {
+                postMessageIsAsynchronous = false;
+            };
+            global.postMessage("", "*");
+            global.onmessage = oldOnMessage;
+            return postMessageIsAsynchronous;
+        }
+    }
+
+    function installPostMessageImplementation() {
+        // Installs an event handler on `global` for the `message` event: see
+        // * https://developer.mozilla.org/en/DOM/window.postMessage
+        // * http://www.whatwg.org/specs/web-apps/current-work/multipage/comms.html#crossDocumentMessages
+
+        var messagePrefix = "setImmediate$" + Math.random() + "$";
+        var onGlobalMessage = function(event) {
+            if (event.source === global &&
+                typeof event.data === "string" &&
+                event.data.indexOf(messagePrefix) === 0) {
+                runIfPresent(+event.data.slice(messagePrefix.length));
+            }
+        };
+
+        if (global.addEventListener) {
+            global.addEventListener("message", onGlobalMessage, false);
+        } else {
+            global.attachEvent("onmessage", onGlobalMessage);
+        }
+
+        registerImmediate = function(handle) {
+            global.postMessage(messagePrefix + handle, "*");
+        };
+    }
+
+    function installMessageChannelImplementation() {
+        var channel = new MessageChannel();
+        channel.port1.onmessage = function(event) {
+            var handle = event.data;
+            runIfPresent(handle);
+        };
+
+        registerImmediate = function(handle) {
+            channel.port2.postMessage(handle);
+        };
+    }
+
+    function installReadyStateChangeImplementation() {
+        var html = doc.documentElement;
+        registerImmediate = function(handle) {
+            // Create a <script> element; its readystatechange event will be fired asynchronously once it is inserted
+            // into the document. Do so, thus queuing up the task. Remember to clean up once it's been called.
+            var script = doc.createElement("script");
+            script.onreadystatechange = function () {
+                runIfPresent(handle);
+                script.onreadystatechange = null;
+                html.removeChild(script);
+                script = null;
+            };
+            html.appendChild(script);
+        };
+    }
+
+    function installSetTimeoutImplementation() {
+        registerImmediate = function(handle) {
+            setTimeout(runIfPresent, 0, handle);
+        };
+    }
+
+    // If supported, we should attach to the prototype of global, since that is where setTimeout et al. live.
+    var attachTo = Object.getPrototypeOf && Object.getPrototypeOf(global);
+    attachTo = attachTo && attachTo.setTimeout ? attachTo : global;
+
+    // Don't get fooled by e.g. browserify environments.
+    if ({}.toString.call(global.process) === "[object process]") {
+        // For Node.js before 0.9
+        installNextTickImplementation();
+
+    } else if (canUsePostMessage()) {
+        // For non-IE10 modern browsers
+        installPostMessageImplementation();
+
+    } else if (global.MessageChannel) {
+        // For web workers, where supported
+        installMessageChannelImplementation();
+
+    } else if (doc && "onreadystatechange" in doc.createElement("script")) {
+        // For IE 6–8
+        installReadyStateChangeImplementation();
+
+    } else {
+        // For older browsers
+        installSetTimeoutImplementation();
+    }
+
+    attachTo.setImmediate = setImmediate;
+    attachTo.clearImmediate = clearImmediate;
+}(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
+
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(17), __webpack_require__(45)))
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports) {
+
+
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	(function () {
+	    // Shortcuts
+	    var C = CryptoJS;
+	    var C_lib = C.lib;
+	    var WordArray = C_lib.WordArray;
+	    var C_enc = C.enc;
+
+	    /**
+	     * UTF-16 BE encoding strategy.
+	     */
+	    var Utf16BE = C_enc.Utf16 = C_enc.Utf16BE = {
+	        /**
+	         * Converts a word array to a UTF-16 BE string.
+	         *
+	         * @param {WordArray} wordArray The word array.
+	         *
+	         * @return {string} The UTF-16 BE string.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var utf16String = CryptoJS.enc.Utf16.stringify(wordArray);
+	         */
+	        stringify: function (wordArray) {
+	            // Shortcuts
+	            var words = wordArray.words;
+	            var sigBytes = wordArray.sigBytes;
+
+	            // Convert
+	            var utf16Chars = [];
+	            for (var i = 0; i < sigBytes; i += 2) {
+	                var codePoint = (words[i >>> 2] >>> (16 - (i % 4) * 8)) & 0xffff;
+	                utf16Chars.push(String.fromCharCode(codePoint));
+	            }
+
+	            return utf16Chars.join('');
+	        },
+
+	        /**
+	         * Converts a UTF-16 BE string to a word array.
+	         *
+	         * @param {string} utf16Str The UTF-16 BE string.
+	         *
+	         * @return {WordArray} The word array.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var wordArray = CryptoJS.enc.Utf16.parse(utf16String);
+	         */
+	        parse: function (utf16Str) {
+	            // Shortcut
+	            var utf16StrLength = utf16Str.length;
+
+	            // Convert
+	            var words = [];
+	            for (var i = 0; i < utf16StrLength; i++) {
+	                words[i >>> 1] |= utf16Str.charCodeAt(i) << (16 - (i % 2) * 16);
+	            }
+
+	            return WordArray.create(words, utf16StrLength * 2);
+	        }
+	    };
+
+	    /**
+	     * UTF-16 LE encoding strategy.
+	     */
+	    C_enc.Utf16LE = {
+	        /**
+	         * Converts a word array to a UTF-16 LE string.
+	         *
+	         * @param {WordArray} wordArray The word array.
+	         *
+	         * @return {string} The UTF-16 LE string.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var utf16Str = CryptoJS.enc.Utf16LE.stringify(wordArray);
+	         */
+	        stringify: function (wordArray) {
+	            // Shortcuts
+	            var words = wordArray.words;
+	            var sigBytes = wordArray.sigBytes;
+
+	            // Convert
+	            var utf16Chars = [];
+	            for (var i = 0; i < sigBytes; i += 2) {
+	                var codePoint = swapEndian((words[i >>> 2] >>> (16 - (i % 4) * 8)) & 0xffff);
+	                utf16Chars.push(String.fromCharCode(codePoint));
+	            }
+
+	            return utf16Chars.join('');
+	        },
+
+	        /**
+	         * Converts a UTF-16 LE string to a word array.
+	         *
+	         * @param {string} utf16Str The UTF-16 LE string.
+	         *
+	         * @return {WordArray} The word array.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var wordArray = CryptoJS.enc.Utf16LE.parse(utf16Str);
+	         */
+	        parse: function (utf16Str) {
+	            // Shortcut
+	            var utf16StrLength = utf16Str.length;
+
+	            // Convert
+	            var words = [];
+	            for (var i = 0; i < utf16StrLength; i++) {
+	                words[i >>> 1] |= swapEndian(utf16Str.charCodeAt(i) << (16 - (i % 2) * 16));
+	            }
+
+	            return WordArray.create(words, utf16StrLength * 2);
+	        }
+	    };
+
+	    function swapEndian(word) {
+	        return ((word << 8) & 0xff00ff00) | ((word >>> 8) & 0x00ff00ff);
+	    }
+	}());
+
+
+	return CryptoJS.enc.Utf16;
+
+}));
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12), __webpack_require__(31));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	(function (undefined) {
+	    // Shortcuts
+	    var C = CryptoJS;
+	    var C_lib = C.lib;
+	    var CipherParams = C_lib.CipherParams;
+	    var C_enc = C.enc;
+	    var Hex = C_enc.Hex;
+	    var C_format = C.format;
+
+	    var HexFormatter = C_format.Hex = {
+	        /**
+	         * Converts the ciphertext of a cipher params object to a hexadecimally encoded string.
+	         *
+	         * @param {CipherParams} cipherParams The cipher params object.
+	         *
+	         * @return {string} The hexadecimally encoded string.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var hexString = CryptoJS.format.Hex.stringify(cipherParams);
+	         */
+	        stringify: function (cipherParams) {
+	            return cipherParams.ciphertext.toString(Hex);
+	        },
+
+	        /**
+	         * Converts a hexadecimally encoded ciphertext string to a cipher params object.
+	         *
+	         * @param {string} input The hexadecimally encoded string.
+	         *
+	         * @return {CipherParams} The cipher params object.
+	         *
+	         * @static
+	         *
+	         * @example
+	         *
+	         *     var cipherParams = CryptoJS.format.Hex.parse(hexString);
+	         */
+	        parse: function (input) {
+	            var ciphertext = Hex.parse(input);
+	            return CipherParams.create({ ciphertext: ciphertext });
+	        }
+	    };
+	}());
+
+
+	return CryptoJS.format.Hex;
+
+}));
+
+/***/ }),
+/* 49 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12), __webpack_require__(18), __webpack_require__(50), __webpack_require__(30), __webpack_require__(31));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	(function () {
+	    // Shortcuts
+	    var C = CryptoJS;
+	    var C_lib = C.lib;
+	    var BlockCipher = C_lib.BlockCipher;
+	    var C_algo = C.algo;
+
+	    // Lookup tables
+	    var SBOX = [];
+	    var INV_SBOX = [];
+	    var SUB_MIX_0 = [];
+	    var SUB_MIX_1 = [];
+	    var SUB_MIX_2 = [];
+	    var SUB_MIX_3 = [];
+	    var INV_SUB_MIX_0 = [];
+	    var INV_SUB_MIX_1 = [];
+	    var INV_SUB_MIX_2 = [];
+	    var INV_SUB_MIX_3 = [];
+
+	    // Compute lookup tables
+	    (function () {
+	        // Compute double table
+	        var d = [];
+	        for (var i = 0; i < 256; i++) {
+	            if (i < 128) {
+	                d[i] = i << 1;
+	            } else {
+	                d[i] = (i << 1) ^ 0x11b;
+	            }
+	        }
+
+	        // Walk GF(2^8)
+	        var x = 0;
+	        var xi = 0;
+	        for (var i = 0; i < 256; i++) {
+	            // Compute sbox
+	            var sx = xi ^ (xi << 1) ^ (xi << 2) ^ (xi << 3) ^ (xi << 4);
+	            sx = (sx >>> 8) ^ (sx & 0xff) ^ 0x63;
+	            SBOX[x] = sx;
+	            INV_SBOX[sx] = x;
+
+	            // Compute multiplication
+	            var x2 = d[x];
+	            var x4 = d[x2];
+	            var x8 = d[x4];
+
+	            // Compute sub bytes, mix columns tables
+	            var t = (d[sx] * 0x101) ^ (sx * 0x1010100);
+	            SUB_MIX_0[x] = (t << 24) | (t >>> 8);
+	            SUB_MIX_1[x] = (t << 16) | (t >>> 16);
+	            SUB_MIX_2[x] = (t << 8)  | (t >>> 24);
+	            SUB_MIX_3[x] = t;
+
+	            // Compute inv sub bytes, inv mix columns tables
+	            var t = (x8 * 0x1010101) ^ (x4 * 0x10001) ^ (x2 * 0x101) ^ (x * 0x1010100);
+	            INV_SUB_MIX_0[sx] = (t << 24) | (t >>> 8);
+	            INV_SUB_MIX_1[sx] = (t << 16) | (t >>> 16);
+	            INV_SUB_MIX_2[sx] = (t << 8)  | (t >>> 24);
+	            INV_SUB_MIX_3[sx] = t;
+
+	            // Compute next counter
+	            if (!x) {
+	                x = xi = 1;
+	            } else {
+	                x = x2 ^ d[d[d[x8 ^ x2]]];
+	                xi ^= d[d[xi]];
+	            }
+	        }
+	    }());
+
+	    // Precomputed Rcon lookup
+	    var RCON = [0x00, 0x01, 0x02, 0x04, 0x08, 0x10, 0x20, 0x40, 0x80, 0x1b, 0x36];
+
+	    /**
+	     * AES block cipher algorithm.
+	     */
+	    var AES = C_algo.AES = BlockCipher.extend({
+	        _doReset: function () {
+	            var t;
+
+	            // Skip reset of nRounds has been set before and key did not change
+	            if (this._nRounds && this._keyPriorReset === this._key) {
+	                return;
+	            }
+
+	            // Shortcuts
+	            var key = this._keyPriorReset = this._key;
+	            var keyWords = key.words;
+	            var keySize = key.sigBytes / 4;
+
+	            // Compute number of rounds
+	            var nRounds = this._nRounds = keySize + 6;
+
+	            // Compute number of key schedule rows
+	            var ksRows = (nRounds + 1) * 4;
+
+	            // Compute key schedule
+	            var keySchedule = this._keySchedule = [];
+	            for (var ksRow = 0; ksRow < ksRows; ksRow++) {
+	                if (ksRow < keySize) {
+	                    keySchedule[ksRow] = keyWords[ksRow];
+	                } else {
+	                    t = keySchedule[ksRow - 1];
+
+	                    if (!(ksRow % keySize)) {
+	                        // Rot word
+	                        t = (t << 8) | (t >>> 24);
+
+	                        // Sub word
+	                        t = (SBOX[t >>> 24] << 24) | (SBOX[(t >>> 16) & 0xff] << 16) | (SBOX[(t >>> 8) & 0xff] << 8) | SBOX[t & 0xff];
+
+	                        // Mix Rcon
+	                        t ^= RCON[(ksRow / keySize) | 0] << 24;
+	                    } else if (keySize > 6 && ksRow % keySize == 4) {
+	                        // Sub word
+	                        t = (SBOX[t >>> 24] << 24) | (SBOX[(t >>> 16) & 0xff] << 16) | (SBOX[(t >>> 8) & 0xff] << 8) | SBOX[t & 0xff];
+	                    }
+
+	                    keySchedule[ksRow] = keySchedule[ksRow - keySize] ^ t;
+	                }
+	            }
+
+	            // Compute inv key schedule
+	            var invKeySchedule = this._invKeySchedule = [];
+	            for (var invKsRow = 0; invKsRow < ksRows; invKsRow++) {
+	                var ksRow = ksRows - invKsRow;
+
+	                if (invKsRow % 4) {
+	                    var t = keySchedule[ksRow];
+	                } else {
+	                    var t = keySchedule[ksRow - 4];
+	                }
+
+	                if (invKsRow < 4 || ksRow <= 4) {
+	                    invKeySchedule[invKsRow] = t;
+	                } else {
+	                    invKeySchedule[invKsRow] = INV_SUB_MIX_0[SBOX[t >>> 24]] ^ INV_SUB_MIX_1[SBOX[(t >>> 16) & 0xff]] ^
+	                                               INV_SUB_MIX_2[SBOX[(t >>> 8) & 0xff]] ^ INV_SUB_MIX_3[SBOX[t & 0xff]];
+	                }
+	            }
+	        },
+
+	        encryptBlock: function (M, offset) {
+	            this._doCryptBlock(M, offset, this._keySchedule, SUB_MIX_0, SUB_MIX_1, SUB_MIX_2, SUB_MIX_3, SBOX);
+	        },
+
+	        decryptBlock: function (M, offset) {
+	            // Swap 2nd and 4th rows
+	            var t = M[offset + 1];
+	            M[offset + 1] = M[offset + 3];
+	            M[offset + 3] = t;
+
+	            this._doCryptBlock(M, offset, this._invKeySchedule, INV_SUB_MIX_0, INV_SUB_MIX_1, INV_SUB_MIX_2, INV_SUB_MIX_3, INV_SBOX);
+
+	            // Inv swap 2nd and 4th rows
+	            var t = M[offset + 1];
+	            M[offset + 1] = M[offset + 3];
+	            M[offset + 3] = t;
+	        },
+
+	        _doCryptBlock: function (M, offset, keySchedule, SUB_MIX_0, SUB_MIX_1, SUB_MIX_2, SUB_MIX_3, SBOX) {
+	            // Shortcut
+	            var nRounds = this._nRounds;
+
+	            // Get input, add round key
+	            var s0 = M[offset]     ^ keySchedule[0];
+	            var s1 = M[offset + 1] ^ keySchedule[1];
+	            var s2 = M[offset + 2] ^ keySchedule[2];
+	            var s3 = M[offset + 3] ^ keySchedule[3];
+
+	            // Key schedule row counter
+	            var ksRow = 4;
+
+	            // Rounds
+	            for (var round = 1; round < nRounds; round++) {
+	                // Shift rows, sub bytes, mix columns, add round key
+	                var t0 = SUB_MIX_0[s0 >>> 24] ^ SUB_MIX_1[(s1 >>> 16) & 0xff] ^ SUB_MIX_2[(s2 >>> 8) & 0xff] ^ SUB_MIX_3[s3 & 0xff] ^ keySchedule[ksRow++];
+	                var t1 = SUB_MIX_0[s1 >>> 24] ^ SUB_MIX_1[(s2 >>> 16) & 0xff] ^ SUB_MIX_2[(s3 >>> 8) & 0xff] ^ SUB_MIX_3[s0 & 0xff] ^ keySchedule[ksRow++];
+	                var t2 = SUB_MIX_0[s2 >>> 24] ^ SUB_MIX_1[(s3 >>> 16) & 0xff] ^ SUB_MIX_2[(s0 >>> 8) & 0xff] ^ SUB_MIX_3[s1 & 0xff] ^ keySchedule[ksRow++];
+	                var t3 = SUB_MIX_0[s3 >>> 24] ^ SUB_MIX_1[(s0 >>> 16) & 0xff] ^ SUB_MIX_2[(s1 >>> 8) & 0xff] ^ SUB_MIX_3[s2 & 0xff] ^ keySchedule[ksRow++];
+
+	                // Update state
+	                s0 = t0;
+	                s1 = t1;
+	                s2 = t2;
+	                s3 = t3;
+	            }
+
+	            // Shift rows, sub bytes, add round key
+	            var t0 = ((SBOX[s0 >>> 24] << 24) | (SBOX[(s1 >>> 16) & 0xff] << 16) | (SBOX[(s2 >>> 8) & 0xff] << 8) | SBOX[s3 & 0xff]) ^ keySchedule[ksRow++];
+	            var t1 = ((SBOX[s1 >>> 24] << 24) | (SBOX[(s2 >>> 16) & 0xff] << 16) | (SBOX[(s3 >>> 8) & 0xff] << 8) | SBOX[s0 & 0xff]) ^ keySchedule[ksRow++];
+	            var t2 = ((SBOX[s2 >>> 24] << 24) | (SBOX[(s3 >>> 16) & 0xff] << 16) | (SBOX[(s0 >>> 8) & 0xff] << 8) | SBOX[s1 & 0xff]) ^ keySchedule[ksRow++];
+	            var t3 = ((SBOX[s3 >>> 24] << 24) | (SBOX[(s0 >>> 16) & 0xff] << 16) | (SBOX[(s1 >>> 8) & 0xff] << 8) | SBOX[s2 & 0xff]) ^ keySchedule[ksRow++];
+
+	            // Set output
+	            M[offset]     = t0;
+	            M[offset + 1] = t1;
+	            M[offset + 2] = t2;
+	            M[offset + 3] = t3;
+	        },
+
+	        keySize: 256/32
+	    });
+
+	    /**
+	     * Shortcut functions to the cipher's object interface.
+	     *
+	     * @example
+	     *
+	     *     var ciphertext = CryptoJS.AES.encrypt(message, key, cfg);
+	     *     var plaintext  = CryptoJS.AES.decrypt(ciphertext, key, cfg);
+	     */
+	    C.AES = BlockCipher._createHelper(AES);
+	}());
+
+
+	return CryptoJS.AES;
+
+}));
+
+/***/ }),
+/* 50 */
+/***/ (function(module, exports, __webpack_require__) {
+
+;(function (root, factory) {
+	if (true) {
+		// CommonJS
+		module.exports = exports = factory(__webpack_require__(12));
+	}
+	else {}
+}(this, function (CryptoJS) {
+
+	(function (Math) {
+	    // Shortcuts
+	    var C = CryptoJS;
+	    var C_lib = C.lib;
+	    var WordArray = C_lib.WordArray;
+	    var Hasher = C_lib.Hasher;
+	    var C_algo = C.algo;
+
+	    // Constants table
+	    var T = [];
+
+	    // Compute constants
+	    (function () {
+	        for (var i = 0; i < 64; i++) {
+	            T[i] = (Math.abs(Math.sin(i + 1)) * 0x100000000) | 0;
+	        }
+	    }());
+
+	    /**
+	     * MD5 hash algorithm.
+	     */
+	    var MD5 = C_algo.MD5 = Hasher.extend({
+	        _doReset: function () {
+	            this._hash = new WordArray.init([
+	                0x67452301, 0xefcdab89,
+	                0x98badcfe, 0x10325476
+	            ]);
+	        },
+
+	        _doProcessBlock: function (M, offset) {
+	            // Swap endian
+	            for (var i = 0; i < 16; i++) {
+	                // Shortcuts
+	                var offset_i = offset + i;
+	                var M_offset_i = M[offset_i];
+
+	                M[offset_i] = (
+	                    (((M_offset_i << 8)  | (M_offset_i >>> 24)) & 0x00ff00ff) |
+	                    (((M_offset_i << 24) | (M_offset_i >>> 8))  & 0xff00ff00)
+	                );
+	            }
+
+	            // Shortcuts
+	            var H = this._hash.words;
+
+	            var M_offset_0  = M[offset + 0];
+	            var M_offset_1  = M[offset + 1];
+	            var M_offset_2  = M[offset + 2];
+	            var M_offset_3  = M[offset + 3];
+	            var M_offset_4  = M[offset + 4];
+	            var M_offset_5  = M[offset + 5];
+	            var M_offset_6  = M[offset + 6];
+	            var M_offset_7  = M[offset + 7];
+	            var M_offset_8  = M[offset + 8];
+	            var M_offset_9  = M[offset + 9];
+	            var M_offset_10 = M[offset + 10];
+	            var M_offset_11 = M[offset + 11];
+	            var M_offset_12 = M[offset + 12];
+	            var M_offset_13 = M[offset + 13];
+	            var M_offset_14 = M[offset + 14];
+	            var M_offset_15 = M[offset + 15];
+
+	            // Working varialbes
+	            var a = H[0];
+	            var b = H[1];
+	            var c = H[2];
+	            var d = H[3];
+
+	            // Computation
+	            a = FF(a, b, c, d, M_offset_0,  7,  T[0]);
+	            d = FF(d, a, b, c, M_offset_1,  12, T[1]);
+	            c = FF(c, d, a, b, M_offset_2,  17, T[2]);
+	            b = FF(b, c, d, a, M_offset_3,  22, T[3]);
+	            a = FF(a, b, c, d, M_offset_4,  7,  T[4]);
+	            d = FF(d, a, b, c, M_offset_5,  12, T[5]);
+	            c = FF(c, d, a, b, M_offset_6,  17, T[6]);
+	            b = FF(b, c, d, a, M_offset_7,  22, T[7]);
+	            a = FF(a, b, c, d, M_offset_8,  7,  T[8]);
+	            d = FF(d, a, b, c, M_offset_9,  12, T[9]);
+	            c = FF(c, d, a, b, M_offset_10, 17, T[10]);
+	            b = FF(b, c, d, a, M_offset_11, 22, T[11]);
+	            a = FF(a, b, c, d, M_offset_12, 7,  T[12]);
+	            d = FF(d, a, b, c, M_offset_13, 12, T[13]);
+	            c = FF(c, d, a, b, M_offset_14, 17, T[14]);
+	            b = FF(b, c, d, a, M_offset_15, 22, T[15]);
+
+	            a = GG(a, b, c, d, M_offset_1,  5,  T[16]);
+	            d = GG(d, a, b, c, M_offset_6,  9,  T[17]);
+	            c = GG(c, d, a, b, M_offset_11, 14, T[18]);
+	            b = GG(b, c, d, a, M_offset_0,  20, T[19]);
+	            a = GG(a, b, c, d, M_offset_5,  5,  T[20]);
+	            d = GG(d, a, b, c, M_offset_10, 9,  T[21]);
+	            c = GG(c, d, a, b, M_offset_15, 14, T[22]);
+	            b = GG(b, c, d, a, M_offset_4,  20, T[23]);
+	            a = GG(a, b, c, d, M_offset_9,  5,  T[24]);
+	            d = GG(d, a, b, c, M_offset_14, 9,  T[25]);
+	            c = GG(c, d, a, b, M_offset_3,  14, T[26]);
+	            b = GG(b, c, d, a, M_offset_8,  20, T[27]);
+	            a = GG(a, b, c, d, M_offset_13, 5,  T[28]);
+	            d = GG(d, a, b, c, M_offset_2,  9,  T[29]);
+	            c = GG(c, d, a, b, M_offset_7,  14, T[30]);
+	            b = GG(b, c, d, a, M_offset_12, 20, T[31]);
+
+	            a = HH(a, b, c, d, M_offset_5,  4,  T[32]);
+	            d = HH(d, a, b, c, M_offset_8,  11, T[33]);
+	            c = HH(c, d, a, b, M_offset_11, 16, T[34]);
+	            b = HH(b, c, d, a, M_offset_14, 23, T[35]);
+	            a = HH(a, b, c, d, M_offset_1,  4,  T[36]);
+	            d = HH(d, a, b, c, M_offset_4,  11, T[37]);
+	            c = HH(c, d, a, b, M_offset_7,  16, T[38]);
+	            b = HH(b, c, d, a, M_offset_10, 23, T[39]);
+	            a = HH(a, b, c, d, M_offset_13, 4,  T[40]);
+	            d = HH(d, a, b, c, M_offset_0,  11, T[41]);
+	            c = HH(c, d, a, b, M_offset_3,  16, T[42]);
+	            b = HH(b, c, d, a, M_offset_6,  23, T[43]);
+	            a = HH(a, b, c, d, M_offset_9,  4,  T[44]);
+	            d = HH(d, a, b, c, M_offset_12, 11, T[45]);
+	            c = HH(c, d, a, b, M_offset_15, 16, T[46]);
+	            b = HH(b, c, d, a, M_offset_2,  23, T[47]);
+
+	            a = II(a, b, c, d, M_offset_0,  6,  T[48]);
+	            d = II(d, a, b, c, M_offset_7,  10, T[49]);
+	            c = II(c, d, a, b, M_offset_14, 15, T[50]);
+	            b = II(b, c, d, a, M_offset_5,  21, T[51]);
+	            a = II(a, b, c, d, M_offset_12, 6,  T[52]);
+	            d = II(d, a, b, c, M_offset_3,  10, T[53]);
+	            c = II(c, d, a, b, M_offset_10, 15, T[54]);
+	            b = II(b, c, d, a, M_offset_1,  21, T[55]);
+	            a = II(a, b, c, d, M_offset_8,  6,  T[56]);
+	            d = II(d, a, b, c, M_offset_15, 10, T[57]);
+	            c = II(c, d, a, b, M_offset_6,  15, T[58]);
+	            b = II(b, c, d, a, M_offset_13, 21, T[59]);
+	            a = II(a, b, c, d, M_offset_4,  6,  T[60]);
+	            d = II(d, a, b, c, M_offset_11, 10, T[61]);
+	            c = II(c, d, a, b, M_offset_2,  15, T[62]);
+	            b = II(b, c, d, a, M_offset_9,  21, T[63]);
+
+	            // Intermediate hash value
+	            H[0] = (H[0] + a) | 0;
+	            H[1] = (H[1] + b) | 0;
+	            H[2] = (H[2] + c) | 0;
+	            H[3] = (H[3] + d) | 0;
+	        },
+
+	        _doFinalize: function () {
+	            // Shortcuts
+	            var data = this._data;
+	            var dataWords = data.words;
+
+	            var nBitsTotal = this._nDataBytes * 8;
+	            var nBitsLeft = data.sigBytes * 8;
+
+	            // Add padding
+	            dataWords[nBitsLeft >>> 5] |= 0x80 << (24 - nBitsLeft % 32);
+
+	            var nBitsTotalH = Math.floor(nBitsTotal / 0x100000000);
+	            var nBitsTotalL = nBitsTotal;
+	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 15] = (
+	                (((nBitsTotalH << 8)  | (nBitsTotalH >>> 24)) & 0x00ff00ff) |
+	                (((nBitsTotalH << 24) | (nBitsTotalH >>> 8))  & 0xff00ff00)
+	            );
+	            dataWords[(((nBitsLeft + 64) >>> 9) << 4) + 14] = (
+	                (((nBitsTotalL << 8)  | (nBitsTotalL >>> 24)) & 0x00ff00ff) |
+	                (((nBitsTotalL << 24) | (nBitsTotalL >>> 8))  & 0xff00ff00)
+	            );
+
+	            data.sigBytes = (dataWords.length + 1) * 4;
+
+	            // Hash final blocks
+	            this._process();
+
+	            // Shortcuts
+	            var hash = this._hash;
+	            var H = hash.words;
+
+	            // Swap endian
+	            for (var i = 0; i < 4; i++) {
+	                // Shortcut
+	                var H_i = H[i];
+
+	                H[i] = (((H_i << 8)  | (H_i >>> 24)) & 0x00ff00ff) |
+	                       (((H_i << 24) | (H_i >>> 8))  & 0xff00ff00);
+	            }
+
+	            // Return final computed hash
+	            return hash;
+	        },
+
+	        clone: function () {
+	            var clone = Hasher.clone.call(this);
+	            clone._hash = this._hash.clone();
+
+	            return clone;
+	        }
+	    });
+
+	    function FF(a, b, c, d, x, s, t) {
+	        var n = a + ((b & c) | (~b & d)) + x + t;
+	        return ((n << s) | (n >>> (32 - s))) + b;
+	    }
+
+	    function GG(a, b, c, d, x, s, t) {
+	        var n = a + ((b & d) | (c & ~d)) + x + t;
+	        return ((n << s) | (n >>> (32 - s))) + b;
+	    }
+
+	    function HH(a, b, c, d, x, s, t) {
+	        var n = a + (b ^ c ^ d) + x + t;
+	        return ((n << s) | (n >>> (32 - s))) + b;
+	    }
+
+	    function II(a, b, c, d, x, s, t) {
+	        var n = a + (c ^ (b | ~d)) + x + t;
+	        return ((n << s) | (n >>> (32 - s))) + b;
+	    }
+
+	    /**
+	     * Shortcut function to the hasher's object interface.
+	     *
+	     * @param {WordArray|string} message The message to hash.
+	     *
+	     * @return {WordArray} The hash.
+	     *
+	     * @static
+	     *
+	     * @example
+	     *
+	     *     var hash = CryptoJS.MD5('message');
+	     *     var hash = CryptoJS.MD5(wordArray);
+	     */
+	    C.MD5 = Hasher._createHelper(MD5);
+
+	    /**
+	     * Shortcut function to the HMAC's object interface.
+	     *
+	     * @param {WordArray|string} message The message to hash.
+	     * @param {WordArray|string} key The secret key.
+	     *
+	     * @return {WordArray} The HMAC.
+	     *
+	     * @static
+	     *
+	     * @example
+	     *
+	     *     var hmac = CryptoJS.HmacMD5(message, key);
+	     */
+	    C.HmacMD5 = Hasher._createHmacHelper(MD5);
+	}(Math));
+
+
+	return CryptoJS.MD5;
+
+}));
+
+/***/ }),
+/* 51 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+// ESM COMPAT FLAG
+__webpack_require__.r(__webpack_exports__);
+
+// EXTERNAL MODULE: ./browser/fragments/platform-browser.js
+var platform_browser = __webpack_require__(3);
+
+// EXTERNAL MODULE: ./common/lib/util/utils.js
+var utils = __webpack_require__(1);
+
+// EXTERNAL MODULE: ./common/lib/util/logger.js
+var logger = __webpack_require__(0);
+
+// EXTERNAL MODULE: ./common/lib/util/defaults.js + 1 modules
+var defaults = __webpack_require__(4);
+
+// EXTERNAL MODULE: ./common/lib/client/auth.js + 1 modules
+var auth = __webpack_require__(14);
+
+// CONCATENATED MODULE: ./common/lib/types/devicedetails.js
+
+
+var devicedetails_DeviceDetails = (function() {
+
+	function DeviceDetails() {
+		this.id = undefined;
+		this.deviceSecret = undefined;
+		this.platform = undefined;
+		this.formFactor = undefined;
+		this.clientId = undefined;
+		this.metadata = undefined;
+		this.deviceIdentityToken = undefined;
+		this.push = {
+			recipient: undefined,
+			state: undefined,
+			error: undefined
+		};
+	}
+
+	/**
+	 * Overload toJSON() to intercept JSON.stringify()
+	 * @return {*}
+	 */
+	DeviceDetails.prototype.toJSON = function() {
+		return {
+			id: this.id,
+			deviceSecret: this.deviceSecret,
+			platform: this.platform,
+			formFactor: this.formFactor,
+			clientId: this.clientId,
+			metadata: this.metadata,
+			deviceIdentityToken: this.deviceIdentityToken,
+			push: {
+				recipient: this.push.recipient,
+				state: this.push.state,
+				error: this.push.error
+			}
+		};
+	};
+
+	DeviceDetails.prototype.toString = function() {
+		var result = '[DeviceDetails';
+		if(this.id)
+			result += '; id=' + this.id;
+		if(this.platform)
+			result += '; platform=' + this.platform;
+		if(this.formFactor)
+			result += '; formFactor=' + this.formFactor;
+		if(this.clientId)
+			result += '; clientId=' + this.clientId;
+		if(this.metadata)
+			result += '; metadata=' + this.metadata;
+		if(this.deviceIdentityToken)
+			result += '; deviceIdentityToken=' + JSON.stringify(this.deviceIdentityToken);
+		if(this.push.recipient)
+			result += '; push.recipient=' + JSON.stringify(this.push.recipient);
+		if(this.push.state)
+			result += '; push.state=' + this.push.state;
+		if(this.push.error)
+			result += '; push.error=' + JSON.stringify(this.push.error);
+		if(this.push.metadata)
+			result += '; push.metadata=' + this.push.metadata;
+		result += ']';
+		return result;
+	};
+
+	DeviceDetails.toRequestBody = utils["a" /* default */].encodeBody;
+
+	DeviceDetails.fromResponseBody = function(body, format) {
+		if(format) {
+			body = utils["a" /* default */].decodeBody(body, format);
+		}
+
+		if(utils["a" /* default */].isArray(body)) {
+			return DeviceDetails.fromValuesArray(body);
+		} else {
+			return DeviceDetails.fromValues(body);
+		}
+	};
+
+	DeviceDetails.fromValues = function(values) {
+		values.error = values.error && ErrorInfo.fromValues(values.error); 
+		return utils["a" /* default */].mixin(new DeviceDetails(), values);
+	};
+
+	DeviceDetails.fromValuesArray = function(values) {
+		var count = values.length, result = new Array(count);
+		for(var i = 0; i < count; i++) result[i] = DeviceDetails.fromValues(values[i]);
+		return result;
+	};
+
+	return DeviceDetails;
+})();
+
+/* harmony default export */ var devicedetails = (devicedetails_DeviceDetails);
+
+// EXTERNAL MODULE: ./browser/lib/util/http.js
+var http = __webpack_require__(6);
+
+// EXTERNAL MODULE: ./browser/lib/util/bufferutils.js
+var bufferutils = __webpack_require__(5);
+
+// CONCATENATED MODULE: ./common/lib/client/resource.js
+
+
+
+
+
+
+
+var resource_Resource = (function() {
+	var msgpack = platform_browser["a" /* default */].msgpack;
+
+	function Resource() {}
+
+	function withAuthDetails(rest, headers, params, errCallback, opCallback) {
+		if (http["a" /* default */].supportsAuthHeaders) {
+			rest.auth.getAuthHeaders(function(err, authHeaders) {
+				if(err)
+					errCallback(err);
+				else
+					opCallback(utils["a" /* default */].mixin(authHeaders, headers), params);
+			});
+		} else {
+			rest.auth.getAuthParams(function(err, authParams) {
+				if(err)
+					errCallback(err);
+				else
+					opCallback(headers, utils["a" /* default */].mixin(authParams, params));
+			});
+		}
+	}
+
+	function unenvelope(callback, format) {
+		return function(err, body, outerHeaders, unpacked, outerStatusCode) {
+			if(err && !body) {
+				callback(err);
+				return;
+			}
+
+			if(!unpacked) {
+				try {
+					body = utils["a" /* default */].decodeBody(body, format);
+				} catch(e) {
+					callback(e);
+					return;
+				}
+			}
+
+			if(body.statusCode === undefined) {
+				/* Envelope already unwrapped by the transport */
+				callback(err, body, outerHeaders, true, outerStatusCode);
+				return;
+			}
+
+			var wrappedStatusCode = body.statusCode,
+				response = body.response,
+				wrappedHeaders = body.headers;
+
+			if(wrappedStatusCode < 200 || wrappedStatusCode >= 300) {
+				/* handle wrapped errors */
+				var wrappedErr = (response && response.error) || err;
+				if(!wrappedErr) {
+					wrappedErr = new Error("Error in unenveloping " + body);
+					wrappedErr.statusCode = wrappedStatusCode;
+				}
+				callback(wrappedErr, response, wrappedHeaders, true, wrappedStatusCode);
+				return;
+			}
+
+			callback(err, response, wrappedHeaders, true, wrappedStatusCode);
+		};
+	}
+
+	function paramString(params) {
+		var paramPairs = [];
+		if (params) {
+			for (var needle in params) {
+				paramPairs.push(needle + '=' + params[needle]);
+			}
+		}
+		return paramPairs.join('&');
+	}
+
+	function urlFromPathAndParams(path, params) {
+		return path + (params ? '?' : '') + paramString(params);
+	}
+
+	function logResponseHandler(callback, method, path, params) {
+		return function(err, body, headers, unpacked, statusCode) {
+			if (err) {
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Resource.' + method + '()', 'Received Error; ' + urlFromPathAndParams(path, params) + '; Error: ' + utils["a" /* default */].inspectError(err));
+			} else {
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Resource.' + method + '()',
+					'Received; ' + urlFromPathAndParams(path, params) + '; Headers: ' + paramString(headers) + '; StatusCode: ' + statusCode + '; Body: ' + (bufferutils["a" /* default */].isBuffer(body) ? body.toString() : body));
+			}
+			if (callback) { callback(err, body, headers, unpacked, statusCode); }
+		}
+	}
+
+	utils["a" /* default */].arrForEach(http["a" /* default */].methodsWithoutBody, function(method) {
+		Resource[method] = function(rest, path, origheaders, origparams, envelope, callback) {
+			Resource['do'](method, rest, path, null, origheaders, origparams, envelope, callback);
+		};
+	});
+
+	utils["a" /* default */].arrForEach(http["a" /* default */].methodsWithBody, function(method) {
+		Resource[method] = function(rest, path, body, origheaders, origparams, envelope, callback) {
+			Resource['do'](method, rest, path, body, origheaders, origparams, envelope, callback);
+		};
+	});
+
+	Resource['do'] = function(method, rest, path, body, origheaders, origparams, envelope, callback) {
+		if (logger["a" /* default */].shouldLog(logger["a" /* default */].LOG_MICRO)) {
+			callback = logResponseHandler(callback, method, path, origparams);
+		}
+
+		if(envelope) {
+			callback = (callback && unenvelope(callback, envelope));
+			(origparams = (origparams || {}))['envelope'] = envelope;
+		}
+
+		function doRequest(headers, params) {
+			if (logger["a" /* default */].shouldLog(logger["a" /* default */].LOG_MICRO)) {
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Resource.' + method + '()', 'Sending; ' + urlFromPathAndParams(path, params));
+			}
+
+			var args = [rest, path, headers, body, params, function(err, res, headers, unpacked, statusCode) {
+				if(err && auth["a" /* default */].isTokenErr(err)) {
+					/* token has expired, so get a new one */
+					rest.auth.authorize(null, null, function(err) {
+						if(err) {
+							callback(err);
+							return;
+						}
+						/* retry ... */
+						withAuthDetails(rest, origheaders, origparams, callback, doRequest);
+					});
+					return;
+				}
+				callback(err, res, headers, unpacked, statusCode);
+			}];
+			if (!body) {
+				args.splice(3, 1);
+			}
+
+			if (logger["a" /* default */].shouldLog(logger["a" /* default */].LOG_MICRO)) {
+				var decodedBody = body;
+				if ((headers['content-type'] || '').indexOf('msgpack') > 0) {
+					try {
+						decodedBody = msgpack.decode(body);
+					} catch (decodeErr) {
+						logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Resource.' + method + '()', 'Sending MsgPack Decoding Error: ' + utils["a" /* default */].inspectError(decodeErr));
+					}
+				}
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Resource.' + method + '()', 'Sending; ' + urlFromPathAndParams(path, params) + '; Body: ' + decodedBody);
+			}
+			http["a" /* default */][method].apply(this, args);
+		}
+
+		withAuthDetails(rest, origheaders, origparams, callback, doRequest);
+	};
+
+	return Resource;
+})();
+
+/* harmony default export */ var client_resource = (resource_Resource);
+
+// CONCATENATED MODULE: ./common/lib/client/paginatedresource.js
+
+
+
+
+
+var paginatedresource_PaginatedResource = (function() {
+
+	function getRelParams(linkUrl) {
+		var urlMatch = linkUrl.match(/^\.\/(\w+)\?(.*)$/);
+		return urlMatch && utils["a" /* default */].parseQueryString(urlMatch[2]);
+	}
+
+	function parseRelLinks(linkHeader) {
+		if(typeof(linkHeader) == 'string')
+			linkHeader = linkHeader.split(',');
+
+		var relParams = {};
+		for(var i = 0; i < linkHeader.length; i++) {
+			var linkMatch = linkHeader[i].match(/^\s*<(.+)>;\s*rel="(\w+)"$/);
+			if(linkMatch) {
+				var params = getRelParams(linkMatch[1]);
+				if(params)
+					relParams[linkMatch[2]] = params;
+			}
+		}
+		return relParams;
+	}
+
+	function PaginatedResource(rest, path, headers, envelope, bodyHandler, useHttpPaginatedResponse) {
+		this.rest = rest;
+		this.path = path;
+		this.headers = headers;
+		this.envelope = envelope;
+		this.bodyHandler = bodyHandler;
+		this.useHttpPaginatedResponse = useHttpPaginatedResponse || false;
+	}
+
+	utils["a" /* default */].arrForEach(http["a" /* default */].methodsWithoutBody, function(method) {
+		PaginatedResource.prototype[method] = function(params, callback) {
+			var self = this;
+			client_resource[method](self.rest, self.path, self.headers, params, self.envelope, function(err, body, headers, unpacked, statusCode) {
+				self.handlePage(err, body, headers, unpacked, statusCode, callback);
+			});
+		};
+	})
+
+	utils["a" /* default */].arrForEach(http["a" /* default */].methodsWithBody, function(method) {
+		PaginatedResource.prototype[method] = function(params, body, callback) {
+			var self = this;
+			client_resource[method](self.rest, self.path, body, self.headers, params, self.envelope, function(err, resbody, headers, unpacked, statusCode) {
+				if(callback) {
+					self.handlePage(err, resbody, headers, unpacked, statusCode, callback);
+				}
+			});
+		};
+	});
+
+	function returnErrOnly(err, body, useHPR) {
+		/* If using httpPaginatedResponse, errors from Ably are returned as part of
+		 * the HPR, only do callback(err) for network errors etc. which don't
+		 * return a body and/or have no ably-originated error code (non-numeric
+		 * error codes originate from node) */
+		return !(useHPR && (body || typeof err.code === 'number'));
+	}
+
+	PaginatedResource.prototype.handlePage = function(err, body, headers, unpacked, statusCode, callback) {
+		if(err && returnErrOnly(err, body, this.useHttpPaginatedResponse)) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'PaginatedResource.handlePage()', 'Unexpected error getting resource: err = ' + utils["a" /* default */].inspectError(err));
+			callback(err);
+			return;
+		}
+		var items, linkHeader, relParams;
+		try {
+			items = this.bodyHandler(body, headers, unpacked);
+		} catch(e) {
+			/* If we got an error, the failure to parse the body is almost certainly
+			 * due to that, so cb with that in preference to the parse error */
+			callback(err || e);
+			return;
+		}
+
+		if(headers && (linkHeader = (headers['Link'] || headers['link']))) {
+			relParams = parseRelLinks(linkHeader);
+		}
+
+		if(this.useHttpPaginatedResponse) {
+			callback(null, new HttpPaginatedResponse(this, items, headers, statusCode, relParams, err));
+		} else {
+			callback(null, new PaginatedResult(this, items, relParams));
+		}
+	};
+
+	function PaginatedResult(resource, items, relParams) {
+		this.resource = resource;
+		this.items = items;
+
+		if(relParams) {
+			var self = this;
+			if('first' in relParams) {
+				this.first = function(cb) {
+					if(!cb && self.resource.rest.options.promises) {
+						return utils["a" /* default */].promisify(self, 'first', []);
+					}
+					self.get(relParams.first, cb);
+				};
+			}
+			if('current' in relParams) {
+				this.current = function(cb) {
+					if(!cb && self.resource.rest.options.promises) {
+						return utils["a" /* default */].promisify(self, 'current', []);
+					}
+					self.get(relParams.current, cb);
+				};
+			}
+			this.next = function(cb) {
+				if(!cb && self.resource.rest.options.promises) {
+					return utils["a" /* default */].promisify(self, 'next', []);
+				}
+				if('next' in relParams) {
+					self.get(relParams.next, cb);
+				} else {
+					cb(null, null);
+				}
+			};
+
+			this.hasNext = function() { return ('next' in relParams) };
+			this.isLast = function() { return !this.hasNext(); }
+		}
+	}
+
+	/* We assume that only the initial request can be a POST, and that accessing
+	 * the rest of a multipage set of results can always be done with GET */
+	PaginatedResult.prototype.get = function(params, callback) {
+		var res = this.resource;
+		client_resource.get(res.rest, res.path, res.headers, params, res.envelope, function(err, body, headers, unpacked, statusCode) {
+			res.handlePage(err, body, headers, unpacked, statusCode, callback);
+		});
+	};
+
+	function HttpPaginatedResponse(resource, items, headers, statusCode, relParams, err) {
+		PaginatedResult.call(this, resource, items, relParams);
+		this.statusCode = statusCode;
+		this.success = statusCode < 300 && statusCode >= 200;
+		this.headers = headers;
+		this.errorCode = err && err.code;
+		this.errorMessage = err && err.message;
+	}
+	utils["a" /* default */].inherits(HttpPaginatedResponse, PaginatedResult);
+
+	return PaginatedResource;
+})();
+
+/* harmony default export */ var paginatedresource = (paginatedresource_PaginatedResource);
+
+// EXTERNAL MODULE: ./common/lib/types/errorinfo.js
+var errorinfo = __webpack_require__(2);
+
+// CONCATENATED MODULE: ./common/lib/types/pushchannelsubscription.js
+
+
+var pushchannelsubscription_PushChannelSubscription = (function() {
+
+	function PushChannelSubscription() {
+		this.channel = undefined;
+		this.deviceId = undefined;
+		this.clientId = undefined;
+	}
+
+	/**
+	 * Overload toJSON() to intercept JSON.stringify()
+	 * @return {*}
+	 */
+	PushChannelSubscription.prototype.toJSON = function() {
+		return {
+			channel: this.channel,
+			deviceId: this.deviceId,
+			clientId: this.clientId
+		};
+	};
+
+	PushChannelSubscription.prototype.toString = function() {
+		var result = '[PushChannelSubscription';
+		if(this.channel)
+			result += '; channel=' + this.channel;
+		if(this.deviceId)
+			result += '; deviceId=' + this.deviceId;
+		if(this.clientId)
+			result += '; clientId=' + this.clientId;
+		result += ']';
+		return result;
+	};
+
+	PushChannelSubscription.toRequestBody = utils["a" /* default */].encodeBody;
+
+	PushChannelSubscription.fromResponseBody = function(body, format) {
+		if(format) {
+			body = utils["a" /* default */].decodeBody(body, format);
+		}
+
+		if(utils["a" /* default */].isArray(body)) {
+			return PushChannelSubscription.fromValuesArray(body);
+		} else {
+			return PushChannelSubscription.fromValues(body);
+		}
+	};
+
+	PushChannelSubscription.fromValues = function(values) {
+		return utils["a" /* default */].mixin(new PushChannelSubscription(), values);
+	};
+
+	PushChannelSubscription.fromValuesArray = function(values) {
+		var count = values.length, result = new Array(count);
+		for(var i = 0; i < count; i++) result[i] = PushChannelSubscription.fromValues(values[i]);
+		return result;
+	};
+
+	return PushChannelSubscription;
+})();
+
+/* harmony default export */ var pushchannelsubscription = (pushchannelsubscription_PushChannelSubscription);
+
+// CONCATENATED MODULE: ./common/lib/client/push.js
+
+
+
+
+
+
+
+
+var push_Push = (function() {
+	var noop = function() {};
+
+	function Push(rest) {
+		this.rest = rest;
+		this.admin = new Admin(rest);
+	}
+
+	function Admin(rest) {
+		this.rest = rest;
+		this.deviceRegistrations = new DeviceRegistrations(rest);
+		this.channelSubscriptions = new ChannelSubscriptions(rest);
+	}
+
+	Admin.prototype.publish = function(recipient, payload, callback) {
+		var rest = this.rest;
+		var format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			requestBody = utils["a" /* default */].mixin({recipient: recipient}, payload),
+			headers = utils["a" /* default */].defaultPostHeaders(format),
+			params = {};
+
+		if(typeof callback !== 'function') {
+			if(this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'publish', arguments);
+			}
+			callback = noop;
+		}
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		if(rest.options.pushFullWait)
+			utils["a" /* default */].mixin(params, {fullWait: 'true'});
+
+		requestBody = utils["a" /* default */].encodeBody(requestBody, format);
+		client_resource.post(rest, '/push/publish', requestBody, headers, params, false, function(err) { callback(err); });
+	};
+
+	function DeviceRegistrations(rest) {
+		this.rest = rest;
+	}
+
+	DeviceRegistrations.prototype.save = function(device, callback) {
+		var rest = this.rest;
+		var format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			requestBody = devicedetails.fromValues(device),
+			headers = utils["a" /* default */].defaultPostHeaders(format),
+			params = {};
+
+		if(typeof callback !== 'function') {
+			if(this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'save', arguments);
+			}
+			callback = noop;
+		}
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		if(rest.options.pushFullWait)
+			utils["a" /* default */].mixin(params, {fullWait: 'true'});
+
+		requestBody = utils["a" /* default */].encodeBody(requestBody, format);
+		client_resource.put(rest, '/push/deviceRegistrations/' + encodeURIComponent(device.id), requestBody, headers, params, false, function(err, body, headers, unpacked) {
+			callback(err, !err && devicedetails.fromResponseBody(body, !unpacked && format));
+		});
+	};
+
+	DeviceRegistrations.prototype.get = function(deviceIdOrDetails, callback) {
+		var rest = this.rest,
+			format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			headers = utils["a" /* default */].defaultGetHeaders(format),
+			deviceId = deviceIdOrDetails.id || deviceIdOrDetails;
+
+		if(typeof callback !== 'function') {
+			if(this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'get', arguments);
+			}
+			callback = noop;
+		}
+
+		if(typeof deviceId !== 'string' || !deviceId.length) {
+			callback(new errorinfo["a" /* default */]('First argument to DeviceRegistrations#get must be a deviceId string or DeviceDetails', 40000, 400));
+			return;
+		}
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		client_resource.get(rest, '/push/deviceRegistrations/' + encodeURIComponent(deviceId), headers, {}, false, function(err, body, headers, unpacked) {
+			callback(err, !err && devicedetails.fromResponseBody(body, !unpacked && format));
+		});
+	};
+
+	DeviceRegistrations.prototype.list = function(params, callback) {
+		var rest = this.rest,
+			format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			envelope = http["a" /* default */].supportsLinkHeaders ? undefined : format,
+			headers = utils["a" /* default */].defaultGetHeaders(format);
+
+		if(typeof callback !== 'function') {
+			if(this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'list', arguments);
+			}
+			callback = noop;
+		}
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		(new paginatedresource(rest, '/push/deviceRegistrations', headers, envelope, function(body, headers, unpacked) {
+			return devicedetails.fromResponseBody(body, !unpacked && format);
+		})).get(params, callback);
+	};
+
+	DeviceRegistrations.prototype.remove = function(deviceIdOrDetails, callback) {
+		var rest = this.rest,
+			format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			headers = utils["a" /* default */].defaultGetHeaders(format),
+			params = {},
+			deviceId = deviceIdOrDetails.id || deviceIdOrDetails;
+
+		if(typeof callback !== 'function') {
+			if(this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'remove', arguments);
+			}
+			callback = noop;
+		}
+
+		if(typeof deviceId !== 'string' || !deviceId.length) {
+			callback(new errorinfo["a" /* default */]('First argument to DeviceRegistrations#remove must be a deviceId string or DeviceDetails', 40000, 400));
+			return;
+		}
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		if(rest.options.pushFullWait)
+			utils["a" /* default */].mixin(params, {fullWait: 'true'});
+
+		client_resource['delete'](rest, '/push/deviceRegistrations/' + encodeURIComponent(deviceId), headers, params, false, function(err) { callback(err); });
+	};
+
+	DeviceRegistrations.prototype.removeWhere = function(params, callback) {
+		var rest = this.rest,
+			format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			headers = utils["a" /* default */].defaultGetHeaders(format);
+
+		if(typeof callback !== 'function') {
+			if(this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'removeWhere', arguments);
+			}
+			callback = noop;
+		}
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		if(rest.options.pushFullWait)
+			utils["a" /* default */].mixin(params, {fullWait: 'true'});
+
+		client_resource['delete'](rest, '/push/deviceRegistrations', headers, params, false, function(err) { callback(err); });
+	};
+
+	function ChannelSubscriptions(rest) {
+		this.rest = rest;
+	}
+
+	ChannelSubscriptions.prototype.save = function(subscription, callback) {
+		var rest = this.rest;
+		var format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			requestBody = pushchannelsubscription.fromValues(subscription),
+			headers = utils["a" /* default */].defaultPostHeaders(format),
+			params = {};
+
+		if(typeof callback !== 'function') {
+			if(this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'save', arguments);
+			}
+			callback = noop;
+		}
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		if(rest.options.pushFullWait)
+			utils["a" /* default */].mixin(params, {fullWait: 'true'});
+
+		requestBody = utils["a" /* default */].encodeBody(requestBody, format);
+		client_resource.post(rest, '/push/channelSubscriptions', requestBody, headers, params, false, function(err, body, headers, unpacked) {
+			callback(err, !err && pushchannelsubscription.fromResponseBody(body, !unpacked && format));
+		});
+	};
+
+	ChannelSubscriptions.prototype.list = function(params, callback) {
+		var rest = this.rest,
+			format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			envelope = http["a" /* default */].supportsLinkHeaders ? undefined : format,
+			headers = utils["a" /* default */].defaultGetHeaders(format);
+
+		if(typeof callback !== 'function') {
+			if(this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'list', arguments);
+			}
+			callback = noop;
+		}
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		(new paginatedresource(rest, '/push/channelSubscriptions', headers, envelope, function(body, headers, unpacked) {
+			return pushchannelsubscription.fromResponseBody(body, !unpacked && format);
+		})).get(params, callback);
+	};
+
+	ChannelSubscriptions.prototype.removeWhere = function(params, callback) {
+		var rest = this.rest,
+			format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			headers = utils["a" /* default */].defaultGetHeaders(format);
+
+		if(typeof callback !== 'function') {
+			if(this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'removeWhere', arguments);
+			}
+			callback = noop;
+		}
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		if(rest.options.pushFullWait)
+			utils["a" /* default */].mixin(params, {fullWait: 'true'});
+
+		client_resource['delete'](rest, '/push/channelSubscriptions', headers, params, false, function(err) { callback(err); });
+	};
+
+	/* ChannelSubscriptions have no unique id; removing one is equivalent to removeWhere by its properties */
+	ChannelSubscriptions.prototype.remove = ChannelSubscriptions.prototype.removeWhere;
+
+	ChannelSubscriptions.prototype.listChannels = function(params, callback) {
+		var rest = this.rest,
+			format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			envelope = http["a" /* default */].supportsLinkHeaders ? undefined : format,
+			headers = utils["a" /* default */].defaultGetHeaders(format);
+
+		if(typeof callback !== 'function') {
+			if(this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'listChannels', arguments);
+			}
+			callback = noop;
+		}
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		if(rest.options.pushFullWait)
+			utils["a" /* default */].mixin(params, {fullWait: 'true'});
+
+		(new paginatedresource(rest, '/push/channels', headers, envelope, function(body, headers, unpacked) {
+			var f = !unpacked && format;
+
+			if(f) {
+				body = utils["a" /* default */].decodeBody(body, format);
+			}
+
+			for(var i = 0; i < body.length; i++) {
+				body[i] = String(body[i]);
+			}
+			return body;
+		})).get(params, callback);
+	};
+
+	return Push;
+})();
+
+/* harmony default export */ var push = (push_Push);
+
+// EXTERNAL MODULE: ./common/lib/util/eventemitter.js
+var eventemitter = __webpack_require__(7);
+
+// EXTERNAL MODULE: ./common/lib/types/presencemessage.js
+var presencemessage = __webpack_require__(11);
+
+// CONCATENATED MODULE: ./common/lib/client/presence.js
+
+
+
+
+
+
+
+var presence_Presence = (function() {
+	function noop() {}
+	function Presence(channel) {
+		this.channel = channel;
+		this.basePath = channel.basePath + '/presence';
+	}
+	utils["a" /* default */].inherits(Presence, eventemitter["a" /* default */]);
+
+	Presence.prototype.get = function(params, callback) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Presence.get()', 'channel = ' + this.channel.name);
+		/* params and callback are optional; see if params contains the callback */
+		if(callback === undefined) {
+			if(typeof(params) == 'function') {
+				callback = params;
+				params = null;
+			} else {
+				if(this.channel.rest.options.promises) {
+					return utils["a" /* default */].promisify(this, 'get', arguments);
+				}
+				callback = noop;
+			}
+		}
+		var rest = this.channel.rest,
+			format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			envelope = http["a" /* default */].supportsLinkHeaders ? undefined : format,
+			headers = utils["a" /* default */].defaultGetHeaders(format);
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		var options = this.channel.channelOptions;
+		(new paginatedresource(rest, this.basePath, headers, envelope, function(body, headers, unpacked) {
+			return presencemessage["a" /* default */].fromResponseBody(body, options, !unpacked && format);
+		})).get(params, callback);
+	};
+
+	Presence.prototype.history = function(params, callback) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Presence.history()', 'channel = ' + this.channel.name);
+		this._history(params, callback);
+	};
+
+	Presence.prototype._history = function(params, callback) {
+		/* params and callback are optional; see if params contains the callback */
+		if(callback === undefined) {
+			if(typeof(params) == 'function') {
+				callback = params;
+				params = null;
+			} else {
+				if(this.channel.rest.options.promises) {
+					return utils["a" /* default */].promisify(this, '_history', arguments);
+				}
+				callback = noop;
+			}
+		}
+		var rest = this.channel.rest,
+			format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			envelope = http["a" /* default */].supportsLinkHeaders ? undefined : format,
+			headers = utils["a" /* default */].defaultGetHeaders(format),
+			channel = this.channel;
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		var options = this.channel.channelOptions;
+		(new paginatedresource(rest, this.basePath + '/history', headers, envelope, function(body, headers, unpacked) {
+			return presencemessage["a" /* default */].fromResponseBody(body, options, !unpacked && format);
+		})).get(params, callback);
+	};
+
+	return Presence;
+})();
+
+/* harmony default export */ var client_presence = (presence_Presence);
+
+// EXTERNAL MODULE: ./browser/lib/util/crypto.js
+var util_crypto = __webpack_require__(19);
+
+// EXTERNAL MODULE: ./common/lib/types/message.js
+var types_message = __webpack_require__(9);
+
+// CONCATENATED MODULE: ./common/lib/client/channel.js
+
+
+
+
+
+
+
+
+
+
+
+var channel_Channel = (function() {
+	function noop() {}
+	var MSG_ID_ENTROPY_BYTES = 9;
+
+	/* public constructor */
+	function Channel(rest, name, channelOptions) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Channel()', 'started; name = ' + name);
+		eventemitter["a" /* default */].call(this);
+		this.rest = rest;
+		this.name = name;
+		this.basePath = '/channels/' + encodeURIComponent(name);
+		this.presence = new client_presence(this);
+		this.setOptions(channelOptions);
+	}
+	utils["a" /* default */].inherits(Channel, eventemitter["a" /* default */]);
+
+	Channel.prototype.setOptions = function(options) {
+		this.channelOptions = options = options || {};
+		if(options.cipher) {
+			if(!util_crypto["a" /* default */]) throw new Error('Encryption not enabled; use ably.encryption.js instead');
+			var cipher = util_crypto["a" /* default */].getCipher(options.cipher);
+			options.cipher = cipher.cipherParams;
+			options.channelCipher = cipher.cipher;
+		} else if('cipher' in options) {
+			/* Don't deactivate an existing cipher unless options
+			 * has a 'cipher' key that's falsey */
+			options.cipher = null;
+			options.channelCipher = null;
+		}
+	};
+
+	Channel.prototype.history = function(params, callback) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Channel.history()', 'channel = ' + this.name);
+		/* params and callback are optional; see if params contains the callback */
+		if(callback === undefined) {
+			if(typeof(params) == 'function') {
+				callback = params;
+				params = null;
+			} else {
+				if(this.rest.options.promises) {
+					return utils["a" /* default */].promisify(this, 'history', arguments);
+				}
+				callback = noop;
+			}
+		}
+
+		this._history(params, callback);
+	};
+
+	Channel.prototype._history = function(params, callback) {
+		var rest = this.rest,
+			format = rest.options.useBinaryProtocol ? 'msgpack' : 'json',
+			envelope = http["a" /* default */].supportsLinkHeaders ? undefined : format,
+			headers = utils["a" /* default */].defaultGetHeaders(format),
+			channel = this;
+
+		if(rest.options.headers)
+			utils["a" /* default */].mixin(headers, rest.options.headers);
+
+		var options = this.channelOptions;
+		(new paginatedresource(rest, this.basePath + '/messages', headers, envelope, function(body, headers, unpacked) {
+			return types_message["a" /* default */].fromResponseBody(body, options, !unpacked && format);
+		})).get(params, callback);
+	};
+
+	function allEmptyIds(messages) {
+		return utils["a" /* default */].arrEvery(messages, function(message) {
+			return !message.id;
+		});
+	}
+
+	Channel.prototype.publish = function() {
+		var argCount = arguments.length,
+			first = arguments[0],
+			second = arguments[1],
+			callback = arguments[argCount - 1],
+			messages,
+			params,
+			self = this;
+
+		if(typeof(callback) !== 'function') {
+			if(this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'publish', arguments);
+			}
+			callback = noop;
+		}
+
+		if(typeof first === 'string' || first === null) {
+			/* (name, data, ...) */
+			messages = [types_message["a" /* default */].fromValues({name: first, data: second})];
+			params = arguments[2];
+		} else if(utils["a" /* default */].isObject(first)) {
+			messages = [types_message["a" /* default */].fromValues(first)];
+			params = arguments[1];
+		} else if(utils["a" /* default */].isArray(first)) {
+			messages = types_message["a" /* default */].fromValuesArray(first);
+			params = arguments[1];
+		} else {
+			throw new errorinfo["a" /* default */]('The single-argument form of publish() expects a message object or an array of message objects', 40013, 400);
+		}
+
+		if(typeof params !== 'object' || !params) {
+			/* No params supplied (so after-message argument is just the callback or undefined) */
+			params = {};
+		}
+
+		var rest = this.rest,
+			options = rest.options,
+			format = options.useBinaryProtocol ? 'msgpack' : 'json',
+			idempotentRestPublishing = rest.options.idempotentRestPublishing,
+			headers = utils["a" /* default */].defaultPostHeaders(format);
+
+		if(options.headers)
+			utils["a" /* default */].mixin(headers, options.headers);
+
+		if(idempotentRestPublishing && allEmptyIds(messages)) {
+			var msgIdBase = utils["a" /* default */].randomString(MSG_ID_ENTROPY_BYTES);
+			utils["a" /* default */].arrForEach(messages, function(message, index) {
+				message.id = msgIdBase + ':' + index.toString();
+			});
+		}
+
+		types_message["a" /* default */].encodeArray(messages, this.channelOptions, function(err) {
+			if(err) {
+				callback(err);
+				return;
+			}
+
+			/* RSL1i */
+			var size = types_message["a" /* default */].getMessagesSize(messages),
+				maxMessageSize = options.maxMessageSize;
+			if(size > maxMessageSize) {
+				callback(new errorinfo["a" /* default */]('Maximum size of messages that can be published at once exceeded ( was ' + size + ' bytes; limit is ' + maxMessageSize + ' bytes)', 40009, 400));
+				return;
+			}
+
+			self._publish(types_message["a" /* default */].serialize(messages, format), headers, params, callback);
+		});
+	};
+
+	Channel.prototype._publish = function(requestBody, headers, params, callback) {
+		client_resource.post(this.rest, this.basePath + '/messages', requestBody, headers, params, false, callback);
+	};
+
+	return Channel;
+})();
+
+/* harmony default export */ var client_channel = (channel_Channel);
+
+// CONCATENATED MODULE: ./common/lib/types/stats.js
+
+
+var stats_Stats = (function() {
+
+	function MessageCount(values) {
+		this.count = (values && values.count) || 0;
+		this.data = (values && values.data) || 0;
+		this.uncompressedData = (values && values.uncompressedData) || 0;
+		this.failed = (values && values.failed) || 0;
+		this.refused = (values && values.refused) || 0;
+	}
+
+	function MessageCategory(values) {
+		var self = this;
+		MessageCount.call(this, values);
+		this.category = undefined;
+		if (values && values.category) {
+			this.category = { };
+			utils["a" /* default */].forInOwnNonNullProps(values.category, function(prop) {
+				self.category[prop] = new MessageCount(values.category[prop]);
+			});
+		}
+	}
+
+	function ResourceCount(values) {
+		this.peak = (values && values.peak) || 0;
+		this.min = (values && values.min) || 0;
+		this.mean = (values && values.mean) || 0;
+		this.opened = (values && values.opened) || 0;
+		this.refused = (values && values.refused) || 0;
+	}
+
+	function RequestCount(values) {
+		this.succeeded = (values && values.succeeded) || 0;
+		this.failed = (values && values.failed) || 0;
+		this.refused = (values && values.refused) || 0;
+	}
+
+	function ConnectionTypes(values) {
+		this.plain = new ResourceCount(values && values.plain);
+		this.tls = new ResourceCount(values && values.tls);
+		this.all = new ResourceCount(values && values.all);
+	}
+
+	function MessageTypes(values) {
+		this.messages = new MessageCategory(values && values.messages);
+		this.presence = new MessageCategory(values && values.presence);
+		this.all = new MessageCategory(values && values.all);
+	}
+
+	function MessageTraffic(values) {
+		this.realtime = new MessageTypes(values && values.realtime);
+		this.rest = new MessageTypes(values && values.rest);
+		this.webhook = new MessageTypes(values && values.webhook);
+		this.sharedQueue = new MessageTypes(values && values.sharedQueue);
+		this.externalQueue = new MessageTypes(values && values.externalQueue);
+		this.httpEvent = new MessageTypes(values && values.httpEvent);
+		this.push = new MessageTypes(values && values.push);
+		this.all = new MessageTypes(values && values.all);
+	}
+
+	function MessageDirections(values) {
+		this.all           = new MessageTypes(values && values.all);
+		this.inbound       = new MessageTraffic(values && values.inbound);
+		this.outbound      = new MessageTraffic(values && values.outbound);
+	}
+
+	function XchgMessages(values) {
+		this.all           = new MessageTypes(values && values.all);
+		this.producerPaid  = new MessageDirections(values && values.producerPaid);
+		this.consumerPaid  = new MessageDirections(values && values.consumerPaid);
+	}
+
+	function PushStats(values) {
+		this.messages = (values && values.messages) || 0;
+		var notifications = values && values.notifications;
+		this.notifications = {
+			invalid: notifications && notifications.invalid || 0,
+			attempted: notifications && notifications.attempted || 0,
+			successful: notifications && notifications.successful || 0,
+			failed: notifications && notifications.failed || 0
+		};
+		this.directPublishes = (values && values.directPublishes) || 0;
+	}
+
+	function ProcessedCount(values) {
+		this.succeeded = (values && values.succeeded) || 0;
+		this.skipped = (values && values.skipped) || 0;
+		this.failed = (values && values.failed) || 0;
+	}
+
+	function ProcessedMessages(values) {
+		var self = this;
+		this.delta = undefined;
+		if (values && values.delta) {
+			this.delta = { };
+			utils["a" /* default */].forInOwnNonNullProps(values.delta, function(prop) {
+				self.delta[prop] = new ProcessedCount(values.delta[prop]);
+			});
+		}
+	}
+
+	function Stats(values) {
+		MessageDirections.call(this, values);
+		this.persisted     = new MessageTypes(values && values.persisted);
+		this.connections   = new ConnectionTypes(values && values.connections);
+		this.channels      = new ResourceCount(values && values.channels);
+		this.apiRequests   = new RequestCount(values && values.apiRequests);
+		this.tokenRequests = new RequestCount(values && values.tokenRequests);
+		this.xchgProducer  = new XchgMessages(values && values.xchgProducer);
+		this.xchgConsumer  = new XchgMessages(values && values.xchgConsumer);
+		this.push          = new PushStats(values && values.pushStats);
+		this.processed     = new ProcessedMessages(values && values.processed);
+		this.inProgress    = (values && values.inProgress) || undefined;
+		this.unit          = (values && values.unit) || undefined;
+		this.intervalId    = (values && values.intervalId) || undefined;
+	}
+
+	Stats.fromValues = function(values) {
+		return new Stats(values);
+	};
+
+	return Stats;
+})();
+
+/* harmony default export */ var stats = (stats_Stats);
+
+// CONCATENATED MODULE: ./common/lib/client/rest.js
+
+
+
+
+
+
+
+
+
+
+
+
+var rest_Rest = (function() {
+	var noop = function() {};
+	var msgpack = platform_browser["a" /* default */].msgpack;
+
+	function Rest(options) {
+		if(!(this instanceof Rest)){
+			return new Rest(options);
+		}
+
+		/* normalise options */
+		if(!options) {
+			var msg = 'no options provided';
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Rest()', msg);
+			throw new Error(msg);
+		}
+		options = defaults["a" /* default */].objectifyOptions(options);
+
+		if(options.log) {
+			logger["a" /* default */].setLog(options.log.level, options.log.handler);
+		}
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'Rest()', 'initialized with clientOptions ' + utils["a" /* default */].inspect(options));
+
+		this.options = defaults["a" /* default */].normaliseOptions(options);
+
+		/* process options */
+		if(options.key) {
+			var keyMatch = options.key.match(/^([^:\s]+):([^:.\s]+)$/);
+			if(!keyMatch) {
+				var msg = 'invalid key parameter';
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Rest()', msg);
+				throw new Error(msg);
+			}
+			options.keyName = keyMatch[1];
+			options.keySecret = keyMatch[2];
+		}
+
+		if('clientId' in options) {
+			if(!(typeof(options.clientId) === 'string' || options.clientId === null))
+				throw new errorinfo["a" /* default */]('clientId must be either a string or null', 40012, 400);
+			else if(options.clientId === '*')
+				throw new errorinfo["a" /* default */]('Can’t use "*" as a clientId as that string is reserved. (To change the default token request behaviour to use a wildcard clientId, use {defaultTokenParams: {clientId: "*"}})', 40012, 400);
+		}
+
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Rest()', 'started; version = ' + defaults["a" /* default */].libstring);
+
+		this.baseUri = this.authority = function(host) { return defaults["a" /* default */].getHttpScheme(options) + host + ':' + defaults["a" /* default */].getPort(options, false); };
+		this._currentFallback = null;
+
+		this.serverTimeOffset = null;
+		this.auth = new auth["a" /* default */](this, options);
+		this.channels = new Channels(this);
+		this.push = new push(this);
+	}
+
+	Rest.prototype.stats = function(params, callback) {
+		/* params and callback are optional; see if params contains the callback */
+		if(callback === undefined) {
+			if(typeof(params) == 'function') {
+				callback = params;
+				params = null;
+			} else {
+				if(this.options.promises) {
+					return utils["a" /* default */].promisify(this, 'stats', arguments);
+				}
+				callback = noop;
+			}
+		}
+		var headers = utils["a" /* default */].defaultGetHeaders(),
+			format = this.options.useBinaryProtocol ? 'msgpack' : 'json',
+			envelope = http["a" /* default */].supportsLinkHeaders ? undefined : format;
+
+		if(this.options.headers)
+			utils["a" /* default */].mixin(headers, this.options.headers);
+
+		(new paginatedresource(this, '/stats', headers, envelope, function(body, headers, unpacked) {
+			var statsValues = (unpacked ? body : JSON.parse(body));
+			for(var i = 0; i < statsValues.length; i++) statsValues[i] = stats.fromValues(statsValues[i]);
+			return statsValues;
+		})).get(params, callback);
+	};
+
+	Rest.prototype.time = function(params, callback) {
+		/* params and callback are optional; see if params contains the callback */
+		if(callback === undefined) {
+			if(typeof(params) == 'function') {
+				callback = params;
+				params = null;
+			} else {
+				if(this.options.promises) {
+					return utils["a" /* default */].promisify(this, 'time', arguments);
+				}
+				callback = noop;
+			}
+		}
+		var headers = utils["a" /* default */].defaultGetHeaders();
+		if(this.options.headers)
+			utils["a" /* default */].mixin(headers, this.options.headers);
+		var self = this;
+		var timeUri = function(host) { return self.authority(host) + '/time' };
+		http["a" /* default */].get(this, timeUri, headers, params, function(err, res, headers, unpacked) {
+			if(err) {
+				callback(err);
+				return;
+			}
+			if(!unpacked) res = JSON.parse(res);
+			var time = res[0];
+			if(!time) {
+				err = new Error('Internal error (unexpected result type from GET /time)');
+				err.statusCode = 500;
+				callback(err);
+				return;
+			}
+			/* calculate time offset only once for this device by adding to the prototype */
+			self.serverTimeOffset = (time - utils["a" /* default */].now());
+			callback(null, time);
+		});
+	};
+
+	Rest.prototype.request = function(method, path, params, body, customHeaders, callback) {
+		var useBinary = this.options.useBinaryProtocol,
+			encoder = useBinary ? msgpack.encode: JSON.stringify,
+			decoder = useBinary ? msgpack.decode : JSON.parse,
+			format = useBinary ? 'msgpack' : 'json',
+			envelope = http["a" /* default */].supportsLinkHeaders ? undefined : format;
+		params = params || {};
+		method = method.toLowerCase();
+		var headers = method == 'get' ? utils["a" /* default */].defaultGetHeaders(format) : utils["a" /* default */].defaultPostHeaders(format);
+
+		if(callback === undefined) {
+			if(this.options.promises) {
+				return utils["a" /* default */].promisify(this, 'request', [method, path, params, body, customHeaders]);
+			}
+			callback = noop;
+		}
+
+		if(typeof body !== 'string') {
+			body = encoder(body);
+		}
+		if(this.options.headers) {
+			utils["a" /* default */].mixin(headers, this.options.headers);
+		}
+		if(customHeaders) {
+			utils["a" /* default */].mixin(headers, customHeaders);
+		}
+		var paginatedResource = new paginatedresource(this, path, headers, envelope, function(resbody, headers, unpacked) {
+			return utils["a" /* default */].ensureArray(unpacked ? resbody : decoder(resbody));
+		}, /* useHttpPaginatedResponse: */ true);
+
+		if(!utils["a" /* default */].arrIn(http["a" /* default */].methods, method)) {
+			throw new errorinfo["a" /* default */]('Unsupported method ' + method, 40500, 405);
+		}
+
+		if(utils["a" /* default */].arrIn(http["a" /* default */].methodsWithBody, method)) {
+			paginatedResource[method](params, body, callback);
+		} else {
+			paginatedResource[method](params, callback);
+		}
+	};
+
+	Rest.prototype.setLog = function(logOptions) {
+		logger["a" /* default */].setLog(logOptions.level, logOptions.handler);
+	};
+
+	function Channels(rest) {
+		this.rest = rest;
+		this.all = Object.create(null);
+	}
+
+	Channels.prototype.get = function(name, channelOptions) {
+		name = String(name);
+		var channel = this.all[name];
+		if(!channel) {
+			this.all[name] = channel = new client_channel(this.rest, name, channelOptions);
+		} else if(channelOptions) {
+			channel.setOptions(channelOptions);
+		}
+
+		return channel;
+	};
+
+	/* Included to support certain niche use-cases; most users should ignore this.
+	 * Please do not use this unless you know what you're doing */
+	Channels.prototype.release = function(name) {
+		delete this.all[String(name)];
+	};
+
+	return Rest;
+})();
+
+rest_Rest.Promise = function(options) {
+	options = defaults["a" /* default */].objectifyOptions(options);
+	options.promises = true;
+	return new rest_Rest(options);
+};
+
+rest_Rest.Callbacks = rest_Rest;
+
+/* harmony default export */ var client_rest = (rest_Rest);
+
+// EXTERNAL MODULE: ./common/lib/transport/connectionmanager.js
+var connectionmanager = __webpack_require__(25);
+
+// EXTERNAL MODULE: ./common/lib/client/connectionstatechange.js
+var connectionstatechange = __webpack_require__(21);
+
+// CONCATENATED MODULE: ./common/lib/client/connection.js
+
+
+
+
+
+
+var connection_Connection = (function() {
+	function noop() {}
+
+	/* public constructor */
+	function Connection(ably, options) {
+		eventemitter["a" /* default */].call(this);
+		this.ably = ably;
+		this.connectionManager = new connectionmanager["a" /* default */](ably, options);
+		this.state = this.connectionManager.state.state;
+		this.key = undefined;
+		this.id = undefined;
+		this.serial = undefined;
+		this.timeSerial = undefined;
+		this.recoveryKey = undefined;
+		this.errorReason = null;
+
+		var self = this;
+		this.connectionManager.on('connectionstate', function(stateChange) {
+			var state = self.state = stateChange.current;
+			utils["a" /* default */].nextTick(function() {
+				self.emit(state, stateChange);
+			});
+		});
+		this.connectionManager.on('update', function(stateChange) {
+			utils["a" /* default */].nextTick(function() {
+				self.emit('update', stateChange);
+			});
+		});
+	}
+	utils["a" /* default */].inherits(Connection, eventemitter["a" /* default */]);
+
+	Connection.prototype.whenState = function(state, listener) {
+		return eventemitter["a" /* default */].prototype.whenState.call(this, state, this.state, listener, new connectionstatechange["a" /* default */](undefined, state));
+	}
+
+	Connection.prototype.connect = function() {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Connection.connect()', '');
+		this.connectionManager.requestState({state: 'connecting'});
+	};
+
+	Connection.prototype.ping = function(callback) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Connection.ping()', '');
+		if(!callback) {
+			if(this.ably.options.promises) {
+				return utils["a" /* default */].promisify(this, 'ping', arguments);
+			}
+			callback = noop;
+		}
+		this.connectionManager.ping(null, callback);
+	};
+
+	Connection.prototype.close = function() {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Connection.close()', 'connectionKey = ' + this.key);
+		this.connectionManager.requestState({state: 'closing'});
+	};
+
+	return Connection;
+})();
+
+/* harmony default export */ var connection = (connection_Connection);
+
+// EXTERNAL MODULE: ./common/lib/types/protocolmessage.js
+var protocolmessage = __webpack_require__(8);
+
+// EXTERNAL MODULE: ./common/lib/transport/connectionerror.js
+var connectionerror = __webpack_require__(13);
+
+// EXTERNAL MODULE: ./common/lib/util/multicaster.js
+var util_multicaster = __webpack_require__(22);
+
+// CONCATENATED MODULE: ./common/lib/client/channelstatechange.js
+var ChannelStateChange = (function() {
+
+	/* public constructor */
+	function ChannelStateChange(previous, current, resumed, reason) {
+		this.previous = previous;
+		this.current = current;
+		if(current === 'attached') this.resumed = resumed;
+		if(reason) this.reason = reason;
+	}
+
+	return ChannelStateChange;
+})();
+
+/* harmony default export */ var channelstatechange = (ChannelStateChange);
+
+// CONCATENATED MODULE: ./common/lib/client/realtimepresence.js
+
+
+
+
+
+
+
+
+
+
+
+var realtimepresence_RealtimePresence = (function() {
+	var noop = function() {};
+
+	function memberKey(item) {
+		return item.clientId + ':' + item.connectionId;
+	}
+
+	function getClientId(realtimePresence) {
+		return realtimePresence.channel.realtime.auth.clientId;
+	}
+
+	function isAnonymousOrWildcard(realtimePresence) {
+		var realtime = realtimePresence.channel.realtime;
+		/* If not currently connected, we can't assume that we're an anonymous
+		 * client, as realtime may inform us of our clientId in the CONNECTED
+		 * message. So assume we're not anonymous and leave it to realtime to
+		 * return an error if we are */
+		var clientId = realtime.auth.clientId;
+		return (!clientId || (clientId === '*')) && realtime.connection.state === 'connected';
+	}
+
+	/* Callback is called only in the event of an error */
+	function waitAttached(channel, callback, action) {
+		switch(channel.state) {
+			case 'attached':
+			case 'suspended':
+				action();
+				break;
+			case 'initialized':
+			case 'detached':
+			case 'detaching':
+			case 'attaching':
+				channel.attach(function(err) {
+					if(err) callback(err);
+					else action();
+				});
+				break;
+			default:
+				callback(errorinfo["a" /* default */].fromValues(realtimechannel.invalidStateError(channel.state)));
+		}
+	}
+
+	function RealtimePresence(channel, options) {
+		client_presence.call(this, channel);
+		this.syncComplete = false;
+		this.members = new PresenceMap(this);
+		this._myMembers = new PresenceMap(this);
+		this.subscriptions = new eventemitter["a" /* default */]();
+		this.pendingPresence = [];
+	}
+	utils["a" /* default */].inherits(RealtimePresence, client_presence);
+
+	RealtimePresence.prototype.enter = function(data, callback) {
+		if(isAnonymousOrWildcard(this)) {
+			throw new errorinfo["a" /* default */]('clientId must be specified to enter a presence channel', 40012, 400);
+		}
+		return this._enterOrUpdateClient(undefined, data, 'enter', callback);
+	};
+
+	RealtimePresence.prototype.update = function(data, callback) {
+		if(isAnonymousOrWildcard(this)) {
+			throw new errorinfo["a" /* default */]('clientId must be specified to update presence data', 40012, 400);
+		}
+		return this._enterOrUpdateClient(undefined, data, 'update', callback);
+	};
+
+	RealtimePresence.prototype.enterClient = function(clientId, data, callback) {
+		return this._enterOrUpdateClient(clientId, data, 'enter', callback);
+	};
+
+	RealtimePresence.prototype.updateClient = function(clientId, data, callback) {
+		return this._enterOrUpdateClient(clientId, data, 'update', callback);
+	};
+
+	RealtimePresence.prototype._enterOrUpdateClient = function(clientId, data, action, callback) {
+		if (!callback) {
+			if (typeof(data)==='function') {
+				callback = data;
+				data = null;
+			} else {
+				if(this.channel.realtime.options.promises) {
+					return utils["a" /* default */].promisify(this, '_enterOrUpdateClient', [clientId, data, action]);
+				}
+				callback = noop;
+			}
+		}
+
+		var channel = this.channel;
+		if(!channel.connectionManager.activeState()) {
+			callback(channel.connectionManager.getError());
+			return;
+		}
+
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimePresence.' + action + 'Client()',
+		  'channel = ' + channel.name + ', client = ' + (clientId || '(implicit) ' + getClientId(this)));
+
+		var presence = presencemessage["a" /* default */].fromValues({
+			action : action,
+			data   : data
+		});
+		if (clientId) {
+			presence.clientId = clientId;
+		}
+
+		var self = this;
+		presencemessage["a" /* default */].encode(presence, channel.channelOptions, function(err) {
+			if (err) {
+				callback(err);
+				return;
+			}
+			switch(channel.state) {
+				case 'attached':
+					channel.sendPresence(presence, callback);
+					break;
+				case 'initialized':
+				case 'detached':
+					channel.attach();
+				case 'attaching':
+					self.pendingPresence.push({
+						presence : presence,
+						callback : callback
+					});
+					break;
+				default:
+					err = new errorinfo["a" /* default */]('Unable to ' + action + ' presence channel while in ' + channel.state + ' state', 90001);
+					err.code = 90001;
+					callback(err);
+			}
+		});
+	};
+
+	RealtimePresence.prototype.leave = function(data, callback) {
+		if(isAnonymousOrWildcard(this)) {
+			throw new errorinfo["a" /* default */]('clientId must have been specified to enter or leave a presence channel', 40012, 400);
+		}
+		return this.leaveClient(undefined, data, callback);
+	};
+
+	RealtimePresence.prototype.leaveClient = function(clientId, data, callback) {
+		if (!callback) {
+			if (typeof(data)==='function') {
+				callback = data;
+				data = null;
+			} else {
+				if(this.channel.realtime.options.promises) {
+					return utils["a" /* default */].promisify(this, 'leaveClient', [clientId, data]);
+				}
+				callback = noop;
+			}
+		}
+
+		var channel = this.channel;
+		if(!channel.connectionManager.activeState()) {
+			callback(channel.connectionManager.getError());
+			return;
+		}
+
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimePresence.leaveClient()', 'leaving; channel = ' + this.channel.name + ', client = ' + clientId);
+		var presence = presencemessage["a" /* default */].fromValues({
+			action : 'leave',
+			data   : data
+		});
+		if (clientId) { presence.clientId = clientId; }
+
+		switch(channel.state) {
+			case 'attached':
+				channel.sendPresence(presence, callback);
+				break;
+			case 'attaching':
+				this.pendingPresence.push({
+					presence : presence,
+					callback : callback
+				});
+				break;
+			case 'initialized':
+			case 'failed':
+				/* we're not attached; therefore we let any entered status
+				 * timeout by itself instead of attaching just in order to leave */
+				var err = new errorinfo["a" /* default */]('Unable to leave presence channel (incompatible state)', 90001);
+				callback(err);
+				break;
+			default:
+				/* there is no connection; therefore we let
+				 * any entered status timeout by itself */
+				callback(connectionerror["a" /* default */].failed);
+		}
+	};
+
+	RealtimePresence.prototype.get = function(/* params, callback */) {
+		var args = Array.prototype.slice.call(arguments);
+		if(args.length == 1 && typeof(args[0]) == 'function')
+			args.unshift(null);
+
+		var params = args[0],
+			callback = args[1],
+			waitForSync = !params || ('waitForSync' in params ? params.waitForSync : true);
+
+		if(!callback) {
+			if(this.channel.realtime.options.promises) {
+				return utils["a" /* default */].promisify(this, 'get', args);
+			}
+			callback = noop;
+		}
+
+		function returnMembers(members) {
+			callback(null, params ? members.list(params) : members.values());
+		}
+
+		/* Special-case the suspended state: can still get (stale) presence set if waitForSync is false */
+		if(this.channel.state === 'suspended') {
+			if(waitForSync) {
+				callback(errorinfo["a" /* default */].fromValues({
+					statusCode: 400,
+					code: 91005,
+					message: 'Presence state is out of sync due to channel being in the SUSPENDED state'
+				}));
+			} else {
+				returnMembers(this.members);
+			}
+			return;
+		}
+
+		var self = this;
+		waitAttached(this.channel, callback, function() {
+			var members = self.members;
+			if(waitForSync) {
+				members.waitSync(function() {
+					returnMembers(members);
+				});
+			} else {
+				returnMembers(members);
+			}
+		});
+	};
+
+	RealtimePresence.prototype.history = function(params, callback) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimePresence.history()', 'channel = ' + this.name);
+		/* params and callback are optional; see if params contains the callback */
+		if(callback === undefined) {
+			if(typeof(params) == 'function') {
+				callback = params;
+				params = null;
+			} else {
+				if(this.channel.realtime.options.promises) {
+					return utils["a" /* default */].promisify(this, 'history', arguments);
+				}
+				callback = noop;
+			}
+		}
+
+		if(params && params.untilAttach) {
+			if(this.channel.state === 'attached') {
+				delete params.untilAttach;
+				params.from_serial = this.channel.properties.attachSerial;
+			} else {
+				callback(new errorinfo["a" /* default */]("option untilAttach requires the channel to be attached, was: " + this.channel.state, 40000, 400));
+			}
+		}
+
+		client_presence.prototype._history.call(this, params, callback);
+	};
+
+	RealtimePresence.prototype.setPresence = function(presenceSet, isSync, syncChannelSerial) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimePresence.setPresence()', 'received presence for ' + presenceSet.length + ' participants; syncChannelSerial = ' + syncChannelSerial);
+		var syncCursor, match, members = this.members, myMembers = this._myMembers,
+			broadcastMessages = [], connId = this.channel.connectionManager.connectionId;
+
+		if(isSync) {
+			this.members.startSync();
+			if(syncChannelSerial && (match = syncChannelSerial.match(/^[\w\-]+:(.*)$/))) {
+				syncCursor = match[1];
+			}
+		}
+
+		for(var i = 0; i < presenceSet.length; i++) {
+			var presence = presencemessage["a" /* default */].fromValues(presenceSet[i]);
+			switch(presence.action) {
+				case 'leave':
+					if(members.remove(presence)) {
+						broadcastMessages.push(presence);
+					}
+					if(presence.connectionId === connId && !presence.isSynthesized()) {
+						myMembers.remove(presence);
+					}
+					break;
+				case 'enter':
+				case 'present':
+				case 'update':
+					if(members.put(presence)) {
+						broadcastMessages.push(presence);
+					}
+					if(presence.connectionId === connId) {
+						myMembers.put(presence);
+					}
+					break;
+			}
+		}
+		/* if this is the last (or only) message in a sequence of sync updates, end the sync */
+		if(isSync && !syncCursor) {
+			members.endSync();
+			/* RTP5c2: re-enter our own members if they haven't shown up in the sync */
+			this._ensureMyMembersPresent();
+			this.channel.setInProgress(realtimechannel.progressOps.sync, false);
+			this.channel.syncChannelSerial = null;
+		}
+
+		/* broadcast to listeners */
+		for(var i = 0; i < broadcastMessages.length; i++) {
+			var presence = broadcastMessages[i];
+			this.subscriptions.emit(presence.action, presence);
+		}
+	};
+
+	RealtimePresence.prototype.onAttached = function(hasPresence) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'RealtimePresence.onAttached()', 'channel = ' + this.channel.name + ', hasPresence = ' + hasPresence);
+
+		if(hasPresence) {
+			this.members.startSync();
+		} else {
+			this._synthesizeLeaves(this.members.values());
+			this.members.clear();
+			this._ensureMyMembersPresent();
+		}
+
+		/* NB this must be after the _ensureMyMembersPresent call, which may add items to pendingPresence */
+		var pendingPresence = this.pendingPresence,
+			pendingPresCount = pendingPresence.length;
+
+		if(pendingPresCount) {
+			this.pendingPresence = [];
+			var presenceArray = [];
+			var multicaster = Object(util_multicaster["a" /* default */])();
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimePresence.onAttached', 'sending ' + pendingPresCount + ' queued presence messages');
+			for(var i = 0; i < pendingPresCount; i++) {
+				var event = pendingPresence[i];
+				presenceArray.push(event.presence);
+				multicaster.push(event.callback);
+			}
+			this.channel.sendPresence(presenceArray, multicaster);
+		}
+	};
+
+	RealtimePresence.prototype.actOnChannelState = function(state, hasPresence, err) {
+		switch(state) {
+			case 'attached':
+				this.onAttached(hasPresence);
+				break;
+			case 'detached':
+			case 'failed':
+				this._clearMyMembers();
+				this.members.clear();
+				/* falls through */
+			case 'suspended':
+				this.failPendingPresence(err);
+				break;
+		}
+	};
+
+	RealtimePresence.prototype.failPendingPresence = function(err) {
+		if(this.pendingPresence.length) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'RealtimeChannel.failPendingPresence', 'channel; name = ' + this.channel.name + ', err = ' + utils["a" /* default */].inspectError(err));
+			for(var i = 0; i < this.pendingPresence.length; i++)
+				try {
+					this.pendingPresence[i].callback(err);
+				} catch(e) {}
+			this.pendingPresence = [];
+		}
+	};
+
+	RealtimePresence.prototype._clearMyMembers = function() {
+		this._myMembers.clear();
+	};
+
+	RealtimePresence.prototype._ensureMyMembersPresent = function() {
+		var self = this, members = this.members, myMembers = this._myMembers,
+			reenterCb = function(err) {
+				if(err) {
+					var msg = 'Presence auto-re-enter failed: ' + err.toString();
+					var wrappedErr = new errorinfo["a" /* default */](msg, 91004, 400);
+					logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'RealtimePresence._ensureMyMembersPresent()', msg);
+					var change = new channelstatechange(self.channel.state, self.channel.state, true, wrappedErr);
+					self.channel.emit('update', change);
+				}
+			};
+
+		for(var memberKey in myMembers.map) {
+			if(!(memberKey in members.map)) {
+				var entry = myMembers.map[memberKey];
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimePresence._ensureMyMembersPresent()', 'Auto-reentering clientId "' + entry.clientId + '" into the presence set');
+				this._enterOrUpdateClient(entry.clientId, entry.data, 'enter', reenterCb);
+				delete myMembers.map[memberKey];
+			}
+		}
+	};
+
+	RealtimePresence.prototype._synthesizeLeaves = function(items) {
+		var subscriptions = this.subscriptions;
+		utils["a" /* default */].arrForEach(items, function(item) {
+			var presence = presencemessage["a" /* default */].fromValues({
+				action: 'leave',
+				connectionId: item.connectionId,
+				clientId: item.clientId,
+				data: item.data,
+				encoding: item.encoding,
+				timestamp: utils["a" /* default */].now()
+			});
+			subscriptions.emit('leave', presence);
+		});
+	};
+
+	/* Deprecated */
+	RealtimePresence.prototype.on = function() {
+		logger["a" /* default */].deprecated('presence.on', 'presence.subscribe');
+		this.subscribe.apply(this, arguments);
+	};
+
+	/* Deprecated */
+	RealtimePresence.prototype.off = function() {
+		logger["a" /* default */].deprecated('presence.off', 'presence.unsubscribe');
+		this.unsubscribe.apply(this, arguments);
+	};
+
+	RealtimePresence.prototype.subscribe = function(/* [event], listener, [callback] */) {
+		var args = realtimechannel.processListenerArgs(arguments);
+		var event = args[0];
+		var listener = args[1];
+		var callback = args[2];
+		var channel = this.channel;
+		var self = this;
+
+		if(!callback) {
+			if(this.channel.realtime.options.promises) {
+				return utils["a" /* default */].promisify(this, 'subscribe', [event, listener]);
+			}
+			callback = noop;
+		}
+
+		if(channel.state === 'failed') {
+			callback(errorinfo["a" /* default */].fromValues(realtimechannel.invalidStateError('failed')));
+			return;
+		}
+
+		this.subscriptions.on(event, listener);
+		channel.attach(callback);
+	};
+
+	RealtimePresence.prototype.unsubscribe = function(/* [event], listener */) {
+		var args = realtimechannel.processListenerArgs(arguments);
+		var event = args[0];
+		var listener = args[1];
+		this.subscriptions.off(event, listener);
+	};
+
+	function PresenceMap(presence) {
+		eventemitter["a" /* default */].call(this);
+		this.presence = presence;
+		this.map = Object.create(null);
+		this.syncInProgress = false;
+		this.residualMembers = null;
+	}
+	utils["a" /* default */].inherits(PresenceMap, eventemitter["a" /* default */]);
+
+	PresenceMap.prototype.get = function(key) {
+		return this.map[key];
+	};
+
+	PresenceMap.prototype.getClient = function(clientId) {
+		var map = this.map, result = [];
+		for(var key in map) {
+			var item = map[key];
+			if(item.clientId == clientId && item.action != 'absent')
+				result.push(item);
+		}
+		return result;
+	};
+
+	PresenceMap.prototype.list = function(params) {
+		var map = this.map,
+			clientId = params && params.clientId,
+			connectionId = params && params.connectionId,
+			result = [];
+
+		for(var key in map) {
+			var item = map[key];
+			if(item.action === 'absent') continue;
+			if(clientId && clientId != item.clientId) continue;
+			if(connectionId && connectionId != item.connectionId) continue;
+			result.push(item);
+		}
+		return result;
+	};
+
+	function newerThan(item, existing) {
+		/* RTP2b1: if either is synthesised, compare by timestamp */
+		if(item.isSynthesized() || existing.isSynthesized()) {
+			return item.timestamp > existing.timestamp;
+		}
+
+		/* RTP2b2 */
+		var itemOrderings = item.parseId(),
+			existingOrderings = existing.parseId();
+		if(itemOrderings.msgSerial === existingOrderings.msgSerial) {
+			return itemOrderings.index > existingOrderings.index;
+		} else {
+			return itemOrderings.msgSerial > existingOrderings.msgSerial;
+		}
+	}
+
+	PresenceMap.prototype.put = function(item) {
+		if(item.action === 'enter' || item.action === 'update') {
+			item = presencemessage["a" /* default */].fromValues(item);
+			item.action = 'present';
+		}
+		var map = this.map, key = memberKey(item);
+		/* we've seen this member, so do not remove it at the end of sync */
+		if(this.residualMembers)
+			delete this.residualMembers[key];
+
+		/* compare the timestamp of the new item with any existing member (or ABSENT witness) */
+		var existingItem = map[key];
+		if(existingItem && !newerThan(item, existingItem)) {
+			return false;
+		}
+		map[key] = item;
+		return true;
+
+	};
+
+	PresenceMap.prototype.values = function() {
+		var map = this.map, result = [];
+		for(var key in map) {
+			var item = map[key];
+			if(item.action != 'absent')
+				result.push(item);
+		}
+		return result;
+	};
+
+	PresenceMap.prototype.remove = function(item) {
+		var map = this.map, key = memberKey(item);
+		var existingItem = map[key];
+
+		if(existingItem && !newerThan(item, existingItem)) {
+			return false;
+		}
+
+		/* RTP2f */
+		if(this.syncInProgress) {
+			item = presencemessage["a" /* default */].fromValues(item);
+			item.action = 'absent';
+			map[key] = item;
+		} else {
+			delete map[key];
+		}
+
+		return true;
+	};
+
+	PresenceMap.prototype.startSync = function() {
+		var map = this.map, syncInProgress = this.syncInProgress;
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'PresenceMap.startSync()', 'channel = ' + this.presence.channel.name + '; syncInProgress = ' + syncInProgress);
+		/* we might be called multiple times while a sync is in progress */
+		if(!this.syncInProgress) {
+			this.residualMembers = utils["a" /* default */].copy(map);
+			this.setInProgress(true);
+		}
+	};
+
+	PresenceMap.prototype.endSync = function() {
+		var map = this.map, syncInProgress = this.syncInProgress;
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'PresenceMap.endSync()', 'channel = ' + this.presence.channel.name + '; syncInProgress = ' + syncInProgress);
+		if(syncInProgress) {
+			/* we can now strip out the ABSENT members, as we have
+			 * received all of the out-of-order sync messages */
+			for(var memberKey in map) {
+				var entry = map[memberKey];
+				if(entry.action === 'absent') {
+					delete map[memberKey];
+				}
+			}
+			/* any members that were present at the start of the sync,
+			 * and have not been seen in sync, can be removed, and leave events emitted */
+			this.presence._synthesizeLeaves(utils["a" /* default */].valuesArray(this.residualMembers));
+			for(var memberKey in this.residualMembers) {
+				delete map[memberKey];
+			}
+			this.residualMembers = null;
+
+			/* finish, notifying any waiters */
+			this.setInProgress(false);
+		}
+		this.emit('sync');
+	};
+
+	PresenceMap.prototype.waitSync = function(callback) {
+		var syncInProgress = this.syncInProgress;
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'PresenceMap.waitSync()', 'channel = ' + this.presence.channel.name + '; syncInProgress = ' + syncInProgress);
+		if(!syncInProgress) {
+			callback();
+			return;
+		}
+		this.once('sync', callback);
+	};
+
+	PresenceMap.prototype.clear = function(callback) {
+		this.map = {};
+		this.setInProgress(false);
+		this.residualMembers = null;
+	};
+
+	PresenceMap.prototype.setInProgress = function(inProgress) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'PresenceMap.setInProgress()', 'inProgress = ' + inProgress);
+		this.syncInProgress = inProgress;
+		this.presence.syncComplete = !inProgress;
+	};
+
+	return RealtimePresence;
+})();
+
+/* harmony default export */ var realtimepresence = (realtimepresence_RealtimePresence);
+
+// CONCATENATED MODULE: ./common/lib/client/realtimechannel.js
+
+
+
+
+
+
+
+
+
+
+
+
+var realtimechannel_RealtimeChannel = (function() {
+	var actions = protocolmessage["a" /* default */].Action;
+	var noop = function() {};
+	var statechangeOp = 'statechange';
+	var syncOp = 'sync';
+
+	/* public constructor */
+	function RealtimeChannel(realtime, name, options) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'RealtimeChannel()', 'started; name = ' + name);
+		client_channel.call(this, realtime, name, options);
+		this.realtime = realtime;
+		this.presence = new realtimepresence(this, realtime.options);
+		this.connectionManager = realtime.connection.connectionManager;
+		this.state = 'initialized';
+		this.subscriptions = new eventemitter["a" /* default */]();
+		this.syncChannelSerial = undefined;
+		this.properties = {
+			attachSerial: undefined
+		};
+		this.setOptions(options);
+		this.errorReason = null;
+		this._requestedFlags = null;
+		this._mode = null;
+		/* Temporary; only used for the checkChannelsOnResume option */
+		this._attachedMsgIndicator = false;
+		this._attachResume = false;
+		this._decodingContext = {
+			channelOptions: this.channelOptions,
+			plugins: realtime.options.plugins || { },
+			baseEncodedPreviousPayload: undefined
+		};
+		this._lastPayload = {
+			messageId: null,
+			protocolMessageChannelSerial: null,
+			decodeFailureRecoveryInProgress: null
+		};
+		/* Only differences between this and the public event emitter is that this emits an
+		 * update event for all ATTACHEDs, whether resumed or not */
+		this._allChannelChanges = new eventemitter["a" /* default */]();
+	}
+	utils["a" /* default */].inherits(RealtimeChannel, client_channel);
+
+	RealtimeChannel.invalidStateError = function(state) {
+		return {
+			statusCode: 400,
+			code: 90001,
+			message: 'Channel operation failed as channel state is ' + state
+		};
+	};
+
+	RealtimeChannel.progressOps = {
+		statechange: statechangeOp,
+		sync: syncOp
+	};
+
+	RealtimeChannel.processListenerArgs = function(args) {
+		/* [event], listener, [callback] */
+		args = Array.prototype.slice.call(args);
+		if(typeof args[0] === 'function') {
+			args.unshift(null);
+		}
+		if(args[args.length - 1] == undefined) {
+			args.pop();
+		}
+		return args;
+	};
+
+	RealtimeChannel.prototype.setOptions = function(options, callback) {
+		if(!callback) {
+			if (this.rest.options.promises) {
+				return utils["a" /* default */].promisify(this, 'setOptions', arguments);
+			}
+
+			callback = function(err){
+				if(err) {
+					logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'RealtimeChannel.setOptions()', 'Set options failed: ' + err.toString());
+				}
+			};
+		}
+		var err = validateChannelOptions(options);
+		if(err) {
+			callback(err);
+			return;
+		}
+		client_channel.prototype.setOptions.call(this, options);
+		if (this._decodingContext)
+			this._decodingContext.channelOptions = this.channelOptions;
+		if(this._shouldReattachToSetOptions(options)) {
+			/* This does not just do _attach(true, null, callback) because that would put us
+			 * into the 'attaching' state until we receive the new attached, which is
+			 * conceptually incorrect: we are still attached, we just have a pending request to
+			 * change some channel params. Per RTL17 going into the attaching state would mean
+			 * rejecting messages until we have confirmation that the options have changed,
+			 * which would unnecessarily lose message continuity. */
+			this.attachImpl();
+			this._allChannelChanges.once(function(stateChange) {
+				switch(this.event) {
+					case 'update':
+					case 'attached':
+						callback(null);
+						return;
+					default:
+						callback(stateChange.reason);
+						return;
+				}
+			});
+		} else {
+			callback();
+		}
+	};
+
+	function validateChannelOptions(options) {
+		if(options && 'params' in options && !utils["a" /* default */].isObject(options.params)) {
+			return new errorinfo["a" /* default */]('options.params must be an object', 40000, 400);
+		}
+		if(options && 'modes' in options){
+			if(!utils["a" /* default */].isArray(options.modes)){
+				return new errorinfo["a" /* default */]('options.modes must be an array', 40000, 400);
+			}
+			for(var i = 0; i < options.modes.length; i++){
+				var currentMode = options.modes[i];
+				if(!currentMode || typeof currentMode !== 'string' || !utils["a" /* default */].arrIn(protocolmessage["a" /* default */].channelModes, String.prototype.toUpperCase.call(currentMode))){
+					return new errorinfo["a" /* default */]('Invalid channel mode: ' + currentMode, 40000, 400);
+				}
+			}
+		}
+	}
+
+	RealtimeChannel.prototype._shouldReattachToSetOptions = function(options) {
+		return (this.state === 'attached' || this.state === 'attaching') && (options.params || options.modes);
+	};
+
+	RealtimeChannel.prototype.publish = function() {
+		var argCount = arguments.length,
+			messages = arguments[0],
+			callback = arguments[argCount - 1];
+
+		if(typeof(callback) !== 'function') {
+			if(this.realtime.options.promises) {
+				return utils["a" /* default */].promisify(this, 'publish', arguments);
+			}
+			callback = noop;
+			++argCount;
+		}
+		if(!this.connectionManager.activeState()) {
+			callback(this.connectionManager.getError());
+			return;
+		}
+		if(argCount == 2) {
+			if(utils["a" /* default */].isObject(messages))
+				messages = [types_message["a" /* default */].fromValues(messages)];
+			else if(utils["a" /* default */].isArray(messages))
+				messages = types_message["a" /* default */].fromValuesArray(messages);
+			else
+				throw new errorinfo["a" /* default */]('The single-argument form of publish() expects a message object or an array of message objects', 40013, 400);
+		} else {
+			messages = [types_message["a" /* default */].fromValues({name: arguments[0], data: arguments[1]})];
+		}
+		var self = this,
+			maxMessageSize = this.realtime.options.maxMessageSize;
+		types_message["a" /* default */].encodeArray(messages, this.channelOptions, function(err) {
+			if (err) {
+				callback(err);
+				return;
+			}
+			/* RSL1i */
+			var size = types_message["a" /* default */].getMessagesSize(messages);
+			if(size > maxMessageSize) {
+				callback(new errorinfo["a" /* default */]('Maximum size of messages that can be published at once exceeded ( was ' + size + ' bytes; limit is ' + maxMessageSize + ' bytes)', 40009, 400));
+				return;
+			}
+			self._publish(messages, callback);
+		});
+	};
+
+	RealtimeChannel.prototype._publish = function(messages, callback) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimeChannel.publish()', 'message count = ' + messages.length);
+		var state = this.state;
+		switch(state) {
+			case 'failed':
+			case 'suspended':
+				callback(errorinfo["a" /* default */].fromValues(RealtimeChannel.invalidStateError(state)));
+				break;
+			default:
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimeChannel.publish()', 'sending message; channel state is ' + state);
+				var msg = new protocolmessage["a" /* default */]();
+				msg.action = actions.MESSAGE;
+				msg.channel = this.name;
+				msg.messages = messages;
+				this.sendMessage(msg, callback);
+				break;
+		}
+	};
+
+	RealtimeChannel.prototype.onEvent = function(messages) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimeChannel.onEvent()', 'received message');
+		var subscriptions = this.subscriptions;
+		for(var i = 0; i < messages.length; i++) {
+			var message = messages[i];
+			subscriptions.emit(message.name, message);
+		}
+	};
+
+	RealtimeChannel.prototype.attach = function(flags, callback) {
+		if(typeof(flags) === 'function') {
+			callback = flags;
+			flags = null;
+		}
+		if(!callback) {
+			if(this.realtime.options.promises) {
+				return utils["a" /* default */].promisify(this, 'attach', arguments);
+			}
+			callback = function(err) {
+				if(err) {
+					logger["a" /* default */].logAction(logger["a" /* default */].LOG_MAJOR, 'RealtimeChannel.attach()', 'Channel attach failed: ' + err.toString());
+				}
+			}
+		}
+		if(flags) {
+			logger["a" /* default */].deprecated('channel.attach() with flags', 'channel.setOptions() with channelOptions.params');
+			/* If flags requested, always do a re-attach. TODO only do this if
+			 * current mode differs from requested mode */
+			this._requestedFlags = flags;
+		} else if (this.state === 'attached') {
+			callback();
+			return;
+		}
+
+		this._attach(false, null, callback);
+	};
+
+	RealtimeChannel.prototype._attach = function(forceReattach, attachReason, callback) {
+		if(!callback) {
+			callback = function(err) {
+				if (err) {
+					logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'RealtimeChannel._attach()', 'Channel attach failed: ' + err.toString());
+				}
+			}
+		}
+
+		var connectionManager = this.connectionManager;
+		if(!connectionManager.activeState()) {
+			callback(connectionManager.getError());
+			return;
+		}
+
+		if (this.state !== 'attaching' || forceReattach) {
+			this.requestState('attaching', attachReason);
+		}
+
+		this.once(function(stateChange) {
+			switch(this.event) {
+				case 'attached':
+					callback();
+					break;
+				case 'detached':
+				case 'suspended':
+				case 'failed':
+					callback(stateChange.reason || connectionManager.getError() || new errorinfo["a" /* default */]('Unable to attach; reason unknown; state = ' + this.event, 90000, 500));
+					break;
+				case 'detaching':
+					callback(new errorinfo["a" /* default */]('Attach request superseded by a subsequent detach request', 90000, 409));
+					break;
+			}
+		});
+	};
+
+	RealtimeChannel.prototype.attachImpl = function() {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimeChannel.attachImpl()', 'sending ATTACH message');
+		this.setInProgress(statechangeOp, true);
+		var attachMsg = protocolmessage["a" /* default */].fromValues({action: actions.ATTACH, channel: this.name, params: this.channelOptions.params});
+		if(this._requestedFlags) {
+			attachMsg.encodeModesToFlags(this._requestedFlags);
+		} else if(this.channelOptions.modes) {
+			attachMsg.encodeModesToFlags(utils["a" /* default */].allToUpperCase(this.channelOptions.modes));
+		}
+		if(this._attachResume) {
+			attachMsg.setFlag('ATTACH_RESUME');
+		}
+		if(this._lastPayload.decodeFailureRecoveryInProgress) {
+			attachMsg.channelSerial = this._lastPayload.protocolMessageChannelSerial;
+		}
+		this.sendMessage(attachMsg, noop);
+	};
+
+	RealtimeChannel.prototype.detach = function(callback) {
+		if(!callback) {
+			if(this.realtime.options.promises) {
+				return utils["a" /* default */].promisify(this, 'detach', arguments);
+			}
+			callback = noop;
+		}
+		var connectionManager = this.connectionManager;
+		if(!connectionManager.activeState()) {
+			callback(connectionManager.getError());
+			return;
+		}
+		switch(this.state) {
+                        case 'suspended':
+                                this.notifyState('detached');
+                                callback();
+                                break;
+			case 'detached':
+				callback();
+				break;
+			case 'failed':
+				callback(new errorinfo["a" /* default */]('Unable to detach; channel state = failed', 90001, 400));
+				break;
+			default:
+				this.requestState('detaching');
+			case 'detaching':
+				this.once(function(stateChange) {
+					switch(this.event) {
+						case 'detached':
+							callback();
+							break;
+						case 'attached':
+						case 'suspended':
+						case 'failed':
+							callback(stateChange.reason || connectionManager.getError() || new errorinfo["a" /* default */]('Unable to detach; reason unknown; state = ' + this.event, 90000, 500));
+							break;
+						case 'attaching':
+							callback(new errorinfo["a" /* default */]('Detach request superseded by a subsequent attach request', 90000, 409));
+							break;
+					}
+				});
+		}
+	};
+
+	RealtimeChannel.prototype.detachImpl = function(callback) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimeChannel.detach()', 'sending DETACH message');
+		this.setInProgress(statechangeOp, true);
+		var msg = protocolmessage["a" /* default */].fromValues({action: actions.DETACH, channel: this.name});
+		this.sendMessage(msg, (callback || noop));
+	};
+
+	RealtimeChannel.prototype.subscribe = function(/* [event], listener, [callback] */) {
+		var args = RealtimeChannel.processListenerArgs(arguments);
+		var event = args[0];
+		var listener = args[1];
+		var callback = args[2];
+
+		if(!callback) {
+			if(this.realtime.options.promises) {
+				return utils["a" /* default */].promisify(this, 'subscribe', [event, listener]);
+			}
+			callback = noop;
+		}
+
+		if(this.state === 'failed') {
+			callback(errorinfo["a" /* default */].fromValues(RealtimeChannel.invalidStateError('failed')));
+			return;
+		}
+
+		this.subscriptions.on(event, listener);
+
+		return this.attach(callback);
+	};
+
+	RealtimeChannel.prototype.unsubscribe = function(/* [event], listener */) {
+		var args = RealtimeChannel.processListenerArgs(arguments);
+		var event = args[0];
+		var listener = args[1];
+		this.subscriptions.off(event, listener);
+	};
+
+	RealtimeChannel.prototype.sync = function() {
+		/* check preconditions */
+		switch(this.state) {
+			case 'initialized':
+			case 'detaching':
+			case 'detached':
+				throw new errorinfo["a" /* default */]("Unable to sync to channel; not attached", 40000);
+			default:
+		}
+		var connectionManager = this.connectionManager;
+		if(!connectionManager.activeState()) {
+			throw connectionManager.getError();
+		}
+
+		/* send sync request */
+		var syncMessage = protocolmessage["a" /* default */].fromValues({action: actions.SYNC, channel: this.name});
+		if(this.syncChannelSerial) {
+			syncMessage.channelSerial = this.syncChannelSerial;
+		}
+		connectionManager.send(syncMessage);
+	};
+
+	RealtimeChannel.prototype.sendMessage = function(msg, callback) {
+		this.connectionManager.send(msg, this.realtime.options.queueMessages, callback);
+	};
+
+	RealtimeChannel.prototype.sendPresence = function(presence, callback) {
+		var msg = protocolmessage["a" /* default */].fromValues({
+			action: actions.PRESENCE,
+			channel: this.name,
+			presence: (utils["a" /* default */].isArray(presence) ?
+				presencemessage["a" /* default */].fromValuesArray(presence) :
+				[presencemessage["a" /* default */].fromValues(presence)])
+		});
+		this.sendMessage(msg, callback);
+	};
+
+	RealtimeChannel.prototype.onMessage = function(message) {
+		var syncChannelSerial, isSync = false;
+		switch(message.action) {
+		case actions.ATTACHED:
+			this._attachedMsgIndicator = true;
+			this.properties.attachSerial = message.channelSerial;
+			this._mode = message.getMode();
+			this.params = message.params || {};
+			var modesFromFlags = message.decodeModesFromFlags();
+			this.modes = (modesFromFlags && utils["a" /* default */].allToLowerCase(modesFromFlags)) || undefined;
+			var resumed = message.hasFlag('RESUMED');
+			var hasPresence = message.hasFlag('HAS_PRESENCE');
+			if(this.state === 'attached') {
+				/* attached operations to change options set the inprogress mutex, but leave
+				 * channel in the attached state */
+				this.setInProgress(statechangeOp, false);
+				if(!resumed) {
+					/* On a loss of continuity, the presence set needs to be re-synced */
+					this.presence.onAttached(hasPresence);
+				}
+				var change = new channelstatechange(this.state, this.state, resumed, message.error);
+				this._allChannelChanges.emit('update', change);
+				if(!resumed || this.channelOptions.updateOnAttached) {
+					this.emit('update', change);
+				}
+			} else if(this.state === 'detaching') {
+				/* RTL5i: re-send DETACH and remain in the 'detaching' state */
+				this.checkPendingState();
+			} else {
+				this.notifyState('attached', message.error, resumed, hasPresence);
+			}
+			break;
+
+		case actions.DETACHED:
+			var err = message.error ? errorinfo["a" /* default */].fromValues(message.error) : new errorinfo["a" /* default */]('Channel detached', 90001, 404);
+			if(this.state === 'detaching') {
+                                if (this.connectionManager.mostRecentMsg && this.connectionManager.mostRecentMsg.channel === this.name) {
+                                  this.connectionManager.mostRecentMsg = null;
+                                }
+				this.notifyState('detached', err);
+			} else if(this.state === 'attaching') {
+				/* Only retry immediately if we were previously attached. If we were
+				 * attaching, go into suspended, fail messages, and wait a few seconds
+				 * before retrying */
+				this.notifyState('suspended', err);
+			} else {
+				this.requestState('attaching', err);
+			}
+			break;
+
+		case actions.SYNC:
+			/* syncs can have channelSerials, but might not if the sync is one page long */
+			isSync = true;
+			syncChannelSerial = this.syncChannelSerial = message.channelSerial;
+			/* syncs can happen on channels with no presence data as part of connection
+			 * resuming, in which case protocol message has no presence property */
+			if(!message.presence) break;
+		case actions.PRESENCE:
+			var presence = message.presence,
+				id = message.id,
+				connectionId = message.connectionId,
+				timestamp = message.timestamp;
+
+			var options = this.channelOptions;
+			for(var i = 0; i < presence.length; i++) {
+				try {
+					var presenceMsg = presence[i];
+					presencemessage["a" /* default */].decode(presenceMsg, options);
+				} catch (e) {
+					logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'RealtimeChannel.onMessage()', e.toString());
+				}
+				if(!presenceMsg.connectionId) presenceMsg.connectionId = connectionId;
+				if(!presenceMsg.timestamp) presenceMsg.timestamp = timestamp;
+				if(!presenceMsg.id) presenceMsg.id = id + ':' + i;
+			}
+			this.presence.setPresence(presence, isSync, syncChannelSerial);
+			break;
+
+		case actions.MESSAGE:
+
+			//RTL17
+			if(this.state !== 'attached') {
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MAJOR, 'RealtimeChannel.onMessage()', 'Message "' + message.id + '" skipped as this channel "' + this.name + '" state is not "attached" (state is "' + this.state + '").');
+				return;
+			}
+
+			var messages = message.messages,
+				firstMessage = messages[0],
+				lastMessage = messages[messages.length - 1],
+				id = message.id,
+				connectionId = message.connectionId,
+				timestamp = message.timestamp;
+
+			if(firstMessage.extras && firstMessage.extras.delta && firstMessage.extras.delta.from !== this._lastPayload.messageId) {
+				var msg = 'Delta message decode failure - previous message not available for message "' + message.id + '" on this channel "' + this.name + '".';
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'RealtimeChannel.onMessage()', msg);
+				this._startDecodeFailureRecovery(new errorinfo["a" /* default */](msg, 40018, 400));
+				break;
+			}
+
+			for(var i = 0; i < messages.length; i++) {
+				var msg = messages[i];
+				try {
+					types_message["a" /* default */].decode(msg, this._decodingContext);
+				} catch (e) {
+					/* decrypt failed .. the most likely cause is that we have the wrong key */
+					logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'RealtimeChannel.onMessage()', e.toString());
+					switch(e.code) {
+						case 40018:
+							/* decode failure */
+							this._startDecodeFailureRecovery(e);
+							return;
+						case 40019:
+							/* No vcdiff plugin passed in - no point recovering, give up */
+						case 40021:
+							/* Browser does not support deltas, similarly no point recovering */
+							this.notifyState('failed', e);
+							return;
+					}
+				}
+				if(!msg.connectionId) msg.connectionId = connectionId;
+				if(!msg.timestamp) msg.timestamp = timestamp;
+				if(!msg.id) msg.id = id + ':' + i;
+			}
+			this._lastPayload.messageId = lastMessage.id;
+			this._lastPayload.protocolMessageChannelSerial = message.channelSerial;
+			this.onEvent(messages);
+			break;
+
+		case actions.ERROR:
+			/* there was a channel-specific error */
+			var err = message.error;
+			if(err && err.code == 80016) {
+				/* attach/detach operation attempted on superseded transport handle */
+				this.checkPendingState();
+			} else {
+				this.notifyState('failed', errorinfo["a" /* default */].fromValues(err));
+			}
+			break;
+
+		default:
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'RealtimeChannel.onMessage()', 'Fatal protocol error: unrecognised action (' + message.action + ')');
+			this.connectionManager.abort(connectionerror["a" /* default */].unknownChannelErr);
+		}
+	};
+
+	RealtimeChannel.prototype._startDecodeFailureRecovery = function(reason) {
+		var self = this;
+		if(!this._lastPayload.decodeFailureRecoveryInProgress) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MAJOR, 'RealtimeChannel.onMessage()', 'Starting decode failure recovery process.');
+			this._lastPayload.decodeFailureRecoveryInProgress = true;
+			this._attach(true, reason, function() {
+				self._lastPayload.decodeFailureRecoveryInProgress = false;
+			});
+		}
+	};
+
+	RealtimeChannel.prototype.onAttached = function() {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'RealtimeChannel.onAttached', 'activating channel; name = ' + this.name);
+	};
+
+	RealtimeChannel.prototype.notifyState = function(state, reason, resumed, hasPresence) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimeChannel.notifyState', 'name = ' + this.name + ', current state = ' + this.state + ', notifying state ' + state);
+		this.clearStateTimer();
+
+		if(state === this.state) {
+			return;
+		}
+		this.presence.actOnChannelState(state, hasPresence, reason);
+		if(state === 'suspended' && this.connectionManager.state.sendEvents) {
+			this.startRetryTimer();
+		} else {
+			this.cancelRetryTimer();
+		}
+		if(reason) {
+			this.errorReason = reason;
+		}
+		var change = new channelstatechange(this.state, state, resumed, reason);
+		var logLevel = state === 'failed' ? logger["a" /* default */].LOG_ERROR : logger["a" /* default */].LOG_MAJOR;
+		logger["a" /* default */].logAction(logLevel, 'Channel state for channel "' + this.name + '"', state + (reason ? ('; reason: ' + reason) : ''));
+
+		/* Note: we don't set inProgress for pending states until the request is actually in progress */
+		if(state === 'attached') {
+			this.onAttached();
+			this.setInProgress(syncOp, hasPresence);
+			this.setInProgress(statechangeOp, false);
+		} else if(state === 'detached' || state === 'failed' || state === 'suspended') {
+			this.setInProgress(statechangeOp, false);
+			this.setInProgress(syncOp, false);
+		}
+
+		if(state === 'attached') {
+			this._attachResume = true;
+		} else if(state === 'detaching' || state === 'failed') {
+			this._attachResume = false;
+		}
+
+		this.state = state;
+		this._allChannelChanges.emit(state, change);
+		this.emit(state, change);
+	};
+
+	RealtimeChannel.prototype.requestState = function(state, reason) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'RealtimeChannel.requestState', 'name = ' + this.name + ', state = ' + state);
+		this.notifyState(state, reason);
+		/* send the event and await response */
+		this.checkPendingState();
+	};
+
+	RealtimeChannel.prototype.checkPendingState = function() {
+		/* if can't send events, do nothing */
+		var cmState = this.connectionManager.state;
+		/* Allow attach messages to queue up when synchronizing, since this will be
+		 * the state we'll be in when upgrade transport.active triggers a checkpendingstate */
+		if(!(cmState.sendEvents || cmState.forceQueueEvents)) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'RealtimeChannel.checkPendingState', 'sendEvents is false; state is ' + this.connectionManager.state.state);
+			return;
+		}
+
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'RealtimeChannel.checkPendingState', 'name = ' + this.name + ', state = ' + this.state);
+		/* Only start the state timer running when actually sending the event */
+		switch(this.state) {
+			case 'attaching':
+				this.startStateTimerIfNotRunning();
+				this.attachImpl();
+				break;
+			case 'detaching':
+				this.startStateTimerIfNotRunning();
+				this.detachImpl();
+				break;
+			case 'attached':
+				/* resume any sync operation that was in progress */
+				this.sync();
+			default:
+				break;
+		}
+	};
+
+	RealtimeChannel.prototype.timeoutPendingState = function() {
+		switch(this.state) {
+			case 'attaching':
+				var err = new errorinfo["a" /* default */]('Channel attach timed out', 90007, 408);
+				this.notifyState('suspended', err);
+				break;
+			case 'detaching':
+				var err = new errorinfo["a" /* default */]('Channel detach timed out', 90007, 408);
+				this.notifyState('attached', err);
+				break;
+			default:
+				this.checkPendingState();
+				break;
+		}
+	};
+
+	RealtimeChannel.prototype.startStateTimerIfNotRunning = function() {
+		var self = this;
+		if(!this.stateTimer) {
+			this.stateTimer = setTimeout(function() {
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'RealtimeChannel.startStateTimerIfNotRunning', 'timer expired');
+				self.stateTimer = null;
+				self.timeoutPendingState();
+			}, this.realtime.options.timeouts.realtimeRequestTimeout);
+		}
+	};
+
+	RealtimeChannel.prototype.clearStateTimer = function() {
+		var stateTimer = this.stateTimer;
+		if(stateTimer) {
+			clearTimeout(stateTimer);
+			this.stateTimer = null;
+		}
+	};
+
+	RealtimeChannel.prototype.startRetryTimer = function() {
+		var self = this;
+		if(this.retryTimer) return;
+
+		this.retryTimer = setTimeout(function() {
+			/* If connection is not connected, just leave in suspended, a reattach
+			 * will be triggered once it connects again */
+			if(self.state === 'suspended' && self.connectionManager.state.sendEvents) {
+				self.retryTimer = null;
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'RealtimeChannel retry timer expired', 'attempting a new attach');
+				self.requestState('attaching');
+			}
+		}, this.realtime.options.timeouts.channelRetryTimeout);
+	};
+
+	RealtimeChannel.prototype.cancelRetryTimer = function() {
+		if(this.retryTimer) {
+			clearTimeout(this.retryTimer);
+			this.suspendTimer = null;
+		}
+	};
+
+	RealtimeChannel.prototype.setInProgress = function(operation, value) {
+		this.rest.channels.setInProgress(this, operation, value);
+	};
+
+	RealtimeChannel.prototype.history = function(params, callback) {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MICRO, 'RealtimeChannel.history()', 'channel = ' + this.name);
+		/* params and callback are optional; see if params contains the callback */
+		if(callback === undefined) {
+			if(typeof(params) == 'function') {
+				callback = params;
+				params = null;
+			} else {
+				if(this.rest.options.promises) {
+					return utils["a" /* default */].promisify(this, 'history', arguments);
+				}
+				callback = noop;
+			}
+		}
+
+		if(params && params.untilAttach) {
+			if(this.state !== 'attached') {
+				callback(new errorinfo["a" /* default */]("option untilAttach requires the channel to be attached", 40000, 400));
+				return;
+			}
+			if(!this.properties.attachSerial) {
+				callback(new errorinfo["a" /* default */]("untilAttach was specified and channel is attached, but attachSerial is not defined", 40000, 400));
+				return;
+			}
+			delete params.untilAttach;
+			params.from_serial = this.properties.attachSerial;
+		}
+
+		client_channel.prototype._history.call(this, params, callback);
+	};
+
+	RealtimeChannel.prototype.whenState = function(state, listener) {
+		return eventemitter["a" /* default */].prototype.whenState.call(this, state, this.state, listener);
+	}
+
+	/* @returns null (if can safely be released) | ErrorInfo (if cannot) */
+	RealtimeChannel.prototype.getReleaseErr = function() {
+		var s = this.state;
+		if(s === 'initialized' || s === 'detached' || s === 'failed') {
+			return null;
+		}
+		return new errorinfo["a" /* default */]('Can only release a channel in a state where there is no possibility of further updates from the server being received (initialized, detached, or failed); was ' + s, 90001, 400);
+	}
+
+	return RealtimeChannel;
+})();
+
+/* harmony default export */ var realtimechannel = (realtimechannel_RealtimeChannel);
+
+// EXTERNAL MODULE: ./common/lib/util/errorreporter.js
+var errorreporter = __webpack_require__(23);
+
+// CONCATENATED MODULE: ./common/lib/client/realtime.js
+
+
+
+
+
+
+
+
+
+
+var realtime_Realtime = (function() {
+
+	function Realtime(options) {
+		if(!(this instanceof Realtime)){
+			return new Realtime(options);
+		}
+
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Realtime()', '');
+		client_rest.call(this, options);
+		this.connection = new connection(this, this.options);
+		this.channels = new Channels(this);
+		if(options.autoConnect !== false)
+			this.connect();
+	}
+	utils["a" /* default */].inherits(Realtime, client_rest);
+
+	Realtime.prototype.connect = function() {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Realtime.connect()', '');
+		this.connection.connect();
+	};
+
+	Realtime.prototype.close = function() {
+		logger["a" /* default */].logAction(logger["a" /* default */].LOG_MINOR, 'Realtime.close()', '');
+		this.connection.close();
+	};
+
+	function Channels(realtime) {
+		eventemitter["a" /* default */].call(this);
+		this.realtime = realtime;
+		this.all = Object.create(null);
+		this.inProgress = Object.create(null);
+		var self = this;
+		realtime.connection.connectionManager.on('transport.active', function() {
+			self.onTransportActive();
+		});
+	}
+	utils["a" /* default */].inherits(Channels, eventemitter["a" /* default */]);
+
+	Channels.prototype.onChannelMessage = function(msg) {
+		var channelName = msg.channel;
+		if(channelName === undefined) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Channels.onChannelMessage()', 'received event unspecified channel, action = ' + msg.action);
+			return;
+		}
+		var channel = this.all[channelName];
+		if(!channel) {
+			logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Channels.onChannelMessage()', 'received event for non-existent channel: ' + channelName);
+			return;
+		}
+		channel.onMessage(msg);
+	};
+
+	/* called when a transport becomes connected; reattempt attach/detach
+	 * for channels that are attaching or detaching.
+	 * Note that this does not use inProgress as inProgress is only channels which have already made
+	* at least one attempt to attach/detach */
+	Channels.prototype.onTransportActive = function() {
+		for(var channelName in this.all) {
+			var channel = this.all[channelName];
+			if(channel.state === 'attaching' || channel.state === 'detaching') {
+				channel.checkPendingState();
+			} else if(channel.state === 'suspended') {
+				channel.attach();
+			}
+		}
+	};
+
+	Channels.prototype.reattach = function(reason) {
+		for(var channelId in this.all) {
+			var channel = this.all[channelId];
+			/* NB this should not trigger for merely attaching channels, as they will
+			 * be reattached anyway through the onTransportActive checkPendingState */
+			if(channel.state === 'attached') {
+				channel.requestState('attaching', reason);
+			}
+		}
+	};
+
+	Channels.prototype.resetAttachedMsgIndicators = function() {
+		for(var channelId in this.all) {
+			var channel = this.all[channelId];
+			if(channel.state === 'attached') {
+			channel._attachedMsgIndicator = false;
+			}
+		}
+	};
+
+	Channels.prototype.checkAttachedMsgIndicators = function(connectionId) {
+		for(var channelId in this.all) {
+			var channel = this.all[channelId];
+			if(channel.state === 'attached' && channel._attachedMsgIndicator === false) {
+				var msg = '30s after a resume, found channel which has not received an attached; channelId = ' + channelId + '; connectionId = ' + connectionId;
+				logger["a" /* default */].logAction(logger["a" /* default */].LOG_ERROR, 'Channels.checkAttachedMsgIndicators()', msg);
+				errorreporter["a" /* default */].report('error', msg, 'channel-no-attached-after-resume');
+				channel.requestState('attaching');
+			};
+		}
+	};
+
+	/* Connection interruptions (ie when the connection will no longer queue
+	 * events) imply connection state changes for any channel which is either
+	 * attached, pending, or will attempt to become attached in the future */
+	Channels.prototype.propogateConnectionInterruption = function(connectionState, reason) {
+		var connectionStateToChannelState = {
+			'closing'  : 'detached',
+			'closed'   : 'detached',
+			'failed'   : 'failed',
+			'suspended': 'suspended'
+		};
+		var fromChannelStates = ['attaching', 'attached', 'detaching', 'suspended'];
+		var toChannelState = connectionStateToChannelState[connectionState];
+
+		for(var channelId in this.all) {
+			var channel = this.all[channelId];
+			if(utils["a" /* default */].arrIn(fromChannelStates, channel.state)) {
+				 channel.notifyState(toChannelState, reason);
+			}
+		}
+	};
+
+	Channels.prototype.get = function(name, channelOptions) {
+		name = String(name);
+		var channel = this.all[name];
+		if(!channel) {
+			channel = this.all[name] = new realtimechannel(this.realtime, name, channelOptions);
+		} else if(channelOptions) {
+			if (channel._shouldReattachToSetOptions(channelOptions)) {
+				throw new errorinfo["a" /* default */]("Channels.get() cannot be used to set channel options that would cause the channel to reattach. Please, use RealtimeChannel.setOptions() instead.", 40000, 400);
+			}
+			channel.setOptions(channelOptions);
+		}
+		return channel;
+	};
+
+	/* Included to support certain niche use-cases; most users should ignore this.
+	 * Please do not use this unless you know what you're doing */
+	Channels.prototype.release = function(name) {
+		name = String(name);
+		var channel = this.all[name];
+		if(!channel) {
+			return;
+		}
+		var releaseErr = channel.getReleaseErr();
+		if(releaseErr) {
+			throw releaseErr;
+		}
+		delete this.all[name];
+		delete this.inProgress[name];
+	};
+
+	/* Records operations currently pending on a transport; used by connectionManager to decide when
+	 * it's safe to upgrade. Note that a channel might be in the attaching state without any pending
+	 * operations (eg if attached while the connection state is connecting) - such a channel must not
+	 * hold up an upgrade, so is not considered inProgress.
+	 * Operation is currently one of either 'statechange' or 'sync' */
+	Channels.prototype.setInProgress = function(channel, operation, inProgress) {
+		this.inProgress[channel.name] = this.inProgress[channel.name] || {};
+		this.inProgress[channel.name][operation] = inProgress;
+		if(!inProgress && this.hasNopending()) {
+			this.emit('nopending');
+		}
+	};
+
+	Channels.prototype.onceNopending = function(listener) {
+		if(this.hasNopending()) {
+			listener();
+			return;
+		}
+		this.once('nopending', listener);
+	};
+
+	Channels.prototype.hasNopending = function() {
+		return utils["a" /* default */].arrEvery(utils["a" /* default */].valuesArray(this.inProgress, true), function(operations) {
+			return !utils["a" /* default */].containsValue(operations, true);
+		});
+	};
+
+	return Realtime;
+})();
+
+realtime_Realtime.Promise = function(options) {
+	options = defaults["a" /* default */].objectifyOptions(options);
+	options.promises = true;
+	return new realtime_Realtime(options);
+};
+
+realtime_Realtime.Callbacks = realtime_Realtime;
+
+/* harmony default export */ var client_realtime = (realtime_Realtime);
+
+// EXTERNAL MODULE: ./browser/lib/util/msgpack.js
+var util_msgpack = __webpack_require__(24);
+
+// CONCATENATED MODULE: ./common/lib/index.js
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+client_rest.Utils = utils["a" /* default */];
+client_rest.BufferUtils = bufferutils["a" /* default */];
+client_rest.Crypto = util_crypto["a" /* default */];
+client_rest.Defaults = defaults["a" /* default */];
+client_rest.Http = http["a" /* default */];
+client_rest.Resource = client_resource;
+client_rest.Message = types_message["a" /* default */];
+client_rest.PresenceMessage = presencemessage["a" /* default */];
+
+client_realtime.Utils = utils["a" /* default */];
+client_realtime.BufferUtils = bufferutils["a" /* default */];
+client_realtime.Crypto = util_crypto["a" /* default */];
+client_realtime.Defaults = defaults["a" /* default */];
+client_realtime.Http = http["a" /* default */];
+client_realtime.Message = types_message["a" /* default */];
+client_realtime.PresenceMessage = presencemessage["a" /* default */];
+client_realtime.ProtocolMessage = protocolmessage["a" /* default */];
+client_realtime.ConnectionManager = connectionmanager["a" /* default */];
+
+/* harmony default export */ var lib = __webpack_exports__["default"] = ({
+  Rest: client_rest,
+  Realtime: client_realtime,
+  msgpack: util_msgpack["a" /* default */]
+});
+
+
+/***/ })
+/******/ ])["default"];
+});
+}).call(this)}).call(this,require("buffer").Buffer)
+},{"buffer":161}],129:[function(require,module,exports){
+"use strict";
+function promisifyOptions(options) {
+  if(typeof options == 'string') {
+    options = (options.indexOf(':') == -1) ? {token: options} : {key: options};
+  }
+  options.promises = true;
+  return options;
+}
+
+/* Please note that the file imported below is only generated after running 
+ * the build task. */
+var Ably = require('./browser/static/ably-node');
+
+var RestPromise = function(options) {
+  return new Ably.Rest(promisifyOptions(options));
+}
+Object.assign(RestPromise, Ably.Rest);
+
+var RealtimePromise = function(options) {
+  return new Ably.Realtime(promisifyOptions(options));
+}
+Object.assign(RealtimePromise, Ably.Realtime);
+
+module.exports = {
+  Rest: RestPromise,
+  Realtime: RealtimePromise
+};
+
+},{"./browser/static/ably-node":128}],130:[function(require,module,exports){
 /*globals self, window */
 "use strict"
 
@@ -18334,7 +33879,7 @@ module.exports = AbortController
 module.exports.AbortSignal = AbortSignal
 module.exports.default = AbortController
 
-},{}],129:[function(require,module,exports){
+},{}],131:[function(require,module,exports){
 "use strict";
 
 (function(root) {
@@ -19134,21 +34679,7 @@ module.exports.default = AbortController
 
 })(this);
 
-},{}],130:[function(require,module,exports){
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-module.exports = {
-  apg: require('./src/apg/apg'),
-  apgConv: require('./src/apg-conv/apg-conv'),
-  apgConvApi: require('./src/apg-conv-api/node-exports'),
-  apgLib: require('./src/apg-lib/node-exports'),
-  apgApi: require('./src/apg-api/api'),
-  apgExp: require('./src/apg-exp/apg-exp'),
-};
-
-},{"./src/apg-api/api":131,"./src/apg-conv-api/node-exports":144,"./src/apg-conv/apg-conv":146,"./src/apg-exp/apg-exp":148,"./src/apg-lib/node-exports":161,"./src/apg/apg":167}],131:[function(require,module,exports){
+},{}],132:[function(require,module,exports){
 (function (Buffer){(function (){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
@@ -19646,7 +35177,7 @@ module.exports = function api(src) {
 };
 
 }).call(this)}).call(this,{"isBuffer":require("../../../is-buffer/index.js")})
-},{"../../../is-buffer/index.js":225,"../apg-conv-api/converter":143,"../apg-lib/node-exports":161,"./attributes":132,"./parser":133,"./scanner":139,"./show-rules":141}],132:[function(require,module,exports){
+},{"../../../is-buffer/index.js":198,"../apg-conv-api/converter":144,"../apg-lib/node-exports":150,"./attributes":133,"./parser":134,"./scanner":140,"./show-rules":142}],133:[function(require,module,exports){
 /* eslint-disable class-methods-use-this */
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
@@ -19896,7 +35427,7 @@ module.exports = (function exportAttributes() {
   return { attributes, showAttributes, showAttributeErrors, showRuleDependencies };
 })();
 
-},{"../apg-lib/identifiers":160,"./rule-attributes":134,"./rule-dependencies":135}],133:[function(require,module,exports){
+},{"../apg-lib/identifiers":149,"./rule-attributes":135,"./rule-dependencies":136}],134:[function(require,module,exports){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
@@ -20388,7 +35919,7 @@ module.exports = function exportParser() {
   };
 };
 
-},{"../apg-lib/node-exports":161,"./sabnf-grammar":136,"./semantic-callbacks":140,"./syntax-callbacks":142}],134:[function(require,module,exports){
+},{"../apg-lib/node-exports":150,"./sabnf-grammar":137,"./semantic-callbacks":141,"./syntax-callbacks":143}],135:[function(require,module,exports){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
@@ -20820,7 +36351,7 @@ module.exports = (function exportRuleAttributes() {
   return { ruleAttributes, showAttributes, showAttributeErrors };
 })();
 
-},{"../apg-lib/identifiers":160}],135:[function(require,module,exports){
+},{"../apg-lib/identifiers":149}],136:[function(require,module,exports){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
@@ -21084,7 +36615,7 @@ module.exports = (() => {
   return { ruleDependencies, showRuleDependencies };
 })();
 
-},{"../apg-lib/identifiers":160}],136:[function(require,module,exports){
+},{"../apg-lib/identifiers":149}],137:[function(require,module,exports){
 // copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved<br>
 //   license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)<br>
 //
@@ -22054,7 +37585,7 @@ module.exports = function grammar(){
   }
 }
 
-},{}],137:[function(require,module,exports){
+},{}],138:[function(require,module,exports){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
@@ -22179,7 +37710,7 @@ callbacks.cr = semCR;
 callbacks.crlf = semCRLF;
 exports.callbacks = callbacks;
 
-},{"../apg-lib/identifiers":160,"../apg-lib/utilities":166}],138:[function(require,module,exports){
+},{"../apg-lib/identifiers":149,"../apg-lib/utilities":155}],139:[function(require,module,exports){
 // copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved<br>
 //   license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)<br>
 //
@@ -22307,7 +37838,7 @@ module.exports = function grammar(){
   }
 }
 
-},{}],139:[function(require,module,exports){
+},{}],140:[function(require,module,exports){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
@@ -22366,7 +37897,7 @@ module.exports = function exports(chars, errors, strict, trace) {
   return lines;
 };
 
-},{"../apg-lib/node-exports":161,"./scanner-callbacks":137,"./scanner-grammar":138}],140:[function(require,module,exports){
+},{"../apg-lib/node-exports":150,"./scanner-callbacks":138,"./scanner-grammar":139}],141:[function(require,module,exports){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
@@ -23133,7 +38664,7 @@ module.exports = function exports() {
   this.callbacks.xstring = semXstring;
 };
 
-},{"../apg-lib/node-exports":161}],141:[function(require,module,exports){
+},{"../apg-lib/node-exports":150}],142:[function(require,module,exports){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
@@ -23222,7 +38753,7 @@ module.exports = (function exports() {
   return showRules;
 })();
 
-},{}],142:[function(require,module,exports){
+},{}],143:[function(require,module,exports){
 /* eslint-disable func-names */
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
@@ -23932,7 +39463,7 @@ module.exports = function exports() {
   this.callbacks.aenop = synAenOp;
 };
 
-},{"../apg-lib/node-exports":161}],143:[function(require,module,exports){
+},{"../apg-lib/node-exports":150}],144:[function(require,module,exports){
 (function (Buffer){(function (){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
@@ -24355,18 +39886,7 @@ exports.convert = function convert(srcType, srcData, dstType) {
 };
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"./transformers":145,"buffer":176}],144:[function(require,module,exports){
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// Exports the converter and transformer objects.
-module.exports = {
-  converter: require('./converter'),
-  transformers: require('./transformers'),
-};
-
-},{"./converter":143,"./transformers":145}],145:[function(require,module,exports){
+},{"./transformers":145,"buffer":161}],145:[function(require,module,exports){
 (function (Buffer){(function (){
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-plusplus */
@@ -25622,2510 +41142,7 @@ exports.base64 = {
 };
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"buffer":176}],146:[function(require,module,exports){
-(function (process,Buffer){(function (){
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This module is the main function for command line usage.
-// It reads a source file and writes a destination file, converting the source format to the destination format.
-// The files are all treated as byte streams.
-// `stdin` and `stdout` are the default input and output streams.
-//
-// Run<br>
-// `npm run apg-conv -- --help`<br>
-// or<br>
-// `./bin/apg-conv.sh --help`<br>
-// to see the options.
-
-module.exports = function exports() {
-  'use strict;';
-
-  const SRC_FILEL = '--src';
-  const SRC_FILES = '-s';
-  const SRC_TYPEL = '--src-type';
-  const SRC_TYPES = '-st';
-  const DST_FILEL = '--dst';
-  const DST_FILES = '-d';
-  const DST_TYPEL = '--dst-type';
-  const DST_TYPES = '-dt';
-  const ERR_FILEL = '--err';
-  const ERR_FILES = '-e';
-  const HELPL = '--help';
-  const HELPS = '-h';
-  const VERSIONL = '--version';
-  const VERSIONS = '-v';
-  let srcType = 'UTF8';
-  let dstType = 'UTF8';
-  let srcFile = '';
-  let dstFile = '';
-  let errFile = '';
-  const fs = require('fs');
-  const api = require('../apg-conv-api/node-exports');
-  const help = require('./help');
-  const { convert } = api.converter;
-  let srcStream = process.stdin;
-  let dstStream = process.stdout;
-  let errStream = process.stderr;
-  let srcBuf;
-  let dstBuf;
-  const args = process.argv.slice(2);
-  try {
-    /* get the input arguments */
-    if (!args || args.length === 0) {
-      console.log(help.help());
-      return;
-    }
-    for (let i = 0; i < args.length; i += 2) {
-      const key = args[i].toLowerCase();
-      if (key === HELPL || key === HELPS) {
-        console.log(help.help());
-        return;
-      }
-      if (key === VERSIONL || key === VERSIONS) {
-        console.log(help.version());
-        return;
-      }
-      const i1 = i + 1;
-      if (i1 >= args.length) {
-        throw new TypeError(`no matching value for option: ${key}`);
-      }
-      const value = args[i1];
-      switch (key) {
-        case SRC_FILEL:
-        case SRC_FILES:
-          srcFile = value;
-          break;
-        case SRC_TYPEL:
-        case SRC_TYPES:
-          srcType = value;
-          break;
-        case DST_FILEL:
-        case DST_FILES:
-          dstFile = value;
-          break;
-        case DST_TYPEL:
-        case DST_TYPES:
-          dstType = value;
-          break;
-        case ERR_FILEL:
-        case ERR_FILES:
-          errFile = value;
-          break;
-        default:
-          throw new TypeError(`unrecognized option: ${key}`);
-      }
-    }
-
-    /* disable STRING type, allowed by converter, but not here */
-    if (srcType.toUpperCase() === 'STRING') {
-      throw new Error('Input type may not be STRING.');
-    }
-    if (dstType.toUpperCase() === 'STRING') {
-      throw new Error('Output type may not be STRING.');
-    }
-
-    /* create file streams, if necessary */
-    if (srcFile) {
-      srcStream = fs.createReadStream(srcFile, { flags: 'r' });
-    }
-    if (dstFile) {
-      dstStream = fs.createWriteStream(dstFile, { flags: 'w' });
-    }
-    if (errFile) {
-      errStream = fs.createWriteStream(errFile, { flags: 'w' });
-    }
-
-    /* read the input data */
-    srcBuf = Buffer.alloc(0);
-    srcStream.on('data', (chunkBuf) => {
-      srcBuf = Buffer.concat([srcBuf, chunkBuf]);
-    });
-
-    srcStream.on('end', () => {
-      try {
-        /* translate the data */
-        dstBuf = convert(srcType, srcBuf, dstType);
-
-        /* write the translated the data */
-        dstStream.write(dstBuf);
-        if (dstFile) {
-          dstStream.end();
-        }
-      } catch (e) {
-        errStream.write(`EXCEPTION: on srcStream end: ${e.message}\n`);
-      }
-    });
-    srcStream.on('error', (e) => {
-      errStream.write(`srcStream error: ${e.message}\n`);
-    });
-    dstStream.on('error', (e) => {
-      errStream.write(`dstStream error: ${e.message}\n`);
-    });
-  } catch (e) {
-    errStream.write(`EXCEPTION: ${e.message}\n`);
-    errStream.write(help.help());
-  }
-  if (errFile) {
-    errStream.end();
-  }
-};
-
-}).call(this)}).call(this,require('_process'),require("buffer").Buffer)
-},{"../apg-conv-api/node-exports":144,"./help":147,"_process":232,"buffer":176,"fs":175}],147:[function(require,module,exports){
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This module simply houses the help and version text and functions used by `apg-conv`.
-//
-// `module.help()` - returns the help text.
-// Called if the `-h` or `--help` argument is present
-// or if there are any input argument errors.
-//
-// `module.version()` - returns the version text.
-// Called if the `-v` or `--version` argument is present.
-//
-module.exports = {
-  help: function help() {
-    let str = 'Usage:\n';
-    str += 'apg-conv [options]\n';
-    str += '(--help     | -h) display this help screen\n';
-    str += '(--version  | -v) display version number\n';
-    str += '(--src      | -s) <path>, the file to convert, default stdin\n';
-    str += '(--src-type | -st) type, the source file type, default UTF8\n';
-    str += '(--dst      | -d) <path>, the converted file, default stdout\n';
-    str += '(--dst-type | -dt) type, the converted file type, default UTF8\n';
-    str += '(--err      | -e) <path>, the error reporting file, default stderr\n';
-    str += '\n';
-    str += 'type - the byte stream encoding: may be one of:\n';
-    str += 'UTF8\n';
-    str += 'UTF16\n';
-    str += 'UTF16BE\n';
-    str += 'UTF16LE\n';
-    str += 'UTF32\n';
-    str += 'UTF32BE\n';
-    str += 'UTF32LE\n';
-    str += 'UINT7    (7-bit bytes)\n';
-    str += 'ASCII    (alias for UINT7)\n';
-    str += 'UINT8    (8-bit bytes or ISO 8859-1)\n';
-    str += 'BINARY   (alias for UINT8)\n';
-    str += 'UINT16   (alias for UINT16BE)\n';
-    str += 'UINT16BE\n';
-    str += 'UINT16LE\n';
-    str += 'UINT32   (alias for UINT32BE)\n';
-    str += 'UINT32BE\n';
-    str += 'UINT32LE\n';
-    str += 'ESCAPED\n';
-    str += '\n';
-    str += 'Type notes:\n';
-    str += '- The type names are case insensitive.\n';
-    str += '- Source types may be prefixed with BASE64:.\n';
-    str += '  The input will be treated as base64 encoded.\n';
-    str += '  It will be stripped of white space and control characters (\\t, \\r, \\n),\n';
-    str += '  then base 64 decoded as an initial step.\n';
-    str += '- Destination types may have a :BASE64 suffix.\n';
-    str += '  The output will be base 64 encoded as a final step.\n';
-    str += '- Destination types my be prefixed with CRLF:.\n';
-    str += '  This will cause a line ending transformation prior to decoding.\n';
-    str += '  CRLF(\\r\\n), CR(\\r) or LF(\\n) will be interpreted as line ends and transformed to CRLF.\n';
-    str += '  CRLF will be added to the end if the last line end is missing.\n';
-    str += '- Destination types my be prefixed with LF:.\n';
-    str += '  This will cause a line ending transformation prior to decoding.\n';
-    str += '  CRLF(\\r\\n), CR(\\r) or LF(\\n) will be interpreted as line ends and transformed to LF.\n';
-    str += '  LF will be added to the end if the last line end is missing.\n';
-    str += '- UTF type input data may have an optional Byte Order Mark (BOM)\n';
-    str += '  - [Unicode Standard](http://www.unicode.org/versions/Unicode9.0.0/ch03.pdf#G7404).\n';
-    str += '- UTF output data will not have a BOM.\n';
-    str += '- UTF16 defaults to UTF16BE if there is no BOM.\n';
-    str += '- UTF32 defaults to UTF32BE if there is no BOM.\n';
-    str += "- An exception is thrown if a BOM is present and doesn't match the specified data type.\n";
-    str += '- ASCII is an alias for UINT7, 7-bit unsigned integers.\n';
-    str += '- BINARY is an alias for UINT8, 8-bit unsigned integers.\n';
-    str += '- UINT16 is an alias for UINT16BE, big-endian, 16-bit unsigned integers.\n';
-    str += '- UINT32 is an alias for UINT32BE, big-endian, 32-bit unsigned integers.\n';
-    str += '- The ESCAPED format is identical to JavaScript string escaping except that\n';
-    str += '  the grave accent (`) is used instead of the backslash (\\).\n';
-    str += '  e.g \\xHH -> `xHH, \\uHHHH -> `uHHHH, \\u{HHHHHH} -> `u{HHHHHH}.\n';
-    str += '  Its design is specifically for use in HTML <textarea> elements.\n';
-    str += '\n';
-    str += 'Examples:\n';
-    str += '\n';
-    str += 'apg-conv -s <inpath> -d <outpath> -st BINARY -dt UTF8\n';
-    str += '  Convert a binary (Latin 1 or UINT8) file to UTF8.\n';
-    str += '  That is, any characters > 0x7f will get two-byte, UTF8 encoding.\n';
-    str += '\n';
-    str += 'apg-conv -s <inpath> -d <outpath> -st ASCII -dt CRLF:ASCII\n';
-    str += '  Convert all line ends(CRLF, LF or CR) of the ASCII file to CRLF(\\r\\n),\n';
-    str += '  including the last even if missing in the input file.\n';
-    str += '\n';
-    str += 'apg-conv -s <inpath> -d <outpath> -st BASE64:UTF8 -dt UTF32\n';
-    str += '  Perform an initial base 64 decoding of the input file,\n';
-    str += '  then convert it from UTF8 to UTF32(BE) encoding.\n';
-    str += '\n';
-    str += 'apg-conv -s <inpath> -d <outpath> -st UTF8 -dt UTF32LE:BASE64\n';
-    str += '  The input file is converted from UTF8 to UTF32LE and base 64 encoded as a final step.\n';
-    str += '\n';
-    str += 'apg-conv -s <inpath> -d <outpath> -st BASE64:UTF8 -dt LF:UTF16:BASE64\n';
-    str += '  The input file is base 64 decoded. All line ends(CRLF, LF or CR) are converted to LF(\\n),\n';
-    str += '  then converted to wide characters (UTF16) and finally base64 encoded.\n';
-    str += '\n';
-    return str;
-  },
-  version: function version() {
-    return 'Version 4.0.0\nCopyright (c) 2021 Lowell D. Thomas, all rights reserved';
-  },
-};
-
-},{}],148:[function(require,module,exports){
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
-/* eslint-disable new-cap */
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This is the `apg-exp` object constructor.
-// `apg-exp` functions similarly to the built-in JavaScript `RegExp` pattern matching engine.
-// However, patterns are described with an [SABNF]()
-// syntax and matching is done with an
-// [`apg`](https://github.com/ldthomas/apg-js2) parser.
-//
-// See the user's guide at `./dist/guide/index.html` for complete usage details.
-module.exports = function apgExp(input, flags, nodeHits, treeDepth) {
-  'use strict;';
-
-  const apglib = require('../apg-lib/node-exports');
-  const execFuncs = require('./exec');
-  const replaceFuncs = require('./replace');
-  const resultFuncs = require('./result');
-  const splitFuncs = require('./split');
-  const setFlags = require('./flags');
-  const sabnfGenerator = require('./sabnf-generator');
-
-  const thisThis = this;
-  const thisFileName = 'apg-exp: ';
-  let errorName = thisFileName;
-  const readonly = {
-    writable: false,
-    enumerable: false,
-    configurable: true,
-  };
-  /* private object data that needs to be passed around to supporting modules */
-  const priv = {
-    thisThis: this,
-    grammarObject: null,
-    ruleNames: [],
-    str: null,
-    chars: null,
-    parser: null,
-    result: null,
-    charsToString: null,
-    match(state) {
-      return state === apglib.ids.MATCH || state === apglib.ids.EMPTY;
-    },
-  };
-  // This is a custom exception object.
-  // Derived from Error, it is named `ApgExpError` and in addition to the error `message`
-  // it has two functions, `toText()` and `toHtml()` which will display the errors
-  // in a user-friendly ASCII text format or HTML format like the formats used by APG.
-  // e. g.
-  // ```
-  // try{
-  //   ...
-  // }catch(e){
-  //   if(e.name === "ApgExpError"){
-  //     console.log(e.toText());
-  //   }else{
-  //     console.log(e.message);
-  //   }
-  // ```
-  // All errors from the constructor and all object functions are reported by throwing an `ApgExpError` Error object.
-  const ApgExpError = function ApgExpError(msg, t, h) {
-    this.message = msg;
-    this.name = 'ApgExpError';
-    const text = t;
-    const html = h;
-    this.toText = function toText() {
-      let ret = '';
-      ret += this.message;
-      ret += '\n';
-      if (text) {
-        ret += text;
-      }
-      return ret;
-    };
-    this.toHtml = function toHtml() {
-      let ret = '';
-      ret += `<h3>${apglib.utils.stringToAsciiHtml(this.message)}</h3>`;
-      ret += '\n';
-      if (html) {
-        ret += html;
-      }
-      return ret;
-    };
-  };
-  ApgExpError.prototype = new Error();
-
-  /* verifies that all UDT callback functions have been defined */
-  const checkParserUdts = function checkParserUdts() {
-    const udterrors = [];
-    let error = null;
-    for (let i = 0; i < priv.grammarObject.udts.length; i += 1) {
-      const { lower } = priv.grammarObject.udts[i];
-      if (typeof priv.parser.callbacks[lower] !== 'function') {
-        udterrors.push(priv.ruleNames[lower]);
-      }
-    }
-    if (udterrors.length > 0) {
-      error = `undefined UDT callback functions: ${udterrors}`;
-    }
-    return error;
-  };
-
-  /* the constructor */
-  errorName = `${thisFileName}constructor: `;
-  let error = null;
-  let result = null;
-  try {
-    const TRUE = true;
-    while (TRUE) {
-      /* flags */
-      error = setFlags(this, flags);
-      if (error) {
-        error = new ApgExpError(error);
-        break;
-      }
-      /* grammar object for the defining SABNF grammar */
-      if (typeof input === 'string') {
-        this.source = input;
-        result = sabnfGenerator(input);
-        if (result.error) {
-          error = new ApgExpError(result.error, result.text, result.html);
-          break;
-        }
-        priv.grammarObject = result.obj;
-      } else if (
-        typeof input === 'object' &&
-        typeof input.grammarObject === 'string' &&
-        input.grammarObject === 'grammarObject'
-      ) {
-        priv.grammarObject = input;
-        this.source = priv.grammarObject.toString();
-      } else {
-        error = new ApgExpError(`${thisFileName}invalid SABNF grammar input`);
-        this.source = '';
-        break;
-      }
-      Object.defineProperty(this, 'source', readonly);
-      /* the parser & AST */
-      priv.charsToString = apglib.utils.charsToString;
-      priv.parser = new apglib.parser();
-      this.ast = new apglib.ast();
-      this.trace = this.debug ? new apglib.trace() : null;
-      for (let i = 0; i < priv.grammarObject.rules.length; i += 1) {
-        const rule = priv.grammarObject.rules[i];
-        priv.ruleNames[rule.lower] = rule.name;
-        priv.parser.callbacks[rule.lower] = false;
-        this.ast.callbacks[rule.lower] = true;
-      }
-      for (let i = 0; i < priv.grammarObject.udts.length; i += 1) {
-        const rule = priv.grammarObject.udts[i];
-        priv.ruleNames[rule.lower] = rule.name;
-        priv.parser.callbacks[rule.lower] = false;
-        this.ast.callbacks[rule.lower] = true;
-      }
-      /* nodeHit and treeDepth limits */
-      if (typeof nodeHits === 'number') {
-        this.nodeHits = Math.floor(nodeHits);
-        if (this.nodeHits > 0) {
-          priv.parser.setMaxNodeHits(this.nodeHits);
-        } else {
-          error = new ApgExpError(`${thisFileName}nodeHits must be integer > 0: ${nodeHits}`);
-          this.nodeHits = Infinity;
-          break;
-        }
-      } else {
-        this.nodeHits = Infinity;
-      }
-      if (typeof treeDepth === 'number') {
-        this.treeDepth = Math.floor(treeDepth);
-        if (this.treeDepth > 0) {
-          priv.parser.setMaxTreeDepth(this.treeDepth);
-        } else {
-          error = new ApgExpError(`${thisFileName}treeDepth must be integer > 0: ${treeDepth}`);
-          this.treeDepth = Infinity;
-          break;
-        }
-      } else {
-        this.treeDepth = Infinity;
-      }
-      Object.defineProperty(this, 'nodeHits', readonly);
-      Object.defineProperty(this, 'treeDepth', readonly);
-      /* success */
-      this.lastIndex = 0;
-      break;
-    }
-  } catch (e) {
-    error = new ApgExpError(`${e.name}: ${e.message}`);
-  }
-  if (error) {
-    throw error;
-  }
-  // Find the SABNF-defined pattern in the input string.
-  // Can be called multiple times with the `g` or `y` flags.
-  /* public API */
-  this.exec = function exec(str) {
-    let execResult = null;
-    errorName = `${thisFileName}exec(): `;
-    if (typeof str === 'string') {
-      priv.str = str;
-      priv.chars = apglib.utils.stringToChars(str);
-    } else if (Array.isArray(str)) {
-      priv.str = null;
-      priv.chars = str;
-    } else {
-      return execResult;
-    }
-    priv.parser.ast = this.ast;
-    priv.parser.trace = this.trace;
-    const execError = checkParserUdts(errorName);
-    if (execError) {
-      throw new ApgExpError(errorName + execError);
-    }
-    if (this.sticky) {
-      execResult = execFuncs.execAnchor(priv);
-    } else {
-      execResult = execFuncs.execForward(priv);
-    }
-    return execResult;
-  };
-  // Test for a match of the SABNF-defined pattern in the input string.
-  // Can be called multiple times with the `g` or `y` flags.
-  this.test = function test(str) {
-    let testResult = null;
-    errorName = `${thisFileName}test(): `;
-    if (typeof str === 'string') {
-      priv.str = str;
-      priv.chars = apglib.utils.stringToChars(str);
-    } else if (Array.isArray(str)) {
-      priv.str = null;
-      priv.chars = str;
-    } else {
-      return testResult;
-    }
-    priv.parser.ast = null;
-    priv.parser.trace = null;
-    this.ast = null;
-    this.trace = null;
-    const testError = checkParserUdts(errorName);
-    if (testError) {
-      throw new ApgExpError(errorName + testError);
-    }
-    if (this.sticky) {
-      testResult = execFuncs.testAnchor(priv);
-    } else {
-      testResult = execFuncs.testForward(priv);
-    }
-    return testResult;
-  };
-  // This is roughly equivalent to the JavaScript string replacement function, `str.replace(regex, replacement)`.
-  // (It follows closely the
-  // [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace) description.)
-  // If the global flag `g` is set, all matched phrases will be replaced,
-  // otherwise, only the first.
-  // If the sticky flag `y` is set, all matched 'consecutive' phrases will be replaced,
-  // otherwise, only the first.
-  // If the unicode flag `u` is set, an exception will be thrown. `replace()` only works on strings, not character code arrays.
-  // The `replacement` string may contain the patterns patterns.
-  // <pre>
-  // <code>
-  // $$ - insert the character $
-  // the escape sequence for the $ character
-  // $&#96; - insert the prefix to the matched pattern
-  // $&#38; - insert the matched pattern
-  // $' - insert the suffix of the matched pattern
-  // ${name} - insert the last match to the rule "name"
-  // </code>
-  // </pre>
-  // `replacement` may also be a user-written function of the form
-  // <pre>
-  // <code>
-  // let replacement = function(result, exp){}
-  // result - the result object from the pattern match
-  // exp - the apg-exp object
-  // </code>
-  // </pre>
-  // There is quite a bit of redundancy here with both the `result` object and the `apg-exp` object being passed to the
-  // replacement function. However, this provides the user with a great deal of flexibility in what might be the
-  // most convenient way to create the replacement. Also, the `apg-exp` object has the AST which is a powerful
-  // translation tool for really tough replacement jobs.
-  this.replace = function replace(str, replacement) {
-    errorName = `${thisFileName}replace(): `;
-    if (this.unicode) {
-      throw new ApgExpError(
-        `${errorName}cannot do string replacement in 'unicode' mode. Insure that 'u' flag is absent.`
-      );
-    }
-    if (typeof str !== 'string') {
-      throw new ApgExpError(`${errorName}input type error: str not a string`);
-    }
-    if (typeof replacement === 'string') {
-      return replaceFuncs.replaceString(priv, str, replacement);
-    }
-    if (typeof replacement === 'function') {
-      return replaceFuncs.replaceFunction(priv, str, replacement);
-    }
-    throw new ApgExpError(`${errorName}input type error: replacement not a string or function`);
-  };
-  // Mimics the JavaScript `String.split(regexp)` function. That is,
-  // `split(str[, limit])` is roughly equivalent to `str.split(regexp[, limit])`
-  // Returns an array of strings.
-  // If `str` is undefined or empty the returned array
-  // contains a single, empty string.
-  // Otherwise, `exp.exec(str)` is called in global mode. If a one or more matched phrases are found, they are removed from the
-  // string
-  // and the substrings are returned in an array.
-  // If no matched phrases are found, the array contains one element consisting of the entire string, `["str"]`.
-  // Empty string matches will split the string and advance `lastIndex` by one character (bump-along mode).
-  // That means, for example, the grammar `rule=""\n` would match the empty string at every character
-  // and an array of all characters would be returned. It would be similar to calling the JavaScript function `str.split("")`.
-  // Unlike the JavaScript function, capturing parentheses (rules) are not spliced into the output string.
-  // An exception is thrown if the unicode flag is set. `split()` works only on strings, not integer arrays of character codes.
-  // If the `limit` argument is used, it must be a positive number and no more than `limit` matches will be returned.
-  this.split = function split(str, limit) {
-    errorName = `${thisFileName}split(): `;
-    if (this.unicode) {
-      throw new ApgExpError(`${errorName}cannot do string split in 'unicode' mode. Insure that 'u' flag is absent.`);
-    }
-    if (str === undefined || str === null || str === '') {
-      return [''];
-    }
-    if (typeof str !== 'string') {
-      throw new ApgExpError(`${errorName}argument must be a string: typeof(arg): ${typeof str}`);
-    }
-    if (typeof limit !== 'number') {
-      // eslint-disable-next-line no-param-reassign
-      limit = Infinity;
-    } else {
-      // eslint-disable-next-line no-param-reassign
-      limit = Math.floor(limit);
-      if (limit <= 0) {
-        throw new ApgExpError(`${errorName}limit must be >= 0: limit: ${limit}`);
-      }
-    }
-    return splitFuncs.split(priv, str, limit);
-  };
-  // Select specific rule/UDT names to include in the result object.
-  // `list` is an array of rule/UDT names to include.
-  // All other names, not in the array, are excluded.
-  // Excluding a rule/UDT name does not affect the operation of any functions,
-  // it simply excludes its phrases from the results.
-  this.include = function include(list) {
-    errorName = `${thisFileName}include(): `;
-    if (list === undefined || list == null || (typeof list === 'string' && list.toLowerCase() === 'all')) {
-      /* set all to true */
-      for (const name in priv.grammarObject.callbacks) {
-        thisThis.ast.callbacks[name] = true;
-      }
-      return;
-    }
-    if (Array.isArray(list)) {
-      /* set all to false */
-      for (const name in priv.grammarObject.callbacks) {
-        thisThis.ast.callbacks[name] = false;
-      }
-      /* then set those in the list to true */
-      for (let i = 0; i < list.length; i += 1) {
-        let l = list[i];
-        if (typeof l !== 'string') {
-          throw new ApgExpError(`${errorName}invalid name type in list`);
-        }
-        l = l.toLowerCase();
-        if (thisThis.ast.callbacks[l] === undefined) {
-          throw new ApgExpError(`${errorName}unrecognized name in list: ${list[i]}`);
-        }
-        thisThis.ast.callbacks[l] = true;
-      }
-      return;
-    }
-    throw new ApgExpError(`${errorName}unrecognized list type`);
-  };
-  // Select specific rule/UDT names to exclude in the result object.
-  // `list` is an array of rule/UDT names to exclude.
-  // All other names, not in the array, are included.
-  // Excluding a rule/UDT name does not affect the operation of any functions,
-  // it simply excludes its phrases from the results.
-  this.exclude = function exclude(list) {
-    errorName = `${thisFileName}exclude(): `;
-    if (list === undefined || list == null || (typeof list === 'string' && list.toLowerCase() === 'all')) {
-      /* set all to false */
-      for (const name in priv.grammarObject.callbacks) {
-        thisThis.ast.callbacks[name] = false;
-      }
-      return;
-    }
-    if (Array.isArray(list)) {
-      /* set all to true */
-      for (const name in priv.grammarObject.callbacks) {
-        thisThis.ast.callbacks[name] = true;
-      }
-      /* then set all in list to false */
-      for (let i = 0; i < list.length; i += 1) {
-        let l = list[i];
-        if (typeof l !== 'string') {
-          throw new ApgExpError(`${errorName}invalid name type in list`);
-        }
-        l = l.toLowerCase();
-        if (thisThis.ast.callbacks[l] === undefined) {
-          throw new ApgExpError(`${errorName}unrecognized name in list: ${list[i]}`);
-        }
-        thisThis.ast.callbacks[l] = false;
-      }
-      return;
-    }
-    throw new ApgExpError(`${errorName}unrecognized list type`);
-  };
-  // Defines a UDT callback function. *All* UDTs appearing in the SABNF phrase syntax must be defined here.
-  // <pre><code>
-  // name - the (case-insensitive) name of the UDT
-  // func - the UDT callback function
-  // </code></pre>
-  this.defineUdt = function defineUdt(name, func) {
-    errorName = `${thisFileName}defineUdt(): `;
-    if (typeof name !== 'string') {
-      throw new ApgExpError(`${errorName}'name' must be a string`);
-    }
-    if (typeof func !== 'function') {
-      throw new ApgExpError(`${errorName}'func' must be a function reference`);
-    }
-    const lowerName = name.toLowerCase();
-    for (let i = 0; i < priv.grammarObject.udts.length; i += 1) {
-      if (priv.grammarObject.udts[i].lower === lowerName) {
-        priv.parser.callbacks[lowerName] = func;
-        return;
-      }
-    }
-    throw new ApgExpError(`${errorName}'name' not a UDT name: ${name}`);
-  };
-  // Estimates the upper bound of the call stack depth for this JavaScript
-  // engine. Taken from [here](http://www.2ality.com/2014/04/call-stack-size.html)
-  this.maxCallStackDepth = function maxCallStackDepth() {
-    try {
-      return 1 + this.maxCallStackDepth();
-    } catch (e) {
-      return 1;
-    }
-  };
-  // Returns the "last match" information in the `apg-exp` object in ASCII text.
-  // Patterned after and similar to the JavaScript
-  // [`RegExp` properties](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
-  this.toText = function toText() {
-    if (this.unicode) {
-      /* mode:
-            - "ascii", (default) display characters arrays as ASCII text
-            - "decimal", display character arrays as decimal integers
-            - "hexidecimal", display character arrays as hexidecimal (\xHH) integers
-            - "unicode", display character arrays as unicode (\uHH) integers
-            return resultFuncs.u.expToText(this, mode);
-            */
-    }
-    return resultFuncs.s.expToText(this);
-  };
-  // Returns the "last match" information in the `apg-exp` object formatted as an HTML table.
-  this.toHtml = function toHtml(mode) {
-    if (this.unicode) {
-      /* *see mode definitions above */
-      return resultFuncs.u.expToHtml(this, mode);
-    }
-    return resultFuncs.s.expToHtml(this);
-  };
-  // Same as `toHtml()` except the output is a complete HTML page.
-  this.toHtmlPage = function toHtmlPage(mode) {
-    if (this.unicode) {
-      /* *see mode definitions above */
-      return resultFuncs.u.expToHtmlPage(this, mode);
-    }
-    return resultFuncs.s.expToHtmlPage(this);
-  };
-  /* Returns the SABNF syntax or grammar defining the pattern in ASCII text format. */
-  this.sourceToText = function sourceToText() {
-    return resultFuncs.s.sourceToText(this);
-  };
-  /* Returns the SABNF syntax or grammar defining the pattern in HTML format. */
-  this.sourceToHtml = function sourceToHtml() {
-    return resultFuncs.s.sourceToHtml(this);
-  };
-  /* Returns the SABNF syntax or grammar defining the pattern as a complete HTML page. */
-  this.sourceToHtmlPage = function sourceToHtmlPage() {
-    return resultFuncs.s.sourceToHtmlPage(this);
-  };
-};
-
-},{"../apg-lib/node-exports":161,"./exec":149,"./flags":150,"./replace":153,"./result":154,"./sabnf-generator":155,"./split":156}],149:[function(require,module,exports){
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This module implements the `exec()` function.
-
-'use strict;';
-
-const funcs = require('./result');
-
-/* turns on or off the read-only attribute of the `last result` properties of the object */
-const setProperties = function seProperties(p, readonly) {
-  const exp = p.thisThis;
-  const prop = {
-    writable: readonly,
-    enumerable: false,
-    configurable: true,
-  };
-  Object.defineProperty(exp, 'input', prop);
-  Object.defineProperty(exp, 'leftContext', prop);
-  Object.defineProperty(exp, 'lastMatch', prop);
-  Object.defineProperty(exp, 'rightContext', prop);
-  Object.defineProperty(exp, '$_', prop);
-  Object.defineProperty(exp, '$`', prop);
-  Object.defineProperty(exp, '$&', prop);
-  Object.defineProperty(exp, "$'", prop);
-  prop.enumerable = true;
-  Object.defineProperty(exp, 'rules', prop);
-  if (!exp.rules) {
-    exp.rules = [];
-  }
-  for (const name in exp.rules) {
-    const des = `\${${name}}`;
-    Object.defineProperty(exp, des, prop);
-    Object.defineProperty(exp.rules, name, prop);
-  }
-};
-/* generate the results object for JavaScript strings */
-const sResult = function sResult(p) {
-  const ret = {
-    index: p.result.index,
-    length: p.result.length,
-    input: p.charsToString(p.chars, 0),
-    treeDepth: p.result.treeDepth,
-    nodeHits: p.result.nodeHits,
-    rules: [],
-    toText() {
-      return funcs.s.resultToText(this);
-    },
-    toHtml() {
-      return funcs.s.resultToHtml(this);
-    },
-    toHtmlPage() {
-      return funcs.s.resultToHtmlPage(this);
-    },
-  };
-  ret[0] = p.charsToString(p.chars, p.result.index, p.result.length);
-  /* each rule is either 'undefined' or an array of phrases */
-  for (const name in p.result.rules) {
-    const rule = p.result.rules[name];
-    if (rule) {
-      ret.rules[name] = [];
-      for (let i = 0; i < rule.length; i += 1) {
-        ret.rules[name][i] = {
-          index: rule[i].index,
-          phrase: p.charsToString(p.chars, rule[i].index, rule[i].length),
-        };
-      }
-    } else {
-      ret.rules[name] = undefined;
-    }
-  }
-  return ret;
-};
-/* generate the results object for integer arrays of character codes */
-const uResult = function uResult(p) {
-  const { chars } = p;
-  const { result } = p;
-  let beg;
-  let end;
-  const ret = {
-    index: result.index,
-    length: result.length,
-    input: chars.slice(0),
-    treeDepth: result.treeDepth,
-    nodeHits: result.nodeHits,
-    rules: [],
-    toText(mode) {
-      return funcs.u.resultToText(this, mode);
-    },
-    toHtml(mode) {
-      return funcs.u.resultToHtml(this, mode);
-    },
-    toHtmlPage(mode) {
-      return funcs.u.resultToHtmlPage(this, mode);
-    },
-  };
-  beg = result.index;
-  end = beg + result.length;
-  ret[0] = chars.slice(beg, end);
-  /* each rule is either 'undefined' or an array of phrases */
-  for (const name in result.rules) {
-    const rule = result.rules[name];
-    if (rule) {
-      ret.rules[name] = [];
-      for (let i = 0; i < rule.length; i += 1) {
-        beg = rule[i].index;
-        end = beg + rule[i].length;
-        ret.rules[name][i] = {
-          index: beg,
-          phrase: chars.slice(beg, end),
-        };
-      }
-    } else {
-      ret.rules[name] = undefined;
-    }
-  }
-  return ret;
-};
-/* generate the apg-exp properties or "last match" object for JavaScript strings */
-const sLastMatch = function sLastMatch(p, result) {
-  const exp = p.thisThis;
-  let temp;
-  // eslint-disable-next-line prefer-destructuring
-  exp.lastMatch = result[0];
-  temp = p.chars.slice(0, result.index);
-  exp.leftContext = p.charsToString(temp);
-  temp = p.chars.slice(result.index + result.length);
-  exp.rightContext = p.charsToString(temp);
-  exp.input = result.input.slice(0);
-  // eslint-disable-next-line no-underscore-dangle
-  exp.$_ = exp.input;
-  exp['$&'] = exp.lastMatch;
-  exp['$`'] = exp.leftContext;
-  exp["$'"] = exp.rightContext;
-  exp.rules = {};
-  for (const name in result.rules) {
-    const rule = result.rules[name];
-    if (rule) {
-      exp.rules[name] = rule[rule.length - 1].phrase;
-    } else {
-      exp.rules[name] = undefined;
-    }
-    exp[`\${${name}}`] = exp.rules[name];
-  }
-};
-/* generate the apg-exp properties or "last match" object for integer arrays of character codes */
-const uLastMatch = function uLastMatch(p, result) {
-  const exp = p.thisThis;
-  const { chars } = p;
-  let beg;
-  beg = 0;
-  const end = beg + result.index;
-  exp.leftContext = chars.slice(beg, end);
-  exp.lastMatch = result[0].slice(0);
-  beg = result.index + result.length;
-  exp.rightContext = chars.slice(beg);
-  exp.input = result.input.slice(0);
-  // eslint-disable-next-line no-underscore-dangle
-  exp.$_ = exp.input;
-  exp['$&'] = exp.lastMatch;
-  exp['$`'] = exp.leftContext;
-  exp["$'"] = exp.rightContext;
-  exp.rules = {};
-  for (const name in result.rules) {
-    const rule = result.rules[name];
-    if (rule) {
-      exp.rules[name] = rule[rule.length - 1].phrase;
-    } else {
-      exp.rules[name] = undefined;
-    }
-    exp[`\${${name}}`] = exp.rules[name];
-  }
-};
-/* set the returned result properties, and the `last result` properties of the object */
-const setResult = function setResult(p, parserResult) {
-  let result;
-  p.result = {
-    index: parserResult.index,
-    length: parserResult.length,
-    treeDepth: parserResult.treeDepth,
-    nodeHits: parserResult.nodeHits,
-    rules: [],
-  };
-  /* set result in APG phrases {phraseIndex, phraseLength} */
-  /* p.ruleNames are all names in the grammar */
-  /* p.thisThis.ast.callbacks[name] only defined for 'included' rule names */
-  const obj = p.parser.ast.phrases();
-  for (const name in p.thisThis.ast.callbacks) {
-    // const cap = p.ruleNames[name];
-    if (p.thisThis.ast.callbacks[name]) {
-      const cap = p.ruleNames[name];
-      if (Array.isArray(obj[cap])) {
-        p.result.rules[cap] = obj[cap];
-      } else {
-        p.result.rules[cap] = undefined;
-      }
-    }
-  }
-  /* p.result now has everything we need to know about the result of exec() */
-  /* generate the Unicode or JavaScript string version of the result & last match objects */
-  setProperties(p, true);
-  if (p.thisThis.unicode) {
-    result = uResult(p);
-    uLastMatch(p, result);
-  } else {
-    result = sResult(p);
-    sLastMatch(p, result);
-  }
-  setProperties(p, false);
-  return result;
-};
-
-/* create an unsuccessful parser result object */
-const resultInit = function resultInit() {
-  return {
-    success: false,
-  };
-};
-
-/* create a successful parser result object */
-const resultSuccess = function resultSuccess(index, parserResult) {
-  return {
-    success: true,
-    index,
-    length: parserResult.matched,
-    treeDepth: parserResult.maxTreeDepth,
-    nodeHits: parserResult.nodeHits,
-  };
-};
-/* search forward from `lastIndex` until a match is found or the end of string is reached */
-const forward = function forward(p) {
-  let result = resultInit();
-  for (let i = p.thisThis.lastIndex; i < p.chars.length; i += 1) {
-    const re = p.parser.parseSubstring(p.grammarObject, 0, p.chars, i, p.chars.length - i);
-    if (p.match(re.state)) {
-      result = resultSuccess(i, re);
-      break;
-    }
-  }
-  return result;
-};
-/* reset lastIndex after a search */
-const setLastIndex = function setLastIndex(lastIndex, flag, parserResult) {
-  if (flag) {
-    if (parserResult.success) {
-      let ret = parserResult.index;
-      /* bump-along mode - increment is never zero */
-      ret += parserResult.length > 0 ? parserResult.length : 1;
-      return ret;
-    }
-    return 0;
-  }
-  return lastIndex;
-};
-/* attempt a match at lastIndex only - does look further if a match is not found */
-const anchor = function anchor(p) {
-  let result = resultInit();
-  if (p.thisThis.lastIndex < p.chars.length) {
-    const re = p.parser.parseSubstring(
-      p.grammarObject,
-      0,
-      p.chars,
-      p.thisThis.lastIndex,
-      p.chars.length - p.thisThis.lastIndex
-    );
-    if (p.match(re.state)) {
-      result = resultSuccess(p.thisThis.lastIndex, re);
-    }
-  }
-  return result;
-};
-/* called by exec() for a forward search */
-exports.execForward = function execForward(p) {
-  const parserResult = forward(p);
-  let result = null;
-  if (parserResult.success) {
-    result = setResult(p, parserResult);
-  }
-  p.thisThis.lastIndex = setLastIndex(p.thisThis.lastIndex, p.thisThis.global, parserResult);
-  return result;
-};
-/* called by exec() for an anchored search */
-exports.execAnchor = function execAnchor(p) {
-  const parserResult = anchor(p);
-  let result = null;
-  if (parserResult.success) {
-    result = setResult(p, parserResult);
-  }
-  p.thisThis.lastIndex = setLastIndex(p.thisThis.lastIndex, p.thisThis.sticky, parserResult);
-  return result;
-};
-/* search forward from lastIndex looking for a match */
-exports.testForward = function testForward(p) {
-  const parserResult = forward(p);
-  p.thisThis.lastIndex = setLastIndex(p.thisThis.lastIndex, p.thisThis.global, parserResult);
-  return parserResult.success;
-};
-/* test for a match at lastIndex only, do not look further if no match is found */
-exports.testAnchor = function testAnchor(p) {
-  const parserResult = anchor(p);
-  p.thisThis.lastIndex = setLastIndex(p.thisThis.lastIndex, p.thisThis.sticky, parserResult);
-  return parserResult.success;
-};
-
-},{"./result":154}],150:[function(require,module,exports){
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This module analyzes the flags string, setting the true/false flags accordingly.
-module.exports = function exportFlags(obj, flags) {
-  'use strict;';
-
-  const errorName = 'apg-exp: constructor: flags: ';
-  let error = null;
-  const readonly = {
-    writable: false,
-    enumerable: false,
-    configurable: true,
-  };
-  /* defaults - all flags default to false */
-  /* set to true only if they appear in the input flags string */
-  obj.flags = '';
-  obj.global = false;
-  obj.sticky = false;
-  obj.unicode = false;
-  obj.debug = false;
-  const TRUE = true;
-  while (TRUE) {
-    /* validation */
-    if (typeof flags === 'undefined' || flags === null) {
-      break;
-    }
-    if (typeof flags !== 'string') {
-      error = `${errorName}Invalid flags supplied to constructor: must be null, undefined or string: '${typeof flags}'`;
-      break;
-    }
-    if (flags === '') {
-      break;
-    }
-    /* set the flags */
-    const f = flags.toLowerCase().split('');
-    for (let i = 0; i < f.length; i += 1) {
-      switch (f[i]) {
-        case 'd':
-          obj.debug = true;
-          break;
-        case 'g':
-          obj.global = true;
-          break;
-        case 'u':
-          obj.unicode = true;
-          break;
-        case 'y':
-          obj.sticky = true;
-          break;
-        default:
-          error = `${errorName}Invalid flags supplied to constructor: '${flags}'`;
-          return error;
-      }
-    }
-    /* alphabetize the existing flags */
-    if (obj.debug) {
-      obj.flags += 'd';
-    }
-    if (obj.global) {
-      obj.flags += 'g';
-    }
-    if (obj.unicode) {
-      obj.flags += 'u';
-    }
-    if (obj.sticky) {
-      obj.flags += 'y';
-    }
-    break;
-  }
-  /* make flag properties read-only */
-  Object.defineProperty(obj, 'flags', readonly);
-  Object.defineProperty(obj, 'global', readonly);
-  Object.defineProperty(obj, 'debug', readonly);
-  Object.defineProperty(obj, 'unicode', readonly);
-  Object.defineProperty(obj, 'sticky', readonly);
-  return error;
-};
-
-},{}],151:[function(require,module,exports){
-/* eslint-disable new-cap */
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This module will parse the replacement string and locate any special replacement characters.
-
-'use strict;';
-
-const errorName = 'apgex: replace(): ';
-const synError = function synError(result, chars, phraseIndex, data) {
-  if (data.isMatch(result.state)) {
-    const value = data.charsToString(chars, phraseIndex, result.phraseLength);
-    data.items.push({ type: 'error', index: phraseIndex, length: result.phraseLength, error: value });
-    data.errors += 1;
-    data.count += 1;
-  }
-};
-const synEscape = function synExcape(result, chars, phraseIndex, data) {
-  if (data.isMatch(result.state)) {
-    data.items.push({ type: 'escape', index: phraseIndex, length: result.phraseLength });
-    data.escapes += 1;
-    data.count += 1;
-  }
-};
-const synMatch = function synMatch(result, chars, phraseIndex, data) {
-  if (data.isMatch(result.state)) {
-    data.items.push({ type: 'match', index: phraseIndex, length: result.phraseLength });
-    data.matches += 1;
-    data.count += 1;
-  }
-};
-const synPrefix = function synPrefix(result, chars, phraseIndex, data) {
-  if (data.isMatch(result.state)) {
-    data.items.push({ type: 'prefix', index: phraseIndex, length: result.phraseLength });
-    data.prefixes += 1;
-    data.count += 1;
-  }
-};
-const synSuffix = function synSuffix(result, chars, phraseIndex, data) {
-  if (data.isMatch(result.state)) {
-    data.items.push({ type: 'suffix', index: phraseIndex, length: result.phraseLength });
-    data.suffixes += 1;
-    data.count += 1;
-  }
-};
-const synXName = function synXName(result, chars, phraseIndex, data) {
-  if (data.isMatch(result.state)) {
-    data.items.push({ type: 'name', index: phraseIndex, length: result.phraseLength, name: data.name });
-    data.names += 1;
-    data.count += 1;
-  }
-};
-const synName = function synName(result, chars, phraseIndex, data) {
-  if (data.isMatch(result.state)) {
-    const nameStr = data.charsToString(chars, phraseIndex, result.phraseLength);
-    const nameChars = chars.slice(phraseIndex, phraseIndex + result.phraseLength);
-    data.name = { nameString: nameStr, nameChars };
-  }
-};
-module.exports = function parseReplacement(p, str) {
-  const grammar = new (require('./replace-grammar'))();
-  const apglib = require('../apg-lib/node-exports');
-  const parser = new apglib.parser();
-  const data = {
-    name: '',
-    count: 0,
-    errors: 0,
-    escapes: 0,
-    prefixes: 0,
-    matches: 0,
-    suffixes: 0,
-    names: 0,
-    isMatch: p.match,
-    charsToString: apglib.utils.charsToString,
-    items: [],
-  };
-  parser.callbacks.error = synError;
-  parser.callbacks.escape = synEscape;
-  parser.callbacks.prefix = synPrefix;
-  parser.callbacks.match = synMatch;
-  parser.callbacks.suffix = synSuffix;
-  parser.callbacks.xname = synXName;
-  parser.callbacks.name = synName;
-  const chars = apglib.utils.stringToChars(str);
-  const result = parser.parse(grammar, 0, chars, data);
-  if (!result.success) {
-    throw new Error(`${errorName}unexpected error parsing replacement string`);
-  }
-  const ret = data.items;
-  if (data.errors > 0) {
-    let msg = '[';
-    let i = 0;
-    let e = 0;
-    for (; i < data.items.length; i += 1) {
-      const item = data.items[i];
-      if (item.type === 'error') {
-        if (e > 0) {
-          msg += `, ${item.error}`;
-        } else {
-          msg += item.error;
-        }
-        e += 1;
-      }
-    }
-    msg += ']';
-    throw new Error(`${errorName}special character sequences ($...) errors: ${msg}`);
-  }
-  if (data.names > 0) {
-    const badNames = [];
-    let i = 0;
-    for (; i < data.items.length; i += 1) {
-      const item = data.items[i];
-      if (item.type === 'name') {
-        const name = item.name.nameString;
-        const lower = name.toLowerCase();
-        if (!p.parser.ast.callbacks[lower]) {
-          /* name not in callback list, either a bad rule name or an excluded rule name */
-          badNames.push(name);
-        }
-        /* convert all item rule names to lower case */
-        item.name.nameString = lower;
-      }
-    }
-    if (badNames.length > 0) {
-      let msg = '[';
-      for (let ii = 0; ii < badNames.length; ii += 1) {
-        if (ii > 0) {
-          msg += `, ${badNames[ii]}`;
-        } else {
-          msg += badNames[ii];
-        }
-      }
-      msg += ']';
-      throw new Error(`${errorName}special character sequences \${name}: names not found: ${msg}`);
-    }
-  }
-  return ret;
-};
-
-},{"../apg-lib/node-exports":161,"./replace-grammar":152}],152:[function(require,module,exports){
-// copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved<br>
-//   license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)<br>
-//
-// Generated by apg-js, Version 4.0.0 [apg-js](https://github.com/ldthomas/apg-js)
-module.exports = function grammar(){
-  // ```
-  // SUMMARY
-  //      rules = 11
-  //       udts = 0
-  //    opcodes = 39
-  //        ---   ABNF original opcodes
-  //        ALT = 4
-  //        CAT = 4
-  //        REP = 4
-  //        RNM = 12
-  //        TLS = 7
-  //        TBS = 2
-  //        TRG = 6
-  //        ---   SABNF superset opcodes
-  //        UDT = 0
-  //        AND = 0
-  //        NOT = 0
-  //        BKA = 0
-  //        BKN = 0
-  //        BKR = 0
-  //        ABG = 0
-  //        AEN = 0
-  // characters = [10 - 65535]
-  // ```
-  /* OBJECT IDENTIFIER (for internal parser use) */
-  this.grammarObject = 'grammarObject';
-
-  /* RULES */
-  this.rules = [];
-  this.rules[0] = {name: 'rule', lower: 'rule', index: 0, isBkr: false};
-  this.rules[1] = {name: 'error', lower: 'error', index: 1, isBkr: false};
-  this.rules[2] = {name: 'escape', lower: 'escape', index: 2, isBkr: false};
-  this.rules[3] = {name: 'match', lower: 'match', index: 3, isBkr: false};
-  this.rules[4] = {name: 'prefix', lower: 'prefix', index: 4, isBkr: false};
-  this.rules[5] = {name: 'suffix', lower: 'suffix', index: 5, isBkr: false};
-  this.rules[6] = {name: 'xname', lower: 'xname', index: 6, isBkr: false};
-  this.rules[7] = {name: 'name', lower: 'name', index: 7, isBkr: false};
-  this.rules[8] = {name: 'alpha', lower: 'alpha', index: 8, isBkr: false};
-  this.rules[9] = {name: 'digit', lower: 'digit', index: 9, isBkr: false};
-  this.rules[10] = {name: 'any-other', lower: 'any-other', index: 10, isBkr: false};
-
-  /* UDTS */
-  this.udts = [];
-
-  /* OPCODES */
-  /* rule */
-  this.rules[0].opcodes = [];
-  this.rules[0].opcodes[0] = {type: 3, min: 0, max: Infinity};// REP
-  this.rules[0].opcodes[1] = {type: 2, children: [2,4]};// CAT
-  this.rules[0].opcodes[2] = {type: 3, min: 0, max: Infinity};// REP
-  this.rules[0].opcodes[3] = {type: 4, index: 10};// RNM(any-other)
-  this.rules[0].opcodes[4] = {type: 3, min: 0, max: 1};// REP
-  this.rules[0].opcodes[5] = {type: 1, children: [6,7,8,9,10,11]};// ALT
-  this.rules[0].opcodes[6] = {type: 4, index: 2};// RNM(escape)
-  this.rules[0].opcodes[7] = {type: 4, index: 3};// RNM(match)
-  this.rules[0].opcodes[8] = {type: 4, index: 4};// RNM(prefix)
-  this.rules[0].opcodes[9] = {type: 4, index: 5};// RNM(suffix)
-  this.rules[0].opcodes[10] = {type: 4, index: 6};// RNM(xname)
-  this.rules[0].opcodes[11] = {type: 4, index: 1};// RNM(error)
-
-  /* error */
-  this.rules[1].opcodes = [];
-  this.rules[1].opcodes[0] = {type: 2, children: [1,2]};// CAT
-  this.rules[1].opcodes[1] = {type: 7, string: [36]};// TLS
-  this.rules[1].opcodes[2] = {type: 4, index: 10};// RNM(any-other)
-
-  /* escape */
-  this.rules[2].opcodes = [];
-  this.rules[2].opcodes[0] = {type: 7, string: [36,36]};// TLS
-
-  /* match */
-  this.rules[3].opcodes = [];
-  this.rules[3].opcodes[0] = {type: 7, string: [36,38]};// TLS
-
-  /* prefix */
-  this.rules[4].opcodes = [];
-  this.rules[4].opcodes[0] = {type: 7, string: [36,96]};// TLS
-
-  /* suffix */
-  this.rules[5].opcodes = [];
-  this.rules[5].opcodes[0] = {type: 7, string: [36,39]};// TLS
-
-  /* xname */
-  this.rules[6].opcodes = [];
-  this.rules[6].opcodes[0] = {type: 2, children: [1,2,3]};// CAT
-  this.rules[6].opcodes[1] = {type: 7, string: [36,123]};// TLS
-  this.rules[6].opcodes[2] = {type: 4, index: 7};// RNM(name)
-  this.rules[6].opcodes[3] = {type: 7, string: [125]};// TLS
-
-  /* name */
-  this.rules[7].opcodes = [];
-  this.rules[7].opcodes[0] = {type: 2, children: [1,2]};// CAT
-  this.rules[7].opcodes[1] = {type: 4, index: 8};// RNM(alpha)
-  this.rules[7].opcodes[2] = {type: 3, min: 0, max: Infinity};// REP
-  this.rules[7].opcodes[3] = {type: 1, children: [4,5,6,7]};// ALT
-  this.rules[7].opcodes[4] = {type: 4, index: 8};// RNM(alpha)
-  this.rules[7].opcodes[5] = {type: 4, index: 9};// RNM(digit)
-  this.rules[7].opcodes[6] = {type: 6, string: [45]};// TBS
-  this.rules[7].opcodes[7] = {type: 6, string: [95]};// TBS
-
-  /* alpha */
-  this.rules[8].opcodes = [];
-  this.rules[8].opcodes[0] = {type: 1, children: [1,2]};// ALT
-  this.rules[8].opcodes[1] = {type: 5, min: 97, max: 122};// TRG
-  this.rules[8].opcodes[2] = {type: 5, min: 65, max: 90};// TRG
-
-  /* digit */
-  this.rules[9].opcodes = [];
-  this.rules[9].opcodes[0] = {type: 5, min: 48, max: 57};// TRG
-
-  /* any-other */
-  this.rules[10].opcodes = [];
-  this.rules[10].opcodes[0] = {type: 1, children: [1,2,3]};// ALT
-  this.rules[10].opcodes[1] = {type: 5, min: 32, max: 35};// TRG
-  this.rules[10].opcodes[2] = {type: 5, min: 37, max: 65535};// TRG
-  this.rules[10].opcodes[3] = {type: 5, min: 10, max: 13};// TRG
-
-  // The `toString()` function will display the original grammar file(s) that produced these opcodes.
-  this.toString = function toString(){
-    let str = "";
-    str += ";\n";
-    str += "; SABNF grammar for parsing out the replacement string parameters\n";
-    str += ";\n";
-    str += "rule = *(*any-other [(escape / match / prefix/ suffix/ xname / error)])\n";
-    str += "error = \"$\" any-other\n";
-    str += "escape = \"$$\"\n";
-    str += "match  = \"$&\"\n";
-    str += "prefix = \"$`\"\n";
-    str += "suffix = \"$'\"\n";
-    str += "xname = \"${\" name \"}\"\n";
-    str += "name = alpha *(alpha/digit/%d45/%d95)\n";
-    str += "alpha = %d97-122 / %d65-90\n";
-    str += "digit = %d48-57\n";
-    str += "any-other = %x20-23 / %x25-FFFF / %xA-D\n";
-    return str;
-  }
-}
-
-},{}],153:[function(require,module,exports){
-/* eslint-disable no-restricted-syntax */
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This module implements the `replace()` function.
-
-'use strict;';
-
-const errorName = 'apg-exp: replace(): ';
-const parseReplacementString = require('./parse-replacement');
-/* replace special replacement patterns, `$&`, etc. */
-const generateReplacementString = function generateReplacementString(p, rstr, items) {
-  const exp = p.thisThis;
-  if (items.length === 0) {
-    /* no special characters in the replacement string */
-    /* just return a copy of the replacement string */
-    return rstr;
-  }
-  let replace = rstr.slice(0);
-  let first;
-  let last;
-  let ruleName;
-  items.reverse();
-  items.forEach((item) => {
-    first = replace.slice(0, item.index);
-    last = replace.slice(item.index + item.length);
-    switch (item.type) {
-      case 'escape':
-        replace = first.concat('$', last);
-        break;
-      case 'prefix':
-        replace = first.concat(exp.leftContext, last);
-        break;
-      case 'match':
-        replace = first.concat(exp.lastMatch, last);
-        break;
-      case 'suffix':
-        replace = first.concat(exp.rightContext, last);
-        break;
-      case 'name':
-        /* If there are multiple matches to this rule name, only the last is used */
-        /* If this is a problem, modify the grammar and use different rule names for the different places. */
-        ruleName = p.ruleNames[item.name.nameString];
-        replace = first.concat(exp.rules[ruleName], last);
-        break;
-      default:
-        throw new Error(`${errorName}generateREplacementString(): unrecognized item type: ${item.type}`);
-    }
-  });
-  return replace;
-};
-/* creates a special object with the apg-exp object's "last match" properites */
-const lastObj = function lastObj(exp) {
-  const obj = {};
-  obj.ast = exp.ast;
-  obj.input = exp.input;
-  obj.leftContext = exp.leftContext;
-  obj.lastMatch = exp.lastMatch;
-  obj.rightContext = exp.rightContext;
-  // eslint-disable-next-line no-underscore-dangle
-  obj.$_ = exp.input;
-  obj['$`'] = exp.leftContext;
-  obj['$&'] = exp.lastMatch;
-  obj["$'"] = exp.rightContext;
-  obj.rules = [];
-  // eslint-disable-next-line no-restricted-syntax
-  // eslint-disable-next-line guard-for-in
-  for (const name in exp.rules) {
-    const el = `\${${name}}`;
-    obj[el] = exp[el];
-    obj.rules[name] = exp.rules[name];
-  }
-  return obj;
-};
-/* call the user's replacement function for a single pattern match */
-const singleReplaceFunction = function singleReplaceFunction(p, ostr, func) {
-  const result = p.thisThis.exec(ostr);
-  if (result === null) {
-    return ostr;
-  }
-  const rstr = func(result, lastObj(p.thisThis));
-  const ret = p.thisThis.leftContext.concat(rstr, p.thisThis.rightContext);
-  return ret;
-};
-/* call the user's replacement function to replace all pattern matches */
-const globalReplaceFunction = function globalReplaceFunction(p, ostr, func) {
-  const exp = p.thisThis;
-  let retstr = ostr.slice(0);
-  const TRUE = true;
-  while (TRUE) {
-    const result = exp.exec(retstr);
-    if (result === null) {
-      break;
-    }
-    const newrstr = func(result, lastObj(exp));
-    retstr = exp.leftContext.concat(newrstr, exp.rightContext);
-    exp.lastIndex = exp.leftContext.length + newrstr.length;
-    if (result[0].length === 0) {
-      /* an empty string IS a match and is replaced */
-      /* but use "bump-along" mode to prevent infinite loop */
-      exp.lastIndex += 1;
-    }
-  }
-  return retstr;
-};
-/* do a single replacement with the caller's replacement string */
-const singleReplaceString = function singleReplaceString(p, ostr, rstr) {
-  const exp = p.thisThis;
-  const result = exp.exec(ostr);
-  if (result === null) {
-    return ostr;
-  }
-  const ritems = parseReplacementString(p, rstr);
-  const rep = generateReplacementString(p, rstr, ritems);
-  const ret = exp.leftContext.concat(rep, exp.rightContext);
-  return ret;
-};
-/* do a global replacement of all matches with the caller's replacement string */
-const globalReplaceString = function globalReplaceString(p, ostr, rstr) {
-  const exp = p.thisThis;
-  let retstr = ostr.slice(0);
-  let ritems = null;
-  const TRUE = true;
-  while (TRUE) {
-    const result = exp.exec(retstr);
-    if (result == null) {
-      break;
-    }
-    if (ritems === null) {
-      ritems = parseReplacementString(p, rstr);
-    }
-    const newrstr = generateReplacementString(p, rstr, ritems);
-    retstr = exp.leftContext.concat(newrstr, exp.rightContext);
-    exp.lastIndex = exp.leftContext.length + newrstr.length;
-    if (result[0].length === 0) {
-      /* an empty string IS a match and is replaced */
-      /* but use "bump-along" mode to prevent infinite loop */
-      exp.lastIndex += 1;
-    }
-  }
-  return retstr;
-};
-/* the replace() function calls this to replace the matched patterns with a string */
-exports.replaceString = function replaceString(p, str, replacement) {
-  if (p.thisThis.global || p.thisThis.sticky) {
-    return globalReplaceString(p, str, replacement);
-  }
-  return singleReplaceString(p, str, replacement);
-};
-/* the replace() function calls this to replace the matched patterns with a function */
-exports.replaceFunction = function replaceFunction(p, str, func) {
-  if (p.thisThis.global || p.thisThis.sticky) {
-    return globalReplaceFunction(p, str, func);
-  }
-  return singleReplaceFunction(p, str, func);
-};
-
-},{"./parse-replacement":151}],154:[function(require,module,exports){
-/* eslint-disable no-underscore-dangle */
-/* eslint-disable guard-for-in */
-/* eslint-disable no-restricted-syntax */
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This module defines all of the display functions. Text and HTML displays of
-// the grammar source, the result object and the `apg-exp` "last match" object.
-
-'use strict;';
-
-const apglib = require('../apg-lib/node-exports');
-
-// const utils = apglib.utils;
-// const style = apglib.style;
-const { utils, style } = apglib;
-const MODE_HEX = 16;
-const MODE_DEC = 10;
-const MODE_ASCII = 8;
-const MODE_UNICODE = 32;
-/* add style to HTML phrases */
-const phraseStyle = function phraseStyle(phrase, styleArg) {
-  if (phrase === '') {
-    return `<span class="${style.CLASS_EMPTY}">&#120634;</span>`;
-  }
-  if (phrase === undefined) {
-    return `<span class="${style.CLASS_REMAINDER}">undefined</span>`;
-  }
-  let classStyle = style.CLASS_REMAINDER;
-  if (typeof styleArg === 'string') {
-    if (styleArg.toLowerCase() === 'match') {
-      classStyle = style.CLASS_MATCH;
-    } else if (styleArg.toLowerCase() === 'nomatch') {
-      classStyle = style.CLASS_NOMATCH;
-    }
-  }
-  const chars = apglib.utils.stringToChars(phrase);
-  let html = `<span class="${classStyle}">`;
-  html += apglib.utils.charsToAsciiHtml(chars);
-  return `${html}</span>`;
-};
-/* result object - string phrases to ASCII text */
-const sResultToText = function sResultToText(result) {
-  let txt = '';
-  txt += '    result:\n';
-  txt += '       [0]: ';
-  txt += result[0];
-  txt += '\n';
-  txt += `     input: ${result.input}`;
-  txt += '\n';
-  txt += `     index: ${result.index}`;
-  txt += '\n';
-  txt += `    length: ${result.length}`;
-  txt += '\n';
-  txt += `tree depth: ${result.treeDepth}`;
-  txt += '\n';
-  txt += ` node hits: ${result.nodeHits}`;
-  txt += '\n';
-  txt += '     rules: ';
-  let prefix = '';
-  const indent = '          : ';
-  const { rules } = result;
-  // eslint-disable-next-line no-restricted-syntax
-  // eslint-disable-next-line guard-for-in
-  for (const name in rules) {
-    const rule = rules[name];
-    if (rule) {
-      for (let i = 0; i < rule.length; i += 1) {
-        const ruleobj = rule[i];
-        txt += `${prefix + name} : ${ruleobj.index}: `;
-        txt += ruleobj.phrase;
-        txt += '\n';
-        prefix = indent;
-      }
-    } else {
-      txt += `${prefix + name}: `;
-      txt += 'undefined';
-      txt += '\n';
-    }
-    prefix = indent;
-  }
-  return txt;
-};
-/* result object - string to HTML text */
-const sResultToHtml = function sResultToHtml(result) {
-  let html = '';
-  const caption = 'result:';
-  html += `<table class="${style.CLASS_STATE}">\n`;
-  html += `<caption>${caption}</caption>\n`;
-  html += '<tr>';
-  html += '<th>item</th><th>value</th><th>phrase</th>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>[0]</td>';
-  html += `<td>${result.index}</td>`;
-  html += `<td>${phraseStyle(result[0], 'match')}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>input</td>';
-  html += '<td>0</td>';
-  html += `<td>${phraseStyle(result.input)}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += `<td>index</td><td>${result.index}</td>`;
-  html += '<td></td>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += `<td>length</td><td>${result.length}</td>`;
-  html += '<td></td>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += `<td>tree depth</td><td>${result.treeDepth}</td>`;
-  html += '<td></td>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += `<td>node hits</td><td>${result.nodeHits}</td>`;
-  html += '<td></td>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<th>rules</th><th>index</th><th>phrase</th>';
-  html += '</tr>\n';
-
-  const { rules } = result;
-  for (const name in rules) {
-    const rule = rules[name];
-    if (rule) {
-      for (let i = 0; i < rule.length; i += 1) {
-        const ruleobj = rule[i];
-        html += '<tr>';
-        html += `<td>${name}</td>`;
-        html += `<td>${ruleobj.index}</td>`;
-        html += `<td>${phraseStyle(ruleobj.phrase, 'match')}</td>`;
-        html += '\n';
-      }
-    } else {
-      html += '<tr>';
-      html += `<td>${name}</td>`;
-      html += '<td></td>';
-      html += `<td>${phraseStyle(undefined)}</td>`;
-      html += '\n';
-    }
-  }
-  html += '</table>\n';
-  return html;
-};
-/* result object - string to HTML page */
-const sResultToHtmlPage = function sResultToHtmlPage(result) {
-  return utils.htmlToPage(sResultToHtml(result), 'apg-exp result');
-};
-/* apg-exp object - string to ASCII text */
-const sLastMatchToText = function sLastMatchToText(exp) {
-  let txt = '';
-  txt += '  last match:\n';
-  txt += '   lastIndex: ';
-  txt += exp.lastIndex;
-  txt += '\n';
-  txt += '       flags: "';
-  txt += `${exp.flags}"`;
-  txt += '\n';
-  txt += '      global: ';
-  txt += exp.global;
-  txt += '\n';
-  txt += '      sticky: ';
-  txt += exp.sticky;
-  txt += '\n';
-  txt += '     unicode: ';
-  txt += exp.unicode;
-  txt += '\n';
-  txt += '       debug: ';
-  txt += exp.debug;
-  txt += '\n';
-  if (exp['$&'] === undefined) {
-    txt += '   last match: undefined';
-    txt += '\n';
-    return txt;
-  }
-  txt += '       input: ';
-  txt += exp.input;
-  txt += '\n';
-  txt += ' leftContext: ';
-  txt += exp.leftContext;
-  txt += '\n';
-  txt += '   lastMatch: ';
-  txt += exp.lastMatch;
-  txt += '\n';
-  txt += 'rightContext: ';
-  txt += exp.rightContext;
-  txt += '\n';
-  txt += '       rules: ';
-  let prefix = '';
-  const indent = '            : ';
-  for (const name in exp.rules) {
-    txt += `${prefix + name} : `;
-    txt += exp.rules[name];
-    txt += '\n';
-    prefix = indent;
-  }
-  txt += '\n';
-  txt += 'alias:\n';
-  txt += ' ["$_"]: ';
-  // eslint-disable-next-line no-underscore-dangle
-  txt += exp.$_;
-  txt += '\n';
-  txt += ' ["$`"]: ';
-  txt += exp['$`'];
-  txt += '\n';
-  txt += ' ["$&"]: ';
-  txt += exp['$&'];
-  txt += '\n';
-  txt += ' ["$\'"]: ';
-  txt += exp["$'"];
-  txt += '\n';
-  for (const name in exp.rules) {
-    txt += ` ["\${${name}}"]: `;
-    txt += exp[`\${${name}}`];
-    txt += '\n';
-  }
-  return txt;
-};
-/* apg-exp object - string to HTML text */
-const sLastMatchToHtml = function sLastMatchToHtml(exp) {
-  let html = '';
-  const caption = 'last match:';
-  html += `<table class="${style.CLASS_STATE}">\n`;
-  html += `<caption>${caption}</caption>\n`;
-  html += '<tr>';
-  html += '<th>item</th><th>value</th>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>lastIndex</td>';
-  html += `<td>${exp.lastIndex}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>flags</td>';
-  html += `<td>&#34;${exp.flags}&#34;</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>global</td>';
-  html += `<td>${exp.global}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>sticky</td>';
-  html += `<td>${exp.sticky}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>unicode</td>';
-  html += `<td>${exp.unicode}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>debug</td>';
-  html += `<td>${exp.debug}</td>`;
-  html += '</tr>\n';
-
-  if (exp['$&'] === undefined) {
-    html += '<tr>';
-    html += '<td>lastMatch</td>';
-    html += `<td>${phraseStyle(undefined)}</td>`;
-    html += '</tr>\n';
-    html += '</table>\n';
-    return html;
-  }
-  html += '<th>item</th><th>phrase</th>';
-  html += '</tr>\n';
-  html += '<tr>';
-  html += '<td>input</td>';
-  html += `<td>${phraseStyle(exp.input)}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>leftContext</td>';
-  html += `<td>${phraseStyle(exp.leftContext)}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>lastMatch</td>';
-  html += `<td>${phraseStyle(exp.lastMatch, 'match')}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>rightContext</td>';
-  html += `<td>${phraseStyle(exp.rightContext)}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<th>rule</th><th>phrase</th>';
-  html += '</tr>\n';
-
-  for (const name in exp.rules) {
-    html += '<tr>';
-    html += `<td>${name}</td>`;
-    html += `<td>${phraseStyle(exp.rules[name])}</td>`;
-    html += '</tr>\n';
-  }
-
-  html += '<tr>';
-  html += '<th>alias</th><th>phrase</th>';
-  html += '</tr>\n';
-  html += '<tr>';
-  html += '<td>["$_"]</td>';
-  // eslint-disable-next-line no-underscore-dangle
-  html += `<td>${phraseStyle(exp.$_)}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>["$`"]</td>';
-  html += `<td>${phraseStyle(exp['$`'])}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>["$&"]</td>';
-  html += `<td>${phraseStyle(exp['$&'], 'match')}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>["$\'"]</td>';
-  html += `<td>${phraseStyle(exp["$'"])}</td>`;
-  html += '</tr>\n';
-
-  for (const name in exp.rules) {
-    html += '<tr>';
-    html += `<td>["\${${name}}"]</td>`;
-    html += `<td>${phraseStyle(exp[`\${${name}}`])}</td>`;
-    html += '</tr>\n';
-  }
-  html += '</table>\n';
-  return html;
-};
-/* apg-exp object - string to HTML page */
-const sLastMatchToHtmlPage = function sLastMatchToHtmlPage(exp) {
-  return utils.htmlToPage(sLastMatchToHtml(exp), 'apg-exp last result');
-};
-/* translates ASCII string to integer mode identifier - defaults to ASCII */
-const getMode = function getMode(modearg) {
-  let mode = MODE_ASCII;
-  if (typeof modearg === 'string' && modearg.length >= 3) {
-    const modein = modearg.toLowerCase().slice(0, 3);
-    if (modein === 'hex') {
-      mode = MODE_HEX;
-    } else if (modein === 'dec') {
-      mode = MODE_DEC;
-    } else if (modein === 'uni') {
-      mode = MODE_UNICODE;
-    }
-  }
-  return mode;
-};
-/* translate integer mode identifier to standard text string */
-const modeToText = function modeToText(mode) {
-  let txt;
-  switch (mode) {
-    case MODE_ASCII:
-      txt = 'ascii';
-      break;
-    case MODE_HEX:
-      txt = 'hexidecimal';
-      break;
-    case MODE_DEC:
-      txt = 'decimal';
-      break;
-    case MODE_UNICODE:
-      txt = 'Unicode';
-      break;
-    default:
-      throw new Error('recognized mode');
-  }
-  return txt;
-};
-/* convert integer to hex with leading 0 if necessary */
-const charToHex = function charToHex(char) {
-  let ch = char.toString(16);
-  if (ch.length % 2 !== 0) {
-    ch = `0${ch}`;
-  }
-  return ch;
-};
-/* convert integer character code array to formatted text string */
-const charsToMode = function charsToMode(chars, mode) {
-  let txt = '';
-  if (mode === MODE_ASCII) {
-    txt += apglib.utils.charsToString(chars);
-  } else if (mode === MODE_DEC) {
-    txt += '[';
-    if (chars.length > 0) {
-      txt += chars[0];
-      for (let i = 1; i < chars.length; i += 1) {
-        txt += `,${chars[i]}`;
-      }
-    }
-    txt += ']';
-  } else if (mode === MODE_HEX) {
-    txt += '[';
-    if (chars.length > 0) {
-      txt += `\\x${charToHex(chars[0])}`;
-      for (let i = 1; i < chars.length; i += 1) {
-        txt += `,\\x${charToHex(chars[i])}`;
-      }
-    }
-    txt += ']';
-  } else if (mode === MODE_UNICODE) {
-    txt += '[';
-    if (chars.length > 0) {
-      txt += `\\u${charToHex(chars[0])}`;
-      for (let i = 1; i < chars.length; i += 1) {
-        txt += `,\\u${charToHex(chars[i])}`;
-      }
-    }
-    txt += ']';
-  }
-  return txt;
-};
-/* result object - Unicode mode to ASCII text */
-const uResultToText = function uResultToText(result, modeArg) {
-  const mode = getMode(modeArg);
-  let txt = '';
-  txt += `    result(${modeToText(mode)})\n`;
-  txt += '       [0]: ';
-  txt += charsToMode(result[0], mode);
-  txt += '\n';
-  txt += `     input: ${charsToMode(result.input, mode)}`;
-  txt += '\n';
-  txt += `     index: ${result.index}`;
-  txt += '\n';
-  txt += `    length: ${result.length}`;
-  txt += '\n';
-  txt += `tree depth: ${result.treeDepth}`;
-  txt += '\n';
-  txt += ` node hits: ${result.nodeHits}`;
-  txt += '\n';
-  txt += '     rules: ';
-  txt += '\n';
-  const { rules } = result;
-  for (const name in rules) {
-    const rule = rules[name];
-    if (rule) {
-      for (let i = 0; i < rule.length; i += 1) {
-        const ruleobj = rule[i];
-        txt += `          :${name} : ${ruleobj.index}: `;
-        txt += charsToMode(ruleobj.phrase, mode);
-        txt += '\n';
-      }
-    } else {
-      txt += `          :${name}: `;
-      txt += 'undefined';
-      txt += '\n';
-    }
-  }
-  return txt;
-};
-/* result object - Unicode mode to HTML text */
-const uResultToHtml = function uResultToHtml(result, modeArg) {
-  const mode = getMode(modeArg);
-  let html = '';
-  let caption = 'result:';
-  caption += `(${modeToText(mode)})`;
-  html += `<table class="${style.CLASS_STATE}">\n`;
-  html += `<caption>${caption}</caption>\n`;
-  html += '<tr>';
-  html += '<th>item</th><th>value</th><th>phrase</th>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>[0]</td>';
-  html += `<td>${result.index}</td>`;
-  html += `<td>${phraseStyle(charsToMode(result[0], mode), 'match')}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>input</td>';
-  html += '<td>0</td>';
-  html += `<td>${phraseStyle(charsToMode(result.input, mode))}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += `<td>index</td><td>${result.index}</td>`;
-  html += '<td></td>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += `<td>length</td><td>${result.length}</td>`;
-  html += '<td></td>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += `<td>tree depth</td><td>${result.treeDepth}</td>`;
-  html += '<td></td>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += `<td>node hits</td><td>${result.nodeHits}</td>`;
-  html += '<td></td>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<th>rules</th><th>index</th><th>phrase</th>';
-  html += '</tr>\n';
-
-  const { rules } = result;
-  for (const name in rules) {
-    const rule = rules[name];
-    if (rule) {
-      for (let i = 0; i < rule.length; i += 1) {
-        const ruleobj = rule[i];
-        html += '<tr>';
-        html += `<td>${name}</td>`;
-        html += `<td>${ruleobj.index}</td>`;
-        html += `<td>${phraseStyle(charsToMode(ruleobj.phrase, mode), 'match')}</td>`;
-        html += '\n';
-      }
-    } else {
-      html += '<tr>';
-      html += `<td>${name}</td>`;
-      html += '<td></td>';
-      html += `<td>${phraseStyle(undefined)}</td>`;
-      html += '\n';
-    }
-  }
-  html += '</table>\n';
-  return html;
-};
-/* result object - Unicode mode to HTML page */
-const uResultToHtmlPage = function uResultToHtmlPage(result, mode) {
-  return utils.htmlToPage(uResultToHtml(result, mode));
-};
-/* apg-exp object - Unicode mode to ASCII text */
-const uLastMatchToText = function uLastMatchToText(exp, modeArg) {
-  const mode = getMode(modeArg);
-  let txt = '';
-  txt += `  last match(${modeToText(mode)})\n`;
-  txt += `   lastIndex: ${exp.lastIndex}`;
-  txt += '\n';
-  txt += `       flags: "${exp.flags}"`;
-  txt += '\n';
-  txt += `      global: ${exp.global}`;
-  txt += '\n';
-  txt += `      sticky: ${exp.sticky}`;
-  txt += '\n';
-  txt += `     unicode: ${exp.unicode}`;
-  txt += '\n';
-  txt += `       debug: ${exp.debug}`;
-  txt += '\n';
-  if (exp['$&'] === undefined) {
-    txt += '   lastMatch: undefined';
-    txt += '\n';
-    return txt;
-  }
-  txt += '       input: ';
-  txt += charsToMode(exp.input, mode);
-  txt += '\n';
-  txt += ' leftContext: ';
-  txt += charsToMode(exp.leftContext, mode);
-  txt += '\n';
-  txt += '   lastMatch: ';
-  txt += charsToMode(exp.lastMatch, mode);
-  txt += '\n';
-  txt += 'rightContext: ';
-  txt += charsToMode(exp.rightContext, mode);
-  txt += '\n';
-
-  txt += '       rules:';
-  let prefix = '';
-  const indent = '            :';
-  for (const name in exp.rules) {
-    txt += `${prefix + name} : `;
-    txt += exp.rules[name] ? charsToMode(exp.rules[name], mode) : 'undefined';
-    txt += '\n';
-    prefix = indent;
-  }
-  txt += '\n';
-  txt += '  alias:\n';
-  txt += '   ["$_"]: ';
-  txt += charsToMode(exp.$_, mode);
-  txt += '\n';
-  txt += '   ["$`"]: ';
-  txt += charsToMode(exp['$`'], mode);
-  txt += '\n';
-  txt += '   ["$&"]: ';
-  txt += charsToMode(exp['$&'], mode);
-  txt += '\n';
-  txt += '   ["$\'"]: ';
-  txt += charsToMode(exp["$'"], mode);
-  txt += '\n';
-  for (const name in exp.rules) {
-    txt += `   ["\${${name}}"]: `;
-    txt += exp[`\${${name}}`] ? charsToMode(exp[`\${${name}}`], mode) : 'undefined';
-    txt += '\n';
-  }
-  return txt;
-};
-/* apg-exp object - Unicode mode to HTML text */
-const uLastMatchToHtml = function uLastMatchToHtml(exp, modeArg) {
-  const mode = getMode(modeArg);
-  let html = '';
-  let caption = 'last match:';
-  caption += `(${modeToText(mode)})`;
-  html += `<table class="${style.CLASS_STATE}">\n`;
-  html += `<caption>${caption}</caption>\n`;
-  html += '<tr>';
-  html += '<th>item</th><th>value</th>';
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>lastIndex</td>';
-  html += `<td>${exp.lastIndex}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>flags</td>';
-  html += `<td>&#34;${exp.flags}&#34;</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>global</td>';
-  html += `<td>${exp.global}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>sticky</td>';
-  html += `<td>${exp.sticky}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>unicode</td>';
-  html += `<td>${exp.unicode}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>debug</td>';
-  html += `<td>${exp.debug}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<th>item</th><th>phrase</th>';
-  html += '</tr>\n';
-  if (exp['$&'] === undefined) {
-    html += '<tr>';
-    html += '<td>lastMatch</td>';
-    html += `<td>${phraseStyle(undefined)}</td>`;
-    html += '</tr>\n';
-    html += '</table>\n';
-    return html;
-  }
-  html += '<tr>';
-  html += '<td>input</td>';
-  html += `<td>${phraseStyle(charsToMode(exp.input, mode))}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>leftContext</td>';
-  html += `<td>${phraseStyle(charsToMode(exp.leftContext, mode))}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>lastMatch</td>';
-  html += `<td>${phraseStyle(charsToMode(exp.lastMatch, mode), 'match')}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>rightContext</td>';
-  html += `<td>${phraseStyle(charsToMode(exp.rightContext, mode))}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<th>rules</th><th>phrase</th>';
-  html += '</tr>\n';
-
-  for (const name in exp.rules) {
-    html += '<tr>';
-    html += `<td>${name}</td>`;
-    if (exp.rules[name]) {
-      html += `<td>${phraseStyle(charsToMode(exp.rules[name], mode))}</td>`;
-    } else {
-      html += `<td>${phraseStyle(undefined)}</td>`;
-    }
-    html += '</tr>\n';
-  }
-
-  html += '<tr>';
-  html += '<th>alias</th><th>phrase</th>';
-  html += '</tr>\n';
-  html += '<tr>';
-  html += '<td>["$_"]</td>';
-  html += `<td>${phraseStyle(charsToMode(exp.$_, mode))}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>["$`"]</td>';
-  html += `<td>${phraseStyle(charsToMode(exp['$`'], mode))}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>["$&"]</td>';
-  html += `<td>${phraseStyle(charsToMode(exp['$&'], mode), 'match')}</td>`;
-  html += '</tr>\n';
-
-  html += '<tr>';
-  html += '<td>["$\'"]</td>';
-  html += `<td>${phraseStyle(charsToMode(exp["$'"], mode))}</td>`;
-  html += '</tr>\n';
-
-  for (const name in exp.rules) {
-    html += '<tr>';
-    html += `<td>["\${${name}}"]</td>`;
-    if (exp[`\${${name}}`]) {
-      html += `<td>${phraseStyle(charsToMode(exp[`\${${name}}`], mode))}</td>`;
-    } else {
-      html += `<td>${phraseStyle(undefined)}</td>`;
-    }
-    html += '</tr>\n';
-  }
-  html += '</table>\n';
-  return html;
-};
-/* apg-exp object - Unicode mode to HTML page */
-const uLastMatchToHtmlPage = function uLastMatchToHtmlPage(exp, mode) {
-  return utils.htmlToPage(uLastMatchToHtml(exp, mode));
-};
-/* SABNF grammar souce to ASCII text */
-const sourceToText = function sourceToText(exp) {
-  return exp.source;
-};
-/* SABNF grammar souce to HTML */
-const sourceToHtml = function sourceToHtml(exp) {
-  const rx = /.*(\r\n|\n|\r)/g;
-  let result;
-  let chars;
-  let html;
-  html = '<pre>\n';
-  const TRUE = true;
-  while (TRUE) {
-    result = rx.exec(exp.source);
-    if (result === null || result[0] === '') {
-      break;
-    }
-    chars = apglib.utils.stringToChars(result[0]);
-    html += apglib.utils.charsToAsciiHtml(chars);
-    html += '\n';
-  }
-  html += '</pre>\n';
-  return html;
-};
-/* SABNF grammar souce to HTML page */
-const sourceToHtmlPage = function sourceToHtmlPage(exp) {
-  return apglib.utils.htmlToPage(sourceToHtml(exp), 'apg-exp source');
-};
-/* export modules needed by the apg-exp and result objects to display their values */
-module.exports = {
-  s: {
-    resultToText: sResultToText,
-    resultToHtml: sResultToHtml,
-    resultToHtmlPage: sResultToHtmlPage,
-    expToText: sLastMatchToText,
-    expToHtml: sLastMatchToHtml,
-    expToHtmlPage: sLastMatchToHtmlPage,
-    sourceToText,
-    sourceToHtml,
-    sourceToHtmlPage,
-  },
-  u: {
-    resultToText: uResultToText,
-    resultToHtml: uResultToHtml,
-    resultToHtmlPage: uResultToHtmlPage,
-    expToText: uLastMatchToText,
-    expToHtml: uLastMatchToHtml,
-    expToHtmlPage: uLastMatchToHtmlPage,
-  },
-};
-
-},{"../apg-lib/node-exports":161}],155:[function(require,module,exports){
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This module parses an input SABNF grammar string into a grammar object.
-// Errors are reported as an array of error message strings.
-// To be called only by the `apg-exp` contructor.
-// ```
-// input - required, a string containing the SABNF grammar
-// errors - required, must be an array
-// ```
-module.exports = function sabnfGenerator(input) {
-  'use strict;';
-
-  const Api = require('../apg-api/api');
-
-  const errorName = 'apg-exp: generator: ';
-  const result = { obj: null, error: null, text: null, html: null };
-  const grammarTextTitle = 'annotated grammar:\n';
-  const textErrorTitle = 'annotated grammar errors:\n';
-  function resultError(api, resultArg, header) {
-    resultArg.error = header;
-    resultArg.text = grammarTextTitle;
-    resultArg.text += api.linesToAscii();
-    resultArg.text += textErrorTitle;
-    resultArg.text += api.errorsToAscii();
-    resultArg.html = api.linesToHtml();
-    resultArg.html += api.errorsToHtml();
-  }
-
-  let api;
-  const TRUE = true;
-  while (TRUE) {
-    /* verify the input string - preliminary analysis */
-    try {
-      api = new Api(input);
-      api.scan();
-    } catch (e) {
-      result.error = errorName + e.msg;
-      break;
-    }
-    if (api.errors.length) {
-      resultError(api, result, 'grammar has validation errors');
-      break;
-    }
-
-    /* syntax analysis of the grammar */
-    api.parse();
-    if (api.errors.length) {
-      resultError(api, result, 'grammar has syntax errors');
-      break;
-    }
-
-    /* semantic analysis of the grammar */
-    api.translate();
-    if (api.errors.length) {
-      resultError(api, result, 'grammar has semantic errors');
-      break;
-    }
-
-    /* attribute analysis of the grammar */
-    api.attributes();
-    if (api.errors.length) {
-      resultError(api, result, 'grammar has attribute errors');
-      break;
-    }
-
-    /* finally, generate a grammar object */
-    result.obj = api.toObject();
-    break;
-  }
-  return result;
-};
-
-},{"../apg-api/api":131}],156:[function(require,module,exports){
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This module implements the `split()` function.
-/* called by split() to split the string */
-exports.split = function exportsSplit(p, str, limit) {
-  'use strict;';
-
-  const exp = p.thisThis;
-  let result;
-  let beg;
-  let end;
-  let last;
-  const phrases = [];
-  const splits = [];
-  let count = 0;
-  exp.lastIndex = 0;
-  const TRUE = true;
-  while (TRUE) {
-    last = exp.lastIndex;
-    result = exp.exec(str);
-    if (result === null) {
-      break;
-    }
-    phrases.push({
-      phrase: result[0],
-      index: result.index,
-    });
-    /* ignore flags, uses bump-along mode (increment one character on empty string matches) */
-    if (result[0].length === 0) {
-      exp.lastIndex = last + 1;
-    } else {
-      exp.lastIndex = result.index + result[0].length;
-    }
-    count += 1;
-    if (count > limit) {
-      break;
-    }
-  }
-  if (phrases.length === 0) {
-    /* no phrases found, return array with the original string */
-    return [str.slice(0)];
-  }
-  if (phrases.length === 1 || phrases[0].phrase.length === str.length) {
-    /* one phrase found and it is the entire string */
-    return [''];
-  }
-  /* first segment, if any */
-  if (phrases[0].index > 0) {
-    beg = 0;
-    end = phrases[0].index;
-    splits.push(str.slice(beg, end));
-  }
-  /* middle segments, if any */
-  const endi = phrases.length - 1;
-  for (let i = 0; i < endi; i += 1) {
-    beg = phrases[i].index + phrases[i].phrase.length;
-    end = phrases[i + 1].index;
-    splits.push(str.slice(beg, end));
-  }
-  /* last segment, if any */
-  last = phrases[phrases.length - 1];
-  beg = last.index + last.phrase.length;
-  if (beg < str.length) {
-    end = str.length;
-    splits.push(str.slice(beg, end));
-  }
-  return splits;
-};
-
-},{}],157:[function(require,module,exports){
+},{"buffer":161}],146:[function(require,module,exports){
 /* eslint-disable guard-for-in */
 /* eslint-disable no-restricted-syntax */
 /*  *************************************************************************************
@@ -28379,7 +41396,7 @@ module.exports = function exportsAst() {
   };
 };
 
-},{"./identifiers":160,"./utilities":166}],158:[function(require,module,exports){
+},{"./identifiers":149,"./utilities":155}],147:[function(require,module,exports){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
@@ -28457,7 +41474,7 @@ module.exports = function exportsCircularBuffer() {
   };
 };
 
-},{}],159:[function(require,module,exports){
+},{}],148:[function(require,module,exports){
 // This module has been developed programmatically in the `apg-lib` build process.
 // It is used to build web pages programatically on the fly without the need for <script> or <style> tags.
 
@@ -28465,7 +41482,7 @@ module.exports = function emittcss(){
 return '/* This file automatically generated by jsonToless() and LESS. */\n.apg-mono {\n  font-family: monospace;\n}\n.apg-active {\n  font-weight: bold;\n  color: #000000;\n}\n.apg-match {\n  font-weight: bold;\n  color: #264BFF;\n}\n.apg-empty {\n  font-weight: bold;\n  color: #0fbd0f;\n}\n.apg-nomatch {\n  font-weight: bold;\n  color: #FF4000;\n}\n.apg-lh-match {\n  font-weight: bold;\n  color: #1A97BA;\n}\n.apg-lb-match {\n  font-weight: bold;\n  color: #5F1687;\n}\n.apg-remainder {\n  font-weight: bold;\n  color: #999999;\n}\n.apg-ctrl-char {\n  font-weight: bolder;\n  font-style: italic;\n  font-size: 0.6em;\n}\n.apg-line-end {\n  font-weight: bold;\n  color: #000000;\n}\n.apg-error {\n  font-weight: bold;\n  color: #FF4000;\n}\n.apg-phrase {\n  color: #000000;\n  background-color: #8caae6;\n}\n.apg-empty-phrase {\n  color: #0fbd0f;\n}\ntable.apg-state {\n  font-family: monospace;\n  margin-top: 5px;\n  font-size: 11px;\n  line-height: 130%;\n  text-align: left;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-state th,\ntable.apg-state td {\n  text-align: left;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-state th:nth-last-child(2),\ntable.apg-state td:nth-last-child(2) {\n  text-align: right;\n}\ntable.apg-state caption {\n  font-size: 125%;\n  line-height: 130%;\n  font-weight: bold;\n  text-align: left;\n}\ntable.apg-stats {\n  font-family: monospace;\n  margin-top: 5px;\n  font-size: 11px;\n  line-height: 130%;\n  text-align: right;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-stats th,\ntable.apg-stats td {\n  text-align: right;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-stats caption {\n  font-size: 125%;\n  line-height: 130%;\n  font-weight: bold;\n  text-align: left;\n}\ntable.apg-trace {\n  font-family: monospace;\n  margin-top: 5px;\n  font-size: 11px;\n  line-height: 130%;\n  text-align: right;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-trace caption {\n  font-size: 125%;\n  line-height: 130%;\n  font-weight: bold;\n  text-align: left;\n}\ntable.apg-trace th,\ntable.apg-trace td {\n  text-align: right;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-trace th:last-child,\ntable.apg-trace th:nth-last-child(2),\ntable.apg-trace td:last-child,\ntable.apg-trace td:nth-last-child(2) {\n  text-align: left;\n}\ntable.apg-grammar {\n  font-family: monospace;\n  margin-top: 5px;\n  font-size: 11px;\n  line-height: 130%;\n  text-align: right;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-grammar caption {\n  font-size: 125%;\n  line-height: 130%;\n  font-weight: bold;\n  text-align: left;\n}\ntable.apg-grammar th,\ntable.apg-grammar td {\n  text-align: right;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-grammar th:last-child,\ntable.apg-grammar td:last-child {\n  text-align: left;\n}\ntable.apg-rules {\n  font-family: monospace;\n  margin-top: 5px;\n  font-size: 11px;\n  line-height: 130%;\n  text-align: right;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-rules caption {\n  font-size: 125%;\n  line-height: 130%;\n  font-weight: bold;\n  text-align: left;\n}\ntable.apg-rules th,\ntable.apg-rules td {\n  text-align: right;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-rules a {\n  color: #003399 !important;\n}\ntable.apg-rules a:hover {\n  color: #8caae6 !important;\n}\ntable.apg-attrs {\n  font-family: monospace;\n  margin-top: 5px;\n  font-size: 11px;\n  line-height: 130%;\n  text-align: center;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-attrs caption {\n  font-size: 125%;\n  line-height: 130%;\n  font-weight: bold;\n  text-align: left;\n}\ntable.apg-attrs th,\ntable.apg-attrs td {\n  text-align: center;\n  border: 1px solid black;\n  border-collapse: collapse;\n}\ntable.apg-attrs th:nth-child(1),\ntable.apg-attrs th:nth-child(2),\ntable.apg-attrs th:nth-child(3) {\n  text-align: right;\n}\ntable.apg-attrs td:nth-child(1),\ntable.apg-attrs td:nth-child(2),\ntable.apg-attrs td:nth-child(3) {\n  text-align: right;\n}\ntable.apg-attrs a {\n  color: #003399 !important;\n}\ntable.apg-attrs a:hover {\n  color: #8caae6 !important;\n}\n';
 }
 
-},{}],160:[function(require,module,exports){
+},{}],149:[function(require,module,exports){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
@@ -28543,7 +41560,7 @@ module.exports = {
   BKR_MODE_CI: 604,
 };
 
-},{}],161:[function(require,module,exports){
+},{}],150:[function(require,module,exports){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
@@ -28566,7 +41583,7 @@ module.exports = {
   style: require('./style'),
 };
 
-},{"./ast":157,"./circular-buffer":158,"./emitcss":159,"./identifiers":160,"./parser":162,"./stats":163,"./style":164,"./trace":165,"./utilities":166}],162:[function(require,module,exports){
+},{"./ast":146,"./circular-buffer":147,"./emitcss":148,"./identifiers":149,"./parser":151,"./stats":152,"./style":153,"./trace":154,"./utilities":155}],151:[function(require,module,exports){
 /* eslint-disable func-names */
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable new-cap */
@@ -30053,7 +43070,7 @@ module.exports = function parser() {
   };
 };
 
-},{"./identifiers":160,"./utilities":166}],163:[function(require,module,exports){
+},{"./identifiers":149,"./utilities":155}],152:[function(require,module,exports){
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
@@ -30340,7 +43357,7 @@ module.exports = function statsFunc() {
   };
 };
 
-},{"./identifiers":160,"./style":164,"./utilities":166}],164:[function(require,module,exports){
+},{"./identifiers":149,"./style":153,"./utilities":155}],153:[function(require,module,exports){
 module.exports = {
 
   // Generated by apglib/style.js 
@@ -30366,7 +43383,7 @@ module.exports = {
   CLASS_ATTRIBUTES: 'apg-attrs',
 }
 
-},{}],165:[function(require,module,exports){
+},{}],154:[function(require,module,exports){
 /* eslint-disable func-names */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-restricted-syntax */
@@ -31526,7 +44543,7 @@ module.exports = function exportTrace() {
   };
 };
 
-},{"./circular-buffer":158,"./identifiers":160,"./style":164,"./utilities":166}],166:[function(require,module,exports){
+},{"./circular-buffer":147,"./identifiers":149,"./style":153,"./utilities":155}],155:[function(require,module,exports){
 /* eslint-disable func-names */
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
@@ -32064,361 +45081,7 @@ exports.stringToAsciiHtml = function (str) {
   return this.charsToAsciiHtml(chars);
 };
 
-},{"../apg-conv-api/converter":143,"./emitcss":159,"./identifiers":160,"./style":164}],167:[function(require,module,exports){
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This is the main or driver function for the parser generator.
-// It handles:
-//    - verification and interpretation of the command line parameters
-//    - execution of immediate commands (help, version)
-//    - reading and verifying the input SABNF grammar file(s)
-//    - parsing the input SABNF grammar and reporting errors, if any
-//    - evaluation of the input grammar's attributes
-//    - if all is OK, generating the source code for a grammar object
-//    - writing the source to a specified file
-//
-// Note on teminology.
-//
-// APG is a parser generator.
-// However, it really only generates a "grammar object" (see below) from the defining SABNF grammar.
-// The generated parser is incomplete at this stage.
-// Remaining, it is the job of the user to develop the generated parser from the grammar object and the APG Library (**apg-lib**).
-//
-// The following terminology my help clear up the confusion between the idea of a "generated parser" versus a "generated grammar object".
-// - The generating parser: APG is an APG parser (yes, there is a circular dependence between **apg** and **apg-lib**). We'll call it the generating parser.
-// - The target parser: APG's goal is to generate a parser. We'll call it the target parser.
-// - The target grammar: this is the (ASCII) SABNF grammar defining the target parser.
-// - The target grammar object: APG parses the SABNF grammar and generates the JavaScript source for a target grammar object.
-// - The final target parser: The user then develops the final target parser using the generated target grammar
-// object and the APG parsing library, **apg-lib**.
-module.exports = function apg(args) {
-  const fs = require('fs');
-  const ApiCtor = require('../apg-api/api');
-  const getConfig = require('./command-line');
-  const thisFileName = 'apg.js: ';
-  const util = require('util');
-  function logErrors(api, header) {
-    console.log('\n');
-    console.log(`${header}:`);
-    console.log(api.errorsToAscii());
-    console.log('\nORIGINAL GRAMMAR:');
-    console.log(api.linesToAscii());
-  }
-  try {
-    /* Get command line parameters and set up the configuration accordingly. */
-    const config = getConfig(args);
-    if (config.error) {
-      console.log(config.error);
-      console.log(config.help);
-      return;
-    }
-    if (config.help) {
-      console.log(config.help);
-      return;
-    }
-    if (config.version) {
-      console.log(config.version);
-      return;
-    }
-
-    /* Get and validate the input SABNF grammar. */
-    const api = new ApiCtor(config.src);
-
-    api.scan(config.strict);
-    if (api.errors.length) {
-      logErrors(api, 'GRAMMAR CHARACTER ERRORS');
-      throw new Error(`${thisFileName}invalid input grammar`);
-    }
-
-    /* parse the grammar - the syntax phase */
-    api.parse(config.strict);
-    if (api.errors.length) {
-      logErrors(api, 'GRAMMAR SYNTAX ERRORS');
-      throw new Error(`${thisFileName}grammar has syntax errors`);
-    }
-
-    /* translate the AST - the semantic phase */
-    api.translate();
-    if (api.errors.length) {
-      logErrors(api, 'GRAMMAR SEMANTIC ERRORS');
-      throw new Error(`${thisFileName}grammar has semantic errors`);
-    }
-
-    if (config.displayRules) {
-      console.log(api.displayRules('alpha'));
-      console.log();
-    }
-
-    /* attribute generation */
-    const errorCount = api.attributes();
-    if (errorCount > 0) {
-      console.log('GRAMMAR ATTRIBUTE ERRORS');
-      console.log(api.displayAttributeErrors());
-      console.log();
-      if (config.displayAttributes) {
-        console.log(api.displayAttributes('type'));
-        console.log();
-      }
-      throw new Error(`${thisFileName}grammar has attribute errors`);
-    }
-    if (config.displayRuleDependencies) {
-      console.log(api.displayRuleDependencies('type'));
-      console.log();
-    }
-    if (config.displayAttributes) {
-      console.log(api.displayAttributes('type'));
-      console.log();
-    }
-
-    /* generate a JavaScript parser, if requested */
-    if (config.outfd) {
-      fs.writeSync(config.outfd, api.toSource(config.funcName));
-      console.log(`\nJavaScript parser generated: ${config.outFilename}`);
-    }
-  } catch (e) {
-    let msg = 'EXCEPTION THROWN: ';
-    if (e instanceof Error) {
-      msg += `${e.name}: ${e.message}`;
-    } else if (typeof e === 'string') {
-      msg += e;
-    } else {
-      msg += '\n';
-      msg += util.inspect(e, {
-        showHidden: true,
-        depth: null,
-        colors: true,
-      });
-    }
-    console.log(msg);
-  }
-};
-
-},{"../apg-api/api":131,"./command-line":168,"fs":175,"util":241}],168:[function(require,module,exports){
-(function (process,Buffer){(function (){
-/*  *************************************************************************************
- *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
- *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
- *   ********************************************************************************* */
-// This module processes the command line arguments into a completed configuration
-// and returns a `config` object.
-// It takes the  `node` command line arguments less the first two. e.g. `process.argv.slice(2)`
-// and can be a free mix of keys and key/value pairs.
-//
-// Run<br>
-// `npm run apg -- --help`<br>
-// or<br>
-// `./bin/apg.sh -- help`<br>
-// to see all the options.
-module.exports = function commandLine(args) {
-  const fs = require('fs');
-  const path = require('path');
-  const converter = require('../apg-conv-api/converter');
-  const helpScreen = function helpScreen(helpArgs) {
-    let help = 'Usage: apg options\n';
-    let options = '';
-    helpArgs.forEach((arg) => {
-      options += `${arg} `;
-    });
-    help += `options: ${options}\n`;
-    help += '-h, --help                 : print this help screen\n';
-    help += '-v, --version              : display version information\n';
-    help += '-s, --strict               : only ABNF grammar (RFC 5234 & 7405) allowed, no Superset features\n';
-    help += '-i <path>[,<path>[,...]]   : input file(s)*\n';
-    help += '--in=<path>[,<path>[,...]] : input file(s)*\n';
-    help += '-o <path>                  : output filename**\n';
-    help += '--out=<path>               : output filename**\n';
-    help += '-n <function name>         : the grammar function name***\n';
-    help += '--name=<function name>     : the grammar function name***\n';
-    help += '--display-rules            : display the rule names\n';
-    help += '--display-rule-dependencies: display => rules referenced <= rules referring to this rule\n';
-    help += '--display-attributes       : display the attributes\n';
-    help += '\n';
-    help += 'Options are case insensitive.\n';
-    help += '*   Multiple input files allowed.\n';
-    help += '    Multiple file names must be comma separated with no spaces.\n';
-    help += '    File names from multiple input options are concatenated.\n';
-    help += '    Content of all resulting input files is concatenated.\n';
-    help += '**  Output file name is optional.\n';
-    help += '    If no output file name is given, no parser is generated.\n';
-    help += '    If the output file name does not have a ".js" extension,\n';
-    help += '    the existing extension, if any, is stripped and ".js" is added.\n';
-    help += '*** Grammar function name is optional.\n';
-    help += '    If absent, use module.exports for node.js application usage.\n';
-    help += '    If present, must be a valid JavaScript function name for web page usage.\n';
-    help += "    No testing is done (it's complicated). If the name is not valid\n";
-    help += '    you will find out when you try to use it.\n';
-    return help;
-  };
-  const version = function version() {
-    return 'JavaScript APG, version 4.0.0\nCopyright (C) 2021 Lowell D. Thomas, all rights reserved\n';
-  };
-  const STRICTL = '--strict';
-  const STRICTS = '-s';
-  const HELPL = '--help';
-  const HELPS = '-h';
-  const VERSIONL = '--version';
-  const VERSIONS = '-v';
-  const DISPLAY_RULES = '--display-rules';
-  const DISPLAY_RULE_DEPENDENCIES = '--display-rule-dependencies';
-  const DISPLAY_ATTRIBUTES = '--display-attributes';
-  const INL = '--in';
-  const INS = '-i';
-  const OUTL = '--out';
-  const OUTS = '-o';
-  const NAMEL = '--name';
-  const NAMES = '-n';
-  let inFilenames = [];
-  const config = {
-    help: '',
-    version: '',
-    error: '',
-    strict: false,
-    noAttrs: false,
-    displayRules: false,
-    displayRuleDependencies: false,
-    displayAttributes: false,
-    src: null,
-    outFilename: '',
-    outfd: process.stdout.fd,
-    funcName: null,
-  };
-  let key;
-  let value;
-  let i = 0;
-  try {
-    while (i < args.length) {
-      const kv = args[i].split('=');
-      if (kv.length === 2) {
-        key = kv[0].toLowerCase();
-        value = kv[1];
-      } else if (kv.length === 1) {
-        key = kv[0].toLowerCase();
-        value = i + 1 < args.length ? args[i + 1] : '';
-      } else {
-        throw new Error(`command line error: ill-formed option: ${args[i]}`);
-      }
-      switch (key) {
-        case HELPL:
-        case HELPS:
-          config.help = helpScreen(args);
-          return config;
-        case VERSIONL:
-        case VERSIONS:
-          config.version = version();
-          return config;
-        case DISPLAY_RULES:
-          config.displayRules = true;
-          i += 1;
-          break;
-        case DISPLAY_RULE_DEPENDENCIES:
-          config.displayRuleDependencies = true;
-          i += 1;
-          break;
-        case DISPLAY_ATTRIBUTES:
-          config.displayAttributes = true;
-          i += 1;
-          break;
-        case STRICTL:
-        case STRICTS:
-          config.strict = true;
-          i += 1;
-          break;
-        case INL:
-        case INS:
-          if (!value) {
-            throw new Error(`command line error: input file name has no value: ${args[i]}`);
-          }
-          inFilenames = inFilenames.concat(value.split(','));
-          i += key === INL ? 1 : 2;
-          break;
-        case OUTL:
-        case OUTS:
-          if (!value) {
-            throw new Error(`command line error: output file name has no valu: ${args[i]}`);
-          }
-          config.outFilename = value;
-          i += key === OUTL ? 1 : 2;
-          break;
-        case NAMEL:
-        case NAMES:
-          if (!value) {
-            throw new Error(`command line error: output file name has no value: ${args[i]}`);
-          }
-          config.funcName = value;
-          i += key === NAMEL ? 1 : 2;
-          break;
-        default:
-          throw new Error(`command line error: unrecognized arg: ${args[i]}`);
-      }
-    }
-
-    /* get the SABNF input */
-    if (inFilenames.length === 0) {
-      throw new Error('command line error: no input file(s)');
-    }
-
-    let buf = Buffer.alloc(0);
-    inFilenames.forEach((name) => {
-      buf = Buffer.concat([buf, fs.readFileSync(name)]);
-    });
-    config.src = converter.decode('BINARY', buf);
-
-    /* validate & open the output file, if any */
-    config.outfd = null;
-    if (config.outFilename) {
-      const info = path.parse(config.outFilename);
-      if (info.ext !== 'js') {
-        /* strip the extension and add .js */
-        if (info.dir) {
-          config.outFilename = `${info.dir}/${info.name}.js`;
-        } else {
-          config.outFilename = `${info.name}.js`;
-        }
-      }
-      config.outfd = fs.openSync(config.outFilename, 'w');
-    }
-  } catch (e) {
-    config.error = `CONFIG EXCEPTION: ${e.message}`;
-    config.help = helpScreen(args);
-  }
-  return config;
-};
-
-}).call(this)}).call(this,require('_process'),require("buffer").Buffer)
-},{"../apg-conv-api/converter":143,"_process":232,"buffer":176,"fs":175,"path":231}],169:[function(require,module,exports){
-(function (global){(function (){
-'use strict';
-
-var possibleNames = [
-	'BigInt64Array',
-	'BigUint64Array',
-	'Float32Array',
-	'Float64Array',
-	'Int16Array',
-	'Int32Array',
-	'Int8Array',
-	'Uint16Array',
-	'Uint32Array',
-	'Uint8Array',
-	'Uint8ClampedArray'
-];
-
-var g = typeof globalThis === 'undefined' ? global : globalThis;
-
-module.exports = function availableTypedArrays() {
-	var out = [];
-	for (var i = 0; i < possibleNames.length; i++) {
-		if (typeof g[possibleNames[i]] === 'function') {
-			out[out.length] = possibleNames[i];
-		}
-	}
-	return out;
-};
-
-}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],170:[function(require,module,exports){
+},{"../apg-conv-api/converter":144,"./emitcss":148,"./identifiers":149,"./style":153}],156:[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -32570,7 +45233,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],171:[function(require,module,exports){
+},{}],157:[function(require,module,exports){
 'use strict'
 var ALPHABET = 'qpzry9x8gf2tvdw0s3jn54khce6mua7l'
 
@@ -32754,7 +45417,7 @@ module.exports = {
   fromWords: fromWords
 }
 
-},{}],172:[function(require,module,exports){
+},{}],158:[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -36202,7 +48865,7 @@ module.exports = {
   };
 })(typeof module === 'undefined' || module, this);
 
-},{"buffer":174}],173:[function(require,module,exports){
+},{"buffer":160}],159:[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -36269,11 +48932,9 @@ if (typeof self === 'object') {
   }
 }
 
-},{"crypto":174}],174:[function(require,module,exports){
+},{"crypto":160}],160:[function(require,module,exports){
 
-},{}],175:[function(require,module,exports){
-arguments[4][174][0].apply(exports,arguments)
-},{"dup":174}],176:[function(require,module,exports){
+},{}],161:[function(require,module,exports){
 (function (Buffer){(function (){
 /*!
  * The buffer module from node.js, for the browser.
@@ -38054,73 +50715,7 @@ function numberIsNaN (obj) {
 }
 
 }).call(this)}).call(this,require("buffer").Buffer)
-},{"base64-js":170,"buffer":176,"ieee754":222}],177:[function(require,module,exports){
-'use strict';
-
-var GetIntrinsic = require('get-intrinsic');
-
-var callBind = require('./');
-
-var $indexOf = callBind(GetIntrinsic('String.prototype.indexOf'));
-
-module.exports = function callBoundIntrinsic(name, allowMissing) {
-	var intrinsic = GetIntrinsic(name, !!allowMissing);
-	if (typeof intrinsic === 'function' && $indexOf(name, '.prototype.') > -1) {
-		return callBind(intrinsic);
-	}
-	return intrinsic;
-};
-
-},{"./":178,"get-intrinsic":204}],178:[function(require,module,exports){
-'use strict';
-
-var bind = require('function-bind');
-var GetIntrinsic = require('get-intrinsic');
-
-var $apply = GetIntrinsic('%Function.prototype.apply%');
-var $call = GetIntrinsic('%Function.prototype.call%');
-var $reflectApply = GetIntrinsic('%Reflect.apply%', true) || bind.call($call, $apply);
-
-var $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);
-var $defineProperty = GetIntrinsic('%Object.defineProperty%', true);
-var $max = GetIntrinsic('%Math.max%');
-
-if ($defineProperty) {
-	try {
-		$defineProperty({}, 'a', { value: 1 });
-	} catch (e) {
-		// IE 8 has a broken defineProperty
-		$defineProperty = null;
-	}
-}
-
-module.exports = function callBind(originalFunction) {
-	var func = $reflectApply(bind, $call, arguments);
-	if ($gOPD && $defineProperty) {
-		var desc = $gOPD(func, 'length');
-		if (desc.configurable) {
-			// original length, plus the receiver, minus any additional arguments (after the receiver)
-			$defineProperty(
-				func,
-				'length',
-				{ value: 1 + $max(0, originalFunction.length - (arguments.length - 1)) }
-			);
-		}
-	}
-	return func;
-};
-
-var applyBind = function applyBind() {
-	return $reflectApply(bind, $apply, arguments);
-};
-
-if ($defineProperty) {
-	$defineProperty(module.exports, 'apply', { value: applyBind });
-} else {
-	module.exports.apply = applyBind;
-}
-
-},{"function-bind":203,"get-intrinsic":204}],179:[function(require,module,exports){
+},{"base64-js":156,"buffer":161,"ieee754":196}],162:[function(require,module,exports){
 var global = typeof self !== 'undefined' ? self : this;
 var __self__ = (function () {
 function F() {
@@ -38676,7 +51271,7 @@ exports.Request = ctx.Request
 exports.Response = ctx.Response
 module.exports = exports
 
-},{}],180:[function(require,module,exports){
+},{}],163:[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -38691,7 +51286,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":195,"./elliptic/curve":183,"./elliptic/curves":186,"./elliptic/ec":187,"./elliptic/eddsa":190,"./elliptic/utils":194,"brorand":173}],181:[function(require,module,exports){
+},{"../package.json":178,"./elliptic/curve":166,"./elliptic/curves":169,"./elliptic/ec":170,"./elliptic/eddsa":173,"./elliptic/utils":177,"brorand":159}],164:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -39074,7 +51669,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../utils":194,"bn.js":172}],182:[function(require,module,exports){
+},{"../utils":177,"bn.js":158}],165:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -39511,7 +52106,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../utils":194,"./base":181,"bn.js":172,"inherits":223}],183:[function(require,module,exports){
+},{"../utils":177,"./base":164,"bn.js":158,"inherits":197}],166:[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -39521,7 +52116,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":181,"./edwards":182,"./mont":184,"./short":185}],184:[function(require,module,exports){
+},{"./base":164,"./edwards":165,"./mont":167,"./short":168}],167:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -39701,7 +52296,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../utils":194,"./base":181,"bn.js":172,"inherits":223}],185:[function(require,module,exports){
+},{"../utils":177,"./base":164,"bn.js":158,"inherits":197}],168:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -40641,7 +53236,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../utils":194,"./base":181,"bn.js":172,"inherits":223}],186:[function(require,module,exports){
+},{"../utils":177,"./base":164,"bn.js":158,"inherits":197}],169:[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -40849,7 +53444,7 @@ defineCurve('secp256k1', {
   ],
 });
 
-},{"./curve":183,"./precomputed/secp256k1":193,"./utils":194,"hash.js":209}],187:[function(require,module,exports){
+},{"./curve":166,"./precomputed/secp256k1":176,"./utils":177,"hash.js":183}],170:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -41094,7 +53689,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../curves":186,"../utils":194,"./key":188,"./signature":189,"bn.js":172,"brorand":173,"hmac-drbg":221}],188:[function(require,module,exports){
+},{"../curves":169,"../utils":177,"./key":171,"./signature":172,"bn.js":158,"brorand":159,"hmac-drbg":195}],171:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -41217,7 +53812,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"../utils":194,"bn.js":172}],189:[function(require,module,exports){
+},{"../utils":177,"bn.js":158}],172:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -41385,7 +53980,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../utils":194,"bn.js":172}],190:[function(require,module,exports){
+},{"../utils":177,"bn.js":158}],173:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -41505,7 +54100,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../curves":186,"../utils":194,"./key":191,"./signature":192,"hash.js":209}],191:[function(require,module,exports){
+},{"../curves":169,"../utils":177,"./key":174,"./signature":175,"hash.js":183}],174:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -41602,7 +54197,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../utils":194}],192:[function(require,module,exports){
+},{"../utils":177}],175:[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -41669,7 +54264,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../utils":194,"bn.js":172}],193:[function(require,module,exports){
+},{"../utils":177,"bn.js":158}],176:[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -42451,7 +55046,7 @@ module.exports = {
   },
 };
 
-},{}],194:[function(require,module,exports){
+},{}],177:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -42572,7 +55167,7 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":172,"minimalistic-assert":229,"minimalistic-crypto-utils":230}],195:[function(require,module,exports){
+},{"bn.js":158,"minimalistic-assert":200,"minimalistic-crypto-utils":201}],178:[function(require,module,exports){
 module.exports={
   "name": "elliptic",
   "version": "6.5.4",
@@ -42630,30 +55225,13 @@ module.exports={
   }
 }
 
-},{}],196:[function(require,module,exports){
-'use strict';
-
-var GetIntrinsic = require('get-intrinsic');
-
-var $gOPD = GetIntrinsic('%Object.getOwnPropertyDescriptor%', true);
-if ($gOPD) {
-	try {
-		$gOPD([], 'length');
-	} catch (e) {
-		// IE 8 has a broken gOPD
-		$gOPD = null;
-	}
-}
-
-module.exports = $gOPD;
-
-},{"get-intrinsic":204}],197:[function(require,module,exports){
+},{}],179:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
 exports.version = "ethers/5.5.3";
 
-},{}],198:[function(require,module,exports){
+},{}],180:[function(require,module,exports){
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -42709,7 +55287,7 @@ Object.defineProperty(exports, "version", { enumerable: true, get: function () {
 var logger = new logger_1.Logger(_version_1.version);
 exports.logger = logger;
 
-},{"./_version":197,"./utils":200,"@ethersproject/abstract-signer":20,"@ethersproject/bignumber":29,"@ethersproject/constants":35,"@ethersproject/contracts":38,"@ethersproject/logger":55,"@ethersproject/providers":71,"@ethersproject/wallet":105,"@ethersproject/wordlists":110}],199:[function(require,module,exports){
+},{"./_version":179,"./utils":182,"@ethersproject/abstract-signer":20,"@ethersproject/bignumber":29,"@ethersproject/constants":35,"@ethersproject/contracts":38,"@ethersproject/logger":55,"@ethersproject/providers":71,"@ethersproject/wallet":105,"@ethersproject/wordlists":110}],181:[function(require,module,exports){
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -42763,7 +55341,7 @@ Object.defineProperty(exports, "wordlists", { enumerable: true, get: function ()
 Object.defineProperty(exports, "version", { enumerable: true, get: function () { return ethers_1.version; } });
 Object.defineProperty(exports, "Wordlist", { enumerable: true, get: function () { return ethers_1.Wordlist; } });
 
-},{"./ethers":198}],200:[function(require,module,exports){
+},{"./ethers":180}],182:[function(require,module,exports){
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -42911,499 +55489,7 @@ var strings_2 = require("@ethersproject/strings");
 Object.defineProperty(exports, "UnicodeNormalizationForm", { enumerable: true, get: function () { return strings_2.UnicodeNormalizationForm; } });
 Object.defineProperty(exports, "Utf8ErrorReason", { enumerable: true, get: function () { return strings_2.Utf8ErrorReason; } });
 
-},{"@ethersproject/abi":15,"@ethersproject/address":22,"@ethersproject/base64":24,"@ethersproject/basex":25,"@ethersproject/bytes":31,"@ethersproject/hash":41,"@ethersproject/hdnode":46,"@ethersproject/json-wallets":49,"@ethersproject/keccak256":53,"@ethersproject/logger":55,"@ethersproject/properties":61,"@ethersproject/random":82,"@ethersproject/rlp":85,"@ethersproject/sha2":88,"@ethersproject/signing-key":92,"@ethersproject/solidity":94,"@ethersproject/strings":98,"@ethersproject/transactions":101,"@ethersproject/units":103,"@ethersproject/wallet":105,"@ethersproject/web":108}],201:[function(require,module,exports){
-
-var hasOwn = Object.prototype.hasOwnProperty;
-var toString = Object.prototype.toString;
-
-module.exports = function forEach (obj, fn, ctx) {
-    if (toString.call(fn) !== '[object Function]') {
-        throw new TypeError('iterator must be a function');
-    }
-    var l = obj.length;
-    if (l === +l) {
-        for (var i = 0; i < l; i++) {
-            fn.call(ctx, obj[i], i, obj);
-        }
-    } else {
-        for (var k in obj) {
-            if (hasOwn.call(obj, k)) {
-                fn.call(ctx, obj[k], k, obj);
-            }
-        }
-    }
-};
-
-
-},{}],202:[function(require,module,exports){
-'use strict';
-
-/* eslint no-invalid-this: 1 */
-
-var ERROR_MESSAGE = 'Function.prototype.bind called on incompatible ';
-var slice = Array.prototype.slice;
-var toStr = Object.prototype.toString;
-var funcType = '[object Function]';
-
-module.exports = function bind(that) {
-    var target = this;
-    if (typeof target !== 'function' || toStr.call(target) !== funcType) {
-        throw new TypeError(ERROR_MESSAGE + target);
-    }
-    var args = slice.call(arguments, 1);
-
-    var bound;
-    var binder = function () {
-        if (this instanceof bound) {
-            var result = target.apply(
-                this,
-                args.concat(slice.call(arguments))
-            );
-            if (Object(result) === result) {
-                return result;
-            }
-            return this;
-        } else {
-            return target.apply(
-                that,
-                args.concat(slice.call(arguments))
-            );
-        }
-    };
-
-    var boundLength = Math.max(0, target.length - args.length);
-    var boundArgs = [];
-    for (var i = 0; i < boundLength; i++) {
-        boundArgs.push('$' + i);
-    }
-
-    bound = Function('binder', 'return function (' + boundArgs.join(',') + '){ return binder.apply(this,arguments); }')(binder);
-
-    if (target.prototype) {
-        var Empty = function Empty() {};
-        Empty.prototype = target.prototype;
-        bound.prototype = new Empty();
-        Empty.prototype = null;
-    }
-
-    return bound;
-};
-
-},{}],203:[function(require,module,exports){
-'use strict';
-
-var implementation = require('./implementation');
-
-module.exports = Function.prototype.bind || implementation;
-
-},{"./implementation":202}],204:[function(require,module,exports){
-'use strict';
-
-var undefined;
-
-var $SyntaxError = SyntaxError;
-var $Function = Function;
-var $TypeError = TypeError;
-
-// eslint-disable-next-line consistent-return
-var getEvalledConstructor = function (expressionSyntax) {
-	try {
-		return $Function('"use strict"; return (' + expressionSyntax + ').constructor;')();
-	} catch (e) {}
-};
-
-var $gOPD = Object.getOwnPropertyDescriptor;
-if ($gOPD) {
-	try {
-		$gOPD({}, '');
-	} catch (e) {
-		$gOPD = null; // this is IE 8, which has a broken gOPD
-	}
-}
-
-var throwTypeError = function () {
-	throw new $TypeError();
-};
-var ThrowTypeError = $gOPD
-	? (function () {
-		try {
-			// eslint-disable-next-line no-unused-expressions, no-caller, no-restricted-properties
-			arguments.callee; // IE 8 does not throw here
-			return throwTypeError;
-		} catch (calleeThrows) {
-			try {
-				// IE 8 throws on Object.getOwnPropertyDescriptor(arguments, '')
-				return $gOPD(arguments, 'callee').get;
-			} catch (gOPDthrows) {
-				return throwTypeError;
-			}
-		}
-	}())
-	: throwTypeError;
-
-var hasSymbols = require('has-symbols')();
-
-var getProto = Object.getPrototypeOf || function (x) { return x.__proto__; }; // eslint-disable-line no-proto
-
-var needsEval = {};
-
-var TypedArray = typeof Uint8Array === 'undefined' ? undefined : getProto(Uint8Array);
-
-var INTRINSICS = {
-	'%AggregateError%': typeof AggregateError === 'undefined' ? undefined : AggregateError,
-	'%Array%': Array,
-	'%ArrayBuffer%': typeof ArrayBuffer === 'undefined' ? undefined : ArrayBuffer,
-	'%ArrayIteratorPrototype%': hasSymbols ? getProto([][Symbol.iterator]()) : undefined,
-	'%AsyncFromSyncIteratorPrototype%': undefined,
-	'%AsyncFunction%': needsEval,
-	'%AsyncGenerator%': needsEval,
-	'%AsyncGeneratorFunction%': needsEval,
-	'%AsyncIteratorPrototype%': needsEval,
-	'%Atomics%': typeof Atomics === 'undefined' ? undefined : Atomics,
-	'%BigInt%': typeof BigInt === 'undefined' ? undefined : BigInt,
-	'%Boolean%': Boolean,
-	'%DataView%': typeof DataView === 'undefined' ? undefined : DataView,
-	'%Date%': Date,
-	'%decodeURI%': decodeURI,
-	'%decodeURIComponent%': decodeURIComponent,
-	'%encodeURI%': encodeURI,
-	'%encodeURIComponent%': encodeURIComponent,
-	'%Error%': Error,
-	'%eval%': eval, // eslint-disable-line no-eval
-	'%EvalError%': EvalError,
-	'%Float32Array%': typeof Float32Array === 'undefined' ? undefined : Float32Array,
-	'%Float64Array%': typeof Float64Array === 'undefined' ? undefined : Float64Array,
-	'%FinalizationRegistry%': typeof FinalizationRegistry === 'undefined' ? undefined : FinalizationRegistry,
-	'%Function%': $Function,
-	'%GeneratorFunction%': needsEval,
-	'%Int8Array%': typeof Int8Array === 'undefined' ? undefined : Int8Array,
-	'%Int16Array%': typeof Int16Array === 'undefined' ? undefined : Int16Array,
-	'%Int32Array%': typeof Int32Array === 'undefined' ? undefined : Int32Array,
-	'%isFinite%': isFinite,
-	'%isNaN%': isNaN,
-	'%IteratorPrototype%': hasSymbols ? getProto(getProto([][Symbol.iterator]())) : undefined,
-	'%JSON%': typeof JSON === 'object' ? JSON : undefined,
-	'%Map%': typeof Map === 'undefined' ? undefined : Map,
-	'%MapIteratorPrototype%': typeof Map === 'undefined' || !hasSymbols ? undefined : getProto(new Map()[Symbol.iterator]()),
-	'%Math%': Math,
-	'%Number%': Number,
-	'%Object%': Object,
-	'%parseFloat%': parseFloat,
-	'%parseInt%': parseInt,
-	'%Promise%': typeof Promise === 'undefined' ? undefined : Promise,
-	'%Proxy%': typeof Proxy === 'undefined' ? undefined : Proxy,
-	'%RangeError%': RangeError,
-	'%ReferenceError%': ReferenceError,
-	'%Reflect%': typeof Reflect === 'undefined' ? undefined : Reflect,
-	'%RegExp%': RegExp,
-	'%Set%': typeof Set === 'undefined' ? undefined : Set,
-	'%SetIteratorPrototype%': typeof Set === 'undefined' || !hasSymbols ? undefined : getProto(new Set()[Symbol.iterator]()),
-	'%SharedArrayBuffer%': typeof SharedArrayBuffer === 'undefined' ? undefined : SharedArrayBuffer,
-	'%String%': String,
-	'%StringIteratorPrototype%': hasSymbols ? getProto(''[Symbol.iterator]()) : undefined,
-	'%Symbol%': hasSymbols ? Symbol : undefined,
-	'%SyntaxError%': $SyntaxError,
-	'%ThrowTypeError%': ThrowTypeError,
-	'%TypedArray%': TypedArray,
-	'%TypeError%': $TypeError,
-	'%Uint8Array%': typeof Uint8Array === 'undefined' ? undefined : Uint8Array,
-	'%Uint8ClampedArray%': typeof Uint8ClampedArray === 'undefined' ? undefined : Uint8ClampedArray,
-	'%Uint16Array%': typeof Uint16Array === 'undefined' ? undefined : Uint16Array,
-	'%Uint32Array%': typeof Uint32Array === 'undefined' ? undefined : Uint32Array,
-	'%URIError%': URIError,
-	'%WeakMap%': typeof WeakMap === 'undefined' ? undefined : WeakMap,
-	'%WeakRef%': typeof WeakRef === 'undefined' ? undefined : WeakRef,
-	'%WeakSet%': typeof WeakSet === 'undefined' ? undefined : WeakSet
-};
-
-var doEval = function doEval(name) {
-	var value;
-	if (name === '%AsyncFunction%') {
-		value = getEvalledConstructor('async function () {}');
-	} else if (name === '%GeneratorFunction%') {
-		value = getEvalledConstructor('function* () {}');
-	} else if (name === '%AsyncGeneratorFunction%') {
-		value = getEvalledConstructor('async function* () {}');
-	} else if (name === '%AsyncGenerator%') {
-		var fn = doEval('%AsyncGeneratorFunction%');
-		if (fn) {
-			value = fn.prototype;
-		}
-	} else if (name === '%AsyncIteratorPrototype%') {
-		var gen = doEval('%AsyncGenerator%');
-		if (gen) {
-			value = getProto(gen.prototype);
-		}
-	}
-
-	INTRINSICS[name] = value;
-
-	return value;
-};
-
-var LEGACY_ALIASES = {
-	'%ArrayBufferPrototype%': ['ArrayBuffer', 'prototype'],
-	'%ArrayPrototype%': ['Array', 'prototype'],
-	'%ArrayProto_entries%': ['Array', 'prototype', 'entries'],
-	'%ArrayProto_forEach%': ['Array', 'prototype', 'forEach'],
-	'%ArrayProto_keys%': ['Array', 'prototype', 'keys'],
-	'%ArrayProto_values%': ['Array', 'prototype', 'values'],
-	'%AsyncFunctionPrototype%': ['AsyncFunction', 'prototype'],
-	'%AsyncGenerator%': ['AsyncGeneratorFunction', 'prototype'],
-	'%AsyncGeneratorPrototype%': ['AsyncGeneratorFunction', 'prototype', 'prototype'],
-	'%BooleanPrototype%': ['Boolean', 'prototype'],
-	'%DataViewPrototype%': ['DataView', 'prototype'],
-	'%DatePrototype%': ['Date', 'prototype'],
-	'%ErrorPrototype%': ['Error', 'prototype'],
-	'%EvalErrorPrototype%': ['EvalError', 'prototype'],
-	'%Float32ArrayPrototype%': ['Float32Array', 'prototype'],
-	'%Float64ArrayPrototype%': ['Float64Array', 'prototype'],
-	'%FunctionPrototype%': ['Function', 'prototype'],
-	'%Generator%': ['GeneratorFunction', 'prototype'],
-	'%GeneratorPrototype%': ['GeneratorFunction', 'prototype', 'prototype'],
-	'%Int8ArrayPrototype%': ['Int8Array', 'prototype'],
-	'%Int16ArrayPrototype%': ['Int16Array', 'prototype'],
-	'%Int32ArrayPrototype%': ['Int32Array', 'prototype'],
-	'%JSONParse%': ['JSON', 'parse'],
-	'%JSONStringify%': ['JSON', 'stringify'],
-	'%MapPrototype%': ['Map', 'prototype'],
-	'%NumberPrototype%': ['Number', 'prototype'],
-	'%ObjectPrototype%': ['Object', 'prototype'],
-	'%ObjProto_toString%': ['Object', 'prototype', 'toString'],
-	'%ObjProto_valueOf%': ['Object', 'prototype', 'valueOf'],
-	'%PromisePrototype%': ['Promise', 'prototype'],
-	'%PromiseProto_then%': ['Promise', 'prototype', 'then'],
-	'%Promise_all%': ['Promise', 'all'],
-	'%Promise_reject%': ['Promise', 'reject'],
-	'%Promise_resolve%': ['Promise', 'resolve'],
-	'%RangeErrorPrototype%': ['RangeError', 'prototype'],
-	'%ReferenceErrorPrototype%': ['ReferenceError', 'prototype'],
-	'%RegExpPrototype%': ['RegExp', 'prototype'],
-	'%SetPrototype%': ['Set', 'prototype'],
-	'%SharedArrayBufferPrototype%': ['SharedArrayBuffer', 'prototype'],
-	'%StringPrototype%': ['String', 'prototype'],
-	'%SymbolPrototype%': ['Symbol', 'prototype'],
-	'%SyntaxErrorPrototype%': ['SyntaxError', 'prototype'],
-	'%TypedArrayPrototype%': ['TypedArray', 'prototype'],
-	'%TypeErrorPrototype%': ['TypeError', 'prototype'],
-	'%Uint8ArrayPrototype%': ['Uint8Array', 'prototype'],
-	'%Uint8ClampedArrayPrototype%': ['Uint8ClampedArray', 'prototype'],
-	'%Uint16ArrayPrototype%': ['Uint16Array', 'prototype'],
-	'%Uint32ArrayPrototype%': ['Uint32Array', 'prototype'],
-	'%URIErrorPrototype%': ['URIError', 'prototype'],
-	'%WeakMapPrototype%': ['WeakMap', 'prototype'],
-	'%WeakSetPrototype%': ['WeakSet', 'prototype']
-};
-
-var bind = require('function-bind');
-var hasOwn = require('has');
-var $concat = bind.call(Function.call, Array.prototype.concat);
-var $spliceApply = bind.call(Function.apply, Array.prototype.splice);
-var $replace = bind.call(Function.call, String.prototype.replace);
-var $strSlice = bind.call(Function.call, String.prototype.slice);
-
-/* adapted from https://github.com/lodash/lodash/blob/4.17.15/dist/lodash.js#L6735-L6744 */
-var rePropName = /[^%.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\\]|\\.)*?)\2)\]|(?=(?:\.|\[\])(?:\.|\[\]|%$))/g;
-var reEscapeChar = /\\(\\)?/g; /** Used to match backslashes in property paths. */
-var stringToPath = function stringToPath(string) {
-	var first = $strSlice(string, 0, 1);
-	var last = $strSlice(string, -1);
-	if (first === '%' && last !== '%') {
-		throw new $SyntaxError('invalid intrinsic syntax, expected closing `%`');
-	} else if (last === '%' && first !== '%') {
-		throw new $SyntaxError('invalid intrinsic syntax, expected opening `%`');
-	}
-	var result = [];
-	$replace(string, rePropName, function (match, number, quote, subString) {
-		result[result.length] = quote ? $replace(subString, reEscapeChar, '$1') : number || match;
-	});
-	return result;
-};
-/* end adaptation */
-
-var getBaseIntrinsic = function getBaseIntrinsic(name, allowMissing) {
-	var intrinsicName = name;
-	var alias;
-	if (hasOwn(LEGACY_ALIASES, intrinsicName)) {
-		alias = LEGACY_ALIASES[intrinsicName];
-		intrinsicName = '%' + alias[0] + '%';
-	}
-
-	if (hasOwn(INTRINSICS, intrinsicName)) {
-		var value = INTRINSICS[intrinsicName];
-		if (value === needsEval) {
-			value = doEval(intrinsicName);
-		}
-		if (typeof value === 'undefined' && !allowMissing) {
-			throw new $TypeError('intrinsic ' + name + ' exists, but is not available. Please file an issue!');
-		}
-
-		return {
-			alias: alias,
-			name: intrinsicName,
-			value: value
-		};
-	}
-
-	throw new $SyntaxError('intrinsic ' + name + ' does not exist!');
-};
-
-module.exports = function GetIntrinsic(name, allowMissing) {
-	if (typeof name !== 'string' || name.length === 0) {
-		throw new $TypeError('intrinsic name must be a non-empty string');
-	}
-	if (arguments.length > 1 && typeof allowMissing !== 'boolean') {
-		throw new $TypeError('"allowMissing" argument must be a boolean');
-	}
-
-	var parts = stringToPath(name);
-	var intrinsicBaseName = parts.length > 0 ? parts[0] : '';
-
-	var intrinsic = getBaseIntrinsic('%' + intrinsicBaseName + '%', allowMissing);
-	var intrinsicRealName = intrinsic.name;
-	var value = intrinsic.value;
-	var skipFurtherCaching = false;
-
-	var alias = intrinsic.alias;
-	if (alias) {
-		intrinsicBaseName = alias[0];
-		$spliceApply(parts, $concat([0, 1], alias));
-	}
-
-	for (var i = 1, isOwn = true; i < parts.length; i += 1) {
-		var part = parts[i];
-		var first = $strSlice(part, 0, 1);
-		var last = $strSlice(part, -1);
-		if (
-			(
-				(first === '"' || first === "'" || first === '`')
-				|| (last === '"' || last === "'" || last === '`')
-			)
-			&& first !== last
-		) {
-			throw new $SyntaxError('property names with quotes must have matching quotes');
-		}
-		if (part === 'constructor' || !isOwn) {
-			skipFurtherCaching = true;
-		}
-
-		intrinsicBaseName += '.' + part;
-		intrinsicRealName = '%' + intrinsicBaseName + '%';
-
-		if (hasOwn(INTRINSICS, intrinsicRealName)) {
-			value = INTRINSICS[intrinsicRealName];
-		} else if (value != null) {
-			if (!(part in value)) {
-				if (!allowMissing) {
-					throw new $TypeError('base intrinsic for ' + name + ' exists, but the property is not available.');
-				}
-				return void undefined;
-			}
-			if ($gOPD && (i + 1) >= parts.length) {
-				var desc = $gOPD(value, part);
-				isOwn = !!desc;
-
-				// By convention, when a data property is converted to an accessor
-				// property to emulate a data property that does not suffer from
-				// the override mistake, that accessor's getter is marked with
-				// an `originalValue` property. Here, when we detect this, we
-				// uphold the illusion by pretending to see that original data
-				// property, i.e., returning the value rather than the getter
-				// itself.
-				if (isOwn && 'get' in desc && !('originalValue' in desc.get)) {
-					value = desc.get;
-				} else {
-					value = value[part];
-				}
-			} else {
-				isOwn = hasOwn(value, part);
-				value = value[part];
-			}
-
-			if (isOwn && !skipFurtherCaching) {
-				INTRINSICS[intrinsicRealName] = value;
-			}
-		}
-	}
-	return value;
-};
-
-},{"function-bind":203,"has":208,"has-symbols":205}],205:[function(require,module,exports){
-'use strict';
-
-var origSymbol = typeof Symbol !== 'undefined' && Symbol;
-var hasSymbolSham = require('./shams');
-
-module.exports = function hasNativeSymbols() {
-	if (typeof origSymbol !== 'function') { return false; }
-	if (typeof Symbol !== 'function') { return false; }
-	if (typeof origSymbol('foo') !== 'symbol') { return false; }
-	if (typeof Symbol('bar') !== 'symbol') { return false; }
-
-	return hasSymbolSham();
-};
-
-},{"./shams":206}],206:[function(require,module,exports){
-'use strict';
-
-/* eslint complexity: [2, 18], max-statements: [2, 33] */
-module.exports = function hasSymbols() {
-	if (typeof Symbol !== 'function' || typeof Object.getOwnPropertySymbols !== 'function') { return false; }
-	if (typeof Symbol.iterator === 'symbol') { return true; }
-
-	var obj = {};
-	var sym = Symbol('test');
-	var symObj = Object(sym);
-	if (typeof sym === 'string') { return false; }
-
-	if (Object.prototype.toString.call(sym) !== '[object Symbol]') { return false; }
-	if (Object.prototype.toString.call(symObj) !== '[object Symbol]') { return false; }
-
-	// temp disabled per https://github.com/ljharb/object.assign/issues/17
-	// if (sym instanceof Symbol) { return false; }
-	// temp disabled per https://github.com/WebReflection/get-own-property-symbols/issues/4
-	// if (!(symObj instanceof Symbol)) { return false; }
-
-	// if (typeof Symbol.prototype.toString !== 'function') { return false; }
-	// if (String(sym) !== Symbol.prototype.toString.call(sym)) { return false; }
-
-	var symVal = 42;
-	obj[sym] = symVal;
-	for (sym in obj) { return false; } // eslint-disable-line no-restricted-syntax, no-unreachable-loop
-	if (typeof Object.keys === 'function' && Object.keys(obj).length !== 0) { return false; }
-
-	if (typeof Object.getOwnPropertyNames === 'function' && Object.getOwnPropertyNames(obj).length !== 0) { return false; }
-
-	var syms = Object.getOwnPropertySymbols(obj);
-	if (syms.length !== 1 || syms[0] !== sym) { return false; }
-
-	if (!Object.prototype.propertyIsEnumerable.call(obj, sym)) { return false; }
-
-	if (typeof Object.getOwnPropertyDescriptor === 'function') {
-		var descriptor = Object.getOwnPropertyDescriptor(obj, sym);
-		if (descriptor.value !== symVal || descriptor.enumerable !== true) { return false; }
-	}
-
-	return true;
-};
-
-},{}],207:[function(require,module,exports){
-'use strict';
-
-var hasSymbols = require('has-symbols/shams');
-
-module.exports = function hasToStringTagShams() {
-	return hasSymbols() && !!Symbol.toStringTag;
-};
-
-},{"has-symbols/shams":206}],208:[function(require,module,exports){
-'use strict';
-
-var bind = require('function-bind');
-
-module.exports = bind.call(Function.call, Object.prototype.hasOwnProperty);
-
-},{"function-bind":203}],209:[function(require,module,exports){
+},{"@ethersproject/abi":15,"@ethersproject/address":22,"@ethersproject/base64":24,"@ethersproject/basex":25,"@ethersproject/bytes":31,"@ethersproject/hash":41,"@ethersproject/hdnode":46,"@ethersproject/json-wallets":49,"@ethersproject/keccak256":53,"@ethersproject/logger":55,"@ethersproject/properties":61,"@ethersproject/random":82,"@ethersproject/rlp":85,"@ethersproject/sha2":88,"@ethersproject/signing-key":92,"@ethersproject/solidity":94,"@ethersproject/strings":98,"@ethersproject/transactions":101,"@ethersproject/units":103,"@ethersproject/wallet":105,"@ethersproject/web":108}],183:[function(require,module,exports){
 var hash = exports;
 
 hash.utils = require('./hash/utils');
@@ -43420,7 +55506,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":210,"./hash/hmac":211,"./hash/ripemd":212,"./hash/sha":213,"./hash/utils":220}],210:[function(require,module,exports){
+},{"./hash/common":184,"./hash/hmac":185,"./hash/ripemd":186,"./hash/sha":187,"./hash/utils":194}],184:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -43514,7 +55600,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"./utils":220,"minimalistic-assert":229}],211:[function(require,module,exports){
+},{"./utils":194,"minimalistic-assert":200}],185:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -43563,7 +55649,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"./utils":220,"minimalistic-assert":229}],212:[function(require,module,exports){
+},{"./utils":194,"minimalistic-assert":200}],186:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -43711,7 +55797,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"./common":210,"./utils":220}],213:[function(require,module,exports){
+},{"./common":184,"./utils":194}],187:[function(require,module,exports){
 'use strict';
 
 exports.sha1 = require('./sha/1');
@@ -43720,7 +55806,7 @@ exports.sha256 = require('./sha/256');
 exports.sha384 = require('./sha/384');
 exports.sha512 = require('./sha/512');
 
-},{"./sha/1":214,"./sha/224":215,"./sha/256":216,"./sha/384":217,"./sha/512":218}],214:[function(require,module,exports){
+},{"./sha/1":188,"./sha/224":189,"./sha/256":190,"./sha/384":191,"./sha/512":192}],188:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -43796,7 +55882,7 @@ SHA1.prototype._digest = function digest(enc) {
     return utils.split32(this.h, 'big');
 };
 
-},{"../common":210,"../utils":220,"./common":219}],215:[function(require,module,exports){
+},{"../common":184,"../utils":194,"./common":193}],189:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -43828,7 +55914,7 @@ SHA224.prototype._digest = function digest(enc) {
 };
 
 
-},{"../utils":220,"./256":216}],216:[function(require,module,exports){
+},{"../utils":194,"./256":190}],190:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -43935,7 +56021,7 @@ SHA256.prototype._digest = function digest(enc) {
     return utils.split32(this.h, 'big');
 };
 
-},{"../common":210,"../utils":220,"./common":219,"minimalistic-assert":229}],217:[function(require,module,exports){
+},{"../common":184,"../utils":194,"./common":193,"minimalistic-assert":200}],191:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -43972,7 +56058,7 @@ SHA384.prototype._digest = function digest(enc) {
     return utils.split32(this.h.slice(0, 12), 'big');
 };
 
-},{"../utils":220,"./512":218}],218:[function(require,module,exports){
+},{"../utils":194,"./512":192}],192:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -44304,7 +56390,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../common":210,"../utils":220,"minimalistic-assert":229}],219:[function(require,module,exports){
+},{"../common":184,"../utils":194,"minimalistic-assert":200}],193:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -44355,7 +56441,7 @@ function g1_256(x) {
 }
 exports.g1_256 = g1_256;
 
-},{"../utils":220}],220:[function(require,module,exports){
+},{"../utils":194}],194:[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -44635,7 +56721,7 @@ function shr64_lo(ah, al, num) {
 }
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":223,"minimalistic-assert":229}],221:[function(require,module,exports){
+},{"inherits":197,"minimalistic-assert":200}],195:[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -44750,7 +56836,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"hash.js":209,"minimalistic-assert":229,"minimalistic-crypto-utils":230}],222:[function(require,module,exports){
+},{"hash.js":183,"minimalistic-assert":200,"minimalistic-crypto-utils":201}],196:[function(require,module,exports){
 /*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
@@ -44837,7 +56923,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],223:[function(require,module,exports){
+},{}],197:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -44866,42 +56952,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],224:[function(require,module,exports){
-'use strict';
-
-var hasToStringTag = require('has-tostringtag/shams')();
-var callBound = require('call-bind/callBound');
-
-var $toString = callBound('Object.prototype.toString');
-
-var isStandardArguments = function isArguments(value) {
-	if (hasToStringTag && value && typeof value === 'object' && Symbol.toStringTag in value) {
-		return false;
-	}
-	return $toString(value) === '[object Arguments]';
-};
-
-var isLegacyArguments = function isArguments(value) {
-	if (isStandardArguments(value)) {
-		return true;
-	}
-	return value !== null &&
-		typeof value === 'object' &&
-		typeof value.length === 'number' &&
-		value.length >= 0 &&
-		$toString(value) !== '[object Array]' &&
-		$toString(value.callee) === '[object Function]';
-};
-
-var supportsStandardArguments = (function () {
-	return isStandardArguments(arguments);
-}());
-
-isStandardArguments.isLegacyArguments = isLegacyArguments; // for tests
-
-module.exports = supportsStandardArguments ? isStandardArguments : isLegacyArguments;
-
-},{"call-bind/callBound":177,"has-tostringtag/shams":207}],225:[function(require,module,exports){
+},{}],198:[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -44924,111 +56975,7 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],226:[function(require,module,exports){
-'use strict';
-
-var toStr = Object.prototype.toString;
-var fnToStr = Function.prototype.toString;
-var isFnRegex = /^\s*(?:function)?\*/;
-var hasToStringTag = require('has-tostringtag/shams')();
-var getProto = Object.getPrototypeOf;
-var getGeneratorFunc = function () { // eslint-disable-line consistent-return
-	if (!hasToStringTag) {
-		return false;
-	}
-	try {
-		return Function('return function*() {}')();
-	} catch (e) {
-	}
-};
-var GeneratorFunction;
-
-module.exports = function isGeneratorFunction(fn) {
-	if (typeof fn !== 'function') {
-		return false;
-	}
-	if (isFnRegex.test(fnToStr.call(fn))) {
-		return true;
-	}
-	if (!hasToStringTag) {
-		var str = toStr.call(fn);
-		return str === '[object GeneratorFunction]';
-	}
-	if (!getProto) {
-		return false;
-	}
-	if (typeof GeneratorFunction === 'undefined') {
-		var generatorFunc = getGeneratorFunc();
-		GeneratorFunction = generatorFunc ? getProto(generatorFunc) : false;
-	}
-	return getProto(fn) === GeneratorFunction;
-};
-
-},{"has-tostringtag/shams":207}],227:[function(require,module,exports){
-(function (global){(function (){
-'use strict';
-
-var forEach = require('foreach');
-var availableTypedArrays = require('available-typed-arrays');
-var callBound = require('call-bind/callBound');
-
-var $toString = callBound('Object.prototype.toString');
-var hasToStringTag = require('has-tostringtag/shams')();
-
-var g = typeof globalThis === 'undefined' ? global : globalThis;
-var typedArrays = availableTypedArrays();
-
-var $indexOf = callBound('Array.prototype.indexOf', true) || function indexOf(array, value) {
-	for (var i = 0; i < array.length; i += 1) {
-		if (array[i] === value) {
-			return i;
-		}
-	}
-	return -1;
-};
-var $slice = callBound('String.prototype.slice');
-var toStrTags = {};
-var gOPD = require('es-abstract/helpers/getOwnPropertyDescriptor');
-var getPrototypeOf = Object.getPrototypeOf; // require('getprototypeof');
-if (hasToStringTag && gOPD && getPrototypeOf) {
-	forEach(typedArrays, function (typedArray) {
-		var arr = new g[typedArray]();
-		if (Symbol.toStringTag in arr) {
-			var proto = getPrototypeOf(arr);
-			var descriptor = gOPD(proto, Symbol.toStringTag);
-			if (!descriptor) {
-				var superProto = getPrototypeOf(proto);
-				descriptor = gOPD(superProto, Symbol.toStringTag);
-			}
-			toStrTags[typedArray] = descriptor.get;
-		}
-	});
-}
-
-var tryTypedArrays = function tryAllTypedArrays(value) {
-	var anyTrue = false;
-	forEach(toStrTags, function (getter, typedArray) {
-		if (!anyTrue) {
-			try {
-				anyTrue = getter.call(value) === typedArray;
-			} catch (e) { /**/ }
-		}
-	});
-	return anyTrue;
-};
-
-module.exports = function isTypedArray(value) {
-	if (!value || typeof value !== 'object') { return false; }
-	if (!hasToStringTag || !(Symbol.toStringTag in value)) {
-		var tag = $slice($toString(value), 8, -1);
-		return $indexOf(typedArrays, tag) > -1;
-	}
-	if (!gOPD) { return false; }
-	return tryTypedArrays(value);
-};
-
-}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"available-typed-arrays":169,"call-bind/callBound":177,"es-abstract/helpers/getOwnPropertyDescriptor":196,"foreach":201,"has-tostringtag/shams":207}],228:[function(require,module,exports){
+},{}],199:[function(require,module,exports){
 (function (process,global){(function (){
 /**
  * [js-sha3]{@link https://github.com/emn178/js-sha3}
@@ -45688,7 +57635,7 @@ module.exports = function isTypedArray(value) {
 })();
 
 }).call(this)}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"_process":232}],229:[function(require,module,exports){
+},{"_process":203}],200:[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -45701,7 +57648,7 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],230:[function(require,module,exports){
+},{}],201:[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -45761,540 +57708,99 @@ utils.encode = function encode(arr, enc) {
     return arr;
 };
 
-},{}],231:[function(require,module,exports){
-(function (process){(function (){
-// 'path' module extracted from Node.js v8.11.1 (only the posix part)
-// transplited with Babel
-
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
+},{}],202:[function(require,module,exports){
+/*
+object-assign
+(c) Sindre Sorhus
+@license MIT
+*/
 
 'use strict';
+/* eslint-disable no-unused-vars */
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var propIsEnumerable = Object.prototype.propertyIsEnumerable;
 
-function assertPath(path) {
-  if (typeof path !== 'string') {
-    throw new TypeError('Path must be a string. Received ' + JSON.stringify(path));
-  }
+function toObject(val) {
+	if (val === null || val === undefined) {
+		throw new TypeError('Object.assign cannot be called with null or undefined');
+	}
+
+	return Object(val);
 }
 
-// Resolves . and .. elements in a path with directory names
-function normalizeStringPosix(path, allowAboveRoot) {
-  var res = '';
-  var lastSegmentLength = 0;
-  var lastSlash = -1;
-  var dots = 0;
-  var code;
-  for (var i = 0; i <= path.length; ++i) {
-    if (i < path.length)
-      code = path.charCodeAt(i);
-    else if (code === 47 /*/*/)
-      break;
-    else
-      code = 47 /*/*/;
-    if (code === 47 /*/*/) {
-      if (lastSlash === i - 1 || dots === 1) {
-        // NOOP
-      } else if (lastSlash !== i - 1 && dots === 2) {
-        if (res.length < 2 || lastSegmentLength !== 2 || res.charCodeAt(res.length - 1) !== 46 /*.*/ || res.charCodeAt(res.length - 2) !== 46 /*.*/) {
-          if (res.length > 2) {
-            var lastSlashIndex = res.lastIndexOf('/');
-            if (lastSlashIndex !== res.length - 1) {
-              if (lastSlashIndex === -1) {
-                res = '';
-                lastSegmentLength = 0;
-              } else {
-                res = res.slice(0, lastSlashIndex);
-                lastSegmentLength = res.length - 1 - res.lastIndexOf('/');
-              }
-              lastSlash = i;
-              dots = 0;
-              continue;
-            }
-          } else if (res.length === 2 || res.length === 1) {
-            res = '';
-            lastSegmentLength = 0;
-            lastSlash = i;
-            dots = 0;
-            continue;
-          }
-        }
-        if (allowAboveRoot) {
-          if (res.length > 0)
-            res += '/..';
-          else
-            res = '..';
-          lastSegmentLength = 2;
-        }
-      } else {
-        if (res.length > 0)
-          res += '/' + path.slice(lastSlash + 1, i);
-        else
-          res = path.slice(lastSlash + 1, i);
-        lastSegmentLength = i - lastSlash - 1;
-      }
-      lastSlash = i;
-      dots = 0;
-    } else if (code === 46 /*.*/ && dots !== -1) {
-      ++dots;
-    } else {
-      dots = -1;
-    }
-  }
-  return res;
+function shouldUseNative() {
+	try {
+		if (!Object.assign) {
+			return false;
+		}
+
+		// Detect buggy property enumeration order in older V8 versions.
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=4118
+		var test1 = new String('abc');  // eslint-disable-line no-new-wrappers
+		test1[5] = 'de';
+		if (Object.getOwnPropertyNames(test1)[0] === '5') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test2 = {};
+		for (var i = 0; i < 10; i++) {
+			test2['_' + String.fromCharCode(i)] = i;
+		}
+		var order2 = Object.getOwnPropertyNames(test2).map(function (n) {
+			return test2[n];
+		});
+		if (order2.join('') !== '0123456789') {
+			return false;
+		}
+
+		// https://bugs.chromium.org/p/v8/issues/detail?id=3056
+		var test3 = {};
+		'abcdefghijklmnopqrst'.split('').forEach(function (letter) {
+			test3[letter] = letter;
+		});
+		if (Object.keys(Object.assign({}, test3)).join('') !==
+				'abcdefghijklmnopqrst') {
+			return false;
+		}
+
+		return true;
+	} catch (err) {
+		// We don't expect any of the above to throw, but better to be safe.
+		return false;
+	}
 }
 
-function _format(sep, pathObject) {
-  var dir = pathObject.dir || pathObject.root;
-  var base = pathObject.base || (pathObject.name || '') + (pathObject.ext || '');
-  if (!dir) {
-    return base;
-  }
-  if (dir === pathObject.root) {
-    return dir + base;
-  }
-  return dir + sep + base;
-}
+module.exports = shouldUseNative() ? Object.assign : function (target, source) {
+	var from;
+	var to = toObject(target);
+	var symbols;
 
-var posix = {
-  // path.resolve([from ...], to)
-  resolve: function resolve() {
-    var resolvedPath = '';
-    var resolvedAbsolute = false;
-    var cwd;
+	for (var s = 1; s < arguments.length; s++) {
+		from = Object(arguments[s]);
 
-    for (var i = arguments.length - 1; i >= -1 && !resolvedAbsolute; i--) {
-      var path;
-      if (i >= 0)
-        path = arguments[i];
-      else {
-        if (cwd === undefined)
-          cwd = process.cwd();
-        path = cwd;
-      }
+		for (var key in from) {
+			if (hasOwnProperty.call(from, key)) {
+				to[key] = from[key];
+			}
+		}
 
-      assertPath(path);
+		if (getOwnPropertySymbols) {
+			symbols = getOwnPropertySymbols(from);
+			for (var i = 0; i < symbols.length; i++) {
+				if (propIsEnumerable.call(from, symbols[i])) {
+					to[symbols[i]] = from[symbols[i]];
+				}
+			}
+		}
+	}
 
-      // Skip empty entries
-      if (path.length === 0) {
-        continue;
-      }
-
-      resolvedPath = path + '/' + resolvedPath;
-      resolvedAbsolute = path.charCodeAt(0) === 47 /*/*/;
-    }
-
-    // At this point the path should be resolved to a full absolute path, but
-    // handle relative paths to be safe (might happen when process.cwd() fails)
-
-    // Normalize the path
-    resolvedPath = normalizeStringPosix(resolvedPath, !resolvedAbsolute);
-
-    if (resolvedAbsolute) {
-      if (resolvedPath.length > 0)
-        return '/' + resolvedPath;
-      else
-        return '/';
-    } else if (resolvedPath.length > 0) {
-      return resolvedPath;
-    } else {
-      return '.';
-    }
-  },
-
-  normalize: function normalize(path) {
-    assertPath(path);
-
-    if (path.length === 0) return '.';
-
-    var isAbsolute = path.charCodeAt(0) === 47 /*/*/;
-    var trailingSeparator = path.charCodeAt(path.length - 1) === 47 /*/*/;
-
-    // Normalize the path
-    path = normalizeStringPosix(path, !isAbsolute);
-
-    if (path.length === 0 && !isAbsolute) path = '.';
-    if (path.length > 0 && trailingSeparator) path += '/';
-
-    if (isAbsolute) return '/' + path;
-    return path;
-  },
-
-  isAbsolute: function isAbsolute(path) {
-    assertPath(path);
-    return path.length > 0 && path.charCodeAt(0) === 47 /*/*/;
-  },
-
-  join: function join() {
-    if (arguments.length === 0)
-      return '.';
-    var joined;
-    for (var i = 0; i < arguments.length; ++i) {
-      var arg = arguments[i];
-      assertPath(arg);
-      if (arg.length > 0) {
-        if (joined === undefined)
-          joined = arg;
-        else
-          joined += '/' + arg;
-      }
-    }
-    if (joined === undefined)
-      return '.';
-    return posix.normalize(joined);
-  },
-
-  relative: function relative(from, to) {
-    assertPath(from);
-    assertPath(to);
-
-    if (from === to) return '';
-
-    from = posix.resolve(from);
-    to = posix.resolve(to);
-
-    if (from === to) return '';
-
-    // Trim any leading backslashes
-    var fromStart = 1;
-    for (; fromStart < from.length; ++fromStart) {
-      if (from.charCodeAt(fromStart) !== 47 /*/*/)
-        break;
-    }
-    var fromEnd = from.length;
-    var fromLen = fromEnd - fromStart;
-
-    // Trim any leading backslashes
-    var toStart = 1;
-    for (; toStart < to.length; ++toStart) {
-      if (to.charCodeAt(toStart) !== 47 /*/*/)
-        break;
-    }
-    var toEnd = to.length;
-    var toLen = toEnd - toStart;
-
-    // Compare paths to find the longest common path from root
-    var length = fromLen < toLen ? fromLen : toLen;
-    var lastCommonSep = -1;
-    var i = 0;
-    for (; i <= length; ++i) {
-      if (i === length) {
-        if (toLen > length) {
-          if (to.charCodeAt(toStart + i) === 47 /*/*/) {
-            // We get here if `from` is the exact base path for `to`.
-            // For example: from='/foo/bar'; to='/foo/bar/baz'
-            return to.slice(toStart + i + 1);
-          } else if (i === 0) {
-            // We get here if `from` is the root
-            // For example: from='/'; to='/foo'
-            return to.slice(toStart + i);
-          }
-        } else if (fromLen > length) {
-          if (from.charCodeAt(fromStart + i) === 47 /*/*/) {
-            // We get here if `to` is the exact base path for `from`.
-            // For example: from='/foo/bar/baz'; to='/foo/bar'
-            lastCommonSep = i;
-          } else if (i === 0) {
-            // We get here if `to` is the root.
-            // For example: from='/foo'; to='/'
-            lastCommonSep = 0;
-          }
-        }
-        break;
-      }
-      var fromCode = from.charCodeAt(fromStart + i);
-      var toCode = to.charCodeAt(toStart + i);
-      if (fromCode !== toCode)
-        break;
-      else if (fromCode === 47 /*/*/)
-        lastCommonSep = i;
-    }
-
-    var out = '';
-    // Generate the relative path based on the path difference between `to`
-    // and `from`
-    for (i = fromStart + lastCommonSep + 1; i <= fromEnd; ++i) {
-      if (i === fromEnd || from.charCodeAt(i) === 47 /*/*/) {
-        if (out.length === 0)
-          out += '..';
-        else
-          out += '/..';
-      }
-    }
-
-    // Lastly, append the rest of the destination (`to`) path that comes after
-    // the common path parts
-    if (out.length > 0)
-      return out + to.slice(toStart + lastCommonSep);
-    else {
-      toStart += lastCommonSep;
-      if (to.charCodeAt(toStart) === 47 /*/*/)
-        ++toStart;
-      return to.slice(toStart);
-    }
-  },
-
-  _makeLong: function _makeLong(path) {
-    return path;
-  },
-
-  dirname: function dirname(path) {
-    assertPath(path);
-    if (path.length === 0) return '.';
-    var code = path.charCodeAt(0);
-    var hasRoot = code === 47 /*/*/;
-    var end = -1;
-    var matchedSlash = true;
-    for (var i = path.length - 1; i >= 1; --i) {
-      code = path.charCodeAt(i);
-      if (code === 47 /*/*/) {
-          if (!matchedSlash) {
-            end = i;
-            break;
-          }
-        } else {
-        // We saw the first non-path separator
-        matchedSlash = false;
-      }
-    }
-
-    if (end === -1) return hasRoot ? '/' : '.';
-    if (hasRoot && end === 1) return '//';
-    return path.slice(0, end);
-  },
-
-  basename: function basename(path, ext) {
-    if (ext !== undefined && typeof ext !== 'string') throw new TypeError('"ext" argument must be a string');
-    assertPath(path);
-
-    var start = 0;
-    var end = -1;
-    var matchedSlash = true;
-    var i;
-
-    if (ext !== undefined && ext.length > 0 && ext.length <= path.length) {
-      if (ext.length === path.length && ext === path) return '';
-      var extIdx = ext.length - 1;
-      var firstNonSlashEnd = -1;
-      for (i = path.length - 1; i >= 0; --i) {
-        var code = path.charCodeAt(i);
-        if (code === 47 /*/*/) {
-            // If we reached a path separator that was not part of a set of path
-            // separators at the end of the string, stop now
-            if (!matchedSlash) {
-              start = i + 1;
-              break;
-            }
-          } else {
-          if (firstNonSlashEnd === -1) {
-            // We saw the first non-path separator, remember this index in case
-            // we need it if the extension ends up not matching
-            matchedSlash = false;
-            firstNonSlashEnd = i + 1;
-          }
-          if (extIdx >= 0) {
-            // Try to match the explicit extension
-            if (code === ext.charCodeAt(extIdx)) {
-              if (--extIdx === -1) {
-                // We matched the extension, so mark this as the end of our path
-                // component
-                end = i;
-              }
-            } else {
-              // Extension does not match, so our result is the entire path
-              // component
-              extIdx = -1;
-              end = firstNonSlashEnd;
-            }
-          }
-        }
-      }
-
-      if (start === end) end = firstNonSlashEnd;else if (end === -1) end = path.length;
-      return path.slice(start, end);
-    } else {
-      for (i = path.length - 1; i >= 0; --i) {
-        if (path.charCodeAt(i) === 47 /*/*/) {
-            // If we reached a path separator that was not part of a set of path
-            // separators at the end of the string, stop now
-            if (!matchedSlash) {
-              start = i + 1;
-              break;
-            }
-          } else if (end === -1) {
-          // We saw the first non-path separator, mark this as the end of our
-          // path component
-          matchedSlash = false;
-          end = i + 1;
-        }
-      }
-
-      if (end === -1) return '';
-      return path.slice(start, end);
-    }
-  },
-
-  extname: function extname(path) {
-    assertPath(path);
-    var startDot = -1;
-    var startPart = 0;
-    var end = -1;
-    var matchedSlash = true;
-    // Track the state of characters (if any) we see before our first dot and
-    // after any path separator we find
-    var preDotState = 0;
-    for (var i = path.length - 1; i >= 0; --i) {
-      var code = path.charCodeAt(i);
-      if (code === 47 /*/*/) {
-          // If we reached a path separator that was not part of a set of path
-          // separators at the end of the string, stop now
-          if (!matchedSlash) {
-            startPart = i + 1;
-            break;
-          }
-          continue;
-        }
-      if (end === -1) {
-        // We saw the first non-path separator, mark this as the end of our
-        // extension
-        matchedSlash = false;
-        end = i + 1;
-      }
-      if (code === 46 /*.*/) {
-          // If this is our first dot, mark it as the start of our extension
-          if (startDot === -1)
-            startDot = i;
-          else if (preDotState !== 1)
-            preDotState = 1;
-      } else if (startDot !== -1) {
-        // We saw a non-dot and non-path separator before our dot, so we should
-        // have a good chance at having a non-empty extension
-        preDotState = -1;
-      }
-    }
-
-    if (startDot === -1 || end === -1 ||
-        // We saw a non-dot character immediately before the dot
-        preDotState === 0 ||
-        // The (right-most) trimmed path component is exactly '..'
-        preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
-      return '';
-    }
-    return path.slice(startDot, end);
-  },
-
-  format: function format(pathObject) {
-    if (pathObject === null || typeof pathObject !== 'object') {
-      throw new TypeError('The "pathObject" argument must be of type Object. Received type ' + typeof pathObject);
-    }
-    return _format('/', pathObject);
-  },
-
-  parse: function parse(path) {
-    assertPath(path);
-
-    var ret = { root: '', dir: '', base: '', ext: '', name: '' };
-    if (path.length === 0) return ret;
-    var code = path.charCodeAt(0);
-    var isAbsolute = code === 47 /*/*/;
-    var start;
-    if (isAbsolute) {
-      ret.root = '/';
-      start = 1;
-    } else {
-      start = 0;
-    }
-    var startDot = -1;
-    var startPart = 0;
-    var end = -1;
-    var matchedSlash = true;
-    var i = path.length - 1;
-
-    // Track the state of characters (if any) we see before our first dot and
-    // after any path separator we find
-    var preDotState = 0;
-
-    // Get non-dir info
-    for (; i >= start; --i) {
-      code = path.charCodeAt(i);
-      if (code === 47 /*/*/) {
-          // If we reached a path separator that was not part of a set of path
-          // separators at the end of the string, stop now
-          if (!matchedSlash) {
-            startPart = i + 1;
-            break;
-          }
-          continue;
-        }
-      if (end === -1) {
-        // We saw the first non-path separator, mark this as the end of our
-        // extension
-        matchedSlash = false;
-        end = i + 1;
-      }
-      if (code === 46 /*.*/) {
-          // If this is our first dot, mark it as the start of our extension
-          if (startDot === -1) startDot = i;else if (preDotState !== 1) preDotState = 1;
-        } else if (startDot !== -1) {
-        // We saw a non-dot and non-path separator before our dot, so we should
-        // have a good chance at having a non-empty extension
-        preDotState = -1;
-      }
-    }
-
-    if (startDot === -1 || end === -1 ||
-    // We saw a non-dot character immediately before the dot
-    preDotState === 0 ||
-    // The (right-most) trimmed path component is exactly '..'
-    preDotState === 1 && startDot === end - 1 && startDot === startPart + 1) {
-      if (end !== -1) {
-        if (startPart === 0 && isAbsolute) ret.base = ret.name = path.slice(1, end);else ret.base = ret.name = path.slice(startPart, end);
-      }
-    } else {
-      if (startPart === 0 && isAbsolute) {
-        ret.name = path.slice(1, startDot);
-        ret.base = path.slice(1, end);
-      } else {
-        ret.name = path.slice(startPart, startDot);
-        ret.base = path.slice(startPart, end);
-      }
-      ret.ext = path.slice(startDot, end);
-    }
-
-    if (startPart > 0) ret.dir = path.slice(0, startPart - 1);else if (isAbsolute) ret.dir = '/';
-
-    return ret;
-  },
-
-  sep: '/',
-  delimiter: ':',
-  win32: null,
-  posix: null
+	return to;
 };
 
-posix.posix = posix;
-
-module.exports = posix;
-
-}).call(this)}).call(this,require('_process'))
-},{"_process":232}],232:[function(require,module,exports){
+},{}],203:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -46480,7 +57986,2380 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],233:[function(require,module,exports){
+},{}],204:[function(require,module,exports){
+(function (process){(function (){
+/** @license React v17.0.2
+ * react.development.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+'use strict';
+
+if (process.env.NODE_ENV !== "production") {
+  (function() {
+'use strict';
+
+var _assign = require('object-assign');
+
+// TODO: this is special because it gets imported during build.
+var ReactVersion = '17.0.2';
+
+// ATTENTION
+// When adding new symbols to this file,
+// Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
+// The Symbol used to tag the ReactElement-like types. If there is no native Symbol
+// nor polyfill, then a plain number is used for performance.
+var REACT_ELEMENT_TYPE = 0xeac7;
+var REACT_PORTAL_TYPE = 0xeaca;
+exports.Fragment = 0xeacb;
+exports.StrictMode = 0xeacc;
+exports.Profiler = 0xead2;
+var REACT_PROVIDER_TYPE = 0xeacd;
+var REACT_CONTEXT_TYPE = 0xeace;
+var REACT_FORWARD_REF_TYPE = 0xead0;
+exports.Suspense = 0xead1;
+var REACT_SUSPENSE_LIST_TYPE = 0xead8;
+var REACT_MEMO_TYPE = 0xead3;
+var REACT_LAZY_TYPE = 0xead4;
+var REACT_BLOCK_TYPE = 0xead9;
+var REACT_SERVER_BLOCK_TYPE = 0xeada;
+var REACT_FUNDAMENTAL_TYPE = 0xead5;
+var REACT_SCOPE_TYPE = 0xead7;
+var REACT_OPAQUE_ID_TYPE = 0xeae0;
+var REACT_DEBUG_TRACING_MODE_TYPE = 0xeae1;
+var REACT_OFFSCREEN_TYPE = 0xeae2;
+var REACT_LEGACY_HIDDEN_TYPE = 0xeae3;
+
+if (typeof Symbol === 'function' && Symbol.for) {
+  var symbolFor = Symbol.for;
+  REACT_ELEMENT_TYPE = symbolFor('react.element');
+  REACT_PORTAL_TYPE = symbolFor('react.portal');
+  exports.Fragment = symbolFor('react.fragment');
+  exports.StrictMode = symbolFor('react.strict_mode');
+  exports.Profiler = symbolFor('react.profiler');
+  REACT_PROVIDER_TYPE = symbolFor('react.provider');
+  REACT_CONTEXT_TYPE = symbolFor('react.context');
+  REACT_FORWARD_REF_TYPE = symbolFor('react.forward_ref');
+  exports.Suspense = symbolFor('react.suspense');
+  REACT_SUSPENSE_LIST_TYPE = symbolFor('react.suspense_list');
+  REACT_MEMO_TYPE = symbolFor('react.memo');
+  REACT_LAZY_TYPE = symbolFor('react.lazy');
+  REACT_BLOCK_TYPE = symbolFor('react.block');
+  REACT_SERVER_BLOCK_TYPE = symbolFor('react.server.block');
+  REACT_FUNDAMENTAL_TYPE = symbolFor('react.fundamental');
+  REACT_SCOPE_TYPE = symbolFor('react.scope');
+  REACT_OPAQUE_ID_TYPE = symbolFor('react.opaque.id');
+  REACT_DEBUG_TRACING_MODE_TYPE = symbolFor('react.debug_trace_mode');
+  REACT_OFFSCREEN_TYPE = symbolFor('react.offscreen');
+  REACT_LEGACY_HIDDEN_TYPE = symbolFor('react.legacy_hidden');
+}
+
+var MAYBE_ITERATOR_SYMBOL = typeof Symbol === 'function' && Symbol.iterator;
+var FAUX_ITERATOR_SYMBOL = '@@iterator';
+function getIteratorFn(maybeIterable) {
+  if (maybeIterable === null || typeof maybeIterable !== 'object') {
+    return null;
+  }
+
+  var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
+
+  if (typeof maybeIterator === 'function') {
+    return maybeIterator;
+  }
+
+  return null;
+}
+
+/**
+ * Keeps track of the current dispatcher.
+ */
+var ReactCurrentDispatcher = {
+  /**
+   * @internal
+   * @type {ReactComponent}
+   */
+  current: null
+};
+
+/**
+ * Keeps track of the current batch's configuration such as how long an update
+ * should suspend for if it needs to.
+ */
+var ReactCurrentBatchConfig = {
+  transition: 0
+};
+
+/**
+ * Keeps track of the current owner.
+ *
+ * The current owner is the component who should own any components that are
+ * currently being constructed.
+ */
+var ReactCurrentOwner = {
+  /**
+   * @internal
+   * @type {ReactComponent}
+   */
+  current: null
+};
+
+var ReactDebugCurrentFrame = {};
+var currentExtraStackFrame = null;
+function setExtraStackFrame(stack) {
+  {
+    currentExtraStackFrame = stack;
+  }
+}
+
+{
+  ReactDebugCurrentFrame.setExtraStackFrame = function (stack) {
+    {
+      currentExtraStackFrame = stack;
+    }
+  }; // Stack implementation injected by the current renderer.
+
+
+  ReactDebugCurrentFrame.getCurrentStack = null;
+
+  ReactDebugCurrentFrame.getStackAddendum = function () {
+    var stack = ''; // Add an extra top frame while an element is being validated
+
+    if (currentExtraStackFrame) {
+      stack += currentExtraStackFrame;
+    } // Delegate to the injected renderer-specific implementation
+
+
+    var impl = ReactDebugCurrentFrame.getCurrentStack;
+
+    if (impl) {
+      stack += impl() || '';
+    }
+
+    return stack;
+  };
+}
+
+/**
+ * Used by act() to track whether you're inside an act() scope.
+ */
+var IsSomeRendererActing = {
+  current: false
+};
+
+var ReactSharedInternals = {
+  ReactCurrentDispatcher: ReactCurrentDispatcher,
+  ReactCurrentBatchConfig: ReactCurrentBatchConfig,
+  ReactCurrentOwner: ReactCurrentOwner,
+  IsSomeRendererActing: IsSomeRendererActing,
+  // Used by renderers to avoid bundling object-assign twice in UMD bundles:
+  assign: _assign
+};
+
+{
+  ReactSharedInternals.ReactDebugCurrentFrame = ReactDebugCurrentFrame;
+}
+
+// by calls to these methods by a Babel plugin.
+//
+// In PROD (or in packages without access to React internals),
+// they are left as they are instead.
+
+function warn(format) {
+  {
+    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    printWarning('warn', format, args);
+  }
+}
+function error(format) {
+  {
+    for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++) {
+      args[_key2 - 1] = arguments[_key2];
+    }
+
+    printWarning('error', format, args);
+  }
+}
+
+function printWarning(level, format, args) {
+  // When changing this logic, you might want to also
+  // update consoleWithStackDev.www.js as well.
+  {
+    var ReactDebugCurrentFrame = ReactSharedInternals.ReactDebugCurrentFrame;
+    var stack = ReactDebugCurrentFrame.getStackAddendum();
+
+    if (stack !== '') {
+      format += '%s';
+      args = args.concat([stack]);
+    }
+
+    var argsWithFormat = args.map(function (item) {
+      return '' + item;
+    }); // Careful: RN currently depends on this prefix
+
+    argsWithFormat.unshift('Warning: ' + format); // We intentionally don't use spread (or .apply) directly because it
+    // breaks IE9: https://github.com/facebook/react/issues/13610
+    // eslint-disable-next-line react-internal/no-production-logging
+
+    Function.prototype.apply.call(console[level], console, argsWithFormat);
+  }
+}
+
+var didWarnStateUpdateForUnmountedComponent = {};
+
+function warnNoop(publicInstance, callerName) {
+  {
+    var _constructor = publicInstance.constructor;
+    var componentName = _constructor && (_constructor.displayName || _constructor.name) || 'ReactClass';
+    var warningKey = componentName + "." + callerName;
+
+    if (didWarnStateUpdateForUnmountedComponent[warningKey]) {
+      return;
+    }
+
+    error("Can't call %s on a component that is not yet mounted. " + 'This is a no-op, but it might indicate a bug in your application. ' + 'Instead, assign to `this.state` directly or define a `state = {};` ' + 'class property with the desired state in the %s component.', callerName, componentName);
+
+    didWarnStateUpdateForUnmountedComponent[warningKey] = true;
+  }
+}
+/**
+ * This is the abstract API for an update queue.
+ */
+
+
+var ReactNoopUpdateQueue = {
+  /**
+   * Checks whether or not this composite component is mounted.
+   * @param {ReactClass} publicInstance The instance we want to test.
+   * @return {boolean} True if mounted, false otherwise.
+   * @protected
+   * @final
+   */
+  isMounted: function (publicInstance) {
+    return false;
+  },
+
+  /**
+   * Forces an update. This should only be invoked when it is known with
+   * certainty that we are **not** in a DOM transaction.
+   *
+   * You may want to call this when you know that some deeper aspect of the
+   * component's state has changed but `setState` was not called.
+   *
+   * This will not invoke `shouldComponentUpdate`, but it will invoke
+   * `componentWillUpdate` and `componentDidUpdate`.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @param {?function} callback Called after component is updated.
+   * @param {?string} callerName name of the calling function in the public API.
+   * @internal
+   */
+  enqueueForceUpdate: function (publicInstance, callback, callerName) {
+    warnNoop(publicInstance, 'forceUpdate');
+  },
+
+  /**
+   * Replaces all of the state. Always use this or `setState` to mutate state.
+   * You should treat `this.state` as immutable.
+   *
+   * There is no guarantee that `this.state` will be immediately updated, so
+   * accessing `this.state` after calling this method may return the old value.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @param {object} completeState Next state.
+   * @param {?function} callback Called after component is updated.
+   * @param {?string} callerName name of the calling function in the public API.
+   * @internal
+   */
+  enqueueReplaceState: function (publicInstance, completeState, callback, callerName) {
+    warnNoop(publicInstance, 'replaceState');
+  },
+
+  /**
+   * Sets a subset of the state. This only exists because _pendingState is
+   * internal. This provides a merging strategy that is not available to deep
+   * properties which is confusing. TODO: Expose pendingState or don't use it
+   * during the merge.
+   *
+   * @param {ReactClass} publicInstance The instance that should rerender.
+   * @param {object} partialState Next partial state to be merged with state.
+   * @param {?function} callback Called after component is updated.
+   * @param {?string} Name of the calling function in the public API.
+   * @internal
+   */
+  enqueueSetState: function (publicInstance, partialState, callback, callerName) {
+    warnNoop(publicInstance, 'setState');
+  }
+};
+
+var emptyObject = {};
+
+{
+  Object.freeze(emptyObject);
+}
+/**
+ * Base class helpers for the updating state of a component.
+ */
+
+
+function Component(props, context, updater) {
+  this.props = props;
+  this.context = context; // If a component has string refs, we will assign a different object later.
+
+  this.refs = emptyObject; // We initialize the default updater but the real one gets injected by the
+  // renderer.
+
+  this.updater = updater || ReactNoopUpdateQueue;
+}
+
+Component.prototype.isReactComponent = {};
+/**
+ * Sets a subset of the state. Always use this to mutate
+ * state. You should treat `this.state` as immutable.
+ *
+ * There is no guarantee that `this.state` will be immediately updated, so
+ * accessing `this.state` after calling this method may return the old value.
+ *
+ * There is no guarantee that calls to `setState` will run synchronously,
+ * as they may eventually be batched together.  You can provide an optional
+ * callback that will be executed when the call to setState is actually
+ * completed.
+ *
+ * When a function is provided to setState, it will be called at some point in
+ * the future (not synchronously). It will be called with the up to date
+ * component arguments (state, props, context). These values can be different
+ * from this.* because your function may be called after receiveProps but before
+ * shouldComponentUpdate, and this new state, props, and context will not yet be
+ * assigned to this.
+ *
+ * @param {object|function} partialState Next partial state or function to
+ *        produce next partial state to be merged with current state.
+ * @param {?function} callback Called after state is updated.
+ * @final
+ * @protected
+ */
+
+Component.prototype.setState = function (partialState, callback) {
+  if (!(typeof partialState === 'object' || typeof partialState === 'function' || partialState == null)) {
+    {
+      throw Error( "setState(...): takes an object of state variables to update or a function which returns an object of state variables." );
+    }
+  }
+
+  this.updater.enqueueSetState(this, partialState, callback, 'setState');
+};
+/**
+ * Forces an update. This should only be invoked when it is known with
+ * certainty that we are **not** in a DOM transaction.
+ *
+ * You may want to call this when you know that some deeper aspect of the
+ * component's state has changed but `setState` was not called.
+ *
+ * This will not invoke `shouldComponentUpdate`, but it will invoke
+ * `componentWillUpdate` and `componentDidUpdate`.
+ *
+ * @param {?function} callback Called after update is complete.
+ * @final
+ * @protected
+ */
+
+
+Component.prototype.forceUpdate = function (callback) {
+  this.updater.enqueueForceUpdate(this, callback, 'forceUpdate');
+};
+/**
+ * Deprecated APIs. These APIs used to exist on classic React classes but since
+ * we would like to deprecate them, we're not going to move them over to this
+ * modern base class. Instead, we define a getter that warns if it's accessed.
+ */
+
+
+{
+  var deprecatedAPIs = {
+    isMounted: ['isMounted', 'Instead, make sure to clean up subscriptions and pending requests in ' + 'componentWillUnmount to prevent memory leaks.'],
+    replaceState: ['replaceState', 'Refactor your code to use setState instead (see ' + 'https://github.com/facebook/react/issues/3236).']
+  };
+
+  var defineDeprecationWarning = function (methodName, info) {
+    Object.defineProperty(Component.prototype, methodName, {
+      get: function () {
+        warn('%s(...) is deprecated in plain JavaScript React classes. %s', info[0], info[1]);
+
+        return undefined;
+      }
+    });
+  };
+
+  for (var fnName in deprecatedAPIs) {
+    if (deprecatedAPIs.hasOwnProperty(fnName)) {
+      defineDeprecationWarning(fnName, deprecatedAPIs[fnName]);
+    }
+  }
+}
+
+function ComponentDummy() {}
+
+ComponentDummy.prototype = Component.prototype;
+/**
+ * Convenience component with default shallow equality check for sCU.
+ */
+
+function PureComponent(props, context, updater) {
+  this.props = props;
+  this.context = context; // If a component has string refs, we will assign a different object later.
+
+  this.refs = emptyObject;
+  this.updater = updater || ReactNoopUpdateQueue;
+}
+
+var pureComponentPrototype = PureComponent.prototype = new ComponentDummy();
+pureComponentPrototype.constructor = PureComponent; // Avoid an extra prototype jump for these methods.
+
+_assign(pureComponentPrototype, Component.prototype);
+
+pureComponentPrototype.isPureReactComponent = true;
+
+// an immutable object with a single mutable value
+function createRef() {
+  var refObject = {
+    current: null
+  };
+
+  {
+    Object.seal(refObject);
+  }
+
+  return refObject;
+}
+
+function getWrappedName(outerType, innerType, wrapperName) {
+  var functionName = innerType.displayName || innerType.name || '';
+  return outerType.displayName || (functionName !== '' ? wrapperName + "(" + functionName + ")" : wrapperName);
+}
+
+function getContextName(type) {
+  return type.displayName || 'Context';
+}
+
+function getComponentName(type) {
+  if (type == null) {
+    // Host root, text node or just invalid type.
+    return null;
+  }
+
+  {
+    if (typeof type.tag === 'number') {
+      error('Received an unexpected object in getComponentName(). ' + 'This is likely a bug in React. Please file an issue.');
+    }
+  }
+
+  if (typeof type === 'function') {
+    return type.displayName || type.name || null;
+  }
+
+  if (typeof type === 'string') {
+    return type;
+  }
+
+  switch (type) {
+    case exports.Fragment:
+      return 'Fragment';
+
+    case REACT_PORTAL_TYPE:
+      return 'Portal';
+
+    case exports.Profiler:
+      return 'Profiler';
+
+    case exports.StrictMode:
+      return 'StrictMode';
+
+    case exports.Suspense:
+      return 'Suspense';
+
+    case REACT_SUSPENSE_LIST_TYPE:
+      return 'SuspenseList';
+  }
+
+  if (typeof type === 'object') {
+    switch (type.$$typeof) {
+      case REACT_CONTEXT_TYPE:
+        var context = type;
+        return getContextName(context) + '.Consumer';
+
+      case REACT_PROVIDER_TYPE:
+        var provider = type;
+        return getContextName(provider._context) + '.Provider';
+
+      case REACT_FORWARD_REF_TYPE:
+        return getWrappedName(type, type.render, 'ForwardRef');
+
+      case REACT_MEMO_TYPE:
+        return getComponentName(type.type);
+
+      case REACT_BLOCK_TYPE:
+        return getComponentName(type._render);
+
+      case REACT_LAZY_TYPE:
+        {
+          var lazyComponent = type;
+          var payload = lazyComponent._payload;
+          var init = lazyComponent._init;
+
+          try {
+            return getComponentName(init(payload));
+          } catch (x) {
+            return null;
+          }
+        }
+    }
+  }
+
+  return null;
+}
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+var RESERVED_PROPS = {
+  key: true,
+  ref: true,
+  __self: true,
+  __source: true
+};
+var specialPropKeyWarningShown, specialPropRefWarningShown, didWarnAboutStringRefs;
+
+{
+  didWarnAboutStringRefs = {};
+}
+
+function hasValidRef(config) {
+  {
+    if (hasOwnProperty.call(config, 'ref')) {
+      var getter = Object.getOwnPropertyDescriptor(config, 'ref').get;
+
+      if (getter && getter.isReactWarning) {
+        return false;
+      }
+    }
+  }
+
+  return config.ref !== undefined;
+}
+
+function hasValidKey(config) {
+  {
+    if (hasOwnProperty.call(config, 'key')) {
+      var getter = Object.getOwnPropertyDescriptor(config, 'key').get;
+
+      if (getter && getter.isReactWarning) {
+        return false;
+      }
+    }
+  }
+
+  return config.key !== undefined;
+}
+
+function defineKeyPropWarningGetter(props, displayName) {
+  var warnAboutAccessingKey = function () {
+    {
+      if (!specialPropKeyWarningShown) {
+        specialPropKeyWarningShown = true;
+
+        error('%s: `key` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
+      }
+    }
+  };
+
+  warnAboutAccessingKey.isReactWarning = true;
+  Object.defineProperty(props, 'key', {
+    get: warnAboutAccessingKey,
+    configurable: true
+  });
+}
+
+function defineRefPropWarningGetter(props, displayName) {
+  var warnAboutAccessingRef = function () {
+    {
+      if (!specialPropRefWarningShown) {
+        specialPropRefWarningShown = true;
+
+        error('%s: `ref` is not a prop. Trying to access it will result ' + 'in `undefined` being returned. If you need to access the same ' + 'value within the child component, you should pass it as a different ' + 'prop. (https://reactjs.org/link/special-props)', displayName);
+      }
+    }
+  };
+
+  warnAboutAccessingRef.isReactWarning = true;
+  Object.defineProperty(props, 'ref', {
+    get: warnAboutAccessingRef,
+    configurable: true
+  });
+}
+
+function warnIfStringRefCannotBeAutoConverted(config) {
+  {
+    if (typeof config.ref === 'string' && ReactCurrentOwner.current && config.__self && ReactCurrentOwner.current.stateNode !== config.__self) {
+      var componentName = getComponentName(ReactCurrentOwner.current.type);
+
+      if (!didWarnAboutStringRefs[componentName]) {
+        error('Component "%s" contains the string ref "%s". ' + 'Support for string refs will be removed in a future major release. ' + 'This case cannot be automatically converted to an arrow function. ' + 'We ask you to manually fix this case by using useRef() or createRef() instead. ' + 'Learn more about using refs safely here: ' + 'https://reactjs.org/link/strict-mode-string-ref', componentName, config.ref);
+
+        didWarnAboutStringRefs[componentName] = true;
+      }
+    }
+  }
+}
+/**
+ * Factory method to create a new React element. This no longer adheres to
+ * the class pattern, so do not use new to call it. Also, instanceof check
+ * will not work. Instead test $$typeof field against Symbol.for('react.element') to check
+ * if something is a React Element.
+ *
+ * @param {*} type
+ * @param {*} props
+ * @param {*} key
+ * @param {string|object} ref
+ * @param {*} owner
+ * @param {*} self A *temporary* helper to detect places where `this` is
+ * different from the `owner` when React.createElement is called, so that we
+ * can warn. We want to get rid of owner and replace string `ref`s with arrow
+ * functions, and as long as `this` and owner are the same, there will be no
+ * change in behavior.
+ * @param {*} source An annotation object (added by a transpiler or otherwise)
+ * indicating filename, line number, and/or other information.
+ * @internal
+ */
+
+
+var ReactElement = function (type, key, ref, self, source, owner, props) {
+  var element = {
+    // This tag allows us to uniquely identify this as a React Element
+    $$typeof: REACT_ELEMENT_TYPE,
+    // Built-in properties that belong on the element
+    type: type,
+    key: key,
+    ref: ref,
+    props: props,
+    // Record the component responsible for creating this element.
+    _owner: owner
+  };
+
+  {
+    // The validation flag is currently mutative. We put it on
+    // an external backing store so that we can freeze the whole object.
+    // This can be replaced with a WeakMap once they are implemented in
+    // commonly used development environments.
+    element._store = {}; // To make comparing ReactElements easier for testing purposes, we make
+    // the validation flag non-enumerable (where possible, which should
+    // include every environment we run tests in), so the test framework
+    // ignores it.
+
+    Object.defineProperty(element._store, 'validated', {
+      configurable: false,
+      enumerable: false,
+      writable: true,
+      value: false
+    }); // self and source are DEV only properties.
+
+    Object.defineProperty(element, '_self', {
+      configurable: false,
+      enumerable: false,
+      writable: false,
+      value: self
+    }); // Two elements created in two different places should be considered
+    // equal for testing purposes and therefore we hide it from enumeration.
+
+    Object.defineProperty(element, '_source', {
+      configurable: false,
+      enumerable: false,
+      writable: false,
+      value: source
+    });
+
+    if (Object.freeze) {
+      Object.freeze(element.props);
+      Object.freeze(element);
+    }
+  }
+
+  return element;
+};
+/**
+ * Create and return a new ReactElement of the given type.
+ * See https://reactjs.org/docs/react-api.html#createelement
+ */
+
+function createElement(type, config, children) {
+  var propName; // Reserved names are extracted
+
+  var props = {};
+  var key = null;
+  var ref = null;
+  var self = null;
+  var source = null;
+
+  if (config != null) {
+    if (hasValidRef(config)) {
+      ref = config.ref;
+
+      {
+        warnIfStringRefCannotBeAutoConverted(config);
+      }
+    }
+
+    if (hasValidKey(config)) {
+      key = '' + config.key;
+    }
+
+    self = config.__self === undefined ? null : config.__self;
+    source = config.__source === undefined ? null : config.__source; // Remaining properties are added to a new props object
+
+    for (propName in config) {
+      if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+        props[propName] = config[propName];
+      }
+    }
+  } // Children can be more than one argument, and those are transferred onto
+  // the newly allocated props object.
+
+
+  var childrenLength = arguments.length - 2;
+
+  if (childrenLength === 1) {
+    props.children = children;
+  } else if (childrenLength > 1) {
+    var childArray = Array(childrenLength);
+
+    for (var i = 0; i < childrenLength; i++) {
+      childArray[i] = arguments[i + 2];
+    }
+
+    {
+      if (Object.freeze) {
+        Object.freeze(childArray);
+      }
+    }
+
+    props.children = childArray;
+  } // Resolve default props
+
+
+  if (type && type.defaultProps) {
+    var defaultProps = type.defaultProps;
+
+    for (propName in defaultProps) {
+      if (props[propName] === undefined) {
+        props[propName] = defaultProps[propName];
+      }
+    }
+  }
+
+  {
+    if (key || ref) {
+      var displayName = typeof type === 'function' ? type.displayName || type.name || 'Unknown' : type;
+
+      if (key) {
+        defineKeyPropWarningGetter(props, displayName);
+      }
+
+      if (ref) {
+        defineRefPropWarningGetter(props, displayName);
+      }
+    }
+  }
+
+  return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+}
+function cloneAndReplaceKey(oldElement, newKey) {
+  var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
+  return newElement;
+}
+/**
+ * Clone and return a new ReactElement using element as the starting point.
+ * See https://reactjs.org/docs/react-api.html#cloneelement
+ */
+
+function cloneElement(element, config, children) {
+  if (!!(element === null || element === undefined)) {
+    {
+      throw Error( "React.cloneElement(...): The argument must be a React element, but you passed " + element + "." );
+    }
+  }
+
+  var propName; // Original props are copied
+
+  var props = _assign({}, element.props); // Reserved names are extracted
+
+
+  var key = element.key;
+  var ref = element.ref; // Self is preserved since the owner is preserved.
+
+  var self = element._self; // Source is preserved since cloneElement is unlikely to be targeted by a
+  // transpiler, and the original source is probably a better indicator of the
+  // true owner.
+
+  var source = element._source; // Owner will be preserved, unless ref is overridden
+
+  var owner = element._owner;
+
+  if (config != null) {
+    if (hasValidRef(config)) {
+      // Silently steal the ref from the parent.
+      ref = config.ref;
+      owner = ReactCurrentOwner.current;
+    }
+
+    if (hasValidKey(config)) {
+      key = '' + config.key;
+    } // Remaining properties override existing props
+
+
+    var defaultProps;
+
+    if (element.type && element.type.defaultProps) {
+      defaultProps = element.type.defaultProps;
+    }
+
+    for (propName in config) {
+      if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
+        if (config[propName] === undefined && defaultProps !== undefined) {
+          // Resolve default props
+          props[propName] = defaultProps[propName];
+        } else {
+          props[propName] = config[propName];
+        }
+      }
+    }
+  } // Children can be more than one argument, and those are transferred onto
+  // the newly allocated props object.
+
+
+  var childrenLength = arguments.length - 2;
+
+  if (childrenLength === 1) {
+    props.children = children;
+  } else if (childrenLength > 1) {
+    var childArray = Array(childrenLength);
+
+    for (var i = 0; i < childrenLength; i++) {
+      childArray[i] = arguments[i + 2];
+    }
+
+    props.children = childArray;
+  }
+
+  return ReactElement(element.type, key, ref, self, source, owner, props);
+}
+/**
+ * Verifies the object is a ReactElement.
+ * See https://reactjs.org/docs/react-api.html#isvalidelement
+ * @param {?object} object
+ * @return {boolean} True if `object` is a ReactElement.
+ * @final
+ */
+
+function isValidElement(object) {
+  return typeof object === 'object' && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
+}
+
+var SEPARATOR = '.';
+var SUBSEPARATOR = ':';
+/**
+ * Escape and wrap key so it is safe to use as a reactid
+ *
+ * @param {string} key to be escaped.
+ * @return {string} the escaped key.
+ */
+
+function escape(key) {
+  var escapeRegex = /[=:]/g;
+  var escaperLookup = {
+    '=': '=0',
+    ':': '=2'
+  };
+  var escapedString = key.replace(escapeRegex, function (match) {
+    return escaperLookup[match];
+  });
+  return '$' + escapedString;
+}
+/**
+ * TODO: Test that a single child and an array with one item have the same key
+ * pattern.
+ */
+
+
+var didWarnAboutMaps = false;
+var userProvidedKeyEscapeRegex = /\/+/g;
+
+function escapeUserProvidedKey(text) {
+  return text.replace(userProvidedKeyEscapeRegex, '$&/');
+}
+/**
+ * Generate a key string that identifies a element within a set.
+ *
+ * @param {*} element A element that could contain a manual key.
+ * @param {number} index Index that is used if a manual key is not provided.
+ * @return {string}
+ */
+
+
+function getElementKey(element, index) {
+  // Do some typechecking here since we call this blindly. We want to ensure
+  // that we don't block potential future ES APIs.
+  if (typeof element === 'object' && element !== null && element.key != null) {
+    // Explicit key
+    return escape('' + element.key);
+  } // Implicit key determined by the index in the set
+
+
+  return index.toString(36);
+}
+
+function mapIntoArray(children, array, escapedPrefix, nameSoFar, callback) {
+  var type = typeof children;
+
+  if (type === 'undefined' || type === 'boolean') {
+    // All of the above are perceived as null.
+    children = null;
+  }
+
+  var invokeCallback = false;
+
+  if (children === null) {
+    invokeCallback = true;
+  } else {
+    switch (type) {
+      case 'string':
+      case 'number':
+        invokeCallback = true;
+        break;
+
+      case 'object':
+        switch (children.$$typeof) {
+          case REACT_ELEMENT_TYPE:
+          case REACT_PORTAL_TYPE:
+            invokeCallback = true;
+        }
+
+    }
+  }
+
+  if (invokeCallback) {
+    var _child = children;
+    var mappedChild = callback(_child); // If it's the only child, treat the name as if it was wrapped in an array
+    // so that it's consistent if the number of children grows:
+
+    var childKey = nameSoFar === '' ? SEPARATOR + getElementKey(_child, 0) : nameSoFar;
+
+    if (Array.isArray(mappedChild)) {
+      var escapedChildKey = '';
+
+      if (childKey != null) {
+        escapedChildKey = escapeUserProvidedKey(childKey) + '/';
+      }
+
+      mapIntoArray(mappedChild, array, escapedChildKey, '', function (c) {
+        return c;
+      });
+    } else if (mappedChild != null) {
+      if (isValidElement(mappedChild)) {
+        mappedChild = cloneAndReplaceKey(mappedChild, // Keep both the (mapped) and old keys if they differ, just as
+        // traverseAllChildren used to do for objects as children
+        escapedPrefix + ( // $FlowFixMe Flow incorrectly thinks React.Portal doesn't have a key
+        mappedChild.key && (!_child || _child.key !== mappedChild.key) ? // $FlowFixMe Flow incorrectly thinks existing element's key can be a number
+        escapeUserProvidedKey('' + mappedChild.key) + '/' : '') + childKey);
+      }
+
+      array.push(mappedChild);
+    }
+
+    return 1;
+  }
+
+  var child;
+  var nextName;
+  var subtreeCount = 0; // Count of children found in the current subtree.
+
+  var nextNamePrefix = nameSoFar === '' ? SEPARATOR : nameSoFar + SUBSEPARATOR;
+
+  if (Array.isArray(children)) {
+    for (var i = 0; i < children.length; i++) {
+      child = children[i];
+      nextName = nextNamePrefix + getElementKey(child, i);
+      subtreeCount += mapIntoArray(child, array, escapedPrefix, nextName, callback);
+    }
+  } else {
+    var iteratorFn = getIteratorFn(children);
+
+    if (typeof iteratorFn === 'function') {
+      var iterableChildren = children;
+
+      {
+        // Warn about using Maps as children
+        if (iteratorFn === iterableChildren.entries) {
+          if (!didWarnAboutMaps) {
+            warn('Using Maps as children is not supported. ' + 'Use an array of keyed ReactElements instead.');
+          }
+
+          didWarnAboutMaps = true;
+        }
+      }
+
+      var iterator = iteratorFn.call(iterableChildren);
+      var step;
+      var ii = 0;
+
+      while (!(step = iterator.next()).done) {
+        child = step.value;
+        nextName = nextNamePrefix + getElementKey(child, ii++);
+        subtreeCount += mapIntoArray(child, array, escapedPrefix, nextName, callback);
+      }
+    } else if (type === 'object') {
+      var childrenString = '' + children;
+
+      {
+        {
+          throw Error( "Objects are not valid as a React child (found: " + (childrenString === '[object Object]' ? 'object with keys {' + Object.keys(children).join(', ') + '}' : childrenString) + "). If you meant to render a collection of children, use an array instead." );
+        }
+      }
+    }
+  }
+
+  return subtreeCount;
+}
+
+/**
+ * Maps children that are typically specified as `props.children`.
+ *
+ * See https://reactjs.org/docs/react-api.html#reactchildrenmap
+ *
+ * The provided mapFunction(child, index) will be called for each
+ * leaf child.
+ *
+ * @param {?*} children Children tree container.
+ * @param {function(*, int)} func The map function.
+ * @param {*} context Context for mapFunction.
+ * @return {object} Object containing the ordered map of results.
+ */
+function mapChildren(children, func, context) {
+  if (children == null) {
+    return children;
+  }
+
+  var result = [];
+  var count = 0;
+  mapIntoArray(children, result, '', '', function (child) {
+    return func.call(context, child, count++);
+  });
+  return result;
+}
+/**
+ * Count the number of children that are typically specified as
+ * `props.children`.
+ *
+ * See https://reactjs.org/docs/react-api.html#reactchildrencount
+ *
+ * @param {?*} children Children tree container.
+ * @return {number} The number of children.
+ */
+
+
+function countChildren(children) {
+  var n = 0;
+  mapChildren(children, function () {
+    n++; // Don't return anything
+  });
+  return n;
+}
+
+/**
+ * Iterates through children that are typically specified as `props.children`.
+ *
+ * See https://reactjs.org/docs/react-api.html#reactchildrenforeach
+ *
+ * The provided forEachFunc(child, index) will be called for each
+ * leaf child.
+ *
+ * @param {?*} children Children tree container.
+ * @param {function(*, int)} forEachFunc
+ * @param {*} forEachContext Context for forEachContext.
+ */
+function forEachChildren(children, forEachFunc, forEachContext) {
+  mapChildren(children, function () {
+    forEachFunc.apply(this, arguments); // Don't return anything.
+  }, forEachContext);
+}
+/**
+ * Flatten a children object (typically specified as `props.children`) and
+ * return an array with appropriately re-keyed children.
+ *
+ * See https://reactjs.org/docs/react-api.html#reactchildrentoarray
+ */
+
+
+function toArray(children) {
+  return mapChildren(children, function (child) {
+    return child;
+  }) || [];
+}
+/**
+ * Returns the first child in a collection of children and verifies that there
+ * is only one child in the collection.
+ *
+ * See https://reactjs.org/docs/react-api.html#reactchildrenonly
+ *
+ * The current implementation of this function assumes that a single child gets
+ * passed without a wrapper, but the purpose of this helper function is to
+ * abstract away the particular structure of children.
+ *
+ * @param {?object} children Child collection structure.
+ * @return {ReactElement} The first and only `ReactElement` contained in the
+ * structure.
+ */
+
+
+function onlyChild(children) {
+  if (!isValidElement(children)) {
+    {
+      throw Error( "React.Children.only expected to receive a single React element child." );
+    }
+  }
+
+  return children;
+}
+
+function createContext(defaultValue, calculateChangedBits) {
+  if (calculateChangedBits === undefined) {
+    calculateChangedBits = null;
+  } else {
+    {
+      if (calculateChangedBits !== null && typeof calculateChangedBits !== 'function') {
+        error('createContext: Expected the optional second argument to be a ' + 'function. Instead received: %s', calculateChangedBits);
+      }
+    }
+  }
+
+  var context = {
+    $$typeof: REACT_CONTEXT_TYPE,
+    _calculateChangedBits: calculateChangedBits,
+    // As a workaround to support multiple concurrent renderers, we categorize
+    // some renderers as primary and others as secondary. We only expect
+    // there to be two concurrent renderers at most: React Native (primary) and
+    // Fabric (secondary); React DOM (primary) and React ART (secondary).
+    // Secondary renderers store their context values on separate fields.
+    _currentValue: defaultValue,
+    _currentValue2: defaultValue,
+    // Used to track how many concurrent renderers this context currently
+    // supports within in a single renderer. Such as parallel server rendering.
+    _threadCount: 0,
+    // These are circular
+    Provider: null,
+    Consumer: null
+  };
+  context.Provider = {
+    $$typeof: REACT_PROVIDER_TYPE,
+    _context: context
+  };
+  var hasWarnedAboutUsingNestedContextConsumers = false;
+  var hasWarnedAboutUsingConsumerProvider = false;
+  var hasWarnedAboutDisplayNameOnConsumer = false;
+
+  {
+    // A separate object, but proxies back to the original context object for
+    // backwards compatibility. It has a different $$typeof, so we can properly
+    // warn for the incorrect usage of Context as a Consumer.
+    var Consumer = {
+      $$typeof: REACT_CONTEXT_TYPE,
+      _context: context,
+      _calculateChangedBits: context._calculateChangedBits
+    }; // $FlowFixMe: Flow complains about not setting a value, which is intentional here
+
+    Object.defineProperties(Consumer, {
+      Provider: {
+        get: function () {
+          if (!hasWarnedAboutUsingConsumerProvider) {
+            hasWarnedAboutUsingConsumerProvider = true;
+
+            error('Rendering <Context.Consumer.Provider> is not supported and will be removed in ' + 'a future major release. Did you mean to render <Context.Provider> instead?');
+          }
+
+          return context.Provider;
+        },
+        set: function (_Provider) {
+          context.Provider = _Provider;
+        }
+      },
+      _currentValue: {
+        get: function () {
+          return context._currentValue;
+        },
+        set: function (_currentValue) {
+          context._currentValue = _currentValue;
+        }
+      },
+      _currentValue2: {
+        get: function () {
+          return context._currentValue2;
+        },
+        set: function (_currentValue2) {
+          context._currentValue2 = _currentValue2;
+        }
+      },
+      _threadCount: {
+        get: function () {
+          return context._threadCount;
+        },
+        set: function (_threadCount) {
+          context._threadCount = _threadCount;
+        }
+      },
+      Consumer: {
+        get: function () {
+          if (!hasWarnedAboutUsingNestedContextConsumers) {
+            hasWarnedAboutUsingNestedContextConsumers = true;
+
+            error('Rendering <Context.Consumer.Consumer> is not supported and will be removed in ' + 'a future major release. Did you mean to render <Context.Consumer> instead?');
+          }
+
+          return context.Consumer;
+        }
+      },
+      displayName: {
+        get: function () {
+          return context.displayName;
+        },
+        set: function (displayName) {
+          if (!hasWarnedAboutDisplayNameOnConsumer) {
+            warn('Setting `displayName` on Context.Consumer has no effect. ' + "You should set it directly on the context with Context.displayName = '%s'.", displayName);
+
+            hasWarnedAboutDisplayNameOnConsumer = true;
+          }
+        }
+      }
+    }); // $FlowFixMe: Flow complains about missing properties because it doesn't understand defineProperty
+
+    context.Consumer = Consumer;
+  }
+
+  {
+    context._currentRenderer = null;
+    context._currentRenderer2 = null;
+  }
+
+  return context;
+}
+
+var Uninitialized = -1;
+var Pending = 0;
+var Resolved = 1;
+var Rejected = 2;
+
+function lazyInitializer(payload) {
+  if (payload._status === Uninitialized) {
+    var ctor = payload._result;
+    var thenable = ctor(); // Transition to the next state.
+
+    var pending = payload;
+    pending._status = Pending;
+    pending._result = thenable;
+    thenable.then(function (moduleObject) {
+      if (payload._status === Pending) {
+        var defaultExport = moduleObject.default;
+
+        {
+          if (defaultExport === undefined) {
+            error('lazy: Expected the result of a dynamic import() call. ' + 'Instead received: %s\n\nYour code should look like: \n  ' + // Break up imports to avoid accidentally parsing them as dependencies.
+            'const MyComponent = lazy(() => imp' + "ort('./MyComponent'))", moduleObject);
+          }
+        } // Transition to the next state.
+
+
+        var resolved = payload;
+        resolved._status = Resolved;
+        resolved._result = defaultExport;
+      }
+    }, function (error) {
+      if (payload._status === Pending) {
+        // Transition to the next state.
+        var rejected = payload;
+        rejected._status = Rejected;
+        rejected._result = error;
+      }
+    });
+  }
+
+  if (payload._status === Resolved) {
+    return payload._result;
+  } else {
+    throw payload._result;
+  }
+}
+
+function lazy(ctor) {
+  var payload = {
+    // We use these fields to store the result.
+    _status: -1,
+    _result: ctor
+  };
+  var lazyType = {
+    $$typeof: REACT_LAZY_TYPE,
+    _payload: payload,
+    _init: lazyInitializer
+  };
+
+  {
+    // In production, this would just set it on the object.
+    var defaultProps;
+    var propTypes; // $FlowFixMe
+
+    Object.defineProperties(lazyType, {
+      defaultProps: {
+        configurable: true,
+        get: function () {
+          return defaultProps;
+        },
+        set: function (newDefaultProps) {
+          error('React.lazy(...): It is not supported to assign `defaultProps` to ' + 'a lazy component import. Either specify them where the component ' + 'is defined, or create a wrapping component around it.');
+
+          defaultProps = newDefaultProps; // Match production behavior more closely:
+          // $FlowFixMe
+
+          Object.defineProperty(lazyType, 'defaultProps', {
+            enumerable: true
+          });
+        }
+      },
+      propTypes: {
+        configurable: true,
+        get: function () {
+          return propTypes;
+        },
+        set: function (newPropTypes) {
+          error('React.lazy(...): It is not supported to assign `propTypes` to ' + 'a lazy component import. Either specify them where the component ' + 'is defined, or create a wrapping component around it.');
+
+          propTypes = newPropTypes; // Match production behavior more closely:
+          // $FlowFixMe
+
+          Object.defineProperty(lazyType, 'propTypes', {
+            enumerable: true
+          });
+        }
+      }
+    });
+  }
+
+  return lazyType;
+}
+
+function forwardRef(render) {
+  {
+    if (render != null && render.$$typeof === REACT_MEMO_TYPE) {
+      error('forwardRef requires a render function but received a `memo` ' + 'component. Instead of forwardRef(memo(...)), use ' + 'memo(forwardRef(...)).');
+    } else if (typeof render !== 'function') {
+      error('forwardRef requires a render function but was given %s.', render === null ? 'null' : typeof render);
+    } else {
+      if (render.length !== 0 && render.length !== 2) {
+        error('forwardRef render functions accept exactly two parameters: props and ref. %s', render.length === 1 ? 'Did you forget to use the ref parameter?' : 'Any additional parameter will be undefined.');
+      }
+    }
+
+    if (render != null) {
+      if (render.defaultProps != null || render.propTypes != null) {
+        error('forwardRef render functions do not support propTypes or defaultProps. ' + 'Did you accidentally pass a React component?');
+      }
+    }
+  }
+
+  var elementType = {
+    $$typeof: REACT_FORWARD_REF_TYPE,
+    render: render
+  };
+
+  {
+    var ownName;
+    Object.defineProperty(elementType, 'displayName', {
+      enumerable: false,
+      configurable: true,
+      get: function () {
+        return ownName;
+      },
+      set: function (name) {
+        ownName = name;
+
+        if (render.displayName == null) {
+          render.displayName = name;
+        }
+      }
+    });
+  }
+
+  return elementType;
+}
+
+// Filter certain DOM attributes (e.g. src, href) if their values are empty strings.
+
+var enableScopeAPI = false; // Experimental Create Event Handle API.
+
+function isValidElementType(type) {
+  if (typeof type === 'string' || typeof type === 'function') {
+    return true;
+  } // Note: typeof might be other than 'symbol' or 'number' (e.g. if it's a polyfill).
+
+
+  if (type === exports.Fragment || type === exports.Profiler || type === REACT_DEBUG_TRACING_MODE_TYPE || type === exports.StrictMode || type === exports.Suspense || type === REACT_SUSPENSE_LIST_TYPE || type === REACT_LEGACY_HIDDEN_TYPE || enableScopeAPI ) {
+    return true;
+  }
+
+  if (typeof type === 'object' && type !== null) {
+    if (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_BLOCK_TYPE || type[0] === REACT_SERVER_BLOCK_TYPE) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
+function memo(type, compare) {
+  {
+    if (!isValidElementType(type)) {
+      error('memo: The first argument must be a component. Instead ' + 'received: %s', type === null ? 'null' : typeof type);
+    }
+  }
+
+  var elementType = {
+    $$typeof: REACT_MEMO_TYPE,
+    type: type,
+    compare: compare === undefined ? null : compare
+  };
+
+  {
+    var ownName;
+    Object.defineProperty(elementType, 'displayName', {
+      enumerable: false,
+      configurable: true,
+      get: function () {
+        return ownName;
+      },
+      set: function (name) {
+        ownName = name;
+
+        if (type.displayName == null) {
+          type.displayName = name;
+        }
+      }
+    });
+  }
+
+  return elementType;
+}
+
+function resolveDispatcher() {
+  var dispatcher = ReactCurrentDispatcher.current;
+
+  if (!(dispatcher !== null)) {
+    {
+      throw Error( "Invalid hook call. Hooks can only be called inside of the body of a function component. This could happen for one of the following reasons:\n1. You might have mismatching versions of React and the renderer (such as React DOM)\n2. You might be breaking the Rules of Hooks\n3. You might have more than one copy of React in the same app\nSee https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem." );
+    }
+  }
+
+  return dispatcher;
+}
+
+function useContext(Context, unstable_observedBits) {
+  var dispatcher = resolveDispatcher();
+
+  {
+    if (unstable_observedBits !== undefined) {
+      error('useContext() second argument is reserved for future ' + 'use in React. Passing it is not supported. ' + 'You passed: %s.%s', unstable_observedBits, typeof unstable_observedBits === 'number' && Array.isArray(arguments[2]) ? '\n\nDid you call array.map(useContext)? ' + 'Calling Hooks inside a loop is not supported. ' + 'Learn more at https://reactjs.org/link/rules-of-hooks' : '');
+    } // TODO: add a more generic warning for invalid values.
+
+
+    if (Context._context !== undefined) {
+      var realContext = Context._context; // Don't deduplicate because this legitimately causes bugs
+      // and nobody should be using this in existing code.
+
+      if (realContext.Consumer === Context) {
+        error('Calling useContext(Context.Consumer) is not supported, may cause bugs, and will be ' + 'removed in a future major release. Did you mean to call useContext(Context) instead?');
+      } else if (realContext.Provider === Context) {
+        error('Calling useContext(Context.Provider) is not supported. ' + 'Did you mean to call useContext(Context) instead?');
+      }
+    }
+  }
+
+  return dispatcher.useContext(Context, unstable_observedBits);
+}
+function useState(initialState) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useState(initialState);
+}
+function useReducer(reducer, initialArg, init) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useReducer(reducer, initialArg, init);
+}
+function useRef(initialValue) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useRef(initialValue);
+}
+function useEffect(create, deps) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useEffect(create, deps);
+}
+function useLayoutEffect(create, deps) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useLayoutEffect(create, deps);
+}
+function useCallback(callback, deps) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useCallback(callback, deps);
+}
+function useMemo(create, deps) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useMemo(create, deps);
+}
+function useImperativeHandle(ref, create, deps) {
+  var dispatcher = resolveDispatcher();
+  return dispatcher.useImperativeHandle(ref, create, deps);
+}
+function useDebugValue(value, formatterFn) {
+  {
+    var dispatcher = resolveDispatcher();
+    return dispatcher.useDebugValue(value, formatterFn);
+  }
+}
+
+// Helpers to patch console.logs to avoid logging during side-effect free
+// replaying on render function. This currently only patches the object
+// lazily which won't cover if the log function was extracted eagerly.
+// We could also eagerly patch the method.
+var disabledDepth = 0;
+var prevLog;
+var prevInfo;
+var prevWarn;
+var prevError;
+var prevGroup;
+var prevGroupCollapsed;
+var prevGroupEnd;
+
+function disabledLog() {}
+
+disabledLog.__reactDisabledLog = true;
+function disableLogs() {
+  {
+    if (disabledDepth === 0) {
+      /* eslint-disable react-internal/no-production-logging */
+      prevLog = console.log;
+      prevInfo = console.info;
+      prevWarn = console.warn;
+      prevError = console.error;
+      prevGroup = console.group;
+      prevGroupCollapsed = console.groupCollapsed;
+      prevGroupEnd = console.groupEnd; // https://github.com/facebook/react/issues/19099
+
+      var props = {
+        configurable: true,
+        enumerable: true,
+        value: disabledLog,
+        writable: true
+      }; // $FlowFixMe Flow thinks console is immutable.
+
+      Object.defineProperties(console, {
+        info: props,
+        log: props,
+        warn: props,
+        error: props,
+        group: props,
+        groupCollapsed: props,
+        groupEnd: props
+      });
+      /* eslint-enable react-internal/no-production-logging */
+    }
+
+    disabledDepth++;
+  }
+}
+function reenableLogs() {
+  {
+    disabledDepth--;
+
+    if (disabledDepth === 0) {
+      /* eslint-disable react-internal/no-production-logging */
+      var props = {
+        configurable: true,
+        enumerable: true,
+        writable: true
+      }; // $FlowFixMe Flow thinks console is immutable.
+
+      Object.defineProperties(console, {
+        log: _assign({}, props, {
+          value: prevLog
+        }),
+        info: _assign({}, props, {
+          value: prevInfo
+        }),
+        warn: _assign({}, props, {
+          value: prevWarn
+        }),
+        error: _assign({}, props, {
+          value: prevError
+        }),
+        group: _assign({}, props, {
+          value: prevGroup
+        }),
+        groupCollapsed: _assign({}, props, {
+          value: prevGroupCollapsed
+        }),
+        groupEnd: _assign({}, props, {
+          value: prevGroupEnd
+        })
+      });
+      /* eslint-enable react-internal/no-production-logging */
+    }
+
+    if (disabledDepth < 0) {
+      error('disabledDepth fell below zero. ' + 'This is a bug in React. Please file an issue.');
+    }
+  }
+}
+
+var ReactCurrentDispatcher$1 = ReactSharedInternals.ReactCurrentDispatcher;
+var prefix;
+function describeBuiltInComponentFrame(name, source, ownerFn) {
+  {
+    if (prefix === undefined) {
+      // Extract the VM specific prefix used by each line.
+      try {
+        throw Error();
+      } catch (x) {
+        var match = x.stack.trim().match(/\n( *(at )?)/);
+        prefix = match && match[1] || '';
+      }
+    } // We use the prefix to ensure our stacks line up with native stack frames.
+
+
+    return '\n' + prefix + name;
+  }
+}
+var reentry = false;
+var componentFrameCache;
+
+{
+  var PossiblyWeakMap = typeof WeakMap === 'function' ? WeakMap : Map;
+  componentFrameCache = new PossiblyWeakMap();
+}
+
+function describeNativeComponentFrame(fn, construct) {
+  // If something asked for a stack inside a fake render, it should get ignored.
+  if (!fn || reentry) {
+    return '';
+  }
+
+  {
+    var frame = componentFrameCache.get(fn);
+
+    if (frame !== undefined) {
+      return frame;
+    }
+  }
+
+  var control;
+  reentry = true;
+  var previousPrepareStackTrace = Error.prepareStackTrace; // $FlowFixMe It does accept undefined.
+
+  Error.prepareStackTrace = undefined;
+  var previousDispatcher;
+
+  {
+    previousDispatcher = ReactCurrentDispatcher$1.current; // Set the dispatcher in DEV because this might be call in the render function
+    // for warnings.
+
+    ReactCurrentDispatcher$1.current = null;
+    disableLogs();
+  }
+
+  try {
+    // This should throw.
+    if (construct) {
+      // Something should be setting the props in the constructor.
+      var Fake = function () {
+        throw Error();
+      }; // $FlowFixMe
+
+
+      Object.defineProperty(Fake.prototype, 'props', {
+        set: function () {
+          // We use a throwing setter instead of frozen or non-writable props
+          // because that won't throw in a non-strict mode function.
+          throw Error();
+        }
+      });
+
+      if (typeof Reflect === 'object' && Reflect.construct) {
+        // We construct a different control for this case to include any extra
+        // frames added by the construct call.
+        try {
+          Reflect.construct(Fake, []);
+        } catch (x) {
+          control = x;
+        }
+
+        Reflect.construct(fn, [], Fake);
+      } else {
+        try {
+          Fake.call();
+        } catch (x) {
+          control = x;
+        }
+
+        fn.call(Fake.prototype);
+      }
+    } else {
+      try {
+        throw Error();
+      } catch (x) {
+        control = x;
+      }
+
+      fn();
+    }
+  } catch (sample) {
+    // This is inlined manually because closure doesn't do it for us.
+    if (sample && control && typeof sample.stack === 'string') {
+      // This extracts the first frame from the sample that isn't also in the control.
+      // Skipping one frame that we assume is the frame that calls the two.
+      var sampleLines = sample.stack.split('\n');
+      var controlLines = control.stack.split('\n');
+      var s = sampleLines.length - 1;
+      var c = controlLines.length - 1;
+
+      while (s >= 1 && c >= 0 && sampleLines[s] !== controlLines[c]) {
+        // We expect at least one stack frame to be shared.
+        // Typically this will be the root most one. However, stack frames may be
+        // cut off due to maximum stack limits. In this case, one maybe cut off
+        // earlier than the other. We assume that the sample is longer or the same
+        // and there for cut off earlier. So we should find the root most frame in
+        // the sample somewhere in the control.
+        c--;
+      }
+
+      for (; s >= 1 && c >= 0; s--, c--) {
+        // Next we find the first one that isn't the same which should be the
+        // frame that called our sample function and the control.
+        if (sampleLines[s] !== controlLines[c]) {
+          // In V8, the first line is describing the message but other VMs don't.
+          // If we're about to return the first line, and the control is also on the same
+          // line, that's a pretty good indicator that our sample threw at same line as
+          // the control. I.e. before we entered the sample frame. So we ignore this result.
+          // This can happen if you passed a class to function component, or non-function.
+          if (s !== 1 || c !== 1) {
+            do {
+              s--;
+              c--; // We may still have similar intermediate frames from the construct call.
+              // The next one that isn't the same should be our match though.
+
+              if (c < 0 || sampleLines[s] !== controlLines[c]) {
+                // V8 adds a "new" prefix for native classes. Let's remove it to make it prettier.
+                var _frame = '\n' + sampleLines[s].replace(' at new ', ' at ');
+
+                {
+                  if (typeof fn === 'function') {
+                    componentFrameCache.set(fn, _frame);
+                  }
+                } // Return the line we found.
+
+
+                return _frame;
+              }
+            } while (s >= 1 && c >= 0);
+          }
+
+          break;
+        }
+      }
+    }
+  } finally {
+    reentry = false;
+
+    {
+      ReactCurrentDispatcher$1.current = previousDispatcher;
+      reenableLogs();
+    }
+
+    Error.prepareStackTrace = previousPrepareStackTrace;
+  } // Fallback to just using the name if we couldn't make it throw.
+
+
+  var name = fn ? fn.displayName || fn.name : '';
+  var syntheticFrame = name ? describeBuiltInComponentFrame(name) : '';
+
+  {
+    if (typeof fn === 'function') {
+      componentFrameCache.set(fn, syntheticFrame);
+    }
+  }
+
+  return syntheticFrame;
+}
+function describeFunctionComponentFrame(fn, source, ownerFn) {
+  {
+    return describeNativeComponentFrame(fn, false);
+  }
+}
+
+function shouldConstruct(Component) {
+  var prototype = Component.prototype;
+  return !!(prototype && prototype.isReactComponent);
+}
+
+function describeUnknownElementTypeFrameInDEV(type, source, ownerFn) {
+
+  if (type == null) {
+    return '';
+  }
+
+  if (typeof type === 'function') {
+    {
+      return describeNativeComponentFrame(type, shouldConstruct(type));
+    }
+  }
+
+  if (typeof type === 'string') {
+    return describeBuiltInComponentFrame(type);
+  }
+
+  switch (type) {
+    case exports.Suspense:
+      return describeBuiltInComponentFrame('Suspense');
+
+    case REACT_SUSPENSE_LIST_TYPE:
+      return describeBuiltInComponentFrame('SuspenseList');
+  }
+
+  if (typeof type === 'object') {
+    switch (type.$$typeof) {
+      case REACT_FORWARD_REF_TYPE:
+        return describeFunctionComponentFrame(type.render);
+
+      case REACT_MEMO_TYPE:
+        // Memo may contain any component type so we recursively resolve it.
+        return describeUnknownElementTypeFrameInDEV(type.type, source, ownerFn);
+
+      case REACT_BLOCK_TYPE:
+        return describeFunctionComponentFrame(type._render);
+
+      case REACT_LAZY_TYPE:
+        {
+          var lazyComponent = type;
+          var payload = lazyComponent._payload;
+          var init = lazyComponent._init;
+
+          try {
+            // Lazy may contain any component type so we recursively resolve it.
+            return describeUnknownElementTypeFrameInDEV(init(payload), source, ownerFn);
+          } catch (x) {}
+        }
+    }
+  }
+
+  return '';
+}
+
+var loggedTypeFailures = {};
+var ReactDebugCurrentFrame$1 = ReactSharedInternals.ReactDebugCurrentFrame;
+
+function setCurrentlyValidatingElement(element) {
+  {
+    if (element) {
+      var owner = element._owner;
+      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+      ReactDebugCurrentFrame$1.setExtraStackFrame(stack);
+    } else {
+      ReactDebugCurrentFrame$1.setExtraStackFrame(null);
+    }
+  }
+}
+
+function checkPropTypes(typeSpecs, values, location, componentName, element) {
+  {
+    // $FlowFixMe This is okay but Flow doesn't know it.
+    var has = Function.call.bind(Object.prototype.hasOwnProperty);
+
+    for (var typeSpecName in typeSpecs) {
+      if (has(typeSpecs, typeSpecName)) {
+        var error$1 = void 0; // Prop type validation may throw. In case they do, we don't want to
+        // fail the render phase where it didn't fail before. So we log it.
+        // After these have been cleaned up, we'll let them throw.
+
+        try {
+          // This is intentionally an invariant that gets caught. It's the same
+          // behavior as without this statement except with a better message.
+          if (typeof typeSpecs[typeSpecName] !== 'function') {
+            var err = Error((componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' + 'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' + 'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.');
+            err.name = 'Invariant Violation';
+            throw err;
+          }
+
+          error$1 = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED');
+        } catch (ex) {
+          error$1 = ex;
+        }
+
+        if (error$1 && !(error$1 instanceof Error)) {
+          setCurrentlyValidatingElement(element);
+
+          error('%s: type specification of %s' + ' `%s` is invalid; the type checker ' + 'function must return `null` or an `Error` but returned a %s. ' + 'You may have forgotten to pass an argument to the type checker ' + 'creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and ' + 'shape all require an argument).', componentName || 'React class', location, typeSpecName, typeof error$1);
+
+          setCurrentlyValidatingElement(null);
+        }
+
+        if (error$1 instanceof Error && !(error$1.message in loggedTypeFailures)) {
+          // Only monitor this failure once because there tends to be a lot of the
+          // same error.
+          loggedTypeFailures[error$1.message] = true;
+          setCurrentlyValidatingElement(element);
+
+          error('Failed %s type: %s', location, error$1.message);
+
+          setCurrentlyValidatingElement(null);
+        }
+      }
+    }
+  }
+}
+
+function setCurrentlyValidatingElement$1(element) {
+  {
+    if (element) {
+      var owner = element._owner;
+      var stack = describeUnknownElementTypeFrameInDEV(element.type, element._source, owner ? owner.type : null);
+      setExtraStackFrame(stack);
+    } else {
+      setExtraStackFrame(null);
+    }
+  }
+}
+
+var propTypesMisspellWarningShown;
+
+{
+  propTypesMisspellWarningShown = false;
+}
+
+function getDeclarationErrorAddendum() {
+  if (ReactCurrentOwner.current) {
+    var name = getComponentName(ReactCurrentOwner.current.type);
+
+    if (name) {
+      return '\n\nCheck the render method of `' + name + '`.';
+    }
+  }
+
+  return '';
+}
+
+function getSourceInfoErrorAddendum(source) {
+  if (source !== undefined) {
+    var fileName = source.fileName.replace(/^.*[\\\/]/, '');
+    var lineNumber = source.lineNumber;
+    return '\n\nCheck your code at ' + fileName + ':' + lineNumber + '.';
+  }
+
+  return '';
+}
+
+function getSourceInfoErrorAddendumForProps(elementProps) {
+  if (elementProps !== null && elementProps !== undefined) {
+    return getSourceInfoErrorAddendum(elementProps.__source);
+  }
+
+  return '';
+}
+/**
+ * Warn if there's no key explicitly set on dynamic arrays of children or
+ * object keys are not valid. This allows us to keep track of children between
+ * updates.
+ */
+
+
+var ownerHasKeyUseWarning = {};
+
+function getCurrentComponentErrorInfo(parentType) {
+  var info = getDeclarationErrorAddendum();
+
+  if (!info) {
+    var parentName = typeof parentType === 'string' ? parentType : parentType.displayName || parentType.name;
+
+    if (parentName) {
+      info = "\n\nCheck the top-level render call using <" + parentName + ">.";
+    }
+  }
+
+  return info;
+}
+/**
+ * Warn if the element doesn't have an explicit key assigned to it.
+ * This element is in an array. The array could grow and shrink or be
+ * reordered. All children that haven't already been validated are required to
+ * have a "key" property assigned to it. Error statuses are cached so a warning
+ * will only be shown once.
+ *
+ * @internal
+ * @param {ReactElement} element Element that requires a key.
+ * @param {*} parentType element's parent's type.
+ */
+
+
+function validateExplicitKey(element, parentType) {
+  if (!element._store || element._store.validated || element.key != null) {
+    return;
+  }
+
+  element._store.validated = true;
+  var currentComponentErrorInfo = getCurrentComponentErrorInfo(parentType);
+
+  if (ownerHasKeyUseWarning[currentComponentErrorInfo]) {
+    return;
+  }
+
+  ownerHasKeyUseWarning[currentComponentErrorInfo] = true; // Usually the current owner is the offender, but if it accepts children as a
+  // property, it may be the creator of the child that's responsible for
+  // assigning it a key.
+
+  var childOwner = '';
+
+  if (element && element._owner && element._owner !== ReactCurrentOwner.current) {
+    // Give the component that originally created this child.
+    childOwner = " It was passed a child from " + getComponentName(element._owner.type) + ".";
+  }
+
+  {
+    setCurrentlyValidatingElement$1(element);
+
+    error('Each child in a list should have a unique "key" prop.' + '%s%s See https://reactjs.org/link/warning-keys for more information.', currentComponentErrorInfo, childOwner);
+
+    setCurrentlyValidatingElement$1(null);
+  }
+}
+/**
+ * Ensure that every element either is passed in a static location, in an
+ * array with an explicit keys property defined, or in an object literal
+ * with valid key property.
+ *
+ * @internal
+ * @param {ReactNode} node Statically passed child of any type.
+ * @param {*} parentType node's parent's type.
+ */
+
+
+function validateChildKeys(node, parentType) {
+  if (typeof node !== 'object') {
+    return;
+  }
+
+  if (Array.isArray(node)) {
+    for (var i = 0; i < node.length; i++) {
+      var child = node[i];
+
+      if (isValidElement(child)) {
+        validateExplicitKey(child, parentType);
+      }
+    }
+  } else if (isValidElement(node)) {
+    // This element was passed in a valid location.
+    if (node._store) {
+      node._store.validated = true;
+    }
+  } else if (node) {
+    var iteratorFn = getIteratorFn(node);
+
+    if (typeof iteratorFn === 'function') {
+      // Entry iterators used to provide implicit keys,
+      // but now we print a separate warning for them later.
+      if (iteratorFn !== node.entries) {
+        var iterator = iteratorFn.call(node);
+        var step;
+
+        while (!(step = iterator.next()).done) {
+          if (isValidElement(step.value)) {
+            validateExplicitKey(step.value, parentType);
+          }
+        }
+      }
+    }
+  }
+}
+/**
+ * Given an element, validate that its props follow the propTypes definition,
+ * provided by the type.
+ *
+ * @param {ReactElement} element
+ */
+
+
+function validatePropTypes(element) {
+  {
+    var type = element.type;
+
+    if (type === null || type === undefined || typeof type === 'string') {
+      return;
+    }
+
+    var propTypes;
+
+    if (typeof type === 'function') {
+      propTypes = type.propTypes;
+    } else if (typeof type === 'object' && (type.$$typeof === REACT_FORWARD_REF_TYPE || // Note: Memo only checks outer props here.
+    // Inner props are checked in the reconciler.
+    type.$$typeof === REACT_MEMO_TYPE)) {
+      propTypes = type.propTypes;
+    } else {
+      return;
+    }
+
+    if (propTypes) {
+      // Intentionally inside to avoid triggering lazy initializers:
+      var name = getComponentName(type);
+      checkPropTypes(propTypes, element.props, 'prop', name, element);
+    } else if (type.PropTypes !== undefined && !propTypesMisspellWarningShown) {
+      propTypesMisspellWarningShown = true; // Intentionally inside to avoid triggering lazy initializers:
+
+      var _name = getComponentName(type);
+
+      error('Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?', _name || 'Unknown');
+    }
+
+    if (typeof type.getDefaultProps === 'function' && !type.getDefaultProps.isReactClassApproved) {
+      error('getDefaultProps is only used on classic React.createClass ' + 'definitions. Use a static property named `defaultProps` instead.');
+    }
+  }
+}
+/**
+ * Given a fragment, validate that it can only be provided with fragment props
+ * @param {ReactElement} fragment
+ */
+
+
+function validateFragmentProps(fragment) {
+  {
+    var keys = Object.keys(fragment.props);
+
+    for (var i = 0; i < keys.length; i++) {
+      var key = keys[i];
+
+      if (key !== 'children' && key !== 'key') {
+        setCurrentlyValidatingElement$1(fragment);
+
+        error('Invalid prop `%s` supplied to `React.Fragment`. ' + 'React.Fragment can only have `key` and `children` props.', key);
+
+        setCurrentlyValidatingElement$1(null);
+        break;
+      }
+    }
+
+    if (fragment.ref !== null) {
+      setCurrentlyValidatingElement$1(fragment);
+
+      error('Invalid attribute `ref` supplied to `React.Fragment`.');
+
+      setCurrentlyValidatingElement$1(null);
+    }
+  }
+}
+function createElementWithValidation(type, props, children) {
+  var validType = isValidElementType(type); // We warn in this case but don't throw. We expect the element creation to
+  // succeed and there will likely be errors in render.
+
+  if (!validType) {
+    var info = '';
+
+    if (type === undefined || typeof type === 'object' && type !== null && Object.keys(type).length === 0) {
+      info += ' You likely forgot to export your component from the file ' + "it's defined in, or you might have mixed up default and named imports.";
+    }
+
+    var sourceInfo = getSourceInfoErrorAddendumForProps(props);
+
+    if (sourceInfo) {
+      info += sourceInfo;
+    } else {
+      info += getDeclarationErrorAddendum();
+    }
+
+    var typeString;
+
+    if (type === null) {
+      typeString = 'null';
+    } else if (Array.isArray(type)) {
+      typeString = 'array';
+    } else if (type !== undefined && type.$$typeof === REACT_ELEMENT_TYPE) {
+      typeString = "<" + (getComponentName(type.type) || 'Unknown') + " />";
+      info = ' Did you accidentally export a JSX literal instead of a component?';
+    } else {
+      typeString = typeof type;
+    }
+
+    {
+      error('React.createElement: type is invalid -- expected a string (for ' + 'built-in components) or a class/function (for composite ' + 'components) but got: %s.%s', typeString, info);
+    }
+  }
+
+  var element = createElement.apply(this, arguments); // The result can be nullish if a mock or a custom function is used.
+  // TODO: Drop this when these are no longer allowed as the type argument.
+
+  if (element == null) {
+    return element;
+  } // Skip key warning if the type isn't valid since our key validation logic
+  // doesn't expect a non-string/function type and can throw confusing errors.
+  // We don't want exception behavior to differ between dev and prod.
+  // (Rendering will throw with a helpful message and as soon as the type is
+  // fixed, the key warnings will appear.)
+
+
+  if (validType) {
+    for (var i = 2; i < arguments.length; i++) {
+      validateChildKeys(arguments[i], type);
+    }
+  }
+
+  if (type === exports.Fragment) {
+    validateFragmentProps(element);
+  } else {
+    validatePropTypes(element);
+  }
+
+  return element;
+}
+var didWarnAboutDeprecatedCreateFactory = false;
+function createFactoryWithValidation(type) {
+  var validatedFactory = createElementWithValidation.bind(null, type);
+  validatedFactory.type = type;
+
+  {
+    if (!didWarnAboutDeprecatedCreateFactory) {
+      didWarnAboutDeprecatedCreateFactory = true;
+
+      warn('React.createFactory() is deprecated and will be removed in ' + 'a future major release. Consider using JSX ' + 'or use React.createElement() directly instead.');
+    } // Legacy hook: remove it
+
+
+    Object.defineProperty(validatedFactory, 'type', {
+      enumerable: false,
+      get: function () {
+        warn('Factory.type is deprecated. Access the class directly ' + 'before passing it to createFactory.');
+
+        Object.defineProperty(this, 'type', {
+          value: type
+        });
+        return type;
+      }
+    });
+  }
+
+  return validatedFactory;
+}
+function cloneElementWithValidation(element, props, children) {
+  var newElement = cloneElement.apply(this, arguments);
+
+  for (var i = 2; i < arguments.length; i++) {
+    validateChildKeys(arguments[i], newElement.type);
+  }
+
+  validatePropTypes(newElement);
+  return newElement;
+}
+
+{
+
+  try {
+    var frozenObject = Object.freeze({});
+    /* eslint-disable no-new */
+
+    new Map([[frozenObject, null]]);
+    new Set([frozenObject]);
+    /* eslint-enable no-new */
+  } catch (e) {
+  }
+}
+
+var createElement$1 =  createElementWithValidation ;
+var cloneElement$1 =  cloneElementWithValidation ;
+var createFactory =  createFactoryWithValidation ;
+var Children = {
+  map: mapChildren,
+  forEach: forEachChildren,
+  count: countChildren,
+  toArray: toArray,
+  only: onlyChild
+};
+
+exports.Children = Children;
+exports.Component = Component;
+exports.PureComponent = PureComponent;
+exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals;
+exports.cloneElement = cloneElement$1;
+exports.createContext = createContext;
+exports.createElement = createElement$1;
+exports.createFactory = createFactory;
+exports.createRef = createRef;
+exports.forwardRef = forwardRef;
+exports.isValidElement = isValidElement;
+exports.lazy = lazy;
+exports.memo = memo;
+exports.useCallback = useCallback;
+exports.useContext = useContext;
+exports.useDebugValue = useDebugValue;
+exports.useEffect = useEffect;
+exports.useImperativeHandle = useImperativeHandle;
+exports.useLayoutEffect = useLayoutEffect;
+exports.useMemo = useMemo;
+exports.useReducer = useReducer;
+exports.useRef = useRef;
+exports.useState = useState;
+exports.version = ReactVersion;
+  })();
+}
+
+}).call(this)}).call(this,require('_process'))
+},{"_process":203,"object-assign":202}],205:[function(require,module,exports){
+/** @license React v17.0.2
+ * react.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+'use strict';var l=require("object-assign"),n=60103,p=60106;exports.Fragment=60107;exports.StrictMode=60108;exports.Profiler=60114;var q=60109,r=60110,t=60112;exports.Suspense=60113;var u=60115,v=60116;
+if("function"===typeof Symbol&&Symbol.for){var w=Symbol.for;n=w("react.element");p=w("react.portal");exports.Fragment=w("react.fragment");exports.StrictMode=w("react.strict_mode");exports.Profiler=w("react.profiler");q=w("react.provider");r=w("react.context");t=w("react.forward_ref");exports.Suspense=w("react.suspense");u=w("react.memo");v=w("react.lazy")}var x="function"===typeof Symbol&&Symbol.iterator;
+function y(a){if(null===a||"object"!==typeof a)return null;a=x&&a[x]||a["@@iterator"];return"function"===typeof a?a:null}function z(a){for(var b="https://reactjs.org/docs/error-decoder.html?invariant="+a,c=1;c<arguments.length;c++)b+="&args[]="+encodeURIComponent(arguments[c]);return"Minified React error #"+a+"; visit "+b+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings."}
+var A={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}},B={};function C(a,b,c){this.props=a;this.context=b;this.refs=B;this.updater=c||A}C.prototype.isReactComponent={};C.prototype.setState=function(a,b){if("object"!==typeof a&&"function"!==typeof a&&null!=a)throw Error(z(85));this.updater.enqueueSetState(this,a,b,"setState")};C.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
+function D(){}D.prototype=C.prototype;function E(a,b,c){this.props=a;this.context=b;this.refs=B;this.updater=c||A}var F=E.prototype=new D;F.constructor=E;l(F,C.prototype);F.isPureReactComponent=!0;var G={current:null},H=Object.prototype.hasOwnProperty,I={key:!0,ref:!0,__self:!0,__source:!0};
+function J(a,b,c){var e,d={},k=null,h=null;if(null!=b)for(e in void 0!==b.ref&&(h=b.ref),void 0!==b.key&&(k=""+b.key),b)H.call(b,e)&&!I.hasOwnProperty(e)&&(d[e]=b[e]);var g=arguments.length-2;if(1===g)d.children=c;else if(1<g){for(var f=Array(g),m=0;m<g;m++)f[m]=arguments[m+2];d.children=f}if(a&&a.defaultProps)for(e in g=a.defaultProps,g)void 0===d[e]&&(d[e]=g[e]);return{$$typeof:n,type:a,key:k,ref:h,props:d,_owner:G.current}}
+function K(a,b){return{$$typeof:n,type:a.type,key:b,ref:a.ref,props:a.props,_owner:a._owner}}function L(a){return"object"===typeof a&&null!==a&&a.$$typeof===n}function escape(a){var b={"=":"=0",":":"=2"};return"$"+a.replace(/[=:]/g,function(a){return b[a]})}var M=/\/+/g;function N(a,b){return"object"===typeof a&&null!==a&&null!=a.key?escape(""+a.key):b.toString(36)}
+function O(a,b,c,e,d){var k=typeof a;if("undefined"===k||"boolean"===k)a=null;var h=!1;if(null===a)h=!0;else switch(k){case "string":case "number":h=!0;break;case "object":switch(a.$$typeof){case n:case p:h=!0}}if(h)return h=a,d=d(h),a=""===e?"."+N(h,0):e,Array.isArray(d)?(c="",null!=a&&(c=a.replace(M,"$&/")+"/"),O(d,b,c,"",function(a){return a})):null!=d&&(L(d)&&(d=K(d,c+(!d.key||h&&h.key===d.key?"":(""+d.key).replace(M,"$&/")+"/")+a)),b.push(d)),1;h=0;e=""===e?".":e+":";if(Array.isArray(a))for(var g=
+0;g<a.length;g++){k=a[g];var f=e+N(k,g);h+=O(k,b,c,f,d)}else if(f=y(a),"function"===typeof f)for(a=f.call(a),g=0;!(k=a.next()).done;)k=k.value,f=e+N(k,g++),h+=O(k,b,c,f,d);else if("object"===k)throw b=""+a,Error(z(31,"[object Object]"===b?"object with keys {"+Object.keys(a).join(", ")+"}":b));return h}function P(a,b,c){if(null==a)return a;var e=[],d=0;O(a,e,"","",function(a){return b.call(c,a,d++)});return e}
+function Q(a){if(-1===a._status){var b=a._result;b=b();a._status=0;a._result=b;b.then(function(b){0===a._status&&(b=b.default,a._status=1,a._result=b)},function(b){0===a._status&&(a._status=2,a._result=b)})}if(1===a._status)return a._result;throw a._result;}var R={current:null};function S(){var a=R.current;if(null===a)throw Error(z(321));return a}var T={ReactCurrentDispatcher:R,ReactCurrentBatchConfig:{transition:0},ReactCurrentOwner:G,IsSomeRendererActing:{current:!1},assign:l};
+exports.Children={map:P,forEach:function(a,b,c){P(a,function(){b.apply(this,arguments)},c)},count:function(a){var b=0;P(a,function(){b++});return b},toArray:function(a){return P(a,function(a){return a})||[]},only:function(a){if(!L(a))throw Error(z(143));return a}};exports.Component=C;exports.PureComponent=E;exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED=T;
+exports.cloneElement=function(a,b,c){if(null===a||void 0===a)throw Error(z(267,a));var e=l({},a.props),d=a.key,k=a.ref,h=a._owner;if(null!=b){void 0!==b.ref&&(k=b.ref,h=G.current);void 0!==b.key&&(d=""+b.key);if(a.type&&a.type.defaultProps)var g=a.type.defaultProps;for(f in b)H.call(b,f)&&!I.hasOwnProperty(f)&&(e[f]=void 0===b[f]&&void 0!==g?g[f]:b[f])}var f=arguments.length-2;if(1===f)e.children=c;else if(1<f){g=Array(f);for(var m=0;m<f;m++)g[m]=arguments[m+2];e.children=g}return{$$typeof:n,type:a.type,
+key:d,ref:k,props:e,_owner:h}};exports.createContext=function(a,b){void 0===b&&(b=null);a={$$typeof:r,_calculateChangedBits:b,_currentValue:a,_currentValue2:a,_threadCount:0,Provider:null,Consumer:null};a.Provider={$$typeof:q,_context:a};return a.Consumer=a};exports.createElement=J;exports.createFactory=function(a){var b=J.bind(null,a);b.type=a;return b};exports.createRef=function(){return{current:null}};exports.forwardRef=function(a){return{$$typeof:t,render:a}};exports.isValidElement=L;
+exports.lazy=function(a){return{$$typeof:v,_payload:{_status:-1,_result:a},_init:Q}};exports.memo=function(a,b){return{$$typeof:u,type:a,compare:void 0===b?null:b}};exports.useCallback=function(a,b){return S().useCallback(a,b)};exports.useContext=function(a,b){return S().useContext(a,b)};exports.useDebugValue=function(){};exports.useEffect=function(a,b){return S().useEffect(a,b)};exports.useImperativeHandle=function(a,b,c){return S().useImperativeHandle(a,b,c)};
+exports.useLayoutEffect=function(a,b){return S().useLayoutEffect(a,b)};exports.useMemo=function(a,b){return S().useMemo(a,b)};exports.useReducer=function(a,b,c){return S().useReducer(a,b,c)};exports.useRef=function(a){return S().useRef(a)};exports.useState=function(a){return S().useState(a)};exports.version="17.0.2";
+
+},{"object-assign":202}],206:[function(require,module,exports){
+(function (process){(function (){
+'use strict';
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./cjs/react.production.min.js');
+} else {
+  module.exports = require('./cjs/react.development.js');
+}
+
+}).call(this)}).call(this,require('_process'))
+},{"./cjs/react.development.js":204,"./cjs/react.production.min.js":205,"_process":203}],207:[function(require,module,exports){
 (function (setImmediate){(function (){
 "use strict";
 
@@ -46972,11 +60851,15 @@ process.umask = function() { return 0; };
 })(this);
 
 }).call(this)}).call(this,require("timers").setImmediate)
-},{"timers":238}],234:[function(require,module,exports){
+},{"timers":212}],208:[function(require,module,exports){
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ParsedMessage = void 0;
-const apg_js_1 = require("apg-js");
+const api_1 = __importDefault(require("apg-js/src/apg-api/api"));
+const node_exports_1 = __importDefault(require("apg-js/src/apg-lib/node-exports"));
 const GRAMMAR = `
 sign-in-with-ethereum =
     domain %s" wants you to sign in with your Ethereum account:" LF
@@ -47120,7 +61003,7 @@ HEXDIG         =  DIGIT / "A" / "B" / "C" / "D" / "E" / "F"
 `;
 class ParsedMessage {
     constructor(msg) {
-        const api = new apg_js_1.apgApi(GRAMMAR);
+        const api = new api_1.default(GRAMMAR);
         api.generate();
         if (api.errors.length) {
             console.error(api.errorsToAscii());
@@ -47129,13 +61012,13 @@ class ParsedMessage {
             throw new Error(`ABNF grammar has errors`);
         }
         const grammarObj = api.toObject();
-        const parser = new apg_js_1.apgLib.parser();
-        parser.ast = new apg_js_1.apgLib.ast();
-        const id = apg_js_1.apgLib.ids;
+        const parser = new node_exports_1.default.parser();
+        parser.ast = new node_exports_1.default.ast();
+        const id = node_exports_1.default.ids;
         const domain = function (state, chars, phraseIndex, phraseLength, data) {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
-                data.domain = apg_js_1.apgLib.utils.charsToString(chars, phraseIndex, phraseLength);
+                data.domain = node_exports_1.default.utils.charsToString(chars, phraseIndex, phraseLength);
             }
             return ret;
         };
@@ -47143,7 +61026,7 @@ class ParsedMessage {
         const address = function (state, chars, phraseIndex, phraseLength, data) {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
-                data.address = apg_js_1.apgLib.utils.charsToString(chars, phraseIndex, phraseLength);
+                data.address = node_exports_1.default.utils.charsToString(chars, phraseIndex, phraseLength);
             }
             return ret;
         };
@@ -47151,7 +61034,7 @@ class ParsedMessage {
         const statement = function (state, chars, phraseIndex, phraseLength, data) {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
-                data.statement = apg_js_1.apgLib.utils.charsToString(chars, phraseIndex, phraseLength);
+                data.statement = node_exports_1.default.utils.charsToString(chars, phraseIndex, phraseLength);
             }
             return ret;
         };
@@ -47160,7 +61043,7 @@ class ParsedMessage {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
                 if (!data.uri) {
-                    data.uri = apg_js_1.apgLib.utils.charsToString(chars, phraseIndex, phraseLength);
+                    data.uri = node_exports_1.default.utils.charsToString(chars, phraseIndex, phraseLength);
                 }
             }
             return ret;
@@ -47169,7 +61052,7 @@ class ParsedMessage {
         const version = function (state, chars, phraseIndex, phraseLength, data) {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
-                data.version = apg_js_1.apgLib.utils.charsToString(chars, phraseIndex, phraseLength);
+                data.version = node_exports_1.default.utils.charsToString(chars, phraseIndex, phraseLength);
             }
             return ret;
         };
@@ -47177,7 +61060,7 @@ class ParsedMessage {
         const chainId = function (state, chars, phraseIndex, phraseLength, data) {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
-                data.chainId = apg_js_1.apgLib.utils.charsToString(chars, phraseIndex, phraseLength);
+                data.chainId = node_exports_1.default.utils.charsToString(chars, phraseIndex, phraseLength);
             }
             return ret;
         };
@@ -47185,7 +61068,7 @@ class ParsedMessage {
         const nonce = function (state, chars, phraseIndex, phraseLength, data) {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
-                data.nonce = apg_js_1.apgLib.utils.charsToString(chars, phraseIndex, phraseLength);
+                data.nonce = node_exports_1.default.utils.charsToString(chars, phraseIndex, phraseLength);
             }
             return ret;
         };
@@ -47193,7 +61076,7 @@ class ParsedMessage {
         const issuedAt = function (state, chars, phraseIndex, phraseLength, data) {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
-                data.issuedAt = apg_js_1.apgLib.utils.charsToString(chars, phraseIndex, phraseLength);
+                data.issuedAt = node_exports_1.default.utils.charsToString(chars, phraseIndex, phraseLength);
             }
             return ret;
         };
@@ -47201,7 +61084,7 @@ class ParsedMessage {
         const expirationTime = function (state, chars, phraseIndex, phraseLength, data) {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
-                data.expirationTime = apg_js_1.apgLib.utils.charsToString(chars, phraseIndex, phraseLength);
+                data.expirationTime = node_exports_1.default.utils.charsToString(chars, phraseIndex, phraseLength);
             }
             return ret;
         };
@@ -47209,7 +61092,7 @@ class ParsedMessage {
         const notBefore = function (state, chars, phraseIndex, phraseLength, data) {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
-                data.notBefore = apg_js_1.apgLib.utils.charsToString(chars, phraseIndex, phraseLength);
+                data.notBefore = node_exports_1.default.utils.charsToString(chars, phraseIndex, phraseLength);
             }
             return ret;
         };
@@ -47217,7 +61100,7 @@ class ParsedMessage {
         const requestId = function (state, chars, phraseIndex, phraseLength, data) {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
-                data.requestId = apg_js_1.apgLib.utils.charsToString(chars, phraseIndex, phraseLength);
+                data.requestId = node_exports_1.default.utils.charsToString(chars, phraseIndex, phraseLength);
             }
             return ret;
         };
@@ -47225,7 +61108,7 @@ class ParsedMessage {
         const resources = function (state, chars, phraseIndex, phraseLength, data) {
             const ret = id.SEM_OK;
             if (state === id.SEM_PRE) {
-                data.resources = apg_js_1.apgLib.utils
+                data.resources = node_exports_1.default.utils
                     .charsToString(chars, phraseIndex, phraseLength)
                     .slice(3)
                     .split('\n- ');
@@ -47246,7 +61129,7 @@ class ParsedMessage {
 }
 exports.ParsedMessage = ParsedMessage;
 
-},{"apg-js":130}],235:[function(require,module,exports){
+},{"apg-js/src/apg-api/api":132,"apg-js/src/apg-lib/node-exports":150}],209:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -47276,8 +61159,11 @@ var ErrorTypes;
     /**Thrown when some required field is missing. */
     ErrorTypes["MALFORMED_SESSION"] = "Malformed session.";
 })(ErrorTypes = exports.ErrorTypes || (exports.ErrorTypes = {}));
-/**
+/**@deprecated
  * Possible signature types that this library supports.
+ *
+ * This enum will be removed in future releases. And signature type will be
+ * inferred from version.
  */
 var SignatureType;
 (function (SignatureType) {
@@ -47336,7 +61222,7 @@ class SiweMessage {
         if (!this.nonce) {
             this.nonce = (0, exports.generateNonce)();
         }
-        const chainField = `Chain ID: ` + this.chainId || "1";
+        const chainField = `Chain ID: ` + this.chainId || '1';
         const nonceField = `Nonce: ${this.nonce}`;
         const suffixArray = [uriField, versionField, chainField, nonceField];
         if (this.issuedAt) {
@@ -47365,16 +61251,30 @@ class SiweMessage {
         }
         return [prefix, suffix].join('\n\n');
     }
-    /**
+    /** @deprecated
+     * signMessage method is deprecated, use prepareMessage instead.
+     *
      * This method parses all the fields in the object and creates a sign
      * message according with the type defined.
      * @returns {string} Returns a message ready to be signed according with the
      * type defined in the object.
      */
     signMessage() {
+        console &&
+            console.warn &&
+            console.warn('signMessage method is deprecated, use prepareMessage instead.');
+        return this.prepareMessage();
+    }
+    /**
+     * This method parses all the fields in the object and creates a sign
+     * message according with the type defined.
+     * @returns {string} Returns a message ready to be signed according with the
+     * type defined in the object.
+     */
+    prepareMessage() {
         let message;
-        switch (this.type) {
-            case SignatureType.PERSONAL_SIGNATURE: {
+        switch (this.version) {
+            case '1': {
                 message = this.toMessage();
                 break;
             }
@@ -47393,16 +61293,16 @@ class SiweMessage {
      * needed.
      * @returns {Promise<SiweMessage>} This object if valid.
      */
-    validate(provider) {
+    validate(signature = this.signature, provider) {
         return __awaiter(this, void 0, void 0, function* () {
             return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
-                const message = this.signMessage();
+                const message = this.prepareMessage();
                 try {
                     let missing = [];
                     if (!message) {
                         missing.push('`message`');
                     }
-                    if (!this.signature) {
+                    if (!signature) {
                         missing.push('`signature`');
                     }
                     if (!this.address) {
@@ -47411,8 +61311,8 @@ class SiweMessage {
                     if (missing.length > 0) {
                         throw new Error(`${ErrorTypes.MALFORMED_SESSION} missing: ${missing.join(', ')}.`);
                     }
-                    const addr = ethers_1.ethers.utils.verifyMessage(message, this.signature);
-                    if (addr.toLowerCase() !== this.address.toLowerCase()) {
+                    const addr = ethers_1.ethers.utils.verifyMessage(message, signature);
+                    if (addr !== this.address) {
                         try {
                             //EIP-1271
                             const isValidSignature = yield (0, exports.checkContractWalletSignature)(this, provider);
@@ -47425,10 +61325,14 @@ class SiweMessage {
                         }
                     }
                     const parsedMessage = new SiweMessage(message);
-                    if (parsedMessage.expirationTime &&
-                        new Date().getTime() >=
-                            new Date(parsedMessage.expirationTime).getTime()) {
-                        throw new Error(ErrorTypes.EXPIRED_MESSAGE);
+                    if (parsedMessage.expirationTime) {
+                        const exp = new Date(parsedMessage.expirationTime).getTime();
+                        if (isNaN(exp)) {
+                            throw new Error(`${ErrorTypes.MALFORMED_SESSION} invalid expiration date.`);
+                        }
+                        if (new Date().getTime() >= exp) {
+                            throw new Error(ErrorTypes.EXPIRED_MESSAGE);
+                        }
                     }
                     resolve(parsedMessage);
                 }
@@ -47480,25 +61384,25 @@ const generateNonce = () => {
 };
 exports.generateNonce = generateNonce;
 
-},{"./abnf":234,"./regex":236,"@stablelib/random":123,"ethers":199}],236:[function(require,module,exports){
+},{"./abnf":208,"./regex":210,"@stablelib/random":123,"ethers":181}],210:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ParsedMessage = void 0;
-const DOMAIN = '^(?<domain>([^?#]*)) wants you to sign in with your Ethereum account:\\n';
-const ADDRESS = '(?<address>0x[a-zA-Z0-9]{40})\\n\\n';
-const STATEMENT = '((?<statement>[^\\n]+)\\n)?\\n';
+const DOMAIN = '(?<domain>([^?#]*)) wants you to sign in with your Ethereum account:';
+const ADDRESS = '\\n(?<address>0x[a-zA-Z0-9]{40})\\n\\n';
+const STATEMENT = '((?<statement>[^\\n]+)\\n)?';
 const URI = '(([^:?#]+):)?(([^?#]*))?([^?#]*)(\\?([^#]*))?(#(.*))';
-const URI_LINE = `URI: (?<uri>${URI}?)\\n`;
-const VERSION = 'Version: (?<version>1)\\n';
-const CHAIN_ID = 'Chain ID: (?<chainId>[0-9]+)\\n';
-const NONCE = 'Nonce: (?<nonce>[a-zA-Z0-9]{8,})\\n';
+const URI_LINE = `\\nURI: (?<uri>${URI}?)`;
+const VERSION = '\\nVersion: (?<version>1)';
+const CHAIN_ID = '\\nChain ID: (?<chainId>[0-9]+)';
+const NONCE = '\\nNonce: (?<nonce>[a-zA-Z0-9]{8,})';
 const DATETIME = `([0-9]+)-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])[Tt]([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9]|60)(\.[0-9]+)?(([Zz])|([\+|\-]([01][0-9]|2[0-3]):[0-5][0-9]))`;
-const ISSUED_AT = `Issued At: (?<issuedAt>${DATETIME})`;
+const ISSUED_AT = `\\nIssued At: (?<issuedAt>${DATETIME})`;
 const EXPIRATION_TIME = `(\\nExpiration Time: (?<expirationTime>${DATETIME}))?`;
 const NOT_BEFORE = `(\\nNot Before: (?<notBefore>${DATETIME}))?`;
 const REQUEST_ID = "(\\nRequest ID: (?<requestId>[-._~!$&'()*+,;=:@%a-zA-Z0-9]*))?";
-const RESOURCES = `(\\nResources:(?<resources>(\\n- ${URI}?)+))?$`;
-const MESSAGE = `${DOMAIN}${ADDRESS}${STATEMENT}${URI_LINE}${VERSION}${CHAIN_ID}${NONCE}${ISSUED_AT}${EXPIRATION_TIME}${NOT_BEFORE}${REQUEST_ID}${RESOURCES}`;
+const RESOURCES = `(\\nResources:(?<resources>(\\n- ${URI}?)+))?`;
+const MESSAGE = `^${DOMAIN}${ADDRESS}${STATEMENT}${URI_LINE}${VERSION}${CHAIN_ID}${NONCE}${ISSUED_AT}${EXPIRATION_TIME}${NOT_BEFORE}${REQUEST_ID}${RESOURCES}$`;
 class ParsedMessage {
     constructor(msg) {
         var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o;
@@ -47524,7 +61428,7 @@ class ParsedMessage {
 }
 exports.ParsedMessage = ParsedMessage;
 
-},{}],237:[function(require,module,exports){
+},{}],211:[function(require,module,exports){
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -47539,7 +61443,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./client"), exports);
 
-},{"./client":235}],238:[function(require,module,exports){
+},{"./client":209}],212:[function(require,module,exports){
 (function (setImmediate,clearImmediate){(function (){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -47618,1128 +61522,7 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
   delete immediateIds[id];
 };
 }).call(this)}).call(this,require("timers").setImmediate,require("timers").clearImmediate)
-},{"process/browser.js":232,"timers":238}],239:[function(require,module,exports){
-module.exports = function isBuffer(arg) {
-  return arg && typeof arg === 'object'
-    && typeof arg.copy === 'function'
-    && typeof arg.fill === 'function'
-    && typeof arg.readUInt8 === 'function';
-}
-},{}],240:[function(require,module,exports){
-// Currently in sync with Node.js lib/internal/util/types.js
-// https://github.com/nodejs/node/commit/112cc7c27551254aa2b17098fb774867f05ed0d9
-
-'use strict';
-
-var isArgumentsObject = require('is-arguments');
-var isGeneratorFunction = require('is-generator-function');
-var whichTypedArray = require('which-typed-array');
-var isTypedArray = require('is-typed-array');
-
-function uncurryThis(f) {
-  return f.call.bind(f);
-}
-
-var BigIntSupported = typeof BigInt !== 'undefined';
-var SymbolSupported = typeof Symbol !== 'undefined';
-
-var ObjectToString = uncurryThis(Object.prototype.toString);
-
-var numberValue = uncurryThis(Number.prototype.valueOf);
-var stringValue = uncurryThis(String.prototype.valueOf);
-var booleanValue = uncurryThis(Boolean.prototype.valueOf);
-
-if (BigIntSupported) {
-  var bigIntValue = uncurryThis(BigInt.prototype.valueOf);
-}
-
-if (SymbolSupported) {
-  var symbolValue = uncurryThis(Symbol.prototype.valueOf);
-}
-
-function checkBoxedPrimitive(value, prototypeValueOf) {
-  if (typeof value !== 'object') {
-    return false;
-  }
-  try {
-    prototypeValueOf(value);
-    return true;
-  } catch(e) {
-    return false;
-  }
-}
-
-exports.isArgumentsObject = isArgumentsObject;
-exports.isGeneratorFunction = isGeneratorFunction;
-exports.isTypedArray = isTypedArray;
-
-// Taken from here and modified for better browser support
-// https://github.com/sindresorhus/p-is-promise/blob/cda35a513bda03f977ad5cde3a079d237e82d7ef/index.js
-function isPromise(input) {
-	return (
-		(
-			typeof Promise !== 'undefined' &&
-			input instanceof Promise
-		) ||
-		(
-			input !== null &&
-			typeof input === 'object' &&
-			typeof input.then === 'function' &&
-			typeof input.catch === 'function'
-		)
-	);
-}
-exports.isPromise = isPromise;
-
-function isArrayBufferView(value) {
-  if (typeof ArrayBuffer !== 'undefined' && ArrayBuffer.isView) {
-    return ArrayBuffer.isView(value);
-  }
-
-  return (
-    isTypedArray(value) ||
-    isDataView(value)
-  );
-}
-exports.isArrayBufferView = isArrayBufferView;
-
-
-function isUint8Array(value) {
-  return whichTypedArray(value) === 'Uint8Array';
-}
-exports.isUint8Array = isUint8Array;
-
-function isUint8ClampedArray(value) {
-  return whichTypedArray(value) === 'Uint8ClampedArray';
-}
-exports.isUint8ClampedArray = isUint8ClampedArray;
-
-function isUint16Array(value) {
-  return whichTypedArray(value) === 'Uint16Array';
-}
-exports.isUint16Array = isUint16Array;
-
-function isUint32Array(value) {
-  return whichTypedArray(value) === 'Uint32Array';
-}
-exports.isUint32Array = isUint32Array;
-
-function isInt8Array(value) {
-  return whichTypedArray(value) === 'Int8Array';
-}
-exports.isInt8Array = isInt8Array;
-
-function isInt16Array(value) {
-  return whichTypedArray(value) === 'Int16Array';
-}
-exports.isInt16Array = isInt16Array;
-
-function isInt32Array(value) {
-  return whichTypedArray(value) === 'Int32Array';
-}
-exports.isInt32Array = isInt32Array;
-
-function isFloat32Array(value) {
-  return whichTypedArray(value) === 'Float32Array';
-}
-exports.isFloat32Array = isFloat32Array;
-
-function isFloat64Array(value) {
-  return whichTypedArray(value) === 'Float64Array';
-}
-exports.isFloat64Array = isFloat64Array;
-
-function isBigInt64Array(value) {
-  return whichTypedArray(value) === 'BigInt64Array';
-}
-exports.isBigInt64Array = isBigInt64Array;
-
-function isBigUint64Array(value) {
-  return whichTypedArray(value) === 'BigUint64Array';
-}
-exports.isBigUint64Array = isBigUint64Array;
-
-function isMapToString(value) {
-  return ObjectToString(value) === '[object Map]';
-}
-isMapToString.working = (
-  typeof Map !== 'undefined' &&
-  isMapToString(new Map())
-);
-
-function isMap(value) {
-  if (typeof Map === 'undefined') {
-    return false;
-  }
-
-  return isMapToString.working
-    ? isMapToString(value)
-    : value instanceof Map;
-}
-exports.isMap = isMap;
-
-function isSetToString(value) {
-  return ObjectToString(value) === '[object Set]';
-}
-isSetToString.working = (
-  typeof Set !== 'undefined' &&
-  isSetToString(new Set())
-);
-function isSet(value) {
-  if (typeof Set === 'undefined') {
-    return false;
-  }
-
-  return isSetToString.working
-    ? isSetToString(value)
-    : value instanceof Set;
-}
-exports.isSet = isSet;
-
-function isWeakMapToString(value) {
-  return ObjectToString(value) === '[object WeakMap]';
-}
-isWeakMapToString.working = (
-  typeof WeakMap !== 'undefined' &&
-  isWeakMapToString(new WeakMap())
-);
-function isWeakMap(value) {
-  if (typeof WeakMap === 'undefined') {
-    return false;
-  }
-
-  return isWeakMapToString.working
-    ? isWeakMapToString(value)
-    : value instanceof WeakMap;
-}
-exports.isWeakMap = isWeakMap;
-
-function isWeakSetToString(value) {
-  return ObjectToString(value) === '[object WeakSet]';
-}
-isWeakSetToString.working = (
-  typeof WeakSet !== 'undefined' &&
-  isWeakSetToString(new WeakSet())
-);
-function isWeakSet(value) {
-  return isWeakSetToString(value);
-}
-exports.isWeakSet = isWeakSet;
-
-function isArrayBufferToString(value) {
-  return ObjectToString(value) === '[object ArrayBuffer]';
-}
-isArrayBufferToString.working = (
-  typeof ArrayBuffer !== 'undefined' &&
-  isArrayBufferToString(new ArrayBuffer())
-);
-function isArrayBuffer(value) {
-  if (typeof ArrayBuffer === 'undefined') {
-    return false;
-  }
-
-  return isArrayBufferToString.working
-    ? isArrayBufferToString(value)
-    : value instanceof ArrayBuffer;
-}
-exports.isArrayBuffer = isArrayBuffer;
-
-function isDataViewToString(value) {
-  return ObjectToString(value) === '[object DataView]';
-}
-isDataViewToString.working = (
-  typeof ArrayBuffer !== 'undefined' &&
-  typeof DataView !== 'undefined' &&
-  isDataViewToString(new DataView(new ArrayBuffer(1), 0, 1))
-);
-function isDataView(value) {
-  if (typeof DataView === 'undefined') {
-    return false;
-  }
-
-  return isDataViewToString.working
-    ? isDataViewToString(value)
-    : value instanceof DataView;
-}
-exports.isDataView = isDataView;
-
-// Store a copy of SharedArrayBuffer in case it's deleted elsewhere
-var SharedArrayBufferCopy = typeof SharedArrayBuffer !== 'undefined' ? SharedArrayBuffer : undefined;
-function isSharedArrayBufferToString(value) {
-  return ObjectToString(value) === '[object SharedArrayBuffer]';
-}
-function isSharedArrayBuffer(value) {
-  if (typeof SharedArrayBufferCopy === 'undefined') {
-    return false;
-  }
-
-  if (typeof isSharedArrayBufferToString.working === 'undefined') {
-    isSharedArrayBufferToString.working = isSharedArrayBufferToString(new SharedArrayBufferCopy());
-  }
-
-  return isSharedArrayBufferToString.working
-    ? isSharedArrayBufferToString(value)
-    : value instanceof SharedArrayBufferCopy;
-}
-exports.isSharedArrayBuffer = isSharedArrayBuffer;
-
-function isAsyncFunction(value) {
-  return ObjectToString(value) === '[object AsyncFunction]';
-}
-exports.isAsyncFunction = isAsyncFunction;
-
-function isMapIterator(value) {
-  return ObjectToString(value) === '[object Map Iterator]';
-}
-exports.isMapIterator = isMapIterator;
-
-function isSetIterator(value) {
-  return ObjectToString(value) === '[object Set Iterator]';
-}
-exports.isSetIterator = isSetIterator;
-
-function isGeneratorObject(value) {
-  return ObjectToString(value) === '[object Generator]';
-}
-exports.isGeneratorObject = isGeneratorObject;
-
-function isWebAssemblyCompiledModule(value) {
-  return ObjectToString(value) === '[object WebAssembly.Module]';
-}
-exports.isWebAssemblyCompiledModule = isWebAssemblyCompiledModule;
-
-function isNumberObject(value) {
-  return checkBoxedPrimitive(value, numberValue);
-}
-exports.isNumberObject = isNumberObject;
-
-function isStringObject(value) {
-  return checkBoxedPrimitive(value, stringValue);
-}
-exports.isStringObject = isStringObject;
-
-function isBooleanObject(value) {
-  return checkBoxedPrimitive(value, booleanValue);
-}
-exports.isBooleanObject = isBooleanObject;
-
-function isBigIntObject(value) {
-  return BigIntSupported && checkBoxedPrimitive(value, bigIntValue);
-}
-exports.isBigIntObject = isBigIntObject;
-
-function isSymbolObject(value) {
-  return SymbolSupported && checkBoxedPrimitive(value, symbolValue);
-}
-exports.isSymbolObject = isSymbolObject;
-
-function isBoxedPrimitive(value) {
-  return (
-    isNumberObject(value) ||
-    isStringObject(value) ||
-    isBooleanObject(value) ||
-    isBigIntObject(value) ||
-    isSymbolObject(value)
-  );
-}
-exports.isBoxedPrimitive = isBoxedPrimitive;
-
-function isAnyArrayBuffer(value) {
-  return typeof Uint8Array !== 'undefined' && (
-    isArrayBuffer(value) ||
-    isSharedArrayBuffer(value)
-  );
-}
-exports.isAnyArrayBuffer = isAnyArrayBuffer;
-
-['isProxy', 'isExternal', 'isModuleNamespaceObject'].forEach(function(method) {
-  Object.defineProperty(exports, method, {
-    enumerable: false,
-    value: function() {
-      throw new Error(method + ' is not supported in userland');
-    }
-  });
-});
-
-},{"is-arguments":224,"is-generator-function":226,"is-typed-array":227,"which-typed-array":242}],241:[function(require,module,exports){
-(function (process){(function (){
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-var getOwnPropertyDescriptors = Object.getOwnPropertyDescriptors ||
-  function getOwnPropertyDescriptors(obj) {
-    var keys = Object.keys(obj);
-    var descriptors = {};
-    for (var i = 0; i < keys.length; i++) {
-      descriptors[keys[i]] = Object.getOwnPropertyDescriptor(obj, keys[i]);
-    }
-    return descriptors;
-  };
-
-var formatRegExp = /%[sdj%]/g;
-exports.format = function(f) {
-  if (!isString(f)) {
-    var objects = [];
-    for (var i = 0; i < arguments.length; i++) {
-      objects.push(inspect(arguments[i]));
-    }
-    return objects.join(' ');
-  }
-
-  var i = 1;
-  var args = arguments;
-  var len = args.length;
-  var str = String(f).replace(formatRegExp, function(x) {
-    if (x === '%%') return '%';
-    if (i >= len) return x;
-    switch (x) {
-      case '%s': return String(args[i++]);
-      case '%d': return Number(args[i++]);
-      case '%j':
-        try {
-          return JSON.stringify(args[i++]);
-        } catch (_) {
-          return '[Circular]';
-        }
-      default:
-        return x;
-    }
-  });
-  for (var x = args[i]; i < len; x = args[++i]) {
-    if (isNull(x) || !isObject(x)) {
-      str += ' ' + x;
-    } else {
-      str += ' ' + inspect(x);
-    }
-  }
-  return str;
-};
-
-
-// Mark that a method should not be used.
-// Returns a modified function which warns once by default.
-// If --no-deprecation is set, then it is a no-op.
-exports.deprecate = function(fn, msg) {
-  if (typeof process !== 'undefined' && process.noDeprecation === true) {
-    return fn;
-  }
-
-  // Allow for deprecating things in the process of starting up.
-  if (typeof process === 'undefined') {
-    return function() {
-      return exports.deprecate(fn, msg).apply(this, arguments);
-    };
-  }
-
-  var warned = false;
-  function deprecated() {
-    if (!warned) {
-      if (process.throwDeprecation) {
-        throw new Error(msg);
-      } else if (process.traceDeprecation) {
-        console.trace(msg);
-      } else {
-        console.error(msg);
-      }
-      warned = true;
-    }
-    return fn.apply(this, arguments);
-  }
-
-  return deprecated;
-};
-
-
-var debugs = {};
-var debugEnvRegex = /^$/;
-
-if (process.env.NODE_DEBUG) {
-  var debugEnv = process.env.NODE_DEBUG;
-  debugEnv = debugEnv.replace(/[|\\{}()[\]^$+?.]/g, '\\$&')
-    .replace(/\*/g, '.*')
-    .replace(/,/g, '$|^')
-    .toUpperCase();
-  debugEnvRegex = new RegExp('^' + debugEnv + '$', 'i');
-}
-exports.debuglog = function(set) {
-  set = set.toUpperCase();
-  if (!debugs[set]) {
-    if (debugEnvRegex.test(set)) {
-      var pid = process.pid;
-      debugs[set] = function() {
-        var msg = exports.format.apply(exports, arguments);
-        console.error('%s %d: %s', set, pid, msg);
-      };
-    } else {
-      debugs[set] = function() {};
-    }
-  }
-  return debugs[set];
-};
-
-
-/**
- * Echos the value of a value. Trys to print the value out
- * in the best way possible given the different types.
- *
- * @param {Object} obj The object to print out.
- * @param {Object} opts Optional options object that alters the output.
- */
-/* legacy: obj, showHidden, depth, colors*/
-function inspect(obj, opts) {
-  // default options
-  var ctx = {
-    seen: [],
-    stylize: stylizeNoColor
-  };
-  // legacy...
-  if (arguments.length >= 3) ctx.depth = arguments[2];
-  if (arguments.length >= 4) ctx.colors = arguments[3];
-  if (isBoolean(opts)) {
-    // legacy...
-    ctx.showHidden = opts;
-  } else if (opts) {
-    // got an "options" object
-    exports._extend(ctx, opts);
-  }
-  // set default options
-  if (isUndefined(ctx.showHidden)) ctx.showHidden = false;
-  if (isUndefined(ctx.depth)) ctx.depth = 2;
-  if (isUndefined(ctx.colors)) ctx.colors = false;
-  if (isUndefined(ctx.customInspect)) ctx.customInspect = true;
-  if (ctx.colors) ctx.stylize = stylizeWithColor;
-  return formatValue(ctx, obj, ctx.depth);
-}
-exports.inspect = inspect;
-
-
-// http://en.wikipedia.org/wiki/ANSI_escape_code#graphics
-inspect.colors = {
-  'bold' : [1, 22],
-  'italic' : [3, 23],
-  'underline' : [4, 24],
-  'inverse' : [7, 27],
-  'white' : [37, 39],
-  'grey' : [90, 39],
-  'black' : [30, 39],
-  'blue' : [34, 39],
-  'cyan' : [36, 39],
-  'green' : [32, 39],
-  'magenta' : [35, 39],
-  'red' : [31, 39],
-  'yellow' : [33, 39]
-};
-
-// Don't use 'blue' not visible on cmd.exe
-inspect.styles = {
-  'special': 'cyan',
-  'number': 'yellow',
-  'boolean': 'yellow',
-  'undefined': 'grey',
-  'null': 'bold',
-  'string': 'green',
-  'date': 'magenta',
-  // "name": intentionally not styling
-  'regexp': 'red'
-};
-
-
-function stylizeWithColor(str, styleType) {
-  var style = inspect.styles[styleType];
-
-  if (style) {
-    return '\u001b[' + inspect.colors[style][0] + 'm' + str +
-           '\u001b[' + inspect.colors[style][1] + 'm';
-  } else {
-    return str;
-  }
-}
-
-
-function stylizeNoColor(str, styleType) {
-  return str;
-}
-
-
-function arrayToHash(array) {
-  var hash = {};
-
-  array.forEach(function(val, idx) {
-    hash[val] = true;
-  });
-
-  return hash;
-}
-
-
-function formatValue(ctx, value, recurseTimes) {
-  // Provide a hook for user-specified inspect functions.
-  // Check that value is an object with an inspect function on it
-  if (ctx.customInspect &&
-      value &&
-      isFunction(value.inspect) &&
-      // Filter out the util module, it's inspect function is special
-      value.inspect !== exports.inspect &&
-      // Also filter out any prototype objects using the circular check.
-      !(value.constructor && value.constructor.prototype === value)) {
-    var ret = value.inspect(recurseTimes, ctx);
-    if (!isString(ret)) {
-      ret = formatValue(ctx, ret, recurseTimes);
-    }
-    return ret;
-  }
-
-  // Primitive types cannot have properties
-  var primitive = formatPrimitive(ctx, value);
-  if (primitive) {
-    return primitive;
-  }
-
-  // Look up the keys of the object.
-  var keys = Object.keys(value);
-  var visibleKeys = arrayToHash(keys);
-
-  if (ctx.showHidden) {
-    keys = Object.getOwnPropertyNames(value);
-  }
-
-  // IE doesn't make error fields non-enumerable
-  // http://msdn.microsoft.com/en-us/library/ie/dww52sbt(v=vs.94).aspx
-  if (isError(value)
-      && (keys.indexOf('message') >= 0 || keys.indexOf('description') >= 0)) {
-    return formatError(value);
-  }
-
-  // Some type of object without properties can be shortcutted.
-  if (keys.length === 0) {
-    if (isFunction(value)) {
-      var name = value.name ? ': ' + value.name : '';
-      return ctx.stylize('[Function' + name + ']', 'special');
-    }
-    if (isRegExp(value)) {
-      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
-    }
-    if (isDate(value)) {
-      return ctx.stylize(Date.prototype.toString.call(value), 'date');
-    }
-    if (isError(value)) {
-      return formatError(value);
-    }
-  }
-
-  var base = '', array = false, braces = ['{', '}'];
-
-  // Make Array say that they are Array
-  if (isArray(value)) {
-    array = true;
-    braces = ['[', ']'];
-  }
-
-  // Make functions say that they are functions
-  if (isFunction(value)) {
-    var n = value.name ? ': ' + value.name : '';
-    base = ' [Function' + n + ']';
-  }
-
-  // Make RegExps say that they are RegExps
-  if (isRegExp(value)) {
-    base = ' ' + RegExp.prototype.toString.call(value);
-  }
-
-  // Make dates with properties first say the date
-  if (isDate(value)) {
-    base = ' ' + Date.prototype.toUTCString.call(value);
-  }
-
-  // Make error with message first say the error
-  if (isError(value)) {
-    base = ' ' + formatError(value);
-  }
-
-  if (keys.length === 0 && (!array || value.length == 0)) {
-    return braces[0] + base + braces[1];
-  }
-
-  if (recurseTimes < 0) {
-    if (isRegExp(value)) {
-      return ctx.stylize(RegExp.prototype.toString.call(value), 'regexp');
-    } else {
-      return ctx.stylize('[Object]', 'special');
-    }
-  }
-
-  ctx.seen.push(value);
-
-  var output;
-  if (array) {
-    output = formatArray(ctx, value, recurseTimes, visibleKeys, keys);
-  } else {
-    output = keys.map(function(key) {
-      return formatProperty(ctx, value, recurseTimes, visibleKeys, key, array);
-    });
-  }
-
-  ctx.seen.pop();
-
-  return reduceToSingleString(output, base, braces);
-}
-
-
-function formatPrimitive(ctx, value) {
-  if (isUndefined(value))
-    return ctx.stylize('undefined', 'undefined');
-  if (isString(value)) {
-    var simple = '\'' + JSON.stringify(value).replace(/^"|"$/g, '')
-                                             .replace(/'/g, "\\'")
-                                             .replace(/\\"/g, '"') + '\'';
-    return ctx.stylize(simple, 'string');
-  }
-  if (isNumber(value))
-    return ctx.stylize('' + value, 'number');
-  if (isBoolean(value))
-    return ctx.stylize('' + value, 'boolean');
-  // For some reason typeof null is "object", so special case here.
-  if (isNull(value))
-    return ctx.stylize('null', 'null');
-}
-
-
-function formatError(value) {
-  return '[' + Error.prototype.toString.call(value) + ']';
-}
-
-
-function formatArray(ctx, value, recurseTimes, visibleKeys, keys) {
-  var output = [];
-  for (var i = 0, l = value.length; i < l; ++i) {
-    if (hasOwnProperty(value, String(i))) {
-      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
-          String(i), true));
-    } else {
-      output.push('');
-    }
-  }
-  keys.forEach(function(key) {
-    if (!key.match(/^\d+$/)) {
-      output.push(formatProperty(ctx, value, recurseTimes, visibleKeys,
-          key, true));
-    }
-  });
-  return output;
-}
-
-
-function formatProperty(ctx, value, recurseTimes, visibleKeys, key, array) {
-  var name, str, desc;
-  desc = Object.getOwnPropertyDescriptor(value, key) || { value: value[key] };
-  if (desc.get) {
-    if (desc.set) {
-      str = ctx.stylize('[Getter/Setter]', 'special');
-    } else {
-      str = ctx.stylize('[Getter]', 'special');
-    }
-  } else {
-    if (desc.set) {
-      str = ctx.stylize('[Setter]', 'special');
-    }
-  }
-  if (!hasOwnProperty(visibleKeys, key)) {
-    name = '[' + key + ']';
-  }
-  if (!str) {
-    if (ctx.seen.indexOf(desc.value) < 0) {
-      if (isNull(recurseTimes)) {
-        str = formatValue(ctx, desc.value, null);
-      } else {
-        str = formatValue(ctx, desc.value, recurseTimes - 1);
-      }
-      if (str.indexOf('\n') > -1) {
-        if (array) {
-          str = str.split('\n').map(function(line) {
-            return '  ' + line;
-          }).join('\n').substr(2);
-        } else {
-          str = '\n' + str.split('\n').map(function(line) {
-            return '   ' + line;
-          }).join('\n');
-        }
-      }
-    } else {
-      str = ctx.stylize('[Circular]', 'special');
-    }
-  }
-  if (isUndefined(name)) {
-    if (array && key.match(/^\d+$/)) {
-      return str;
-    }
-    name = JSON.stringify('' + key);
-    if (name.match(/^"([a-zA-Z_][a-zA-Z_0-9]*)"$/)) {
-      name = name.substr(1, name.length - 2);
-      name = ctx.stylize(name, 'name');
-    } else {
-      name = name.replace(/'/g, "\\'")
-                 .replace(/\\"/g, '"')
-                 .replace(/(^"|"$)/g, "'");
-      name = ctx.stylize(name, 'string');
-    }
-  }
-
-  return name + ': ' + str;
-}
-
-
-function reduceToSingleString(output, base, braces) {
-  var numLinesEst = 0;
-  var length = output.reduce(function(prev, cur) {
-    numLinesEst++;
-    if (cur.indexOf('\n') >= 0) numLinesEst++;
-    return prev + cur.replace(/\u001b\[\d\d?m/g, '').length + 1;
-  }, 0);
-
-  if (length > 60) {
-    return braces[0] +
-           (base === '' ? '' : base + '\n ') +
-           ' ' +
-           output.join(',\n  ') +
-           ' ' +
-           braces[1];
-  }
-
-  return braces[0] + base + ' ' + output.join(', ') + ' ' + braces[1];
-}
-
-
-// NOTE: These type checking functions intentionally don't use `instanceof`
-// because it is fragile and can be easily faked with `Object.create()`.
-exports.types = require('./support/types');
-
-function isArray(ar) {
-  return Array.isArray(ar);
-}
-exports.isArray = isArray;
-
-function isBoolean(arg) {
-  return typeof arg === 'boolean';
-}
-exports.isBoolean = isBoolean;
-
-function isNull(arg) {
-  return arg === null;
-}
-exports.isNull = isNull;
-
-function isNullOrUndefined(arg) {
-  return arg == null;
-}
-exports.isNullOrUndefined = isNullOrUndefined;
-
-function isNumber(arg) {
-  return typeof arg === 'number';
-}
-exports.isNumber = isNumber;
-
-function isString(arg) {
-  return typeof arg === 'string';
-}
-exports.isString = isString;
-
-function isSymbol(arg) {
-  return typeof arg === 'symbol';
-}
-exports.isSymbol = isSymbol;
-
-function isUndefined(arg) {
-  return arg === void 0;
-}
-exports.isUndefined = isUndefined;
-
-function isRegExp(re) {
-  return isObject(re) && objectToString(re) === '[object RegExp]';
-}
-exports.isRegExp = isRegExp;
-exports.types.isRegExp = isRegExp;
-
-function isObject(arg) {
-  return typeof arg === 'object' && arg !== null;
-}
-exports.isObject = isObject;
-
-function isDate(d) {
-  return isObject(d) && objectToString(d) === '[object Date]';
-}
-exports.isDate = isDate;
-exports.types.isDate = isDate;
-
-function isError(e) {
-  return isObject(e) &&
-      (objectToString(e) === '[object Error]' || e instanceof Error);
-}
-exports.isError = isError;
-exports.types.isNativeError = isError;
-
-function isFunction(arg) {
-  return typeof arg === 'function';
-}
-exports.isFunction = isFunction;
-
-function isPrimitive(arg) {
-  return arg === null ||
-         typeof arg === 'boolean' ||
-         typeof arg === 'number' ||
-         typeof arg === 'string' ||
-         typeof arg === 'symbol' ||  // ES6 symbol
-         typeof arg === 'undefined';
-}
-exports.isPrimitive = isPrimitive;
-
-exports.isBuffer = require('./support/isBuffer');
-
-function objectToString(o) {
-  return Object.prototype.toString.call(o);
-}
-
-
-function pad(n) {
-  return n < 10 ? '0' + n.toString(10) : n.toString(10);
-}
-
-
-var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep',
-              'Oct', 'Nov', 'Dec'];
-
-// 26 Feb 16:19:34
-function timestamp() {
-  var d = new Date();
-  var time = [pad(d.getHours()),
-              pad(d.getMinutes()),
-              pad(d.getSeconds())].join(':');
-  return [d.getDate(), months[d.getMonth()], time].join(' ');
-}
-
-
-// log is just a thin wrapper to console.log that prepends a timestamp
-exports.log = function() {
-  console.log('%s - %s', timestamp(), exports.format.apply(exports, arguments));
-};
-
-
-/**
- * Inherit the prototype methods from one constructor into another.
- *
- * The Function.prototype.inherits from lang.js rewritten as a standalone
- * function (not on Function.prototype). NOTE: If this file is to be loaded
- * during bootstrapping this function needs to be rewritten using some native
- * functions as prototype setup using normal JavaScript does not work as
- * expected during bootstrapping (see mirror.js in r114903).
- *
- * @param {function} ctor Constructor function which needs to inherit the
- *     prototype.
- * @param {function} superCtor Constructor function to inherit prototype from.
- */
-exports.inherits = require('inherits');
-
-exports._extend = function(origin, add) {
-  // Don't do anything if add isn't an object
-  if (!add || !isObject(add)) return origin;
-
-  var keys = Object.keys(add);
-  var i = keys.length;
-  while (i--) {
-    origin[keys[i]] = add[keys[i]];
-  }
-  return origin;
-};
-
-function hasOwnProperty(obj, prop) {
-  return Object.prototype.hasOwnProperty.call(obj, prop);
-}
-
-var kCustomPromisifiedSymbol = typeof Symbol !== 'undefined' ? Symbol('util.promisify.custom') : undefined;
-
-exports.promisify = function promisify(original) {
-  if (typeof original !== 'function')
-    throw new TypeError('The "original" argument must be of type Function');
-
-  if (kCustomPromisifiedSymbol && original[kCustomPromisifiedSymbol]) {
-    var fn = original[kCustomPromisifiedSymbol];
-    if (typeof fn !== 'function') {
-      throw new TypeError('The "util.promisify.custom" argument must be of type Function');
-    }
-    Object.defineProperty(fn, kCustomPromisifiedSymbol, {
-      value: fn, enumerable: false, writable: false, configurable: true
-    });
-    return fn;
-  }
-
-  function fn() {
-    var promiseResolve, promiseReject;
-    var promise = new Promise(function (resolve, reject) {
-      promiseResolve = resolve;
-      promiseReject = reject;
-    });
-
-    var args = [];
-    for (var i = 0; i < arguments.length; i++) {
-      args.push(arguments[i]);
-    }
-    args.push(function (err, value) {
-      if (err) {
-        promiseReject(err);
-      } else {
-        promiseResolve(value);
-      }
-    });
-
-    try {
-      original.apply(this, args);
-    } catch (err) {
-      promiseReject(err);
-    }
-
-    return promise;
-  }
-
-  Object.setPrototypeOf(fn, Object.getPrototypeOf(original));
-
-  if (kCustomPromisifiedSymbol) Object.defineProperty(fn, kCustomPromisifiedSymbol, {
-    value: fn, enumerable: false, writable: false, configurable: true
-  });
-  return Object.defineProperties(
-    fn,
-    getOwnPropertyDescriptors(original)
-  );
-}
-
-exports.promisify.custom = kCustomPromisifiedSymbol
-
-function callbackifyOnRejected(reason, cb) {
-  // `!reason` guard inspired by bluebird (Ref: https://goo.gl/t5IS6M).
-  // Because `null` is a special error value in callbacks which means "no error
-  // occurred", we error-wrap so the callback consumer can distinguish between
-  // "the promise rejected with null" or "the promise fulfilled with undefined".
-  if (!reason) {
-    var newReason = new Error('Promise was rejected with a falsy value');
-    newReason.reason = reason;
-    reason = newReason;
-  }
-  return cb(reason);
-}
-
-function callbackify(original) {
-  if (typeof original !== 'function') {
-    throw new TypeError('The "original" argument must be of type Function');
-  }
-
-  // We DO NOT return the promise as it gives the user a false sense that
-  // the promise is actually somehow related to the callback's execution
-  // and that the callback throwing will reject the promise.
-  function callbackified() {
-    var args = [];
-    for (var i = 0; i < arguments.length; i++) {
-      args.push(arguments[i]);
-    }
-
-    var maybeCb = args.pop();
-    if (typeof maybeCb !== 'function') {
-      throw new TypeError('The last argument must be of type Function');
-    }
-    var self = this;
-    var cb = function() {
-      return maybeCb.apply(self, arguments);
-    };
-    // In true node style we process the callback on `nextTick` with all the
-    // implications (stack, `uncaughtException`, `async_hooks`)
-    original.apply(this, args)
-      .then(function(ret) { process.nextTick(cb.bind(null, null, ret)) },
-            function(rej) { process.nextTick(callbackifyOnRejected.bind(null, rej, cb)) });
-  }
-
-  Object.setPrototypeOf(callbackified, Object.getPrototypeOf(original));
-  Object.defineProperties(callbackified,
-                          getOwnPropertyDescriptors(original));
-  return callbackified;
-}
-exports.callbackify = callbackify;
-
-}).call(this)}).call(this,require('_process'))
-},{"./support/isBuffer":239,"./support/types":240,"_process":232,"inherits":223}],242:[function(require,module,exports){
-(function (global){(function (){
-'use strict';
-
-var forEach = require('foreach');
-var availableTypedArrays = require('available-typed-arrays');
-var callBound = require('call-bind/callBound');
-
-var $toString = callBound('Object.prototype.toString');
-var hasToStringTag = require('has-tostringtag/shams')();
-
-var g = typeof globalThis === 'undefined' ? global : globalThis;
-var typedArrays = availableTypedArrays();
-
-var $slice = callBound('String.prototype.slice');
-var toStrTags = {};
-var gOPD = require('es-abstract/helpers/getOwnPropertyDescriptor');
-var getPrototypeOf = Object.getPrototypeOf; // require('getprototypeof');
-if (hasToStringTag && gOPD && getPrototypeOf) {
-	forEach(typedArrays, function (typedArray) {
-		if (typeof g[typedArray] === 'function') {
-			var arr = new g[typedArray]();
-			if (Symbol.toStringTag in arr) {
-				var proto = getPrototypeOf(arr);
-				var descriptor = gOPD(proto, Symbol.toStringTag);
-				if (!descriptor) {
-					var superProto = getPrototypeOf(proto);
-					descriptor = gOPD(superProto, Symbol.toStringTag);
-				}
-				toStrTags[typedArray] = descriptor.get;
-			}
-		}
-	});
-}
-
-var tryTypedArrays = function tryAllTypedArrays(value) {
-	var foundName = false;
-	forEach(toStrTags, function (getter, typedArray) {
-		if (!foundName) {
-			try {
-				var name = getter.call(value);
-				if (name === typedArray) {
-					foundName = name;
-				}
-			} catch (e) {}
-		}
-	});
-	return foundName;
-};
-
-var isTypedArray = require('is-typed-array');
-
-module.exports = function whichTypedArray(value) {
-	if (!isTypedArray(value)) { return false; }
-	if (!hasToStringTag || !(Symbol.toStringTag in value)) { return $slice($toString(value), 8, -1); }
-	return tryTypedArrays(value);
-};
-
-}).call(this)}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"available-typed-arrays":169,"call-bind/callBound":177,"es-abstract/helpers/getOwnPropertyDescriptor":196,"foreach":201,"has-tostringtag/shams":207,"is-typed-array":227}],243:[function(require,module,exports){
+},{"process/browser.js":203,"timers":212}],213:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48872,7 +61655,7 @@ function getAaveData(address, computeConfig) {
 }
 exports.default = getAaveData;
 
-},{"ethers":199}],244:[function(require,module,exports){
+},{"ethers":181}],214:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48931,7 +61714,7 @@ function getAge(address, computeConfig) {
 }
 exports.default = getAge;
 
-},{"../utils":286}],245:[function(require,module,exports){
+},{"../utils":256}],215:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -48976,7 +61759,7 @@ function getArcxData(address) {
 }
 exports.default = getArcxData;
 
-},{"../utils":286}],246:[function(require,module,exports){
+},{"../utils":256}],216:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49030,7 +61813,7 @@ function getAsyncartData(address, computeConfig) {
 }
 exports.default = getAsyncartData;
 
-},{"../utils":286}],247:[function(require,module,exports){
+},{"../utils":256}],217:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49073,7 +61856,7 @@ function getBoardroomData(address) {
 }
 exports.default = getBoardroomData;
 
-},{"../utils":286}],248:[function(require,module,exports){
+},{"../utils":256}],218:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49100,7 +61883,7 @@ function checkBrightId(address) {
 }
 exports.default = checkBrightId;
 
-},{"../utils":286}],249:[function(require,module,exports){
+},{"../utils":256}],219:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49142,7 +61925,7 @@ function getCeloData(address) {
 }
 exports.default = getCeloData;
 
-},{"../utils":286}],250:[function(require,module,exports){
+},{"../utils":256}],220:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49295,7 +62078,7 @@ function getCoinviseData(address, computeConfig) {
 }
 exports.default = getCoinviseData;
 
-},{"../utils":286}],251:[function(require,module,exports){
+},{"../utils":256}],221:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49319,7 +62102,7 @@ function getContextData(address) {
 }
 exports.default = getContextData;
 
-},{"../utils":286}],252:[function(require,module,exports){
+},{"../utils":256}],222:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49356,7 +62139,7 @@ function getCoordinapeData(address) {
 }
 exports.default = getCoordinapeData;
 
-},{"../utils":286}],253:[function(require,module,exports){
+},{"../utils":256}],223:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49377,7 +62160,7 @@ function getCryptoscamdbData(address) {
 }
 exports.default = getCryptoscamdbData;
 
-},{"../utils":286}],254:[function(require,module,exports){
+},{"../utils":256}],224:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49407,7 +62190,7 @@ function getCyberconnectData(address) {
 }
 exports.default = getCyberconnectData;
 
-},{"../utils":286}],255:[function(require,module,exports){
+},{"../utils":256}],225:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49433,7 +62216,7 @@ function getDapplistData(address) {
 }
 exports.default = getDapplistData;
 
-},{"../utils":286}],256:[function(require,module,exports){
+},{"../utils":256}],226:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49468,7 +62251,7 @@ function getDeepDaoData(address, computeConfig) {
 }
 exports.default = getDeepDaoData;
 
-},{"../utils":286}],257:[function(require,module,exports){
+},{"../utils":256}],227:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49507,7 +62290,7 @@ function addressToEns(address) {
 }
 exports.default = addressToEns;
 
-},{"../utils":286}],258:[function(require,module,exports){
+},{"../utils":256}],228:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49533,7 +62316,7 @@ function getEtherscanData(address, computeConfig) {
 }
 exports.default = getEtherscanData;
 
-},{"../utils":286}],259:[function(require,module,exports){
+},{"../utils":256}],229:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49595,7 +62378,7 @@ function getFortaData(address) {
 }
 exports.default = getFortaData;
 
-},{"../utils":286}],260:[function(require,module,exports){
+},{"../utils":256}],230:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49813,7 +62596,7 @@ function getFoundationData(address, computeConfig) {
 }
 exports.default = getFoundationData;
 
-},{"../utils":286}],261:[function(require,module,exports){
+},{"../utils":256}],231:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49854,7 +62637,7 @@ function getGitcoinData(address, computeConfig) {
 }
 exports.getGitcoinData = getGitcoinData;
 
-},{"../utils":286,"ethers/lib/utils":200}],262:[function(require,module,exports){
+},{"../utils":256,"ethers/lib/utils":182}],232:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49895,7 +62678,7 @@ function getHiveOneData(address, computeConfig) {
 }
 exports.default = getHiveOneData;
 
-},{"../utils":286}],263:[function(require,module,exports){
+},{"../utils":256}],233:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -49927,7 +62710,7 @@ function checkIdena(address) {
 }
 exports.default = checkIdena;
 
-},{"../utils":286}],264:[function(require,module,exports){
+},{"../utils":256}],234:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -50009,7 +62792,7 @@ Object.defineProperty(exports, "resolveUnstoppableDomains", { enumerable: true, 
 var zora_1 = require("./zora");
 Object.defineProperty(exports, "getZoraData", { enumerable: true, get: function () { return __importDefault(zora_1).default; } });
 
-},{"./aave":243,"./age":244,"./arcx":245,"./asyncart":246,"./boardroom":247,"./brightid":248,"./celo":249,"./coinvise":250,"./context":251,"./coordinape":252,"./cryptoscamdb":253,"./cyberconnect":254,"./dapplist":255,"./deepdao":256,"./ens":257,"./etherscan":258,"./forta":259,"./foundation":260,"./gitcoin":261,"./hiveone":262,"./idena":263,"./knownorigin":265,"./metagame":266,"./mirror":267,"./poap":268,"./poh":269,"./polygon":270,"./projectgalaxy":271,"./rabbithole":272,"./rarible":273,"./rss3":274,"./showtime":275,"./superrare":276,"./uniswap":277,"./unstoppable":278,"./zora":279}],265:[function(require,module,exports){
+},{"./aave":213,"./age":214,"./arcx":215,"./asyncart":216,"./boardroom":217,"./brightid":218,"./celo":219,"./coinvise":220,"./context":221,"./coordinape":222,"./cryptoscamdb":223,"./cyberconnect":224,"./dapplist":225,"./deepdao":226,"./ens":227,"./etherscan":228,"./forta":229,"./foundation":230,"./gitcoin":231,"./hiveone":232,"./idena":233,"./knownorigin":235,"./metagame":236,"./mirror":237,"./poap":238,"./poh":239,"./polygon":240,"./projectgalaxy":241,"./rabbithole":242,"./rarible":243,"./rss3":244,"./showtime":245,"./superrare":246,"./uniswap":247,"./unstoppable":248,"./zora":249}],235:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50082,7 +62865,7 @@ function getKnownOriginData(address, computeConfig) {
 }
 exports.default = getKnownOriginData;
 
-},{"../utils":286,"ethers/lib/utils":200}],266:[function(require,module,exports){
+},{"../utils":256,"ethers/lib/utils":182}],236:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50126,7 +62909,7 @@ function getMetagameData(address) {
 }
 exports.default = getMetagameData;
 
-},{"../utils":286}],267:[function(require,module,exports){
+},{"../utils":256}],237:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50164,7 +62947,7 @@ function getMirrorData(address = '') {
 }
 exports.default = getMirrorData;
 
-},{"../utils":286}],268:[function(require,module,exports){
+},{"../utils":256}],238:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50185,7 +62968,7 @@ function getPoapData(address) {
 }
 exports.default = getPoapData;
 
-},{"../utils":286}],269:[function(require,module,exports){
+},{"../utils":256}],239:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50215,7 +62998,7 @@ function checkPoH(address) {
 }
 exports.default = checkPoH;
 
-},{"../utils":286}],270:[function(require,module,exports){
+},{"../utils":256}],240:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50250,7 +63033,7 @@ function getPolygonData(address = '') {
 }
 exports.default = getPolygonData;
 
-},{"../utils":286}],271:[function(require,module,exports){
+},{"../utils":256}],241:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50283,7 +63066,7 @@ function getProjectGalaxyData(address) {
 }
 exports.default = getProjectGalaxyData;
 
-},{"../utils":286}],272:[function(require,module,exports){
+},{"../utils":256}],242:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50323,7 +63106,7 @@ function getRabbitholeData(address = '') {
 }
 exports.default = getRabbitholeData;
 
-},{"../utils":286}],273:[function(require,module,exports){
+},{"../utils":256}],243:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50385,7 +63168,7 @@ function getRaribleData(address, computeConfig) {
 }
 exports.default = getRaribleData;
 
-},{"../utils":286}],274:[function(require,module,exports){
+},{"../utils":256}],244:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50411,7 +63194,7 @@ function getRss3Data(address) {
 }
 exports.default = getRss3Data;
 
-},{"../utils":286}],275:[function(require,module,exports){
+},{"../utils":256}],245:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50435,7 +63218,7 @@ function getShowtimeData(address, computeConfig) {
 }
 exports.default = getShowtimeData;
 
-},{"../utils":286}],276:[function(require,module,exports){
+},{"../utils":256}],246:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50518,7 +63301,7 @@ function getSuperrareData(address) {
 }
 exports.default = getSuperrareData;
 
-},{"../utils":286}],277:[function(require,module,exports){
+},{"../utils":256}],247:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50557,7 +63340,7 @@ function getSybilData(address, computeConfig) {
 }
 exports.getSybilData = getSybilData;
 
-},{"../utils":286,"ethers/lib/utils":200}],278:[function(require,module,exports){
+},{"../utils":256,"ethers/lib/utils":182}],248:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50609,7 +63392,7 @@ function resolveUnstoppableDomains(address) {
 }
 exports.default = resolveUnstoppableDomains;
 
-},{"../utils":286}],279:[function(require,module,exports){
+},{"../utils":256}],249:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50660,7 +63443,7 @@ function getZoraData(address, computeConfig) {
 }
 exports.default = getZoraData;
 
-},{"../utils":286,"ethers/lib/utils":200}],280:[function(require,module,exports){
+},{"../utils":256,"ethers/lib/utils":182}],250:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50750,13 +63533,12 @@ class Auth {
             uri: uri,
             version: '1',
             statement: 'I allow this site to access my data on The Convo Space.',
-            type: siwe_1.SignatureType.PERSONAL_SIGNATURE,
             nonce: (0, siwe_1.generateNonce)(),
             issuedAt: now.toISOString(),
             expirationTime: tom.toISOString(),
             resources: resources,
         });
-        return message.signMessage();
+        return message.prepareMessage();
     }
     parseSignatureV2(message) {
         return new siwe_1.SiweMessage(message);
@@ -50764,7 +63546,7 @@ class Auth {
 }
 exports.default = Auth;
 
-},{"./utils":286,"siwe":237}],281:[function(require,module,exports){
+},{"./utils":256,"siwe":211}],251:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50791,13 +63573,10 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.18',
+                currentVersion: '0.3.20',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
-        });
-        this.getWebsocketToken = () => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('GET', `${this.node}/getAblyAuth`, this.apikey, {});
         });
         this.ping = () => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('GET', `${this.node}/ping`, this.apikey, {});
@@ -50812,7 +63591,7 @@ class ConvoBase {
 }
 exports.default = ConvoBase;
 
-},{"./utils":286,"cross-fetch":179}],282:[function(require,module,exports){
+},{"./utils":256,"cross-fetch":162}],252:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -50881,7 +63660,7 @@ class Comments {
 }
 exports.default = Comments;
 
-},{"./utils":286}],283:[function(require,module,exports){
+},{"./utils":256}],253:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -50905,7 +63684,7 @@ class Convo extends base_1.default {
 }
 exports.Convo = Convo;
 
-},{"./auth":280,"./base":281,"./comments":282,"./omnid":284,"./threads":285}],284:[function(require,module,exports){
+},{"./auth":250,"./base":251,"./comments":252,"./omnid":254,"./threads":255}],254:[function(require,module,exports){
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -51145,7 +63924,7 @@ class Omnid {
 _Omnid_timeit = new WeakMap(), _Omnid_timeitWithConfig = new WeakMap(), _Omnid_disabledPromise = new WeakMap();
 exports.default = Omnid;
 
-},{"./adaptors":264,"./utils":286,"ethers/lib/utils":200}],285:[function(require,module,exports){
+},{"./adaptors":234,"./utils":256,"ethers/lib/utils":182}],255:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -51156,8 +63935,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("./utils");
+const promises_1 = __importDefault(require("ably/promises"));
+const react_1 = require("react");
 class Threads {
     constructor(apikey, node) {
         this.create = (signerAddress, token, title, description, url, isReadPublic, isWritePublic, members, moderators, keywords, metadata = {}, threadId = false) => __awaiter(this, void 0, void 0, function* () {
@@ -51274,14 +64058,35 @@ class Threads {
                 threadId,
             });
         });
+        this.subscribe = (threadId, callbackOnMessage) => {
+            const channel = this.ably.channels.get(threadId);
+            const onMount = () => {
+                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
+                void channel.subscribe(callbackOnMessage);
+            };
+            const onUnmount = () => {
+                channel.unsubscribe();
+            };
+            const useEffectHook = () => {
+                onMount();
+                return () => {
+                    onUnmount();
+                };
+            };
+            (0, react_1.useEffect)(useEffectHook);
+            return [channel, this.ably];
+        };
         this.apikey = apikey;
         this.node = node;
+        this.ably = new promises_1.default.Realtime.Promise({
+            authUrl: `https://theconvo.space/api/getAblyAuth?apikey=${apikey}`,
+        });
         return this;
     }
 }
 exports.default = Threads;
 
-},{"./utils":286}],286:[function(require,module,exports){
+},{"./utils":256,"ably/promises":129,"react":206}],256:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -51393,5 +64198,5 @@ function gqlFetcher(url, query, variables = {}) {
 }
 exports.gqlFetcher = gqlFetcher;
 
-},{"abort-controller":128,"cross-fetch":179}]},{},[283])(283)
+},{"abort-controller":130,"cross-fetch":162}]},{},[253])(253)
 });

@@ -27,14 +27,10 @@ class ConvoBase {
     return {
       node: this.node,
       apikey: this.apikey,
-      currentVersion: '0.3.19',
+      currentVersion: '0.3.20',
       latestVersion: versionInfo['version'],
       pingResult: pingResult,
     };
-  };
-
-  getWebsocketToken = async (): Promise<any | ErrorType> => {
-    return await fetcher('GET', `${this.node}/getAblyAuth`, this.apikey, {});
   };
 
   ping = async (): Promise<any | ErrorType> => {
