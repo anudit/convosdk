@@ -17,7 +17,6 @@ const config = {
     avalancheMainnetRpc: "https://api.avax.network/ext/bc/C/rpc",
     maticPriceInUsd: 1.2,
     etherumPriceInUsd: 3000,
-    deepdaoApiKey: DEEPDAO_API_KEY,
     etherscanApiKey: ETHERSCAN_API_KEY,
     polygonscanApiKey: POLYGONSCAN_API_KEY,
     CNVSEC_ID: CNVSEC_ID,
@@ -158,7 +157,7 @@ async function runBenchmarkManual() {
         const address = addresssTable[index];
         let time = await timeit(
             convoInstance.omnid.computeTrustScore, // update function here
-            [address, config, ['coordinape', 'arcx', 'superrare']],
+            [address, config, ['coordinape', 'arcx', 'superrare', 'asyncart']],
         );
         times.push(time);
     }
@@ -180,7 +179,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getAge, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false },
-        { fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true },
+        // { fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getBoardroomData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getCeloData, withConfig: false },
@@ -215,10 +214,12 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true },
     ])
 
-    runBenchmarkManual();
+    await runBenchmarkManual();
 
 }
 
-tests();
+tests().then(() => {
+    process.exit(0);
+});
 
 // runBenchmarkManual();

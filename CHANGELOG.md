@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.21
+- Update DeepDAO Adaptor.
+- Update Dependencies.
+
 ## 0.3.20
 - [WIP] Add `convo.threads.subscribe` React hook for Websocket updates.
 - Remove `convo.getWebsocketToken`.

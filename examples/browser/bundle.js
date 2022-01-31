@@ -8302,7 +8302,7 @@ exports.Description = Description;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "providers/5.5.2";
+exports.version = "providers/5.5.3";
 
 },{}],63:[function(require,module,exports){
 "use strict";
@@ -8699,7 +8699,16 @@ function _parseBytes(result) {
 }
 // Trim off the ipfs:// prefix and return the default gateway URL
 function getIpfsLink(link) {
-    return "https://gateway.ipfs.io/ipfs/" + link.substring(7);
+    if (link.match(/^ipfs:\/\/ipfs\//i)) {
+        link = link.substring(12);
+    }
+    else if (link.match(/^ipfs:\/\//i)) {
+        link = link.substring(7);
+    }
+    else {
+        logger.throwArgumentError("unsupported IPFS format", "link", link);
+    }
+    return "https://gateway.ipfs.io/ipfs/" + link;
 }
 var Resolver = /** @class */ (function () {
     // The resolvedAddress is only for creating a ReverseLookup resolver
@@ -8938,12 +8947,17 @@ var Resolver = /** @class */ (function () {
                         if (metadataUrl == null) {
                             return [2 /*return*/, null];
                         }
-                        linkage.push({ type: "metadata-url", content: metadataUrl });
+                        linkage.push({ type: "metadata-url-base", content: metadataUrl });
                         // ERC-1155 allows a generic {id} in the URL
                         if (scheme === "erc1155") {
                             metadataUrl = metadataUrl.replace("{id}", tokenId.substring(2));
                             linkage.push({ type: "metadata-url-expanded", content: metadataUrl });
                         }
+                        // Transform IPFS metadata links
+                        if (metadataUrl.match(/^ipfs:/i)) {
+                            metadataUrl = getIpfsLink(metadataUrl);
+                        }
+                        linkage.push({ type: "metadata-url", content: metadataUrl });
                         return [4 /*yield*/, (0, web_1.fetchJson)(metadataUrl)];
                     case 16:
                         metadata = _h.sent();
@@ -55229,7 +55243,7 @@ module.exports={
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "ethers/5.5.3";
+exports.version = "ethers/5.5.4";
 
 },{}],180:[function(require,module,exports){
 "use strict";
@@ -62229,23 +62243,17 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
-function getDeepDaoData(address, computeConfig) {
+function getDeepDaoData(address) {
     return __awaiter(this, void 0, void 0, function* () {
-        if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.deepdaoApiKey) === false) {
-            throw new Error('computeConfig: computeConfig does not contain deepdaoApiKey');
-        }
-        const json = yield (0, utils_1.fetcher)('GET', `https://api.deepdao.io/v0.1/participation-score/address/${address}`, '', {}, {
-            'x-api-key': computeConfig.deepdaoApiKey,
-        });
-        let resp = {
-            score: 0,
-            rank: 0,
-            relativeScore: 0,
-            daos: 0,
-            proposals: 0,
-            votes: 0,
+        const json = (yield (0, utils_1.fetcher)('GET', `https://golden-gate-server.deepdao.io/user/2/${address}`));
+        const resp = {
+            score: (json === null || json === void 0 ? void 0 : json.participationScore) === 'N/A' ? 0 : json.participationScore,
+            daos: json === null || json === void 0 ? void 0 : json.totalDaos,
+            orgs: json === null || json === void 0 ? void 0 : json.totalOrgs,
+            proposals: parseInt(json === null || json === void 0 ? void 0 : json.totalProposals),
+            votes: parseInt(json === null || json === void 0 ? void 0 : json.totalVotes),
+            relativeScore: json === null || json === void 0 ? void 0 : json.relativeScore,
         };
-        resp = Object.assign(Object.assign({}, resp), json['data']);
         return resp;
     });
 }
@@ -62265,6 +62273,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function addressToEns(address) {
+    var _a;
     return __awaiter(this, void 0, void 0, function* () {
         const resp = (yield (0, utils_1.gqlFetcher)('https://api.thegraph.com/subgraphs/name/ensdomains/ens', `
     {
@@ -62273,7 +62282,7 @@ function addressToEns(address) {
         }
     }
     `));
-        if (resp['data']['domains'].length === 0) {
+        if (Boolean(resp.data) === true && ((_a = resp.data) === null || _a === void 0 ? void 0 : _a.domains.length) === 0) {
             return false;
         }
         else {
@@ -63573,7 +63582,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.20',
+                currentVersion: '0.3.21',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -63799,7 +63808,7 @@ class Omnid {
                         : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getDapplistData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('deepdao')
                         ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
-                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getDeepDaoData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getDeepDaoData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('ens')
                         ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
                         : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.addressToEns, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),

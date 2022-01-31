@@ -13,7 +13,7 @@ export default async function addressToEns(address: string) {
     `
   )) as Dictionary<Dictionary<Array<Dictionary<string>>>>;
 
-  if (resp['data']['domains'].length === 0) {
+  if (Boolean(resp.data) === true && resp.data?.domains.length === 0) {
     return false;
   } else {
     let finalDomain: boolean | string = false;

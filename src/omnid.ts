@@ -175,9 +175,9 @@ class Omnid {
             ),
         disabledAdaptors.includes('deepdao')
           ? this.#disabledPromise()
-          : this.#timeitWithConfig(
+          : this.#timeit(
               adaptorList.getDeepDaoData,
-              [address, computeConfig],
+              [address],
               computeConfig?.DEBUG
             ),
         disabledAdaptors.includes('ens')

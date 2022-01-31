@@ -1,37 +1,39 @@
-import { ComputeConfig, Dictionary } from '../types';
 import { fetcher } from '../utils';
 
-export default async function getDeepDaoData(
-  address: string,
-  computeConfig: ComputeConfig
-) {
-  if (Boolean(computeConfig?.deepdaoApiKey) === false) {
-    throw new Error(
-      'computeConfig: computeConfig does not contain deepdaoApiKey'
-    );
-  }
-  const json: Dictionary<Dictionary<any>> = await fetcher(
+interface DeepdaoResp {
+  name: string;
+  description: string;
+  website: string;
+  avatar: string;
+  aum: string;
+  personalInfo: string;
+  totalAum: string;
+  createdAt: string;
+  github: string;
+  twitter: string;
+  totalDaos: number;
+  totalOrgs: number;
+  totalProposals: string;
+  totalVotes: string;
+  proposalsAmount: string;
+  participationScore: number | string;
+  relativeScore: number;
+  daos: Array<any>;
+}
+
+export default async function getDeepDaoData(address: string) {
+  const json = (await fetcher(
     'GET',
-    `https://api.deepdao.io/v0.1/participation-score/address/${address}`,
-    '',
-    {},
-    {
-      'x-api-key': computeConfig.deepdaoApiKey,
-    }
-  );
+    `https://golden-gate-server.deepdao.io/user/2/${address}`
+  )) as DeepdaoResp;
 
-  let resp = {
-    score: 0,
-    rank: 0,
-    relativeScore: 0,
-    daos: 0,
-    proposals: 0,
-    votes: 0,
-  };
-
-  resp = {
-    ...resp,
-    ...json['data'],
+  const resp = {
+    score: json?.participationScore === 'N/A' ? 0 : json.participationScore,
+    daos: json?.totalDaos,
+    orgs: json?.totalOrgs,
+    proposals: parseInt(json?.totalProposals),
+    votes: parseInt(json?.totalVotes),
+    relativeScore: json?.relativeScore,
   };
 
   return resp;
