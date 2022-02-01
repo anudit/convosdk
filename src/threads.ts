@@ -6,14 +6,10 @@ import { useEffect } from 'react';
 class Threads {
   apikey: string;
   node: string;
-  ably;
 
   constructor(apikey: string, node: string) {
     this.apikey = apikey;
     this.node = node;
-    this.ably = new Ably.Realtime.Promise({
-      authUrl: `https://theconvo.space/api/getAblyAuth?apikey=${apikey}`,
-    });
     return this;
   }
 
@@ -248,7 +244,10 @@ class Threads {
   };
 
   subscribe = (threadId: string, callbackOnMessage: any) => {
-    const channel = this.ably.channels.get(threadId);
+    const ably = new Ably.Realtime.Promise({
+      authUrl: `https://theconvo.space/api/getAblyAuth?apikey=${this.apikey}`,
+    });
+    const channel = ably.channels.get(threadId);
 
     const onMount = () => {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
@@ -268,7 +267,7 @@ class Threads {
 
     useEffect(useEffectHook);
 
-    return [channel, this.ably];
+    return [channel, ably];
   };
 }
 

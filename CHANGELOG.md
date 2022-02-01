@@ -1,6 +1,10 @@
 # Changelog
 
 ## 0.3.21
+- Update `convo.threads.subscribe` React hook to initialize Ably only when called instead of when `Convo` is initialized.
+- Update Dependencies.
+
+## 0.3.21
 - Update DeepDAO Adaptor.
 - Update Dependencies.
 

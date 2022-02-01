@@ -63582,7 +63582,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.21',
+                currentVersion: '0.3.22',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -64068,7 +64068,10 @@ class Threads {
             });
         });
         this.subscribe = (threadId, callbackOnMessage) => {
-            const channel = this.ably.channels.get(threadId);
+            const ably = new promises_1.default.Realtime.Promise({
+                authUrl: `https://theconvo.space/api/getAblyAuth?apikey=${this.apikey}`,
+            });
+            const channel = ably.channels.get(threadId);
             const onMount = () => {
                 // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
                 void channel.subscribe(callbackOnMessage);
@@ -64083,13 +64086,10 @@ class Threads {
                 };
             };
             (0, react_1.useEffect)(useEffectHook);
-            return [channel, this.ably];
+            return [channel, ably];
         };
         this.apikey = apikey;
         this.node = node;
-        this.ably = new promises_1.default.Realtime.Promise({
-            authUrl: `https://theconvo.space/api/getAblyAuth?apikey=${apikey}`,
-        });
         return this;
     }
 }
