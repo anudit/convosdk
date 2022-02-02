@@ -31,9 +31,9 @@ export default async function getAsyncartData(
   try {
     const response = (await fetcher(
       'GET',
-      'https://async-2.appspot.com/users/' +
+      'https://async-app.com/users/' +
         address.toLowerCase() +
-        '/arts?rel=artist&type=masters&artType=visual'
+        '/arts?page=1&count=1000&rel=owner&type=masters'
     )) as AsyncResult;
 
     const artworks = response['arts'];

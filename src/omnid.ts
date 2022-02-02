@@ -260,6 +260,13 @@ class Omnid {
         disabledAdaptors.includes('poh')
           ? this.#disabledPromise()
           : this.#timeit(adaptorList.checkPoH, [address], computeConfig?.DEBUG),
+        disabledAdaptors.includes('pop')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getPopData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('polygon')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -362,16 +369,17 @@ class Omnid {
         mirror: resp[23],
         poap: resp[24],
         poh: resp[25],
-        polygon: resp[26],
-        projectgalaxy: resp[27],
-        rabbithole: resp[28],
-        rarible: resp[29],
-        rss3: resp[30],
-        showtime: resp[31],
-        superrare: resp[32],
-        uniswap: resp[33],
-        unstoppable: resp[34],
-        zora: resp[35],
+        pop: resp[26],
+        polygon: resp[27],
+        projectgalaxy: resp[28],
+        rabbithole: resp[29],
+        rarible: resp[30],
+        rss3: resp[31],
+        showtime: resp[32],
+        superrare: resp[33],
+        uniswap: resp[34],
+        unstoppable: resp[35],
+        zora: resp[36],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');

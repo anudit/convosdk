@@ -18,7 +18,7 @@ interface RabbitholeResult {
 export default async function getRabbitholeData(address = '') {
   const jsonData: RabbitholeResult = await fetcher(
     'GET',
-    `https://h8p3c8m7bg.execute-api.us-east-1.amazonaws.com/app/task_progress?address=${address.toLowerCase()}`
+    `https://api.rabbithole.gg/task_progress?address=${address.toLowerCase()}`
   );
 
   if (jsonData.message === 'success') {

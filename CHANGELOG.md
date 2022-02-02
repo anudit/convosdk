@@ -1,6 +1,11 @@
 # Changelog
 
-## 0.3.21
+## 0.3.23
+- Update Rabbithole, AsyncArt Adaptors.
+- Add Proof Of Personhood Adaptor to Omnid.
+- Update Dependencies.
+
+## 0.3.22
 - Update `convo.threads.subscribe` React hook to initialize Ably only when called instead of when `Convo` is initialized.
 - Update Dependencies.
 

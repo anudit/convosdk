@@ -157,7 +157,7 @@ async function runBenchmarkManual() {
         const address = addresssTable[index];
         let time = await timeit(
             convoInstance.omnid.computeTrustScore, // update function here
-            [address, config, ['coordinape', 'arcx', 'superrare', 'asyncart']],
+            [address, config, ['coordinape', 'arcx', 'superrare']],
         );
         times.push(time);
     }
@@ -179,7 +179,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getAge, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false },
-        // { fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true },
+        { fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getBoardroomData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getCeloData, withConfig: false },
@@ -204,6 +204,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getPolygonData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getProjectGalaxyData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.checkPoH, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getPopData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getRabbitholeData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getRaribleData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getRss3Data, withConfig: false },
