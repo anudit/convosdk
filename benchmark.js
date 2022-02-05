@@ -2,7 +2,7 @@ require('dotenv').config({ path: '.env.local' })
 const { createStream } = require('table');
 const { Convo } = require('./lib/cjs/index');
 
-const { DEEPDAO_API_KEY, ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
+const { ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
 
 const colors = {
     danger: "\x1b[31m",
@@ -73,7 +73,7 @@ function max(array) {
 }
 
 function colForTime(time) {
-    return time > 4 ? colors['danger'] : time > 2 ? colors['warn'] : time > 1 ? colors['success'] : colors['reset'];
+    return time > 3 ? colors['danger'] : time > 2 ? colors['warn'] : time > 1 ? colors['success'] : colors['reset'];
 }
 
 async function runTestOn(callback, addConfig) {
@@ -189,6 +189,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getCryptoscamdbData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getCyberconnectData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getDapplistData, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getDebankData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getDeepDaoData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.addressToEns, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getEtherscanData, withConfig: true },

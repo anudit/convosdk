@@ -11,6 +11,7 @@ export { default as getCoordinapeData } from './coordinape';
 export { default as getCryptoscamdbData } from './cryptoscamdb';
 export { default as getCyberconnectData } from './cyberconnect';
 export { default as getDapplistData } from './dapplist';
+export { default as getDebankData } from './debank';
 export { default as getDeepDaoData } from './deepdao';
 export { default as addressToEns } from './ens';
 export { default as getEtherscanData } from './etherscan';

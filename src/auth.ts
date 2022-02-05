@@ -84,7 +84,7 @@ class Auth {
   getSignatureDataV2(
     uri: string,
     signerAddress: string,
-    chainId: string,
+    chainId: number,
     resources: Array<string> = []
   ): string {
     const domains = uri.match(

@@ -503,10 +503,15 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@^17.0.14":
+"@types/node@*":
   version "17.0.14"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.14.tgz#33b9b94f789a8fedd30a68efdbca4dbb06b61f20"
   integrity sha512-SbjLmERksKOGzWzPNuW7fJM7fk3YXVTFiZWB/Hs99gwhk+/dnrQRPBQjPW9aO+fi1tAffi9PrwFvsmOKmDTyng==
+
+"@types/node@^17.0.15":
+  version "17.0.15"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.15.tgz#97779282c09c09577120a2162e71d8380003590a"
+  integrity sha512-zWt4SDDv1S9WRBNxLFxFRHxdD9tvH8f5/kg5/IaLFdnSNXsDY4eL3Q3XXN+VxUnWIhyVFDwcsmAprvwXoM/ClA==
 
 "@types/prettier@^2.1.1":
   version "2.4.3"
@@ -518,10 +523,10 @@
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
   integrity sha512-rZ5drC/jWjrArrS8BR6SIr4cWpW09RNTYt9AMZo3Jwwif+iacXAqgVjm0B0Bv/S1jhDXKHqRVNCbACkJ89RAnQ==
 
-"@types/react@^17.0.38":
-  version "17.0.38"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.38.tgz#f24249fefd89357d5fa71f739a686b8d7c7202bd"
-  integrity sha512-SI92X1IA+FMnP3qM5m4QReluXzhcmovhZnLNm3pyeQlooi02qI7sLiepEYqT678uNiyc25XfCqxREFpy3W7YhQ==
+"@types/react@^17.0.39":
+  version "17.0.39"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.39.tgz#d0f4cde092502a6db00a1cded6e6bf2abb7633ce"
+  integrity sha512-UVavlfAxDd/AgAacMa60Azl7ygyQNRwC/DsHZmKgNvPmRR5p70AJ5Q9EAmL2NWOJmeV+vVUI4IAP7GZrN8h8Ug==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -3182,10 +3187,10 @@ simple-concat@^1.0.0:
   resolved "https://registry.yarnpkg.com/simple-concat/-/simple-concat-1.0.1.tgz#f46976082ba35c2263f1c8ab5edfe26c41c9552f"
   integrity sha512-cSFtAPtRhljv69IK0hTVZQ+OfE9nePi/rtJmw5UjHeVyVroEqJXP1sFztKUy1qU+xvz3u/sfYJLa947b7nAN2Q==
 
-siwe@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/siwe/-/siwe-1.0.0.tgz#efda45b428e3ae63b048e7583b4c4395c971139d"
-  integrity sha512-rAPcXB/gFDunsGDnOI55jsAqEvS369GzKLB6pSVzvMUdrQzdjafllHRc2EnNovNG2zIwVW46kLA2okzJF/UIXw==
+siwe@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/siwe/-/siwe-1.1.0.tgz#46ed70913159a3948ad8f15d1b517f5fefc59c52"
+  integrity sha512-dOv8Y3756kdE5sdXdqvyAJzvIub+e4dGtY7TVdMeu6/PzK+Bu9do2kcXga2zgunZW0eiM2N9Hd0+u0Wd5OLitg==
   dependencies:
     "@stablelib/random" "^1.0.1"
     apg-js "^4.1.1"

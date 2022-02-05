@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.24
+- Add DeBank Adaptor to Omnid.
+- Update Dependencies.
+
 ## 0.3.23
 - Update Rabbithole, AsyncArt Adaptors.
 - Add Proof Of Personhood Adaptor to Omnid.
