@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.25
+- Add Lens Protocol Adaptor to Omnid.
+- Update Dependencies.
+
 ## 0.3.24
 - Add DeBank Adaptor to Omnid.
 - Update Dependencies.

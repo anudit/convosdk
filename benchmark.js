@@ -199,6 +199,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getHiveOneData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.checkIdena, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getKnownOriginData, withConfig: true },
+        { fn: convoInstance.omnid.adaptors.getLensData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getMetagameData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getMirrorData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getPoapData, withConfig: false },

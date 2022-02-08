@@ -246,6 +246,13 @@ class Omnid {
         disabledAdaptors.includes('metagame')
           ? this.#disabledPromise()
           : this.#timeit(
+              adaptorList.getLensData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('metagame')
+          ? this.#disabledPromise()
+          : this.#timeit(
               adaptorList.getMetagameData,
               [address],
               computeConfig?.DEBUG
@@ -373,21 +380,22 @@ class Omnid {
         hiveone: resp[20],
         idena: resp[21],
         knownorigin: resp[22],
-        metagame: resp[23],
-        mirror: resp[24],
-        poap: resp[25],
-        poh: resp[26],
-        pop: resp[27],
-        polygon: resp[28],
-        projectgalaxy: resp[29],
-        rabbithole: resp[30],
-        rarible: resp[31],
-        rss3: resp[32],
-        showtime: resp[33],
-        superrare: resp[34],
-        uniswap: resp[35],
-        unstoppable: resp[36],
-        zora: resp[37],
+        lens: resp[23],
+        metagame: resp[24],
+        mirror: resp[25],
+        poap: resp[26],
+        poh: resp[27],
+        pop: resp[28],
+        polygon: resp[29],
+        projectgalaxy: resp[30],
+        rabbithole: resp[31],
+        rarible: resp[32],
+        rss3: resp[33],
+        showtime: resp[34],
+        superrare: resp[35],
+        uniswap: resp[36],
+        unstoppable: resp[37],
+        zora: resp[38],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');
