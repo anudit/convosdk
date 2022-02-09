@@ -201,6 +201,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getKnownOriginData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getLensData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getMetagameData, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getMewData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getMirrorData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getPoapData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getPolygonData, withConfig: false },
