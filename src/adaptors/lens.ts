@@ -1,15 +1,20 @@
 import { gqlFetcher } from '../utils';
 
+type Profile = Array<{
+  profileId: string;
+  pubCount: string;
+  followModule: string;
+  followNFT: string;
+  handle: string;
+  imageURI: string;
+  followNFTURI: string;
+}>;
+
 interface LensQueryResult {
   data: {
-    profiles: Array<{
-      profileId: string;
-      pubCount: string;
-      followModule: string;
-      followNFT: string;
-      handle: string;
-      imageURI: string;
-      followNFTURI: string;
+    profiles: Profile;
+    socialGraphs: Array<{
+      following: Profile;
     }>;
   };
 }
@@ -26,6 +31,11 @@ export default async function getLensData(address: string) {
           handle
           imageURI
         }
+        socialGraphs(where: {id: "${address.toLowerCase()}"}) {
+          following {
+            handle
+          }
+        }
       }`
     )) as LensQueryResult;
 
@@ -35,6 +45,10 @@ export default async function getLensData(address: string) {
         pubCount: parseInt(response['data']['profiles'][0].pubCount),
         handle: response['data']['profiles'][0].handle,
         imageURI: response['data']['profiles'][0].imageURI,
+        following:
+          response['data']['socialGraphs'].length > 0
+            ? response['data']['socialGraphs'][0].following.length
+            : 0,
       };
     } else {
       return {};

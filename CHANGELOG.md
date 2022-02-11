@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.27
+- Improve Lens Protocol Adaptor.
+- Update Dependencies.
+
 ## 0.3.26
 - Add Mew Darklist Adaptor to Omnid. [https://github.com/MyEtherWallet/ethereum-lists/blob/master/src/addresses/addresses-darklist.json](https://github.com/MyEtherWallet/ethereum-lists/blob/master/src/addresses/addresses-darklist.json)
 

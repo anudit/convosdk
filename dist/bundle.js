@@ -62943,6 +62943,11 @@ function getLensData(address) {
           handle
           imageURI
         }
+        socialGraphs(where: {id: "${address.toLowerCase()}"}) {
+          following {
+            handle
+          }
+        }
       }`));
             if (response['data']['profiles'].length > 0) {
                 return {
@@ -62950,6 +62955,9 @@ function getLensData(address) {
                     pubCount: parseInt(response['data']['profiles'][0].pubCount),
                     handle: response['data']['profiles'][0].handle,
                     imageURI: response['data']['profiles'][0].imageURI,
+                    following: response['data']['socialGraphs'].length > 0
+                        ? response['data']['socialGraphs'][0].following.length
+                        : 0,
                 };
             }
             else {
@@ -63755,7 +63763,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.26',
+                currentVersion: '0.3.27',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
