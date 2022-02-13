@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.28
+- Add Zapper Adaptor to Omnid.
+- Update Dependencies.
+
 ## 0.3.27
 - Improve Lens Protocol Adaptor.
 - Update Dependencies.

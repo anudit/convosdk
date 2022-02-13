@@ -351,6 +351,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('zapper')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getZapperData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('zora')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -403,7 +410,8 @@ class Omnid {
         superrare: resp[36],
         uniswap: resp[37],
         unstoppable: resp[38],
-        zora: resp[39],
+        zapper: resp[39],
+        zora: resp[40],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');

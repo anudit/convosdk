@@ -215,6 +215,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getSuperrareData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getSybilData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getZapperData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true },
     ])
 

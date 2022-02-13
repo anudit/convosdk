@@ -37,4 +37,5 @@ export { default as getShowtimeData } from './showtime';
 export { default as getSuperrareData } from './superrare';
 export { getAllSybilData, getSybilData } from './uniswap';
 export { default as resolveUnstoppableDomains } from './unstoppable';
+export { default as getZapperData } from './zapper';
 export { default as getZoraData } from './zora';

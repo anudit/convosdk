@@ -8,6 +8,8 @@
 
 SDK containing all the functions you'll need to build on [theconvo.space](https://theconvo.space)
 
+Check out the [Changelog](/CHANGELOG.md)
+
 ## Installation
 
 ```bash
