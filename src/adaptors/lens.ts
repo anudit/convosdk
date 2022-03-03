@@ -22,7 +22,7 @@ interface LensQueryResult {
 export default async function getLensData(address: string) {
   try {
     const response = (await gqlFetcher(
-      'https://api.thegraph.com/subgraphs/id/QmcDcCZFv2SSEwsW82CfzLvDwiLEmQj7AnPhY9N7GxZLcR',
+      'https://api.thegraph.com/subgraphs/id/QmcH6BYapdqB6hqJSVFk4neCYCe94VDkraPRTJxEPb5ULH',
       `{
         profiles(where: {id: "${address.toLowerCase()}"}) {
           id

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.29
+- Add Toucan Carbon Offsets Adaptor to Omnid.
+- Add Unipass Adaptor to Omnid.
+- Update Forta Adaptor.
+- Update Lens Protocol Adaptor.
+- Update Dependencies.
+
 ## 0.3.28
 - Add Zapper Adaptor to Omnid.
 - Update Dependencies.

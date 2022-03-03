@@ -35,6 +35,7 @@ export { default as getRaribleData } from './rarible';
 export { default as getRss3Data } from './rss3';
 export { default as getShowtimeData } from './showtime';
 export { default as getSuperrareData } from './superrare';
+export { default as getUnipassData } from './unipass';
 export { getAllSybilData, getSybilData } from './uniswap';
 export { default as resolveUnstoppableDomains } from './unstoppable';
 export { default as getZapperData } from './zapper';

@@ -51,7 +51,7 @@ export default async function getFortaData(address: string) {
         limit: 10000,
         sort: 'desc',
         agents: [],
-        addresses: [address],
+        addresses: [address.toLowerCase()],
         project: '',
       },
     }

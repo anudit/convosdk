@@ -14,7 +14,8 @@ const colors = {
 const config = {
     polygonMainnetRpc: "https://polygon-rpc.com/",
     etherumMainnetRpc: "https://mainnet.infura.io/v3/1e7969225b2f4eefb3ae792aabf1cc17",
-    avalancheMainnetRpc: "https://api.avax.network/ext/bc/C/rpc",
+    // avalancheMainnetRpc: "https://api.avax.network/ext/bc/C/rpc",
+    avalancheMainnetRpc: "https://avalanche--mainnet--rpc.datahub.figment.io/apikey/21681330d5fd73930f5600c7c4f0feeb/ext/bc/C/rpc",
     maticPriceInUsd: 1.2,
     etherumPriceInUsd: 3000,
     etherscanApiKey: ETHERSCAN_API_KEY,
@@ -213,6 +214,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getRss3Data, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getShowtimeData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getSuperrareData, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getUnipassData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getSybilData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getZapperData, withConfig: true },

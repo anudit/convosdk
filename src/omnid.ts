@@ -337,6 +337,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('unipass')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getUnipassData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('uniswap')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -408,10 +415,11 @@ class Omnid {
         rss3: resp[34],
         showtime: resp[35],
         superrare: resp[36],
-        uniswap: resp[37],
-        unstoppable: resp[38],
-        zapper: resp[39],
-        zora: resp[40],
+        unipass: resp[37],
+        uniswap: resp[38],
+        unstoppable: resp[39],
+        zapper: resp[40],
+        zora: resp[41],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');
