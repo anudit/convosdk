@@ -20,6 +20,7 @@ export { default as getFoundationData } from './foundation';
 export { getAllGitcoinData, getGitcoinData } from './gitcoin';
 export { default as getHiveOneData } from './hiveone';
 export { default as checkIdena } from './idena';
+export { default as getKarmaData } from './karma';
 export { default as getKnownOriginData } from './knownorigin';
 export { default as getLensData } from './lens';
 export { default as getMetagameData } from './metagame';

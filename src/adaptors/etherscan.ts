@@ -18,7 +18,7 @@ export default async function getEtherscanData(
   }
   const json = (await fetcher(
     'GET',
-    `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=etherscan&address=${address}`
+    `https://cnvsec.vercel.app/api/etherscan?id=${computeConfig.CNVSEC_ID}&address=${address}`
   )) as EtherscanResult;
   return {
     labels: Boolean(json.success) === false ? [] : json.labels,

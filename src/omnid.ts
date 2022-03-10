@@ -236,6 +236,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('karma')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getKarmaData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('knownorigin')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -400,26 +407,27 @@ class Omnid {
         gitcoin: resp[19],
         hiveone: resp[20],
         idena: resp[21],
-        knownorigin: resp[22],
-        lens: resp[23],
-        metagame: resp[24],
-        mew: resp[25],
-        mirror: resp[26],
-        poap: resp[27],
-        poh: resp[28],
-        pop: resp[29],
-        polygon: resp[30],
-        projectgalaxy: resp[31],
-        rabbithole: resp[32],
-        rarible: resp[33],
-        rss3: resp[34],
-        showtime: resp[35],
-        superrare: resp[36],
-        unipass: resp[37],
-        uniswap: resp[38],
-        unstoppable: resp[39],
-        zapper: resp[40],
-        zora: resp[41],
+        karma: resp[22],
+        knownorigin: resp[23],
+        lens: resp[24],
+        metagame: resp[25],
+        mew: resp[26],
+        mirror: resp[27],
+        poap: resp[28],
+        poh: resp[29],
+        pop: resp[30],
+        polygon: resp[31],
+        projectgalaxy: resp[32],
+        rabbithole: resp[33],
+        rarible: resp[34],
+        rss3: resp[35],
+        showtime: resp[36],
+        superrare: resp[37],
+        unipass: resp[38],
+        uniswap: resp[39],
+        unstoppable: resp[40],
+        zapper: resp[41],
+        zora: resp[42],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');

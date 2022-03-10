@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.30
+- Add Karma Protocl Adaptor.
+- Update Etherscan Adaptor.
+- Update Dependencies.
+
 ## 0.3.29
 - Add Toucan Carbon Offsets Adaptor to Omnid.
 - Add Unipass Adaptor to Omnid.
@@ -119,7 +124,7 @@
 -  Update NodeJS Fetcher Module
 
 ## 0.3.0
--  Add Identity Adaptors
+-  Add Identity Adaptors Architecture
 
 ## 0.2.12
 -  Improve Auth Functions.
