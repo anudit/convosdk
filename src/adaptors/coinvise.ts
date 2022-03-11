@@ -18,13 +18,13 @@ interface TokenResult {
   type: string;
 }
 
-interface NftResult {
-  nfts: Array<{
-    sold: boolean;
-    symbol: string;
-    price: string;
-  }>;
-}
+// interface NftResult {
+//   nfts: Array<{
+//     sold: boolean;
+//     symbol: string;
+//     price: string;
+//   }>;
+// }
 
 interface PoolsResult {
   data: {
@@ -91,10 +91,10 @@ export default async function getCoinviseData(
         'GET',
         `https://coinvise-prod.herokuapp.com/token?userAddress=${address}&production=true`
       ),
-      fetcher(
-        'GET',
-        `https://www.coinvise.co/api/nft?chain=137&address=${address}`
-      ),
+      // fetcher(
+      //   'GET',
+      //   `https://www.coinvise.co/api/nft?chain=137&address=${address}`
+      // ),
       fetcher(
         'GET',
         `https://coinvise-prod.herokuapp.com/user?slug=${address}`
@@ -136,31 +136,31 @@ export default async function getCoinviseData(
       }
     }
 
-    // 1 - nfts
-    let totalCountNft = 0;
-    let totalCountSold = 0;
-    let totalAmountSold = 0;
-    if (data[1].status === 'fulfilled') {
-      const nfts = data[1] as PromiseFulfilledResult<NftResult>;
-      if (Object.keys(nfts.value).includes('error') === false) {
-        totalCountNft = nfts.value.nfts.length;
-        for (let index = 0; index < nfts.value.nfts.length; index++) {
-          const nft = nfts.value.nfts[index];
-          if (nft.sold === true) {
-            totalCountSold += 1;
-            if (nft.symbol === 'MATIC') {
-              totalAmountSold +=
-                parseFloat(nft.price) * computeConfig.maticPriceInUsd;
-            }
-            if (nft.symbol === 'USDC') {
-              totalAmountSold += parseFloat(nft.price);
-            }
-          }
-        }
-      }
-    }
+    //  nfts
+    const totalCountNft = 0;
+    const totalCountSold = 0;
+    const totalAmountSold = 0;
+    // if (data[1].status === 'fulfilled') {
+    //   const nfts = data[1] as PromiseFulfilledResult<NftResult>;
+    //   if (Object.keys(nfts.value).includes('error') === false) {
+    //     totalCountNft = nfts.value.nfts.length;
+    //     for (let index = 0; index < nfts.value.nfts.length; index++) {
+    //       const nft = nfts.value.nfts[index];
+    //       if (nft.sold === true) {
+    //         totalCountSold += 1;
+    //         if (nft.symbol === 'MATIC') {
+    //           totalAmountSold +=
+    //             parseFloat(nft.price) * computeConfig.maticPriceInUsd;
+    //         }
+    //         if (nft.symbol === 'USDC') {
+    //           totalAmountSold += parseFloat(nft.price);
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
 
-    // 2 - user
+    // 1 - user
     let followers = 0;
     let following = 0;
     if (data[2].status === 'fulfilled') {

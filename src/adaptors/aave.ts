@@ -31,15 +31,19 @@ export default async function getAaveData(
     );
   }
 
-  const providerEth = new ethers.providers.JsonRpcProvider(
-    computeConfig.etherumMainnetRpc
-  );
-  const providerMatic = new ethers.providers.JsonRpcProvider(
-    computeConfig.polygonMainnetRpc
-  );
-  const providerAvalanche = new ethers.providers.JsonRpcProvider(
-    computeConfig.avalancheMainnetRpc
-  );
+  const providerEth = new ethers.providers.JsonRpcProvider({
+    allowGzip: true,
+    url: computeConfig.etherumMainnetRpc,
+  });
+  const providerMatic = new ethers.providers.JsonRpcProvider({
+    allowGzip: true,
+    url: computeConfig.polygonMainnetRpc,
+  });
+  const providerAvalanche = new ethers.providers.JsonRpcProvider({
+    allowGzip: true,
+    url: computeConfig.avalancheMainnetRpc,
+  });
+
   const lendingPoolAbi = [
     {
       inputs: [

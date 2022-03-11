@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.3.31
+- Update Coinvise, Aave Adaptors.
+
 ## 0.3.30
 - Add Karma Protocl Adaptor.
 - Update Etherscan Adaptor.

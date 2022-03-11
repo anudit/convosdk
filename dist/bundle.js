@@ -70972,9 +70972,18 @@ function getAaveData(address, computeConfig) {
         if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.avalancheMainnetRpc) === false) {
             throw new Error('getAaveData: computeConfig does not contain avalancheMainnetRpc');
         }
-        const providerEth = new ethers_1.ethers.providers.JsonRpcProvider(computeConfig.etherumMainnetRpc);
-        const providerMatic = new ethers_1.ethers.providers.JsonRpcProvider(computeConfig.polygonMainnetRpc);
-        const providerAvalanche = new ethers_1.ethers.providers.JsonRpcProvider(computeConfig.avalancheMainnetRpc);
+        const providerEth = new ethers_1.ethers.providers.JsonRpcProvider({
+            allowGzip: true,
+            url: computeConfig.etherumMainnetRpc,
+        });
+        const providerMatic = new ethers_1.ethers.providers.JsonRpcProvider({
+            allowGzip: true,
+            url: computeConfig.polygonMainnetRpc,
+        });
+        const providerAvalanche = new ethers_1.ethers.providers.JsonRpcProvider({
+            allowGzip: true,
+            url: computeConfig.avalancheMainnetRpc,
+        });
         const lendingPoolAbi = [
             {
                 inputs: [
@@ -71396,7 +71405,10 @@ function getCoinviseData(address, computeConfig) {
             }
             const promiseArray = [
                 (0, utils_1.fetcher)('GET', `https://coinvise-prod.herokuapp.com/token?userAddress=${address}&production=true`),
-                (0, utils_1.fetcher)('GET', `https://www.coinvise.co/api/nft?chain=137&address=${address}`),
+                // fetcher(
+                //   'GET',
+                //   `https://www.coinvise.co/api/nft?chain=137&address=${address}`
+                // ),
                 (0, utils_1.fetcher)('GET', `https://coinvise-prod.herokuapp.com/user?slug=${address}`),
                 // fetcher('GET', 'https://coinvise-prod.herokuapp.com/sends?size=1000'),
             ];
@@ -71426,30 +71438,30 @@ function getCoinviseData(address, computeConfig) {
                     }
                 }
             }
-            // 1 - nfts
-            let totalCountNft = 0;
-            let totalCountSold = 0;
-            let totalAmountSold = 0;
-            if (data[1].status === 'fulfilled') {
-                const nfts = data[1];
-                if (Object.keys(nfts.value).includes('error') === false) {
-                    totalCountNft = nfts.value.nfts.length;
-                    for (let index = 0; index < nfts.value.nfts.length; index++) {
-                        const nft = nfts.value.nfts[index];
-                        if (nft.sold === true) {
-                            totalCountSold += 1;
-                            if (nft.symbol === 'MATIC') {
-                                totalAmountSold +=
-                                    parseFloat(nft.price) * computeConfig.maticPriceInUsd;
-                            }
-                            if (nft.symbol === 'USDC') {
-                                totalAmountSold += parseFloat(nft.price);
-                            }
-                        }
-                    }
-                }
-            }
-            // 2 - user
+            //  nfts
+            const totalCountNft = 0;
+            const totalCountSold = 0;
+            const totalAmountSold = 0;
+            // if (data[1].status === 'fulfilled') {
+            //   const nfts = data[1] as PromiseFulfilledResult<NftResult>;
+            //   if (Object.keys(nfts.value).includes('error') === false) {
+            //     totalCountNft = nfts.value.nfts.length;
+            //     for (let index = 0; index < nfts.value.nfts.length; index++) {
+            //       const nft = nfts.value.nfts[index];
+            //       if (nft.sold === true) {
+            //         totalCountSold += 1;
+            //         if (nft.symbol === 'MATIC') {
+            //           totalAmountSold +=
+            //             parseFloat(nft.price) * computeConfig.maticPriceInUsd;
+            //         }
+            //         if (nft.symbol === 'USDC') {
+            //           totalAmountSold += parseFloat(nft.price);
+            //         }
+            //       }
+            //     }
+            //   }
+            // }
+            // 1 - user
             let followers = 0;
             let following = 0;
             if (data[2].status === 'fulfilled') {
@@ -73362,7 +73374,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.30',
+                currentVersion: '0.3.31',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
