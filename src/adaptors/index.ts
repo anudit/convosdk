@@ -39,5 +39,6 @@ export { default as getSuperrareData } from './superrare';
 export { default as getUnipassData } from './unipass';
 export { getAllSybilData, getSybilData } from './uniswap';
 export { default as resolveUnstoppableDomains } from './unstoppable';
+export { default as getYupData } from './yup';
 export { default as getZapperData } from './zapper';
 export { default as getZoraData } from './zora';

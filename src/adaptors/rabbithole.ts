@@ -37,7 +37,7 @@ export default async function getRabbitholeData(address = '') {
 
     return {
       level: level,
-      score: jsonData.taskData.taskProgress['score'],
+      score: jsonData.taskData['score'],
       tasksCompleted,
     };
   } else {

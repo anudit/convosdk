@@ -4,6 +4,8 @@ const { Convo } = require('./lib/cjs/index');
 
 const { ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
 
+let LOG_RESP = false;
+
 const colors = {
     danger: "\x1b[31m",
     success: "\x1b[32m",
@@ -38,7 +40,8 @@ const convoInstance = new Convo('CSCpPwHnkB3niBJiUjy92YGP6xVkVZbWfK8xriDO');
 const timeit = async (callback, params) => {
     let startDate = new Date();
 
-    await callback.apply(this, params);
+    let resp = await callback.apply(this, params);
+    if (Boolean(LOG_RESP) === true) console.log(resp);
 
     let endDate = new Date();
     return (endDate.getTime() - startDate.getTime()) / 1000
@@ -218,6 +221,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getUnipassData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getSybilData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getYupData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getZapperData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true },
     ])

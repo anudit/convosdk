@@ -1,10 +1,14 @@
 # Changelog
 
+## 0.3.32
+- Update DeepDao, Project Galaxy, Rabbithole & Zapper Adaptors.
+- Add Yup Protocol Adaptor.
+
 ## 0.3.31
 - Update Coinvise, Aave Adaptors.
 
 ## 0.3.30
-- Add Karma Protocl Adaptor.
+- Add Karma Protocol Adaptor.
 - Update Etherscan Adaptor.
 - Update Dependencies.
 

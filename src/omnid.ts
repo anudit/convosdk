@@ -365,6 +365,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('yup')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getYupData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('zapper')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -426,8 +433,9 @@ class Omnid {
         unipass: resp[38],
         uniswap: resp[39],
         unstoppable: resp[40],
-        zapper: resp[41],
-        zora: resp[42],
+        yup: resp[41],
+        zapper: resp[42],
+        zora: resp[43],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');

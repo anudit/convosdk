@@ -4,7 +4,6 @@ interface ProjectGalaxyResult {
   data: {
     addressInfo: {
       id: string;
-      avatar: string;
       username: string;
       eligibleCredentials: {
         list: Array<{
@@ -22,7 +21,6 @@ export default async function getProjectGalaxyData(address: string) {
     `{
       addressInfo(address: "${address.toLowerCase()}") {
         id
-        avatar
         username
         eligibleCredentials {
             list {
