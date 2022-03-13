@@ -73209,7 +73209,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function getZapperData(address) {
     return __awaiter(this, void 0, void 0, function* () {
-        const jsonData = (yield (0, utils_1.fetcher)('GET', `https://api.zapper.fi/v1/gamification/users/${address.toLowerCase()}?api_key=cbaadb5b-92d2-4479-9a96-ee804989e27a`));
+        const jsonData = (yield (0, utils_1.fetcher)('GET', `https://api.zapper.fi/v1/gamification/users/${address.toLowerCase()}?api_key=96e0cc51-a62e-42ca-acee-910ea7d2a241`));
         return {
             followers: jsonData === null || jsonData === void 0 ? void 0 : jsonData.followerCount,
             following: jsonData === null || jsonData === void 0 ? void 0 : jsonData.followedCount,
@@ -73401,7 +73401,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.32',
+                currentVersion: '0.3.33',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -73984,6 +73984,7 @@ function fetcher(requestMethod, url, apikey = '', body = {}, customHeaders = {})
                     headers: Object.assign({}, customHeaders),
                     signal: controller.signal,
                 });
+                // console.log(response.status, response.ok);
                 if (response.ok === true &&
                     response.status >= 200 &&
                     response.status < 300) {

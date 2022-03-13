@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.3.32",
+  "version": "0.3.33",
   "description": "SDK containing all the functions you'll need to build on theconvo.space",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -64,7 +64,7 @@
     "@typescript-eslint/parser": "^5.14.0",
     "browserify": "^17.0.0",
     "dotenv": "^15.0.0",
-    "eslint": "^8.10.0",
+    "eslint": "^8.11.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",

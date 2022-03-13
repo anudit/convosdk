@@ -28,6 +28,7 @@ export async function fetcher(
         signal: controller.signal,
       });
 
+      // console.log(response.status, response.ok);
       if (
         response.ok === true &&
         response.status >= 200 &&
