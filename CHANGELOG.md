@@ -1,7 +1,7 @@
 # Changelog
 
 ## 0.3.33
-- Add Zapper Adaptor.
+- Update Zapper Adaptor.
 - Update Dependencies.
 
 ## 0.3.32
