@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.34
+- Add Layer3 Adaptor.
+- Update DeepDAO Adaptor.
+- Update Dependencies.
+
 ## 0.3.33
 - Update Zapper Adaptor.
 - Update Dependencies.

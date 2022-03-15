@@ -250,6 +250,13 @@ class Omnid {
               [address, computeConfig],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('layer3')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getLayer3Data,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('lens')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -416,26 +423,27 @@ class Omnid {
         idena: resp[21],
         karma: resp[22],
         knownorigin: resp[23],
-        lens: resp[24],
-        metagame: resp[25],
-        mew: resp[26],
-        mirror: resp[27],
-        poap: resp[28],
-        poh: resp[29],
-        pop: resp[30],
-        polygon: resp[31],
-        projectgalaxy: resp[32],
-        rabbithole: resp[33],
-        rarible: resp[34],
-        rss3: resp[35],
-        showtime: resp[36],
-        superrare: resp[37],
-        unipass: resp[38],
-        uniswap: resp[39],
-        unstoppable: resp[40],
-        yup: resp[41],
-        zapper: resp[42],
-        zora: resp[43],
+        layer3: resp[24],
+        lens: resp[25],
+        metagame: resp[26],
+        mew: resp[27],
+        mirror: resp[28],
+        poap: resp[29],
+        poh: resp[30],
+        pop: resp[31],
+        polygon: resp[32],
+        projectgalaxy: resp[33],
+        rabbithole: resp[34],
+        rarible: resp[35],
+        rss3: resp[36],
+        showtime: resp[37],
+        superrare: resp[38],
+        unipass: resp[39],
+        uniswap: resp[40],
+        unstoppable: resp[41],
+        yup: resp[42],
+        zapper: resp[43],
+        zora: resp[44],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');
