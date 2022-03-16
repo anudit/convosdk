@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.35
+- Add Questbook Adaptor.
+- Update Dependencies.
+
 ## 0.3.34
 - Add Layer3 Adaptor.
 - Update DeepDAO Adaptor.

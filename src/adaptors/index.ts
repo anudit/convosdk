@@ -32,6 +32,7 @@ export { default as checkPoH } from './poh';
 export { default as getPolygonData } from './polygon';
 export { default as getProjectGalaxyData } from './projectgalaxy';
 export { default as getPopData } from './proofofpersonhood';
+export { default as getQuestbookData } from './questbook';
 export { default as getRabbitholeData } from './rabbithole';
 export { default as getRaribleData } from './rarible';
 export { default as getRss3Data } from './rss3';

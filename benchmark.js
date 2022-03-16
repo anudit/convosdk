@@ -214,6 +214,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getProjectGalaxyData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.checkPoH, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getPopData, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getQuestbookData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getRabbitholeData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getRaribleData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getRss3Data, withConfig: false },

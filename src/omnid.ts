@@ -316,6 +316,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('questbook')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getQuestbookData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('rabbithole')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -433,17 +440,18 @@ class Omnid {
         pop: resp[31],
         polygon: resp[32],
         projectgalaxy: resp[33],
-        rabbithole: resp[34],
-        rarible: resp[35],
-        rss3: resp[36],
-        showtime: resp[37],
-        superrare: resp[38],
-        unipass: resp[39],
-        uniswap: resp[40],
-        unstoppable: resp[41],
-        yup: resp[42],
-        zapper: resp[43],
-        zora: resp[44],
+        questbook: resp[34],
+        rabbithole: resp[35],
+        rarible: resp[36],
+        rss3: resp[37],
+        showtime: resp[38],
+        superrare: resp[39],
+        unipass: resp[40],
+        uniswap: resp[41],
+        unstoppable: resp[42],
+        yup: resp[43],
+        zapper: resp[44],
+        zora: resp[45],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');
