@@ -200,6 +200,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getFortaData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getFoundationData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getGitcoinData, withConfig: true },
+        { fn: convoInstance.omnid.adaptors.getGoldfinchData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getHiveOneData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.checkIdena, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getKarmaData, withConfig: false },

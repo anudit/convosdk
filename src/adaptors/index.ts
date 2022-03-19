@@ -18,6 +18,7 @@ export { default as getEtherscanData } from './etherscan';
 export { default as getFortaData } from './forta';
 export { default as getFoundationData } from './foundation';
 export { getAllGitcoinData, getGitcoinData } from './gitcoin';
+export { default as getGoldfinchData } from './goldfinch';
 export { default as getHiveOneData } from './hiveone';
 export { default as checkIdena } from './idena';
 export { default as getKarmaData } from './karma';

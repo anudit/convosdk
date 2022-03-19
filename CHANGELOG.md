@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.36
+- Add Goldfinch Adaptor.
+- Update Dependencies.
+
 ## 0.3.35
 - Add Questbook Adaptor.
 - Update Dependencies.

@@ -9,7 +9,7 @@ export default async function getCoordinapeData(address: string) {
       '',
       {},
       {
-        authorization: 'Bearer 1693|Ku84NovTfLAyhjvWAIlTdwH0PBuGHwTWHRhtcsww',
+        authorization: '',
       }
     )) as Dictionary<Array<Dictionary<Array<string>>>>;
     let teammates = 0;
