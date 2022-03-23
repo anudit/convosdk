@@ -75,6 +75,20 @@ class Comments {
     );
   };
 
+  update = async (
+    signerAddress: string,
+    token: string,
+    commentId: string,
+    comment: string
+  ): Promise<any | ErrorType> => {
+    return await fetcher('PATCH', `${this.node}/comments`, this.apikey, {
+      token,
+      signerAddress,
+      commentId,
+      comment,
+    });
+  };
+
   toggleUpvote = async (
     signerAddress: string,
     token: string,

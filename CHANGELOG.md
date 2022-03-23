@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.37
+- Add `convo.comments.update`.
+- Update Dependencies.
+
 ## 0.3.36
 - Add Goldfinch Adaptor.
 - Update Dependencies.

@@ -73598,7 +73598,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.35',
+                currentVersion: '0.3.37',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -73661,6 +73661,14 @@ class Comments {
             return yield Promise.allSettled(queries.map((q) => {
                 return this.query(q);
             }));
+        });
+        this.update = (signerAddress, token, commentId, comment) => __awaiter(this, void 0, void 0, function* () {
+            return yield (0, utils_1.fetcher)('PATCH', `${this.node}/comments`, this.apikey, {
+                token,
+                signerAddress,
+                commentId,
+                comment,
+            });
         });
         this.toggleUpvote = (signerAddress, token, commentId) => __awaiter(this, void 0, void 0, function* () {
             return yield (0, utils_1.fetcher)('POST', `${this.node}/vote`, this.apikey, {
