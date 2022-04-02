@@ -2,15 +2,14 @@ import { gqlFetcher } from '../utils';
 
 interface FortaResult {
   data: {
-    getList: {
+    alerts: {
       alerts: Array<{
         severity: string;
         protocol: string;
         source: {
-          tx_hash: string;
+          transactionHash: string;
           agent: {
             id: string;
-            name: null;
           };
         };
       }>;
@@ -20,46 +19,42 @@ interface FortaResult {
 
 export default async function getFortaData(address: string) {
   const resp = (await gqlFetcher(
-    'https://explorer-api.forta.network/graphql',
-    `query Retrive($getListInput: GetAlertsInput) {
-        getList(input: $getListInput) {
-            alerts {
-                hash
-                description
-                severity
-                protocol
-                name
-                everest_id
-                alert_id
-                scanner_count
-                source {
-                    tx_hash
-                    agent {
-                        id
-                        name
-                    }
-                }
+    'https://api.forta.network/graphql',
+    `query GetAlerts($input: AlertsInput) {
+      alerts(input: $input) {
+        alerts {
+          addresses
+          name
+          protocol
+          findingType
+          source {
+            transactionHash
+            block {
+              number
+              timestamp
+              chainId
             }
+            agent {
+              id
+            }
+          }
+          metadata
+          severity
         }
+      }
     }`,
     {
-      getListInput: {
-        severity: ['HIGH', 'MEDIUM', 'CRITICAL'],
-        txHash: '',
-        text: '',
-        muted: [],
-        limit: 10000,
-        sort: 'desc',
-        agents: [],
+      input: {
         addresses: [address.toLowerCase()],
-        project: '',
+        chainId: 1,
+        severities: ['HIGH', 'MEDIUM', 'CRITICAL'],
       },
     }
   )) as FortaResult;
 
   const result = [];
-  for (let index = 0; index < resp.data.getList.alerts.length; index++) {
-    const alert = resp.data.getList.alerts[index];
+  for (let index = 0; index < resp.data.alerts.alerts.length; index++) {
+    const alert = resp.data.alerts.alerts[index];
     result.push({
       severity: alert?.severity,
       protocol: alert?.protocol,

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.38
+- Update `forta` Adaptor, [https://github.com/forta-protocol/forta-api/issues/3](https://github.com/forta-protocol/forta-api/issues/3)
+- Update Dependencies.
+
 ## 0.3.37
 - Add `convo.comments.update`.
 - Update Dependencies.
