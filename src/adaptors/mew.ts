@@ -16,7 +16,7 @@ export default async function getMewData(
   }
   const json = (await fetcher(
     'GET',
-    `https://cnvsec.vercel.app/api/mew?id=${computeConfig.CNVSEC_ID}&address=${address}`
+    `https://cnvsec.vercel.app/api/omnid/mew?id=${computeConfig.CNVSEC_ID}&address=${address}`
   )) as MewResult;
 
   const { success, ...data } = json;

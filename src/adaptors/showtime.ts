@@ -12,7 +12,7 @@ export default async function getShowtimeData(
   }
   const json = await fetcher(
     'GET',
-    `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=1b8c&address=${address}`
+    `https://cnvsec.vercel.app/api/omnid/showtime?id=${computeConfig.CNVSEC_ID}&address=${address}`
   );
   return json;
 }

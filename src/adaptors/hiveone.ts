@@ -15,7 +15,7 @@ export default async function getHiveOneData(
   }
   const json = (await fetcher(
     'GET',
-    `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=hiveone&address=${address}`
+    `https://cnvsec.vercel.app/api/omnid/hiveone?id=${computeConfig.CNVSEC_ID}&address=${address}`
   )) as HiveoneResult;
 
   const { success, ...data } = json;

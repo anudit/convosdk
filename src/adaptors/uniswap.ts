@@ -27,7 +27,7 @@ export async function getSybilData(
   }
   const json = await fetcher(
     'GET',
-    `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=uniswap&address=${address}`
+    `https://cnvsec.vercel.app/api/omnid/uniswap?id=${computeConfig.CNVSEC_ID}&&address=${address}`
   );
   return json;
 }

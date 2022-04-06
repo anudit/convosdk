@@ -19158,7 +19158,7 @@ exports.wipe = wipe;
 /*!
  * @license Copyright 2015-2022 Ably Real-time Ltd (ably.com)
  * 
- * Ably JavaScript Library v1.2.18
+ * Ably JavaScript Library v1.2.19
  * https://github.com/ably/ably-js
  * 
  * Released under the Apache Licence v2.0
@@ -20007,7 +20007,7 @@ function defaultGetHeaders(format) {
     return {
         accept: accept,
         'X-Ably-Version': defaults_1["default"].apiVersion,
-        'Ably-Agent': defaults_1["default"].agent,
+        'Ably-Agent': encodeURIComponent(defaults_1["default"].agent),
     };
 }
 exports.defaultGetHeaders = defaultGetHeaders;
@@ -20018,7 +20018,7 @@ function defaultPostHeaders(format) {
         accept: accept,
         'content-type': contentType,
         'X-Ably-Version': defaults_1["default"].apiVersion,
-        'Ably-Agent': defaults_1["default"].agent,
+        'Ably-Agent': encodeURIComponent(defaults_1["default"].agent),
     };
 }
 exports.defaultPostHeaders = defaultPostHeaders;
@@ -25017,29 +25017,30 @@ var PaginatedResult = /** @class */ (function () {
         var _this = this;
         this.resource = resource;
         this.items = items;
+        var self = this;
         if (relParams) {
             if ('first' in relParams) {
                 this.first = function (callback) {
-                    if (!callback && _this.resource.rest.options.promises) {
-                        return Utils.promisify(_this, 'first', []);
+                    if (!callback && self.resource.rest.options.promises) {
+                        return Utils.promisify(self, 'first', arguments);
                     }
-                    _this.get(relParams.first, callback);
+                    self.get(relParams.first, callback);
                 };
             }
             if ('current' in relParams) {
                 this.current = function (callback) {
-                    if (!callback && _this.resource.rest.options.promises) {
-                        return Utils.promisify(_this, 'current', []);
+                    if (!callback && self.resource.rest.options.promises) {
+                        return Utils.promisify(self, 'current', arguments);
                     }
-                    _this.get(relParams.current, callback);
+                    self.get(relParams.current, callback);
                 };
             }
             this.next = function (callback) {
-                if (!callback && _this.resource.rest.options.promises) {
-                    return Utils.promisify(_this, 'next', []);
+                if (!callback && self.resource.rest.options.promises) {
+                    return Utils.promisify(self, 'next', arguments);
                 }
                 if ('next' in relParams) {
-                    _this.get(relParams.next, callback);
+                    self.get(relParams.next, callback);
                 }
                 else {
                     callback(null);
@@ -27737,7 +27738,7 @@ var TransportParams = /** @class */ (function () {
             params.heartbeats = this.heartbeats;
         }
         params.v = defaults_1["default"].apiVersion;
-        params.agent = defaults_1["default"].agent;
+        params.agent = encodeURIComponent(defaults_1["default"].agent);
         if (options.transportParams !== undefined) {
             Utils.mixin(params, options.transportParams);
         }
@@ -30183,7 +30184,7 @@ var Presence = /** @class */ (function (_super) {
             }
             else {
                 if (this.channel.rest.options.promises) {
-                    return Utils.promisify(this, 'get', [params, callback]);
+                    return Utils.promisify(this, 'get', arguments);
                 }
                 callback = noop;
             }
@@ -30209,7 +30210,7 @@ var Presence = /** @class */ (function (_super) {
             }
             else {
                 if (this.channel.rest.options.promises) {
-                    return Utils.promisify(this, '_history', [params, callback]);
+                    return Utils.promisify(this, '_history', arguments);
                 }
                 callback = noop;
             }
@@ -31280,7 +31281,7 @@ exports["default"] = TransportNames;
 /* 50 */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"ably\",\"description\":\"Realtime client library for Ably, the realtime messaging service\",\"version\":\"1.2.18\",\"license\":\"Apache-2.0\",\"bugs\":{\"url\":\"https://github.com/ably/ably-js/issues\",\"email\":\"support@ably.com\"},\"main\":\"./browser/static/ably-node.js\",\"typings\":\"./ably.d.ts\",\"react-native\":{\"./browser/static/ably-node.js\":\"./browser/static/ably-reactnative.js\"},\"browser\":{\"./browser/static/ably-node.js\":\"./browser/static/ably-commonjs.js\"},\"files\":[\"ably.d.ts\",\"browser/static/**\",\"callbacks.d.ts\",\"callbacks.js\",\"promises.d.ts\",\"promises.js\",\"resources/**\"],\"dependencies\":{\"@ably/msgpack-js\":\"^0.4.0\",\"got\":\"^11.8.2\",\"ws\":\"^5.1\"},\"devDependencies\":{\"@ably/vcdiff-decoder\":\"1.0.4\",\"@types/crypto-js\":\"^4.0.1\",\"@types/node\":\"^15.0.0\",\"@types/request\":\"^2.48.7\",\"@types/ws\":\"^8.2.0\",\"@typescript-eslint/eslint-plugin\":\"^5.14.0\",\"@typescript-eslint/parser\":\"^5.14.0\",\"async\":\"ably-forks/async#requirejs\",\"aws-sdk\":\"^2.1075.0\",\"chai\":\"^4.2.0\",\"copy-webpack-plugin\":\"^6.4.1\",\"cors\":\"~2.7\",\"crypto-js\":\"ably-forks/crypto-js#crypto-lite\",\"ejs\":\"~2.5\",\"eslint\":\"^7.13.0\",\"eslint-plugin-security\":\"^1.4.0\",\"express\":\"^4.17.1\",\"glob\":\"~4.4\",\"google-closure-compiler\":\"^20180610.0.1\",\"grunt\":\"^1.4.1\",\"grunt-bump\":\"^0.3.1\",\"grunt-cli\":\"~1.2.0\",\"grunt-closure-tools\":\"^1.0.0\",\"grunt-contrib-concat\":\"~0.5\",\"grunt-shell\":\"~1.1\",\"grunt-webpack\":\"^4.0.2\",\"hexy\":\"~0.2\",\"kexec\":\"ably-forks/node-kexec#update-for-node-12\",\"minimist\":\"^1.2.5\",\"mocha\":\"^8.1.3\",\"null-loader\":\"^4.0.1\",\"playwright\":\"^1.10.0\",\"prettier\":\"^2.5.1\",\"requirejs\":\"~2.1\",\"shelljs\":\"~0.8\",\"source-map-explorer\":\"^2.5.2\",\"ts-loader\":\"^8.2.0\",\"tslib\":\"^2.3.1\",\"typescript\":\"^4.2.4\",\"webpack\":\"^4.44.2\",\"webpack-cli\":\"^4.2.0\"},\"engines\":{\"node\":\">=5.10.x\"},\"repository\":\"ably/ably-js\",\"jspm\":{\"registry\":\"npm\",\"directories\":{\"lib\":\"browser/static\"},\"main\":\"ably\"},\"scripts\":{\"grunt\":\"grunt\",\"test\":\"grunt test\",\"test:node\":\"grunt test:node\",\"test:webserver\":\"grunt test:webserver\",\"test:playwright\":\"node test/support/runPlaywrightTests.js\",\"concat\":\"grunt concat\",\"build\":\"grunt build:all\",\"build:node\":\"grunt build:node\",\"build:browser\":\"grunt build:browser\",\"requirejs\":\"grunt requirejs\",\"lint\":\"eslint .\",\"lint:fix\":\"eslint --fix .\",\"check-closure-compiler\":\"grunt check-closure-compiler\",\"prepare\":\"npm run build\",\"format\":\"prettier --write --ignore-path .gitignore common browser nodejs test ably.d.ts webpack.config.js Gruntfile.js\",\"format:check\":\"prettier --check --ignore-path .gitignore common browser nodejs test ably.d.ts webpack.config.js Gruntfile.js\",\"sourcemap\":\"source-map-explorer browser/static/ably.min.js\",\"sourcemap:noencryption\":\"source-map-explorer browser/static/ably.noencryption.min.js\"}}");
+module.exports = JSON.parse("{\"name\":\"ably\",\"description\":\"Realtime client library for Ably, the realtime messaging service\",\"version\":\"1.2.19\",\"license\":\"Apache-2.0\",\"bugs\":{\"url\":\"https://github.com/ably/ably-js/issues\",\"email\":\"support@ably.com\"},\"main\":\"./browser/static/ably-node.js\",\"typings\":\"./ably.d.ts\",\"react-native\":{\"./browser/static/ably-node.js\":\"./browser/static/ably-reactnative.js\"},\"browser\":{\"./browser/static/ably-node.js\":\"./browser/static/ably-commonjs.js\"},\"files\":[\"ably.d.ts\",\"browser/static/**\",\"callbacks.d.ts\",\"callbacks.js\",\"promises.d.ts\",\"promises.js\",\"resources/**\"],\"dependencies\":{\"@ably/msgpack-js\":\"^0.4.0\",\"got\":\"^11.8.2\",\"ws\":\"^5.1\"},\"devDependencies\":{\"@ably/vcdiff-decoder\":\"1.0.4\",\"@types/crypto-js\":\"^4.0.1\",\"@types/node\":\"^15.0.0\",\"@types/request\":\"^2.48.7\",\"@types/ws\":\"^8.2.0\",\"@typescript-eslint/eslint-plugin\":\"^5.14.0\",\"@typescript-eslint/parser\":\"^5.14.0\",\"async\":\"ably-forks/async#requirejs\",\"aws-sdk\":\"^2.1075.0\",\"chai\":\"^4.2.0\",\"copy-webpack-plugin\":\"^6.4.1\",\"cors\":\"~2.7\",\"crypto-js\":\"ably-forks/crypto-js#crypto-lite\",\"ejs\":\"~2.5\",\"eslint\":\"^7.13.0\",\"eslint-plugin-security\":\"^1.4.0\",\"express\":\"^4.17.1\",\"glob\":\"~4.4\",\"google-closure-compiler\":\"^20180610.0.1\",\"grunt\":\"^1.4.1\",\"grunt-bump\":\"^0.3.1\",\"grunt-cli\":\"~1.2.0\",\"grunt-closure-tools\":\"^1.0.0\",\"grunt-contrib-concat\":\"~0.5\",\"grunt-shell\":\"~1.1\",\"grunt-webpack\":\"^4.0.2\",\"hexy\":\"~0.2\",\"kexec\":\"ably-forks/node-kexec#update-for-node-12\",\"minimist\":\"^1.2.5\",\"mocha\":\"^8.1.3\",\"null-loader\":\"^4.0.1\",\"playwright\":\"^1.10.0\",\"prettier\":\"^2.5.1\",\"requirejs\":\"~2.1\",\"shelljs\":\"~0.8\",\"source-map-explorer\":\"^2.5.2\",\"ts-loader\":\"^8.2.0\",\"tslib\":\"^2.3.1\",\"typescript\":\"^4.2.4\",\"webpack\":\"^4.44.2\",\"webpack-cli\":\"^4.2.0\"},\"engines\":{\"node\":\">=5.10.x\"},\"repository\":\"ably/ably-js\",\"jspm\":{\"registry\":\"npm\",\"directories\":{\"lib\":\"browser/static\"},\"main\":\"ably\"},\"scripts\":{\"grunt\":\"grunt\",\"test\":\"grunt test\",\"test:node\":\"grunt test:node\",\"test:webserver\":\"grunt test:webserver\",\"test:playwright\":\"node test/support/runPlaywrightTests.js\",\"concat\":\"grunt concat\",\"build\":\"grunt build:all\",\"build:node\":\"grunt build:node\",\"build:browser\":\"grunt build:browser\",\"requirejs\":\"grunt requirejs\",\"lint\":\"eslint .\",\"lint:fix\":\"eslint --fix .\",\"check-closure-compiler\":\"grunt check-closure-compiler\",\"prepare\":\"npm run build\",\"format\":\"prettier --write --ignore-path .gitignore common browser nodejs test ably.d.ts webpack.config.js Gruntfile.js\",\"format:check\":\"prettier --check --ignore-path .gitignore common browser nodejs test ably.d.ts webpack.config.js Gruntfile.js\",\"sourcemap\":\"source-map-explorer browser/static/ably.min.js\",\"sourcemap:noencryption\":\"source-map-explorer browser/static/ably.noencryption.min.js\"}}");
 
 /***/ }),
 /* 51 */
@@ -32593,7 +32594,7 @@ var Connection = /** @class */ (function (_super) {
         logger_1["default"].logAction(logger_1["default"].LOG_MINOR, 'Connection.ping()', '');
         if (!callback) {
             if (this.ably.options.promises) {
-                return Utils.promisify(this, 'ping', [callback]);
+                return Utils.promisify(this, 'ping', arguments);
             }
             callback = noop;
         }
@@ -32935,8 +32936,9 @@ var WebSocketTransport = /** @class */ (function (_super) {
         var wasClean, code;
         if (typeof ev == 'object') {
             /* W3C spec-compatible */
-            wasClean = ev.wasClean;
             code = ev.code;
+            // ev.wasClean is undefined in reactnative
+            wasClean = ev.wasClean || code === 1000;
         } /*if(typeof(ev) == 'number')*/
         else {
             /* ws in node */
@@ -33282,7 +33284,7 @@ var RealtimePresence = /** @class */ (function (_super) {
             }
             else {
                 if (this.channel.realtime.options.promises) {
-                    return Utils.promisify(this, 'history', [params, callback]);
+                    return Utils.promisify(this, 'history', arguments);
                 }
                 callback = noop;
             }
@@ -33464,7 +33466,7 @@ var RealtimePresence = /** @class */ (function (_super) {
         var channel = this.channel;
         if (!callback) {
             if (this.channel.realtime.options.promises) {
-                return Utils.promisify(this, 'subscribe', [event, listener]);
+                return Utils.promisify(this, 'subscribe', arguments);
             }
             callback = noop;
         }
@@ -35111,8 +35113,8 @@ module.exports = function api(src) {
     */
 };
 
-}).call(this)}).call(this,{"isBuffer":require("../../../is-buffer/index.js")})
-},{"../../../is-buffer/index.js":202,"../apg-conv-api/converter":148,"../apg-lib/node-exports":154,"./attributes":137,"./parser":138,"./scanner":144,"./show-rules":146}],137:[function(require,module,exports){
+}).call(this)}).call(this,{"isBuffer":require("../../../../../is-buffer@1.1.6/node_modules/is-buffer/index.js")})
+},{"../../../../../is-buffer@1.1.6/node_modules/is-buffer/index.js":202,"../apg-conv-api/converter":148,"../apg-lib/node-exports":154,"./attributes":137,"./parser":138,"./scanner":144,"./show-rules":146}],137:[function(require,module,exports){
 /* eslint-disable class-methods-use-this */
 /*  *************************************************************************************
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
@@ -62294,7 +62296,7 @@ function getEtherscanData(address, computeConfig) {
         if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.CNVSEC_ID) === false) {
             throw new Error('getEtherscanData: computeConfig does not contain CNVSEC_ID');
         }
-        const json = (yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/etherscan?id=${computeConfig.CNVSEC_ID}&address=${address}`));
+        const json = (yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/omnid/etherscan?id=${computeConfig.CNVSEC_ID}&address=${address}`));
         return {
             labels: Boolean(json.success) === false ? [] : json.labels,
         };
@@ -62611,7 +62613,7 @@ function getGitcoinData(address, computeConfig) {
         if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.CNVSEC_ID) === false) {
             throw new Error('getAllGitcoinData: computeConfig does not contain CNVSEC_ID');
         }
-        const json = (yield (0, utils_2.fetcher)('GET', `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=gitcoin&address=${address}`));
+        const json = (yield (0, utils_2.fetcher)('GET', `https://cnvsec.vercel.app/api/omnid/gitcoin?id=${computeConfig.CNVSEC_ID}&address=${address}`));
         return {
             funder: Boolean(json.success) === false ? false : true,
         };
@@ -62679,7 +62681,7 @@ function getHiveOneData(address, computeConfig) {
         if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.CNVSEC_ID) === false) {
             throw new Error('getHiveOneData: computeConfig does not contain CNVSEC_ID');
         }
-        const json = (yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=hiveone&address=${address}`));
+        const json = (yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/omnid/hiveone?id=${computeConfig.CNVSEC_ID}&address=${address}`));
         const { success } = json, data = __rest(json, ["success"]);
         if (success === true) {
             return data;
@@ -62729,7 +62731,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.getZoraData = exports.getZapperData = exports.getYupData = exports.resolveUnstoppableDomains = exports.getSybilData = exports.getAllSybilData = exports.getUnipassData = exports.getSuperrareData = exports.getShowtimeData = exports.getRss3Data = exports.getRaribleData = exports.getRabbitholeData = exports.getQuestbookData = exports.getPopData = exports.getProjectGalaxyData = exports.getPolygonData = exports.checkPoH = exports.getPoapData = exports.getMirrorData = exports.getMewData = exports.getMetagameData = exports.getLensData = exports.getLayer3Data = exports.getKnownOriginData = exports.getKarmaData = exports.checkIdena = exports.getHiveOneData = exports.getGoldfinchData = exports.getGitcoinData = exports.getAllGitcoinData = exports.getFoundationData = exports.getFortaData = exports.getEtherscanData = exports.addressToEns = exports.getDeepDaoData = exports.getDebankData = exports.getDapplistData = exports.getCyberconnectData = exports.getCryptoscamdbData = exports.getCoordinapeData = exports.getContextData = exports.getCoinviseData = exports.getCeloData = exports.checkBrightId = exports.getBoardroomData = exports.getAsyncartData = exports.getArcxData = exports.getAge = exports.getAaveData = void 0;
+exports.getZoraData = exports.getZapperData = exports.getYupData = exports.resolveUnstoppableDomains = exports.getSybilData = exports.getAllSybilData = exports.getUnipassData = exports.getSuperrareData = exports.getShowtimeData = exports.getRss3Data = exports.getRaribleData = exports.getRabbitholeData = exports.getQuestbookData = exports.getPopData = exports.getProjectGalaxyData = exports.getPolygonData = exports.checkPoH = exports.getPoapData = exports.getMirrorData = exports.getMewData = exports.getMetagameData = exports.getLensData = exports.getLayer3Data = exports.getKnownOriginData = exports.getKarmaData = exports.checkIdena = exports.getHiveOneData = exports.getGoldfinchData = exports.getGitcoinData = exports.getAllGitcoinData = exports.getFoundationData = exports.getFortaData = exports.getEtherscanData = exports.addressToEns = exports.getDeepDaoData = exports.getDebankData = exports.getDapplistData = exports.getCyberconnectData = exports.getCryptoscamdbData = exports.getCryptoreliefData = exports.getCoordinapeData = exports.getContextData = exports.getCoinviseData = exports.getCeloData = exports.checkBrightId = exports.getBoardroomData = exports.getAsyncartData = exports.getArcxData = exports.getAge = exports.getAaveData = void 0;
 var aave_1 = require("./aave");
 Object.defineProperty(exports, "getAaveData", { enumerable: true, get: function () { return __importDefault(aave_1).default; } });
 var age_1 = require("./age");
@@ -62751,7 +62753,9 @@ Object.defineProperty(exports, "getContextData", { enumerable: true, get: functi
 var coordinape_1 = require("./coordinape");
 Object.defineProperty(exports, "getCoordinapeData", { enumerable: true, get: function () { return __importDefault(coordinape_1).default; } });
 var cryptoscamdb_1 = require("./cryptoscamdb");
-Object.defineProperty(exports, "getCryptoscamdbData", { enumerable: true, get: function () { return __importDefault(cryptoscamdb_1).default; } });
+Object.defineProperty(exports, "getCryptoreliefData", { enumerable: true, get: function () { return __importDefault(cryptoscamdb_1).default; } });
+var cryptoscamdb_2 = require("./cryptoscamdb");
+Object.defineProperty(exports, "getCryptoscamdbData", { enumerable: true, get: function () { return __importDefault(cryptoscamdb_2).default; } });
 var cyberconnect_1 = require("./cyberconnect");
 Object.defineProperty(exports, "getCyberconnectData", { enumerable: true, get: function () { return __importDefault(cyberconnect_1).default; } });
 var dapplist_1 = require("./dapplist");
@@ -63237,7 +63241,7 @@ function getMewData(address, computeConfig) {
         if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.CNVSEC_ID) === false) {
             throw new Error('getMewData: computeConfig does not contain CNVSEC_ID');
         }
-        const json = (yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/mew?id=${computeConfig.CNVSEC_ID}&address=${address}`));
+        const json = (yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/omnid/mew?id=${computeConfig.CNVSEC_ID}&address=${address}`));
         const { success } = json, data = __rest(json, ["success"]);
         if (success == true) {
             return data;
@@ -63400,7 +63404,9 @@ function getProjectGalaxyData(address) {
         }
       }
     }`));
-        return jsonData['data']['addressInfo'];
+        return 'addressInfo' in jsonData['data']
+            ? jsonData['data']['addressInfo']
+            : {};
     });
 }
 exports.default = getProjectGalaxyData;
@@ -63670,7 +63676,7 @@ function getShowtimeData(address, computeConfig) {
         if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.CNVSEC_ID) === false) {
             throw new Error('getShowtimeData: computeConfig does not contain CNVSEC_ID');
         }
-        const json = yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=1b8c&address=${address}`);
+        const json = yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/omnid/showtime?id=${computeConfig.CNVSEC_ID}&address=${address}`);
         return json;
     });
 }
@@ -63818,7 +63824,7 @@ function getSybilData(address, computeConfig) {
         if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.CNVSEC_ID) === false) {
             throw new Error('getSybilData: computeConfig does not contain CNVSEC_ID');
         }
-        const json = yield (0, utils_2.fetcher)('GET', `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=uniswap&address=${address}`);
+        const json = yield (0, utils_2.fetcher)('GET', `https://cnvsec.vercel.app/api/omnid/uniswap?id=${computeConfig.CNVSEC_ID}&&address=${address}`);
         return json;
     });
 }
@@ -63894,7 +63900,7 @@ function getYupData(address, computeConfig) {
         if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.CNVSEC_ID) === false) {
             throw new Error('getYupData: computeConfig does not contain CNVSEC_ID');
         }
-        const json = yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/yup?id=${computeConfig.CNVSEC_ID}&address=${address}`);
+        const json = yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/omnid/yup?id=${computeConfig.CNVSEC_ID}&address=${address}`);
         return json;
     });
 }
@@ -64107,7 +64113,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.3.38',
+                currentVersion: '0.3.39',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -64334,6 +64340,9 @@ class Omnid {
                     disabledAdaptors.includes('coordinape')
                         ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
                         : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getCoordinapeData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('cryptorelief')
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeitWithConfig, "f").call(this, adaptorList.getCryptoreliefData, [address, computeConfig], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('cryptoscamdb')
                         ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
                         : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getCryptoscamdbData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
@@ -64460,43 +64469,44 @@ class Omnid {
                     coinvise: resp[7],
                     context: resp[8],
                     coordinape: resp[9],
-                    cryptoscamdb: resp[10],
-                    cyberconnect: resp[11],
-                    dapplist: resp[12],
-                    debank: resp[13],
-                    deepdao: resp[14],
-                    ens: resp[15],
-                    etherscan: resp[16],
-                    forta: resp[17],
-                    foundation: resp[18],
-                    gitcoin: resp[19],
-                    goldfinch: resp[20],
-                    hiveone: resp[21],
-                    idena: resp[22],
-                    karma: resp[23],
-                    knownorigin: resp[24],
-                    layer3: resp[25],
-                    lens: resp[26],
-                    metagame: resp[27],
-                    mew: resp[28],
-                    mirror: resp[29],
-                    poap: resp[30],
-                    poh: resp[31],
-                    pop: resp[32],
-                    polygon: resp[33],
-                    projectgalaxy: resp[34],
-                    questbook: resp[35],
-                    rabbithole: resp[36],
-                    rarible: resp[37],
-                    rss3: resp[38],
-                    showtime: resp[39],
-                    superrare: resp[40],
-                    unipass: resp[41],
-                    uniswap: resp[42],
-                    unstoppable: resp[43],
-                    yup: resp[44],
-                    zapper: resp[45],
-                    zora: resp[46],
+                    cryptorelief: resp[10],
+                    cryptoscamdb: resp[11],
+                    cyberconnect: resp[12],
+                    dapplist: resp[13],
+                    debank: resp[14],
+                    deepdao: resp[15],
+                    ens: resp[16],
+                    etherscan: resp[17],
+                    forta: resp[18],
+                    foundation: resp[19],
+                    gitcoin: resp[20],
+                    goldfinch: resp[21],
+                    hiveone: resp[22],
+                    idena: resp[23],
+                    karma: resp[24],
+                    knownorigin: resp[25],
+                    layer3: resp[26],
+                    lens: resp[27],
+                    metagame: resp[28],
+                    mew: resp[29],
+                    mirror: resp[30],
+                    poap: resp[31],
+                    poh: resp[32],
+                    pop: resp[33],
+                    polygon: resp[34],
+                    projectgalaxy: resp[35],
+                    questbook: resp[36],
+                    rabbithole: resp[37],
+                    rarible: resp[38],
+                    rss3: resp[39],
+                    showtime: resp[40],
+                    superrare: resp[41],
+                    unipass: resp[42],
+                    uniswap: resp[43],
+                    unstoppable: resp[44],
+                    yup: resp[45],
+                    zapper: resp[46],
+                    zora: resp[47],
                 };
                 if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG) === true)
                     console.timeEnd('computeTime');

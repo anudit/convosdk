@@ -10,7 +10,7 @@ export default async function getYupData(
   }
   const json = await fetcher(
     'GET',
-    `https://cnvsec.vercel.app/api/yup?id=${computeConfig.CNVSEC_ID}&address=${address}`
+    `https://cnvsec.vercel.app/api/omnid/yup?id=${computeConfig.CNVSEC_ID}&address=${address}`
   );
   return json;
 }

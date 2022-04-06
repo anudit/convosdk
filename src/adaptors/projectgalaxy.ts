@@ -32,5 +32,7 @@ export default async function getProjectGalaxyData(address: string) {
     }`
   )) as ProjectGalaxyResult;
 
-  return jsonData['data']['addressInfo'];
+  return 'addressInfo' in jsonData['data']
+    ? jsonData['data']['addressInfo']
+    : {};
 }

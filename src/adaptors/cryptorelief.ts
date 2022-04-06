@@ -1,26 +1,24 @@
 import { ComputeConfig } from '../types';
 import { fetcher } from '../utils';
 
-interface EtherscanResult {
-  success: boolean;
-  error?: string;
-  labels?: Array<string>;
+interface CryptoReliefResult {
+  amount: number;
 }
 
-export default async function getEtherscanData(
+export default async function getCryptoreliefData(
   address: string,
   computeConfig: ComputeConfig
 ) {
   if (Boolean(computeConfig?.CNVSEC_ID) === false) {
     throw new Error(
-      'getEtherscanData: computeConfig does not contain CNVSEC_ID'
+      'getCryptoreliefData: computeConfig does not contain CNVSEC_ID'
     );
   }
   const json = (await fetcher(
     'GET',
     `https://cnvsec.vercel.app/api/omnid/etherscan?id=${computeConfig.CNVSEC_ID}&address=${address}`
-  )) as EtherscanResult;
+  )) as CryptoReliefResult;
   return {
-    labels: Boolean(json.success) === false ? [] : json.labels,
+    amount: 'amount' in json ? json?.amount : 0,
   };
 }

@@ -34,7 +34,7 @@ export async function getGitcoinData(
   }
   const json = (await fetcher(
     'GET',
-    `https://cnvsec.vercel.app/api/get?id=${computeConfig.CNVSEC_ID}&slug=gitcoin&address=${address}`
+    `https://cnvsec.vercel.app/api/omnid/gitcoin?id=${computeConfig.CNVSEC_ID}&address=${address}`
   )) as GitcoinResult;
   return {
     funder: Boolean(json.success) === false ? false : true,

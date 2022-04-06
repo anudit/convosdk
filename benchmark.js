@@ -32,7 +32,12 @@ const addresssTable = [
     "0xB53b0255895c4F9E3a185E484e5B674bCCfbc076",
     "0xa28992A6744e36f398DFe1b9407474e1D7A3066b",
     "0x707aC3937A9B31C225D8C240F5917Be97cab9F20",
-    "0x225b11096e5aec644bf1a0f09358d9534ce20903"
+    "0x225b11096e5aec644bf1a0f09358d9534ce20903",
+    "0x09750ad360fdb7a2ee23669c4503c974d86d8694",
+    "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
+    "0x8d07D225a769b7Af3A923481E1FdF49180e6A265",
+    "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
+    "0x597D1747256304d5d47eCE999A8e5bAdE6d41845"
 ];
 
 const convoInstance = new Convo('CSCpPwHnkB3niBJiUjy92YGP6xVkVZbWfK8xriDO');
@@ -190,6 +195,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getCoinviseData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getContextData, withConfig: false },
         // { fn: convoInstance.omnid.adaptors.getCoordinapeData, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getCryptoscamdbData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getCryptoscamdbData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getCyberconnectData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getDapplistData, withConfig: false },
@@ -229,7 +235,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true },
     ])
 
-    await runBenchmarkManual();
+    // await runBenchmarkManual();
 
 }
 

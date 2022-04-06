@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.39
+- Improve Omnid Adaptors.
+- Add CryptoRelief Adaptor.
+- Update Dependencies.
+- Switch to PNPM.
+
 ## 0.3.38
 - Update `forta` Adaptor, [https://github.com/forta-protocol/forta-api/issues/3](https://github.com/forta-protocol/forta-api/issues/3)
 - Update Dependencies.

@@ -8,6 +8,7 @@ export { default as getCeloData } from './celo';
 export { default as getCoinviseData } from './coinvise';
 export { default as getContextData } from './context';
 export { default as getCoordinapeData } from './coordinape';
+export { default as getCryptoreliefData } from './cryptoscamdb';
 export { default as getCryptoscamdbData } from './cryptoscamdb';
 export { default as getCyberconnectData } from './cyberconnect';
 export { default as getDapplistData } from './dapplist';
