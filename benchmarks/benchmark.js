@@ -1,6 +1,6 @@
 require('dotenv').config({ path: '.env.local' })
 const { createStream } = require('table');
-const { Convo } = require('./lib/cjs/index');
+const { Convo } = require('../packages/sdk/lib/cjs/index');
 
 const { ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
 

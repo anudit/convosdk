@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.0
+- Seperate React Hooks into `@theconvospace/react` package (refer to [docs]() for API Changes).
+- Update Dependencies.
+
 ## 0.3.39
 - Improve Omnid Adaptors.
 - Add CryptoRelief Adaptor.
