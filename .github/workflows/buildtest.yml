@@ -32,9 +32,21 @@ jobs:
       - uses: pnpm/action-setup@v2.1.0
         with:
           version: 6.0.2
-      - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: pnpm install
 
-      - name: Build
-        run: pnpm build
+      - name: Install Dependencies for Bench
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: cd ./benchmarks && pnpm install
+
+      - name: Install Dependencies for SDK
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: cd ./packages/sdk && pnpm install
+
+      - name: Install Dependencies for React
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: cd ./packages/react && pnpm install
+
+      - name: Build SDK Package
+        run: cd ./packages/sdk && pnpm build
+
+      - name: Build React Package
+        run: cd ./packages/react && pnpm build

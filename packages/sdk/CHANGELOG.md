@@ -1,7 +1,11 @@
 # Changelog
 
 ## 0.4.0
-- Seperate React Hooks into `@theconvospace/react` package (refer to [docs]() for API Changes).
+- Seperate React Hooks into `@theconvospace/react` package.
+
+    ```
+    import { subscribe } from "@theconvospace/react";
+    ```
 - Update Dependencies.
 
 ## 0.3.39
