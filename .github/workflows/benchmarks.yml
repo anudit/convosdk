@@ -28,12 +28,17 @@ jobs:
         with:
           version: 6.0.2
 
-      - name: Install Dependencies
+      - name: Install Dependencies for Bench
         if: steps.cache.outputs.cache-hit != 'true'
-        run: pnpm install
+        run: cd ./benchmarks && pnpm install
 
-      - name: Build Bench Package
-        run: cd ./benchmarks && pnpm build
+      - name: Install Dependencies for SDK
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: cd ./packages/sdk && pnpm install
+
+      - name: Install Dependencies for React
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: cd ./packages/react && pnpm install
 
       - name: Build SDK Package
         run: cd ./packages/sdk && pnpm build
