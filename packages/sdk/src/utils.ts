@@ -20,49 +20,28 @@ export async function fetcher(
       reqUrl += (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
     }
 
-    if (requestMethod === 'GET') {
-      const response = await fetch(reqUrl, {
-        headers: {
-          ...customHeaders,
-        },
-        signal: controller.signal,
-      });
+    const reqOptions: RequestInit = {
+      headers: {
+        ...customHeaders,
+      },
+      signal: controller.signal,
+    };
 
-      // console.log(response.status, response.ok);
-      if (
-        response.ok === true &&
-        response.status >= 200 &&
-        response.status < 300
-      ) {
-        const data = await response.json();
-        return data;
-      } else {
-        return {};
-      }
-    } else if (
-      requestMethod === 'POST' ||
-      requestMethod === 'UPDATE' ||
-      requestMethod === 'DELETE'
+    if (requestMethod !== 'GET') {
+      reqOptions['method'] = requestMethod;
+      reqOptions['body'] = JSON.stringify(body);
+    }
+
+    const response = await fetch(reqUrl, reqOptions);
+    if (
+      response.ok === true &&
+      response.status >= 200 &&
+      response.status < 300
     ) {
-      const response = await fetch(reqUrl, {
-        method: requestMethod,
-        body: JSON.stringify(body),
-        headers: {
-          ...customHeaders,
-          'Content-Type': 'application/json',
-        },
-        signal: controller.signal,
-      });
-      if (
-        response.ok === true &&
-        response.status >= 200 &&
-        response.status < 300
-      ) {
-        const data = await response.json();
-        return data;
-      } else {
-        return {};
-      }
+      const data = await response.json();
+      return data;
+    } else {
+      return { error: { message: 'Invalid Request', response: response } };
     }
   } catch (error) {
     console.error(url, error);

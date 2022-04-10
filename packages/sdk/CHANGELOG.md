@@ -2,11 +2,9 @@
 
 ## 0.4.0
 - Seperate React Hooks into `@theconvospace/react` package.
-
-    ```
-    import { subscribe } from "@theconvospace/react";
-    ```
+    - `convo.threads.subscribe` is now moved to, `import { subscribe } from "@theconvospace/react"; `
 - Update Dependencies.
+- Update Error Handling Responses.
 
 ## 0.3.39
 - Improve Omnid Adaptors.

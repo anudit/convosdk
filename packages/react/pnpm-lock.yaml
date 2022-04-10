@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@typechain/ethers-v5': ^10.0.0
   '@types/node': ^17.0.23
-  '@types/react': ^18.0.0
+  '@types/react': ^18.0.1
   '@typescript-eslint/eslint-plugin': ^5.18.0
   '@typescript-eslint/parser': ^5.18.0
   ably: ^1.2.20
@@ -35,7 +35,7 @@ dependencies:
 devDependencies:
   '@typechain/ethers-v5': 10.0.0_1757d77f5add4d9ec283b13ba2398af2
   '@types/node': 17.0.23
-  '@types/react': 18.0.0
+  '@types/react': 18.0.1
   '@typescript-eslint/eslint-plugin': 5.18.0_0dd9be2ba5ed9805045f3fec8be848f5
   '@typescript-eslint/parser': 5.18.0_eslint@8.13.0+typescript@4.6.3
   browserify: 17.0.0
@@ -515,16 +515,16 @@ packages:
   /@types/node/17.0.23:
     resolution: {integrity: sha512-UxDxWn7dl97rKVeVS61vErvw086aCYhDLyvRQZ5Rk65rZKepaFdm53GeqXaKBuOhED4e9uWq34IC3TdSdJJ2Gw==}
 
-  /@types/prettier/2.4.4:
-    resolution: {integrity: sha512-ReVR2rLTV1kvtlWFyuot+d1pkpG2Fw/XKE3PDAdj57rbM97ttSp9JZ2UsP+2EHTylra9cUf6JA7tGwW1INzUrA==}
+  /@types/prettier/2.6.0:
+    resolution: {integrity: sha512-G/AdOadiZhnJp0jXCaBQU449W2h716OW/EoXeYkCytxKL06X1WCXB4DZpp8TpZ8eyIJVS1cw4lrlkkSYU21cDw==}
     dev: true
 
   /@types/prop-types/15.7.5:
     resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
     dev: true
 
-  /@types/react/18.0.0:
-    resolution: {integrity: sha512-7+K7zEQYu7NzOwQGLR91KwWXXDzmTFODRVizJyIALf6RfLv2GDpqpknX64pvRVILXCpXi7O/pua8NGk44dLvJw==}
+  /@types/react/18.0.1:
+    resolution: {integrity: sha512-VnWlrVgG0dYt+NqlfMI0yUYb8Rdl4XUROyH+c6gq/iFCiZ805Vi//26UW38DHnxQkbDhnrIWTBiy6oKZqL11cw==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -2434,8 +2434,8 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /lru-cache/7.8.0:
-    resolution: {integrity: sha512-AmXqneQZL3KZMIgBpaPTeI6pfwh+xQ2vutMsyqOu1TBdEXFZgpG/80wuJ531w2ZN7TI0/oc8CPxzh/DKQudZqg==}
+  /lru-cache/7.8.1:
+    resolution: {integrity: sha512-E1v547OCgJvbvevfjgK9sNKIVXO96NnsTsFPBlg4ZxjhsJSODoH9lk8Bm0OxvHNm6Vm5Yqkl/1fErDxhYL8Skg==}
     engines: {node: '>=12'}
     dev: true
 
@@ -3035,7 +3035,7 @@ packages:
     engines: {node: ^10.0.0 || ^12.0.0 || ^14.0.0 || >=16.0.0}
     hasBin: true
     dependencies:
-      lru-cache: 7.8.0
+      lru-cache: 7.8.1
     dev: true
 
   /sha.js/2.4.11:
@@ -3514,7 +3514,7 @@ packages:
     peerDependencies:
       typescript: '>=4.3.0'
     dependencies:
-      '@types/prettier': 2.4.4
+      '@types/prettier': 2.6.0
       debug: 4.3.4
       fs-extra: 7.0.1
       glob: 7.1.7

@@ -17,8 +17,8 @@ const config = {
     polygonMainnetRpc: "https://polygon-rpc.com/",
     etherumMainnetRpc: "https://mainnet.infura.io/v3/1e7969225b2f4eefb3ae792aabf1cc17",
     avalancheMainnetRpc: "https://avalanche--mainnet--rpc.datahub.figment.io/apikey/21681330d5fd73930f5600c7c4f0feeb/ext/bc/C/rpc",
-    maticPriceInUsd: 1.3,
-    etherumPriceInUsd: 3000,
+    maticPriceInUsd: 1.4,
+    etherumPriceInUsd: 3200,
     etherscanApiKey: ETHERSCAN_API_KEY,
     polygonscanApiKey: POLYGONSCAN_API_KEY,
     CNVSEC_ID: CNVSEC_ID,
@@ -235,7 +235,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true },
     ])
 
-    // await runBenchmarkManual();
+    await runBenchmarkManual();
 
 }
 

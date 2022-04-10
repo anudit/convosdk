@@ -47264,40 +47264,23 @@ function fetcher(requestMethod, url, apikey = '', body = {}, customHeaders = {})
             if (apikey != '') {
                 reqUrl += (url.includes('?') === true ? '&' : '?') + 'apikey=' + apikey;
             }
-            if (requestMethod === 'GET') {
-                const response = yield (0, cross_fetch_1.default)(reqUrl, {
-                    headers: Object.assign({}, customHeaders),
-                    signal: controller.signal,
-                });
-                // console.log(response.status, response.ok);
-                if (response.ok === true &&
-                    response.status >= 200 &&
-                    response.status < 300) {
-                    const data = yield response.json();
-                    return data;
-                }
-                else {
-                    return {};
-                }
+            const reqOptions = {
+                headers: Object.assign({}, customHeaders),
+                signal: controller.signal,
+            };
+            if (requestMethod !== 'GET') {
+                reqOptions['method'] = requestMethod;
+                reqOptions['body'] = JSON.stringify(body);
             }
-            else if (requestMethod === 'POST' ||
-                requestMethod === 'UPDATE' ||
-                requestMethod === 'DELETE') {
-                const response = yield (0, cross_fetch_1.default)(reqUrl, {
-                    method: requestMethod,
-                    body: JSON.stringify(body),
-                    headers: Object.assign(Object.assign({}, customHeaders), { 'Content-Type': 'application/json' }),
-                    signal: controller.signal,
-                });
-                if (response.ok === true &&
-                    response.status >= 200 &&
-                    response.status < 300) {
-                    const data = yield response.json();
-                    return data;
-                }
-                else {
-                    return {};
-                }
+            const response = yield (0, cross_fetch_1.default)(reqUrl, reqOptions);
+            if (response.ok === true &&
+                response.status >= 200 &&
+                response.status < 300) {
+                const data = yield response.json();
+                return data;
+            }
+            else {
+                return { error: { message: 'Invalid Request', response: response } };
             }
         }
         catch (error) {
