@@ -13,6 +13,7 @@ export default function Home() {
 
   useEffect(() => {
     authWeb3();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function authWeb3() {
@@ -49,7 +50,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://theconvo.space" target="_blank">Convo Space!</a>
+          Welcome to <a href="https://theconvo.space" target="_blank" rel="noreferrer">Convo Space!</a>
         </h1>
 
         <p className={styles.description}>
