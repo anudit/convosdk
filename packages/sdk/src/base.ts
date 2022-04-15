@@ -18,7 +18,7 @@ class ConvoBase {
   }
 
   logConfig = async (): Promise<LogConfigType> => {
-    const pingResult: Dictionary<any> = await this.ping();
+    const pingResult: Dictionary<any> = await this.pingNode();
     const versionInfo: any = await fetch(
       'https://bundlephobia.com/api/size?package=@theconvospace/sdk@latest&record=true'
     ).then((r) => {
@@ -27,14 +27,27 @@ class ConvoBase {
     return {
       node: this.node,
       apikey: this.apikey,
-      currentVersion: '0.4.0',
+      currentVersion: '0.4.1',
       latestVersion: versionInfo['version'],
       pingResult: pingResult,
     };
   };
 
-  ping = async (): Promise<any | ErrorType> => {
+  pingNode = async (): Promise<any | ErrorType> => {
     return await fetcher('GET', `${this.node}/ping`, this.apikey, {});
+  };
+
+  listNodes = () => {
+    return [
+      'https://theconvo.space/api',
+      'https://backup.theconvo.space/api',
+      'https://node1.theconvo.space/api',
+      'https://d1c1io99nqy760.cloudfront.net/api',
+    ];
+  };
+
+  switchNode = (newNodeAddress: string) => {
+    this.node = newNodeAddress;
   };
 }
 

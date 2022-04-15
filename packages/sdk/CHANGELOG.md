@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.1
+- Custom Timeout on `convo.comments.query`
+- Add `convo.listNodes()`, `convo.switchNode()`.
+- Change `convo.ping()`, `convo.pingNode()`.
+
 ## 0.4.0
 - Seperate React Hooks into `@theconvospace/react` package.
     - `convo.threads.subscribe` is now moved to, `import { subscribe } from "@theconvospace/react"; `

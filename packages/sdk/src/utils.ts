@@ -7,12 +7,13 @@ export async function fetcher(
   url: string,
   apikey = '',
   body: Dictionary<any> = {},
-  customHeaders: Dictionary<any> = {}
+  customHeaders: Dictionary<any> = {},
+  timeout = 6000
 ): Promise<any | ErrorType> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => {
+  const timer = setTimeout(() => {
     controller.abort();
-  }, 6000);
+  }, timeout);
 
   try {
     let reqUrl = url;
@@ -47,7 +48,7 @@ export async function fetcher(
     console.error(url, error);
     return { error };
   } finally {
-    clearTimeout(timeout);
+    clearTimeout(timer);
   }
 }
 
@@ -63,12 +64,13 @@ export function encodeQuery(
 export async function gqlFetcher(
   url: string,
   query: string,
-  variables: Dictionary<any> = {}
+  variables: Dictionary<any> = {},
+  timeout = 5000
 ): Promise<Dictionary<any> | ErrorType> {
   const controller = new AbortController();
-  const timeout = setTimeout(() => {
+  const timer = setTimeout(() => {
     controller.abort();
-  }, 5000);
+  }, timeout);
 
   try {
     const req = await fetch(url, {
@@ -87,6 +89,6 @@ export async function gqlFetcher(
     console.error(url, error);
     return { error };
   } finally {
-    clearTimeout(timeout);
+    clearTimeout(timer);
   }
 }

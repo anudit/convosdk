@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "SDK containing all the functions you'll need to build on theconvo.space",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
@@ -58,9 +58,9 @@
   "homepage": "https://github.com/anudit/convosdk#readme",
   "devDependencies": {
     "@typechain/ethers-v5": "^10.0.0",
-    "@types/node": "^17.0.23",
-    "@typescript-eslint/eslint-plugin": "^5.18.0",
-    "@typescript-eslint/parser": "^5.18.0",
+    "@types/node": "^17.0.24",
+    "@typescript-eslint/eslint-plugin": "^5.19.0",
+    "@typescript-eslint/parser": "^5.19.0",
     "browserify": "^17.0.0",
     "eslint": "^8.13.0",
     "eslint-config-prettier": "^8.5.0",
@@ -88,11 +88,11 @@
     "lib": "lib"
   },
   "dependencies": {
-    "@ethersproject/abi": "^5.6.0",
-    "@ethersproject/providers": "^5.6.2",
+    "@ethersproject/abi": "^5.6.1",
+    "@ethersproject/providers": "^5.6.4",
     "abort-controller": "^3.0.0",
     "cross-fetch": "^3.1.5",
-    "ethers": "^5.6.2",
+    "ethers": "^5.6.4",
     "siwe": "^1.1.6"
   }
 }

@@ -47,12 +47,17 @@ class Comments {
     });
   };
 
-  query = async (query: CommentsQueryType): Promise<any | ErrorType> => {
+  query = async (
+    query: CommentsQueryType,
+    timeout = 6000
+  ): Promise<any | ErrorType> => {
     return await fetcher(
       'GET',
       `${this.node}/comments?${encodeQuery(query)}`,
       this.apikey,
-      {}
+      {},
+      {},
+      timeout
     );
   };
 
