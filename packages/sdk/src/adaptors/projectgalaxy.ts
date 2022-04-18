@@ -32,7 +32,7 @@ export default async function getProjectGalaxyData(address: string) {
     }`
   )) as ProjectGalaxyResult;
 
-  return 'addressInfo' in jsonData['data']
+  return Object.keys(jsonData['data']).includes('addressInfo')
     ? jsonData['data']['addressInfo']
     : {};
 }

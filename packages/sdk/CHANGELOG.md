@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.2
+- Add `governordao` Adaptor.
+- Update Dependencies.
+
 ## 0.4.1
 - Custom Timeout on `convo.comments.query`
 - Add `convo.listNodes()`, `convo.switchNode()`.
