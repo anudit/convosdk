@@ -23,6 +23,7 @@ export async function fetcher(
 
     const reqOptions: RequestInit = {
       headers: {
+        'Content-Type': 'application/json',
         ...customHeaders,
       },
       signal: controller.signal,
