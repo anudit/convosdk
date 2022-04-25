@@ -27,7 +27,7 @@ class ConvoBase {
     return {
       node: this.node,
       apikey: this.apikey,
-      currentVersion: '0.4.2',
+      currentVersion: '0.4.3',
       latestVersion: versionInfo['version'],
       pingResult: pingResult,
     };
@@ -42,7 +42,9 @@ class ConvoBase {
       'https://theconvo.space/api',
       'https://backup.theconvo.space/api',
       'https://node1.theconvo.space/api',
-      'https://d1c1io99nqy760.cloudfront.net/api',
+      'https://node2.theconvo.space/api',
+      'https://node3.theconvo.space/api',
+      'https://node4.theconvo.space/api',
     ];
   };
 

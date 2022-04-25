@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.3
+- Update Nodes.
+- Update Headers for fetcher [https://github.com/anudit/convosdk/pull/5](https://github.com/anudit/convosdk/pull/5)
+0 Update Dependencies
+
 ## 0.4.2
 - Add `governordao` Adaptor.
 - Update Dependencies.
