@@ -23,7 +23,7 @@ interface MirrorResult {
 
 export default async function getMirrorData(address = '') {
   const jsonData = (await gqlFetcher(
-    'https://mirror-api.com/graphql',
+    'https://mirror-tokengate.xyz/graphql',
     `{
       addressInfo(address: "${address}") {
         ens

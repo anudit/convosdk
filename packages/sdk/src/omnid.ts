@@ -264,6 +264,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('klima')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getKlimaData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('knownorigin')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -453,29 +460,30 @@ class Omnid {
         hiveone: resp[23],
         idena: resp[24],
         karma: resp[25],
-        knownorigin: resp[26],
-        layer3: resp[27],
-        lens: resp[28],
-        metagame: resp[29],
-        mew: resp[30],
-        mirror: resp[31],
-        poap: resp[32],
-        poh: resp[33],
-        pop: resp[34],
-        polygon: resp[35],
-        projectgalaxy: resp[36],
-        questbook: resp[37],
-        rabbithole: resp[38],
-        rarible: resp[39],
-        rss3: resp[40],
-        showtime: resp[41],
-        superrare: resp[42],
-        unipass: resp[43],
-        uniswap: resp[44],
-        unstoppable: resp[45],
-        yup: resp[46],
-        zapper: resp[47],
-        zora: resp[48],
+        klima: resp[26],
+        knownorigin: resp[27],
+        layer3: resp[28],
+        lens: resp[29],
+        metagame: resp[30],
+        mew: resp[31],
+        mirror: resp[32],
+        poap: resp[33],
+        poh: resp[34],
+        pop: resp[35],
+        polygon: resp[36],
+        projectgalaxy: resp[37],
+        questbook: resp[38],
+        rabbithole: resp[39],
+        rarible: resp[40],
+        rss3: resp[41],
+        showtime: resp[42],
+        superrare: resp[43],
+        unipass: resp[44],
+        uniswap: resp[45],
+        unstoppable: resp[46],
+        yup: resp[47],
+        zapper: resp[48],
+        zora: resp[49],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');

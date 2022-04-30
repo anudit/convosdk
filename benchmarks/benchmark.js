@@ -37,7 +37,8 @@ const addresssTable = [
     "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
     "0x8d07D225a769b7Af3A923481E1FdF49180e6A265",
     "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
-    "0x597D1747256304d5d47eCE999A8e5bAdE6d41845"
+    "0x597D1747256304d5d47eCE999A8e5bAdE6d41845",
+    "0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443"
 ];
 
 const convoInstance = new Convo('CSCpPwHnkB3niBJiUjy92YGP6xVkVZbWfK8xriDO');
@@ -211,6 +212,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getHiveOneData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.checkIdena, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getKarmaData, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getKlimaData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getKnownOriginData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getLensData, withConfig: false },

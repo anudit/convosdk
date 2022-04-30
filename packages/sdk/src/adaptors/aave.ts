@@ -1,7 +1,7 @@
 import { ethers, BigNumber } from 'ethers';
 import { ComputeConfig } from '../types';
 import { LendingPool } from './types';
-
+import lendingPoolAbi from './abis/LendingPool.json';
 interface GetUserAccountDataResponse {
   totalCollateralETH: BigNumber;
   totalDebtETH: BigNumber;
@@ -44,52 +44,6 @@ export default async function getAaveData(
     url: computeConfig.avalancheMainnetRpc,
   });
 
-  const lendingPoolAbi = [
-    {
-      inputs: [
-        {
-          internalType: 'address',
-          name: 'user',
-          type: 'address',
-        },
-      ],
-      name: 'getUserAccountData',
-      outputs: [
-        {
-          internalType: 'uint256',
-          name: 'totalCollateralETH',
-          type: 'uint256',
-        },
-        {
-          internalType: 'uint256',
-          name: 'totalDebtETH',
-          type: 'uint256',
-        },
-        {
-          internalType: 'uint256',
-          name: 'availableBorrowsETH',
-          type: 'uint256',
-        },
-        {
-          internalType: 'uint256',
-          name: 'currentLiquidationThreshold',
-          type: 'uint256',
-        },
-        {
-          internalType: 'uint256',
-          name: 'ltv',
-          type: 'uint256',
-        },
-        {
-          internalType: 'uint256',
-          name: 'healthFactor',
-          type: 'uint256',
-        },
-      ],
-      stateMutability: 'view',
-      type: 'function',
-    },
-  ];
   const mainMarketAddress = new ethers.Contract(
     '0x7d2768de32b0b80b7a3454c06bdac94a69ddc7a9',
     lendingPoolAbi,
@@ -137,17 +91,17 @@ export default async function getAaveData(
       if (isValidHf === true) {
         totalHf += hf;
         data.push({
-          totalCollateralETH: ethers.utils.formatEther(
+          totalCollateralETH: parseFloat(ethers.utils.formatEther(
             poolData.totalCollateralETH
-          ),
-          totalDebtETH: ethers.utils.formatEther(poolData.totalDebtETH),
-          availableBorrowsETH: ethers.utils.formatEther(
+          )),
+          totalDebtETH: parseFloat(ethers.utils.formatEther(poolData.totalDebtETH)),
+          availableBorrowsETH: parseFloat(ethers.utils.formatEther(
             poolData.availableBorrowsETH
-          ),
-          currentLiquidationThreshold: ethers.utils.formatEther(
+          )),
+          currentLiquidationThreshold: parseFloat(ethers.utils.formatEther(
             poolData.currentLiquidationThreshold
-          ),
-          ltv: ethers.utils.formatEther(poolData.ltv),
+          )),
+          ltv: parseFloat(ethers.utils.formatEther(poolData.ltv)),
           healthFactor: hf,
         });
       } else {
