@@ -91,16 +91,18 @@ export default async function getAaveData(
       if (isValidHf === true) {
         totalHf += hf;
         data.push({
-          totalCollateralETH: parseFloat(ethers.utils.formatEther(
-            poolData.totalCollateralETH
-          )),
-          totalDebtETH: parseFloat(ethers.utils.formatEther(poolData.totalDebtETH)),
-          availableBorrowsETH: parseFloat(ethers.utils.formatEther(
-            poolData.availableBorrowsETH
-          )),
-          currentLiquidationThreshold: parseFloat(ethers.utils.formatEther(
-            poolData.currentLiquidationThreshold
-          )),
+          totalCollateralETH: parseFloat(
+            ethers.utils.formatEther(poolData.totalCollateralETH)
+          ),
+          totalDebtETH: parseFloat(
+            ethers.utils.formatEther(poolData.totalDebtETH)
+          ),
+          availableBorrowsETH: parseFloat(
+            ethers.utils.formatEther(poolData.availableBorrowsETH)
+          ),
+          currentLiquidationThreshold: parseFloat(
+            ethers.utils.formatEther(poolData.currentLiquidationThreshold)
+          ),
           ltv: parseFloat(ethers.utils.formatEther(poolData.ltv)),
           healthFactor: hf,
         });

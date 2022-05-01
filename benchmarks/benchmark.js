@@ -215,6 +215,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getKlimaData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getKnownOriginData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getLearnWeb3Data, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getLensData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getMetagameData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getMewData, withConfig: true },

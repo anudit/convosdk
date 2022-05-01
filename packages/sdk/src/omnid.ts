@@ -285,6 +285,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('learnweb3')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getLearnWeb3Data,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('lens')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -463,27 +470,28 @@ class Omnid {
         klima: resp[26],
         knownorigin: resp[27],
         layer3: resp[28],
-        lens: resp[29],
-        metagame: resp[30],
-        mew: resp[31],
-        mirror: resp[32],
-        poap: resp[33],
-        poh: resp[34],
-        pop: resp[35],
-        polygon: resp[36],
-        projectgalaxy: resp[37],
-        questbook: resp[38],
-        rabbithole: resp[39],
-        rarible: resp[40],
-        rss3: resp[41],
-        showtime: resp[42],
-        superrare: resp[43],
-        unipass: resp[44],
-        uniswap: resp[45],
-        unstoppable: resp[46],
-        yup: resp[47],
-        zapper: resp[48],
-        zora: resp[49],
+        learnweb3: resp[29],
+        lens: resp[30],
+        metagame: resp[31],
+        mew: resp[32],
+        mirror: resp[33],
+        poap: resp[34],
+        poh: resp[35],
+        pop: resp[36],
+        polygon: resp[37],
+        projectgalaxy: resp[38],
+        questbook: resp[39],
+        rabbithole: resp[40],
+        rarible: resp[41],
+        rss3: resp[42],
+        showtime: resp[43],
+        superrare: resp[44],
+        unipass: resp[45],
+        uniswap: resp[46],
+        unstoppable: resp[47],
+        yup: resp[48],
+        zapper: resp[49],
+        zora: resp[50],
       };
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');

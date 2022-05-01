@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.5
+- Add LearnWeb3 DAO Adaptor.
+
 ## 0.4.4
 - Update Mirror, Aave Adaptor.
 - Add KlimaDAO Adaptor.
