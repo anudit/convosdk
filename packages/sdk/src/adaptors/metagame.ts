@@ -3,7 +3,7 @@ import { gqlFetcher } from '../utils';
 
 export default async function getMetagameData(address: string) {
   const data = (await gqlFetcher(
-    'https://hasura-7s6e.onrender.com/v1/graphql',
+    'https://api.metagame.wtf/v1/graphql',
     `query GetPlayers($orderBy: player_order_by!, $offset: Int, $limit: Int, $where: player_bool_exp, $forLoginDisplay: Boolean! = false) {
       player(
         order_by: [$orderBy, {ethereumAddress: desc}]
@@ -14,36 +14,18 @@ export default async function getMetagameData(address: string) {
         ...PlayerFragment
         __typename
       }
-      player_aggregate(where: $where) {
-        aggregate {
-          count
-          __typename
-        }
-        __typename
-      }
     }
 
     fragment PlayerFragment on player {
-      id @skip(if: $forLoginDisplay)
-      totalXP @skip(if: $forLoginDisplay)
-      seasonXP @skip(if: $forLoginDisplay)
-      rank @skip(if: $forLoginDisplay)
+      totalXP
+      seasonXP
       ethereumAddress
-      profileLayout @skip(if: $forLoginDisplay)
-      skills @skip(if: $forLoginDisplay) {
+      rank
+      skills  {
         Skill {
           category
           id
           name
-          __typename
-        }
-        __typename
-      }
-      roles(order_by: {rank: asc}) @skip(if: $forLoginDisplay) {
-        role
-        rank
-        PlayerRole {
-          label
           __typename
         }
         __typename
@@ -91,14 +73,14 @@ export default async function getMetagameData(address: string) {
         contextIds
         __typename
       }
-    }
-    `,
+    }`,
     {
       orderBy: {
         seasonXP: 'desc',
       },
       offset: 0,
       limit: 9,
+      forLoginDisplay: false,
       where: {
         _or: [
           {

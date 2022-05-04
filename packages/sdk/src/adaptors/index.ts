@@ -14,6 +14,7 @@ export { default as getCyberconnectData } from './cyberconnect';
 export { default as getDapplistData } from './dapplist';
 export { default as getDebankData } from './debank';
 export { default as getDeepDaoData } from './deepdao';
+export { default as getEmblemData } from './emblem';
 export { default as addressToEns } from './ens';
 export { default as getEtherscanData } from './etherscan';
 export { default as getFortaData } from './forta';

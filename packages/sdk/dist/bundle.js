@@ -8379,7 +8379,7 @@ exports.Description = Description;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "providers/5.6.4";
+exports.version = "providers/5.6.5";
 
 },{}],63:[function(require,module,exports){
 "use strict";
@@ -8532,6 +8532,12 @@ function getHost(name) {
     switch (name) {
         case "homestead":
             return "rpc.ankr.com/eth/";
+        case "ropsten":
+            return "rpc.ankr.com/eth_ropsten/";
+        case "rinkeby":
+            return "rpc.ankr.com/eth_rinkeby/";
+        case "goerli":
+            return "rpc.ankr.com/eth_goerli/";
         case "matic":
             return "rpc.ankr.com/polygon/";
         case "arbitrum":
@@ -10831,7 +10837,7 @@ var BaseProvider = /** @class */ (function (_super) {
                             return [2 /*return*/, null];
                         }
                         // Optimization since the eth node cannot change and does
-                        // not have a wildcar resolver
+                        // not have a wildcard resolver
                         if (name !== "eth" && currentName === "eth") {
                             return [2 /*return*/, null];
                         }
@@ -13420,7 +13426,7 @@ function checkError(method, error, params) {
     message = (message || "").toLowerCase();
     var transaction = params.transaction || params.signedTransaction;
     // "insufficient funds for gas * price + value + cost(data)"
-    if (message.match(/insufficient funds|base fee exceeds gas limit/)) {
+    if (message.match(/insufficient funds|base fee exceeds gas limit/i)) {
         logger.throwError("insufficient funds for intrinsic transaction cost", logger_1.Logger.errors.INSUFFICIENT_FUNDS, {
             error: error,
             method: method,
@@ -13428,7 +13434,7 @@ function checkError(method, error, params) {
         });
     }
     // "nonce too low"
-    if (message.match(/nonce (is )?too low/)) {
+    if (message.match(/nonce (is )?too low/i)) {
         logger.throwError("nonce has already been used", logger_1.Logger.errors.NONCE_EXPIRED, {
             error: error,
             method: method,
@@ -13436,7 +13442,7 @@ function checkError(method, error, params) {
         });
     }
     // "replacement transaction underpriced"
-    if (message.match(/replacement transaction underpriced/)) {
+    if (message.match(/replacement transaction underpriced|transaction gas price.*too low/i)) {
         logger.throwError("replacement fee too low", logger_1.Logger.errors.REPLACEMENT_UNDERPRICED, {
             error: error,
             method: method,
@@ -13444,7 +13450,7 @@ function checkError(method, error, params) {
         });
     }
     // "replacement transaction underpriced"
-    if (message.match(/only replay-protected/)) {
+    if (message.match(/only replay-protected/i)) {
         logger.throwError("legacy pre-eip-155 transactions not supported", logger_1.Logger.errors.UNSUPPORTED_OPERATION, {
             error: error,
             method: method,
@@ -14069,7 +14075,7 @@ var JsonRpcProvider = /** @class */ (function (_super) {
             if (transaction[key] == null) {
                 return;
             }
-            var value = (0, bytes_1.hexValue)(transaction[key]);
+            var value = (0, bytes_1.hexValue)(bignumber_1.BigNumber.from(transaction[key]));
             if (key === "gasLimit") {
                 key = "gas";
             }
@@ -15271,7 +15277,7 @@ var SupportedAlgorithm;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "signing-key/5.6.0";
+exports.version = "signing-key/5.6.1";
 
 },{}],92:[function(require,module,exports){
 "use strict";
@@ -15305,6 +15311,9 @@ var SigningKey = /** @class */ (function () {
     function SigningKey(privateKey) {
         (0, properties_1.defineReadOnly)(this, "curve", "secp256k1");
         (0, properties_1.defineReadOnly)(this, "privateKey", (0, bytes_1.hexlify)(privateKey));
+        if ((0, bytes_1.hexDataLength)(this.privateKey) !== 32) {
+            logger.throwArgumentError("invalid private key", "privateKey", "[[ REDACTED ]]");
+        }
         var keyPair = getCurve().keyFromPrivate((0, bytes_1.arrayify)(this.privateKey));
         (0, properties_1.defineReadOnly)(this, "publicKey", "0x" + keyPair.getPublic(false, "hex"));
         (0, properties_1.defineReadOnly)(this, "compressedPublicKey", "0x" + keyPair.getPublic(true, "hex"));
@@ -40526,7 +40535,7 @@ module.exports={
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "ethers/5.6.4";
+exports.version = "ethers/5.6.5";
 
 },{}],182:[function(require,module,exports){
 "use strict";
@@ -44648,7 +44657,7 @@ function getAge(address, computeConfig) {
 }
 exports.default = getAge;
 
-},{"../utils":268}],213:[function(require,module,exports){
+},{"../utils":269}],213:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -44666,21 +44675,15 @@ function getArcxData(address) {
         try {
             const data = (yield (0, utils_1.fetcher)('GET', `https://api.arcx.money/scores/${address}`));
             let totalScore = 0;
-            const details = {};
             for (let index = 0; index < data.length; index++) {
                 const scoreData = data[index];
                 if (scoreData['score'] !== null) {
-                    const sc = (parseFloat(scoreData['score']) /
-                        (parseFloat(scoreData['metadata']['maxValue']) -
-                            parseFloat(scoreData['metadata']['minValue']))) *
-                        10;
-                    totalScore += sc;
-                    details[scoreData['metadata'].name] = sc;
+                    totalScore += parseFloat(scoreData['score']) / 10;
                 }
             }
             return {
                 totalScore,
-                details,
+                details: data,
             };
         }
         catch (error) {
@@ -44693,7 +44696,7 @@ function getArcxData(address) {
 }
 exports.default = getArcxData;
 
-},{"../utils":268}],214:[function(require,module,exports){
+},{"../utils":269}],214:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -44747,7 +44750,7 @@ function getAsyncartData(address, computeConfig) {
 }
 exports.default = getAsyncartData;
 
-},{"../utils":268}],215:[function(require,module,exports){
+},{"../utils":269}],215:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -44790,7 +44793,7 @@ function getBoardroomData(address) {
 }
 exports.default = getBoardroomData;
 
-},{"../utils":268}],216:[function(require,module,exports){
+},{"../utils":269}],216:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -44817,7 +44820,7 @@ function checkBrightId(address) {
 }
 exports.default = checkBrightId;
 
-},{"../utils":268}],217:[function(require,module,exports){
+},{"../utils":269}],217:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -44859,7 +44862,7 @@ function getCeloData(address) {
 }
 exports.default = getCeloData;
 
-},{"../utils":268}],218:[function(require,module,exports){
+},{"../utils":269}],218:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45015,7 +45018,7 @@ function getCoinviseData(address, computeConfig) {
 }
 exports.default = getCoinviseData;
 
-},{"../utils":268}],219:[function(require,module,exports){
+},{"../utils":269}],219:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45039,7 +45042,7 @@ function getContextData(address) {
 }
 exports.default = getContextData;
 
-},{"../utils":268}],220:[function(require,module,exports){
+},{"../utils":269}],220:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45076,7 +45079,7 @@ function getCoordinapeData(address) {
 }
 exports.default = getCoordinapeData;
 
-},{"../utils":268}],221:[function(require,module,exports){
+},{"../utils":269}],221:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45097,7 +45100,7 @@ function getCryptoscamdbData(address) {
 }
 exports.default = getCryptoscamdbData;
 
-},{"../utils":268}],222:[function(require,module,exports){
+},{"../utils":269}],222:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45127,7 +45130,7 @@ function getCyberconnectData(address) {
 }
 exports.default = getCyberconnectData;
 
-},{"../utils":268}],223:[function(require,module,exports){
+},{"../utils":269}],223:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45153,7 +45156,7 @@ function getDapplistData(address) {
 }
 exports.default = getDapplistData;
 
-},{"../utils":268}],224:[function(require,module,exports){
+},{"../utils":269}],224:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45186,7 +45189,7 @@ function getDebankData(address) {
 }
 exports.default = getDebankData;
 
-},{"../utils":268}],225:[function(require,module,exports){
+},{"../utils":269}],225:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45222,7 +45225,35 @@ function getDeepDaoData(address) {
 }
 exports.default = getDeepDaoData;
 
-},{"../utils":268}],226:[function(require,module,exports){
+},{"../utils":269}],226:[function(require,module,exports){
+"use strict";
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const utils_1 = require("../utils");
+function getEmblemData(address = '') {
+    return __awaiter(this, void 0, void 0, function* () {
+        const jsonData = (yield (0, utils_1.gqlFetcher)('https://emblem-api.onrender.com/graphql', `{
+        allRankings(condition: {winnerId: "${address.toLowerCase()}", roleId: null}){
+          nodes{
+            soulScore
+            rank
+          }
+        }
+    }`));
+        return jsonData['data']['allRankings']['nodes'][0];
+    });
+}
+exports.default = getEmblemData;
+
+},{"../utils":269}],227:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45262,7 +45293,7 @@ function addressToEns(address) {
 }
 exports.default = addressToEns;
 
-},{"../utils":268}],227:[function(require,module,exports){
+},{"../utils":269}],228:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45288,7 +45319,7 @@ function getEtherscanData(address, computeConfig) {
 }
 exports.default = getEtherscanData;
 
-},{"../utils":268}],228:[function(require,module,exports){
+},{"../utils":269}],229:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45346,7 +45377,7 @@ function getFortaData(address) {
 }
 exports.default = getFortaData;
 
-},{"../utils":268}],229:[function(require,module,exports){
+},{"../utils":269}],230:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45564,7 +45595,7 @@ function getFoundationData(address, computeConfig) {
 }
 exports.default = getFoundationData;
 
-},{"../utils":268}],230:[function(require,module,exports){
+},{"../utils":269}],231:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45605,7 +45636,7 @@ function getGitcoinData(address, computeConfig) {
 }
 exports.getGitcoinData = getGitcoinData;
 
-},{"../utils":268,"ethers/lib/utils":184}],231:[function(require,module,exports){
+},{"../utils":269,"ethers/lib/utils":184}],232:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45636,7 +45667,7 @@ function getGoldfinchData(address) {
 }
 exports.default = getGoldfinchData;
 
-},{"../utils":268}],232:[function(require,module,exports){
+},{"../utils":269}],233:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45664,7 +45695,7 @@ function getGovernordaoData(address) {
 }
 exports.default = getGovernordaoData;
 
-},{"../utils":268}],233:[function(require,module,exports){
+},{"../utils":269}],234:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45705,7 +45736,7 @@ function getHiveOneData(address, computeConfig) {
 }
 exports.default = getHiveOneData;
 
-},{"../utils":268}],234:[function(require,module,exports){
+},{"../utils":269}],235:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45737,14 +45768,14 @@ function checkIdena(address) {
 }
 exports.default = checkIdena;
 
-},{"../utils":268}],235:[function(require,module,exports){
+},{"../utils":269}],236:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.resolveUnstoppableDomains = exports.getSybilData = exports.getAllSybilData = exports.getUnipassData = exports.getSuperrareData = exports.getShowtimeData = exports.getRss3Data = exports.getRaribleData = exports.getRabbitholeData = exports.getQuestbookData = exports.getPopData = exports.getProjectGalaxyData = exports.getPolygonData = exports.checkPoH = exports.getPoapData = exports.getMirrorData = exports.getMewData = exports.getMetagameData = exports.getLensData = exports.getLearnWeb3Data = exports.getLayer3Data = exports.getKnownOriginData = exports.getKlimaData = exports.getKarmaData = exports.checkIdena = exports.getHiveOneData = exports.getGovernordaoData = exports.getGoldfinchData = exports.getGitcoinData = exports.getAllGitcoinData = exports.getFoundationData = exports.getFortaData = exports.getEtherscanData = exports.addressToEns = exports.getDeepDaoData = exports.getDebankData = exports.getDapplistData = exports.getCyberconnectData = exports.getCryptoscamdbData = exports.getCryptoreliefData = exports.getCoordinapeData = exports.getContextData = exports.getCoinviseData = exports.getCeloData = exports.checkBrightId = exports.getBoardroomData = exports.getAsyncartData = exports.getArcxData = exports.getAge = exports.getAaveData = void 0;
-exports.getZoraData = exports.getZapperData = exports.getYupData = void 0;
+exports.getSybilData = exports.getAllSybilData = exports.getUnipassData = exports.getSuperrareData = exports.getShowtimeData = exports.getRss3Data = exports.getRaribleData = exports.getRabbitholeData = exports.getQuestbookData = exports.getPopData = exports.getProjectGalaxyData = exports.getPolygonData = exports.checkPoH = exports.getPoapData = exports.getMirrorData = exports.getMewData = exports.getMetagameData = exports.getLensData = exports.getLearnWeb3Data = exports.getLayer3Data = exports.getKnownOriginData = exports.getKlimaData = exports.getKarmaData = exports.checkIdena = exports.getHiveOneData = exports.getGovernordaoData = exports.getGoldfinchData = exports.getGitcoinData = exports.getAllGitcoinData = exports.getFoundationData = exports.getFortaData = exports.getEtherscanData = exports.addressToEns = exports.getEmblemData = exports.getDeepDaoData = exports.getDebankData = exports.getDapplistData = exports.getCyberconnectData = exports.getCryptoscamdbData = exports.getCryptoreliefData = exports.getCoordinapeData = exports.getContextData = exports.getCoinviseData = exports.getCeloData = exports.checkBrightId = exports.getBoardroomData = exports.getAsyncartData = exports.getArcxData = exports.getAge = exports.getAaveData = void 0;
+exports.getZoraData = exports.getZapperData = exports.getYupData = exports.resolveUnstoppableDomains = void 0;
 var aave_1 = require("./aave");
 Object.defineProperty(exports, "getAaveData", { enumerable: true, get: function () { return __importDefault(aave_1).default; } });
 var age_1 = require("./age");
@@ -45777,6 +45808,8 @@ var debank_1 = require("./debank");
 Object.defineProperty(exports, "getDebankData", { enumerable: true, get: function () { return __importDefault(debank_1).default; } });
 var deepdao_1 = require("./deepdao");
 Object.defineProperty(exports, "getDeepDaoData", { enumerable: true, get: function () { return __importDefault(deepdao_1).default; } });
+var emblem_1 = require("./emblem");
+Object.defineProperty(exports, "getEmblemData", { enumerable: true, get: function () { return __importDefault(emblem_1).default; } });
 var ens_1 = require("./ens");
 Object.defineProperty(exports, "addressToEns", { enumerable: true, get: function () { return __importDefault(ens_1).default; } });
 var etherscan_1 = require("./etherscan");
@@ -45850,7 +45883,7 @@ Object.defineProperty(exports, "getZapperData", { enumerable: true, get: functio
 var zora_1 = require("./zora");
 Object.defineProperty(exports, "getZoraData", { enumerable: true, get: function () { return __importDefault(zora_1).default; } });
 
-},{"./aave":209,"./age":212,"./arcx":213,"./asyncart":214,"./boardroom":215,"./brightid":216,"./celo":217,"./coinvise":218,"./context":219,"./coordinape":220,"./cryptoscamdb":221,"./cyberconnect":222,"./dapplist":223,"./debank":224,"./deepdao":225,"./ens":226,"./etherscan":227,"./forta":228,"./foundation":229,"./gitcoin":230,"./goldfinch":231,"./governordao":232,"./hiveone":233,"./idena":234,"./karma":236,"./klima":237,"./knownorigin":238,"./layer3":239,"./learnweb3":240,"./lens":241,"./metagame":242,"./mew":243,"./mirror":244,"./poap":245,"./poh":246,"./polygon":247,"./projectgalaxy":248,"./proofofpersonhood":249,"./questbook":250,"./rabbithole":251,"./rarible":252,"./rss3":253,"./showtime":254,"./superrare":255,"./unipass":256,"./uniswap":257,"./unstoppable":258,"./yup":259,"./zapper":260,"./zora":261}],236:[function(require,module,exports){
+},{"./aave":209,"./age":212,"./arcx":213,"./asyncart":214,"./boardroom":215,"./brightid":216,"./celo":217,"./coinvise":218,"./context":219,"./coordinape":220,"./cryptoscamdb":221,"./cyberconnect":222,"./dapplist":223,"./debank":224,"./deepdao":225,"./emblem":226,"./ens":227,"./etherscan":228,"./forta":229,"./foundation":230,"./gitcoin":231,"./goldfinch":232,"./governordao":233,"./hiveone":234,"./idena":235,"./karma":237,"./klima":238,"./knownorigin":239,"./layer3":240,"./learnweb3":241,"./lens":242,"./metagame":243,"./mew":244,"./mirror":245,"./poap":246,"./poh":247,"./polygon":248,"./projectgalaxy":249,"./proofofpersonhood":250,"./questbook":251,"./rabbithole":252,"./rarible":253,"./rss3":254,"./showtime":255,"./superrare":256,"./unipass":257,"./uniswap":258,"./unstoppable":259,"./yup":260,"./zapper":261,"./zora":262}],237:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45891,7 +45924,7 @@ function getKarmaData(address) {
 }
 exports.default = getKarmaData;
 
-},{"../utils":268}],237:[function(require,module,exports){
+},{"../utils":269}],238:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -45929,7 +45962,7 @@ function getKlimaData(address, computeConfig) {
 }
 exports.default = getKlimaData;
 
-},{"./abis/KlimaCarbonRetirements.json":210,"ethers":183,"ethers/lib/utils":184}],238:[function(require,module,exports){
+},{"./abis/KlimaCarbonRetirements.json":210,"ethers":183,"ethers/lib/utils":184}],239:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46002,7 +46035,7 @@ function getKnownOriginData(address, computeConfig) {
 }
 exports.default = getKnownOriginData;
 
-},{"../utils":268,"ethers/lib/utils":184}],239:[function(require,module,exports){
+},{"../utils":269,"ethers/lib/utils":184}],240:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46081,7 +46114,7 @@ function getLayer3Data(address) {
 }
 exports.default = getLayer3Data;
 
-},{"../utils":268}],240:[function(require,module,exports){
+},{"../utils":269}],241:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46128,7 +46161,7 @@ function getLearnWeb3Data(address) {
 }
 exports.default = getLearnWeb3Data;
 
-},{"../utils":268}],241:[function(require,module,exports){
+},{"../utils":269}],242:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46180,7 +46213,7 @@ function getLensData(address) {
 }
 exports.default = getLensData;
 
-},{"../utils":268}],242:[function(require,module,exports){
+},{"../utils":269}],243:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46195,7 +46228,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function getMetagameData(address) {
     return __awaiter(this, void 0, void 0, function* () {
-        const data = (yield (0, utils_1.gqlFetcher)('https://hasura-7s6e.onrender.com/v1/graphql', `query GetPlayers($orderBy: player_order_by!, $offset: Int, $limit: Int, $where: player_bool_exp, $forLoginDisplay: Boolean! = false) {
+        const data = (yield (0, utils_1.gqlFetcher)('https://api.metagame.wtf/v1/graphql', `query GetPlayers($orderBy: player_order_by!, $offset: Int, $limit: Int, $where: player_bool_exp, $forLoginDisplay: Boolean! = false) {
       player(
         order_by: [$orderBy, {ethereumAddress: desc}]
         offset: $offset
@@ -46205,36 +46238,18 @@ function getMetagameData(address) {
         ...PlayerFragment
         __typename
       }
-      player_aggregate(where: $where) {
-        aggregate {
-          count
-          __typename
-        }
-        __typename
-      }
     }
 
     fragment PlayerFragment on player {
-      id @skip(if: $forLoginDisplay)
-      totalXP @skip(if: $forLoginDisplay)
-      seasonXP @skip(if: $forLoginDisplay)
-      rank @skip(if: $forLoginDisplay)
+      totalXP
+      seasonXP
       ethereumAddress
-      profileLayout @skip(if: $forLoginDisplay)
-      skills @skip(if: $forLoginDisplay) {
+      rank
+      skills  {
         Skill {
           category
           id
           name
-          __typename
-        }
-        __typename
-      }
-      roles(order_by: {rank: asc}) @skip(if: $forLoginDisplay) {
-        role
-        rank
-        PlayerRole {
-          label
           __typename
         }
         __typename
@@ -46282,13 +46297,13 @@ function getMetagameData(address) {
         contextIds
         __typename
       }
-    }
-    `, {
+    }`, {
             orderBy: {
                 seasonXP: 'desc',
             },
             offset: 0,
             limit: 9,
+            forLoginDisplay: false,
             where: {
                 _or: [
                     {
@@ -46316,7 +46331,7 @@ function getMetagameData(address) {
 }
 exports.default = getMetagameData;
 
-},{"../utils":268}],243:[function(require,module,exports){
+},{"../utils":269}],244:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46357,7 +46372,7 @@ function getMewData(address, computeConfig) {
 }
 exports.default = getMewData;
 
-},{"../utils":268}],244:[function(require,module,exports){
+},{"../utils":269}],245:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46395,7 +46410,7 @@ function getMirrorData(address = '') {
 }
 exports.default = getMirrorData;
 
-},{"../utils":268}],245:[function(require,module,exports){
+},{"../utils":269}],246:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46416,7 +46431,7 @@ function getPoapData(address) {
 }
 exports.default = getPoapData;
 
-},{"../utils":268}],246:[function(require,module,exports){
+},{"../utils":269}],247:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46446,7 +46461,7 @@ function checkPoH(address) {
 }
 exports.default = checkPoH;
 
-},{"../utils":268}],247:[function(require,module,exports){
+},{"../utils":269}],248:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46481,7 +46496,7 @@ function getPolygonData(address = '') {
 }
 exports.default = getPolygonData;
 
-},{"../utils":268}],248:[function(require,module,exports){
+},{"../utils":269}],249:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46515,7 +46530,7 @@ function getProjectGalaxyData(address) {
 }
 exports.default = getProjectGalaxyData;
 
-},{"../utils":268}],249:[function(require,module,exports){
+},{"../utils":269}],250:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46558,7 +46573,7 @@ function getPopData(address) {
 }
 exports.default = getPopData;
 
-},{"../utils":268}],250:[function(require,module,exports){
+},{"../utils":269}],251:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46634,7 +46649,7 @@ function getQuestbookData(address) {
 }
 exports.default = getQuestbookData;
 
-},{"../utils":268}],251:[function(require,module,exports){
+},{"../utils":269}],252:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46674,7 +46689,7 @@ function getRabbitholeData(address = '') {
 }
 exports.default = getRabbitholeData;
 
-},{"../utils":268}],252:[function(require,module,exports){
+},{"../utils":269}],253:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46736,7 +46751,7 @@ function getRaribleData(address, computeConfig) {
 }
 exports.default = getRaribleData;
 
-},{"../utils":268}],253:[function(require,module,exports){
+},{"../utils":269}],254:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46762,7 +46777,7 @@ function getRss3Data(address) {
 }
 exports.default = getRss3Data;
 
-},{"../utils":268}],254:[function(require,module,exports){
+},{"../utils":269}],255:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46786,7 +46801,7 @@ function getShowtimeData(address, computeConfig) {
 }
 exports.default = getShowtimeData;
 
-},{"../utils":268}],255:[function(require,module,exports){
+},{"../utils":269}],256:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46869,7 +46884,7 @@ function getSuperrareData(address) {
 }
 exports.default = getSuperrareData;
 
-},{"../utils":268}],256:[function(require,module,exports){
+},{"../utils":269}],257:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46895,7 +46910,7 @@ function getUnipassData(address) {
 }
 exports.default = getUnipassData;
 
-},{"../utils":268}],257:[function(require,module,exports){
+},{"../utils":269}],258:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46934,7 +46949,7 @@ function getSybilData(address, computeConfig) {
 }
 exports.getSybilData = getSybilData;
 
-},{"../utils":268,"ethers/lib/utils":184}],258:[function(require,module,exports){
+},{"../utils":269,"ethers/lib/utils":184}],259:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -46986,7 +47001,7 @@ function resolveUnstoppableDomains(address) {
 }
 exports.default = resolveUnstoppableDomains;
 
-},{"../utils":268}],259:[function(require,module,exports){
+},{"../utils":269}],260:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -47010,7 +47025,7 @@ function getYupData(address, computeConfig) {
 }
 exports.default = getYupData;
 
-},{"../utils":268}],260:[function(require,module,exports){
+},{"../utils":269}],261:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -47036,7 +47051,7 @@ function getZapperData(address) {
 }
 exports.default = getZapperData;
 
-},{"../utils":268}],261:[function(require,module,exports){
+},{"../utils":269}],262:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -47087,7 +47102,7 @@ function getZoraData(address, computeConfig) {
 }
 exports.default = getZoraData;
 
-},{"../utils":268,"ethers/lib/utils":184}],262:[function(require,module,exports){
+},{"../utils":269,"ethers/lib/utils":184}],263:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -47190,7 +47205,7 @@ class Auth {
 }
 exports.default = Auth;
 
-},{"./utils":268,"siwe":207}],263:[function(require,module,exports){
+},{"./utils":269,"siwe":207}],264:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -47217,7 +47232,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.4.5',
+                currentVersion: '0.4.6',
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -47248,7 +47263,7 @@ class ConvoBase {
 }
 exports.default = ConvoBase;
 
-},{"./utils":268,"cross-fetch":164}],264:[function(require,module,exports){
+},{"./utils":269,"cross-fetch":164}],265:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -47325,7 +47340,7 @@ class Comments {
 }
 exports.default = Comments;
 
-},{"./utils":268}],265:[function(require,module,exports){
+},{"./utils":269}],266:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -47349,7 +47364,7 @@ class Convo extends base_1.default {
 }
 exports.Convo = Convo;
 
-},{"./auth":262,"./base":263,"./comments":264,"./omnid":266,"./threads":267}],266:[function(require,module,exports){
+},{"./auth":263,"./base":264,"./comments":265,"./omnid":267,"./threads":268}],267:[function(require,module,exports){
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -47475,6 +47490,9 @@ class Omnid {
                     disabledAdaptors.includes('deepdao')
                         ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
                         : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getDeepDaoData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
+                    disabledAdaptors.includes('emblem')
+                        ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
+                        : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.getEmblemData, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
                     disabledAdaptors.includes('ens')
                         ? __classPrivateFieldGet(this, _Omnid_disabledPromise, "f").call(this)
                         : __classPrivateFieldGet(this, _Omnid_timeit, "f").call(this, adaptorList.addressToEns, [address], computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG),
@@ -47601,41 +47619,42 @@ class Omnid {
                     dapplist: resp[13],
                     debank: resp[14],
                     deepdao: resp[15],
-                    ens: resp[16],
-                    etherscan: resp[17],
-                    forta: resp[18],
-                    foundation: resp[19],
-                    gitcoin: resp[20],
-                    goldfinch: resp[21],
-                    governordao: resp[22],
-                    hiveone: resp[23],
-                    idena: resp[24],
-                    karma: resp[25],
-                    klima: resp[26],
-                    knownorigin: resp[27],
-                    layer3: resp[28],
-                    learnweb3: resp[29],
-                    lens: resp[30],
-                    metagame: resp[31],
-                    mew: resp[32],
-                    mirror: resp[33],
-                    poap: resp[34],
-                    poh: resp[35],
-                    pop: resp[36],
-                    polygon: resp[37],
-                    projectgalaxy: resp[38],
-                    questbook: resp[39],
-                    rabbithole: resp[40],
-                    rarible: resp[41],
-                    rss3: resp[42],
-                    showtime: resp[43],
-                    superrare: resp[44],
-                    unipass: resp[45],
-                    uniswap: resp[46],
-                    unstoppable: resp[47],
-                    yup: resp[48],
-                    zapper: resp[49],
-                    zora: resp[50],
+                    emblem: resp[16],
+                    ens: resp[17],
+                    etherscan: resp[18],
+                    forta: resp[19],
+                    foundation: resp[20],
+                    gitcoin: resp[21],
+                    goldfinch: resp[22],
+                    governordao: resp[23],
+                    hiveone: resp[24],
+                    idena: resp[25],
+                    karma: resp[26],
+                    klima: resp[27],
+                    knownorigin: resp[28],
+                    layer3: resp[29],
+                    learnweb3: resp[30],
+                    lens: resp[31],
+                    metagame: resp[32],
+                    mew: resp[33],
+                    mirror: resp[34],
+                    poap: resp[35],
+                    poh: resp[36],
+                    pop: resp[37],
+                    polygon: resp[38],
+                    projectgalaxy: resp[39],
+                    questbook: resp[40],
+                    rabbithole: resp[41],
+                    rarible: resp[42],
+                    rss3: resp[43],
+                    showtime: resp[44],
+                    superrare: resp[45],
+                    unipass: resp[46],
+                    uniswap: resp[47],
+                    unstoppable: resp[48],
+                    yup: resp[49],
+                    zapper: resp[50],
+                    zora: resp[51],
                 };
                 if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.DEBUG) === true)
                     console.timeEnd('computeTime');
@@ -47653,7 +47672,7 @@ class Omnid {
 _Omnid_timeit = new WeakMap(), _Omnid_timeitWithConfig = new WeakMap(), _Omnid_disabledPromise = new WeakMap();
 exports.default = Omnid;
 
-},{"./adaptors":235,"./utils":268,"ethers/lib/utils":184}],267:[function(require,module,exports){
+},{"./adaptors":236,"./utils":269,"ethers/lib/utils":184}],268:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -47789,7 +47808,7 @@ class Threads {
 }
 exports.default = Threads;
 
-},{"./utils":268}],268:[function(require,module,exports){
+},{"./utils":269}],269:[function(require,module,exports){
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
@@ -47885,5 +47904,5 @@ function gqlFetcher(url, query, variables = {}, timeout = 5000) {
 }
 exports.gqlFetcher = gqlFetcher;
 
-},{"abort-controller":132,"cross-fetch":164}]},{},[265])(265)
+},{"abort-controller":132,"cross-fetch":164}]},{},[266])(266)
 });

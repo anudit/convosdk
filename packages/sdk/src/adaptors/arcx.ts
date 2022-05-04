@@ -1,13 +1,9 @@
-import { Dictionary } from '../types';
 import { fetcher } from '../utils';
 
 interface ArcxResult {
+  account: string;
+  protocol: string;
   score: string;
-  metadata: {
-    name: string;
-    minValue: string;
-    maxValue: string;
-  };
 }
 
 export default async function getArcxData(address: string) {
@@ -18,23 +14,16 @@ export default async function getArcxData(address: string) {
     )) as Array<ArcxResult>;
 
     let totalScore = 0;
-    const details: Dictionary<number> = {};
 
     for (let index = 0; index < data.length; index++) {
       const scoreData = data[index];
       if (scoreData['score'] !== null) {
-        const sc =
-          (parseFloat(scoreData['score']) /
-            (parseFloat(scoreData['metadata']['maxValue']) -
-              parseFloat(scoreData['metadata']['minValue']))) *
-          10;
-        totalScore += sc;
-        details[scoreData['metadata'].name] = sc;
+        totalScore += parseFloat(scoreData['score']) / 10;
       }
     }
     return {
       totalScore,
-      details,
+      details: data,
     };
   } catch (error) {
     return {

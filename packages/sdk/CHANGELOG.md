@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.6
+- Add Emblem Adaptor.
+- Update ArcX & Metagame Adaptors.
+- Update Dependencies.
+
 ## 0.4.5
 - Add LearnWeb3 DAO Adaptor.
 
