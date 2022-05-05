@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.7
+- Update CryptoscamDB, CryptoRelief Adaptors.
+- Improved Benchmarks.
+
 ## 0.4.6
 - Add Emblem Adaptor.
 - Update ArcX & Metagame Adaptors.

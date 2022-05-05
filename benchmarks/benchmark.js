@@ -15,8 +15,8 @@ const colors = {
 
 const config = {
     polygonMainnetRpc: "https://polygon-rpc.com/",
-    etherumMainnetRpc: "https://mainnet.infura.io/v3/1e7969225b2f4eefb3ae792aabf1cc17",
-    avalancheMainnetRpc: "https://avalanche--mainnet--rpc.datahub.figment.io/apikey/21681330d5fd73930f5600c7c4f0feeb/ext/bc/C/rpc",
+    etherumMainnetRpc: "https://eth.public-rpc.com/",
+    avalancheMainnetRpc: "https://avalanche.public-rpc.com/",
     maticPriceInUsd: 1.4,
     etherumPriceInUsd: 3200,
     etherscanApiKey: ETHERSCAN_API_KEY,
@@ -196,7 +196,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getCoinviseData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getContextData, withConfig: false },
         // { fn: convoInstance.omnid.adaptors.getCoordinapeData, withConfig: false },
-        { fn: convoInstance.omnid.adaptors.getCryptoscamdbData, withConfig: true },
+        { fn: convoInstance.omnid.adaptors.getCryptoreliefData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getCryptoscamdbData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getCyberconnectData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getDapplistData, withConfig: false },
