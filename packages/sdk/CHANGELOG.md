@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.8
+- Add Issuing & Verification of [Verifiable Credentials](https://www.w3.org/TR/vc-data-model/) to Omnid. Try them out using `convo.omnid.credentials.issue`, `convo.omnid.credentials.verify`.
+- Add RabbitHole On-chain Credentials.
+
 ## 0.4.7
 - Update CryptoscamDB, CryptoRelief Adaptors.
 - Improved Benchmarks.

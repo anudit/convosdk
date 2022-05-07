@@ -167,7 +167,7 @@ async function runBenchmarkManual() {
         const address = addresssTable[index];
         let time = await timeit(
             convoInstance.omnid.computeTrustScore, // update function here
-            [address, config, ['coordinape', 'arcx', 'superrare']],
+            [address, config, ['coordinape', 'arcx', 'superrare', 'karma']],
         );
         times.push(time);
     }
@@ -212,7 +212,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getGovernordaoData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getHiveOneData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.checkIdena, withConfig: false },
-        { fn: convoInstance.omnid.adaptors.getKarmaData, withConfig: false },
+        // { fn: convoInstance.omnid.adaptors.getKarmaData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getKlimaData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getKnownOriginData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false },

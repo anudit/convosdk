@@ -7,15 +7,18 @@ import {
 } from './types';
 import * as adaptorList from './adaptors';
 import { isAddress } from 'ethers/lib/utils';
+import Credentials from './omnid/credentials';
 
 class Omnid {
   apikey: string;
   node: string;
   adaptors = adaptorList;
+  credentials: Credentials;
 
   constructor(apikey: string, node: string) {
     this.apikey = apikey;
     this.node = node;
+    this.credentials = new Credentials(apikey, this.node);
     return this;
   }
 

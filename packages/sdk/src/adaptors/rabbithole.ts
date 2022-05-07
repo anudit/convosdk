@@ -1,5 +1,5 @@
 import { Dictionary } from '../types';
-import { fetcher } from '../utils';
+import { fetcher, gqlFetcher } from '../utils';
 
 interface RabbitholeResult {
   message: string;
@@ -15,32 +15,86 @@ interface RabbitholeResult {
   };
 }
 
+interface RabbitholeCredentialsResult {
+  data: {
+    rabbitHoleCredentials: Array<{
+      id: string;
+      owner: string;
+      tokenName: string;
+      tokenId: string;
+      tokenUri: string;
+    }>;
+  };
+}
+
 export default async function getRabbitholeData(address = '') {
-  const jsonData: RabbitholeResult = await fetcher(
-    'GET',
-    `https://api.rabbithole.gg/task_progress?address=${address.toLowerCase()}`
-  );
+  const promiseArray = [
+    fetcher(
+      'GET',
+      `https://api.rabbithole.gg/task_progress?address=${address.toLowerCase()}`
+    ),
+    await gqlFetcher(
+      'https://api.thegraph.com/subgraphs/name/anudit/rabbithole',
+      `{
+        rabbitHoleCredentials(where: {owner: "${address.toLowerCase()}"}) {
+          id
+          owner
+          tokenName
+          tokenId
+          tokenUri
+        }
+      }`
+    ),
+  ];
 
-  if (jsonData.message === 'success') {
-    const tasksCompleted = [];
+  const results = await Promise.allSettled(promiseArray);
+  let resp = {};
 
-    for (const task in jsonData.taskData.taskProgress) {
-      const taskData = jsonData.taskData.taskProgress[task];
-      if (
-        taskData['redeemed'] === taskData['progress'] &&
-        taskData['redeemed'] != 0
-      ) {
-        tasksCompleted.push(task);
+  if (results[0].status === 'fulfilled') {
+    const rabbitHoleResult = results[0].value as RabbitholeResult;
+    if (rabbitHoleResult.message === 'success') {
+      const tasksCompleted = [];
+
+      for (const task in rabbitHoleResult.taskData.taskProgress) {
+        const taskData = rabbitHoleResult.taskData.taskProgress[task];
+        if (
+          taskData['redeemed'] === taskData['progress'] &&
+          taskData['redeemed'] != 0
+        ) {
+          tasksCompleted.push(task);
+        }
       }
-    }
-    const level = jsonData.taskData?.level;
+      const level = rabbitHoleResult.taskData?.level;
 
-    return {
-      level: level,
-      score: jsonData.taskData['score'],
-      tasksCompleted,
-    };
-  } else {
-    return {};
+      resp = {
+        ...resp,
+        level: level,
+        score: rabbitHoleResult.taskData['score'],
+        tasksCompleted,
+      };
+    }
   }
+
+  if (results[1].status === 'fulfilled') {
+    const rabbitHoleCredsResult = results[1]
+      .value as RabbitholeCredentialsResult;
+
+    const creds = [];
+
+    for (
+      let index = 0;
+      index < rabbitHoleCredsResult.data.rabbitHoleCredentials.length;
+      index++
+    ) {
+      const cred = rabbitHoleCredsResult.data.rabbitHoleCredentials[index];
+      creds.push(cred.tokenName);
+    }
+
+    resp = {
+      ...resp,
+      credentials: creds,
+    };
+  }
+
+  return resp;
 }
