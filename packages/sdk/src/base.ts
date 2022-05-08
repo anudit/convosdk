@@ -6,15 +6,12 @@ import fetch from 'cross-fetch';
 class ConvoBase {
   apikey: string;
   node: string;
+  version = '0.4.9';
 
   constructor(apikey: string, node: string) {
     this.apikey = apikey;
     this.node = node;
     return this;
-  }
-
-  getApiKey(): string {
-    return this.apikey;
   }
 
   logConfig = async (): Promise<LogConfigType> => {
@@ -27,7 +24,7 @@ class ConvoBase {
     return {
       node: this.node,
       apikey: this.apikey,
-      currentVersion: '0.4.8',
+      currentVersion: this.version,
       latestVersion: versionInfo['version'],
       pingResult: pingResult,
     };

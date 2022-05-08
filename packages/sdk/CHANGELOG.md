@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.9
+- Add custom timeout on `convo.threads.query` & `convo.threads.multiQuery`.
+- Cleanups.
+- Update Dependencies.
+
 ## 0.4.8
 - Add Issuing & Verification of [Verifiable Credentials](https://www.w3.org/TR/vc-data-model/) to Omnid. Try them out using `convo.omnid.credentials.issue`, `convo.omnid.credentials.verify`.
 - Add RabbitHole On-chain Credentials.

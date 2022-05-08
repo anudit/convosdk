@@ -82,21 +82,27 @@ class Threads {
     });
   };
 
-  query = async (query: ThreadsQueryType): Promise<any | ErrorType> => {
+  query = async (
+    query: ThreadsQueryType,
+    timeout = 6000
+  ): Promise<any | ErrorType> => {
     return await fetcher(
       'GET',
       `${this.node}/threads?${encodeQuery(query)}`,
       this.apikey,
-      {}
+      {},
+      {},
+      timeout
     );
   };
 
   multiQuery = async (
-    queries: Array<ThreadsQueryType>
+    queries: Array<ThreadsQueryType>,
+    timeout = 6000
   ): Promise<any | ErrorType> => {
     return await Promise.allSettled(
       queries.map((q) => {
-        return this.query(q);
+        return this.query(q, timeout);
       })
     );
   };

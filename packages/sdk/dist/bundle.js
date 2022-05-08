@@ -47276,6 +47276,7 @@ const utils_1 = require("./utils");
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
 class ConvoBase {
     constructor(apikey, node) {
+        this.version = '0.4.9';
         this.logConfig = () => __awaiter(this, void 0, void 0, function* () {
             const pingResult = yield this.pingNode();
             const versionInfo = yield (0, cross_fetch_1.default)('https://bundlephobia.com/api/size?package=@theconvospace/sdk@latest&record=true').then((r) => {
@@ -47284,7 +47285,7 @@ class ConvoBase {
             return {
                 node: this.node,
                 apikey: this.apikey,
-                currentVersion: '0.4.8',
+                currentVersion: this.version,
                 latestVersion: versionInfo['version'],
                 pingResult: pingResult,
             };
@@ -47308,9 +47309,6 @@ class ConvoBase {
         this.apikey = apikey;
         this.node = node;
         return this;
-    }
-    getApiKey() {
-        return this.apikey;
     }
 }
 exports.default = ConvoBase;
@@ -47801,12 +47799,12 @@ class Threads {
                 threadId,
             });
         });
-        this.query = (query) => __awaiter(this, void 0, void 0, function* () {
-            return yield (0, utils_1.fetcher)('GET', `${this.node}/threads?${(0, utils_1.encodeQuery)(query)}`, this.apikey, {});
+        this.query = (query, timeout = 6000) => __awaiter(this, void 0, void 0, function* () {
+            return yield (0, utils_1.fetcher)('GET', `${this.node}/threads?${(0, utils_1.encodeQuery)(query)}`, this.apikey, {}, {}, timeout);
         });
-        this.multiQuery = (queries) => __awaiter(this, void 0, void 0, function* () {
+        this.multiQuery = (queries, timeout = 6000) => __awaiter(this, void 0, void 0, function* () {
             return yield Promise.allSettled(queries.map((q) => {
-                return this.query(q);
+                return this.query(q, timeout);
             }));
         });
         this.getThread = (threadId) => __awaiter(this, void 0, void 0, function* () {

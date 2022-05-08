@@ -185,6 +185,8 @@ async function runBenchmarkManual() {
 
 async function tests() {
 
+    console.log('Using Version: ', convoInstance.version);
+
     await runBenchmark([
         { fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getAge, withConfig: true },
