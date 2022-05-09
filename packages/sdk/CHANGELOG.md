@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.4.10
+- Add Quadrata Adaptor.
+
 ## 0.4.9
 - Add custom timeout on `convo.threads.query` & `convo.threads.multiQuery`.
 - Cleanups.

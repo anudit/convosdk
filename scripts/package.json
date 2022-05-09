@@ -1,0 +1,19 @@
+{
+  "name": "benchmarks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "benchmark.js",
+  "scripts": {
+    "valistMigrate": "node valistMigrate.js",
+    "valistRelease": "node valistRelease.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@valist/sdk": "^2.1.0",
+    "cross-fetch": "^3.1.5",
+    "dotenv": "^16.0.0",
+    "ethers": "^5.6.5",
+    "web3-providers-http": "^1.7.3"
+  }
+}
