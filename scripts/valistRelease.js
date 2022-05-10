@@ -23,9 +23,6 @@ const download = async ({ url, path }) => {
 
 async function publishToValist(releaseDetails) {
 
-    if (releaseDetails.version == '0.4.8') return;
-    if (releaseDetails.version == '0.1.0') return;
-
     const web3 = new Web3HttpProvider('https://polygon-rpc.com/');
     const provider = new ethers.providers.Web3Provider(web3);
 
@@ -75,6 +72,6 @@ async function publishPackage(packageName, version) {
 // 1. Setup VALIST_RELEASER_PK in .env file
 // 2. Change Packge Name below.
 // 3. Run Script.
-publishPackage('@theconvospace/sdk', '0.4.10').then(() => {
+publishPackage('@theconvospace/sdk', '0.4.11').then(() => {
     process.exit(0);
 });

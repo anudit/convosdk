@@ -1,10 +1,10 @@
-# @theconvospace/sdk ![npm/v](https://badgen.net/npm/v/@theconvospace/sdk)
+# @theconvospace/sdk ![npm/v](https://img.shields.io/npm/v/@theconvospace/sdk)
 
-![npm/types](https://badgen.net/npm/types/@theconvospace/sdk)
-![bundlephobia/tree-shaking](https://badgen.net/bundlephobia/tree-shaking/@theconvospace/sdk)
-![bundlephobia/dependency-count](https://badgen.net/bundlephobia/dependency-count/@theconvospace/sdk)
-![bundlephobia/minzip](https://badgen.net/bundlephobia/minzip/@theconvospace/sdk)
-![bundlephobia/min/](https://badgen.net/bundlephobia/min/@theconvospace/sdk)
+![npm/types](https://img.shields.io/npm/types/@theconvospace/sdk)
+![nodeVersion](https://img.shields.io/node/v/@theconvospace/sdk)
+![bundlephobia/dependency-count](https://img.shields.io/librariesio/release/npm/@theconvospace/sdk)
+![bundlephobia/minzip](https://img.shields.io/bundlephobia/minzip/@theconvospace/sdk)
+![bundlephobia/min/](https://img.shields.io/bundlephobia/min/@theconvospace/sdk)
 
 SDK containing all the functions you'll need to build on [theconvo.space](https://theconvo.space)
 

@@ -196,6 +196,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getCeloData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getCoinviseData, withConfig: true },
+        { fn: convoInstance.omnid.adaptors.getCommonsstackData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getContextData, withConfig: false },
         // { fn: convoInstance.omnid.adaptors.getCoordinapeData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getCryptoreliefData, withConfig: true },

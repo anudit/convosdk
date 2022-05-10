@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.11
+- Add Commons Stack Adaptor.
+- Update Dependencies.
+
 ## 0.4.10
 - Add Quadrata Adaptor.
 

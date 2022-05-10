@@ -6,6 +6,7 @@ export { default as getBoardroomData } from './boardroom';
 export { default as checkBrightId } from './brightid';
 export { default as getCeloData } from './celo';
 export { default as getCoinviseData } from './coinvise';
+export { default as getCommonsstackData } from './commonsstack';
 export { default as getContextData } from './context';
 export { default as getCoordinapeData } from './coordinape';
 export { default as getCryptoreliefData } from './cryptorelief';
