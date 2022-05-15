@@ -43,11 +43,13 @@ export async function fetcher(
       const data = await response.json();
       return data;
     } else {
-      return { error: { message: 'Invalid Request', response: response } };
+      return {
+        error: { message: 'Invalid Request', response: response },
+      } as ErrorType;
     }
   } catch (error) {
     console.error(url, error);
-    return { error };
+    return { error } as ErrorType;
   } finally {
     clearTimeout(timer);
   }
@@ -88,7 +90,7 @@ export async function gqlFetcher(
     return await req.json();
   } catch (error) {
     console.error(url, error);
-    return { error };
+    return { error } as ErrorType;
   } finally {
     clearTimeout(timer);
   }

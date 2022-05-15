@@ -62,7 +62,7 @@ async function publishToValist(releaseDetails) {
 
 
 async function publishPackage(packageName, version) {
-    console.log('Fetching Releases')
+    console.log('Fetching Release');
     let pkgDeets = await fetch(`https://registry.npmjs.org/${packageName}/${version}`);
     pkgDeets = await pkgDeets.json();
     await publishToValist(pkgDeets);
@@ -72,6 +72,6 @@ async function publishPackage(packageName, version) {
 // 1. Setup VALIST_RELEASER_PK in .env file
 // 2. Change Packge Name below.
 // 3. Run Script.
-publishPackage('@theconvospace/sdk', '0.4.11').then(() => {
+publishPackage('@theconvospace/sdk', '0.4.12').then(() => {
     process.exit(0);
 });

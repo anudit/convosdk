@@ -47,6 +47,17 @@ class Comments {
     });
   };
 
+  nuke = async (
+    signerAddress: string,
+    token: string
+  ): Promise<any | ErrorType> => {
+    return await fetcher('DELETE', `${this.node}/comments`, this.apikey, {
+      token,
+      signerAddress,
+      deleteAll: true,
+    });
+  };
+
   query = async (
     query: CommentsQueryType,
     timeout = 6000

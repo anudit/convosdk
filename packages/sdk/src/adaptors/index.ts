@@ -2,6 +2,7 @@ export { default as getAaveData } from './aave';
 export { default as getAge } from './age';
 export { default as getArcxData } from './arcx';
 export { default as getAsyncartData } from './asyncart';
+export { default as getBirdData } from './bird';
 export { default as getBoardroomData } from './boardroom';
 export { default as checkBrightId } from './brightid';
 export { default as getCeloData } from './celo';

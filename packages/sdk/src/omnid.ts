@@ -4,6 +4,7 @@ import {
   ErrorType,
   AdaptorFunctionType,
   AdaptorFunctionWithConfigType,
+  Dictionary,
 } from './types';
 import * as adaptorList from './adaptors';
 import { isAddress } from 'ethers/lib/utils';
@@ -111,6 +112,13 @@ class Omnid {
           : this.#timeitWithConfig(
               adaptorList.getAsyncartData,
               [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('bird')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getBirdData,
+              [address],
               computeConfig?.DEBUG
             ),
         disabledAdaptors.includes('boardroom')
@@ -464,62 +472,70 @@ class Omnid {
       const resp: Array<PromiseSettledResult<any>> = await Promise.allSettled(
         promiseArray
       );
-      const respDict = {
-        aave: resp[0],
-        age: resp[1],
-        arcx: resp[2],
-        asyncart: resp[3],
-        boardroom: resp[4],
-        brightid: resp[5],
-        celo: resp[6],
-        coinvise: resp[7],
-        context: resp[8],
-        commonsstack: resp[9],
-        coordinape: resp[10],
-        cryptorelief: resp[11],
-        cryptoscamdb: resp[12],
-        cyberconnect: resp[13],
-        dapplist: resp[14],
-        debank: resp[15],
-        deepdao: resp[16],
-        emblem: resp[17],
-        ens: resp[18],
-        etherscan: resp[19],
-        forta: resp[20],
-        foundation: resp[21],
-        gitcoin: resp[22],
-        goldfinch: resp[23],
-        governordao: resp[24],
-        hiveone: resp[25],
-        idena: resp[26],
-        karma: resp[27],
-        klima: resp[28],
-        knownorigin: resp[29],
-        layer3: resp[30],
-        learnweb3: resp[31],
-        lens: resp[32],
-        metagame: resp[33],
-        mew: resp[34],
-        mirror: resp[35],
-        poap: resp[36],
-        poh: resp[37],
-        pop: resp[38],
-        polygon: resp[39],
-        projectgalaxy: resp[40],
-        quadrata: resp[41],
-        questbook: resp[42],
-        rabbithole: resp[43],
-        rarible: resp[44],
-        rss3: resp[45],
-        showtime: resp[46],
-        superrare: resp[47],
-        unipass: resp[48],
-        uniswap: resp[49],
-        unstoppable: resp[50],
-        yup: resp[51],
-        zapper: resp[52],
-        zora: resp[53],
-      };
+
+      const keys = [
+        'aave',
+        'age',
+        'arcx',
+        'asyncart',
+        'bird',
+        'boardroom',
+        'brightid',
+        'celo',
+        'coinvise',
+        'context',
+        'commonsstack',
+        'coordinape',
+        'cryptorelief',
+        'cryptoscamdb',
+        'cyberconnect',
+        'dapplist',
+        'debank',
+        'deepdao',
+        'emblem',
+        'ens',
+        'etherscan',
+        'forta',
+        'foundation',
+        'gitcoin',
+        'goldfinch',
+        'governordao',
+        'hiveone',
+        'idena',
+        'karma',
+        'klima',
+        'knownorigin',
+        'layer3',
+        'learnweb3',
+        'lens',
+        'metagame',
+        'mew',
+        'mirror',
+        'poap',
+        'poh',
+        'pop',
+        'polygon',
+        'projectgalaxy',
+        'quadrata',
+        'questbook',
+        'rabbithole',
+        'rarible',
+        'rss3',
+        'showtime',
+        'superrare',
+        'unipass',
+        'uniswap',
+        'unstoppable',
+        'yup',
+        'zapper',
+        'zora',
+      ];
+      const respDict: Dictionary<any> = {};
+      for (let index = 0; index < keys.length; index++) {
+        const key = keys[index];
+        respDict[key] = resp[index];
+      }
+
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');
       return respDict;

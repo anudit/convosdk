@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.12
+- Add Bird.money Adaptor, Update Mirror Adaptor.
+- Add `convo.comments.nuke`.
+- Update Dependencies & Types.
+
 ## 0.4.11
 - Add Commons Stack Adaptor.
 - Update Dependencies.

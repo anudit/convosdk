@@ -37,6 +37,7 @@ const addresssTable = [
     "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
     "0x8d07D225a769b7Af3A923481E1FdF49180e6A265",
     "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
+    "0x28b4de9c45af6cb1a5a46c19909108f2bb74a2be",
     "0x597D1747256304d5d47eCE999A8e5bAdE6d41845",
     "0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443"
 ];
@@ -192,6 +193,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getAge, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true },
+        { fn: convoInstance.omnid.adaptors.getBirdData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getBoardroomData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getCeloData, withConfig: false },
