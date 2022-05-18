@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.4.13
+- Add support for [Specially Designated Nationals](https://home.treasury.gov/policy-issues/financial-sanctions/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists)  Adaptor to Omnid under `sdn`.
+- Add support for USDC, USDT, BUSD blacklists under `tokenblacklists`.
+- Update Dependencies.
+
 ## 0.4.12
 - Add Bird.money Adaptor, Update Mirror Adaptor.
 - Add `convo.comments.nuke`.

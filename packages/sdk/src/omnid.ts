@@ -411,6 +411,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('sdn')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getSdnData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('showtime')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -422,6 +429,13 @@ class Omnid {
           ? this.#disabledPromise()
           : this.#timeit(
               adaptorList.getSuperrareData,
+              [address],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('tokenblacklists')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getTokenBlacklistData,
               [address],
               computeConfig?.DEBUG
             ),
@@ -521,8 +535,10 @@ class Omnid {
         'rabbithole',
         'rarible',
         'rss3',
+        'sdn',
         'showtime',
         'superrare',
+        'tokenblacklists',
         'unipass',
         'uniswap',
         'unstoppable',

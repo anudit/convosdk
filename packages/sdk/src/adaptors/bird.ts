@@ -11,7 +11,11 @@ export default async function getBirdData(address: string) {
   try {
     const data = (await fetcher(
       'GET',
-      `https://www.bird.money/analytics/address/${address}`
+      `https://www.bird.money/analytics/address/${address}`,
+      '',
+      {},
+      {},
+      10000
     )) as Array<BirdResult>;
 
     return data;

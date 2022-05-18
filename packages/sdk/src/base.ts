@@ -6,7 +6,7 @@ import fetch from 'cross-fetch';
 class ConvoBase {
   apikey: string;
   node: string;
-  version = '0.4.12';
+  version = '0.4.13';
 
   constructor(apikey: string, node: string) {
     this.apikey = apikey;

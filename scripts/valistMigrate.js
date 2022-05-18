@@ -30,7 +30,7 @@ async function publishToValist(releaseDetails) {
 
     if (skip.includes(releaseDetails.version) == true) return;
 
-    const web3 = new Web3HttpProvider('https://polygon-rpc.com/');
+    const web3 = new Web3HttpProvider('https://polygon-rpc.com');
     const provider = new ethers.providers.Web3Provider(web3);
 
     const wallet = new ethers.Wallet(process.env.VALIST_RELEASER_PK, provider);

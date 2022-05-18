@@ -14,9 +14,9 @@ const colors = {
 };
 
 const config = {
-    polygonMainnetRpc: "https://polygon-rpc.com/",
-    etherumMainnetRpc: "https://eth.public-rpc.com/",
-    avalancheMainnetRpc: "https://avalanche.public-rpc.com/",
+    polygonMainnetRpc: "https://polygon-rpc.com",
+    etherumMainnetRpc: "https://eth.public-rpc.com",
+    avalancheMainnetRpc: "https://avalanche.public-rpc.com",
     maticPriceInUsd: 1.4,
     etherumPriceInUsd: 3200,
     etherscanApiKey: ETHERSCAN_API_KEY,
@@ -236,8 +236,10 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getRabbitholeData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getRaribleData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getRss3Data, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getSdnData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getShowtimeData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getSuperrareData, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getTokenBlacklistData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getUnipassData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getSybilData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false },
