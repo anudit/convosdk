@@ -1,8 +1,13 @@
 # Changelog
 
+## 0.4.14
+- Add support for [Upshot gmi](https://upshot.xyz/gmi) Adaptor to Omnid under `upshot`.
+- Switch `age` to `txn` Adaptor.
+- Update Dependencies.
+
 ## 0.4.13
 - Add support for [Specially Designated Nationals](https://home.treasury.gov/policy-issues/financial-sanctions/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists)  Adaptor to Omnid under `sdn`.
-- Add support for USDC, USDT, BUSD blacklists under `tokenblacklists`.
+- Add support for USDC, USDT, BUSD blacklists Adaptor to Omnid under `tokenblacklists`.
 - Update Dependencies.
 
 ## 0.4.12

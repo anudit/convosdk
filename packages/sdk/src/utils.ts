@@ -68,7 +68,8 @@ export async function gqlFetcher(
   url: string,
   query: string,
   variables: Dictionary<any> = {},
-  timeout = 5000
+  timeout = 5000,
+  customHeaders: Dictionary<any> = {}
 ): Promise<Dictionary<any> | ErrorType> {
   const controller = new AbortController();
   const timer = setTimeout(() => {
@@ -80,6 +81,7 @@ export async function gqlFetcher(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        ...customHeaders,
       },
       body: JSON.stringify({
         query,

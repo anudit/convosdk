@@ -190,7 +190,6 @@ async function tests() {
 
     await runBenchmark([
         { fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true },
-        { fn: convoInstance.omnid.adaptors.getAge, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getBirdData, withConfig: false },
@@ -240,6 +239,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getShowtimeData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getSuperrareData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getTokenBlacklistData, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getTxnData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getUnipassData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getSybilData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false },

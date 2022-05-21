@@ -93,13 +93,6 @@ class Omnid {
               [address, computeConfig],
               computeConfig?.DEBUG
             ),
-        disabledAdaptors.includes('age')
-          ? this.#disabledPromise()
-          : this.#timeitWithConfig(
-              adaptorList.getAge,
-              [address, computeConfig],
-              computeConfig?.DEBUG
-            ),
         disabledAdaptors.includes('arcx')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -439,6 +432,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('txn')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getTxnData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('unipass')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -489,7 +489,6 @@ class Omnid {
 
       const keys = [
         'aave',
-        'age',
         'arcx',
         'asyncart',
         'bird',
@@ -539,6 +538,7 @@ class Omnid {
         'showtime',
         'superrare',
         'tokenblacklists',
+        'txn',
         'unipass',
         'uniswap',
         'unstoppable',

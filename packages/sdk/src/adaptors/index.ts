@@ -1,5 +1,4 @@
 export { default as getAaveData } from './aave';
-export { default as getAge } from './age';
 export { default as getArcxData } from './arcx';
 export { default as getAsyncartData } from './asyncart';
 export { default as getBirdData } from './bird';
@@ -49,9 +48,11 @@ export { default as getSdnData } from './sdn';
 export { default as getShowtimeData } from './showtime';
 export { default as getSuperrareData } from './superrare';
 export { default as getTokenBlacklistData } from './tokenblacklists';
+export { default as getTxnData } from './txn';
 export { default as getUnipassData } from './unipass';
 export { getAllSybilData, getSybilData } from './uniswap';
 export { default as resolveUnstoppableDomains } from './unstoppable';
+export { default as getUpshotData } from './upshot';
 export { default as getYupData } from './yup';
 export { default as getZapperData } from './zapper';
 export { default as getZoraData } from './zora';
