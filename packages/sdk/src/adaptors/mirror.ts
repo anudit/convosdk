@@ -22,27 +22,31 @@ interface MirrorResult {
 }
 
 export default async function getMirrorData(address = '') {
-  const jsonData = (await gqlFetcher(
-    'https://mirror-api.com/graphql',
-    `{
-      addressInfo(address: "${address}") {
-        ens
-        writeTokens
-        hasOnboarded
-      }
-      userProfile(address: "${address}") {
-        displayName
-        ens
-        domain
-        contributor {
-          publications {
-            ensLabel
-            displayName
+  try {
+    const jsonData = (await gqlFetcher(
+      'https://mirror-api.com/graphql',
+      `{
+        addressInfo(address: "${address}") {
+          ens
+          writeTokens
+          hasOnboarded
+        }
+        userProfile(address: "${address}") {
+          displayName
+          ens
+          domain
+          contributor {
+            publications {
+              ensLabel
+              displayName
+            }
           }
         }
-      }
-    }`
-  )) as MirrorResult;
+      }`
+    )) as MirrorResult;
 
-  return jsonData['data'];
+    return jsonData['data'];
+  } catch (error) {
+    return {};
+  }
 }

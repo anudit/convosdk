@@ -16,7 +16,7 @@ export default async function getCryptoreliefData(
   }
   const json = (await fetcher(
     'GET',
-    `https://cnvsec.vercel.app/api/omnid/etherscan?id=${computeConfig.CNVSEC_ID}&address=${address}`
+    `https://cnvsec.vercel.app/api/omnid/cryptorelief?id=${computeConfig.CNVSEC_ID}&address=${address}`
   )) as CryptoReliefResult;
   return {
     amount: 'amount' in json ? json?.amount : 0,

@@ -1,55 +1,133 @@
 import { gqlFetcher } from '../utils';
 
-type Profile = Array<{
-  profileId: string;
-  pubCount: string;
-  followModule: string;
-  followNFT: string;
+type Profile = {
+  id: string;
+  name: string;
+  bio: string;
+  attributes: Array<string>;
+  metadata: string;
+  isDefault: boolean;
+  picture: {
+    original: {
+      url: string;
+      mimeType: string;
+    };
+  };
   handle: string;
-  imageURI: string;
-  followNFTURI: string;
-}>;
+  coverPicture: string;
+  ownedBy: string;
+  dispatcher: string;
+  stats: {
+    totalFollowers: number;
+    totalFollowing: number;
+    totalPosts: number;
+    totalComments: number;
+    totalMirrors: number;
+    totalPublications: number;
+    totalCollects: number;
+  };
+  followModule: {
+    type: string;
+  };
+};
 
 interface LensQueryResult {
   data: {
-    profiles: Profile;
-    socialGraphs: Array<{
-      following: Profile;
-    }>;
+    profiles: {
+      items: Array<Profile>;
+    };
   };
 }
 
 export default async function getLensData(address: string) {
   try {
     const response = (await gqlFetcher(
-      'https://api.thegraph.com/subgraphs/id/QmcH6BYapdqB6hqJSVFk4neCYCe94VDkraPRTJxEPb5ULH',
-      `{
-        profiles(where: {id: "${address.toLowerCase()}"}) {
-          id
-          profileId
-          pubCount
-          handle
-          imageURI
-        }
-        socialGraphs(where: {id: "${address.toLowerCase()}"}) {
-          following {
+      'https://api.lens.dev/',
+      `query Profiles {
+        profiles(request: { ownedBy: ["${address}"], limit: 10 }) {
+          items {
+            id
+            name
+            bio
+            attributes {
+              displayType
+              traitType
+              key
+              value
+            }
+            metadata
+            isDefault
+            picture {
+              ... on NftImage {
+                contractAddress
+                tokenId
+                uri
+                verified
+              }
+              ... on MediaSet {
+                original {
+                  url
+                  mimeType
+                }
+              }
+            }
             handle
+            coverPicture {
+              ... on NftImage {
+                contractAddress
+                tokenId
+                uri
+                verified
+              }
+              ... on MediaSet {
+                original {
+                  url
+                  mimeType
+                }
+              }
+            }
+            ownedBy
+            dispatcher {
+              address
+              canUseRelay
+            }
+            stats {
+              totalFollowers
+              totalFollowing
+              totalPosts
+              totalComments
+              totalMirrors
+              totalPublications
+              totalCollects
+            }
+            followModule {
+              ... on FeeFollowModuleSettings {
+                type
+                amount {
+                  asset {
+                    symbol
+                    name
+                    decimals
+                    address
+                  }
+                  value
+                }
+                recipient
+              }
+              ... on ProfileFollowModuleSettings {
+               type
+              }
+              ... on RevertFollowModuleSettings {
+               type
+              }
+            }
           }
         }
       }`
     )) as LensQueryResult;
 
-    if (response['data']['profiles'].length > 0) {
-      return {
-        profileId: parseInt(response['data']['profiles'][0].profileId),
-        pubCount: parseInt(response['data']['profiles'][0].pubCount),
-        handle: response['data']['profiles'][0].handle,
-        imageURI: response['data']['profiles'][0].imageURI,
-        following:
-          response['data']['socialGraphs'].length > 0
-            ? response['data']['socialGraphs'][0].following.length
-            : 0,
-      };
+    if (response?.data?.profiles?.items.length > 0) {
+      return response?.data?.profiles?.items[0];
     } else {
       return {};
     }

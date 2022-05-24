@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.15
+- Update `lens`, `asyncart`, `cryptorelief`, `mirror` Adaptors.
+- Update Dependencies.
+
 ## 0.4.14
 - Add support for [Upshot gmi](https://upshot.xyz/gmi) Adaptor to Omnid under `upshot`.
 - Switch `age` to `txn` Adaptor.

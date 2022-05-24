@@ -19,6 +19,19 @@ interface AsyncResult {
   }>;
 }
 
+interface AsyncUser {
+  address: string;
+  bio: string;
+  instagram: string;
+  location: string;
+  name: string;
+  picURL: string;
+  twitter: string;
+  userType: string;
+  username: string;
+  website: string;
+}
+
 export default async function getAsyncartData(
   address: string,
   computeConfig: ComputeConfig
@@ -29,38 +42,55 @@ export default async function getAsyncartData(
     );
   }
   try {
-    const response = (await fetcher(
-      'GET',
-      'https://async-app.com/users/' +
-        address.toLowerCase() +
-        '/arts?page=1&count=1000&rel=owner&type=masters'
-    )) as AsyncResult;
+    const promiseArray = [
+      fetcher(
+        'GET',
+        'https://async-api.com/users/' +
+          address.toLowerCase() +
+          '/arts?page=1&count=1000&rel=owner&type=masters'
+      ),
+      fetcher('GET', 'https://async-api.com/users/' + address.toLowerCase()),
+    ];
 
-    const artworks = response['arts'];
-    // console.log(artworks);
-    let totalCountSold = artworks.length;
+    const responses = await Promise.allSettled(promiseArray);
 
-    let totalAmountSold = 0;
-    for (let index = 0; index < artworks.length; index++) {
-      if (Boolean(artworks[index]['lastSale']?.buyer) === true) {
-        totalAmountSold += artworks[index]['lastSale']['sale']['amount'];
-      } else if (
-        artworks[index]['auction'].hasReserve === true &&
-        Boolean(artworks[index]['auction']?.endTime) === true
-      ) {
-        totalAmountSold += artworks[index]['auction']['reservePrice'];
-      } else {
-        totalCountSold -= 1;
+    let response1 = {};
+    let response2 = {};
+
+    if (responses[0].status === 'fulfilled') {
+      const respData1 = responses[0].value as AsyncResult;
+      const artworks = respData1['arts'];
+      let totalCountSold = artworks.length;
+
+      let totalAmountSold = 0;
+      for (let index = 0; index < artworks.length; index++) {
+        if (Boolean(artworks[index]['lastSale']?.buyer) === true) {
+          totalAmountSold += artworks[index]['lastSale']['sale']['amount'];
+        } else if (
+          artworks[index]['auction'].hasReserve === true &&
+          Boolean(artworks[index]['auction']?.endTime) === true
+        ) {
+          totalAmountSold += artworks[index]['auction']['reservePrice'];
+        } else {
+          totalCountSold -= 1;
+        }
       }
+      response1 = {
+        totalCountSold,
+        totalAmountSold: totalAmountSold * computeConfig.etherumPriceInUsd,
+      };
     }
+
+    if (responses[1].status === 'fulfilled') {
+      const respData2 = responses[1].value as AsyncUser;
+      response2 = respData2;
+    }
+
     return {
-      totalCountSold,
-      totalAmountSold: totalAmountSold * computeConfig.etherumPriceInUsd,
+      ...response1,
+      ...response2,
     };
   } catch (error) {
-    return {
-      totalCountSold: 0,
-      totalAmountSold: 0,
-    };
+    return {};
   }
 }

@@ -7893,7 +7893,7 @@ exports.Logger = Logger;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "networks/5.6.2";
+exports.version = "networks/5.6.3";
 
 },{}],57:[function(require,module,exports){
 "use strict";
@@ -8046,9 +8046,17 @@ var networks = {
         _defaultProvider: etcDefaultProvider("https:/\/www.ethercluster.com/kotti", "classicKotti")
     },
     xdai: { chainId: 100, name: "xdai" },
-    matic: { chainId: 137, name: "matic" },
+    matic: {
+        chainId: 137,
+        name: "matic",
+        _defaultProvider: ethDefaultProvider("matic")
+    },
     maticmum: { chainId: 80001, name: "maticmum" },
-    optimism: { chainId: 10, name: "optimism" },
+    optimism: {
+        chainId: 10,
+        name: "optimism",
+        _defaultProvider: ethDefaultProvider("optimism")
+    },
     "optimism-kovan": { chainId: 69, name: "optimism-kovan" },
     "optimism-goerli": { chainId: 420, name: "optimism-goerli" },
     arbitrum: { chainId: 42161, name: "arbitrum" },
@@ -8366,7 +8374,7 @@ exports.Description = Description;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "providers/5.6.6";
+exports.version = "providers/5.6.7";
 
 },{}],63:[function(require,module,exports){
 "use strict";
@@ -8629,6 +8637,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BaseProvider = exports.Resolver = exports.Event = void 0;
 var abstract_provider_1 = require("@ethersproject/abstract-provider");
+var base64_1 = require("@ethersproject/base64");
 var basex_1 = require("@ethersproject/basex");
 var bignumber_1 = require("@ethersproject/bignumber");
 var bytes_1 = require("@ethersproject/bytes");
@@ -9230,7 +9239,7 @@ var Resolver = /** @class */ (function () {
     };
     Resolver.prototype.getContentHash = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var hexBytes, ipfs, length_4, ipns, length_5, swarm;
+            var hexBytes, ipfs, length_4, ipns, length_5, swarm, skynet, urlSafe_1, hash;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this._fetchBytes("0xbc1c58d1")];
@@ -9258,6 +9267,14 @@ var Resolver = /** @class */ (function () {
                         if (swarm) {
                             if (swarm[1].length === (32 * 2)) {
                                 return [2 /*return*/, "bzz:/\/" + swarm[1]];
+                            }
+                        }
+                        skynet = hexBytes.match(/^0x90b2c605([0-9a-f]*)$/);
+                        if (skynet) {
+                            if (skynet[1].length === (34 * 2)) {
+                                urlSafe_1 = { "=": "", "+": "-", "/": "_" };
+                                hash = (0, base64_1.encode)("0x" + skynet[1]).replace(/[=+\/]/g, function (a) { return (urlSafe_1[a]); });
+                                return [2 /*return*/, "sia:/\/" + hash];
                             }
                         }
                         return [2 /*return*/, logger.throwError("invalid or unsupported content hash data", logger_1.Logger.errors.UNSUPPORTED_OPERATION, {
@@ -11137,7 +11154,7 @@ var BaseProvider = /** @class */ (function (_super) {
 }(abstract_provider_1.Provider));
 exports.BaseProvider = BaseProvider;
 
-},{"./_version":62,"./formatter":71,"@ethersproject/abstract-provider":18,"@ethersproject/basex":25,"@ethersproject/bignumber":29,"@ethersproject/bytes":31,"@ethersproject/constants":35,"@ethersproject/hash":41,"@ethersproject/logger":55,"@ethersproject/networks":57,"@ethersproject/properties":61,"@ethersproject/sha2":89,"@ethersproject/strings":99,"@ethersproject/web":109,"bech32":159}],66:[function(require,module,exports){
+},{"./_version":62,"./formatter":71,"@ethersproject/abstract-provider":18,"@ethersproject/base64":24,"@ethersproject/basex":25,"@ethersproject/bignumber":29,"@ethersproject/bytes":31,"@ethersproject/constants":35,"@ethersproject/hash":41,"@ethersproject/logger":55,"@ethersproject/networks":57,"@ethersproject/properties":61,"@ethersproject/sha2":89,"@ethersproject/strings":99,"@ethersproject/web":109,"bech32":159}],66:[function(require,module,exports){
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.IpcProvider = void 0;
@@ -13003,10 +13020,12 @@ function getDefaultProvider(network, options) {
         // Handle http and ws (and their secure variants)
         var match = network.match(/^(ws|http)s?:/i);
         if (match) {
-            switch (match[1]) {
+            switch (match[1].toLowerCase()) {
                 case "http":
+                case "https":
                     return new json_rpc_provider_1.JsonRpcProvider(network);
                 case "ws":
+                case "wss":
                     return new websocket_provider_1.WebSocketProvider(network);
                 default:
                     logger.throwArgumentError("unsupported URL scheme", "network", network);
@@ -13922,7 +13941,7 @@ var JsonRpcProvider = /** @class */ (function (_super) {
             case "getCode":
                 return ["eth_getCode", [getLowerCase(params.address), params.blockTag]];
             case "getStorageAt":
-                return ["eth_getStorageAt", [getLowerCase(params.address), params.position, params.blockTag]];
+                return ["eth_getStorageAt", [getLowerCase(params.address), (0, bytes_1.hexZeroPad)(params.position, 32), params.blockTag]];
             case "sendTransaction":
                 return ["eth_sendRawTransaction", [params.signedTransaction]];
             case "getBlock":
@@ -15994,7 +16013,7 @@ exports.toUtf8CodePoints = toUtf8CodePoints;
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "transactions/5.6.0";
+exports.version = "transactions/5.6.1";
 
 },{}],102:[function(require,module,exports){
 "use strict";
@@ -16276,9 +16295,7 @@ function _parseEipSignature(tx, fields, serialize) {
         var digest = (0, keccak256_1.keccak256)(serialize(tx));
         tx.from = recoverAddress(digest, { r: tx.r, s: tx.s, recoveryParam: tx.v });
     }
-    catch (error) {
-        console.log(error);
-    }
+    catch (error) { }
 }
 function _parseEip1559(payload) {
     var transaction = RLP.decode(payload.slice(1));
@@ -16355,7 +16372,7 @@ function _parse(rawTransaction) {
         tx.v = bignumber_1.BigNumber.from(transaction[6]).toNumber();
     }
     catch (error) {
-        console.log(error);
+        // @TODO: What makes snese to do? The v is too big
         return tx;
     }
     tx.r = (0, bytes_1.hexZeroPad)(transaction[7], 32);
@@ -16383,9 +16400,7 @@ function _parse(rawTransaction) {
         try {
             tx.from = recoverAddress(digest, { r: (0, bytes_1.hexlify)(tx.r), s: (0, bytes_1.hexlify)(tx.s), recoveryParam: recoveryParam });
         }
-        catch (error) {
-            console.log(error);
-        }
+        catch (error) { }
         tx.hash = (0, keccak256_1.keccak256)(rawTransaction);
     }
     tx.type = null;
@@ -20112,7 +20127,7 @@ module.exports = function api(src) {
             html += CONTROL_END + INVALID_BEG;
             state = INVALID;
           }
-          /* display character as hexidecimal value */
+          /* display character as hexadecimal value */
           html += `\\x${apglib.utils.charToHex(ch)}`;
         }
       }
@@ -23151,7 +23166,7 @@ module.exports = function grammar(){
 // - catalog the lines - create an array with a line object for each line.
 // The object carries information about the line number and character length which is used
 // by the parser generator primarily for error reporting.
-module.exports = function exports(chars, errors, strict, trace) {
+module.exports = function exfn(chars, errors, strict, trace) {
   const thisFileName = 'scanner.js: ';
   const apglib = require('../apg-lib/node-exports');
   const grammar = new (require('./scanner-grammar'))();
@@ -23204,7 +23219,7 @@ module.exports = function exports(chars, errors, strict, trace) {
 // See:<br>
 // `./dist/abnf-for-sabnf-grammar.bnf`<br>
 // for the grammar file these callback functions are based on.
-module.exports = function exports() {
+module.exports = function exfn() {
   const apglib = require('../apg-lib/node-exports');
   const id = apglib.ids;
 
@@ -23255,7 +23270,7 @@ module.exports = function exports() {
     }
     return num;
   };
-  /* converts text hexidecimal numbers from, e.g. %xff, to an integer */
+  /* converts text hexadecimal numbers from, e.g. %xff, to an integer */
   const hexnum = function hexnum(chars, beg, len) {
     let num = 0;
     for (let i = beg; i < beg + len; i += 1) {
@@ -23966,7 +23981,7 @@ module.exports = function exports() {
  *   copyright: Copyright (c) 2021 Lowell D. Thomas, all rights reserved
  *     license: BSD-2-Clause (https://opensource.org/licenses/BSD-2-Clause)
  *   ********************************************************************************* */
-module.exports = (function exports() {
+module.exports = (function exfn() {
   const thisFileName = 'show-rules.js';
   // Display the rules.
   // This function may be called before the attributes calculation.
@@ -24060,7 +24075,7 @@ module.exports = (function exports() {
 // See:<br>
 // `./dist/abnf-for-sabnf-grammar.bnf`<br>
 // for the grammar file these callback functions are based on.
-module.exports = function exports() {
+module.exports = function exfn() {
   const thisFileName = 'syntax-callbacks.js: ';
   const apglib = require('../apg-lib/node-exports');
   const id = apglib.ids;
@@ -26626,20 +26641,20 @@ module.exports = function exportsAst() {
   //      - default mode is "ascii"
   //      - can be: "ascii"
   //                "decimal"
-  //                "hexidecimal"
+  //                "hexadecimal"
   //                "unicode"
   // ```
   this.toXml = function toSml(modeArg) {
     let display = utils.charsToDec;
     let caption = 'decimal integer character codes';
-    if (typeof mode === 'string' && modeArg.length >= 3) {
+    if (typeof modeArg === 'string' && modeArg.length >= 3) {
       const mode = modeArg.slice(0, 3).toLowerCase();
       if (mode === 'asc') {
         display = utils.charsToAscii;
         caption = 'ASCII for printing characters, hex for non-printing';
       } else if (mode === 'hex') {
         display = utils.charsToHex;
-        caption = 'hexidecimal integer character codes';
+        caption = 'hexadecimal integer character codes';
       } else if (mode === 'uni') {
         display = utils.charsToUnicode;
         caption = 'Unicode UTF-32 integer character codes';
@@ -29354,7 +29369,7 @@ module.exports = function exportTrace() {
     let modeName;
     switch (mode) {
       case MODE_HEX:
-        modeName = 'hexidecimal';
+        modeName = 'hexadecimal';
         break;
       case MODE_DEC:
         modeName = 'decimal';
@@ -29816,7 +29831,7 @@ module.exports = function exportTrace() {
     return html;
   };
   // Translate the trace records to HTML format.
-  // - *modearg* - can be `"ascii"`, `"decimal"`, `"hexidecimal"` or `"unicode"`.
+  // - *modearg* - can be `"ascii"`, `"decimal"`, `"hexadecimal"` or `"unicode"`.
   // Determines the format of the string character code display.
   // - *caption* - optional caption for the HTML table.
   this.toHtml = function (modearg, caption) {
@@ -30224,7 +30239,7 @@ exports.asciiChars = [
   '~',
   'DEL',
 ];
-// Translates a single character to hexidecimal with leading zeros for 2, 4, or 8 digit display.
+// Translates a single character to hexadecimal with leading zeros for 2, 4, or 8 digit display.
 exports.charToHex = function (char) {
   let ch = char.toString(16).toUpperCase();
   switch (ch.length) {
@@ -30262,7 +30277,7 @@ exports.charsToDec = function (chars, beg, len) {
   }
   return ret;
 };
-// Translates a sub-array of character codes to hexidecimal display format.
+// Translates a sub-array of character codes to hexadecimal display format.
 exports.charsToHex = function (chars, beg, len) {
   let ret = '';
   if (!Array.isArray(chars)) {
@@ -40526,7 +40541,7 @@ module.exports={
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.version = void 0;
-exports.version = "ethers/5.6.6";
+exports.version = "ethers/5.6.7";
 
 },{}],182:[function(require,module,exports){
 "use strict";
@@ -44648,35 +44663,45 @@ function getAsyncartData(address, computeConfig) {
             throw new Error('getAsyncartData: computeConfig does not contain etherumPriceInUsd');
         }
         try {
-            const response = (yield (0, utils_1.fetcher)('GET', 'https://async-app.com/users/' +
-                address.toLowerCase() +
-                '/arts?page=1&count=1000&rel=owner&type=masters'));
-            const artworks = response['arts'];
-            // console.log(artworks);
-            let totalCountSold = artworks.length;
-            let totalAmountSold = 0;
-            for (let index = 0; index < artworks.length; index++) {
-                if (Boolean((_a = artworks[index]['lastSale']) === null || _a === void 0 ? void 0 : _a.buyer) === true) {
-                    totalAmountSold += artworks[index]['lastSale']['sale']['amount'];
+            const promiseArray = [
+                (0, utils_1.fetcher)('GET', 'https://async-api.com/users/' +
+                    address.toLowerCase() +
+                    '/arts?page=1&count=1000&rel=owner&type=masters'),
+                (0, utils_1.fetcher)('GET', 'https://async-api.com/users/' + address.toLowerCase()),
+            ];
+            const responses = yield Promise.allSettled(promiseArray);
+            let response1 = {};
+            let response2 = {};
+            if (responses[0].status === 'fulfilled') {
+                const respData1 = responses[0].value;
+                const artworks = respData1['arts'];
+                let totalCountSold = artworks.length;
+                let totalAmountSold = 0;
+                for (let index = 0; index < artworks.length; index++) {
+                    if (Boolean((_a = artworks[index]['lastSale']) === null || _a === void 0 ? void 0 : _a.buyer) === true) {
+                        totalAmountSold += artworks[index]['lastSale']['sale']['amount'];
+                    }
+                    else if (artworks[index]['auction'].hasReserve === true &&
+                        Boolean((_b = artworks[index]['auction']) === null || _b === void 0 ? void 0 : _b.endTime) === true) {
+                        totalAmountSold += artworks[index]['auction']['reservePrice'];
+                    }
+                    else {
+                        totalCountSold -= 1;
+                    }
                 }
-                else if (artworks[index]['auction'].hasReserve === true &&
-                    Boolean((_b = artworks[index]['auction']) === null || _b === void 0 ? void 0 : _b.endTime) === true) {
-                    totalAmountSold += artworks[index]['auction']['reservePrice'];
-                }
-                else {
-                    totalCountSold -= 1;
-                }
+                response1 = {
+                    totalCountSold,
+                    totalAmountSold: totalAmountSold * computeConfig.etherumPriceInUsd,
+                };
             }
-            return {
-                totalCountSold,
-                totalAmountSold: totalAmountSold * computeConfig.etherumPriceInUsd,
-            };
+            if (responses[1].status === 'fulfilled') {
+                const respData2 = responses[1].value;
+                response2 = respData2;
+            }
+            return Object.assign(Object.assign({}, response1), response2);
         }
         catch (error) {
-            return {
-                totalCountSold: 0,
-                totalAmountSold: 0,
-            };
+            return {};
         }
     });
 }
@@ -45085,7 +45110,7 @@ function getCryptoreliefData(address, computeConfig) {
         if (Boolean(computeConfig === null || computeConfig === void 0 ? void 0 : computeConfig.CNVSEC_ID) === false) {
             throw new Error('getCryptoreliefData: computeConfig does not contain CNVSEC_ID');
         }
-        const json = (yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/omnid/etherscan?id=${computeConfig.CNVSEC_ID}&address=${address}`));
+        const json = (yield (0, utils_1.fetcher)('GET', `https://cnvsec.vercel.app/api/omnid/cryptorelief?id=${computeConfig.CNVSEC_ID}&address=${address}`));
         return {
             amount: 'amount' in json ? json === null || json === void 0 ? void 0 : json.amount : 0,
         };
@@ -46207,32 +46232,92 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function getLensData(address) {
+    var _a, _b, _c, _d;
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const response = (yield (0, utils_1.gqlFetcher)('https://api.thegraph.com/subgraphs/id/QmcH6BYapdqB6hqJSVFk4neCYCe94VDkraPRTJxEPb5ULH', `{
-        profiles(where: {id: "${address.toLowerCase()}"}) {
-          id
-          profileId
-          pubCount
-          handle
-          imageURI
-        }
-        socialGraphs(where: {id: "${address.toLowerCase()}"}) {
-          following {
+            const response = (yield (0, utils_1.gqlFetcher)('https://api.lens.dev/', `query Profiles {
+        profiles(request: { ownedBy: ["${address}"], limit: 10 }) {
+          items {
+            id
+            name
+            bio
+            attributes {
+              displayType
+              traitType
+              key
+              value
+            }
+            metadata
+            isDefault
+            picture {
+              ... on NftImage {
+                contractAddress
+                tokenId
+                uri
+                verified
+              }
+              ... on MediaSet {
+                original {
+                  url
+                  mimeType
+                }
+              }
+            }
             handle
+            coverPicture {
+              ... on NftImage {
+                contractAddress
+                tokenId
+                uri
+                verified
+              }
+              ... on MediaSet {
+                original {
+                  url
+                  mimeType
+                }
+              }
+            }
+            ownedBy
+            dispatcher {
+              address
+              canUseRelay
+            }
+            stats {
+              totalFollowers
+              totalFollowing
+              totalPosts
+              totalComments
+              totalMirrors
+              totalPublications
+              totalCollects
+            }
+            followModule {
+              ... on FeeFollowModuleSettings {
+                type
+                amount {
+                  asset {
+                    symbol
+                    name
+                    decimals
+                    address
+                  }
+                  value
+                }
+                recipient
+              }
+              ... on ProfileFollowModuleSettings {
+               type
+              }
+              ... on RevertFollowModuleSettings {
+               type
+              }
+            }
           }
         }
       }`));
-            if (response['data']['profiles'].length > 0) {
-                return {
-                    profileId: parseInt(response['data']['profiles'][0].profileId),
-                    pubCount: parseInt(response['data']['profiles'][0].pubCount),
-                    handle: response['data']['profiles'][0].handle,
-                    imageURI: response['data']['profiles'][0].imageURI,
-                    following: response['data']['socialGraphs'].length > 0
-                        ? response['data']['socialGraphs'][0].following.length
-                        : 0,
-                };
+            if (((_b = (_a = response === null || response === void 0 ? void 0 : response.data) === null || _a === void 0 ? void 0 : _a.profiles) === null || _b === void 0 ? void 0 : _b.items.length) > 0) {
+                return (_d = (_c = response === null || response === void 0 ? void 0 : response.data) === null || _c === void 0 ? void 0 : _c.profiles) === null || _d === void 0 ? void 0 : _d.items[0];
             }
             else {
                 return {};
@@ -46419,25 +46504,30 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const utils_1 = require("../utils");
 function getMirrorData(address = '') {
     return __awaiter(this, void 0, void 0, function* () {
-        const jsonData = (yield (0, utils_1.gqlFetcher)('https://mirror-api.com/graphql', `{
-      addressInfo(address: "${address}") {
-        ens
-        writeTokens
-        hasOnboarded
-      }
-      userProfile(address: "${address}") {
-        displayName
-        ens
-        domain
-        contributor {
-          publications {
-            ensLabel
-            displayName
+        try {
+            const jsonData = (yield (0, utils_1.gqlFetcher)('https://mirror-api.com/graphql', `{
+        addressInfo(address: "${address}") {
+          ens
+          writeTokens
+          hasOnboarded
+        }
+        userProfile(address: "${address}") {
+          displayName
+          ens
+          domain
+          contributor {
+            publications {
+              ensLabel
+              displayName
+            }
           }
         }
-      }
-    }`));
-        return jsonData['data'];
+      }`));
+            return jsonData['data'];
+        }
+        catch (error) {
+            return {};
+        }
     });
 }
 exports.default = getMirrorData;
@@ -47489,7 +47579,7 @@ const utils_1 = require("./utils");
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
 class ConvoBase {
     constructor(apikey, node) {
-        this.version = '0.4.14';
+        this.version = '0.4.15';
         this.logConfig = () => __awaiter(this, void 0, void 0, function* () {
             const pingResult = yield this.pingNode();
             const versionInfo = yield (0, cross_fetch_1.default)('https://bundlephobia.com/api/size?package=@theconvospace/sdk@latest&record=true').then((r) => {

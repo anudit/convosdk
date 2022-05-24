@@ -72,6 +72,6 @@ async function publishPackage(packageName, version) {
 // 1. Setup VALIST_RELEASER_PK in .env file
 // 2. Change Packge Name below.
 // 3. Run Script.
-publishPackage('@theconvospace/sdk', '0.4.13').then(() => {
+publishPackage('@theconvospace/sdk', '0.4.15').then(() => {
     process.exit(0);
 });
