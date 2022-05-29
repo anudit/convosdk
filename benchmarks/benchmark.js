@@ -2,7 +2,7 @@ require('dotenv').config({ path: '.env.local' })
 const { createStream } = require('table');
 const { Convo } = require('../packages/sdk/lib/cjs/index');
 
-const { ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
+const { BITQUERY_API_KEY, ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
 
 let LOG_RESP = false;
 
@@ -21,6 +21,7 @@ const config = {
     etherumPriceInUsd: 3200,
     etherscanApiKey: ETHERSCAN_API_KEY,
     polygonscanApiKey: POLYGONSCAN_API_KEY,
+    bitqueryApiKey: BITQUERY_API_KEY,
     CNVSEC_ID: CNVSEC_ID,
     DEBUG: false,
 };
@@ -168,7 +169,7 @@ async function runBenchmarkManual() {
         const address = addresssTable[index];
         let time = await timeit(
             convoInstance.omnid.computeTrustScore, // update function here
-            [address, config, ['coordinape', 'arcx', 'superrare', 'karma']],
+            [address, config, ['coordinape', 'arcx', 'superrare']],
         );
         times.push(time);
     }
@@ -216,7 +217,7 @@ async function tests() {
         { fn: convoInstance.omnid.adaptors.getGovernordaoData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getHiveOneData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.checkIdena, withConfig: false },
-        // { fn: convoInstance.omnid.adaptors.getKarmaData, withConfig: false },
+        { fn: convoInstance.omnid.adaptors.getKarmaData, withConfig: false },
         { fn: convoInstance.omnid.adaptors.getKlimaData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getKnownOriginData, withConfig: true },
         { fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false },

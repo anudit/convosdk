@@ -23,12 +23,17 @@ export default async function getTxnData(
 ) {
   if (Boolean(computeConfig?.etherscanApiKey) === false) {
     throw new Error(
-      'getAaveData: computeConfig does not contain etherscanApiKey'
+      'getTxnData: computeConfig does not contain etherscanApiKey'
     );
   }
   if (Boolean(computeConfig?.polygonscanApiKey) === false) {
     throw new Error(
-      'getAaveData: computeConfig does not contain polygonscanApiKey'
+      'getTxnData: computeConfig does not contain polygonscanApiKey'
+    );
+  }
+  if (Boolean(computeConfig?.bitqueryApiKey) === false) {
+    throw new Error(
+      'getTxnData: computeConfig does not contain bitqueryApiKey'
     );
   }
 
@@ -56,7 +61,7 @@ export default async function getTxnData(
       {},
       5000,
       {
-        'X-API-KEY': 'BQYaS9t0VF2StTQ450gQiCFAWFX16fGz',
+        'X-API-KEY': computeConfig.bitqueryApiKey,
       }
     ),
     gqlFetcher(
@@ -74,7 +79,7 @@ export default async function getTxnData(
       {},
       5000,
       {
-        'X-API-KEY': 'BQYaS9t0VF2StTQ450gQiCFAWFX16fGz',
+        'X-API-KEY': computeConfig.bitqueryApiKey,
       }
     ),
   ];

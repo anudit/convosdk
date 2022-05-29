@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.16
+- Update `txn`, `karma` Adaptor.
+- Update Dependencies.
+
 ## 0.4.15
 - Update `lens`, `asyncart`, `cryptorelief`, `mirror` Adaptors.
 - Update Dependencies.
