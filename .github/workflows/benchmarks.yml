@@ -36,6 +36,7 @@ jobs:
         run: cd ./packages/sdk && pnpm build:tsc
 
       - name: Run Benchmarks
+        continue-on-error: true
         env:
           DEEPDAO_API_KEY: ${{ secrets.DEEPDAO_API_KEY }}
           ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
