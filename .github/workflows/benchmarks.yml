@@ -12,39 +12,28 @@ jobs:
     name: Benchmark
     steps:
       - name: checkout
-        uses: actions/checkout@v2.3.4
-      - uses: actions/setup-node@v2
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16
 
       - name: Cache pnpm modules
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ~/.pnpm-store
           key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
           restore-keys: |
             ${{ runner.os }}-
-      - uses: pnpm/action-setup@v2.1.0
+      - uses: pnpm/action-setup@v2
         with:
-          version: 6.0.2
+          version: 7.1.7
 
-      - name: Install Dependencies for Bench
+      - name: Install Workspace Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: cd ./benchmarks && pnpm install
-
-      - name: Install Dependencies for SDK
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: cd ./packages/sdk && pnpm install
-
-      - name: Install Dependencies for React
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: cd ./packages/react && pnpm install
+        run: pnpm install
 
       - name: Build SDK Package
         run: cd ./packages/sdk && pnpm build
-
-      - name: Build React Package
-        run: cd ./packages/react && pnpm build
 
       - name: Run Benchmarks
         env:
@@ -52,4 +41,5 @@ jobs:
           ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
           POLYGONSCAN_API_KEY: ${{ secrets.POLYGONSCAN_API_KEY }}
           CNVSEC_ID: ${{ secrets.CNVSEC_ID }}
+          BITQUERY_API_KEY: ${{ secrets.BITQUERY_API_KEY }}
         run: node ./benchmarks/benchmark.js
