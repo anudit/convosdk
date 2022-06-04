@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@theconvospace/react": "workspace:^0.1.1",
     "@theconvospace/sdk": "^0.4.16",
     "ethers": "^5.6.8",
     "next": "12.1.6",

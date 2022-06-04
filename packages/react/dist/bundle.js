@@ -3,7 +3,7 @@
 /*!
  * @license Copyright 2015-2022 Ably Real-time Ltd (ably.com)
  * 
- * Ably JavaScript Library v1.2.20
+ * Ably JavaScript Library v1.2.22
  * https://github.com/ably/ably-js
  * 
  * Released under the Apache Licence v2.0
@@ -1029,7 +1029,7 @@ exports.allToUpperCase = allToUpperCase;
 /* WEBPACK VAR INJECTION */(function(global) {
 exports.__esModule = true;
 var tslib_1 = __webpack_require__(1);
-var msgpack_1 = tslib_1.__importDefault(__webpack_require__(31));
+var msgpack_1 = tslib_1.__importDefault(__webpack_require__(32));
 if (typeof Window === 'undefined' && typeof WorkerGlobalScope === 'undefined') {
     console.log("Warning: this distribution of Ably is intended for browsers. On nodejs, please use the 'ably' package on npm");
 }
@@ -1049,7 +1049,7 @@ var Platform = {
     currentUrl: currentUrl,
     noUpgrade: userAgent && !!userAgent.match(/MSIE\s8\.0/),
     binaryType: 'arraybuffer',
-    WebSocket: global.WebSocket || MozWebSocket,
+    WebSocket: global.WebSocket,
     xhrSupported: global.XMLHttpRequest && 'withCredentials' in new XMLHttpRequest(),
     jsonpSupported: typeof document !== 'undefined',
     allowComet: allowComet(),
@@ -1225,7 +1225,7 @@ exports.__esModule = true;
 exports.typedArrayToBuffer = exports.byteLength = exports.bufferCompare = exports.utf8Decode = exports.utf8Encode = exports.hexDecode = exports.hexEncode = exports.base64Decode = exports.base64Encode = exports.toWordArray = exports.toArrayBuffer = exports.toBuffer = exports.isBuffer = exports.hexCharSet = exports.base64CharSet = void 0;
 var tslib_1 = __webpack_require__(1);
 var enc_hex_1 = __webpack_require__(48);
-var enc_utf8_1 = __webpack_require__(34);
+var enc_utf8_1 = __webpack_require__(35);
 var enc_base64_1 = __webpack_require__(17);
 var lib_typedarrays_1 = tslib_1.__importDefault(__webpack_require__(4));
 var platform_1 = tslib_1.__importDefault(__webpack_require__(3));
@@ -2483,6 +2483,7 @@ var EventEmitter = /** @class */ (function () {
      * @param listenerArgs
      */
     EventEmitter.prototype.whenState = function (targetState, currentState, listener) {
+        var _this = this;
         var listenerArgs = [];
         for (var _i = 3; _i < arguments.length; _i++) {
             listenerArgs[_i - 3] = arguments[_i];
@@ -2493,7 +2494,7 @@ var EventEmitter = /** @class */ (function () {
         }
         if (typeof listener !== 'function' && platform_1["default"].Promise) {
             return new platform_1["default"].Promise(function (resolve) {
-                EventEmitter.prototype.whenState.apply(self, [targetState, currentState, resolve].concat(listenerArgs));
+                EventEmitter.prototype.whenState.apply(_this, [targetState, currentState, resolve].concat(listenerArgs));
             });
         }
         if (targetState === currentState) {
@@ -2749,11 +2750,12 @@ var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
 var defaults_1 = tslib_1.__importDefault(__webpack_require__(9));
 var auth_1 = tslib_1.__importDefault(__webpack_require__(21));
 var push_1 = tslib_1.__importDefault(__webpack_require__(52));
-var platform_http_1 = tslib_1.__importDefault(__webpack_require__(25));
-var paginatedresource_1 = tslib_1.__importDefault(__webpack_require__(22));
+var platform_http_1 = tslib_1.__importDefault(__webpack_require__(26));
+var paginatedresource_1 = tslib_1.__importDefault(__webpack_require__(23));
 var channel_1 = tslib_1.__importDefault(__webpack_require__(39));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
 var stats_1 = tslib_1.__importDefault(__webpack_require__(59));
+var HttpMethods_1 = tslib_1.__importDefault(__webpack_require__(22));
 var noop = function () { };
 var msgpack = platform_1["default"].msgpack;
 var Rest = /** @class */ (function () {
@@ -2842,7 +2844,7 @@ var Rest = /** @class */ (function () {
         var timeUri = function (host) {
             return _this.authority(host) + '/time';
         };
-        this.http.get(this, timeUri, headers, params, function (err, res, headers, unpacked) {
+        this.http["do"](HttpMethods_1["default"].Get, this, timeUri, headers, null, params, function (err, res, headers, unpacked) {
             if (err) {
                 _callback(err);
                 return;
@@ -3798,10 +3800,10 @@ var protocolmessage_1 = tslib_1.__importDefault(__webpack_require__(12));
 var transport_1 = tslib_1.__importDefault(__webpack_require__(38));
 var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
 var defaults_1 = tslib_1.__importDefault(__webpack_require__(9));
-var connectionerrors_1 = tslib_1.__importDefault(__webpack_require__(24));
+var connectionerrors_1 = tslib_1.__importDefault(__webpack_require__(25));
 var auth_1 = tslib_1.__importDefault(__webpack_require__(21));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
-var XHRStates_1 = tslib_1.__importDefault(__webpack_require__(23));
+var XHRStates_1 = tslib_1.__importDefault(__webpack_require__(24));
 /* TODO: can remove once realtime sends protocol message responses for comet errors */
 function shouldBeErrorAction(err) {
     var UNRESOLVABLE_ERROR_CODES = [80015, 80017, 80030];
@@ -4246,7 +4248,7 @@ var Utils = tslib_1.__importStar(__webpack_require__(2));
 var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
 var auth_1 = tslib_1.__importDefault(__webpack_require__(21));
 var BufferUtils = tslib_1.__importStar(__webpack_require__(6));
-var HttpMethods_1 = tslib_1.__importDefault(__webpack_require__(36));
+var HttpMethods_1 = tslib_1.__importDefault(__webpack_require__(22));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
 var msgpack = platform_1["default"].msgpack;
 function withAuthDetails(rest, headers, params, errCallback, opCallback) {
@@ -4368,32 +4370,6 @@ var Resource = /** @class */ (function () {
             if (logger_1["default"].shouldLog(logger_1["default"].LOG_MICRO)) {
                 logger_1["default"].logAction(logger_1["default"].LOG_MICRO, 'Resource.' + method + '()', 'Sending; ' + urlFromPathAndParams(path, params));
             }
-            var args = [
-                rest,
-                path,
-                headers,
-                body,
-                params,
-                function (err, res, headers, unpacked, statusCode) {
-                    if (err && auth_1["default"].isTokenErr(err)) {
-                        /* token has expired, so get a new one */
-                        rest.auth.authorize(null, null, function (err) {
-                            if (err) {
-                                callback(err);
-                                return;
-                            }
-                            /* retry ... */
-                            withAuthDetails(rest, headers, params, callback, doRequest);
-                        });
-                        return;
-                    }
-                    callback(err, res, headers, unpacked, statusCode);
-                },
-            ];
-            if (!body) {
-                // Removes the third argument (body) from the args array
-                args.splice(3, 1);
-            }
             if (logger_1["default"].shouldLog(logger_1["default"].LOG_MICRO)) {
                 var decodedBody = body;
                 if (((_a = headers['content-type']) === null || _a === void 0 ? void 0 : _a.indexOf('msgpack')) > 0) {
@@ -4406,7 +4382,21 @@ var Resource = /** @class */ (function () {
                 }
                 logger_1["default"].logAction(logger_1["default"].LOG_MICRO, 'Resource.' + method + '()', 'Sending; ' + urlFromPathAndParams(path, params) + '; Body: ' + decodedBody);
             }
-            rest.http[method].apply(rest.http, args);
+            rest.http["do"](method, rest, path, headers, body, params, function (err, res, headers, unpacked, statusCode) {
+                if (err && auth_1["default"].isTokenErr(err)) {
+                    /* token has expired, so get a new one */
+                    rest.auth.authorize(null, null, function (err) {
+                        if (err) {
+                            callback(err);
+                            return;
+                        }
+                        /* retry ... */
+                        withAuthDetails(rest, headers, params, callback, doRequest);
+                    });
+                    return;
+                }
+                callback(err, res, headers, unpacked, statusCode);
+            });
         }
         withAuthDetails(rest, headers, params, callback, doRequest);
     };
@@ -4429,7 +4419,7 @@ var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
 var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
 var defaults_1 = tslib_1.__importDefault(__webpack_require__(9));
 var BufferUtils = tslib_1.__importStar(__webpack_require__(6));
-var XHRStates_1 = tslib_1.__importDefault(__webpack_require__(23));
+var XHRStates_1 = tslib_1.__importDefault(__webpack_require__(24));
 function isAblyError(responseBody, headers) {
     return Utils.arrIn(Utils.allToLowerCase(Utils.keysArray(headers)), 'x-ably-errorcode');
 }
@@ -4714,7 +4704,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(crypto_js_build_lib_typedarrays__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(17);
 /* harmony import */ var crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(crypto_js_build_enc_base64__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var crypto_js_build__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(26);
+/* harmony import */ var crypto_js_build__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(27);
 /* harmony import */ var crypto_js_build__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(crypto_js_build__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(3);
 /* harmony import */ var platform__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(platform__WEBPACK_IMPORTED_MODULE_3__);
@@ -5053,12 +5043,13 @@ var tslib_1 = __webpack_require__(1);
 var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
 var platform_1 = tslib_1.__importDefault(__webpack_require__(3));
 var Utils = tslib_1.__importStar(__webpack_require__(2));
-var multicaster_1 = tslib_1.__importDefault(__webpack_require__(27));
+var multicaster_1 = tslib_1.__importDefault(__webpack_require__(28));
 var BufferUtils = tslib_1.__importStar(__webpack_require__(6));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
 var hmac_sha256_1 = tslib_1.__importDefault(__webpack_require__(51));
 var enc_base64_1 = __webpack_require__(17);
-var enc_utf8_1 = __webpack_require__(34);
+var enc_utf8_1 = __webpack_require__(35);
+var HttpMethods_1 = tslib_1.__importDefault(__webpack_require__(22));
 var MAX_TOKEN_LENGTH = Math.pow(2, 17);
 function noop() { }
 function random() {
@@ -5357,10 +5348,10 @@ var Auth = /** @class */ (function () {
                     var headers = authHeaders || {};
                     headers['content-type'] = 'application/x-www-form-urlencoded';
                     var body = Utils.toQueryString(authParams).slice(1); /* slice is to remove the initial '?' */
-                    _this.client.http.postUri(client, authOptions.authUrl, headers, body, providedQsParams, authUrlRequestCallback);
+                    _this.client.http.doUri(HttpMethods_1["default"].Post, client, authOptions.authUrl, headers, body, providedQsParams, authUrlRequestCallback);
                 }
                 else {
-                    _this.client.http.getUri(client, authOptions.authUrl, authHeaders || {}, authParams, authUrlRequestCallback);
+                    _this.client.http.doUri(HttpMethods_1["default"].Get, client, authOptions.authUrl, authHeaders || {}, null, authParams, authUrlRequestCallback);
                 }
             };
         }
@@ -5387,7 +5378,7 @@ var Auth = /** @class */ (function () {
             if (authOptions.requestHeaders)
                 Utils.mixin(requestHeaders, authOptions.requestHeaders);
             logger_1["default"].logAction(logger_1["default"].LOG_MICRO, 'Auth.requestToken().requestToken', 'Sending POST to ' + path + '; Token params: ' + JSON.stringify(signedTokenParams));
-            _this.client.http.post(client, tokenUri, requestHeaders, JSON.stringify(signedTokenParams), null, tokenCb);
+            _this.client.http["do"](HttpMethods_1["default"].Post, client, tokenUri, requestHeaders, JSON.stringify(signedTokenParams), null, tokenCb);
         };
         var tokenRequestCallbackTimeoutExpired = false, timeoutLength = this.client.options.timeouts.realtimeRequestTimeout, tokenRequestCallbackTimeout = setTimeout(function () {
             tokenRequestCallbackTimeoutExpired = true;
@@ -5754,6 +5745,24 @@ exports["default"] = Auth;
 "use strict";
 
 exports.__esModule = true;
+var HttpMethods;
+(function (HttpMethods) {
+    HttpMethods["Get"] = "get";
+    HttpMethods["Delete"] = "delete";
+    HttpMethods["Post"] = "post";
+    HttpMethods["Put"] = "put";
+    HttpMethods["Patch"] = "patch";
+})(HttpMethods || (HttpMethods = {}));
+exports["default"] = HttpMethods;
+
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+exports.__esModule = true;
 exports.HttpPaginatedResponse = exports.PaginatedResult = void 0;
 var tslib_1 = __webpack_require__(1);
 var Utils = tslib_1.__importStar(__webpack_require__(2));
@@ -5939,7 +5948,7 @@ exports["default"] = PaginatedResource;
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -5956,7 +5965,7 @@ exports["default"] = XHRStates;
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6019,7 +6028,7 @@ exports["default"] = ConnectionErrors;
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6031,11 +6040,11 @@ var platform_1 = tslib_1.__importDefault(__webpack_require__(3));
 var Utils = tslib_1.__importStar(__webpack_require__(2));
 var defaults_1 = tslib_1.__importDefault(__webpack_require__(9));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
-var HttpMethods_1 = tslib_1.__importDefault(__webpack_require__(36));
+var HttpMethods_1 = tslib_1.__importDefault(__webpack_require__(22));
 var xhrrequest_1 = tslib_1.__importDefault(__webpack_require__(19));
-var XHRStates_1 = tslib_1.__importDefault(__webpack_require__(23));
+var XHRStates_1 = tslib_1.__importDefault(__webpack_require__(24));
 var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
-var jsonptransport_1 = __webpack_require__(32);
+var jsonptransport_1 = __webpack_require__(33);
 function shouldFallback(errorInfo) {
     var statusCode = errorInfo.statusCode;
     /* 400 + no code = a generic xhr onerror. Browser doesn't give us enough
@@ -6073,7 +6082,7 @@ var Http = (_a = /** @class */ (function () {
                 this.checkConnectivity = function (callback) {
                     var upUrl = defaults_1["default"].internetUpUrl;
                     logger_1["default"].logAction(logger_1["default"].LOG_MICRO, '(XHRRequest)Http.checkConnectivity()', 'Sending; ' + upUrl);
-                    this.getUri(null, upUrl, null, null, function (err, responseText) {
+                    this.doUri(HttpMethods_1["default"].Get, null, upUrl, null, null, null, function (err, responseText) {
                         var _a;
                         var result = !err && ((_a = responseText) === null || _a === void 0 ? void 0 : _a.replace(/\n/, '')) == 'yes';
                         logger_1["default"].logAction(logger_1["default"].LOG_MICRO, '(XHRRequest)Http.checkConnectivity()', 'Result: ' + result);
@@ -6188,54 +6197,6 @@ var Http = (_a = /** @class */ (function () {
             }
             this.Request(method, rest, uri, headers, params, body, callback);
         };
-        /** Http.get, Http.post, Http.put, ...
-         * Perform an HTTP request for a given path against prime and fallback Ably hosts
-         * @param rest
-         * @param path the full path
-         * @param headers optional hash of headers
-         * [only for methods with body: @param body object or buffer containing request body]
-         * @param params optional hash of params
-         * @param callback (err, response)
-         *
-         ** Http.getUri, Http.postUri, Http.putUri, ...
-         * Perform an HTTP request for a given full URI
-         * @param rest
-         * @param uri the full URI
-         * @param headers optional hash of headers
-         * [only for methods with body: @param body object or buffer containing request body]
-         * @param params optional hash of params
-         * @param callback (err, response)
-         */
-        class_1.prototype.get = function (rest, path, headers, params, callback) {
-            this["do"](HttpMethods_1["default"].Get, rest, path, headers, null, params, callback);
-        };
-        class_1.prototype.getUri = function (rest, uri, headers, params, callback) {
-            this.doUri(HttpMethods_1["default"].Get, rest, uri, headers, null, params, callback);
-        };
-        class_1.prototype["delete"] = function (rest, path, headers, params, callback) {
-            this["do"](HttpMethods_1["default"].Delete, rest, path, headers, null, params, callback);
-        };
-        class_1.prototype.deleteUri = function (rest, uri, headers, params, callback) {
-            this.doUri(HttpMethods_1["default"].Delete, rest, uri, headers, null, params, callback);
-        };
-        class_1.prototype.post = function (rest, path, headers, body, params, callback) {
-            this["do"](HttpMethods_1["default"].Post, rest, path, headers, body, params, callback);
-        };
-        class_1.prototype.postUri = function (rest, uri, headers, body, params, callback) {
-            this.doUri(HttpMethods_1["default"].Post, rest, uri, headers, body, params, callback);
-        };
-        class_1.prototype.put = function (rest, path, headers, body, params, callback) {
-            this["do"](HttpMethods_1["default"].Put, rest, path, headers, body, params, callback);
-        };
-        class_1.prototype.putUri = function (rest, uri, headers, body, params, callback) {
-            this.doUri(HttpMethods_1["default"].Put, rest, uri, headers, body, params, callback);
-        };
-        class_1.prototype.patch = function (rest, path, headers, body, params, callback) {
-            this["do"](HttpMethods_1["default"].Patch, rest, path, headers, body, params, callback);
-        };
-        class_1.prototype.patchUri = function (rest, uri, headers, body, params, callback) {
-            this.doUri(HttpMethods_1["default"].Patch, rest, uri, headers, body, params, callback);
-        };
         return class_1;
     }()),
     _a.methods = [HttpMethods_1["default"].Get, HttpMethods_1["default"].Delete, HttpMethods_1["default"].Post, HttpMethods_1["default"].Put, HttpMethods_1["default"].Patch],
@@ -6246,13 +6207,13 @@ exports["default"] = Http;
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 ;(function (root, factory) {
 	if (true) {
 		// CommonJS
-		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(4), __webpack_require__(55), __webpack_require__(17), __webpack_require__(37), __webpack_require__(35), __webpack_require__(28), __webpack_require__(29), __webpack_require__(30), __webpack_require__(56), __webpack_require__(57));
+		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(4), __webpack_require__(55), __webpack_require__(17), __webpack_require__(37), __webpack_require__(36), __webpack_require__(29), __webpack_require__(30), __webpack_require__(31), __webpack_require__(56), __webpack_require__(57));
 	}
 	else {}
 }(this, function (CryptoJS) {
@@ -6262,7 +6223,7 @@ exports["default"] = Http;
 }));
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -6318,7 +6279,7 @@ exports["default"] = Multicaster;
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 ;(function (root, factory) {
@@ -6459,13 +6420,13 @@ exports["default"] = Multicaster;
 }));
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 ;(function (root, factory) {
 	if (true) {
 		// CommonJS
-		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(37), __webpack_require__(28));
+		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(37), __webpack_require__(29));
 	}
 	else {}
 }(this, function (CryptoJS) {
@@ -6591,13 +6552,13 @@ exports["default"] = Multicaster;
 }));
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 ;(function (root, factory) {
 	if (true) {
 		// CommonJS
-		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(29));
+		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(30));
 	}
 	else {}
 }(this, function (CryptoJS) {
@@ -7479,7 +7440,7 @@ exports["default"] = Multicaster;
 }));
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -7900,13 +7861,6 @@ function encodeableKeys(value, sparse) {
 }
 function _encode(value, view, offset, sparse) {
     var type = typeof value;
-    switch (typeof value) {
-        case 'string':
-            console.log(value.length);
-            break;
-        case 'number':
-            console.log(Math.sqrt(value));
-    }
     // Strings Bytes
     // There are four string types: fixstr/str8/str16/str32
     if (typeof value === 'string') {
@@ -8238,7 +8192,7 @@ exports["default"] = {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8253,7 +8207,7 @@ var eventemitter_1 = tslib_1.__importDefault(__webpack_require__(8));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
 var defaults_1 = tslib_1.__importDefault(__webpack_require__(9));
 var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
-var XHRStates_1 = tslib_1.__importDefault(__webpack_require__(23));
+var XHRStates_1 = tslib_1.__importDefault(__webpack_require__(24));
 var noop = function () { };
 /* Can't just use window.Ably, as that won't exist if using the commonjs version. */
 var _ = (global._ablyjs_jsonp = {});
@@ -8443,7 +8397,7 @@ exports["default"] = default_1;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(14)))
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -8460,11 +8414,11 @@ var eventemitter_1 = tslib_1.__importDefault(__webpack_require__(8));
 var messagequeue_1 = tslib_1.__importDefault(__webpack_require__(41));
 var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
 var connectionstatechange_1 = tslib_1.__importDefault(__webpack_require__(42));
-var connectionerrors_1 = tslib_1.__importStar(__webpack_require__(24));
+var connectionerrors_1 = tslib_1.__importStar(__webpack_require__(25));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
 var auth_1 = tslib_1.__importDefault(__webpack_require__(21));
 var message_1 = tslib_1.__importDefault(__webpack_require__(13));
-var multicaster_1 = tslib_1.__importDefault(__webpack_require__(27));
+var multicaster_1 = tslib_1.__importDefault(__webpack_require__(28));
 var WebStorage = tslib_1.__importStar(__webpack_require__(62));
 var platform_transports_1 = tslib_1.__importDefault(__webpack_require__(66));
 var websockettransport_1 = tslib_1.__importDefault(__webpack_require__(63));
@@ -10233,7 +10187,7 @@ exports["default"] = ConnectionManager;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(14)))
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 ;(function (root, factory) {
@@ -10249,7 +10203,7 @@ exports["default"] = ConnectionManager;
 }));
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 ;(function (root, factory) {
@@ -10446,24 +10400,6 @@ exports["default"] = ConnectionManager;
 }));
 
 /***/ }),
-/* 36 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-exports.__esModule = true;
-var HttpMethods;
-(function (HttpMethods) {
-    HttpMethods["Get"] = "get";
-    HttpMethods["Delete"] = "delete";
-    HttpMethods["Post"] = "post";
-    HttpMethods["Put"] = "put";
-    HttpMethods["Patch"] = "patch";
-})(HttpMethods || (HttpMethods = {}));
-exports["default"] = HttpMethods;
-
-
-/***/ }),
 /* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10623,7 +10559,7 @@ var protocolmessage_1 = tslib_1.__importDefault(__webpack_require__(12));
 var Utils = tslib_1.__importStar(__webpack_require__(2));
 var eventemitter_1 = tslib_1.__importDefault(__webpack_require__(8));
 var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
-var connectionerrors_1 = tslib_1.__importDefault(__webpack_require__(24));
+var connectionerrors_1 = tslib_1.__importDefault(__webpack_require__(25));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
 var actions = protocolmessage_1["default"].Action;
 var closeMessage = protocolmessage_1["default"].fromValues({ action: actions.CLOSE });
@@ -10863,7 +10799,7 @@ var presence_1 = tslib_1.__importDefault(__webpack_require__(40));
 var platform_crypto_1 = tslib_1.__importDefault(__webpack_require__(20));
 var message_1 = tslib_1.__importDefault(__webpack_require__(13));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
-var paginatedresource_1 = tslib_1.__importDefault(__webpack_require__(22));
+var paginatedresource_1 = tslib_1.__importDefault(__webpack_require__(23));
 var resource_1 = tslib_1.__importDefault(__webpack_require__(18));
 function noop() { }
 var MSG_ID_ENTROPY_BYTES = 9;
@@ -11008,7 +10944,7 @@ var tslib_1 = __webpack_require__(1);
 var Utils = tslib_1.__importStar(__webpack_require__(2));
 var eventemitter_1 = tslib_1.__importDefault(__webpack_require__(8));
 var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
-var paginatedresource_1 = tslib_1.__importDefault(__webpack_require__(22));
+var paginatedresource_1 = tslib_1.__importDefault(__webpack_require__(23));
 var presencemessage_1 = tslib_1.__importDefault(__webpack_require__(15));
 function noop() { }
 var Presence = /** @class */ (function (_super) {
@@ -11185,7 +11121,7 @@ var message_1 = tslib_1.__importDefault(__webpack_require__(13));
 var channelstatechange_1 = tslib_1.__importDefault(__webpack_require__(44));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
 var presencemessage_1 = tslib_1.__importDefault(__webpack_require__(15));
-var connectionerrors_1 = tslib_1.__importDefault(__webpack_require__(24));
+var connectionerrors_1 = tslib_1.__importDefault(__webpack_require__(25));
 var actions = protocolmessage_1["default"].Action;
 var noop = function () { };
 var statechangeOp = 'statechange';
@@ -11568,7 +11504,7 @@ var RealtimeChannel = /** @class */ (function (_super) {
         }
         var _a = RealtimeChannel.processListenerArgs(args), event = _a[0], listener = _a[1], callback = _a[2];
         if (!callback && this.realtime.options.promises) {
-            return Utils.promisify(this, 'subscribe', arguments);
+            return Utils.promisify(this, 'subscribe', [event, listener]);
         }
         if (this.state === 'failed') {
             callback === null || callback === void 0 ? void 0 : callback(errorinfo_1["default"].fromValues(RealtimeChannel.invalidStateError('failed')));
@@ -11980,7 +11916,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var platform_crypto__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(20);
 /* harmony import */ var _lib_util_defaults__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(9);
 /* harmony import */ var _lib_util_defaults__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_lib_util_defaults__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var platform_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(25);
+/* harmony import */ var platform_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(26);
 /* harmony import */ var platform_http__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(platform_http__WEBPACK_IMPORTED_MODULE_6__);
 /* harmony import */ var _types_message__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(13);
 /* harmony import */ var _types_message__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(_types_message__WEBPACK_IMPORTED_MODULE_7__);
@@ -11990,9 +11926,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _client_resource__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(_client_resource__WEBPACK_IMPORTED_MODULE_9__);
 /* harmony import */ var _types_protocolmessage__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(12);
 /* harmony import */ var _types_protocolmessage__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(_types_protocolmessage__WEBPACK_IMPORTED_MODULE_10__);
-/* harmony import */ var _transport_connectionmanager__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(33);
+/* harmony import */ var _transport_connectionmanager__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(34);
 /* harmony import */ var _transport_connectionmanager__WEBPACK_IMPORTED_MODULE_11___default = /*#__PURE__*/__webpack_require__.n(_transport_connectionmanager__WEBPACK_IMPORTED_MODULE_11__);
-/* harmony import */ var platform_msgpack__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(31);
+/* harmony import */ var platform_msgpack__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(32);
 /* harmony import */ var platform_msgpack__WEBPACK_IMPORTED_MODULE_12___default = /*#__PURE__*/__webpack_require__.n(platform_msgpack__WEBPACK_IMPORTED_MODULE_12__);
 
 
@@ -12126,7 +12062,7 @@ exports["default"] = TransportNames;
 /* 50 */
 /***/ (function(module) {
 
-module.exports = JSON.parse("{\"name\":\"ably\",\"description\":\"Realtime client library for Ably, the realtime messaging service\",\"version\":\"1.2.20\",\"license\":\"Apache-2.0\",\"bugs\":{\"url\":\"https://github.com/ably/ably-js/issues\",\"email\":\"support@ably.com\"},\"main\":\"./browser/static/ably-node.js\",\"typings\":\"./ably.d.ts\",\"react-native\":{\"./browser/static/ably-node.js\":\"./browser/static/ably-reactnative.js\"},\"browser\":{\"./browser/static/ably-node.js\":\"./browser/static/ably-commonjs.js\"},\"files\":[\"ably.d.ts\",\"browser/static/**\",\"callbacks.d.ts\",\"callbacks.js\",\"promises.d.ts\",\"promises.js\",\"resources/**\"],\"dependencies\":{\"@ably/msgpack-js\":\"^0.4.0\",\"got\":\"^11.8.2\",\"ws\":\"^5.1\"},\"devDependencies\":{\"@ably/vcdiff-decoder\":\"1.0.4\",\"@types/crypto-js\":\"^4.0.1\",\"@types/node\":\"^15.0.0\",\"@types/request\":\"^2.48.7\",\"@types/ws\":\"^8.2.0\",\"@typescript-eslint/eslint-plugin\":\"^5.14.0\",\"@typescript-eslint/parser\":\"^5.14.0\",\"async\":\"ably-forks/async#requirejs\",\"aws-sdk\":\"^2.1075.0\",\"chai\":\"^4.2.0\",\"copy-webpack-plugin\":\"^6.4.1\",\"cors\":\"~2.7\",\"crypto-js\":\"ably-forks/crypto-js#crypto-lite\",\"ejs\":\"~2.5\",\"eslint\":\"^7.13.0\",\"eslint-plugin-security\":\"^1.4.0\",\"express\":\"^4.17.1\",\"glob\":\"~4.4\",\"google-closure-compiler\":\"^20180610.0.1\",\"grunt\":\"^1.4.1\",\"grunt-bump\":\"^0.3.1\",\"grunt-cli\":\"~1.2.0\",\"grunt-closure-tools\":\"^1.0.0\",\"grunt-contrib-concat\":\"~0.5\",\"grunt-shell\":\"~1.1\",\"grunt-webpack\":\"^4.0.2\",\"hexy\":\"~0.2\",\"kexec\":\"ably-forks/node-kexec#update-for-node-12\",\"minimist\":\"^1.2.5\",\"mocha\":\"^8.1.3\",\"null-loader\":\"^4.0.1\",\"playwright\":\"^1.10.0\",\"prettier\":\"^2.5.1\",\"requirejs\":\"~2.1\",\"shelljs\":\"~0.8\",\"source-map-explorer\":\"^2.5.2\",\"ts-loader\":\"^8.2.0\",\"tslib\":\"^2.3.1\",\"typescript\":\"^4.2.4\",\"webpack\":\"^4.44.2\",\"webpack-cli\":\"^4.2.0\"},\"engines\":{\"node\":\">=5.10.x\"},\"repository\":\"ably/ably-js\",\"jspm\":{\"registry\":\"npm\",\"directories\":{\"lib\":\"browser/static\"},\"main\":\"ably\"},\"scripts\":{\"grunt\":\"grunt\",\"test\":\"grunt test\",\"test:node\":\"grunt test:node\",\"test:webserver\":\"grunt test:webserver\",\"test:playwright\":\"node test/support/runPlaywrightTests.js\",\"concat\":\"grunt concat\",\"build\":\"grunt build:all\",\"build:node\":\"grunt build:node\",\"build:browser\":\"grunt build:browser\",\"requirejs\":\"grunt requirejs\",\"lint\":\"eslint .\",\"lint:fix\":\"eslint --fix .\",\"check-closure-compiler\":\"grunt check-closure-compiler\",\"prepare\":\"npm run build\",\"format\":\"prettier --write --ignore-path .gitignore common browser nodejs test ably.d.ts webpack.config.js Gruntfile.js\",\"format:check\":\"prettier --check --ignore-path .gitignore common browser nodejs test ably.d.ts webpack.config.js Gruntfile.js\",\"sourcemap\":\"source-map-explorer browser/static/ably.min.js\",\"sourcemap:noencryption\":\"source-map-explorer browser/static/ably.noencryption.min.js\"}}");
+module.exports = JSON.parse("{\"name\":\"ably\",\"description\":\"Realtime client library for Ably, the realtime messaging service\",\"version\":\"1.2.22\",\"license\":\"Apache-2.0\",\"bugs\":{\"url\":\"https://github.com/ably/ably-js/issues\",\"email\":\"support@ably.com\"},\"main\":\"./browser/static/ably-node.js\",\"typings\":\"./ably.d.ts\",\"react-native\":{\"./browser/static/ably-node.js\":\"./browser/static/ably-reactnative.js\"},\"browser\":{\"./browser/static/ably-node.js\":\"./browser/static/ably-commonjs.js\"},\"files\":[\"ably.d.ts\",\"browser/static/**\",\"callbacks.d.ts\",\"callbacks.js\",\"promises.d.ts\",\"promises.js\",\"resources/**\"],\"dependencies\":{\"@ably/msgpack-js\":\"^0.4.0\",\"got\":\"^11.8.2\",\"ws\":\"^5.1\"},\"devDependencies\":{\"@ably/vcdiff-decoder\":\"1.0.4\",\"@types/crypto-js\":\"^4.0.1\",\"@types/node\":\"^15.0.0\",\"@types/request\":\"^2.48.7\",\"@types/ws\":\"^8.2.0\",\"@typescript-eslint/eslint-plugin\":\"^5.14.0\",\"@typescript-eslint/parser\":\"^5.14.0\",\"async\":\"ably-forks/async#requirejs\",\"aws-sdk\":\"^2.1075.0\",\"chai\":\"^4.2.0\",\"copy-webpack-plugin\":\"^6.4.1\",\"cors\":\"~2.7\",\"crypto-js\":\"ably-forks/crypto-js#crypto-lite\",\"eslint\":\"^7.13.0\",\"eslint-plugin-security\":\"^1.4.0\",\"express\":\"^4.17.1\",\"glob\":\"~4.4\",\"google-closure-compiler\":\"^20180610.0.1\",\"grunt\":\"^1.4.1\",\"grunt-bump\":\"^0.3.1\",\"grunt-cli\":\"~1.2.0\",\"grunt-closure-tools\":\"^1.0.0\",\"grunt-contrib-concat\":\"~0.5\",\"grunt-shell\":\"~1.1\",\"grunt-webpack\":\"^4.0.2\",\"hexy\":\"~0.2\",\"kexec\":\"ably-forks/node-kexec#update-for-node-12\",\"minimist\":\"^1.2.5\",\"mocha\":\"^8.1.3\",\"null-loader\":\"^4.0.1\",\"playwright\":\"^1.10.0\",\"prettier\":\"^2.5.1\",\"requirejs\":\"~2.1\",\"shelljs\":\"~0.8\",\"source-map-explorer\":\"^2.5.2\",\"ts-loader\":\"^8.2.0\",\"tslib\":\"^2.3.1\",\"typescript\":\"^4.2.4\",\"webpack\":\"^4.44.2\",\"webpack-cli\":\"^4.2.0\"},\"engines\":{\"node\":\">=5.10.x\"},\"repository\":\"ably/ably-js\",\"jspm\":{\"registry\":\"npm\",\"directories\":{\"lib\":\"browser/static\"},\"main\":\"ably\"},\"scripts\":{\"grunt\":\"grunt\",\"test\":\"grunt test\",\"test:node\":\"grunt test:node\",\"test:webserver\":\"grunt test:webserver\",\"test:playwright\":\"node test/support/runPlaywrightTests.js\",\"concat\":\"grunt concat\",\"build\":\"grunt build:all\",\"build:node\":\"grunt build:node\",\"build:browser\":\"grunt build:browser\",\"requirejs\":\"grunt requirejs\",\"lint\":\"eslint .\",\"lint:fix\":\"eslint --fix .\",\"check-closure-compiler\":\"grunt check-closure-compiler\",\"prepare\":\"npm run build\",\"format\":\"prettier --write --ignore-path .gitignore common browser nodejs test ably.d.ts webpack.config.js Gruntfile.js scripts/cdn_deploy.js\",\"format:check\":\"prettier --check --ignore-path .gitignore common browser nodejs test ably.d.ts webpack.config.js Gruntfile.js scripts/cdn_deploy.js\",\"sourcemap\":\"source-map-explorer browser/static/ably.min.js\",\"sourcemap:noencryption\":\"source-map-explorer browser/static/ably.noencryption.min.js\"}}");
 
 /***/ }),
 /* 51 */
@@ -12135,7 +12071,7 @@ module.exports = JSON.parse("{\"name\":\"ably\",\"description\":\"Realtime clien
 ;(function (root, factory) {
 	if (true) {
 		// CommonJS
-		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(35), __webpack_require__(28));
+		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(36), __webpack_require__(29));
 	}
 	else {}
 }(this, function (CryptoJS) {
@@ -12155,7 +12091,7 @@ var tslib_1 = __webpack_require__(1);
 var Utils = tslib_1.__importStar(__webpack_require__(2));
 var devicedetails_1 = tslib_1.__importDefault(__webpack_require__(53));
 var resource_1 = tslib_1.__importDefault(__webpack_require__(18));
-var paginatedresource_1 = tslib_1.__importDefault(__webpack_require__(22));
+var paginatedresource_1 = tslib_1.__importDefault(__webpack_require__(23));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
 var pushchannelsubscription_1 = tslib_1.__importDefault(__webpack_require__(54));
 var noop = function () { };
@@ -12676,7 +12612,7 @@ exports["default"] = PushChannelSubscription;
 ;(function (root, factory) {
 	if (true) {
 		// CommonJS
-		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(30));
+		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(31));
 	}
 	else {}
 }(this, function (CryptoJS) {
@@ -12740,7 +12676,7 @@ exports["default"] = PushChannelSubscription;
 ;(function (root, factory) {
 	if (true) {
 		// CommonJS
-		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(17), __webpack_require__(58), __webpack_require__(29), __webpack_require__(30));
+		module.exports = exports = factory(__webpack_require__(7), __webpack_require__(17), __webpack_require__(58), __webpack_require__(30), __webpack_require__(31));
 	}
 	else {}
 }(this, function (CryptoJS) {
@@ -13398,7 +13334,7 @@ exports.__esModule = true;
 var tslib_1 = __webpack_require__(1);
 var Utils = tslib_1.__importStar(__webpack_require__(2));
 var eventemitter_1 = tslib_1.__importDefault(__webpack_require__(8));
-var connectionmanager_1 = tslib_1.__importDefault(__webpack_require__(33));
+var connectionmanager_1 = tslib_1.__importDefault(__webpack_require__(34));
 var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
 var connectionstatechange_1 = tslib_1.__importDefault(__webpack_require__(42));
 function noop() { }
@@ -13884,7 +13820,7 @@ var logger_1 = tslib_1.__importDefault(__webpack_require__(0));
 var presencemessage_1 = tslib_1.__importDefault(__webpack_require__(15));
 var errorinfo_1 = tslib_1.__importDefault(__webpack_require__(5));
 var realtimechannel_1 = tslib_1.__importDefault(__webpack_require__(43));
-var multicaster_1 = tslib_1.__importDefault(__webpack_require__(27));
+var multicaster_1 = tslib_1.__importDefault(__webpack_require__(28));
 var channelstatechange_1 = tslib_1.__importDefault(__webpack_require__(44));
 var noop = function () { };
 function memberKey(item) {
@@ -14479,7 +14415,7 @@ exports["default"] = RealtimePresence;
 __webpack_require__.r(__webpack_exports__);
 
 // EXTERNAL MODULE: ./browser/lib/transport/jsonptransport.ts
-var jsonptransport = __webpack_require__(32);
+var jsonptransport = __webpack_require__(33);
 var jsonptransport_default = /*#__PURE__*/__webpack_require__.n(jsonptransport);
 
 // EXTERNAL MODULE: ./common/lib/util/utils.ts
@@ -14629,6 +14565,7 @@ function promisifyOptions(options) {
 
 /* Please note that the file imported below is only generated after running 
  * the build task. */
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 var Ably = require('./browser/static/ably-node');
 
 var RestPromise = function(options) {
@@ -16879,26 +16816,36 @@ if (
 ) {
   __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
 }
-          var ReactVersion = '18.0.0-fc46dba67-20220329';
+          var ReactVersion = '18.1.0';
+
+// -----------------------------------------------------------------------------
+
+var enableScopeAPI = false; // Experimental Create Event Handle API.
+var enableCacheElement = false;
+var enableTransitionTracing = false; // No known bugs, but needs performance testing
+
+var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
+// stuff. Intended to enable React core members to more easily debug scheduling
+// issues in DEV builds.
+
+var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
 
 // ATTENTION
-// When adding new symbols to this file,
-// Please consider also adding to 'react-devtools-shared/src/backend/ReactSymbols'
-// The Symbol used to tag the ReactElement-like types.
-var REACT_ELEMENT_TYPE = Symbol.for('react.element');
-var REACT_PORTAL_TYPE = Symbol.for('react.portal');
-var REACT_FRAGMENT_TYPE = Symbol.for('react.fragment');
-var REACT_STRICT_MODE_TYPE = Symbol.for('react.strict_mode');
-var REACT_PROFILER_TYPE = Symbol.for('react.profiler');
-var REACT_PROVIDER_TYPE = Symbol.for('react.provider');
-var REACT_CONTEXT_TYPE = Symbol.for('react.context');
-var REACT_FORWARD_REF_TYPE = Symbol.for('react.forward_ref');
-var REACT_SUSPENSE_TYPE = Symbol.for('react.suspense');
-var REACT_SUSPENSE_LIST_TYPE = Symbol.for('react.suspense_list');
-var REACT_MEMO_TYPE = Symbol.for('react.memo');
-var REACT_LAZY_TYPE = Symbol.for('react.lazy');
-var REACT_OFFSCREEN_TYPE = Symbol.for('react.offscreen');
-var MAYBE_ITERATOR_SYMBOL = Symbol.iterator;
+
+var REACT_ELEMENT_TYPE =  Symbol.for('react.element');
+var REACT_PORTAL_TYPE =  Symbol.for('react.portal');
+var REACT_FRAGMENT_TYPE =  Symbol.for('react.fragment');
+var REACT_STRICT_MODE_TYPE =  Symbol.for('react.strict_mode');
+var REACT_PROFILER_TYPE =  Symbol.for('react.profiler');
+var REACT_PROVIDER_TYPE =  Symbol.for('react.provider');
+var REACT_CONTEXT_TYPE =  Symbol.for('react.context');
+var REACT_FORWARD_REF_TYPE =  Symbol.for('react.forward_ref');
+var REACT_SUSPENSE_TYPE =  Symbol.for('react.suspense');
+var REACT_SUSPENSE_LIST_TYPE =  Symbol.for('react.suspense_list');
+var REACT_MEMO_TYPE =  Symbol.for('react.memo');
+var REACT_LAZY_TYPE =  Symbol.for('react.lazy');
+var REACT_OFFSCREEN_TYPE =  Symbol.for('react.offscreen');
+var MAYBE_ITERATOR_SYMBOL =  Symbol.iterator;
 var FAUX_ITERATOR_SYMBOL = '@@iterator';
 function getIteratorFn(maybeIterable) {
   if (maybeIterable === null || typeof maybeIterable !== 'object') {
@@ -16989,18 +16936,6 @@ function setExtraStackFrame(stack) {
     return stack;
   };
 }
-
-// -----------------------------------------------------------------------------
-
-var enableScopeAPI = false; // Experimental Create Event Handle API.
-var enableCacheElement = false;
-var enableTransitionTracing = false; // No known bugs, but needs performance testing
-
-var enableLegacyHidden = false; // Enables unstable_avoidThisFallback feature in Fiber
-// stuff. Intended to enable React core members to more easily debug scheduling
-// issues in DEV builds.
-
-var enableDebugTracing = false; // Track which Fiber(s) schedule render work.
 
 var ReactSharedInternals = {
   ReactCurrentDispatcher: ReactCurrentDispatcher,
@@ -18371,7 +18306,12 @@ function forwardRef(render) {
   return elementType;
 }
 
-var REACT_MODULE_REFERENCE = Symbol.for('react.module.reference');
+var REACT_MODULE_REFERENCE;
+
+{
+  REACT_MODULE_REFERENCE = Symbol.for('react.module.reference');
+}
+
 function isValidElementType(type) {
   if (typeof type === 'string' || typeof type === 'function') {
     return true;
@@ -19616,7 +19556,7 @@ for(var m=0;m<f;m++)g[m]=arguments[m+2];d.children=g}return{$$typeof:l,type:a.ty
 exports.forwardRef=function(a){return{$$typeof:v,render:a}};exports.isValidElement=O;exports.lazy=function(a){return{$$typeof:y,_payload:{_status:-1,_result:a},_init:T}};exports.memo=function(a,b){return{$$typeof:x,type:a,compare:void 0===b?null:b}};exports.startTransition=function(a){var b=V.transition;V.transition={};try{a()}finally{V.transition=b}};exports.unstable_act=function(){throw Error("act(...) is not supported in production builds of React.");};
 exports.useCallback=function(a,b){return U.current.useCallback(a,b)};exports.useContext=function(a){return U.current.useContext(a)};exports.useDebugValue=function(){};exports.useDeferredValue=function(a){return U.current.useDeferredValue(a)};exports.useEffect=function(a,b){return U.current.useEffect(a,b)};exports.useId=function(){return U.current.useId()};exports.useImperativeHandle=function(a,b,e){return U.current.useImperativeHandle(a,b,e)};
 exports.useInsertionEffect=function(a,b){return U.current.useInsertionEffect(a,b)};exports.useLayoutEffect=function(a,b){return U.current.useLayoutEffect(a,b)};exports.useMemo=function(a,b){return U.current.useMemo(a,b)};exports.useReducer=function(a,b,e){return U.current.useReducer(a,b,e)};exports.useRef=function(a){return U.current.useRef(a)};exports.useState=function(a){return U.current.useState(a)};exports.useSyncExternalStore=function(a,b,e){return U.current.useSyncExternalStore(a,b,e)};
-exports.useTransition=function(){return U.current.useTransition()};exports.version="18.0.0-fc46dba67-20220329";
+exports.useTransition=function(){return U.current.useTransition()};exports.version="18.1.0";
 
 },{}],9:[function(require,module,exports){
 (function (process){(function (){
@@ -19631,6 +19571,101 @@ if (process.env.NODE_ENV === 'production') {
 }).call(this)}).call(this,require('_process'))
 },{"./cjs/react.development.js":7,"./cjs/react.production.min.js":8,"_process":6}],10:[function(require,module,exports){
 "use strict";
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importDefault(require("react"));
+/**
+ * Embed a Comment
+ * @param config Customize the embed according to your preferece.
+ * @see https://docs.theconvo.space/docs/Convo-Embeds/embed-a-comment
+ */
+const CommentEmbed = (_a) => {
+    var { config } = _a, props = __rest(_a, ["config"]);
+    return (react_1.default.createElement("iframe", Object.assign({ src: `https://theconvo.space/embed/c/${config.commentId}`, style: { backgroundColor: 'transparent', border: 'none' } }, props)));
+};
+exports.default = CommentEmbed;
+
+},{"react":9}],11:[function(require,module,exports){
+"use strict";
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    var desc = Object.getOwnPropertyDescriptor(m, k);
+    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
+      desc = { enumerable: true, get: function() { return m[k]; } };
+    }
+    Object.defineProperty(o, k2, desc);
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importStar(require("react"));
+/**
+ * Setup a Convo Embed
+ * @param embedConfig Customize the embed according to your preferece.
+ * @see https://docs.theconvo.space/docs/Convo-Embeds/dynamic-embeddable-convo
+ */
+const ConvoEmbed = (_a) => {
+    var { embedConfig } = _a, props = __rest(_a, ["embedConfig"]);
+    const [uriParams, setUriParams] = (0, react_1.useState)('');
+    (0, react_1.useEffect)(() => {
+        const params = new URLSearchParams(Object.assign({}, embedConfig));
+        setUriParams(params.toString());
+    }, [props]);
+    return (react_1.default.createElement("iframe", Object.assign({ src: `https://theconvo.space/embed/dt?${uriParams}`, style: { backgroundColor: 'transparent', border: 'none' }, width: "500px", height: "300px" }, props)));
+};
+exports.default = ConvoEmbed;
+
+},{"react":9}],12:[function(require,module,exports){
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CommentEmbed = exports.ConvoEmbed = void 0;
+var ConvoEmbed_1 = require("./ConvoEmbed");
+Object.defineProperty(exports, "ConvoEmbed", { enumerable: true, get: function () { return __importDefault(ConvoEmbed_1).default; } });
+var CommentEmbed_1 = require("./CommentEmbed");
+Object.defineProperty(exports, "CommentEmbed", { enumerable: true, get: function () { return __importDefault(CommentEmbed_1).default; } });
+
+},{"./CommentEmbed":10,"./ConvoEmbed":11}],13:[function(require,module,exports){
+"use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -19639,7 +19674,7 @@ exports.subscribe = void 0;
 var subscribe_1 = require("./subscribe");
 Object.defineProperty(exports, "subscribe", { enumerable: true, get: function () { return __importDefault(subscribe_1).default; } });
 
-},{"./subscribe":11}],11:[function(require,module,exports){
+},{"./subscribe":14}],14:[function(require,module,exports){
 "use strict";
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
@@ -19670,7 +19705,7 @@ const subscribe = (apikey, threadId, callbackOnMessage) => {
 };
 exports.default = subscribe;
 
-},{"ably/promises":2,"react":9}],12:[function(require,module,exports){
+},{"ably/promises":2,"react":9}],15:[function(require,module,exports){
 "use strict";
 var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
     if (k2 === undefined) k2 = k;
@@ -19688,6 +19723,7 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./hooks"), exports);
+__exportStar(require("./components"), exports);
 
-},{"./hooks":10}]},{},[12])(12)
+},{"./components":12,"./hooks":13}]},{},[15])(15)
 });

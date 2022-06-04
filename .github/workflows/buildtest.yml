@@ -12,7 +12,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [14.x, 16.x]
+        node-version: [14.x, 16.x, 18.x]
 
     steps:
       - name: checkout
@@ -31,7 +31,7 @@ jobs:
             ${{ runner.os }}-
       - uses: pnpm/action-setup@v2
         with:
-          version: 7.1.7
+          version: latest
 
       - name: Install Workspace Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
