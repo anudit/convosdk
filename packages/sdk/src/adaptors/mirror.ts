@@ -45,8 +45,8 @@ export default async function getMirrorData(address = '') {
       }`
     )) as MirrorResult;
 
-    return jsonData['data'];
+    return Boolean(jsonData['data']) === true ? jsonData['data'] : false;
   } catch (error) {
-    return {};
+    return false;
   }
 }

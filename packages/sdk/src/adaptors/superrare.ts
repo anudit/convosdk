@@ -104,6 +104,6 @@ export default async function getSuperrareData(address: string) {
       totalAmountSold,
     };
   } catch (error) {
-    return {};
+    return false;
   }
 }

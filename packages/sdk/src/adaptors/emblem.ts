@@ -24,5 +24,7 @@ export default async function getEmblemData(address = '') {
     }`
   )) as EmblemResult;
 
-  return jsonData['data']['allRankings']['nodes'][0];
+  return Boolean(jsonData['data']['allRankings']['nodes'][0]) === true
+    ? jsonData['data']['allRankings']['nodes'][0]
+    : false;
 }

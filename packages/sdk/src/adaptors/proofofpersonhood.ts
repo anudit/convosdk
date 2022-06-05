@@ -43,9 +43,9 @@ export default async function getPopData(address: string) {
       }
       return retResp;
     } else {
-      return {};
+      return false;
     }
   } catch (error) {
-    return {};
+    return false;
   }
 }

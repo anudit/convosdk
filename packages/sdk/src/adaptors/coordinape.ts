@@ -25,6 +25,6 @@ export default async function getCoordinapeData(address: string) {
     };
   } catch (error) {
     console.log(error);
-    return {};
+    return false;
   }
 }

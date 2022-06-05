@@ -30,8 +30,8 @@ async function publishToValist(releaseDetails) {
 
     const valistClient = await create(wallet.provider, { wallet, metaTx: true });
     const { chainId } = await provider.getNetwork();
-    const accountID = generateID(chainId, 'theconvospace');
-    const projectID = generateID(accountID, 'sdk');
+    const accountID = generateID(chainId, accountName);
+    const projectID = generateID(accountID, projectName);
 
     await fs.promises.mkdir(process.cwd() + '/releases', { recursive: true })
 
@@ -70,8 +70,13 @@ async function publishPackage(packageName, version) {
 
 
 // 1. Setup VALIST_RELEASER_PK in .env file
-// 2. Change Packge Name below.
+// 2. Change accountName & projectName below.
 // 3. Run Script.
-publishPackage('@theconvospace/sdk', '0.4.15').then(() => {
+
+let accountName = "theconvospace"
+let projectName = "react"
+let version = "0.1.1"
+
+publishPackage(`@${accountName}/${projectName}`, version).then(() => {
     process.exit(0);
 });

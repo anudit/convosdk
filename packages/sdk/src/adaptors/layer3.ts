@@ -82,5 +82,5 @@ export default async function getLayer3Data(address: string) {
     { address: address }
   )) as Layer3Result;
 
-  return jsonData['data'];
+  return Boolean(jsonData['data']) === true ? jsonData['data'] : false;
 }

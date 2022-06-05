@@ -33,6 +33,6 @@ export default async function getUnipassData(address: string) {
   if (data?.message === 'success' && data?.code === 2000) {
     return data.data;
   } else {
-    return {};
+    return false;
   }
 }

@@ -23,6 +23,6 @@ export default async function getMewData(
   if (success == true) {
     return data;
   } else {
-    return {};
+    return false;
   }
 }

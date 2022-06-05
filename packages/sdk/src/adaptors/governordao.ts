@@ -17,6 +17,6 @@ export default async function getGovernordaoData(address: string) {
       enrollmentStatus: jsonData?.enrollmentStatus,
     };
   } else {
-    return {};
+    return false;
   }
 }

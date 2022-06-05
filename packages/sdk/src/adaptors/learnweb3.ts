@@ -31,9 +31,9 @@ export default async function getLearnWeb3Data(address: string) {
         badges,
       };
     } else {
-      return {};
+      return false;
     }
   } catch (error) {
-    return {};
+    return false;
   }
 }

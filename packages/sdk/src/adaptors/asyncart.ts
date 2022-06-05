@@ -91,6 +91,6 @@ export default async function getAsyncartData(
       ...response2,
     };
   } catch (error) {
-    return {};
+    return false;
   }
 }

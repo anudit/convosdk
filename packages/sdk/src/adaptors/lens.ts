@@ -129,9 +129,9 @@ export default async function getLensData(address: string) {
     if (response?.data?.profiles?.items.length > 0) {
       return response?.data?.profiles?.items[0];
     } else {
-      return {};
+      return false;
     }
   } catch (error) {
-    return {};
+    return false;
   }
 }

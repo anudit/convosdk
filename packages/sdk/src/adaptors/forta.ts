@@ -8,7 +8,7 @@ interface FortaResult {
         protocol: string;
         source: {
           transactionHash: string;
-          agent: {
+          bot: {
             id: string;
           };
         };
@@ -34,7 +34,7 @@ export default async function getFortaData(address: string) {
               timestamp
               chainId
             }
-            agent {
+            bot {
               id
             }
           }
@@ -52,15 +52,19 @@ export default async function getFortaData(address: string) {
     }
   )) as FortaResult;
 
-  const result = [];
-  for (let index = 0; index < resp.data.alerts.alerts.length; index++) {
-    const alert = resp.data.alerts.alerts[index];
-    result.push({
-      severity: alert?.severity,
-      protocol: alert?.protocol,
-      source: alert?.source,
-    });
-  }
+  if (Boolean(resp.data) === true) {
+    const result = [];
+    for (let index = 0; index < resp.data.alerts.alerts.length; index++) {
+      const alert = resp.data.alerts.alerts[index];
+      result.push({
+        severity: alert?.severity,
+        protocol: alert?.protocol,
+        source: alert?.source,
+      });
+    }
 
-  return result;
+    return result;
+  } else {
+    return false;
+  }
 }

@@ -103,6 +103,6 @@ export default async function getMetagameData(address: string) {
   if (data['data']['player'].length > 0) {
     return data['data']['player'][0];
   } else {
-    return {};
+    return false;
   }
 }

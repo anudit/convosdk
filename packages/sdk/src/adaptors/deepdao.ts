@@ -24,7 +24,7 @@ export default async function getDeepDaoData(address: string) {
   )) as DeepdaoResp;
 
   if ('message' in json) {
-    return {};
+    return false;
   } else {
     return {
       score: json.data?.score,

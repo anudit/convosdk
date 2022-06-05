@@ -24,7 +24,7 @@ export default async function getDebankData(address: string) {
       total_score: json.data.total_score,
     };
   } else {
-    return {};
+    return false;
   }
 
   return json.data;

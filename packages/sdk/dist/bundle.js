@@ -48250,7 +48250,7 @@ function getAsyncartData(address, computeConfig) {
             return Object.assign(Object.assign({}, response1), response2);
         }
         catch (error) {
-            return {};
+            return false;
         }
     });
 }
@@ -48273,10 +48273,10 @@ function getBirdData(address) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const data = (yield (0, utils_1.fetcher)('GET', `https://www.bird.money/analytics/address/${address}`, '', {}, {}, 10000));
-            return data;
+            return 'error' in data ? false : data;
         }
         catch (error) {
-            return {};
+            return false;
         }
     });
 }
@@ -48635,7 +48635,7 @@ function getCoordinapeData(address) {
         }
         catch (error) {
             console.log(error);
-            return {};
+            return false;
         }
     });
 }
@@ -48776,7 +48776,7 @@ function getDebankData(address) {
             };
         }
         else {
-            return {};
+            return false;
         }
         return json.data;
     });
@@ -48803,7 +48803,7 @@ function getDeepDaoData(address) {
             'x-api-key': 'mAWyZ3pG2m8tGnrNgRrEw4b0UheQYE9d5yWGEK0H',
         }));
         if ('message' in json) {
-            return {};
+            return false;
         }
         else {
             return {
@@ -48842,7 +48842,9 @@ function getEmblemData(address = '') {
           }
         }
     }`));
-        return jsonData['data']['allRankings']['nodes'][0];
+        return Boolean(jsonData['data']['allRankings']['nodes'][0]) === true
+            ? jsonData['data']['allRankings']['nodes'][0]
+            : false;
     });
 }
 exports.default = getEmblemData;
@@ -48942,7 +48944,7 @@ function getFortaData(address) {
               timestamp
               chainId
             }
-            agent {
+            bot {
               id
             }
           }
@@ -48957,16 +48959,21 @@ function getFortaData(address) {
                 severities: ['HIGH', 'MEDIUM', 'CRITICAL'],
             },
         }));
-        const result = [];
-        for (let index = 0; index < resp.data.alerts.alerts.length; index++) {
-            const alert = resp.data.alerts.alerts[index];
-            result.push({
-                severity: alert === null || alert === void 0 ? void 0 : alert.severity,
-                protocol: alert === null || alert === void 0 ? void 0 : alert.protocol,
-                source: alert === null || alert === void 0 ? void 0 : alert.source,
-            });
+        if (Boolean(resp.data) === true) {
+            const result = [];
+            for (let index = 0; index < resp.data.alerts.alerts.length; index++) {
+                const alert = resp.data.alerts.alerts[index];
+                result.push({
+                    severity: alert === null || alert === void 0 ? void 0 : alert.severity,
+                    protocol: alert === null || alert === void 0 ? void 0 : alert.protocol,
+                    source: alert === null || alert === void 0 ? void 0 : alert.source,
+                });
+            }
+            return result;
         }
-        return result;
+        else {
+            return false;
+        }
     });
 }
 exports.default = getFortaData;
@@ -49255,7 +49262,7 @@ function getGoldfinchData(address) {
             return jsonData['data'][0];
         }
         else {
-            return {};
+            return false;
         }
     });
 }
@@ -49283,7 +49290,7 @@ function getGovernordaoData(address) {
             };
         }
         else {
-            return {};
+            return false;
         }
     });
 }
@@ -49715,7 +49722,7 @@ function getLayer3Data(address) {
         logoCid
         __typename
     }`, { address: address }));
-        return jsonData['data'];
+        return Boolean(jsonData['data']) === true ? jsonData['data'] : false;
     });
 }
 exports.default = getLayer3Data;
@@ -49757,11 +49764,11 @@ function getLearnWeb3Data(address) {
                 };
             }
             else {
-                return {};
+                return false;
             }
         }
         catch (error) {
-            return {};
+            return false;
         }
     });
 }
@@ -49869,11 +49876,11 @@ function getLensData(address) {
                 return (_d = (_c = response === null || response === void 0 ? void 0 : response.data) === null || _c === void 0 ? void 0 : _c.profiles) === null || _d === void 0 ? void 0 : _d.items[0];
             }
             else {
-                return {};
+                return false;
             }
         }
         catch (error) {
-            return {};
+            return false;
         }
     });
 }
@@ -49991,7 +49998,7 @@ function getMetagameData(address) {
             return data['data']['player'][0];
         }
         else {
-            return {};
+            return false;
         }
     });
 }
@@ -50032,7 +50039,7 @@ function getMewData(address, computeConfig) {
             return data;
         }
         else {
-            return {};
+            return false;
         }
     });
 }
@@ -50072,10 +50079,10 @@ function getMirrorData(address = '') {
           }
         }
       }`));
-            return jsonData['data'];
+            return Boolean(jsonData['data']) === true ? jsonData['data'] : false;
         }
         catch (error) {
-            return {};
+            return false;
         }
     });
 }
@@ -50234,11 +50241,11 @@ function getPopData(address) {
                 return retResp;
             }
             else {
-                return {};
+                return false;
             }
         }
         catch (error) {
-            return {};
+            return false;
         }
     });
 }
@@ -50619,7 +50626,7 @@ function getSuperrareData(address) {
             };
         }
         catch (error) {
-            return {};
+            return false;
         }
     });
 }
@@ -50648,7 +50655,9 @@ function getTokenBlacklistData(address) {
           busd
         }
     }`));
-        return jsonData.data.blacklists[0];
+        return Boolean(jsonData.data.blacklists[0]) === true
+            ? jsonData.data.blacklists[0]
+            : false;
     });
 }
 exports.default = getTokenBlacklistData;
@@ -50770,7 +50779,7 @@ function getUnipassData(address) {
             return data.data;
         }
         else {
-            return {};
+            return false;
         }
     });
 }
@@ -51131,7 +51140,7 @@ const utils_1 = require("./utils");
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
 class ConvoBase {
     constructor(apikey, node) {
-        this.version = '0.4.16';
+        this.version = '0.4.17';
         this.logConfig = () => __awaiter(this, void 0, void 0, function* () {
             const pingResult = yield this.pingNode();
             const versionInfo = yield (0, cross_fetch_1.default)('https://bundlephobia.com/api/size?package=@theconvospace/sdk@latest&record=true').then((r) => {

@@ -21,6 +21,6 @@ export default async function getGoldfinchData(address: string) {
   if (jsonData.data.length > 0) {
     return jsonData['data'][0];
   } else {
-    return {};
+    return false;
   }
 }

@@ -1,10 +1,11 @@
-# @theconvospace/react ![npm/v](https://badgen.net/npm/v/@theconvospace/react)
+# @theconvospace/react ![npm/v](https://img.shields.io/npm/v/@theconvospace/react)
 
-![npm/types](https://badgen.net/npm/types/@theconvospace/react)
-![bundlephobia/tree-shaking](https://badgen.net/bundlephobia/tree-shaking/@theconvospace/react)
-![bundlephobia/dependency-count](https://badgen.net/bundlephobia/dependency-count/@theconvospace/react)
-![bundlephobia/minzip](https://badgen.net/bundlephobia/minzip/@theconvospace/react)
-![bundlephobia/min/](https://badgen.net/bundlephobia/min/@theconvospace/react)
+![npm/types](https://img.shields.io/npm/types/@theconvospace/react)
+![nodeVersion](https://img.shields.io/node/v/@theconvospace/react)
+![bundlephobia/dependency-count](https://img.shields.io/librariesio/release/npm/@theconvospace/react)
+![bundlephobia/minzip](https://img.shields.io/bundlephobia/minzip/@theconvospace/react)
+![bundlephobia/min/](https://img.shields.io/bundlephobia/min/@theconvospace/react)
+
 
 React Hooks and Components to build on [theconvo.space](https://theconvo.space)
 

@@ -18,8 +18,8 @@ export default async function getBirdData(address: string) {
       10000
     )) as Array<BirdResult>;
 
-    return data;
+    return 'error' in data ? false : data;
   } catch (error) {
-    return {};
+    return false;
   }
 }

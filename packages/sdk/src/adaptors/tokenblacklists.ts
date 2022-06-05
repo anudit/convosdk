@@ -24,5 +24,7 @@ export default async function getTokenBlacklistData(address: string) {
     }`
   )) as TokenBlacklistResult;
 
-  return jsonData.data.blacklists[0];
+  return Boolean(jsonData.data.blacklists[0]) === true
+    ? jsonData.data.blacklists[0]
+    : false;
 }

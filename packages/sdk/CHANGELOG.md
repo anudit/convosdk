@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.17
+- Update Adaptors.
+- Update Dependencies.
+
 ## 0.4.16
 - Update `txn`, `karma` Adaptor.
 - Update Dependencies.
