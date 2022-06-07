@@ -1,11 +1,11 @@
 {
-  "name": "benchmarks",
+  "name": "scripts",
   "version": "1.0.0",
   "description": "",
   "main": "benchmark.js",
   "scripts": {
     "valistMigrate": "node valistMigrate.js",
-    "valistRelease": "node valistRelease.js"
+    "rel": "node valistRelease.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "cross-fetch": "^3.1.5",
     "dotenv": "^16.0.1",
     "ethers": "^5.6.6",
+    "web3": "^1.7.3",
     "web3-providers-http": "^1.7.3"
   }
 }

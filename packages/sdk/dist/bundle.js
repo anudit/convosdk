@@ -51140,7 +51140,7 @@ const utils_1 = require("./utils");
 const cross_fetch_1 = __importDefault(require("cross-fetch"));
 class ConvoBase {
     constructor(apikey, node) {
-        this.version = '0.4.17';
+        this.version = '0.4.18';
         this.logConfig = () => __awaiter(this, void 0, void 0, function* () {
             const pingResult = yield this.pingNode();
             const versionInfo = yield (0, cross_fetch_1.default)('https://bundlephobia.com/api/size?package=@theconvospace/sdk@latest&record=true').then((r) => {

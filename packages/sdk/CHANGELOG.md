@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.18
+- Add Airdrop mode to comment queries. [API](https://docs.theconvo.space/docs/Convo-API/api-docs#querying-comments) [SDK](https://docs.theconvo.space/docs/Convo-SDK/comments#query-comments)
+- Update Dependencies & Types.
+
 ## 0.4.17
 - Update Adaptors.
 - Update Dependencies.

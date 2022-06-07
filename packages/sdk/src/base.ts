@@ -1,12 +1,16 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import { Dictionary, ErrorType, LogConfigType } from './types';
+import {
+  BundlephobiaResp,
+  Dictionary,
+  ErrorType,
+  LogConfigType,
+} from './types';
 import { fetcher } from './utils';
 import fetch from 'cross-fetch';
 
 class ConvoBase {
   apikey: string;
   node: string;
-  version = '0.4.17';
+  version = '0.4.18';
 
   constructor(apikey: string, node: string) {
     this.apikey = apikey;
@@ -16,10 +20,10 @@ class ConvoBase {
 
   logConfig = async (): Promise<LogConfigType> => {
     const pingResult: Dictionary<any> = await this.pingNode();
-    const versionInfo: any = await fetch(
+    const versionInfo: BundlephobiaResp = await fetch(
       'https://bundlephobia.com/api/size?package=@theconvospace/sdk@latest&record=true'
     ).then((r) => {
-      return r.json();
+      return r.json() as Promise<BundlephobiaResp>;
     });
     return {
       node: this.node,

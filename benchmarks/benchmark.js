@@ -179,7 +179,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true })
-        .addTest({ fn: convoInstance.omnid.adaptors.getBirdData, withConfig: false, verbose: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getBirdData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getBoardroomData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getCeloData, withConfig: false })
@@ -253,15 +253,13 @@ async function runStuff() {
         .addTestCase("0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443");
 
     bench2.addTest({
-        fn: async (address, withConfig) => {
+        fn: computeTrustScore = async (address, withConfig) => {
             await convoInstance.omnid.computeTrustScore(address, config, ['coordinape', 'arcx'])
-        }, withConfig: true
+        }, withConfig: true, verbose: true,
     })
 
     await bench2.run();
 
-
 }
-
 
 runStuff();
