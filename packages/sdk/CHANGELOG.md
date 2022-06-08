@@ -1,9 +1,12 @@
 # Changelog
 
+## 0.5.1 [Unreleased]
+- Reduce Bundle Size.
+
 ## 0.5.0
 - Migrate `tsc` build process to `esbuild`,
     - ⚡ Made builds ~10x Faster.
-    - 🤏 Made the bundle sizes smaller.
+    - 🤏 Reduce bundle size.
 - Improve Airdrop Mode.
 - Update Dependencies & Types.
 

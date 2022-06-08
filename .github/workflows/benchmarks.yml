@@ -33,7 +33,7 @@ jobs:
         run: pnpm install
 
       - name: Build SDK Package
-        run: cd ./packages/sdk && pnpm build:tsc
+        run: cd ./packages/sdk && pnpm build:node
 
       - name: Run Benchmarks
         continue-on-error: true

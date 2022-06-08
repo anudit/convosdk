@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "SDK containing all the functions you'll need to build on theconvo.space",
   "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
@@ -23,8 +23,8 @@
   "scripts": {
     "build": "pnpm lint && pnpm build:clean && pnpm build:node && pnpm build:browser",
     "build:clean": "rimraf lib && rimraf dist",
-    "build:node": "tsup src/index.ts --format esm,cjs --outDir lib --dts --minify --legacy-output --clean --metafile=esbuild",
-    "build:browser": "tsup src/index.ts --format iife --outDir dist --minify --clean --metafile=esbuild",
+    "build:node": "tsup src/index.ts --format esm,cjs --outDir lib --dts --minify --legacy-output --clean",
+    "build:browser": "tsup src/index.ts --format iife --outDir dist --minify --clean",
     "bench": "cd ./../../benchmarks && pnpm bench",
     "example": "pnpm build && cd examples/nextjs && pnpm dev",
     "lint": "eslint ./src/ --fix",
