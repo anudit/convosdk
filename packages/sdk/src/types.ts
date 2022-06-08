@@ -29,6 +29,8 @@ export type CommentsQueryType = {
   page?: string;
   pageSize?: string;
   airdrop?: boolean;
+  airdropMode?: 'csv' | 'json';
+  airdropAmount?: number;
 };
 
 export type ThreadsQueryType = {

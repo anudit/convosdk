@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0
+- Migrate `tsc` build process to `esbuild`,
+    - ⚡ Made builds ~10x Faster.
+    - 🤏 Made the bundle sizes smaller.
+- Improve Airdrop Mode.
+- Update Dependencies & Types.
+
 ## 0.4.18
 - Add Airdrop mode to comment queries. [API](https://docs.theconvo.space/docs/Convo-API/api-docs#querying-comments) [SDK](https://docs.theconvo.space/docs/Convo-SDK/comments#query-comments)
 - Update Dependencies & Types.

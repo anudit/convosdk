@@ -1,15 +1,17 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.4.18",
+  "version": "0.5.0",
   "description": "SDK containing all the functions you'll need to build on theconvo.space",
-  "main": "./lib/cjs/index.js",
+  "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
-  "types": "./lib/esm/index.d.ts",
-  "typings": "./lib/esm/index.d.ts",
+  "types": "./lib/index.d.ts",
+  "typings": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
-      "node": "./lib/cjs/index.js",
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.js",
+      "node": "./lib/index.js",
+      "import": "./lib/esm/index.js",
       "default": "./lib/esm/index.js"
     }
   },
@@ -19,19 +21,14 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "pnpm lint && pnpm build:clean && pnpm build:tsc && pnpm build:browser",
+    "build": "pnpm lint && pnpm build:clean && pnpm build:node && pnpm build:browser",
     "build:clean": "rimraf lib && rimraf dist",
-    "build:tsc": "run-p build:tsc:*",
-    "build:tsc:cjs": "tsc -p ./tsconfig.cjs.json",
-    "build:tsc:esm": "tsc -p ./tsconfig.esm.json",
-    "build:browser": "mkdir dist && browserify ./src/index.ts -p [ tsify --noImplicitAny ] --standalone Convo > ./dist/bundle.js && terser ./dist/bundle.js -o ./dist/bundle.min.js -c -m",
-    "bdev": "browserify ./src/index.ts -p [ tsify --noImplicitAny ] --standalone Convo > ./examples/browser/bundle.js",
-    "dev": "tsc --watch",
+    "build:node": "tsup src/index.ts --format esm,cjs --outDir lib --dts --minify --legacy-output --clean --metafile=esbuild",
+    "build:browser": "tsup src/index.ts --format iife --outDir dist --minify --clean --metafile=esbuild",
     "bench": "cd ./../../benchmarks && pnpm bench",
     "example": "pnpm build && cd examples/nextjs && pnpm dev",
     "lint": "eslint ./src/ --fix",
     "release": "pnpm build && npm publish",
-    "typecheck": "tsc --noEmit",
     "typegen": "typechain --target ethers-v5 --out-dir ./src/adaptors/types/ './src/adaptors/abis/*.json'"
   },
   "repository": {
@@ -58,21 +55,18 @@
   "homepage": "https://github.com/anudit/convosdk#readme",
   "devDependencies": {
     "@typechain/ethers-v5": "^10.0.0",
-    "@types/node": "^17.0.40",
+    "@types/node": "^17.0.41",
     "@typescript-eslint/eslint-plugin": "^5.27.1",
     "@typescript-eslint/parser": "^5.27.1",
-    "browserify": "^17.0.0",
     "eslint": "^8.17.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "lint-staged": "^13.0.0",
-    "npm-run-all": "^4.1.5",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
-    "terser": "^5.14.0",
     "ts-node": "^10.8.1",
-    "tsify": "^5.0.4",
+    "tsup": "^6.1.0",
     "typechain": "^8.0.0",
     "typescript": "4.6.4"
   },
