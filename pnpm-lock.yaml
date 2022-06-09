@@ -12,8 +12,8 @@ importers:
 
   examples/nextjs:
     specifiers:
-      '@theconvospace/react': ^0.1.1
-      '@theconvospace/sdk': ^0.4.18
+      '@theconvospace/react': workspace:^0.1.1
+      '@theconvospace/sdk': workspace:^0.5.1
       eslint: 8.17.0
       eslint-config-next: 12.1.6
       ethers: ^5.6.8
@@ -22,7 +22,7 @@ importers:
       react-dom: 18.1.0
     dependencies:
       '@theconvospace/react': link:../../packages/react
-      '@theconvospace/sdk': 0.4.18
+      '@theconvospace/sdk': link:../../packages/sdk
       ethers: 5.6.8
       next: 12.1.6_ef5jwxihqo6n7gxfmzogljlgcm
       react: 18.1.0
@@ -1023,22 +1023,6 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       defer-to-connect: 2.0.1
-    dev: false
-
-  /@theconvospace/sdk/0.4.18:
-    resolution: {integrity: sha512-yrZYU+DFzYp2IPm2bgDkCDpQkg1z5X52THYDzdaf5dzVcCJcTxQWHqAN4xS/0vRwTuCO3dUs+8I0XfC/BiM1lg==}
-    engines: {node: '>=12.9.0'}
-    dependencies:
-      '@ethersproject/abi': 5.6.3
-      '@ethersproject/providers': 5.6.8
-      abort-controller: 3.0.0
-      cross-fetch: 3.1.5
-      ethers: 5.6.8
-      siwe: 1.1.6_ethers@5.6.8
-    transitivePeerDependencies:
-      - bufferutil
-      - encoding
-      - utf-8-validate
     dev: false
 
   /@tsconfig/node10/1.0.8:
@@ -2307,8 +2291,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /caniuse-lite/1.0.30001350:
-    resolution: {integrity: sha512-NZBql38Pzd+rAu5SPXv+qmTWGQuFsRiemHCJCAPvkoDxWV19/xqL2YHF32fDJ9SDLdLqfax8+S0CO3ncDCp9Iw==}
+  /caniuse-lite/1.0.30001351:
+    resolution: {integrity: sha512-u+Ll+RDaiQEproTQjZLjZwyfNgNezA1fERMT7/54npcz+PkbVJUAHXMUz4bkXQYRPWrcFNO0Fbi1mwjfXg6N5g==}
 
   /caseless/0.12.0:
     resolution: {integrity: sha512-4tYFyifaFfGacoiObjJegolkwSU4xQNGbVgUiNYVUxbQ2x2lUsFvY4hVgVzGiIe6WLOPqycWXA40l+PWsxthUw==}
@@ -2786,7 +2770,7 @@ packages:
       supports-color:
         optional: true
     dependencies:
-      ms: 2.1.2
+      ms: 2.1.3
     dev: true
 
   /debug/4.3.4:
@@ -6575,7 +6559,6 @@ packages:
 
   /ms/2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
-    dev: false
 
   /multiaddr-to-uri/8.0.0:
     resolution: {integrity: sha512-dq4p/vsOOUdVEd1J1gl+R2GFrXJQH8yjLtz4hodqdVbieg39LvBOdMQRdQnfbg5LSM/q1BYNVf5CBbwZFFqBgA==}
@@ -6782,7 +6765,7 @@ packages:
         optional: true
     dependencies:
       '@next/env': 12.1.6
-      caniuse-lite: 1.0.30001350
+      caniuse-lite: 1.0.30001351
       postcss: 8.4.5
       react: 18.1.0
       react-dom: 18.1.0_react@18.1.0

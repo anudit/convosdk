@@ -35,7 +35,7 @@ jobs:
 
       - name: Install Workspace Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: pnpm install
+        run: pnpm install --filter "{packages/**}"
 
       - name: Build SDK Package
         run: cd ./packages/sdk && pnpm build

@@ -21,9 +21,9 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "pnpm lint && pnpm build:clean && pnpm build:node && pnpm build:browser",
+    "build": "pnpm lint && pnpm build:node && pnpm build:browser",
     "build:clean": "rimraf lib && rimraf dist",
-    "build:node": "tsup src/index.ts --format esm,cjs --outDir lib --dts --minify --legacy-output --clean",
+    "build:node": "tsup src/index.ts --format esm,cjs --outDir lib --dts --minify --legacy-output --clean --keepNames",
     "build:browser": "tsup src/index.ts --format iife --outDir dist --minify --clean",
     "bench": "cd ./../../benchmarks && pnpm bench",
     "example": "pnpm build && cd examples/nextjs && pnpm dev",

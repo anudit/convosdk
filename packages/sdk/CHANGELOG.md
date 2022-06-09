@@ -1,7 +1,8 @@
 # Changelog
 
 ## 0.5.1 [Unreleased]
-- Reduce Bundle Size.
+- Preserve Function names in Build Outputs.
+- Update Dependencies.
 
 ## 0.5.0
 - Migrate `tsc` build process to `esbuild`,
