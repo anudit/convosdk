@@ -13,7 +13,7 @@ interface TokenBlacklistResult {
 
 export default async function getTokenBlacklistData(address: string) {
   const jsonData = (await gqlFetcher(
-    'https://api.thegraph.com/subgraphs/name/anudit/tokenblacklists',
+    'https://api.studio.thegraph.com/query/1649/token-blacklists/v1',
     `{
         blacklists(where: {id: "${address.toLowerCase()}"}) {
           id

@@ -40,11 +40,11 @@ export default async function getTxnData(
   const promiseArray = [
     fetcher(
       'GET',
-      `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${computeConfig.etherscanApiKey}`
+      `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&startblock=0&endblock=latest&page=1&offset=10&sort=asc&apikey=${computeConfig.etherscanApiKey}`
     ),
     fetcher(
       'GET',
-      `https://api.polygonscan.com/api?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey=${computeConfig.polygonscanApiKey}`
+      `https://api.polygonscan.com/api?module=account&action=txlist&address=${address}&startblock=0&endblock=latest&page=1&offset=10&sort=asc&apikey=${computeConfig.polygonscanApiKey}`
     ),
     gqlFetcher(
       'https://graphql.bitquery.io',
@@ -115,15 +115,19 @@ export default async function getTxnData(
 
   if (data[2].status === 'fulfilled') {
     const respData2 = data[2].value as BitQueryResp;
-    if (Boolean(respData2?.data.ethereum?.transactions[0]?.gasValue) === true) {
-      ethereumGasSpend = respData2?.data.ethereum?.transactions[0]?.gasValue;
+    if (
+      Boolean(respData2?.data?.ethereum?.transactions[0]?.gasValue) === true
+    ) {
+      ethereumGasSpend = respData2?.data?.ethereum?.transactions[0]?.gasValue;
     }
   }
 
   if (data[3].status === 'fulfilled') {
     const respData3 = data[3].value as BitQueryResp;
-    if (Boolean(respData3?.data.ethereum?.transactions[0]?.gasValue) === true) {
-      polygonGasSpend = respData3?.data.ethereum?.transactions[0]?.gasValue;
+    if (
+      Boolean(respData3?.data?.ethereum?.transactions[0]?.gasValue) === true
+    ) {
+      polygonGasSpend = respData3?.data?.ethereum?.transactions[0]?.gasValue;
     }
   }
 

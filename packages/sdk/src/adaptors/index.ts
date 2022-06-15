@@ -20,7 +20,7 @@ export { default as addressToEns } from './ens';
 export { default as getEtherscanData } from './etherscan';
 export { default as getFortaData } from './forta';
 export { default as getFoundationData } from './foundation';
-export { getAllGitcoinData, getGitcoinData } from './gitcoin';
+export { default as getGitcoinData } from './gitcoin';
 export { default as getGoldfinchData } from './goldfinch';
 export { default as getGovernordaoData } from './governordao';
 export { default as getHiveOneData } from './hiveone';

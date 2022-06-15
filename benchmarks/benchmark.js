@@ -252,8 +252,8 @@ async function runStuff() {
 
     bench2.addTest({
         fn: computeTrustScore = async (address, withConfig) => {
-            await convoInstance.omnid.computeTrustScore(address, config, ['coordinape', 'arcx'])
-        }, withConfig: true, verbose: true,
+            return await convoInstance.omnid.computeTrustScore(address, config, ['coordinape', 'arcx', 'cryptoscamdb'])
+        }, withConfig: true, verbose: false,
     })
 
     await bench2.run();

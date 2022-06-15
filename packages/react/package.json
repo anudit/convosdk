@@ -55,7 +55,7 @@
   "bugs": {
     "url": "https://github.com/anudit/convosdk/issues"
   },
-  "homepage": "https://github.com/anudit/convosdk#readme",
+  "homepage": "https://github.com/anudit/convosdk/tree/main/packages/react",
   "devDependencies": {
     "@typechain/ethers-v5": "^10.0.0",
     "@types/node": "^17.0.39",

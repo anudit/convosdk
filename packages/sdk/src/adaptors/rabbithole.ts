@@ -34,7 +34,7 @@ export default async function getRabbitholeData(address = '') {
       `https://api.rabbithole.gg/task_progress?address=${address.toLowerCase()}`
     ),
     await gqlFetcher(
-      'https://api.thegraph.com/subgraphs/name/anudit/rabbithole',
+      'https://api.studio.thegraph.com/query/1649/rabbithole-credentials/v1',
       `{
         rabbitHoleCredentials(where: {owner: "${address.toLowerCase()}"}) {
           id

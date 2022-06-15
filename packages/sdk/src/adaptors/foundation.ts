@@ -206,7 +206,7 @@ export default async function getFoundationData(
             isApprovedForMigrationAt
             isAdmin
             links
-        }`
+      }`
   )) as FoundationQueryResult;
   const artworks = resp['data']['artworks'];
 

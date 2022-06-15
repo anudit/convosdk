@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.2
+- Migrate Subgraphs for `quadrata`, `rabbithole`, `tokenblacklists` from ***Hosted Service*** to ***Subgraph Studio***, Ref: [Hosted Service EOL Announcement](https://thegraph.com/blog/sunsetting-hosted-service). (Subgraph Studio's support for chains other than Ethereum is coming soon)
+- Reduce Browser Build Bundle size.
+- Update Dependencies.
+
 ## 0.5.1
 - Preserve Function names in Build Outputs.
 - Update Dependencies.

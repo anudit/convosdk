@@ -6,11 +6,12 @@ import {
 } from './types';
 import { fetcher } from './utils';
 import fetch from 'cross-fetch';
+import { version } from '../package.json';
 
 class ConvoBase {
   apikey: string;
   node: string;
-  version = '0.5.1';
+  version = version;
 
   constructor(apikey: string, node: string) {
     this.apikey = apikey;
