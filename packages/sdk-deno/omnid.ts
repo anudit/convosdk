@@ -1,11 +1,7 @@
 import { fetcher } from './utils.ts';
 import Credentials from './omnid/credentials.ts';
 import {
-  ComputeConfig,
-  ErrorType,
-  AdaptorFunctionType,
-  AdaptorFunctionWithConfigType,
-  Dictionary,
+  ErrorType
 } from './types.ts';
 
 class Omnid {

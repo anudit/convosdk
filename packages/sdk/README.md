@@ -1,11 +1,20 @@
-# Convo Space SDK for Deno
+# @theconvospace/sdk ![npm/v](https://img.shields.io/npm/v/@theconvospace/sdk)
 
-SDK for building on [theconvo.space](https://theconvo.space)
+![npm/types](https://img.shields.io/npm/types/@theconvospace/sdk)
+![nodeVersion](https://img.shields.io/node/v/@theconvospace/sdk)
+![bundlephobia/dependency-count](https://img.shields.io/librariesio/release/npm/@theconvospace/sdk)
+![bundlephobia/minzip](https://img.shields.io/bundlephobia/minzip/@theconvospace/sdk)
+![bundlephobia/min/](https://img.shields.io/bundlephobia/min/@theconvospace/sdk)
 
-Check out the [Changelog](/packages/sdk-deno/CHANGELOG.md)
+SDK containing all the functions you'll need to build on
+[theconvo.space](https://theconvo.space)
+
+Check out the [Changelog](/packages/sdk/CHANGELOG.md)
 
 ## Installation
 
-```js
-import * as convo from "https://deno.land/x/convo@v0.1.0/packages/sdk-deno/mod.ts";
+```bash
+yarn add @theconvospace/sdk
+npm i --save @theconvospace/sdk
+pnpm i --save @theconvospace/sdk
 ```

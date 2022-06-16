@@ -8,5 +8,6 @@
   "deno.unstable": true,
   "deno.enablePaths": [
       "./packages/sdk-deno/"
-  ]
+  ],
+  "deno.config": "./packages/sdk-deno/deno.json"
 }
