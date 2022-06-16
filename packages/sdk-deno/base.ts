@@ -9,7 +9,7 @@ import { fetcher } from './utils.ts';
   class ConvoBase {
     apikey: string;
     node: string;
-    version = '0.1.0';
+    version = '0.1.1';
 
     constructor(apikey: string, node: string) {
       this.apikey = apikey;
