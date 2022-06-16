@@ -1,5 +1,4 @@
 import {
-    BundlephobiaResp,
     Dictionary,
     ErrorType,
     LogConfigType,
@@ -19,16 +18,11 @@ import { fetcher } from './utils.ts';
 
     logConfig = async (): Promise<LogConfigType> => {
       const pingResult: Dictionary<any> = await this.pingNode();
-      const versionInfo: BundlephobiaResp = await fetch(
-        'https://bundlephobia.com/api/size?package=@theconvospace/sdk@latest&record=true'
-      ).then((r) => {
-        return r.json() as Promise<BundlephobiaResp>;
-      });
       return {
         node: this.node,
         apikey: this.apikey,
         currentVersion: this.version,
-        latestVersion: versionInfo['version'],
+        platform: 'deno',
         pingResult: pingResult,
       };
     };

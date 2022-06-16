@@ -14,7 +14,7 @@ export interface Dictionary<T> {
     node: string;
     apikey: string;
     pingResult: any | ErrorType;
-    latestVersion: string;
+    platform: string;
     currentVersion: string;
   }
 

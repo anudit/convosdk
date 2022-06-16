@@ -4,6 +4,7 @@
 
 - Start Support for `convo.omnid`
   - `convo.omnid.computeTrustScore` coming soon.
+- Improvements.
 
 ## 0.1.0
 
