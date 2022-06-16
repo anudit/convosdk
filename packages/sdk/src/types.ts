@@ -26,8 +26,8 @@ export type CommentsQueryType = {
   tag2?: string;
   replyTo?: string;
   latestFirst?: string;
-  page?: string;
-  pageSize?: string;
+  page?: number;
+  pageSize?: number;
   airdrop?: boolean;
   airdropMode?: 'csv' | 'json';
   airdropAmount?: number;
