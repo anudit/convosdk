@@ -1,5 +1,5 @@
 import { ComputeConfig } from '../types';
-import { fetcher } from '../utils';
+import { checkComputeConfig, fetcher } from '../utils';
 
 interface AsyncResult {
   arts: Array<{
@@ -36,11 +36,7 @@ export default async function getAsyncartData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.etherumPriceInUsd) === false) {
-    throw new Error(
-      'getAsyncartData: computeConfig does not contain etherumPriceInUsd'
-    );
-  }
+  checkComputeConfig('getAsyncartData', computeConfig, ['etherumPriceInUsd']);
   try {
     const promiseArray = [
       fetcher(

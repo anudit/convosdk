@@ -2,7 +2,7 @@ require('dotenv').config({ path: '.env.local' })
 const { createStream } = require('table');
 const { Convo } = require('../packages/sdk/lib/index');
 
-const { BITQUERY_API_KEY, ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
+const { OPTIMISMSCAN_API_KEY, ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
 
 const colors = {
     danger: "\x1b[31m",
@@ -17,11 +17,11 @@ const config = {
     polygonMainnetRpc: "https://polygon-rpc.com",
     etherumMainnetRpc: "https://eth.public-rpc.com",
     avalancheMainnetRpc: "https://avalanche.public-rpc.com",
-    maticPriceInUsd: 1.4,
-    etherumPriceInUsd: 3200,
+    maticPriceInUsd: 0.4,
+    etherumPriceInUsd: 1200,
     etherscanApiKey: ETHERSCAN_API_KEY,
     polygonscanApiKey: POLYGONSCAN_API_KEY,
-    bitqueryApiKey: BITQUERY_API_KEY,
+    optimismscanApiKey: OPTIMISMSCAN_API_KEY,
     CNVSEC_ID: CNVSEC_ID,
     DEBUG: false,
 };
@@ -159,7 +159,9 @@ async function runStuff() {
 
     let bench = new Benchmark("Omnid Adaptors", config);
 
-    bench.addTestCase("0xcf0949bf6d2adf8032260fd08039c879cf71c128")
+    bench
+        .addTestCase("0xd8da6bf26964af9d7eed9e03e53415d37aa96045")
+        .addTestCase("0xcf0949bf6d2adf8032260fd08039c879cf71c128")
         .addTestCase("0xD665afb9A4019a8c482352aaa862567257Ed62CF")
         .addTestCase("0xB53b0255895c4F9E3a185E484e5B674bCCfbc076")
         .addTestCase("0xa28992A6744e36f398DFe1b9407474e1D7A3066b")
@@ -232,11 +234,11 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getZapperData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true })
 
-    await bench.run();
-
     let bench2 = new Benchmark("Omnid Complete", config);
 
-    bench2.addTestCase("0xcf0949bf6d2adf8032260fd08039c879cf71c128")
+    bench2
+        .addTestCase("0xd8da6bf26964af9d7eed9e03e53415d37aa96045")
+        .addTestCase("0xcf0949bf6d2adf8032260fd08039c879cf71c128")
         .addTestCase("0xD665afb9A4019a8c482352aaa862567257Ed62CF")
         .addTestCase("0xB53b0255895c4F9E3a185E484e5B674bCCfbc076")
         .addTestCase("0xa28992A6744e36f398DFe1b9407474e1D7A3066b")
@@ -256,6 +258,7 @@ async function runStuff() {
         }, withConfig: true, verbose: false,
     })
 
+    await bench.run();
     await bench2.run();
 
 }

@@ -1,6 +1,6 @@
 import { formatEther } from 'ethers/lib/utils';
 import { ComputeConfig } from '../types';
-import { gqlFetcher } from '../utils';
+import { checkComputeConfig, gqlFetcher } from '../utils';
 
 interface QueryResult {
   data: {
@@ -16,11 +16,10 @@ export default async function getKnownOriginData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.etherumPriceInUsd) === false) {
-    throw new Error(
-      'getKnownOriginData: computeConfig does not contain etherumPriceInUsd'
-    );
-  }
+  checkComputeConfig('getKnownOriginData', computeConfig, [
+    'etherumPriceInUsd',
+  ]);
+
   const jsonData = (await gqlFetcher(
     'https://api.thegraph.com/subgraphs/name/knownorigin/known-origin',
     `

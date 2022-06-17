@@ -3,5 +3,11 @@
       "rules": {
         "exclude": ["no-explicit-any"]
       }
+    },
+    "tasks": {
+      "test": "deno test mod_test.ts --allow-net",
+      "release": "deno task bundle && deno task compile",
+      "bundle": "deno bundle mod.ts ./dist/bundle.js",
+      "compile": "deno compile --output ./dist/sdk-deno.exe mod.ts --allow-net"
     }
   }

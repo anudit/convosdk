@@ -61,7 +61,7 @@ export type ComputeConfig = {
   deepdaoApiKey: string;
   etherscanApiKey: string;
   polygonscanApiKey: string;
-  bitqueryApiKey: string;
+  optimismscanApiKey: string;
   CNVSEC_ID: string;
   DEBUG: boolean;
 };

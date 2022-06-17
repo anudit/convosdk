@@ -1,5 +1,5 @@
 import { ComputeConfig } from '../types';
-import { fetcher } from '../utils';
+import { checkComputeConfig, fetcher } from '../utils';
 
 interface GitcoinResult {
   success: boolean;
@@ -10,9 +10,8 @@ export default async function getGitcoinData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.CNVSEC_ID) === false) {
-    throw new Error('getGitcoinData: computeConfig does not contain CNVSEC_ID');
-  }
+  checkComputeConfig('getGitcoinData', computeConfig, ['CNVSEC_ID']);
+
   const json = (await fetcher(
     'GET',
     `https://cnvsec.vercel.app/api/omnid/gitcoin?id=${computeConfig.CNVSEC_ID}&address=${address}`

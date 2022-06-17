@@ -1,6 +1,6 @@
 import { formatEther } from 'ethers/lib/utils';
 import { ComputeConfig } from '../types';
-import { gqlFetcher } from '../utils';
+import { checkComputeConfig, gqlFetcher } from '../utils';
 
 interface ZoraResult {
   data: {
@@ -19,11 +19,8 @@ export default async function getZoraData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.etherumPriceInUsd) === false) {
-    throw new Error(
-      'getZoraData: computeConfig does not contain etherumPriceInUsd'
-    );
-  }
+  checkComputeConfig('getZoraData', computeConfig, ['etherumPriceInUsd']);
+
   const data = (await gqlFetcher(
     'https://indexer-prod-mainnet.zora.co/v1/graphql',
     `query Tokens {

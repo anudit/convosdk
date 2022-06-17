@@ -1,5 +1,5 @@
 import { ComputeConfig } from '../types';
-import { fetcher } from '../utils';
+import { checkComputeConfig, fetcher } from '../utils';
 
 interface EtherscanResult {
   success: boolean;
@@ -11,11 +11,8 @@ export default async function getEtherscanData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.CNVSEC_ID) === false) {
-    throw new Error(
-      'getEtherscanData: computeConfig does not contain CNVSEC_ID'
-    );
-  }
+  checkComputeConfig('getEtherscanData', computeConfig, ['CNVSEC_ID']);
+
   const json = (await fetcher(
     'GET',
     `https://cnvsec.vercel.app/api/omnid/etherscan?id=${computeConfig.CNVSEC_ID}&address=${address}`

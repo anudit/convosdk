@@ -1,5 +1,5 @@
 import { ComputeConfig } from '../types';
-import { fetcher } from '../utils';
+import { checkComputeConfig, fetcher } from '../utils';
 
 interface RaribleResult {
   ownership: {
@@ -19,11 +19,8 @@ export default async function getRaribleData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.etherumPriceInUsd) === false) {
-    throw new Error(
-      'getRaribleData: computeConfig does not contain etherumPriceInUsd'
-    );
-  }
+  checkComputeConfig('getRaribleData', computeConfig, ['etherumPriceInUsd']);
+
   const promiseArray = [
     fetcher(
       'POST',

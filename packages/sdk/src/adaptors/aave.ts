@@ -2,6 +2,7 @@ import { ethers, BigNumber } from 'ethers';
 import { ComputeConfig } from '../types';
 import { LendingPool } from './types';
 import lendingPoolAbi from './abis/LendingPool.json';
+import { checkComputeConfig } from '../utils';
 interface GetUserAccountDataResponse {
   totalCollateralETH: BigNumber;
   totalDebtETH: BigNumber;
@@ -15,21 +16,11 @@ export default async function getAaveData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.etherumMainnetRpc) === false) {
-    throw new Error(
-      'getAaveData: computeConfig does not contain etherumMainnetRpc'
-    );
-  }
-  if (Boolean(computeConfig?.polygonMainnetRpc) === false) {
-    throw new Error(
-      'getAaveData: computeConfig does not contain polygonMainnetRpc'
-    );
-  }
-  if (Boolean(computeConfig?.avalancheMainnetRpc) === false) {
-    throw new Error(
-      'getAaveData: computeConfig does not contain avalancheMainnetRpc'
-    );
-  }
+  checkComputeConfig('getAaveData', computeConfig, [
+    'etherumMainnetRpc',
+    'polygonMainnetRpc',
+    'avalancheMainnetRpc',
+  ]);
 
   const providerEth = new ethers.providers.JsonRpcProvider({
     allowGzip: true,

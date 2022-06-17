@@ -1,5 +1,5 @@
 import fetch from 'cross-fetch';
-import { Dictionary, ErrorType } from './types';
+import { ComputeConfig, Dictionary, ErrorType } from './types';
 import AbortController from 'abort-controller';
 
 export async function fetcher(
@@ -62,6 +62,20 @@ export function encodeQuery(
   for (const d in data)
     query += encodeURIComponent(d) + '=' + encodeURIComponent(data[d]) + '&';
   return query.slice(0, -1);
+}
+
+export function checkComputeConfig(
+  functionName: string,
+  config: ComputeConfig,
+  requiredKeys: Array<string>
+) {
+  for (let index = 0; index < requiredKeys.length; index++) {
+    const key = requiredKeys[index];
+    if (Object.keys(config).includes(key) === false) {
+      throw new Error(`${functionName}: computeConfig does not contain ${key}`);
+    }
+  }
+  return true;
 }
 
 export async function gqlFetcher(

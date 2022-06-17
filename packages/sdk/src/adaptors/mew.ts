@@ -1,5 +1,5 @@
 import { ComputeConfig } from '../types';
-import { fetcher } from '../utils';
+import { checkComputeConfig, fetcher } from '../utils';
 
 interface MewResult {
   success: boolean;
@@ -11,9 +11,8 @@ export default async function getMewData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.CNVSEC_ID) === false) {
-    throw new Error('getMewData: computeConfig does not contain CNVSEC_ID');
-  }
+  checkComputeConfig('getMewData', computeConfig, ['CNVSEC_ID']);
+
   const json = (await fetcher(
     'GET',
     `https://cnvsec.vercel.app/api/omnid/mew?id=${computeConfig.CNVSEC_ID}&address=${address}`

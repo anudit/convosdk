@@ -1,6 +1,6 @@
 import { isAddress } from 'ethers/lib/utils';
 import { ComputeConfig, Dictionary } from '../types';
-import { fetcher } from '../utils';
+import { checkComputeConfig, fetcher } from '../utils';
 
 export async function getAllSybilData() {
   const data = (await fetcher(
@@ -22,9 +22,8 @@ export async function getSybilData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.CNVSEC_ID) === false) {
-    throw new Error('getSybilData: computeConfig does not contain CNVSEC_ID');
-  }
+  checkComputeConfig('getSybilData', computeConfig, ['CNVSEC_ID']);
+
   const json = await fetcher(
     'GET',
     `https://cnvsec.vercel.app/api/omnid/uniswap?id=${computeConfig.CNVSEC_ID}&&address=${address}`

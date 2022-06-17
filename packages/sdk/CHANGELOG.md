@@ -2,6 +2,8 @@
 
 ## 0.5.3
 
+- Improve `txn` Adaptor, add support for _**Optimism**_.
+- Reduce Bundle Size.
 - Improve Types.
 - Update Dependencies.
 

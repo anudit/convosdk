@@ -1,5 +1,5 @@
 import { ComputeConfig } from '../types';
-import { fetcher, gqlFetcher } from '../utils';
+import { checkComputeConfig, fetcher, gqlFetcher } from '../utils';
 
 interface TokenResult {
   id: string;
@@ -60,6 +60,8 @@ export default async function getCoinviseData(
   address: string,
   computeConfig: ComputeConfig
 ) {
+  checkComputeConfig('getCoinviseData', computeConfig, ['maticPriceInUsd']);
+
   async function getPoolData(tokenAddress: string) {
     const response = (await gqlFetcher(
       'https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v3',
@@ -80,12 +82,6 @@ export default async function getCoinviseData(
   }
 
   try {
-    if (Boolean(computeConfig?.maticPriceInUsd) === false) {
-      throw new Error(
-        'getCoinviseData: computeConfig does not contain maticPriceInUsd'
-      );
-    }
-
     const promiseArray = [
       fetcher(
         'GET',

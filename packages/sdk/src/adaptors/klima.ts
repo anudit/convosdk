@@ -3,16 +3,13 @@ import { ComputeConfig } from '../types';
 import { KlimaCarbonRetirements } from './types';
 import KlimaCarbonRetirementsAbi from './abis/KlimaCarbonRetirements.json';
 import { formatEther } from 'ethers/lib/utils';
+import { checkComputeConfig } from '../utils';
 
 export default async function getKlimaData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.polygonMainnetRpc) === false) {
-    throw new Error(
-      'getKlimaData: computeConfig does not contain polygonMainnetRpc'
-    );
-  }
+  checkComputeConfig('getKlimaData', computeConfig, ['polygonMainnetRpc']);
 
   const providerMatic = new ethers.providers.JsonRpcProvider({
     allowGzip: true,

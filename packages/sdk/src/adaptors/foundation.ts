@@ -1,5 +1,5 @@
 import { ComputeConfig } from '../types';
-import { gqlFetcher } from '../utils';
+import { checkComputeConfig, gqlFetcher } from '../utils';
 
 interface FoundationQueryResult {
   data: {
@@ -25,11 +25,7 @@ export default async function getFoundationData(
   address: string,
   computeConfig: ComputeConfig
 ) {
-  if (Boolean(computeConfig?.etherumPriceInUsd) === false) {
-    throw new Error(
-      'getFoundationData: computeConfig does not contain etherumPriceInUsd'
-    );
-  }
+  checkComputeConfig('getFoundationData', computeConfig, ['etherumPriceInUsd']);
 
   const resp = (await gqlFetcher(
     'https://hasura2.foundation.app/v1/graphql',
