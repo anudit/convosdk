@@ -1,6 +1,5 @@
 packages:
-  - 'packages/react'
-  - 'packages/sdk'
+  - 'packages/*'
   - 'examples/*'
   - 'benchmarks'
   - 'scripts'

@@ -3,8 +3,12 @@ name: Node Test
 on:
   push:
     branches: [ main ]
+    paths:
+    - 'packages/sdk/**'
   pull_request:
     branches: [ main ]
+    paths:
+    - 'packages/sdk/**'
 
 jobs:
   build:
