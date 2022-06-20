@@ -88,9 +88,9 @@ class Omnid {
       const promiseArray = [
         disabledAdaptors.includes('aave')
           ? this.#disabledPromise()
-          : this.#timeitWithConfig(
+          : this.#timeit(
               adaptorList.getAaveData,
-              [address, computeConfig],
+              [address],
               computeConfig?.DEBUG
             ),
         disabledAdaptors.includes('arcx')
@@ -284,9 +284,9 @@ class Omnid {
             ),
         disabledAdaptors.includes('klima')
           ? this.#disabledPromise()
-          : this.#timeitWithConfig(
+          : this.#timeit(
               adaptorList.getKlimaData,
-              [address, computeConfig],
+              [address],
               computeConfig?.DEBUG
             ),
         disabledAdaptors.includes('knownorigin')

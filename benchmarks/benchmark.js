@@ -173,10 +173,11 @@ async function runStuff() {
         .addTestCase("0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528")
         .addTestCase("0x28b4de9c45af6cb1a5a46c19909108f2bb74a2be")
         .addTestCase("0x597D1747256304d5d47eCE999A8e5bAdE6d41845")
-        .addTestCase("0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443");
+        .addTestCase("0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443")
+        .addTestCase("0x12b2398405f49dec00d7ceef9c0925e6fc96c51f");
 
     bench
-        .addTest({ fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getAaveData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getBirdData, withConfig: false })
@@ -204,7 +205,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getHiveOneData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.checkIdena, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getKarmaData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getKlimaData, withConfig: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getKlimaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getKnownOriginData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getLearnWeb3Data, withConfig: false })
@@ -250,7 +251,8 @@ async function runStuff() {
         .addTestCase("0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528")
         .addTestCase("0x28b4de9c45af6cb1a5a46c19909108f2bb74a2be")
         .addTestCase("0x597D1747256304d5d47eCE999A8e5bAdE6d41845")
-        .addTestCase("0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443");
+        .addTestCase("0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443")
+        .addTestCase("0x12b2398405f49dec00d7ceef9c0925e6fc96c51f");
 
     bench2.addTest({
         fn: computeTrustScore = async (address, withConfig) => {

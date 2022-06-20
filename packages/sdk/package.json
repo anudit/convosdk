@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "SDK containing all the functions you'll need to build on theconvo.space",
   "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
@@ -22,8 +22,8 @@
   ],
   "scripts": {
     "build": "pnpm lint && pnpm build:node && pnpm build:browser",
-    "build:node": "tsup src/index.ts --format esm,cjs --outDir lib --dts --minify --legacy-output --clean --keepNames",
-    "build:browser": "tsup src/index.ts --format iife --outDir dist --minify --clean --globalName=Convo --platform=browser",
+    "build:node": "tsup src/index.ts --format esm,cjs --outDir lib --dts --minify --legacy-output --clean --keepNames --treeshake",
+    "build:browser": "tsup src/index.ts --format iife --outDir dist --minify --clean --globalName=Convo --platform=browser --treeshake",
     "bench": "cd ./../../benchmarks && pnpm bench",
     "example": "pnpm build && cd examples/nextjs && pnpm dev",
     "lint": "eslint ./src/ --fix",
@@ -59,7 +59,7 @@
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "esbuild-visualizer": "^0.3.1",
-    "eslint": "^8.17.0",
+    "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -69,7 +69,7 @@
     "ts-node": "^10.8.1",
     "tsup": "^6.1.2",
     "typechain": "^8.1.0",
-    "typescript": "4.7.3"
+    "typescript": "4.7.4"
   },
   "lint-staged": {
     "*.ts": "eslint --cache --cache-location .eslintcache --fix"
@@ -83,11 +83,11 @@
     "lib": "lib"
   },
   "dependencies": {
-    "@ethersproject/abi": "^5.6.3",
+    "@ethersproject/abi": "^5.6.4",
     "@ethersproject/providers": "^5.6.8",
     "abort-controller": "^3.0.0",
     "cross-fetch": "^3.1.5",
-    "ethers": "^5.6.8",
+    "ethers": "^5.6.9",
     "siwe": "^1.1.6"
   }
 }

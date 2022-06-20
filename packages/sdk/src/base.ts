@@ -41,13 +41,14 @@ class ConvoBase {
 
   listNodes = () => {
     return [
-      'https://theconvo.space/api',
-      'https://backup.theconvo.space/api',
-      'https://node1.theconvo.space/api',
-      'https://node2.theconvo.space/api',
-      'https://node3.theconvo.space/api',
-      'https://node4.theconvo.space/api',
-    ];
+      '',
+      'backup.',
+      'node1.',
+      'node2.',
+      'node3.',
+      'node4.',
+      'node5.',
+    ].map((e) => `https://${e}theconvo.space/api`);
   };
 
   switchNode = (newNodeAddress: string) => {

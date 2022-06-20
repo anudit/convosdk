@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.4
+
+- Improve `klima` Carbon Offset Adaptor.
+- Improve `aave` Health Factor Adaptor.
+- Reduce Bundle Size.
+- Update Dependencies.
+
 ## 0.5.3
 
 - Improve `txn` Adaptor, add support for _**Optimism**_.
