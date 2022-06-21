@@ -2,7 +2,7 @@
 
 ## 0.2.0
 
-- Migrate `tsc` build process to `esbuild`,
+- Migrate `tsc` build process to `esbuild`
   - ⚡ Made builds ~10x Faster.
   - 🤏 Reduce bundle size.
 
