@@ -73,14 +73,14 @@ export default function Home() {
         <div className={styles.grid}>
 
           <div onClick={() => {
-            console.log(ConvoInstance.getApiKey())
+            console.log(ConvoInstance.apikey)
           }} className={styles.card}>
             <h2>Print API Key &rarr;</h2>
             <p>Print the API key used to configure Convo.</p>
           </div>
 
           <div onClick={() => {
-            ConvoInstance.ping().then(console.log);
+            ConvoInstance.pingNode().then(console.log);
           }} className={styles.card}>
             <h2>Ping Server &rarr;</h2>
             <p>Ping server to check the connection.</p>
@@ -219,7 +219,7 @@ export default function Home() {
         <div className={styles.grid}>
 
           <div onClick={() => {
-            ConvoInstance.identity.getTrustScore('0xa28992A6744e36f398DFe1b9407474e1D7A3066b').then(console.log);
+            ConvoInstance.omnid.getTrustScore('0xa28992A6744e36f398DFe1b9407474e1D7A3066b').then(console.log);
           }} className={styles.card}>
             <h2>Get Identity Data&rarr;</h2>
             <p>Get data for an Ethereum address using the SDK.</p>

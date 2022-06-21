@@ -1,15 +1,17 @@
 {
   "name": "@theconvospace/react",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "React Hooks and Components to build on theconvo.space",
-  "main": "./lib/cjs/index.js",
+  "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
-  "types": "./lib/esm/index.d.ts",
-  "typings": "./lib/esm/index.d.ts",
+  "types": "./lib/index.d.ts",
+  "typings": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "require": "./lib/cjs/index.js",
-      "node": "./lib/cjs/index.js",
+      "types": "./lib/index.d.ts",
+      "require": "./lib/index.js",
+      "node": "./lib/index.js",
+      "import": "./lib/esm/index.js",
       "default": "./lib/esm/index.js"
     }
   },
@@ -19,19 +21,14 @@
     "dist/**/*"
   ],
   "scripts": {
-    "build": "pnpm lint && pnpm build:clean && pnpm build:tsc && pnpm build:browser",
-    "build:clean": "rimraf lib && rimraf dist",
-    "build:tsc": "run-p build:tsc:*",
-    "build:tsc:cjs": "tsc -p ./tsconfig.cjs.json",
-    "build:tsc:esm": "tsc -p ./tsconfig.esm.json",
-    "build:browser": "mkdir dist && browserify ./src/index.ts -p [ tsify --noImplicitAny ] --standalone Convo > ./dist/bundle.js && terser ./dist/bundle.js -o ./dist/bundle.min.js -c -m",
-    "bdev": "browserify ./src/index.ts -p [ tsify --noImplicitAny ] --standalone Convo > ./examples/browser/bundle.js",
-    "dev": "tsc --watch",
-    "bench": "node ./benchmark.js",
+    "build": "run-p build:*",
+    "build:node": "tsup src/index.ts --format esm,cjs --outDir lib --dts --minify --legacy-output --clean --keepNames --treeshake",
+    "build:browser": "tsup src/index.ts --format iife --outDir dist --minify --clean --globalName=Convo --platform=browser --treeshake",
+    "bench": "cd ./../../benchmarks && pnpm bench",
     "example": "pnpm build && cd examples/nextjs && pnpm dev",
     "lint": "eslint ./src/ --fix",
     "release": "pnpm build && npm publish",
-    "typecheck": "tsc --noEmit",
+    "bundlestats": "pnpm build:node --metafile && pnpm esbuild-visualizer --metadata ./lib/metafile-esm.json && pnpm open-cli stats.html",
     "typegen": "typechain --target ethers-v5 --out-dir ./src/adaptors/types/ './src/adaptors/abis/*.json'"
   },
   "repository": {
@@ -57,26 +54,23 @@
   },
   "homepage": "https://github.com/anudit/convosdk/tree/main/packages/react",
   "devDependencies": {
-    "@typechain/ethers-v5": "^10.0.0",
-    "@types/node": "^17.0.39",
-    "@types/react": "^18.0.11",
-    "@typescript-eslint/eslint-plugin": "^5.27.0",
-    "@typescript-eslint/parser": "^5.27.0",
-    "browserify": "^17.0.0",
-    "dotenv": "^16.0.1",
-    "eslint": "^8.17.0",
+    "@typechain/ethers-v5": "^10.1.0",
+    "@types/node": "^18.0.0",
+    "@types/react": "^18.0.14",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
+    "@typescript-eslint/parser": "^5.29.0",
+    "esbuild-visualizer": "^0.3.1",
+    "eslint": "^8.18.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
-    "lint-staged": "^13.0.0",
+    "lint-staged": "^13.0.2",
     "npm-run-all": "^4.1.5",
-    "prettier": "^2.6.2",
-    "rimraf": "^3.0.2",
-    "terser": "^5.14.0",
-    "ts-node": "^10.8.1",
-    "tsify": "^5.0.4",
-    "typechain": "^8.0.0",
-    "typescript": "^4.7.3"
+    "open-cli": "^7.0.1",
+    "prettier": "^2.7.1",
+    "tsup": "^6.1.2",
+    "typechain": "^8.1.0",
+    "typescript": "4.7.4"
   },
   "lint-staged": {
     "*.ts": "eslint --cache --cache-location .eslintcache --fix"
@@ -90,9 +84,9 @@
     "lib": "lib"
   },
   "dependencies": {
-    "ably": "^1.2.22",
-    "ethers": "^5.6.8",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "ably": "^1.2.25",
+    "ethers": "^5.6.9",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
