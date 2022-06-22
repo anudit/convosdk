@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.5
+
+- Add `alchemy` adaptor to support
+  [`isSpamContract`](https://docs.alchemy.com/alchemy/enhanced-apis/nft-api/isspamcontract).
+- Improve `aave`, `zapper` Adaptors.
+
 ## 0.5.4
 
 - Improve `klima` Carbon Offset Adaptor.

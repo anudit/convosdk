@@ -62,6 +62,8 @@ export type ComputeConfig = {
   etherscanApiKey: string;
   polygonscanApiKey: string;
   optimismscanApiKey: string;
+  zapperApiKey: string;
+  alchemyApiKey: string;
   CNVSEC_ID: string;
   DEBUG: boolean;
 };

@@ -1,5 +1,5 @@
-import { Dictionary } from '../types';
-import { fetcher } from '../utils';
+import { ComputeConfig, Dictionary } from '../types';
+import { checkComputeConfig, fetcher } from '../utils';
 
 interface AaveResp {
   [key: string]: {
@@ -11,14 +11,19 @@ interface AaveResp {
   };
 }
 
-export default async function getAaveData(address: string) {
+export default async function getAaveData(
+  address: string,
+  computeConfig: ComputeConfig
+) {
+  checkComputeConfig('getAaveData', computeConfig, ['zapperApiKey']);
+
   const reqArray = [];
   const networks = ['ethereum', 'polygon', 'avalanche'];
   for (let index = 0; index < networks.length; index++) {
     reqArray.push(
       fetcher(
         'GET',
-        `https://api.zapper.fi/v1/protocols/aave-v2/balances?addresses%5B%5D=${address}&network=${networks[index]}&api_key=96e0cc51-a62e-42ca-acee-910ea7d2a241`
+        `https://api.zapper.fi/v1/protocols/aave-v2/balances?addresses%5B%5D=${address}&network=${networks[index]}&api_key=${computeConfig.zapperApiKey}`
       )
     );
   }

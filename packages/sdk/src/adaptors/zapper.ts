@@ -1,4 +1,5 @@
-import { fetcher } from '../utils';
+import { ComputeConfig } from '../types';
+import { checkComputeConfig, fetcher } from '../utils';
 
 interface ZapperResult {
   address: string;
@@ -11,10 +12,17 @@ interface ZapperResult {
   zp: number;
 }
 
-export default async function getZapperData(address: string) {
+export default async function getZapperData(
+  address: string,
+  computeConfig: ComputeConfig
+) {
+  checkComputeConfig('getZapperData', computeConfig, ['zapperApiKey']);
+
   const jsonData = (await fetcher(
     'GET',
-    `https://api.zapper.fi/v1/gamification/users/${address.toLowerCase()}?api_key=96e0cc51-a62e-42ca-acee-910ea7d2a241`
+    `https://api.zapper.fi/v1/gamification/users/${address.toLowerCase()}?api_key=${
+      computeConfig.zapperApiKey
+    }`
   )) as ZapperResult;
 
   return {

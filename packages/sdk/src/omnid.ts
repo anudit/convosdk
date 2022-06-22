@@ -88,9 +88,16 @@ class Omnid {
       const promiseArray = [
         disabledAdaptors.includes('aave')
           ? this.#disabledPromise()
-          : this.#timeit(
+          : this.#timeitWithConfig(
               adaptorList.getAaveData,
-              [address],
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('alchemy')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getAlchemyData,
+              [address, computeConfig],
               computeConfig?.DEBUG
             ),
         disabledAdaptors.includes('arcx')
@@ -469,9 +476,9 @@ class Omnid {
             ),
         disabledAdaptors.includes('zapper')
           ? this.#disabledPromise()
-          : this.#timeit(
+          : this.#timeitWithConfig(
               adaptorList.getZapperData,
-              [address],
+              [address, computeConfig],
               computeConfig?.DEBUG
             ),
         disabledAdaptors.includes('zora')
@@ -489,6 +496,7 @@ class Omnid {
 
       const keys = [
         'aave',
+        'alchemy',
         'arcx',
         'asyncart',
         'bird',
@@ -547,6 +555,8 @@ class Omnid {
         'zora',
       ];
       const respDict: Dictionary<any> = {};
+      if (promiseArray.length != keys.length)
+        throw new Error('promiseArray.length != keys.length');
       for (let index = 0; index < keys.length; index++) {
         const key = keys[index];
         respDict[key] = resp[index];

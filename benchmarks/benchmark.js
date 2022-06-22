@@ -2,7 +2,7 @@ require('dotenv').config({ path: '.env.local' })
 const { createStream } = require('table');
 const { Convo } = require('../packages/sdk/lib/index');
 
-const { OPTIMISMSCAN_API_KEY, ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
+const { ALCHEMY_API_KEY, ZAPPER_API_KEY, OPTIMISMSCAN_API_KEY, ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
 
 const colors = {
     danger: "\x1b[31m",
@@ -22,6 +22,8 @@ const config = {
     etherscanApiKey: ETHERSCAN_API_KEY,
     polygonscanApiKey: POLYGONSCAN_API_KEY,
     optimismscanApiKey: OPTIMISMSCAN_API_KEY,
+    alchemyApiKey: ALCHEMY_API_KEY,
+    zapperApiKey: ZAPPER_API_KEY,
     CNVSEC_ID: CNVSEC_ID,
     DEBUG: false,
 };
@@ -161,6 +163,7 @@ async function runStuff() {
 
     bench
         .addTestCase("0xd8da6bf26964af9d7eed9e03e53415d37aa96045")
+        .addTestCase("0x000440f08436a7b866d1ae42db5e0be801da722a")
         .addTestCase("0xcf0949bf6d2adf8032260fd08039c879cf71c128")
         .addTestCase("0xD665afb9A4019a8c482352aaa862567257Ed62CF")
         .addTestCase("0xB53b0255895c4F9E3a185E484e5B674bCCfbc076")
@@ -177,7 +180,8 @@ async function runStuff() {
         .addTestCase("0x12b2398405f49dec00d7ceef9c0925e6fc96c51f");
 
     bench
-        .addTest({ fn: convoInstance.omnid.adaptors.getAaveData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getAlchemyData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getBirdData, withConfig: false })
@@ -239,6 +243,7 @@ async function runStuff() {
 
     bench2
         .addTestCase("0xd8da6bf26964af9d7eed9e03e53415d37aa96045")
+        .addTestCase("0x000440f08436a7b866d1ae42db5e0be801da722a")
         .addTestCase("0xcf0949bf6d2adf8032260fd08039c879cf71c128")
         .addTestCase("0xD665afb9A4019a8c482352aaa862567257Ed62CF")
         .addTestCase("0xB53b0255895c4F9E3a185E484e5B674bCCfbc076")

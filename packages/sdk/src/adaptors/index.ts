@@ -1,4 +1,5 @@
 export { default as getAaveData } from './aave';
+export { default as getAlchemyData } from './alchemy';
 export { default as getArcxData } from './arcx';
 export { default as getAsyncartData } from './asyncart';
 export { default as getBirdData } from './bird';
