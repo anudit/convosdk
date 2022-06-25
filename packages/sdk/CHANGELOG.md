@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.6
+
+- Improve `ens`, `karma` Adaptors.
+- Update Dependencies.
+
 ## 0.5.5
 
 - Add `alchemy` adaptor to support

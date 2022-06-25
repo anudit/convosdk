@@ -17,7 +17,7 @@ export default async function getKarmaData(address: string) {
       `https://api.showkarma.xyz/api/user/${address.toLowerCase()}`
     )) as KarmaResult;
 
-    if (Boolean(json.statusCode) === true) {
+    if (Object.keys(json).includes('statusCode') === true) {
       return false;
     } else {
       let score = 0;

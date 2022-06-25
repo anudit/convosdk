@@ -159,6 +159,8 @@ class Benchmark {
 
 async function runStuff() {
 
+    console.log('Using the version', convoInstance.version);
+
     let bench = new Benchmark("Omnid Adaptors", config);
 
     bench
