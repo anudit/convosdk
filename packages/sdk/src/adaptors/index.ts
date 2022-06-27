@@ -53,6 +53,7 @@ export { default as getTxnData } from './txn';
 export { default as getUnipassData } from './unipass';
 export { getAllSybilData, getSybilData } from './uniswap';
 export { default as resolveUnstoppableDomains } from './unstoppable';
+export { default as getUpalaData } from './upala';
 export { default as getUpshotData } from './upshot';
 export { default as getYupData } from './yup';
 export { default as getZapperData } from './zapper';

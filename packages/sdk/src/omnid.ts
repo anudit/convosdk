@@ -467,6 +467,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('upala')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getUpalaData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('yup')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -550,6 +557,7 @@ class Omnid {
         'unipass',
         'uniswap',
         'unstoppable',
+        'upala',
         'yup',
         'zapper',
         'zora',

@@ -2,7 +2,8 @@
 
 ## 0.5.6
 
-- Improve `ens`, `karma` Adaptors.
+- Improve Adaptors.
+- Add `upala` Adaptor.
 - Update Dependencies.
 
 ## 0.5.5

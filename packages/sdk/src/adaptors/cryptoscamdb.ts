@@ -1,4 +1,3 @@
-import { getAddress } from 'ethers/lib/utils';
 import { fetcher } from '../utils';
 
 interface CryptoscamdbResult {
@@ -15,7 +14,7 @@ interface CryptoscamdbResult {
 export default async function getCryptoscamdbData(address: string) {
   const data = (await fetcher(
     'GET',
-    `https://api.cryptoscamdb.org/v1/check/${getAddress(address)}`
+    `https://api.cryptoscamdb.org/v1/check/${address}`
   )) as CryptoscamdbResult;
 
   if (data.success === true && Object.keys(data).includes('result') === true) {

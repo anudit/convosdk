@@ -2,9 +2,9 @@ import { ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 interface EtherscanResult {
-  success: boolean;
   error?: string;
-  labels?: Array<string>;
+  label?: string;
+  tags?: Array<string>;
 }
 
 export default async function getEtherscanData(
@@ -17,7 +17,7 @@ export default async function getEtherscanData(
     'GET',
     `https://cnvsec.vercel.app/api/omnid/etherscan?id=${computeConfig.CNVSEC_ID}&address=${address}`
   )) as EtherscanResult;
-  return {
-    labels: Boolean(json.success) === false ? [] : json.labels,
-  };
+  return Object.keys(json).includes('error') === true
+    ? false
+    : { label: json.label, tags: json.tags };
 }

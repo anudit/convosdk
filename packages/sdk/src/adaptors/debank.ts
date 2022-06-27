@@ -11,21 +11,19 @@ interface DebankResult {
 }
 
 export default async function getDebankData(address: string) {
-  const json = (await fetcher(
+  const { data } = (await fetcher(
     'GET',
     `https://api.debank.com/social_ranking?id=${address}`
   )) as DebankResult;
-  if ('base_score' in json) {
+  if ('base_score' in data) {
     return {
-      base_score: json.data.base_score,
-      rank: json.data.rank,
-      social_coefficient: json.data.social_coefficient,
-      social_score: json.data.social_score,
-      total_score: json.data.total_score,
+      base_score: data.base_score,
+      rank: data.rank,
+      social_coefficient: data.social_coefficient,
+      social_score: data.social_score,
+      total_score: data.total_score,
     };
   } else {
     return false;
   }
-
-  return json.data;
 }

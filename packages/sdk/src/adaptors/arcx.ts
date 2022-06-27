@@ -1,17 +1,22 @@
+import { Dictionary } from '../types';
 import { fetcher } from '../utils';
 
 interface ArcxResult {
-  account: string;
-  protocol: string;
-  score: string;
+  total: string;
+  data: Array<{
+    account: string;
+    protocol: string;
+    score: string;
+    metadata: Dictionary<string>;
+  }>;
 }
 
 export default async function getArcxData(address: string) {
   try {
-    const data = (await fetcher(
+    const { data } = (await fetcher(
       'GET',
-      `https://api.arcx.money/scores/${address}`
-    )) as Array<ArcxResult>;
+      `https://api.arcx.money/v1/scores?account=${address}&format=full`
+    )) as ArcxResult;
 
     let totalScore = 0;
 

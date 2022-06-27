@@ -11,8 +11,9 @@ interface CeloQueryResult {
 
 export default async function getCeloData(address: string) {
   try {
+    // TODO: Migrate to Subgraph Studio.
     const response = (await gqlFetcher(
-      'https://api.thegraph.com/subgraphs/id/QmWDxPtNrngVfeMjXCCKvWVuof7DbJQv1thAbnz4MDV6Xc',
+      'https://api.thegraph.com/subgraphs/name/anudit/celo-subgraph',
       `{
           attestationsCompleteds (where: {id: "${address.toLowerCase()}"}) {
               id

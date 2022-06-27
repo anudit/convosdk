@@ -17,11 +17,8 @@ export default async function getHiveOneData(
     `https://cnvsec.vercel.app/api/omnid/hiveone?id=${computeConfig.CNVSEC_ID}&address=${address}`
   )) as HiveoneResult;
 
-  const { success, ...data } = json;
+  const { error, ...data } = json;
 
-  if (success === true) {
-    return data;
-  } else {
-    return false;
-  }
+  if (Boolean(error) === true) return false;
+  else return data;
 }

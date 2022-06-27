@@ -153,46 +153,60 @@ class Benchmark {
         this.testCases.push(testCase);
         return this;
     }
+    addTestCases = (newTestCases = []) => {
+        this.testCases = this.testCases.concat(newTestCases);
+        return this;
+    }
 
 }
 
 
 async function runStuff() {
 
-    console.log('Using the version', convoInstance.version);
+    console.log('Using the SDK version', convoInstance.version);
+
+    let testCases = [
+        "0xd8da6bf26964af9d7eed9e03e53415d37aa96045", // Test Vitalik - vb2
+        "0xAb5801a7D398351b8bE11C439e05C5B3259aeC9B", // vb
+        "0xBAcb58a5BD0e2dF0B3d3e82A1c75aD565A417Cd6", // Test Aave, Bird
+        "0x000440f08436a7b866d1ae42db5e0be801da722a", // Test Alchemy
+        "0xcf0949bf6d2adf8032260fd08039c879cf71c128", // Foundation, known origin, forta
+        "0xD665afb9A4019a8c482352aaa862567257Ed62CF", // Archangel - Foundation Superrare, async
+        "0x8d07D225a769b7Af3A923481E1FdF49180e6A265", // monetsupply.eth - Boardroom
+        "0xB53b0255895c4F9E3a185E484e5B674bCCfbc076", // peth.eth - metagame
+        "0x00002034c56833c91a8453b3b7b087c8694b7c67", // celo - Attestations.
+        "0xa28992A6744e36f398DFe1b9407474e1D7A3066b", // tester
+        "0x707aC3937A9B31C225D8C240F5917Be97cab9F29", // blank
+        "0x8df737904ab678B99717EF553b4eFdA6E3f94589", // Jenil.eth - coinvise, cyberconnect
+        "0x00432996c5cf8200cf208200613aec2329be0e39", // lebanonsdao.eth - Commonsstack
+        "0x1786d033d5cbcc235b673e872c7613c2f83da583", // Nirbhik.eth - dapplist, debank
+        "0x03787a359fed91366c8414538f17883caeaa8661", // Goldfinch
+        "0x12b2398405f49dec00d7ceef9c0925e6fc96c51f", // Klima
+        "0x225b11096e5aec644bf1a0f09358d9534ce20903",
+        "0x09750ad360fdb7a2ee23669c4503c974d86d8694",
+        "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
+        "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
+        "0x28b4de9c45af6cb1a5a46c19909108f2bb74a2be",
+        "0x597D1747256304d5d47eCE999A8e5bAdE6d41845",
+        "0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443",
+    ]
+
 
     let bench = new Benchmark("Omnid Adaptors", config);
-
-    bench
-        .addTestCase("0xd8da6bf26964af9d7eed9e03e53415d37aa96045")
-        .addTestCase("0x000440f08436a7b866d1ae42db5e0be801da722a")
-        .addTestCase("0xcf0949bf6d2adf8032260fd08039c879cf71c128")
-        .addTestCase("0xD665afb9A4019a8c482352aaa862567257Ed62CF")
-        .addTestCase("0xB53b0255895c4F9E3a185E484e5B674bCCfbc076")
-        .addTestCase("0xa28992A6744e36f398DFe1b9407474e1D7A3066b")
-        .addTestCase("0x707aC3937A9B31C225D8C240F5917Be97cab9F20")
-        .addTestCase("0x225b11096e5aec644bf1a0f09358d9534ce20903")
-        .addTestCase("0x09750ad360fdb7a2ee23669c4503c974d86d8694")
-        .addTestCase("0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4")
-        .addTestCase("0x8d07D225a769b7Af3A923481E1FdF49180e6A265")
-        .addTestCase("0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528")
-        .addTestCase("0x28b4de9c45af6cb1a5a46c19909108f2bb74a2be")
-        .addTestCase("0x597D1747256304d5d47eCE999A8e5bAdE6d41845")
-        .addTestCase("0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443")
-        .addTestCase("0x12b2398405f49dec00d7ceef9c0925e6fc96c51f");
+    bench.addTestCases(testCases);
 
     bench
         .addTest({ fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getAlchemyData, withConfig: true })
-        .addTest({ fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false })
+        // .addTest({ fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getBirdData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getBoardroomData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getCeloData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getCeloData, withConfig: false})
         .addTest({ fn: convoInstance.omnid.adaptors.getCoinviseData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getCommonsstackData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getContextData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getContextData, withConfig: false  })
         // .addTest({ fn: convoInstance.omnid.adaptors.getCoordinapeData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getCryptoreliefData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getCryptoscamdbData, withConfig: false })
@@ -201,7 +215,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getDebankData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getDeepDaoData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.addressToEns, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getEmblemData, withConfig: false })
+        // .addTest({ fn: convoInstance.omnid.adaptors.getEmblemData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getEtherscanData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getFortaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getFoundationData, withConfig: true })
@@ -213,7 +227,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getKarmaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getKlimaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getKnownOriginData, withConfig: true })
-        .addTest({ fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false, verbose:true })
         .addTest({ fn: convoInstance.omnid.adaptors.getLearnWeb3Data, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getLensData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMetagameData, withConfig: false })
@@ -237,33 +251,18 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getUnipassData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getSybilData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getUpalaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getYupData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getZapperData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true })
 
     let bench2 = new Benchmark("Omnid Complete", config);
 
-    bench2
-        .addTestCase("0xd8da6bf26964af9d7eed9e03e53415d37aa96045")
-        .addTestCase("0x000440f08436a7b866d1ae42db5e0be801da722a")
-        .addTestCase("0xcf0949bf6d2adf8032260fd08039c879cf71c128")
-        .addTestCase("0xD665afb9A4019a8c482352aaa862567257Ed62CF")
-        .addTestCase("0xB53b0255895c4F9E3a185E484e5B674bCCfbc076")
-        .addTestCase("0xa28992A6744e36f398DFe1b9407474e1D7A3066b")
-        .addTestCase("0x707aC3937A9B31C225D8C240F5917Be97cab9F20")
-        .addTestCase("0x225b11096e5aec644bf1a0f09358d9534ce20903")
-        .addTestCase("0x09750ad360fdb7a2ee23669c4503c974d86d8694")
-        .addTestCase("0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4")
-        .addTestCase("0x8d07D225a769b7Af3A923481E1FdF49180e6A265")
-        .addTestCase("0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528")
-        .addTestCase("0x28b4de9c45af6cb1a5a46c19909108f2bb74a2be")
-        .addTestCase("0x597D1747256304d5d47eCE999A8e5bAdE6d41845")
-        .addTestCase("0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443")
-        .addTestCase("0x12b2398405f49dec00d7ceef9c0925e6fc96c51f");
+    bench2.addTestCases(testCases);
 
     bench2.addTest({
         fn: computeTrustScore = async (address, withConfig) => {
-            return await convoInstance.omnid.computeTrustScore(address, config, ['coordinape', 'arcx', 'cryptoscamdb'])
+            return await convoInstance.omnid.computeTrustScore(address, config, ['coordinape', 'arcx', 'cryptoscamdb', 'emblem'])
         }, withConfig: true, verbose: false,
     })
 

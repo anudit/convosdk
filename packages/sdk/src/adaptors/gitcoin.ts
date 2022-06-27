@@ -17,6 +17,6 @@ export default async function getGitcoinData(
     `https://cnvsec.vercel.app/api/omnid/gitcoin?id=${computeConfig.CNVSEC_ID}&address=${address}`
   )) as GitcoinResult;
   return {
-    funder: Boolean(json.success) === false ? false : true,
+    funder: Object.keys(json).includes('error') === true ? false : true,
   };
 }

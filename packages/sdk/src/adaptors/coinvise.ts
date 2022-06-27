@@ -159,8 +159,8 @@ export default async function getCoinviseData(
     // 1 - user
     let followers = 0;
     let following = 0;
-    if (data[2].status === 'fulfilled') {
-      const userData = data[2] as PromiseFulfilledResult<UserResult>;
+    if (data[1].status === 'fulfilled') {
+      const userData = data[1] as PromiseFulfilledResult<UserResult>;
       if (Object.keys(userData.value).includes('code') === false) {
         followers = userData.value.user.followers;
         following = userData.value.user.following;
