@@ -7,16 +7,9 @@ export default async function getPolygonData(address = '') {
       `https://analytics.polygon.technology/score/user-latest?address=${address}`
     )) as Array<any>;
 
-    if (json.length > 0) {
-      return json[0];
-    } else {
-      return {
-        Score100: 0,
-      };
-    }
+    if (json.length > 0) return json[0];
+    else return false;
   } catch (error) {
-    return {
-      Score100: 0,
-    };
+    return false;
   }
 }

@@ -1,11 +1,18 @@
-import { Dictionary } from '../types';
 import { gqlFetcher } from '../utils';
 
+interface PohResp {
+  data: {
+    submission: null | {
+      registered: boolean;
+    };
+  };
+}
+
 export default async function checkPoH(address: string) {
-  const req: Dictionary<any> = await gqlFetcher(
+  const { data } = (await gqlFetcher(
     'https://api.thegraph.com/subgraphs/name/kleros/proof-of-humanity-mainnet',
     `{
-      submissions(where: {id: "${address.toLowerCase()}"} ) {
+      submission(id: "${address.toLowerCase()}") {
         vouchesReceived {
           id
         }
@@ -14,6 +21,8 @@ export default async function checkPoH(address: string) {
         registered
       }
     }`
-  );
-  return req['data'];
+  )) as PohResp;
+  if (data.submission != null && data.submission.registered === true)
+    return data.submission;
+  else return false;
 }

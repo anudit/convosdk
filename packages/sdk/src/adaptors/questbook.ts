@@ -29,7 +29,7 @@ interface QuestbookResult {
 
 export default async function getQuestbookData(address: string) {
   const jsonData = (await gqlFetcher(
-    'https://the-graph.questbook.app/subgraphs/name/qb-subgraph-polygon',
+    'https://the-graph.questbook.app/subgraphs/name/qb-subgraph-polygon-mainnet',
     `query {
         grants(
             subgraphError: allow

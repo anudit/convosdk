@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.7
+
+- Improve Adaptors.
+- Add `huddln` Adaptor.
+- Update Dependencies.
+
 ## 0.5.6
 
 - Improve Adaptors.

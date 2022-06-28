@@ -2,50 +2,76 @@ import { gqlFetcher } from '../utils';
 
 interface MirrorResult {
   data: {
-    addressInfo: {
-      ens: string;
-      writeTokens: string;
-      hasOnboarded: boolean;
-    };
-    userProfile: {
-      displayName: string;
-      ens: string;
-      domain: string;
-      contributor: {
-        publications: Array<{
-          ensLabel: string;
-          displayName: string;
-        }>;
-      };
-    };
+    projectFeed: string;
   };
 }
 
-export default async function getMirrorData(address = '') {
+export default async function getMirrorData(address: string) {
   try {
-    const jsonData = (await gqlFetcher(
+    const { data } = (await gqlFetcher(
       'https://mirror-api.com/graphql',
-      `{
-        addressInfo(address: "${address}") {
-          ens
-          writeTokens
-          hasOnboarded
+      `query ProjectFeed($projectAddress: String!) {
+        projectFeed(projectAddress: $projectAddress, ) {
+          _id
+        address
+        avatarURL
+        description
+        displayName
+        domain
+        ens
+        gaTrackingID
+        mailingListURL
+        headerImage {
+          ...mediaAsset
         }
-        userProfile(address: "${address}") {
-          displayName
-          ens
-          domain
-          contributor {
-            publications {
-              ensLabel
-              displayName
-            }
-          }
+        theme {
+          ...themeDetails
         }
-      }`
+        }
+      }
+
+
+      fragment mediaAsset on MediaAssetType {
+        id
+        cid
+        mimetype
+        sizes {
+          ...mediaAssetSizes
+        }
+        url
+      }
+
+      fragment mediaAssetSizes on MediaAssetSizesType {
+        og {
+          ...mediaAssetSize
+        }
+        lg {
+          ...mediaAssetSize
+        }
+        md {
+          ...mediaAssetSize
+        }
+        sm {
+          ...mediaAssetSize
+        }
+      }
+
+      fragment mediaAssetSize on MediaAssetSizeType {
+        src
+        height
+        width
+      }
+
+      fragment themeDetails on UserProfileThemeType {
+        accent
+        colorMode
+      }`,
+      { projectAddress: address },
+      5000,
+      { Origin: 'https://mirror.xyz/' }
     )) as MirrorResult;
 
-    return Boolean(jsonData['data']) === true ? jsonData['data'] : false;
+    return Boolean(data) === true ? data?.projectFeed : false;
   } catch (error) {
     return false;
   }

@@ -2,29 +2,23 @@ import { gqlFetcher } from '../utils';
 
 interface TokenBlacklistResult {
   data: {
-    blacklists: Array<{
-      id: string;
-      usdt: boolean;
-      usdc: boolean;
-      busd: boolean;
-    }>;
+    blacklist: null | string;
   };
 }
 
 export default async function getTokenBlacklistData(address: string) {
-  const jsonData = (await gqlFetcher(
-    'https://api.studio.thegraph.com/query/1649/token-blacklists/v1',
+  const { data } = (await gqlFetcher(
+    'https://api.studio.thegraph.com/query/1649/token-blacklists/v1.1',
     `{
-        blacklists(where: {id: "${address.toLowerCase()}"}) {
-          id
+        blacklist(id: "${address.toLowerCase()}") {
           usdc
           usdt
           busd
+          tusd
         }
     }`
   )) as TokenBlacklistResult;
 
-  return Boolean(jsonData.data.blacklists[0]) === true
-    ? jsonData.data.blacklists[0]
-    : false;
+  if (data.blacklist === null) return false;
+  else return data.blacklist;
 }

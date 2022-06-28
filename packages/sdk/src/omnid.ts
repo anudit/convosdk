@@ -275,6 +275,13 @@ class Omnid {
               [address, computeConfig],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('huddln')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getHuddlnData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('idena')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -529,6 +536,7 @@ class Omnid {
         'goldfinch',
         'governordao',
         'hiveone',
+        'huddln',
         'idena',
         'karma',
         'klima',

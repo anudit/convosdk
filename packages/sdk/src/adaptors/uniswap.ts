@@ -1,24 +1,7 @@
-import { isAddress } from 'ethers/lib/utils';
-import { ComputeConfig, Dictionary } from '../types';
+import { ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
-export async function getAllSybilData() {
-  const data = (await fetcher(
-    'GET',
-    'https://theconvo.space/gitcoindata.json'
-  )) as Dictionary<string>;
-
-  const addDb = [];
-  for (let index = 0; index < data['addresses'].length; index++) {
-    if (isAddress(data['addresses'][index][0]) === true) {
-      addDb.push(data['addresses'][index][0]);
-    }
-  }
-
-  return addDb;
-}
-
-export async function getSybilData(
+export default async function getSybilData(
   address: string,
   computeConfig: ComputeConfig
 ) {

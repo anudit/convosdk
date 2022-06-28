@@ -1,6 +1,7 @@
 require('dotenv').config({ path: '.env.local' })
 const { createStream } = require('table');
 const { Convo } = require('../packages/sdk/lib/index');
+const { ethers } = require('ethers');
 
 const { ALCHEMY_API_KEY, ZAPPER_API_KEY, OPTIMISMSCAN_API_KEY, ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
 
@@ -176,21 +177,28 @@ async function runStuff() {
         "0xB53b0255895c4F9E3a185E484e5B674bCCfbc076", // peth.eth - metagame
         "0x00002034c56833c91a8453b3b7b087c8694b7c67", // celo - Attestations.
         "0xa28992A6744e36f398DFe1b9407474e1D7A3066b", // tester
-        "0x707aC3937A9B31C225D8C240F5917Be97cab9F29", // blank
+        "0x707aC3937A9B31C225D8C240F5917Be97cab9F20", // quadrata
         "0x8df737904ab678B99717EF553b4eFdA6E3f94589", // Jenil.eth - coinvise, cyberconnect
         "0x00432996c5cf8200cf208200613aec2329be0e39", // lebanonsdao.eth - Commonsstack
         "0x1786d033d5cbcc235b673e872c7613c2f83da583", // Nirbhik.eth - dapplist, debank
         "0x03787a359fed91366c8414538f17883caeaa8661", // Goldfinch
         "0x12b2398405f49dec00d7ceef9c0925e6fc96c51f", // Klima
+        "0x4d85e4F760fb58E380f02657AE5Aafb8bd010601", // Layer3
+        "0xaf116bab0c55b2ef2b4386a213334b8fd31c0303", // LearnWeb3DAO
+        "0x09750ad360fdb7a2ee23669c4503c974d86d8694", // Phishing
+        "0xfe82080625edca65f30d41ab141c819d109616d1", // poh
+        "0xd30dd83132f2227f114db8b90f565bca2832afbd", // Questbook
+        "0xd3e9d60e4e4de615124d5239219f32946d10151d", // alexmasmej
+        "0x8576aCC5C05D6Ce88f4e49bf65BdF0C62F91353C", // sdn - OFAC sanction
         "0x225b11096e5aec644bf1a0f09358d9534ce20903",
-        "0x09750ad360fdb7a2ee23669c4503c974d86d8694",
         "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
         "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
         "0x28b4de9c45af6cb1a5a46c19909108f2bb74a2be",
         "0x597D1747256304d5d47eCE999A8e5bAdE6d41845",
         "0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443",
-    ]
+    ].map(ethers.utils.getAddress)
 
+    ethers
 
     let bench = new Benchmark("Omnid Adaptors", config);
     bench.addTestCases(testCases);
@@ -227,8 +235,8 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getKarmaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getKlimaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getKnownOriginData, withConfig: true })
-        .addTest({ fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false, verbose:true })
-        .addTest({ fn: convoInstance.omnid.adaptors.getLearnWeb3Data, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getLearnWeb3Data, withConfig: false,  })
         .addTest({ fn: convoInstance.omnid.adaptors.getLensData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMetagameData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMewData, withConfig: true })
@@ -236,10 +244,10 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getPoapData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getPolygonData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getProjectGalaxyData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.checkPoH, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.checkPoH, withConfig: false})
         .addTest({ fn: convoInstance.omnid.adaptors.getPopData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getQuadrataData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getQuestbookData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getQuestbookData, withConfig: false})
         .addTest({ fn: convoInstance.omnid.adaptors.getRabbitholeData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getRaribleData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getRss3Data, withConfig: false })
