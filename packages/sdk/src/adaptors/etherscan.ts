@@ -1,11 +1,5 @@
-import { ComputeConfig } from '../types';
+import { ComputeConfig, EtherscanResult } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
-
-interface EtherscanResult {
-  error?: string;
-  label?: string;
-  tags?: Array<string>;
-}
 
 export default async function getEtherscanData(
   address: string,

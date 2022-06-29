@@ -81,3 +81,10 @@ export type AdaptorFunctionWithConfigType = (
   address: string,
   computeConfig: ComputeConfig
 ) => Promise<any>;
+
+
+export interface EtherscanResult {
+  error?: string;
+  label?: string;
+  tags?: Array<string>;
+}

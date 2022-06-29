@@ -67,7 +67,7 @@ export function encodeQuery(
 export function checkComputeConfig(
   functionName: string,
   config: ComputeConfig,
-  requiredKeys: Array<string>
+  requiredKeys: Array<keyof ComputeConfig>
 ) {
   for (let index = 0; index < requiredKeys.length; index++) {
     const key = requiredKeys[index];

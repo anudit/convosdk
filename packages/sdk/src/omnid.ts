@@ -9,17 +9,20 @@ import {
 import * as adaptorList from './adaptors';
 import { isAddress } from 'ethers/lib/utils';
 import Credentials from './omnid/credentials';
+import Kits from './omnid/kits';
 
 class Omnid {
   apikey: string;
   node: string;
-  adaptors = adaptorList;
+  kits: Kits;
   credentials: Credentials;
+  adaptors = adaptorList;
 
   constructor(apikey: string, node: string) {
     this.apikey = apikey;
     this.node = node;
     this.credentials = new Credentials(apikey, this.node);
+    this.kits = new Kits(apikey, this.node);
     return this;
   }
 

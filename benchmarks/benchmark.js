@@ -274,8 +274,19 @@ async function runStuff() {
         }, withConfig: true, verbose: false,
     })
 
+    let bench3 = new Benchmark("Omnid Kits", config);
+
+    bench3.addTestCases(testCases);
+
+    bench3.addTest({
+        fn: isMalicious = async (address, withConfig) => {
+            return await convoInstance.omnid.kits.isMalicious(address, config)
+        }, withConfig: true, verbose: false,
+    })
+
     await bench.run();
     await bench2.run();
+    await bench3.run();
 
 }
 

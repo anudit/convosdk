@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.8
+
+- Add `kits` to Omnid.
+  - `convo.omnid.kits.isMalicious`
+
 ## 0.5.7
 
 - Improve Adaptors.
