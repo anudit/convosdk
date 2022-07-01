@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.9
+
+- Improve `deepdao`, `tokenblacklists` Adaptors.
+- Update Dependencies.
+
 ## 0.5.8
 
 - Add `kits` to Omnid.

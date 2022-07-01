@@ -1,32 +1,35 @@
 import { fetcher } from '../utils';
-
 interface DeepdaoResp {
-  totalDaos: number;
-  totalOrgs: number;
-  totalProposals: number;
-  totalVotes: number;
-  participationScore: number;
+  message: string;
+  data: {
+    score: number;
+    rank: number;
   relativeScore: number;
-  participationScoreRank: number;
-  daos: Array<string>;
+    daos: number;
+    proposals: number;
+    votes: number;
+  };
 }
-
 export default async function getDeepDaoData(address: string) {
   const json = (await fetcher(
     'GET',
-    `https://golden-gate-server.deepdao.io/user/2/${address.toLowerCase()}`
+    `https://api.deepdao.io/v0.1/people/participation_score/${address.toLowerCase()}`,
+    '',
+    {},
+    {
+      'x-api-key': 'mAWyZ3pG2m8tGnrNgRrEw4b0UheQYE9d5yWGEK0H',
+    }
   )) as DeepdaoResp;
-
   if ('message' in json) {
     return false;
   } else {
     return {
-      score: json.relativeScore,
-      rank: json.participationScoreRank,
-      relativeScore: json.relativeScore,
-      proposals: json.totalProposals,
-      votes: json.totalVotes,
-      daos: json.daos,
+      score: json.data?.score,
+      rank: json.data?.rank,
+      relativeScore: json.data?.relativeScore,
+      daos: json.data?.daos,
+      proposals: json.data?.proposals,
+      votes: json.data?.votes,
     };
   }
 }
