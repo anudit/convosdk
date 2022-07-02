@@ -4,11 +4,11 @@ on:
   push:
     branches: [ main ]
     paths:
-    - 'packages/sdk/**'
+    - 'packages/sdk'
   pull_request:
     branches: [ main ]
     paths:
-    - 'packages/sdk/**'
+    - 'packages/sdk'
 
 jobs:
   build:
@@ -34,7 +34,7 @@ jobs:
 
       - name: Install Workspace Dependencies
         if: steps.cache.outputs.cache-hit != 'true'
-        run: pnpm install --filter "{packages/**}" --filter "{benchmarks}"
+        run: pnpm install --filter "{packages/sdk}" --filter "{benchmarks}"
 
       - name: Build SDK Package
         run: cd ./packages/sdk && pnpm build:node

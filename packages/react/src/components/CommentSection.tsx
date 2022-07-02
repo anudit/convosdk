@@ -5,7 +5,6 @@ import fetch from 'cross-fetch';
 import useSWRInfinite from 'swr/infinite';
 import { Convo } from '@theconvospace/sdk';
 import {
-  Avatar,
   Box,
   Button,
   IconChevronDown,
@@ -18,12 +17,9 @@ import {
   Text,
   Textarea,
 } from 'degen';
-import timeAgo, {
-  Dictionary,
-  encodeQuery,
-  resolveEnsData,
-  trimAdd,
-} from '../utils';
+import timeAgo, { encodeQuery, trimAdd } from '../utils';
+import AsyncAvatar from './AsyncAvatar';
+import { CommentResp } from '../types';
 
 const fetcher = async (url: string) => {
   const res = await fetch(url);
@@ -40,24 +36,6 @@ const fetcher = async (url: string) => {
  * @see https://docs.theconvo.space/docs/Convo-Embeds/embed-a-comment
  */
 
-interface CommentResp {
-  author: string;
-  authorENS: false | string;
-  chain: string;
-  createdOn: string;
-  downvotes: Array<string>;
-  editHistory: Array<string>;
-  metadata: Dictionary<string>;
-  replyTo: string;
-  tag1: string;
-  tag2: string;
-  text: string;
-  tid: string;
-  upvotes: Array<string>;
-  url: string;
-  _id: string;
-  _mod: number;
-}
 
 interface CommentSectionProps {
   query: CommentsQueryType;
@@ -86,30 +64,6 @@ type CommentsQueryType = {
   airdrop?: boolean;
   airdropMode?: 'csv' | 'json';
   airdropAmount?: number;
-};
-
-const AsyncAvatar = ({ address }: { address?: string }) => {
-  const defaultImage = `https://gradient-avatar.glitch.me/${
-    address ? address : 'x'
-  }`;
-  const [data, setData] = useState<string>(defaultImage);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    if (address) {
-      resolveEnsData(address)
-        .then((resp) => {
-          setIsLoading(false);
-          if (resp && typeof resp?.avatar === 'string') {
-            setData(resp.avatar);
-          } else {
-            setData(defaultImage);
-          }
-        })
-        .catch(console.log);
-    }
-  }, [address]);
-  return <Avatar label="Ava" src={data} placeholder={isLoading} />;
 };
 
 const CommentSection = ({
@@ -190,7 +144,8 @@ const CommentSection = ({
           .catch((error) => {
             console.log('Error while sending a message', error);
             setIsLoading(false);
-          }).finally(() => {
+          })
+          .finally(() => {
             scrollToBottom();
             setIsLoading(false);
           });

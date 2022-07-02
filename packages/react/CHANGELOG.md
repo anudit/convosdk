@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+- Release `Comment`.
+
 ## 0.2.1
 
 - Release `CommentSection`.

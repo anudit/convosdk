@@ -1,3 +1,5 @@
+import { Dictionary } from './types';
+
 type RelativeTimeFormatUnit =
   | 'year'
   | 'years'
@@ -37,10 +39,6 @@ export default function timeAgo(input: Date | string) {
   }
 }
 
-export interface Dictionary<T> {
-  [Key: string]: T;
-}
-
 export function encodeQuery(
   data: Dictionary<string | number | boolean>
 ): string {
@@ -74,3 +72,29 @@ export async function resolveEnsData(ens: string) {
     return false;
   }
 }
+
+export const prettyTime = (timestamp: string) => {
+  const monthNames = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+  const dt = new Date(parseInt(timestamp));
+  const ampm = dt.getHours() <= 12 ? 'AM' : 'PM';
+  const h = dt.getHours() <= 12 ? dt.getHours() : dt.getHours() - 12;
+  const m = dt.getMinutes().toString().padStart(2, '0');
+  const d = dt.getDate();
+  const month = monthNames[dt.getMonth()];
+  const y = dt.getFullYear();
+  return `${h}:${m} ${ampm} •  ${month} ${d}, ${y}`;
+};
