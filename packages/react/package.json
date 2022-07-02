@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/react",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "React Hooks and Components to build on theconvo.space",
   "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
@@ -22,6 +22,7 @@
   ],
   "scripts": {
     "build": "run-p build:*",
+    "dev": "tsup src/index.ts --format esm,cjs --outDir lib --minify --legacy-output --clean --keepNames --treeshake --watch",
     "build:node": "tsup src/index.ts --format esm,cjs --outDir lib --dts --minify --legacy-output --clean --keepNames --treeshake",
     "build:browser": "tsup src/index.ts --format iife --outDir dist --minify --clean --globalName=Convo --platform=browser --treeshake",
     "bench": "cd ./../../benchmarks && pnpm bench",
@@ -57,18 +58,18 @@
     "@typechain/ethers-v5": "^10.1.0",
     "@types/node": "^18.0.0",
     "@types/react": "^18.0.14",
-    "@typescript-eslint/eslint-plugin": "^5.29.0",
-    "@typescript-eslint/parser": "^5.29.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.3",
+    "@typescript-eslint/parser": "^5.30.3",
     "esbuild-visualizer": "^0.3.1",
-    "eslint": "^8.18.0",
+    "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^4.0.0",
-    "lint-staged": "^13.0.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "lint-staged": "^13.0.3",
     "npm-run-all": "^4.1.5",
     "open-cli": "^7.0.1",
     "prettier": "^2.7.1",
-    "tsup": "^6.1.2",
+    "tsup": "^6.1.3",
     "typechain": "^8.1.0",
     "typescript": "4.7.4"
   },
@@ -84,9 +85,14 @@
     "lib": "lib"
   },
   "dependencies": {
-    "ably": "^1.2.25",
+    "@ethersproject/providers": "^5.6.8",
+    "@theconvospace/sdk": "workspace:^0.5.9",
+    "ably": "^1.2.26",
+    "cross-fetch": "^3.1.5",
+    "degen": "^0.0.86",
     "ethers": "^5.6.9",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "swr": "^1.3.0"
   }
 }

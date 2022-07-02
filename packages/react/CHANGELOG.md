@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.1
+
+- Release `CommentSection`.
+- Update Dependencies
+
 ## 0.2.0
 
 - Migrate `tsc` build process to `esbuild`
