@@ -30,6 +30,7 @@ export { default as checkIdena } from './idena';
 export { default as getKarmaData } from './karma';
 export { default as getKlimaData } from './klima';
 export { default as getKnownOriginData } from './knownorigin';
+export { default as getLabelData } from './labels';
 export { default as getLayer3Data } from './layer3';
 export { default as getLearnWeb3Data } from './learnweb3';
 export { default as getLensData } from './lens';

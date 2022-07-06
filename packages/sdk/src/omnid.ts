@@ -313,6 +313,13 @@ class Omnid {
               [address, computeConfig],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('labels')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getLabelData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('layer3')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -544,6 +551,7 @@ class Omnid {
         'karma',
         'klima',
         'knownorigin',
+        'labels',
         'layer3',
         'learnweb3',
         'lens',

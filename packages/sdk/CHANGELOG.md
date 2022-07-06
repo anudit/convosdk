@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.10
+
+- Improve `goldfinch`, `quadrata` Adaptors.
+- Add `labels` Adaptors.
+- Update Dependencies.
+
 ## 0.5.9
 
 - Improve `deepdao`, `tokenblacklists` Adaptors.
