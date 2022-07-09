@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.11
+
+- Add support for USDP to `tokenblacklist` Adaptor.
+- Update Dependencies.
+
 ## 0.5.10
 
 - Improve `goldfinch`, `quadrata` Adaptors.
