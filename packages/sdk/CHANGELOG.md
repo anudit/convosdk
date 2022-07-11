@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.12
+
+- Add [`rocifi`](https://roci.fi) Credit Score Adaptor.
+
 ## 0.5.11
 
 - Add support for USDP to `tokenblacklist` Adaptor.

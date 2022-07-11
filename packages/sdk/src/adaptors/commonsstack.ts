@@ -21,6 +21,6 @@ export default async function getCommonsstackData(address = '') {
   if (jsonData['data'].members.length > 0) {
     return jsonData['data'].members[0].balance;
   } else {
-    return 0;
+    return false;
   }
 }

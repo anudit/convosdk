@@ -421,6 +421,13 @@ class Omnid {
               [address, computeConfig],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('rocifi')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getRocifiData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('rss3')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -567,6 +574,7 @@ class Omnid {
         'questbook',
         'rabbithole',
         'rarible',
+        'rocifi',
         'rss3',
         'sdn',
         'showtime',

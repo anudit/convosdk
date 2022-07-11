@@ -46,6 +46,7 @@ export { default as getQuadrataData } from './quadrata';
 export { default as getQuestbookData } from './questbook';
 export { default as getRabbitholeData } from './rabbithole';
 export { default as getRaribleData } from './rarible';
+export { default as getRocifiData } from './rocifi';
 export { default as getRss3Data } from './rss3';
 export { default as getSdnData } from './sdn';
 export { default as getShowtimeData } from './showtime';

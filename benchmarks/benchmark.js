@@ -190,6 +190,7 @@ async function runStuff() {
         "0xd30dd83132f2227f114db8b90f565bca2832afbd", // Questbook
         "0xd3e9d60e4e4de615124d5239219f32946d10151d", // alexmasmej
         "0x8576aCC5C05D6Ce88f4e49bf65BdF0C62F91353C", // sdn - OFAC sanction
+        "0x416365993481e52e0472e7417656276d4e147a00", // rocifi
         "0x225b11096e5aec644bf1a0f09358d9534ce20903",
         "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
         "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
