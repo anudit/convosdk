@@ -251,6 +251,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getQuestbookData, withConfig: false})
         .addTest({ fn: convoInstance.omnid.adaptors.getRabbitholeData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getRaribleData, withConfig: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getRocifiData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getRss3Data, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getSdnData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getShowtimeData, withConfig: true })

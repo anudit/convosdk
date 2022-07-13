@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.5.11",
+  "version": "0.5.12",
   "description": "SDK containing all the functions you'll need to build on theconvo.space",
   "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
@@ -56,8 +56,8 @@
   "devDependencies": {
     "@typechain/ethers-v5": "^10.1.0",
     "@types/node": "^18.0.3",
-    "@typescript-eslint/eslint-plugin": "^5.30.5",
-    "@typescript-eslint/parser": "^5.30.5",
+    "@typescript-eslint/eslint-plugin": "^5.30.6",
+    "@typescript-eslint/parser": "^5.30.6",
     "esbuild-visualizer": "^0.3.1",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",

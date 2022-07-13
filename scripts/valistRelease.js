@@ -21,7 +21,9 @@ const download = async ({ url, path }) => {
 };
 
 
-async function publishToValist(releaseDetails) {
+async function publishToValist(packageName, version) {
+
+    let releaseDetails = await fetch(`https://registry.npmjs.org/${packageName}/${version}`).then(r=>r.json());
 
     const web3 = new Web3HttpProvider('https://polygon-rpc.com');
     const provider = new ethers.providers.Web3Provider(web3);
@@ -62,10 +64,16 @@ async function publishToValist(releaseDetails) {
 
 
 async function publishPackage(packageName, version) {
-    console.log('Fetching Release');
-    let pkgDeets = await fetch(`https://registry.npmjs.org/${packageName}/${version}`);
-    pkgDeets = await pkgDeets.json();
-    await publishToValist(pkgDeets);
+    if (typeof version === 'object' && version?.length > 0){
+        array.forEach(async (v) => {
+            console.log(`Fetching Release ${v}`);
+            await publishToValist(packageName, v);
+        });
+    }
+    else {
+        console.log(`Fetching Release ${version}`);
+        await publishToValist(packageName, version);
+    }
 }
 
 
@@ -75,7 +83,7 @@ async function publishPackage(packageName, version) {
 
 const accountName = "theconvospace"
 let projectName = "sdk"
-let version = "0.5.10"
+let version = "0.5.12"
 
 publishPackage(`@${accountName}/${projectName}`, version).then(() => {
     process.exit(0);

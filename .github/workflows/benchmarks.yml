@@ -4,11 +4,11 @@ on:
   push:
     branches: [ main ]
     paths:
-    - 'packages/sdk'
+    - 'packages/sdk/**'
   pull_request:
     branches: [ main ]
     paths:
-    - 'packages/sdk'
+    - 'packages/sdk/**'
 
 jobs:
   build:

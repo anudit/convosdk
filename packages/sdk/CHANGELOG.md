@@ -3,6 +3,7 @@
 ## 0.5.12
 
 - Add [`rocifi`](https://roci.fi) Credit Score Adaptor.
+- Update Dependencies.
 
 ## 0.5.11
 
