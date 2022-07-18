@@ -1,4 +1,4 @@
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 export default async function getShowtimeData(
@@ -13,3 +13,12 @@ export default async function getShowtimeData(
   );
   return json;
 }
+
+export const ShowtimeAdaptorDeets: AdaptorDeets = {
+  id: 'showtime',
+  name: 'Showtime',
+  projectThumbnail:
+    'ipfs://bafybeib4kjcl73cartizz53nxqiqlueoujout7ohw73y7cx6ealn7khiia/showtime.webp',
+  projectUrl: 'https://showtime.xyz/',
+  requiredConfigKeys: ['CNVSEC_ID'],
+};

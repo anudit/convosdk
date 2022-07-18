@@ -1,5 +1,5 @@
 import { formatEther } from 'ethers/lib/utils';
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, gqlFetcher } from '../utils';
 
 interface ZoraResult {
@@ -66,3 +66,12 @@ export default async function getZoraData(
     totalAmountSold,
   };
 }
+
+export const ZoraAdaptorDeets: AdaptorDeets = {
+  id: 'zora',
+  name: 'Zora',
+  projectThumbnail:
+    'ipfs://bafybeibvdvqh2t6i3ejjrbta4reahrtof5salcaj42wv2xf5th6f43arfi/zora.webp',
+  projectUrl: 'https://zora.co/',
+  requiredConfigKeys: [],
+};

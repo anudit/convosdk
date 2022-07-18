@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 interface BoardroomResult {
@@ -45,3 +46,12 @@ export default async function getBoardroomData(address: string) {
     votes,
   };
 }
+
+export const BoardroomAdaptorDeets: AdaptorDeets = {
+  id: 'boardroom',
+  name: 'Boardroom',
+  projectThumbnail:
+    'ipfs://bafybeigbygpbuydtiy4jtyvhoqbhyfdw5piucujvexhl2flzzzgquizkam/boardroom.webp',
+  projectUrl: 'https://boardroom.io/',
+  requiredConfigKeys: [],
+};

@@ -1,4 +1,4 @@
-import { CommentsQueryType, Dictionary, ErrorType } from './types';
+import { CommentResp, CommentsQueryType, Dictionary, ErrorType } from './types';
 import { encodeQuery, fetcher } from './utils';
 
 class Comments {
@@ -61,7 +61,7 @@ class Comments {
   query = async (
     query: CommentsQueryType,
     timeout = 6000
-  ): Promise<any | ErrorType> => {
+  ): Promise<Array<CommentResp> | ErrorType> => {
     return await fetcher(
       'GET',
       `${this.node}/comments?${encodeQuery(query)}`,
@@ -72,7 +72,7 @@ class Comments {
     );
   };
 
-  getComment = async (commentId: string): Promise<any | ErrorType> => {
+  getComment = async (commentId: string): Promise<CommentResp | ErrorType> => {
     return await fetcher(
       'GET',
       `${this.node}/comment?commentId=${commentId}`,

@@ -1,4 +1,4 @@
-import { Dictionary } from '../types';
+import { AdaptorDeets, Dictionary } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface UnstoppableResult {
@@ -56,3 +56,12 @@ export default async function resolveUnstoppableDomains(address: string) {
     return false;
   }
 }
+
+export const UnstoppableAdaptorDeets: AdaptorDeets = {
+  id: 'unstoppable',
+  name: 'Unstoppable Domains',
+  projectThumbnail:
+    'ipfs://bafybeie2zilfzem6i4rg5qgvkr2fcq26rkebpwjze53arf4hoouub72qmy/unstoppable.webp',
+  projectUrl: 'https://unstoppabledomains.com',
+  requiredConfigKeys: [],
+};

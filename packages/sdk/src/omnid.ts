@@ -5,6 +5,7 @@ import {
   AdaptorFunctionType,
   AdaptorFunctionWithConfigType,
   Dictionary,
+  AdaptorKeys,
 } from './types';
 import * as adaptorList from './adaptors';
 import { isAddress } from 'ethers/lib/utils';
@@ -82,10 +83,14 @@ class Omnid {
     );
   };
 
+  getAdaptorDataByKey = (key: AdaptorKeys) => {
+    return this.adaptors.AdaptorData.filter((d) => d.id === key)[0];
+  };
+
   computeTrustScore = async (
     address: string,
     computeConfig: ComputeConfig,
-    disabledAdaptors: Array<string> = []
+    disabledAdaptors: Array<AdaptorKeys> = []
   ): Promise<any | ErrorType> => {
     if (isAddress(address) === true) {
       const promiseArray = [
@@ -145,6 +150,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('chainabuse')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getChainabuseData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('coinvise')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -155,14 +167,7 @@ class Omnid {
         disabledAdaptors.includes('commonsstack')
           ? this.#disabledPromise()
           : this.#timeit(
-              adaptorList.getContextData,
-              [address],
-              computeConfig?.DEBUG
-            ),
-        disabledAdaptors.includes('context')
-          ? this.#disabledPromise()
-          : this.#timeit(
-              adaptorList.getContextData,
+              adaptorList.getCommonsstackData,
               [address],
               computeConfig?.DEBUG
             ),
@@ -182,9 +187,9 @@ class Omnid {
             ),
         disabledAdaptors.includes('cryptoscamdb')
           ? this.#disabledPromise()
-          : this.#timeit(
+          : this.#timeitWithConfig(
               adaptorList.getCryptoscamdbData,
-              [address],
+              [address, computeConfig],
               computeConfig?.DEBUG
             ),
         disabledAdaptors.includes('cyberconnect')
@@ -212,13 +217,6 @@ class Omnid {
           ? this.#disabledPromise()
           : this.#timeit(
               adaptorList.getDeepDaoData,
-              [address],
-              computeConfig?.DEBUG
-            ),
-        disabledAdaptors.includes('emblem')
-          ? this.#disabledPromise()
-          : this.#timeit(
-              adaptorList.getEmblemData,
               [address],
               computeConfig?.DEBUG
             ),
@@ -255,6 +253,13 @@ class Omnid {
           : this.#timeitWithConfig(
               adaptorList.getGitcoinData,
               [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('giveth')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getGivethData,
+              [address],
               computeConfig?.DEBUG
             ),
         disabledAdaptors.includes('goldfinch')
@@ -498,6 +503,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('upshot')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getUpshotData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('yup')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -525,7 +537,7 @@ class Omnid {
         promiseArray
       );
 
-      const keys = [
+      const keys: Array<AdaptorKeys> = [
         'aave',
         'alchemy',
         'arcx',
@@ -534,8 +546,8 @@ class Omnid {
         'boardroom',
         'brightid',
         'celo',
+        'chainabuse',
         'coinvise',
-        'context',
         'commonsstack',
         'coordinape',
         'cryptorelief',
@@ -544,12 +556,12 @@ class Omnid {
         'dapplist',
         'debank',
         'deepdao',
-        'emblem',
         'ens',
         'etherscan',
         'forta',
         'foundation',
         'gitcoin',
+        'giveth',
         'goldfinch',
         'governordao',
         'hiveone',
@@ -585,6 +597,7 @@ class Omnid {
         'uniswap',
         'unstoppable',
         'upala',
+        'upshot',
         'yup',
         'zapper',
         'zora',

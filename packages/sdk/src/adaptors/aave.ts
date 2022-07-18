@@ -1,4 +1,4 @@
-import { ComputeConfig, Dictionary } from '../types';
+import { AdaptorDeets, ComputeConfig, Dictionary } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 interface AaveResp {
@@ -48,3 +48,12 @@ export default async function getAaveData(
     return false;
   }
 }
+
+export const AaveAdaptorDeets: AdaptorDeets = {
+  id: 'aave',
+  name: 'Aave',
+  projectThumbnail:
+    'ipfs://bafybeieth5ufoyo27annpgf7gp4wi2eubx2xnvvr7ixscbhvy5m6hgtcs4/aave.webp',
+  projectUrl: 'https://aave.com',
+  requiredConfigKeys: ['zapperApiKey'],
+};

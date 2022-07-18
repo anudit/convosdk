@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface MirrorResult {
@@ -76,3 +77,12 @@ export default async function getMirrorData(address: string) {
     return false;
   }
 }
+
+export const MirrorAdaptorDeets: AdaptorDeets = {
+  id: 'mirror',
+  name: 'Mirror',
+  projectThumbnail:
+    'ipfs://bafybeicjkuae4l76ku22lldchnvdofbik45d6bemxh223ksa4kg6cgwqxa/mirror.webp',
+  projectUrl: 'https://mirror.xyz/',
+  requiredConfigKeys: [],
+};

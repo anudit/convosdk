@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface EmblemResult {
@@ -11,6 +12,9 @@ interface EmblemResult {
   };
 }
 
+/**
+ * @deprecated
+ */
 export default async function getEmblemData(address = '') {
   const jsonData = (await gqlFetcher(
     'https://emblem-api.onrender.com/graphql',
@@ -28,3 +32,12 @@ export default async function getEmblemData(address = '') {
     ? jsonData['data']['allRankings']['nodes'][0]
     : false;
 }
+
+export const EmblemAdaptorDeets: AdaptorDeets = {
+  id: 'emblem',
+  name: 'Emblem',
+  projectThumbnail:
+    'ipfs://bafybeifxtzelu7z4m5g5w2ads5xb3e7lqtiv6ulmqaewl73kiv46pgr2rq/emblem.webp',
+  projectUrl: 'https://emblemdao.com/',
+  requiredConfigKeys: [],
+};

@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 interface DeepdaoResp {
   message: string;
@@ -33,3 +34,12 @@ export default async function getDeepDaoData(address: string) {
     };
   }
 }
+
+export const DeepdaodaptorDeets: AdaptorDeets = {
+  id: 'deepdao',
+  name: 'DeepDAO',
+  projectThumbnail:
+    'ipfs://bafybeie3ae7x22g4gew436khmacyi76nnfh65t46pmzemnerutj5titbqi/deepdao.webp',
+  projectUrl: 'https://deepdao.io/',
+  requiredConfigKeys: [],
+};

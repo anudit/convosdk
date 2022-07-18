@@ -1,4 +1,4 @@
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 interface CryptoReliefResult {
@@ -19,3 +19,12 @@ export default async function getCryptoreliefData(
     amount: 'amount' in json ? json?.amount : 0,
   };
 }
+
+export const CryptoreliefAdaptorDeets: AdaptorDeets = {
+  id: 'cryptorelief',
+  name: 'Cryptorelief',
+  projectThumbnail:
+    'ipfs://bafybeignln4gwzsypz2ejlkcltw34ziyejuajptdfdwq3gn3hokokjs7wi/cryptorelief.webp',
+  projectUrl: 'https://cryptorelief.in/',
+  requiredConfigKeys: ['CNVSEC_ID'],
+};

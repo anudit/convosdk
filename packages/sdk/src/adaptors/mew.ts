@@ -1,4 +1,4 @@
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 interface MewResult {
@@ -25,3 +25,12 @@ export default async function getMewData(
     return false;
   }
 }
+
+export const MewAdaptorDeets: AdaptorDeets = {
+  id: 'mew',
+  name: 'MyEtherWallet',
+  projectThumbnail:
+    'ipfs://bafybeifrczo54jzhs3h4fevehtjuckysugmp7luocahlnv6sbuhkyrfume/mew.webp',
+  projectUrl: 'https://www.myetherwallet.com/',
+  requiredConfigKeys: ['CNVSEC_ID'],
+};

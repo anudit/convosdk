@@ -191,12 +191,13 @@ async function runStuff() {
         "0xd3e9d60e4e4de615124d5239219f32946d10151d", // alexmasmej
         "0x8576aCC5C05D6Ce88f4e49bf65BdF0C62F91353C", // sdn - OFAC sanction
         "0x416365993481e52e0472e7417656276d4e147a00", // rocifi
-        "0x225b11096e5aec644bf1a0f09358d9534ce20903",
-        "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
-        "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
-        "0x28b4de9c45af6cb1a5a46c19909108f2bb74a2be",
-        "0x597D1747256304d5d47eCE999A8e5bAdE6d41845",
-        "0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443",
+        "0x166C7Ae68dc800De903f891a3bb2c9258d797CcA", // chainabuse
+        // "0x225b11096e5aec644bf1a0f09358d9534ce20903",
+        // "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
+        // "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
+        // "0x28b4de9c45af6cb1a5a46c19909108f2bb74a2be",
+        // "0x597D1747256304d5d47eCE999A8e5bAdE6d41845",
+        // "0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443",
     ].map(ethers.utils.getAddress)
 
     ethers
@@ -213,22 +214,22 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getBoardroomData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getCeloData, withConfig: false})
+        .addTest({ fn: convoInstance.omnid.adaptors.getChainabuseData, withConfig: false})
         .addTest({ fn: convoInstance.omnid.adaptors.getCoinviseData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getCommonsstackData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getContextData, withConfig: false  })
         // .addTest({ fn: convoInstance.omnid.adaptors.getCoordinapeData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getCryptoreliefData, withConfig: true })
-        .addTest({ fn: convoInstance.omnid.adaptors.getCryptoscamdbData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getCryptoscamdbData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getCyberconnectData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getDapplistData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getDebankData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getDeepDaoData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.addressToEns, withConfig: false })
-        // .addTest({ fn: convoInstance.omnid.adaptors.getEmblemData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getEtherscanData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getFortaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getFoundationData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getGitcoinData, withConfig: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getGivethData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getGoldfinchData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getGovernordaoData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getHiveOneData, withConfig: true })
@@ -262,6 +263,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getSybilData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getUpalaData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getUpshotData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getYupData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getZapperData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true })
@@ -272,7 +274,7 @@ async function runStuff() {
 
     bench2.addTest({
         fn: computeTrustScore = async (address, withConfig) => {
-            return await convoInstance.omnid.computeTrustScore(address, config, ['coordinape', 'arcx', 'cryptoscamdb', 'emblem'])
+            return await convoInstance.omnid.computeTrustScore(address, config, ['coordinape', 'arcx'])
         }, withConfig: true, verbose: false,
     })
 

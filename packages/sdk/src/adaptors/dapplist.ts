@@ -1,4 +1,4 @@
-import { Dictionary } from '../types';
+import { AdaptorDeets, Dictionary } from '../types';
 import { fetcher } from '../utils';
 
 interface DapplistResult {
@@ -26,3 +26,12 @@ export default async function getDapplistData(address: string) {
 
   return resp;
 }
+
+export const DapplistAdaptorDeets: AdaptorDeets = {
+  id: 'dapplist',
+  name: 'The Dapp List',
+  projectThumbnail:
+    'ipfs://bafybeienmsbuquxbc7za5jgaa2gxm6fir4eorpujcwqkvzhefofsvhefde/dapplist.webp',
+  projectUrl: 'https://thedapplist.com/',
+  requiredConfigKeys: [],
+};

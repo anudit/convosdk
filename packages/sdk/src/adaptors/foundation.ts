@@ -1,4 +1,4 @@
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, gqlFetcher } from '../utils';
 
 interface FoundationQueryResult {
@@ -230,3 +230,12 @@ export default async function getFoundationData(
     followingCount,
   };
 }
+
+export const FoundationQueryResult: AdaptorDeets = {
+  id: 'foundation',
+  name: 'Foundation',
+  projectThumbnail:
+    'ipfs://bafybeigyxx62xnxt7p3haw5xvsn3d5zzvmwwzqciw2ii2tvkzsihg2m3di/foundation.webp',
+  projectUrl: 'https://foundation.app',
+  requiredConfigKeys: [],
+};

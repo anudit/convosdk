@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface CommonsStackResult {
@@ -24,3 +25,12 @@ export default async function getCommonsstackData(address = '') {
     return false;
   }
 }
+
+export const CommonsstackAdaptorDeets: AdaptorDeets = {
+  id: 'commonsstack',
+  name: 'Common Stack',
+  projectThumbnail:
+    'ipfs://bafybeidqff4pbexxlyfd5v3cevcscjtrcryuvr3ov656djv4hm27ozrawu/commonsstack.webp',
+  projectUrl: 'https://commonsstack.org',
+  requiredConfigKeys: [],
+};

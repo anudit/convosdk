@@ -1,4 +1,4 @@
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 interface RaribleResult {
@@ -77,3 +77,12 @@ export default async function getRaribleData(
     ...metadata,
   };
 }
+
+export const RaribleAdaptorDeets: AdaptorDeets = {
+  id: 'rarible',
+  name: 'Rarible',
+  projectThumbnail:
+    'ipfs://bafybeifge3etax5kix5yglnl4qydzuir2h3lttvmlyfgadd7en6sd7rs7m/rarible.webp',
+  projectUrl: 'https://rarible.com/',
+  requiredConfigKeys: ['etherumPriceInUsd'],
+};

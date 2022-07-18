@@ -1,4 +1,5 @@
 import { formatEther } from 'ethers/lib/utils';
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface KlimaResp {
@@ -56,3 +57,12 @@ export default async function getKlimaData(address: string) {
     };
   }
 }
+
+export const KlimaAdaptorDeets: AdaptorDeets = {
+  id: 'klima',
+  name: 'KlimaDAO',
+  projectThumbnail:
+    'ipfs://bafybeifdnm2g6t5yvsfa4yune7wgrvbymeallrzh572opnskecg6xex4vu/karma.webp',
+  projectUrl: 'https://www.klimadao.finance/',
+  requiredConfigKeys: [],
+};

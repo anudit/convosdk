@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 type Profile = {
@@ -135,3 +136,12 @@ export default async function getLensData(address: string) {
     return false;
   }
 }
+
+export const LensAdaptorDeets: AdaptorDeets = {
+  id: 'lens',
+  name: 'Lens Protocol',
+  projectThumbnail:
+    'ipfs://bafybeicxpxz2q5khqxofcxtgvwili76zxmgbrsjlseu3yji7vpjw7mreua/lens.webp',
+  projectUrl: 'https://lens.dev/',
+  requiredConfigKeys: [],
+};

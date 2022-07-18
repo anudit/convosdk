@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface UpshotResult {
@@ -50,3 +51,12 @@ export default async function getUpshotData(address: string) {
     ? false
     : jsonData.data.getUser.addresses[0];
 }
+
+export const UpshotAdaptorDeets: AdaptorDeets = {
+  id: 'upshot',
+  name: 'Upshot GMI',
+  projectThumbnail:
+    'ipfs://bafybeieuuiksja4gbfyx42lyk4uiayzvkmlvdw57fdkkdwa5juwjobnjju/upshot.webp',
+  projectUrl: 'https://upshot.xyz/gmi',
+  requiredConfigKeys: [],
+};

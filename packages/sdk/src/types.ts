@@ -82,9 +82,102 @@ export type AdaptorFunctionWithConfigType = (
   computeConfig: ComputeConfig
 ) => Promise<any>;
 
-
 export interface EtherscanResult {
   error?: string;
   label?: string;
   tags?: Array<string>;
+}
+
+export interface CommentResp {
+  author: string;
+  authorENS: false | string;
+  chain: string;
+  createdOn: string;
+  downvotes: Array<string>;
+  editHistory: Array<string>;
+  metadata: Dictionary<string>;
+  replyTo: string;
+  tag1: string;
+  tag2: string;
+  text: string;
+  tid: string;
+  upvotes: Array<string>;
+  url: string;
+  _id: string;
+  _mod: number;
+  success?: boolean;
+  error?: string;
+}
+
+export type AdaptorKeys =
+  | 'aave'
+  | 'alchemy'
+  | 'arcx'
+  | 'asyncart'
+  | 'bird'
+  | 'boardroom'
+  | 'brightid'
+  | 'celo'
+  | 'chainabuse'
+  | 'coinvise'
+  | 'commonsstack'
+  | 'coordinape'
+  | 'cryptorelief'
+  | 'cryptoscamdb'
+  | 'cyberconnect'
+  | 'dapplist'
+  | 'debank'
+  | 'deepdao'
+  | 'ens'
+  | 'etherscan'
+  | 'forta'
+  | 'foundation'
+  | 'gitcoin'
+  | 'giveth'
+  | 'goldfinch'
+  | 'governordao'
+  | 'hiveone'
+  | 'huddln'
+  | 'idena'
+  | 'karma'
+  | 'klima'
+  | 'knownorigin'
+  | 'labels'
+  | 'layer3'
+  | 'learnweb3'
+  | 'lens'
+  | 'metagame'
+  | 'mew'
+  | 'mirror'
+  | 'poap'
+  | 'poh'
+  | 'pop'
+  | 'polygon'
+  | 'projectgalaxy'
+  | 'quadrata'
+  | 'questbook'
+  | 'rabbithole'
+  | 'rarible'
+  | 'rocifi'
+  | 'rss3'
+  | 'sdn'
+  | 'showtime'
+  | 'superrare'
+  | 'tokenblacklists'
+  | 'txn'
+  | 'unipass'
+  | 'uniswap'
+  | 'unstoppable'
+  | 'upala'
+  | 'upshot'
+  | 'yup'
+  | 'zapper'
+  | 'zora';
+
+export interface AdaptorDeets {
+  id: AdaptorKeys;
+  name: string;
+  projectUrl: string;
+  projectThumbnail: `ipfs://${string}`;
+  requiredConfigKeys: Array<keyof ComputeConfig>;
 }

@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface FortaResult {
@@ -68,3 +69,12 @@ export default async function getFortaData(address: string) {
     return false;
   }
 }
+
+export const FortaAdaptorDeets: AdaptorDeets = {
+  id: 'forta',
+  name: 'Forta',
+  projectThumbnail:
+    'ipfs://bafybeibocpjxjt4b7gsc6dozle4jv5cqyeljz46z6hk7p5djgonqpwhvvi/forta.webp',
+  projectUrl: 'https://forta.network/',
+  requiredConfigKeys: [],
+};

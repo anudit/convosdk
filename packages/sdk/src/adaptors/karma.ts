@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 interface KarmaResult {
@@ -36,3 +37,12 @@ export default async function getKarmaData(address: string) {
     return false;
   }
 }
+
+export const KarmaAdaptorDeets: AdaptorDeets = {
+  id: 'karma',
+  name: 'Karma',
+  projectThumbnail:
+    'ipfs://bafybeifdnm2g6t5yvsfa4yune7wgrvbymeallrzh572opnskecg6xex4vu/karma.webp',
+  projectUrl: 'https://www.showkarma.xyz',
+  requiredConfigKeys: [],
+};

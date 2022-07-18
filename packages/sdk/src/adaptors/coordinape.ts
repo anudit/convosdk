@@ -1,6 +1,9 @@
-import { Dictionary } from '../types';
+import { AdaptorDeets, Dictionary } from '../types';
 import { fetcher } from '../utils';
 
+/**
+ * @deprecated
+ */
 export default async function getCoordinapeData(address: string) {
   try {
     const json = (await fetcher(
@@ -28,3 +31,12 @@ export default async function getCoordinapeData(address: string) {
     return false;
   }
 }
+
+export const CoordinapeAdaptorDeets: AdaptorDeets = {
+  id: 'coordinape',
+  name: 'Coordinape',
+  projectThumbnail:
+    'ipfs://bafybeibqjjtpcymqzs4ha7542nitglifxfwcbdhmggiwtembqfuroaxzmq/coordinape.webp',
+  projectUrl: 'https://coordinape.com',
+  requiredConfigKeys: [],
+};

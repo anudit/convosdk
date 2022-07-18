@@ -1,4 +1,4 @@
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 interface HiveoneResult {
@@ -22,3 +22,12 @@ export default async function getHiveOneData(
   if (Boolean(error) === true) return false;
   else return data;
 }
+
+export const HiveoneAdaptorDeets: AdaptorDeets = {
+  id: 'hiveone',
+  name: 'Hive.one',
+  projectThumbnail:
+    'ipfs://bafybeibckyh7v7r7y3ys5nm75vsklltohrlbqtuor3k4r7xntwmqy4bvie/hiveone.webp',
+  projectUrl: 'https://hive.one',
+  requiredConfigKeys: ['CNVSEC_ID'],
+};

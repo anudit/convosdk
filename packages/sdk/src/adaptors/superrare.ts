@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 interface SuperrareResult {
@@ -107,3 +108,12 @@ export default async function getSuperrareData(address: string) {
     return false;
   }
 }
+
+export const SuperrareAdaptorDeets: AdaptorDeets = {
+  id: 'superrare',
+  name: 'SuperRare',
+  projectThumbnail:
+    'ipfs://bafybeifbpzre5wua6ddjw6hdik7b7cit6s7j7it52fbsoodgprbejsxbv4/superrare.webp',
+  projectUrl: 'https://superrare.com/',
+  requiredConfigKeys: [],
+};

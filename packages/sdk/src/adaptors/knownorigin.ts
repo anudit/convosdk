@@ -1,5 +1,5 @@
 import { formatEther } from 'ethers/lib/utils';
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, gqlFetcher } from '../utils';
 
 interface QueryResult {
@@ -76,3 +76,12 @@ export default async function getKnownOriginData(
     totalAmountSold,
   };
 }
+
+export const KnownoriginAdaptorDeets: AdaptorDeets = {
+  id: 'knownorigin',
+  name: 'KnownOrigin',
+  projectThumbnail:
+    'ipfs://bafybeiedwyetk26axllzwcd5anlr57ym4scnnpyoig2kkol7j6oks4byom/knownorigin.webp',
+  projectUrl: 'https://knownorigin.io',
+  requiredConfigKeys: [],
+};

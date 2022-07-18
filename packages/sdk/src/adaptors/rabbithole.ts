@@ -1,4 +1,4 @@
-import { Dictionary } from '../types';
+import { AdaptorDeets, Dictionary } from '../types';
 import { fetcher, gqlFetcher } from '../utils';
 
 interface RabbitholeResult {
@@ -98,3 +98,12 @@ export default async function getRabbitholeData(address = '') {
 
   return resp;
 }
+
+export const RabbitholeAdaptorDeets: AdaptorDeets = {
+  id: 'rabbithole',
+  name: 'RabbitHole',
+  projectThumbnail:
+    'ipfs://bafybeiaye2jnjskl4fmxexgv6mjpkcq6mxqarwkdihgodkvze7ijjovx2q/rabbithole.webp',
+  projectUrl: 'https://rabbithole.gg/',
+  requiredConfigKeys: [],
+};

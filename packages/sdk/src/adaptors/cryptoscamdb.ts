@@ -1,25 +1,31 @@
-import { fetcher } from '../utils';
+import { AdaptorDeets, ComputeConfig } from '../types';
+import { checkComputeConfig, fetcher } from '../utils';
 
 interface CryptoscamdbResult {
-  input: string;
-  success: boolean;
-  message?: string;
-  result?: {
-    status: string;
-    type: string;
-    coin: string;
+  reports: Array<any>;
+}
+
+export default async function getCryptoscamdbData(
+  address: string,
+  computeConfig: ComputeConfig
+) {
+  checkComputeConfig('getCryptoscamdbData', computeConfig, ['CNVSEC_ID']);
+
+  const json = (await fetcher(
+    'GET',
+    `https://cnvsec.vercel.app/api/omnid/cryptoscamdb?id=${computeConfig.CNVSEC_ID}&address=${address}`
+  )) as CryptoscamdbResult;
+
+  return {
+    reports: 'reports' in json ? json.reports : false,
   };
 }
 
-export default async function getCryptoscamdbData(address: string) {
-  const data = (await fetcher(
-    'GET',
-    `https://api.cryptoscamdb.org/v1/check/${address}`
-  )) as CryptoscamdbResult;
-
-  if (data.success === true && Object.keys(data).includes('result') === true) {
-    return data.result;
-  } else {
-    return false;
-  }
-}
+export const CryptoscamdbAdaptorDeets: AdaptorDeets = {
+  id: 'cryptoscamdb',
+  name: 'Cryptoscamdb',
+  projectThumbnail:
+    'ipfs://bafybeievhwdlwhpw2ubtm5syddgco2armvs3kzjyv43oktlqq2f4rwqut4/cryptoscamdb.webp',
+  projectUrl: 'https://cryptoscamdb.org/',
+  requiredConfigKeys: ['CNVSEC_ID'],
+};

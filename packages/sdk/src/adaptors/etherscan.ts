@@ -1,4 +1,4 @@
-import { ComputeConfig, EtherscanResult } from '../types';
+import { AdaptorDeets, ComputeConfig, EtherscanResult } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 export default async function getEtherscanData(
@@ -15,3 +15,12 @@ export default async function getEtherscanData(
     ? false
     : { label: json.label, tags: json.tags };
 }
+
+export const EtherscanAdaptorDeets: AdaptorDeets = {
+  id: 'etherscan',
+  name: 'Etherscan',
+  projectThumbnail:
+    'ipfs://bafybeifieqqhcrljyfkztqethmnc2tfgcdfod6oakdzmv6h4ph5y7gef44/etherscan.webp',
+  projectUrl: 'https://etherscan.io/',
+  requiredConfigKeys: [],
+};

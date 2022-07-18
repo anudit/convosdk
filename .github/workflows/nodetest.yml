@@ -44,5 +44,21 @@ jobs:
       - name: Build SDK Package
         run: cd ./packages/sdk && pnpm build
 
+      - name: Generate Bundle Stats
+        run: cd ./packages/sdk && pnpm bundlestats
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: stats-sdk.html
+          path: ./packages/sdk/stats.html
+
       - name: Build React Package
         run: cd ./packages/react && pnpm build
+
+      - name: Generate Bundle Stats
+        run: cd ./packages/react && pnpm bundlestats
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: stats-react.html
+          path: ./packages/react/stats.html

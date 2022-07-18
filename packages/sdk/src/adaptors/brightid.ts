@@ -1,4 +1,4 @@
-import { Dictionary } from '../types';
+import { AdaptorDeets, Dictionary } from '../types';
 import { fetcher } from '../utils';
 
 export default async function checkBrightId(address: string): Promise<boolean> {
@@ -13,3 +13,12 @@ export default async function checkBrightId(address: string): Promise<boolean> {
     return false;
   }
 }
+
+export const BrightidAdaptorDeets: AdaptorDeets = {
+  id: 'brightid',
+  name: 'Brightid',
+  projectThumbnail:
+    'ipfs://bafybeicuxydcmozemzvih35nfk7wfizkvbqlrwfrbht3j25qsbwayhuoaa/brightid.webp',
+  projectUrl: 'https://brightid.org/',
+  requiredConfigKeys: [],
+};

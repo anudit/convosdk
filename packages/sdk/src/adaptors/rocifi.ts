@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface Rocifi {
@@ -28,3 +29,12 @@ export default async function getRocifiData(address: string) {
     return false;
   }
 }
+
+export const RocifiAdaptorDeets: AdaptorDeets = {
+  id: 'rocifi',
+  name: 'RociFi',
+  projectThumbnail:
+    'ipfs://bafybeih5shvxtmzxrblufp4ea2ewbvvfmifsosx6pwxej2fksngnl4zumm/rocifi.webp',
+  projectUrl: 'https://roci.fi/',
+  requiredConfigKeys: [],
+};

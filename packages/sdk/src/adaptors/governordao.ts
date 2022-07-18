@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 interface GovernordaoResp {
@@ -20,3 +21,12 @@ export default async function getGovernordaoData(address: string) {
     return false;
   }
 }
+
+export const GovernordaoAdaptorDeets: AdaptorDeets = {
+  id: 'governordao',
+  name: 'Governor',
+  projectThumbnail:
+    'ipfs://bafybeiddt2ey3wlnymdi4gwa7femxo26hcesv4xlghoooq3q7naia7itay/goldfinch.webp',
+  projectUrl: 'https://governordao.org',
+  requiredConfigKeys: [],
+};

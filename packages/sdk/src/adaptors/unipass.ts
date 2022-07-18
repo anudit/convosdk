@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 interface UnipassResult {
@@ -36,3 +37,12 @@ export default async function getUnipassData(address: string) {
     return false;
   }
 }
+
+export const UnipassAdaptorDeets: AdaptorDeets = {
+  id: 'unipass',
+  name: 'Unipass',
+  projectThumbnail:
+    'ipfs://bafybeid64xg7kk7vatqfrfbhxalqw3bkrv4tgapf6molnnc24un6qpea2i/unipass.webp',
+  projectUrl: 'https://unipass.id/',
+  requiredConfigKeys: [],
+};

@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 export default async function getPoapData(address: string): Promise<number> {
@@ -8,3 +9,12 @@ export default async function getPoapData(address: string): Promise<number> {
 
   return data.length;
 }
+
+export const PoapAdaptorDeets: AdaptorDeets = {
+  id: 'poap',
+  name: 'POAP',
+  projectThumbnail:
+    'ipfs://bafybeigvjsmjlv7rcut44ner6skg5z2jxft2svjvvntawvelp7vquni52m/poap.webp',
+  projectUrl: 'https://poap.xyz/',
+  requiredConfigKeys: [],
+};

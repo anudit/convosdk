@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface HuddlnResult {
@@ -29,3 +30,12 @@ export default async function getHuddlnData(address: string) {
     return false;
   }
 }
+
+export const HuddlnAdaptorDeets: AdaptorDeets = {
+  id: 'huddln',
+  name: 'Huddln',
+  projectThumbnail:
+    'ipfs://bafybeidnn2ds4ojl7zm4amtbaqoeucj7t42zw2bsfgq4cxuaa33v7adilu/huddln.webp',
+  projectUrl: 'https://www.huddln.io/',
+  requiredConfigKeys: [],
+};

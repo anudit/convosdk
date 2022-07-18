@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 interface IdenaResult {
@@ -25,3 +26,12 @@ export default async function checkIdena(address: string) {
     return false;
   }
 }
+
+export const IdenaAdaptorDeets: AdaptorDeets = {
+  id: 'idena',
+  name: 'Idena',
+  projectThumbnail:
+    'ipfs://bafybeidygte5t5nvm5tjmeiplo7zletlc7om4fyb7464okumpocy5tjm3e/idena.webp',
+  projectUrl: 'https://idena.io',
+  requiredConfigKeys: [],
+};

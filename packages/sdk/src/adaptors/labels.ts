@@ -1,4 +1,4 @@
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 export default async function getLabelData(
@@ -13,3 +13,12 @@ export default async function getLabelData(
   );
   return json;
 }
+
+export const LabelAdaptorDeets: AdaptorDeets = {
+  id: 'labels',
+  name: 'Labels - Omnid',
+  projectThumbnail:
+    'ipfs://bafybeif655asxj6dh437nvnz3aap7gomxgni2nfsotxi3y33xbveroc75u/omnid.webp',
+  projectUrl: 'https://omnid.space/',
+  requiredConfigKeys: ['CNVSEC_ID'],
+};

@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 interface DebankResult {
@@ -27,3 +28,12 @@ export default async function getDebankData(address: string) {
     return false;
   }
 }
+
+export const DebankAdaptorDeets: AdaptorDeets = {
+  id: 'debank',
+  name: 'DeBank',
+  projectThumbnail:
+    'ipfs://bafybeifnz5iao33j3ntmz5pdbxoq7uiupmgh2dxxlhsy46ucwkbvr2zwy4/debank.webp',
+  projectUrl: 'https://thedebank.com/',
+  requiredConfigKeys: [],
+};

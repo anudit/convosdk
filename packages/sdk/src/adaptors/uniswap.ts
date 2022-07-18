@@ -1,4 +1,4 @@
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 export default async function getSybilData(
@@ -13,3 +13,12 @@ export default async function getSybilData(
   );
   return json;
 }
+
+export const UniswapAdaptorDeets: AdaptorDeets = {
+  id: 'uniswap',
+  name: 'Sybil - Uniswap',
+  projectThumbnail:
+    'ipfs://bafybeigzrduey2lvi7fz6lbv567rxlynjww6khv24w4duwqgnjtkcjlthe/sybil.webp',
+  projectUrl: 'https://sybil.org/',
+  requiredConfigKeys: ['CNVSEC_ID'],
+};

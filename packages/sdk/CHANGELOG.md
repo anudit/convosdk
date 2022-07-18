@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.13
+
+- Add Details to all adaptors.
+- Add `chainabuse`, `giveth`, `upshot` Adaptors.
+- Improve `cryptoscamdb`, `txn`, `quadrata`, `pop` Adaptors.
+- Improve Types.
+- Update Dependencies.
+
 ## 0.5.12
 
 - Add [`rocifi`](https://roci.fi) Credit Score Adaptor.

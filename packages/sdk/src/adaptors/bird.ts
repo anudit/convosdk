@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 interface BirdResult {
@@ -23,3 +24,12 @@ export default async function getBirdData(address: string) {
     return false;
   }
 }
+
+export const BirdAdaptorDeets: AdaptorDeets = {
+  id: 'bird',
+  name: 'Bird',
+  projectThumbnail:
+    'ipfs://bafybeih4dwjzinkhtznwllfnb2xybakfigaiqsejaeik4mcy2gip7wr7t4/bird.webp',
+  projectUrl: 'https://bird.money/',
+  requiredConfigKeys: [],
+};

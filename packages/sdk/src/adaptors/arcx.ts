@@ -1,4 +1,4 @@
-import { Dictionary } from '../types';
+import { AdaptorDeets, Dictionary } from '../types';
 import { fetcher } from '../utils';
 
 interface ArcxResult {
@@ -37,3 +37,12 @@ export default async function getArcxData(address: string) {
     };
   }
 }
+
+export const ArcxAdaptorDeets: AdaptorDeets = {
+  id: 'arcx',
+  name: 'ArcX',
+  projectThumbnail:
+    'ipfs://bafybeifeexiq5ra5hbmgwgqybncboz7mhaxrvyusn5z6svtml23dl4xpau/arcx.webp',
+  projectUrl: 'https://arcx.money',
+  requiredConfigKeys: [],
+};

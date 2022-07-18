@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface Layer3Result {
@@ -110,3 +111,12 @@ export default async function getLayer3Data(address: string) {
 
   return Boolean(data) === true ? data : false;
 }
+
+export const Layer3AdaptorDeets: AdaptorDeets = {
+  id: 'layer3',
+  name: 'Layer3',
+  projectThumbnail:
+    'ipfs://bafybeiaxvjllwnmelqo4l65umbkebgjgl2tixkexbvvnwrvaoowz6pyqle/layer3.webp',
+  projectUrl: 'https://layer3.xyz/',
+  requiredConfigKeys: [],
+};

@@ -1,4 +1,4 @@
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher, gqlFetcher } from '../utils';
 
 interface TokenResult {
@@ -209,3 +209,12 @@ export default async function getCoinviseData(
     };
   }
 }
+
+export const CoinviseAdaptorDeets: AdaptorDeets = {
+  id: 'coinvise',
+  name: 'Coinvise',
+  projectThumbnail:
+    'ipfs://bafybeifuqglx7eqjd7fvvaljpsb4tn3focgaqvylqocu6bwekynqjxh6h4/coinvise.webp',
+  projectUrl: 'https://www.coinvise.co',
+  requiredConfigKeys: [],
+};

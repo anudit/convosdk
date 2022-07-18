@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface UpalaResult {
@@ -29,3 +30,12 @@ export default async function getUpalaData(address: string) {
   if (data.data.upalaID === null) return false;
   else return data.data.upalaID;
 }
+
+export const UpalaAdaptorDeets: AdaptorDeets = {
+  id: 'upala',
+  name: 'Upala',
+  projectThumbnail:
+    'ipfs://bafybeie52t2y555evc3aoqwg7ruursbgrje2qt5ssmqtiahbrtunpr6t3y/upala.webp',
+  projectUrl: 'https://upala.id/',
+  requiredConfigKeys: [],
+};

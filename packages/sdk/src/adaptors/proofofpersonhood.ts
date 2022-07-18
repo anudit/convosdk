@@ -1,4 +1,4 @@
-import { Dictionary } from '../types';
+import { AdaptorDeets, Dictionary } from '../types';
 import { fetcher, gqlFetcher } from '../utils';
 
 interface PoppQueryResult {
@@ -20,7 +20,7 @@ interface PoppResult {
 export default async function getPopData(address: string) {
   try {
     const response = (await gqlFetcher(
-      'https://api.thegraph.com/subgraphs/name/anudit/popp',
+      'https://api.studio.thegraph.com/query/1649/popp/v1.0',
       `{
         passports(where: {id: "${address.toLowerCase()}"}) {
           id
@@ -48,3 +48,12 @@ export default async function getPopData(address: string) {
     return false;
   }
 }
+
+export const PopAdaptorDeets: AdaptorDeets = {
+  id: 'pop',
+  name: 'Proof of Personhood Passport',
+  projectThumbnail:
+    'ipfs://bafybeig5faqu6j6ryerf5z5eupjrdaep7oyfmwtuagsiskuz6d2owmwhnm/pop.webp',
+  projectUrl: 'https://proofofpersonhood.com/',
+  requiredConfigKeys: [],
+};

@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface QuadResp {
@@ -8,7 +9,7 @@ interface QuadResp {
 
 export default async function getQuadrataData(address: string) {
   const { data } = (await gqlFetcher(
-    'https://api.studio.thegraph.com/query/1649/quadrata/v1.5',
+    'https://api.studio.thegraph.com/query/1649/quadrata/v1.10',
     `{
         quadrataPassports(where: {owner: "${address.toLowerCase()}"}) {
           tokenId
@@ -22,3 +23,12 @@ export default async function getQuadrataData(address: string) {
   if (data.quadrataPassports.length > 0) return data.quadrataPassports[0];
   else return false;
 }
+
+export const QuadrataAdaptorDeets: AdaptorDeets = {
+  id: 'quadrata',
+  name: 'Quadrata',
+  projectThumbnail:
+    'ipfs://bafybeig5faqu6j6ryerf5z5eupjrdaep7oyfmwtuagsiskuz6d2owmwhnm/quadrata.webp',
+  projectUrl: 'https://quadrata.io/',
+  requiredConfigKeys: [],
+};

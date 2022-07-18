@@ -1,5 +1,5 @@
 import { getAddress } from 'ethers/lib/utils';
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 export default async function getAlchemyData(
@@ -21,3 +21,12 @@ export default async function getAlchemyData(
     return false;
   }
 }
+
+export const AlchemyAdaptorDeets: AdaptorDeets = {
+  id: 'alchemy',
+  name: 'Alchemy',
+  projectThumbnail:
+    'ipfs://bafybeibbpdaccux3g3njdv57mndmvor5bds4sllrdnigupsb7fex6gnv4a/alchemy.webp',
+  projectUrl: 'https://alchemy.com',
+  requiredConfigKeys: ['alchemyApiKey'],
+};

@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 export default async function getPolygonData(address = '') {
@@ -13,3 +14,12 @@ export default async function getPolygonData(address = '') {
     return false;
   }
 }
+
+export const PolygonAdaptorDeets: AdaptorDeets = {
+  id: 'polygon',
+  name: 'Polygon Analytics',
+  projectThumbnail:
+    'ipfs://bafybeiafif2n3pjw5k6zsvojxjkqp5gmtnathev5xdvrfpp2q5zkg4evkq/polygon.webp',
+  projectUrl: 'https://polygon.technology/',
+  requiredConfigKeys: [],
+};

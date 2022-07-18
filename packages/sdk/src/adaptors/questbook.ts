@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface QuestbookResult {
@@ -97,3 +98,12 @@ export default async function getQuestbookData(address: string) {
     grants,
   };
 }
+
+export const QuestbookAdaptorDeets: AdaptorDeets = {
+  id: 'questbook',
+  name: 'Questbook',
+  projectThumbnail:
+    'ipfs://bafybeieiyytjum35vqfi7hgimjag4cp6cltmqk7qcx7uicdfw4g23vh36a/questbook.webp',
+  projectUrl: 'https://questbook.app/',
+  requiredConfigKeys: [],
+};

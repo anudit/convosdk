@@ -1,4 +1,4 @@
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 interface SdnResult {
@@ -20,3 +20,13 @@ export default async function getSdnData(
   if ('error' in json == true) return false;
   else return json?.reports;
 }
+
+export const SdnAdaptorDeets: AdaptorDeets = {
+  id: 'sdn',
+  name: 'OFAC - Specially Designated Nationals',
+  projectThumbnail:
+    'ipfs://bafybeigxqpkbpgrhy5x3rcbvvtsv6sifq34h2am5lgq3xs6t3kcwkmrzpu/sdn.webp',
+  projectUrl:
+    'https://home.treasury.gov/policy-issues/financial-sanctions/specially-designated-nationals-and-blocked-persons-list-sdn-human-readable-lists',
+  requiredConfigKeys: ['CNVSEC_ID'],
+};

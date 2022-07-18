@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface GoldfinchResult {
@@ -29,3 +30,12 @@ export default async function getGoldfinchData(address: string) {
   if (data?.user == null) return false;
   else return data?.user;
 }
+
+export const GoldfinchAdaptorDeets: AdaptorDeets = {
+  id: 'goldfinch',
+  name: 'Goldfinch',
+  projectThumbnail:
+    'ipfs://bafybeibp2nid2m3at33tetayvpvwf2selirppnyakpibnjaa2ba6hik74y/goldfinch.webp',
+  projectUrl: 'https://goldfinch.finance',
+  requiredConfigKeys: [],
+};

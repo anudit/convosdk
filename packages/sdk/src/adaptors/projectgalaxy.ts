@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface ProjectGalaxyResult {
@@ -36,3 +37,12 @@ export default async function getProjectGalaxyData(address: string) {
     ? jsonData['data']['addressInfo']
     : {};
 }
+
+export const ProjectgalaxyAdaptorDeets: AdaptorDeets = {
+  id: 'projectgalaxy',
+  name: 'Project Galaxy',
+  projectThumbnail:
+    'ipfs://bafybeicatpthjnieqrezua5naoeh3yyvboc4z5mirtwtztywvcgi6tsha4/projectgalaxy.webp',
+  projectUrl: 'https://galaxy.eco/',
+  requiredConfigKeys: [],
+};

@@ -1,4 +1,4 @@
-import { ComputeConfig } from '../types';
+import { AdaptorDeets, ComputeConfig } from '../types';
 import { checkComputeConfig, fetcher } from '../utils';
 
 interface AsyncResult {
@@ -90,3 +90,12 @@ export default async function getAsyncartData(
     return false;
   }
 }
+
+export const AsyncartAdaptorDeets: AdaptorDeets = {
+  id: 'asyncart',
+  name: 'Async Art',
+  projectThumbnail:
+    'ipfs://bafybeigmasyef47s36veu4p53i7xhn42kmzoqgzzrhozltcgzjhnsesc7a/asyncart.webp',
+  projectUrl: 'https://async.art',
+  requiredConfigKeys: [],
+};

@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface CeloQueryResult {
@@ -11,7 +12,7 @@ interface CeloQueryResult {
 
 export default async function getCeloData(address: string) {
   try {
-    // TODO: Migrate to Subgraph Studio.
+    // TODO: Migrate to Subgraph Studio, requires Celo support.
     const response = (await gqlFetcher(
       'https://api.thegraph.com/subgraphs/name/anudit/celo-subgraph',
       `{
@@ -37,3 +38,12 @@ export default async function getCeloData(address: string) {
     };
   }
 }
+
+export const CeloAdaptorDeets: AdaptorDeets = {
+  id: 'celo',
+  name: 'Celo',
+  projectThumbnail:
+    'ipfs://bafybeiezc5l34btiqckkrkz763i73nnqgtvp7gjwag3xjjt4w6ukjarbt4/celo.webp',
+  projectUrl: 'https://docs.celo.org/validator-guide/attestation-service',
+  requiredConfigKeys: [],
+};

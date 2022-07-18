@@ -1,4 +1,9 @@
-import { ComputeConfig, Dictionary, EtherscanResult } from '../types';
+import {
+  AdaptorKeys,
+  ComputeConfig,
+  Dictionary,
+  EtherscanResult,
+} from '../types';
 import { checkComputeConfig } from '../utils';
 import {
   getEtherscanData,
@@ -7,6 +12,7 @@ import {
   getCryptoscamdbData,
   getMewData,
   getAlchemyData,
+  getChainabuseData,
 } from '../adaptors';
 
 class Kits {
@@ -30,20 +36,22 @@ class Kits {
 
     const promiseArray = [
       getAlchemyData(address, computeConfig),
-      getCryptoscamdbData(address),
+      getChainabuseData(address),
+      getCryptoscamdbData(address, computeConfig),
       getEtherscanData(address, computeConfig),
       getMewData(address, computeConfig),
       getSdnData(address, computeConfig),
       getTokenBlacklistData(address),
     ];
 
-    const adaptors = [
+    const adaptors: Array<AdaptorKeys> = [
       'alchemy',
+      'chainabuse',
       'cryptoscamdb',
       'etherscan',
       'mew',
       'sdn',
-      'tokenblacklist',
+      'tokenblacklists',
     ];
     const returnData: Dictionary<any> = {};
     const responses = await Promise.allSettled(promiseArray);

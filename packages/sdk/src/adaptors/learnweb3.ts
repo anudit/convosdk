@@ -1,3 +1,4 @@
+import { AdaptorDeets } from '../types';
 import { gqlFetcher } from '../utils';
 
 interface LearnWeb3Resp {
@@ -9,6 +10,7 @@ interface LearnWeb3Resp {
 }
 
 export default async function getLearnWeb3Data(address: string) {
+  // TODO: Migrate to Subgraph Studio, requires Polygon support.
   try {
     const response = (await gqlFetcher(
       'https://api.thegraph.com/subgraphs/name/anudit/learnweb3',
@@ -37,3 +39,12 @@ export default async function getLearnWeb3Data(address: string) {
     return false;
   }
 }
+
+export const Learnweb3AdaptorDeets: AdaptorDeets = {
+  id: 'learnweb3',
+  name: 'LearnWeb3',
+  projectThumbnail:
+    'ipfs://bafybeiaa6qesfta3tyl74se33rph7sanpbypffuohwxxsuxl5mycheftam/learnweb3.webp',
+  projectUrl: 'https://www.learnweb3.io/',
+  requiredConfigKeys: [],
+};
