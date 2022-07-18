@@ -43,7 +43,15 @@ const Comment = ({ commentId, apikey }: CommentProps) => {
   const convo = new Convo(apikey);
 
   useEffect(() => {
-    convo.comments.getComment(commentId).then(setComment).catch(console.log);
+    convo.comments
+      .getComment(commentId)
+      .then((d) => {
+        if ('error' in d === false) {
+          const data = d as CommentResp;
+          setComment(data);
+        }
+      })
+      .catch(console.log);
   }, []);
 
   if (comment === false) {
