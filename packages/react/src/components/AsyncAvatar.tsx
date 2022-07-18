@@ -19,12 +19,12 @@ const AsyncAvatar = ({
     if (address) {
       resolveEnsData(address)
         .then((resp) => {
-          setIsLoading(false);
           if (resp && typeof resp?.avatar === 'string') {
             setData(resp.avatar);
           } else {
             setData(defaultImage);
           }
+          setIsLoading(false);
         })
         .catch(console.log);
     }

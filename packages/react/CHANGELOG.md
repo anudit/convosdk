@@ -1,7 +1,12 @@
 # Changelog
 
-## 0.2.3 [Unreleased]
+## 0.2.4
 
+- Update Dependencies
+
+## 0.2.3
+
+- Update `AsyncAvatar`.
 - Update Dependencies
 
 ## 0.2.2

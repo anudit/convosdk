@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/react",
-  "version": "0.2.2",
+  "version": "0.2.4",
   "description": "React Hooks and Components to build on theconvo.space",
   "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
@@ -86,7 +86,7 @@
   },
   "dependencies": {
     "@ethersproject/providers": "^5.6.8",
-    "@theconvospace/sdk": "workspace:^0.5.12",
+    "@theconvospace/sdk": "^0.5.13",
     "ably": "^1.2.27",
     "copy-to-clipboard": "^3.3.1",
     "cross-fetch": "^3.1.5",

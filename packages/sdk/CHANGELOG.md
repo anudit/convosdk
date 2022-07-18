@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.5.13 [Unreleased]
+## 0.5.13
 
 - Add Details to all adaptors.
 - Add `chainabuse`, `giveth`, `upshot` Adaptors.
