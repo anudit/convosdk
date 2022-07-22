@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.14
+
+- Add support for Solana to Omnid.
+- Fix browser Build.
+- Update Dependencies.
+
 ## 0.5.13
 
 - Add Details to all adaptors.

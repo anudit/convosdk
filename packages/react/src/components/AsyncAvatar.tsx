@@ -27,6 +27,8 @@ const AsyncAvatar = ({
           setIsLoading(false);
         })
         .catch(console.log);
+    } else {
+      setData(defaultImage);
     }
   }, [address]);
   return <Avatar size={size} label="Ava" src={data} placeholder={isLoading} />;

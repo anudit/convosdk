@@ -1,12 +1,9 @@
-import {
-  BundlephobiaResp,
-  Dictionary,
-  ErrorType,
-  LogConfigType,
-} from './types';
+import { Dictionary, ErrorType, LogConfigType } from './types';
 import { fetcher } from './utils';
 import fetch from 'cross-fetch';
 import { version } from '../package.json';
+
+type npmResp = { version: string };
 
 class ConvoBase {
   apikey: string;
@@ -21,10 +18,10 @@ class ConvoBase {
 
   logConfig = async (): Promise<LogConfigType> => {
     const pingResult: Dictionary<any> = await this.pingNode();
-    const versionInfo: BundlephobiaResp = await fetch(
-      'https://bundlephobia.com/api/size?package=@theconvospace/sdk@latest&record=true'
+    const versionInfo: npmResp = await fetch(
+      'https://registry.npmjs.org/@theconvospace/sdk/latest'
     ).then((r) => {
-      return r.json() as Promise<BundlephobiaResp>;
+      return r.json() as Promise<npmResp>;
     });
     return {
       node: this.node,

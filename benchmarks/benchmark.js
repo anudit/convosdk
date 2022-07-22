@@ -288,10 +288,20 @@ async function runStuff() {
         }, withConfig: true, verbose: false,
     })
 
+    let bench4 = new Benchmark("Auth", config);
+
+    bench4.addTestCases(testCases);
+
+    bench4.addTest({
+        fn: genAuth = async (address, withConfig) => {
+            return convoInstance.auth.getSignatureDataV2('https://convosdk-examples-nextjs.vercel.app', address, '1');
+        }, withConfig: true, verbose: true,
+    })
+
     await bench.run();
     await bench2.run();
     await bench3.run();
-
+    // await bench4.run();
 }
 
 runStuff();

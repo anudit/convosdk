@@ -6,10 +6,6 @@ export interface ErrorType {
   error: any;
 }
 
-export type BundlephobiaResp = {
-  version: string;
-};
-
 export interface LogConfigType {
   node: string;
   apikey: string;

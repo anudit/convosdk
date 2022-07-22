@@ -1,4 +1,4 @@
-import { fetcher } from './utils';
+import { fetcher, isSolAddress } from './utils';
 import {
   ComputeConfig,
   ErrorType,
@@ -92,7 +92,7 @@ class Omnid {
     computeConfig: ComputeConfig,
     disabledAdaptors: Array<AdaptorKeys> = []
   ): Promise<any | ErrorType> => {
-    if (isAddress(address) === true) {
+    if (isAddress(address)) {
       const promiseArray = [
         disabledAdaptors.includes('aave')
           ? this.#disabledPromise()
@@ -613,8 +613,42 @@ class Omnid {
       if (Boolean(computeConfig?.DEBUG) === true)
         console.timeEnd('computeTime');
       return respDict;
+    } else if (isSolAddress(address)) {
+      const promiseArray = [
+        disabledAdaptors.includes('labels')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getLabelData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('sdn')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getSdnData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+      ];
+      if (Boolean(computeConfig?.DEBUG) === true) console.time('computeTime');
+      const resp: Array<PromiseSettledResult<any>> = await Promise.allSettled(
+        promiseArray
+      );
+
+      const keys: Array<AdaptorKeys> = ['labels', 'sdn'];
+      const respDict: Dictionary<any> = {};
+      if (promiseArray.length != keys.length)
+        throw new Error('promiseArray.length != keys.length');
+      for (let index = 0; index < keys.length; index++) {
+        const key = keys[index];
+        respDict[key] = resp[index];
+      }
+
+      if (Boolean(computeConfig?.DEBUG) === true)
+        console.timeEnd('computeTime');
+      return respDict;
     } else {
-      throw new Error('Not a Valid Ethereum Address');
+      throw new Error('Not a Valid Ethereum or Solana Address');
     }
   };
 }

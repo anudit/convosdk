@@ -1,6 +1,7 @@
 import fetch from 'cross-fetch';
 import { ComputeConfig, Dictionary, ErrorType } from './types';
 import AbortController from 'abort-controller';
+import { PublicKey } from '@solana/web3.js';
 
 export async function fetcher(
   requestMethod: string,
@@ -109,5 +110,15 @@ export async function gqlFetcher(
     return { error } as ErrorType;
   } finally {
     clearTimeout(timer);
+  }
+}
+
+export function isSolAddress(address: string) {
+  try {
+    const pubkey = new PublicKey(address);
+    const isSolana = PublicKey.isOnCurve(pubkey.toBuffer());
+    return isSolana;
+  } catch (error) {
+    return false;
   }
 }

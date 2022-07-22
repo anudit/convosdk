@@ -46,13 +46,14 @@ const Comment = ({ commentId, apikey }: CommentProps) => {
     convo.comments
       .getComment(commentId)
       .then((d) => {
-        if ('error' in d === false) {
-          const data = d as CommentResp;
-          setComment(data);
-        }
+        const data = d as CommentResp;
+        setComment(data);
       })
-      .catch(console.log);
-  }, []);
+      .catch((e) => {
+        setComment(false);
+        console.log(e);
+      });
+  }, [commentId]);
 
   if (comment === false) {
     return (

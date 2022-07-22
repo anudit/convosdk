@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.5
+
+- Improve Components.
+- Update Dependencies
+
 ## 0.2.4
 
 - Update Dependencies

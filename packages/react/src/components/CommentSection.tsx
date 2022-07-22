@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { ethers } from 'ethers';
 import fetch from 'cross-fetch';
 import useSWRInfinite from 'swr/infinite';
@@ -36,13 +36,13 @@ const fetcher = async (url: string) => {
  * @see https://docs.theconvo.space/docs/Convo-Embeds/embed-a-comment
  */
 
-
 interface CommentSectionProps {
   query: CommentsQueryType;
   isVotingEnabled: boolean;
   apikey: string;
   hostname: string;
-  provider: ethers.providers.Web3Provider;
+  signer: ethers.Signer;
+  config: CommentSectionConfig;
 }
 
 interface AuthResp {
@@ -66,12 +66,19 @@ type CommentsQueryType = {
   airdropAmount?: number;
 };
 
+interface CommentSectionConfig {
+  SIGNIN_PROMPT?: string;
+  SEND_MESSAGE_PROMPT?: string;
+  MESSAGE_PLACEHOLDER_PROMPT?: string;
+}
+
 const CommentSection = ({
   query,
-  provider,
+  signer,
   apikey,
   hostname,
   isVotingEnabled = false,
+  config = {},
 }: CommentSectionProps) => {
   const [userAddress, setUserAddress] = useState<undefined | string>(undefined);
   const [authToken, setAuthToken] = useState<false | string>(false);
@@ -79,33 +86,48 @@ const CommentSection = ({
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const messageInput = useRef<HTMLInputElement>(null);
   const messagesBox = useRef<HTMLDivElement>(null);
+  const [message, setMessage] = useState('');
 
   const convo = new Convo(apikey);
 
+  useEffect(() => {
+    if (Boolean(signer) === false) {
+      setUserAddress(undefined);
+      setAuthToken(false);
+    }
+  }, [signer]);
+
+  const updateMessage = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    setMessage(event.currentTarget.value);
+  };
+
   async function login() {
-    setIsLoading(true);
-    const signer = provider.getSigner();
-    const address = await signer.getAddress();
-    setUserAddress(address);
-    console.log('setUserAddress', address);
-    const sigMesage = convo.auth.getSignatureDataV2(hostname, address, 1);
-    signer
-      .signMessage(sigMesage)
-      .then(async (sig) => {
-        const token: AuthResp = await convo.auth.authenticateV2(sigMesage, sig);
-        if (token.success === true) {
-          setAuthToken(token.message);
-          console.log('authSuccess');
-        } else {
-          alert(`Authentication Error, ${token?.error}`);
-        }
-        setIsLoading(false);
-      })
-      .catch((e) => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-        alert(e?.message);
-        setIsLoading(false);
-      });
+    if (Boolean(signer) === true) {
+      setIsLoading(true);
+      const address = await signer.getAddress();
+      setUserAddress(address);
+      const sigMesage = convo.auth.getSignatureDataV2(hostname, address, 1);
+      signer
+        .signMessage(sigMesage)
+        .then(async (sig) => {
+          const token: AuthResp = await convo.auth.authenticateV2(
+            sigMesage,
+            sig
+          );
+          if (token.success === true) {
+            setAuthToken(token.message);
+            console.log('authSuccess');
+          } else {
+            alert(`Authentication Error, ${token?.error}`);
+          }
+          setIsLoading(false);
+        })
+        .catch((e) => {
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+          alert(e?.message);
+          setIsLoading(false);
+        });
+    }
   }
 
   function scrollToBottom() {
@@ -117,38 +139,39 @@ const CommentSection = ({
   }
 
   async function sendMessage() {
-    if (userAddress && authToken != false && messageInput?.current) {
+    if (userAddress && authToken != false && message) {
       setIsLoading(true);
-      const messageData: string = messageInput?.current?.value;
+      const messageData: string = message.trim();
 
-      const resp: CommentResp = await convo.comments.create(
-        userAddress,
-        authToken,
-        messageData,
-        query.threadId,
-        query?.url ? query?.url : hostname
-      );
+      if (messageData != '') {
+        const resp: CommentResp = await convo.comments.create(
+          userAddress,
+          authToken,
+          messageData,
+          query.threadId,
+          query?.url ? query?.url : hostname
+        );
 
-      if ('_id' in resp) {
-        console.log(resp);
-
-        mutate((currentData) => {
-          if (currentData) {
-            const newData = currentData;
-            newData[0] = currentData[0].concat([resp]);
-            return newData;
-          } else {
-            return currentData;
-          }
-        })
-          .catch((error) => {
-            console.log('Error while sending a message', error);
-            setIsLoading(false);
+        if ('_id' in resp) {
+          mutate((currentData) => {
+            if (currentData) {
+              const newData = currentData;
+              newData[0] = currentData[0].concat([resp]);
+              return newData;
+            } else {
+              return currentData;
+            }
           })
-          .finally(() => {
-            scrollToBottom();
-            setIsLoading(false);
-          });
+            .catch((error) => {
+              console.log('Error while sending a message', error);
+              setIsLoading(false);
+            })
+            .finally(() => {
+              scrollToBottom();
+              setMessage('');
+              setIsLoading(false);
+            });
+        }
       }
     }
   }
@@ -185,7 +208,10 @@ const CommentSection = ({
   if (!data) return <Spinner />;
   return (
     <Stack>
-      <div style={{ height: '400px', overflow: 'auto' }} ref={messagesBox}>
+      <div
+        style={{ maxHeight: '400px', height: 'fit-content', overflow: 'auto' }}
+        ref={messagesBox}
+      >
         <Box
           onClick={() => {
             setSize(size + 1);
@@ -195,6 +221,7 @@ const CommentSection = ({
           flexDirection={'column'}
           alignItems={'center'}
           justifyContent="center"
+          display={data.length > size ? 'flex' : 'none'}
         >
           {isLoadingMore ? <Spinner /> : <Text align="center">Load More</Text>}
         </Box>
@@ -264,8 +291,10 @@ const CommentSection = ({
         <Textarea
           hideLabel
           label="Message"
-          placeholder="Share your story…"
+          placeholder={config.MESSAGE_PLACEHOLDER_PROMPT || 'Share your story…'}
           ref={messageInput}
+          onChange={updateMessage}
+          value={message}
         />
       </Box>
       <Box display="flex" flexDirection="column" alignItems={'flex-end'}>
@@ -280,8 +309,10 @@ const CommentSection = ({
           loading={isLoading}
         >
           {authToken != false
-            ? `Publish${isLoading ? 'ing' : ''} Message`
-            : `Sign${isLoading ? 'ing' : ''} In with Ethereum`}
+            ? config.SEND_MESSAGE_PROMPT ||
+              `Publish${isLoading ? 'ing' : ''} Message`
+            : config.SIGNIN_PROMPT ||
+              `Sign${isLoading ? 'ing' : ''} In with Ethereum`}
         </Button>
       </Box>
     </Stack>
