@@ -89,14 +89,10 @@ export default async function getChainabuseData(address: string) {
         reports: response.data.reports.edges,
       };
     } else {
-      return {
-        reports: false,
-      };
+      return false;
     }
   } catch (error) {
-    return {
-      reports: false,
-    };
+    return false;
   }
 }
 

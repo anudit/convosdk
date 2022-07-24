@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.15
+
+- Add support for `isFundedWithTornado` & `tornadoInteractions` to `txn`
+  Adaptor.
+- Improve Mirror Adaptor.
+- Update Dependencies.
+
 ## 0.5.14
 
 - Add support for Solana to Omnid.

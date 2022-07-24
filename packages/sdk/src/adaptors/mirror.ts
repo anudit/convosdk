@@ -69,10 +69,10 @@ export default async function getMirrorData(address: string) {
       }`,
       { projectAddress: address },
       5000,
-      { Origin: 'https://mirror.xyz/' }
+      { Origin: 'https://mirror.xyz' }
     )) as MirrorResult;
 
-    return Boolean(data) === true ? data?.projectFeed : false;
+    return Boolean(data?.projectFeed) === true ? data?.projectFeed : false;
   } catch (error) {
     return false;
   }

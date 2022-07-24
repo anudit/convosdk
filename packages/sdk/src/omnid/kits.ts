@@ -3,6 +3,7 @@ import {
   ComputeConfig,
   Dictionary,
   EtherscanResult,
+  txnResp,
 } from '../types';
 import { checkComputeConfig } from '../utils';
 import {
@@ -13,6 +14,7 @@ import {
   getMewData,
   getAlchemyData,
   getChainabuseData,
+  getTxnData,
 } from '../adaptors';
 
 class Kits {
@@ -32,6 +34,9 @@ class Kits {
     checkComputeConfig('isMalicious', computeConfig, [
       'CNVSEC_ID',
       'alchemyApiKey',
+      'etherscanApiKey',
+      'polygonscanApiKey',
+      'optimismscanApiKey',
     ]);
 
     const promiseArray = [
@@ -42,6 +47,7 @@ class Kits {
       getMewData(address, computeConfig),
       getSdnData(address, computeConfig),
       getTokenBlacklistData(address),
+      getTxnData(address, computeConfig),
     ];
 
     const adaptors: Array<AdaptorKeys> = [
@@ -52,6 +58,7 @@ class Kits {
       'mew',
       'sdn',
       'tokenblacklists',
+      'txn',
     ];
     const returnData: Dictionary<any> = {};
     const responses = await Promise.allSettled(promiseArray);
@@ -68,6 +75,14 @@ class Kits {
               returnData[adaptors[index]] = false;
             }
           } else returnData[adaptors[index]] = false;
+        } else if (adaptors[index] === 'txn') {
+          const txnData = response.value as Dictionary<txnResp>;
+          const res = Object.keys(txnData)
+            .map((k) => {
+              return txnData[k].fundedByTornadoCash;
+            })
+            .includes(true);
+          returnData[adaptors[index]] = res === true ? txnData : false;
         } else {
           returnData[adaptors[index]] = response.value;
         }

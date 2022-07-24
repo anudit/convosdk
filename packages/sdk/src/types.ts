@@ -177,3 +177,14 @@ export interface AdaptorDeets {
   projectThumbnail: `ipfs://${string}`;
   requiredConfigKeys: Array<keyof ComputeConfig>;
 }
+
+export interface txnResp {
+  age: number;
+  txnCount: number;
+  gasSpent: string;
+  contractsDeployed: number;
+  failedTxnCount: number;
+  failedGasSpent: string;
+  fundedByTornadoCash?: boolean;
+  tornadoInteractions?: number;
+}

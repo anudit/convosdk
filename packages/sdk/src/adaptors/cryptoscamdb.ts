@@ -16,9 +16,11 @@ export default async function getCryptoscamdbData(
     `https://cnvsec.vercel.app/api/omnid/cryptoscamdb?id=${computeConfig.CNVSEC_ID}&address=${address}`
   )) as CryptoscamdbResult;
 
-  return {
-    reports: 'reports' in json ? json.reports : false,
-  };
+  return 'reports' in json
+    ? {
+        reports: json.reports,
+      }
+    : false;
 }
 
 export const CryptoscamdbAdaptorDeets: AdaptorDeets = {

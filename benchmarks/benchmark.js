@@ -192,6 +192,7 @@ async function runStuff() {
         "0x8576aCC5C05D6Ce88f4e49bf65BdF0C62F91353C", // sdn - OFAC sanction
         "0x416365993481e52e0472e7417656276d4e147a00", // rocifi
         "0x166C7Ae68dc800De903f891a3bb2c9258d797CcA", // chainabuse
+        "0x627a22ff70cb84e74c9c70e2d5b0b75af5a1dcb9", // Omni Expoilt
         // "0x225b11096e5aec644bf1a0f09358d9534ce20903",
         // "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
         // "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
@@ -200,7 +201,6 @@ async function runStuff() {
         // "0x7F01611a10dFd14B425Dd61A2ed1fCc8420D9443",
     ].map(ethers.utils.getAddress)
 
-    ethers
 
     let bench = new Benchmark("Omnid Adaptors", config);
     bench.addTestCases(testCases);
@@ -225,7 +225,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getDebankData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getDeepDaoData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.addressToEns, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getEtherscanData, withConfig: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getEtherscanData, withConfig: true})
         .addTest({ fn: convoInstance.omnid.adaptors.getFortaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getFoundationData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getGitcoinData, withConfig: true })
@@ -242,14 +242,8 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getLensData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMetagameData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMewData, withConfig: true })
-        .addTest({ fn: convoInstance.omnid.adaptors.getMirrorData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getMirrorData, withConfig: false, verbose: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getPoapData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getPolygonData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getProjectGalaxyData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.checkPoH, withConfig: false})
-        .addTest({ fn: convoInstance.omnid.adaptors.getPopData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getQuadrataData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getQuestbookData, withConfig: false})
         .addTest({ fn: convoInstance.omnid.adaptors.getRabbitholeData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getRaribleData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getRocifiData, withConfig: false })
@@ -262,6 +256,12 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getUnipassData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getSybilData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getPolygonData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getProjectGalaxyData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.checkPoH, withConfig: false})
+        .addTest({ fn: convoInstance.omnid.adaptors.getPopData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getQuadrataData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getQuestbookData, withConfig: false})
         .addTest({ fn: convoInstance.omnid.adaptors.getUpalaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getUpshotData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getYupData, withConfig: true })
@@ -285,7 +285,7 @@ async function runStuff() {
     bench3.addTest({
         fn: isMalicious = async (address, withConfig) => {
             return await convoInstance.omnid.kits.isMalicious(address, config)
-        }, withConfig: true, verbose: false,
+        }, withConfig: true, verbose: true,
     })
 
     let bench4 = new Benchmark("Auth", config);
@@ -295,12 +295,12 @@ async function runStuff() {
     bench4.addTest({
         fn: genAuth = async (address, withConfig) => {
             return convoInstance.auth.getSignatureDataV2('https://convosdk-examples-nextjs.vercel.app', address, '1');
-        }, withConfig: true, verbose: true,
+        }, withConfig: true, verbose: false,
     })
 
     await bench.run();
-    await bench2.run();
-    await bench3.run();
+    // await bench2.run();
+    // await bench3.run();
     // await bench4.run();
 }
 
