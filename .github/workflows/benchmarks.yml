@@ -47,4 +47,7 @@ jobs:
           POLYGONSCAN_API_KEY: ${{ secrets.POLYGONSCAN_API_KEY }}
           OPTIMISMSCAN_API_KEY: ${{ secrets.OPTIMISMSCAN_API_KEY }}
           CNVSEC_ID: ${{ secrets.CNVSEC_ID }}
+          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+          ZAPPER_API_KEY: ${{ secrets.ZAPPER_API_KEY }}
+
         run: node ./benchmarks/benchmark.js
