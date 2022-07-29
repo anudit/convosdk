@@ -40,6 +40,7 @@ import { LensAdaptorDeets } from './lens';
 import { MetagameAdaptorDeets } from './metagame';
 import { MewAdaptorDeets } from './mew';
 import { MirrorAdaptorDeets } from './mirror';
+import { ParallelAdaptorDeets } from './parallel';
 import { PoapAdaptorDeets } from './poap';
 import { PohAdaptorDeets } from './poh';
 import { PolygonAdaptorDeets } from './polygon';
@@ -144,6 +145,7 @@ export { default as getLensData, LensAdaptorDeets } from './lens';
 export { default as getMetagameData, MetagameAdaptorDeets } from './metagame';
 export { default as getMewData, MewAdaptorDeets } from './mew';
 export { default as getMirrorData, MirrorAdaptorDeets } from './mirror';
+export { default as getParallelData, ParallelAdaptorDeets } from './parallel';
 export { default as getPoapData, PoapAdaptorDeets } from './poap';
 export { default as checkPoH, PohAdaptorDeets } from './poh';
 export { default as getPolygonData, PolygonAdaptorDeets } from './polygon';
@@ -227,6 +229,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   MetagameAdaptorDeets,
   MewAdaptorDeets,
   MirrorAdaptorDeets,
+  ParallelAdaptorDeets,
   PoapAdaptorDeets,
   PohAdaptorDeets,
   PolygonAdaptorDeets,

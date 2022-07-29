@@ -193,6 +193,7 @@ async function runStuff() {
         "0x416365993481e52e0472e7417656276d4e147a00", // rocifi
         "0x166C7Ae68dc800De903f891a3bb2c9258d797CcA", // chainabuse
         "0x627a22ff70cb84e74c9c70e2d5b0b75af5a1dcb9", // Omni Expoilt
+        "0x3faad8f2776dd17fa20d4d9707e7ab76b808adde", // Parallel Identity
         // "0x225b11096e5aec644bf1a0f09358d9534ce20903",
         // "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
         // "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
@@ -242,7 +243,8 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getLensData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMetagameData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMewData, withConfig: true })
-        .addTest({ fn: convoInstance.omnid.adaptors.getMirrorData, withConfig: false, verbose: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getMirrorData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getParallelData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getPoapData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getRabbitholeData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getRaribleData, withConfig: true })

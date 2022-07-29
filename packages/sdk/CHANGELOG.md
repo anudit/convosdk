@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.16
+
+- Add support for `parallel` Identity to Omnid.
+- Update Dependencies
+
 ## 0.5.15
 
 - Add support for `isFundedWithTornado` & `tornadoInteractions` to `txn`

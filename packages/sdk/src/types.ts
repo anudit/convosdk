@@ -145,6 +145,7 @@ export type AdaptorKeys =
   | 'metagame'
   | 'mew'
   | 'mirror'
+  | 'parallel'
   | 'poap'
   | 'poh'
   | 'pop'

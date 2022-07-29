@@ -367,6 +367,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('parallel')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getParallelData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('poap')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -577,6 +584,7 @@ class Omnid {
         'metagame',
         'mew',
         'mirror',
+        'parallel',
         'poap',
         'poh',
         'pop',
