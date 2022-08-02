@@ -269,6 +269,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('goplus')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getGoplusData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('governordao')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -570,6 +577,7 @@ class Omnid {
         'gitcoin',
         'giveth',
         'goldfinch',
+        'goplus',
         'governordao',
         'hiveone',
         'huddln',

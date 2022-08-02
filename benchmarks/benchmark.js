@@ -232,6 +232,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getGitcoinData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getGivethData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getGoldfinchData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getGoplusData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getGovernordaoData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getHiveOneData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.checkIdena, withConfig: false })
@@ -300,10 +301,21 @@ async function runStuff() {
         }, withConfig: true, verbose: false,
     })
 
+    let bench5 = new Benchmark("Temp Bench", config);
+
+    bench5.addTestCases(testCases);
+
+    bench5.addTest({
+        fn: check = async (address, withConfig) => {
+            return convoInstance.omnid.adaptors.getTxnData(address, config);
+        }, withConfig: true, verbose: true,
+    })
+
     await bench.run();
-    // await bench2.run();
+    await bench2.run();
     // await bench3.run();
     // await bench4.run();
+    // await bench5.run();
 }
 
 runStuff();

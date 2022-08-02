@@ -131,6 +131,7 @@ export type AdaptorKeys =
   | 'gitcoin'
   | 'giveth'
   | 'goldfinch'
+  | 'goplus'
   | 'governordao'
   | 'hiveone'
   | 'huddln'

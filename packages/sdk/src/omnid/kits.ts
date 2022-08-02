@@ -69,7 +69,10 @@ class Kits {
         if (adaptors[index] === 'etherscan') {
           const etData = response.value as EtherscanResult;
           if (etData?.label) {
-            if (['phish', 'hack', 'heist'].includes(etData.label) === false) {
+            if (
+              ['phish', 'hack', 'heist', 'exploit'].includes(etData.label) ===
+              false
+            ) {
               returnData[adaptors[index]] = response.value;
             } else {
               returnData[adaptors[index]] = false;

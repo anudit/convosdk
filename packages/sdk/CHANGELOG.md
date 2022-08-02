@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.5.17
+
+- Add support for `goplus` Adaptor.
+- Improve Kits.
+- Update Dependencies
+
 ## 0.5.16
 
 - Add support for `parallel` Identity to Omnid.

@@ -26,6 +26,7 @@ import { FoundationQueryResult } from './foundation';
 import { GitcoinAdaptorDeets } from './gitcoin';
 import { GivethAdaptorDeets } from './giveth';
 import { GoldfinchAdaptorDeets } from './goldfinch';
+import { GoplusAdaptorDeets } from './goplus';
 import { GovernordaoAdaptorDeets } from './governordao';
 import { HiveoneAdaptorDeets } from './hiveone';
 import { HuddlnAdaptorDeets } from './huddln';
@@ -122,6 +123,7 @@ export {
   default as getGoldfinchData,
   GoldfinchAdaptorDeets,
 } from './goldfinch';
+export { default as getGoplusData, GoplusAdaptorDeets } from './goplus';
 export {
   default as getGovernordaoData,
   GovernordaoAdaptorDeets,
@@ -215,6 +217,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   GitcoinAdaptorDeets,
   GivethAdaptorDeets,
   GoldfinchAdaptorDeets,
+  GoplusAdaptorDeets,
   GovernordaoAdaptorDeets,
   HiveoneAdaptorDeets,
   HuddlnAdaptorDeets,
