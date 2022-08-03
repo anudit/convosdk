@@ -53,6 +53,7 @@ import { RabbitholeAdaptorDeets } from './rabbithole';
 import { RaribleAdaptorDeets } from './rarible';
 import { RocifiAdaptorDeets } from './rocifi';
 import { Rss3AdaptorDeets } from './rss3';
+import { ScanblocksAdaptorDeets } from './scanblocks';
 import { SdnAdaptorDeets } from './sdn';
 import { ShowtimeAdaptorDeets } from './showtime';
 import { SuperrareAdaptorDeets } from './superrare';
@@ -168,6 +169,7 @@ export {
 export { default as getRaribleData, RaribleAdaptorDeets } from './rarible';
 export { default as getRocifiData, RocifiAdaptorDeets } from './rocifi';
 export { default as getRss3Data, Rss3AdaptorDeets } from './rss3';
+export { default as getScanblocksData, ScanblocksAdaptorDeets } from './scanblocks';
 export { default as getSdnData, SdnAdaptorDeets } from './sdn';
 export { default as getShowtimeData, ShowtimeAdaptorDeets } from './showtime';
 export {
@@ -244,6 +246,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   RaribleAdaptorDeets,
   RocifiAdaptorDeets,
   Rss3AdaptorDeets,
+  ScanblocksAdaptorDeets,
   SdnAdaptorDeets,
   ShowtimeAdaptorDeets,
   SuperrareAdaptorDeets,

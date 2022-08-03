@@ -158,6 +158,7 @@ export type AdaptorKeys =
   | 'rarible'
   | 'rocifi'
   | 'rss3'
+  | 'scanblocks'
   | 'sdn'
   | 'showtime'
   | 'superrare'

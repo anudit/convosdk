@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.18 [Unreleased]
+
+- Add support for `scanblocks` Adaptor.
+
 ## 0.5.17
 
 - Add support for `goplus` Adaptor.
