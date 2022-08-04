@@ -13,7 +13,7 @@ interface ScanblocksResult {
 export default async function getScanblocksData(address: string) {
   const json = (await fetcher(
     'GET',
-    `https://scanblocks.io/api/get?apikey=b4db18b757294ba9&blockchain=eth&address=${address.toLowerCase()}`
+    `https://scanblocks.io/api/get?apikey=b4db18b757294ba9&blockchain=all&address=${address.toLowerCase()}`
   )) as Array<ScanblocksResult>;
 
   if (json.length > 0) return json;
