@@ -454,6 +454,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('scanblocks')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getScanblocksData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('sdn')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -604,6 +611,7 @@ class Omnid {
         'rarible',
         'rocifi',
         'rss3',
+        'scanblocks',
         'sdn',
         'showtime',
         'superrare',

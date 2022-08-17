@@ -214,8 +214,8 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getBirdData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getBoardroomData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getCeloData, withConfig: false})
-        .addTest({ fn: convoInstance.omnid.adaptors.getChainabuseData, withConfig: false})
+        .addTest({ fn: convoInstance.omnid.adaptors.getCeloData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getChainabuseData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getCoinviseData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getCommonsstackData, withConfig: false })
         // .addTest({ fn: convoInstance.omnid.adaptors.getCoordinapeData, withConfig: false })
@@ -226,7 +226,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getDebankData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getDeepDaoData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.addressToEns, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getEtherscanData, withConfig: true})
+        .addTest({ fn: convoInstance.omnid.adaptors.getEtherscanData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getFortaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getFoundationData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getGitcoinData, withConfig: true })
@@ -240,7 +240,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getKlimaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getKnownOriginData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getLearnWeb3Data, withConfig: false,  })
+        .addTest({ fn: convoInstance.omnid.adaptors.getLearnWeb3Data, withConfig: false, })
         .addTest({ fn: convoInstance.omnid.adaptors.getLensData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMetagameData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMewData, withConfig: true })
@@ -261,10 +261,10 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getPolygonData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getProjectGalaxyData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.checkPoH, withConfig: false})
+        .addTest({ fn: convoInstance.omnid.adaptors.checkPoH, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getPopData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getQuadrataData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getQuestbookData, withConfig: false})
+        .addTest({ fn: convoInstance.omnid.adaptors.getQuestbookData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getUpalaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getUpshotData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getYupData, withConfig: true })
@@ -307,13 +307,13 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getTxnData(address, config);
-        }, withConfig: true, verbose: true,
+            return convoInstance.omnid.adaptors.getDeepDaoData(address, config);
+        }, withConfig: false, verbose: true,
     })
 
     await bench.run();
     await bench2.run();
-    // await bench3.run();
+    await bench3.run();
     // await bench4.run();
     // await bench5.run();
 }

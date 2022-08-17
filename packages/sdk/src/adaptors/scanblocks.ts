@@ -1,14 +1,5 @@
-import { AdaptorDeets } from '../types';
+import { AdaptorDeets, ScanblocksResult } from '../types';
 import { fetcher } from '../utils';
-
-interface ScanblocksResult {
-  address_id: string;
-  address: string;
-  blockchain: string;
-  reason: 'hacker' | 'phisher' | 'scammer' | 'fraudster' | '';
-  describe_report: string;
-  url: string;
-}
 
 export default async function getScanblocksData(address: string) {
   const json = (await fetcher(

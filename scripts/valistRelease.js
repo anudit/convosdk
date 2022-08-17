@@ -7,6 +7,7 @@ const { createWriteStream } = require('fs');
 const { pipeline } = require('stream');
 const { promisify } = require('util');
 const Web3HttpProvider = require('web3-providers-http');
+const { getFilesFromPath } = require('@valist/sdk');
 
 const download = async ({ url, path }) => {
     const streamPipeline = promisify(pipeline);
@@ -23,7 +24,7 @@ const download = async ({ url, path }) => {
 
 async function publishToValist(packageName, version) {
 
-    let releaseDetails = await fetch(`https://registry.npmjs.org/${packageName}/${version}`).then(r=>r.json());
+    let releaseDetails = await fetch(`https://registry.npmjs.org/${packageName}/${version}`).then(r => r.json());
 
     const web3 = new Web3HttpProvider('https://polygon-rpc.com');
     const provider = new ethers.providers.Web3Provider(web3);
@@ -45,9 +46,9 @@ async function publishToValist(packageName, version) {
         path: filePath,
     })
 
-    let fileStream = fs.createReadStream(filePath);
-
-    const metaURI = await valistClient.writeFile(fileStream);
+    const artifacts = await getFilesFromPath(filePath);
+    console.log('Uploading Release to Valist');
+    const metaURI = await valistClient.writeFolder(artifacts);
 
     const release = new ReleaseMeta();
     release.name = releaseDetails.version;
@@ -64,7 +65,7 @@ async function publishToValist(packageName, version) {
 
 
 async function publishPackage(packageName, version) {
-    if (typeof version === 'object' && version?.length > 0){
+    if (typeof version === 'object' && version?.length > 0) {
         array.forEach(async (v) => {
             console.log(`Fetching Release ${v}`);
             await publishToValist(packageName, v);
@@ -83,7 +84,7 @@ async function publishPackage(packageName, version) {
 
 const accountName = "theconvospace"
 let projectName = "sdk"
-let version = "0.5.17"
+let version = "0.5.18"
 
 publishPackage(`@${accountName}/${projectName}`, version).then(() => {
     process.exit(0);

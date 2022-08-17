@@ -3,6 +3,7 @@ import {
   ComputeConfig,
   Dictionary,
   EtherscanResult,
+  ScanblocksResult,
   txnResp,
 } from '../types';
 import { checkComputeConfig } from '../utils';
@@ -15,6 +16,7 @@ import {
   getAlchemyData,
   getChainabuseData,
   getTxnData,
+  getScanblocksData,
 } from '../adaptors';
 
 class Kits {
@@ -45,6 +47,7 @@ class Kits {
       getCryptoscamdbData(address, computeConfig),
       getEtherscanData(address, computeConfig),
       getMewData(address, computeConfig),
+      getScanblocksData(address),
       getSdnData(address, computeConfig),
       getTokenBlacklistData(address),
       getTxnData(address, computeConfig),
@@ -56,6 +59,7 @@ class Kits {
       'cryptoscamdb',
       'etherscan',
       'mew',
+      'scanblocks',
       'sdn',
       'tokenblacklists',
       'txn',
@@ -86,6 +90,20 @@ class Kits {
             })
             .includes(true);
           returnData[adaptors[index]] = res === true ? txnData : false;
+        } else if (adaptors[index] === 'scanblocks') {
+          const sbData = response.value as Array<ScanblocksResult>;
+          if (Boolean(response.value) === true) {
+            const res = sbData
+              .map((k) => {
+                return ['hacker', 'phisher', 'scammer', 'fraudster'].includes(
+                  k.reason
+                );
+              })
+              .includes(true);
+            returnData[adaptors[index]] = res === true ? sbData : false;
+          } else {
+            returnData[adaptors[index]] = false;
+          }
         } else {
           returnData[adaptors[index]] = response.value;
         }

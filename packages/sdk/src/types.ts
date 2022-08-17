@@ -191,3 +191,12 @@ export interface txnResp {
   fundedByTornadoCash?: boolean;
   tornadoInteractions?: number;
 }
+
+export interface ScanblocksResult {
+  address_id: string;
+  address: string;
+  blockchain: string;
+  reason: 'hacker' | 'phisher' | 'scammer' | 'fraudster' | '';
+  describe_report: string;
+  url: string;
+}

@@ -1,8 +1,10 @@
 # Changelog
 
-## 0.5.18 [Unreleased]
+## 0.5.18
 
 - Add support for `scanblocks` Adaptor.
+- Improve Kits.
+- Update Dependencies.
 
 ## 0.5.17
 
