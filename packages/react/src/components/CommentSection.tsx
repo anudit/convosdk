@@ -70,6 +70,7 @@ interface CommentSectionConfig {
   SIGNIN_PROMPT?: string;
   SEND_MESSAGE_PROMPT?: string;
   MESSAGE_PLACEHOLDER_PROMPT?: string;
+  CALLBACK_IF_NO_SIGNER?: () => any;
 }
 
 const CommentSection = ({
@@ -127,6 +128,10 @@ const CommentSection = ({
           alert(e?.message);
           setIsLoading(false);
         });
+    } else {
+      if (config?.CALLBACK_IF_NO_SIGNER) {
+        config.CALLBACK_IF_NO_SIGNER();
+      }
     }
   }
 
@@ -167,9 +172,9 @@ const CommentSection = ({
               setIsLoading(false);
             })
             .finally(() => {
-              scrollToBottom();
               setMessage('');
               setIsLoading(false);
+              scrollToBottom();
             });
         }
       }
@@ -199,15 +204,15 @@ const CommentSection = ({
 
   useEffect(() => {
     if (initialLoad === false && data) {
-      scrollToBottom();
       setInitialLoad(true);
+      scrollToBottom();
     }
   }, [data]);
 
   if (error) return <div>failed to load</div>;
   if (!data) return <Spinner />;
   return (
-    <Stack>
+    <Box display="flex" flexDirection="column" style={{ width: 'inherit' }}>
       <div
         style={{ maxHeight: '400px', height: 'fit-content', overflow: 'auto' }}
         ref={messagesBox}
@@ -284,7 +289,7 @@ const CommentSection = ({
           </Text>
         )}
       </div>
-      <Box display="flex" flexDirection="row">
+      <Box display="flex" flexDirection="row" paddingBottom="2">
         <Box padding="1">
           <AsyncAvatar address={userAddress} />
         </Box>
@@ -310,12 +315,12 @@ const CommentSection = ({
         >
           {authToken != false
             ? config.SEND_MESSAGE_PROMPT ||
-              `Publish${isLoading ? 'ing' : ''} Message`
+            `Publish${isLoading ? 'ing' : ''} Message`
             : config.SIGNIN_PROMPT ||
-              `Sign${isLoading ? 'ing' : ''} In with Ethereum`}
+            `Sign${isLoading ? 'ing' : ''} In with Ethereum`}
         </Button>
       </Box>
-    </Stack>
+    </Box>
   );
 };
 

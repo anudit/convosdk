@@ -9,9 +9,7 @@ const AsyncAvatar = ({
   address?: string;
   size?: BoxProps['height'];
 }) => {
-  const defaultImage = `https://gradient-avatar.glitch.me/${
-    address ? address : 'x'
-  }`;
+  const defaultImage = `https://avatar.tobi.sh/${address ? address : 'x'}`;
   const [data, setData] = useState<string>(defaultImage);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 

@@ -19,7 +19,7 @@ import { publicProvider } from 'wagmi/providers/public';
 const { chains, provider } = configureChains(
   [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
   [
-    infuraProvider({infuraId :"1e7969225b2f4eefb3ae792aabf1cc17"}), publicProvider()
+    infuraProvider({ infuraId: "1e7969225b2f4eefb3ae792aabf1cc17" }), publicProvider()
   ]
 );
 
@@ -37,10 +37,10 @@ const wagmiClient = createClient({
 function MyApp({ Component, pageProps }) {
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} coolMode >
-      <ThemeProvider>
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <RainbowKitProvider chains={chains} coolMode modalSize='compact' >
+        <ThemeProvider>
+          <Component {...pageProps} />
+        </ThemeProvider>
       </RainbowKitProvider>
     </WagmiConfig>
   )
