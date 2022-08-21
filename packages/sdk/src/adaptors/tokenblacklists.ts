@@ -9,16 +9,18 @@ interface TokenBlacklistResult {
 
 export default async function getTokenBlacklistData(address: string) {
   const { data } = (await gqlFetcher(
-    'https://api.studio.thegraph.com/query/1649/token-blacklists/v1.5',
+    'https://api.studio.thegraph.com/query/1649/token-blacklists/v1.6',
     `{
         blacklist(id: "${address.toLowerCase()}") {
-          usdc
-          usdt
+          alusd
           busd
-          tusd
           euroc
           eurt
+          husd
+          tusd
+          usdc
           usdp
+          usdt
           lastUpdated
         }
     }`

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.5.19
+
+- Improve `chainabuse`, `quadrata`, `tokenblacklists` Adaptors.
+- Update Dependencies
+
 ## 0.5.18
 
 - Add support for `scanblocks` Adaptor.

@@ -307,7 +307,7 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getDeepDaoData(address, config);
+            return convoInstance.omnid.adaptors.getChainabuseData(address);
         }, withConfig: false, verbose: true,
     })
 

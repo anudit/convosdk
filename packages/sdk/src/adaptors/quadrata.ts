@@ -9,7 +9,7 @@ interface QuadResp {
 
 export default async function getQuadrataData(address: string) {
   const { data } = (await gqlFetcher(
-    'https://api.studio.thegraph.com/query/1649/quadrata/v1.10',
+    'https://api.studio.thegraph.com/query/1649/quadrata/v1.11',
     `{
         quadrataPassports(where: {owner: "${address.toLowerCase()}"}) {
           tokenId
