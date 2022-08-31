@@ -1,6 +1,5 @@
 import fetch from 'cross-fetch';
 import { ComputeConfig, Dictionary, ErrorType } from './types';
-import AbortController from 'abort-controller';
 import { PublicKey } from '@solana/web3.js';
 
 export async function fetcher(

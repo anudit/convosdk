@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.0 [Unreleased]
+- Drop support for Node v12.
+- Improvements.
+- Update Dependencies.
+
 ## 0.5.19
 
 - Improve `chainabuse`, `quadrata`, `tokenblacklists` Adaptors.

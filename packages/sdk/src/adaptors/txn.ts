@@ -177,7 +177,7 @@ export default async function getTxnData(
       const respData = (data[3 + index] as PromiseFulfilledResult<ScanResp>)
         .value;
       if (Boolean(respData?.result) === true && respData.result.length > 0) {
-        resp[name].fundedByTornadoCash = respData.result
+        resp[name].fundedByTornadoCash = respData?.result
           .map((e) => {
             return tornadoAdds.includes(getAddress(e.from));
           })

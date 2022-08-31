@@ -288,7 +288,7 @@ async function runStuff() {
     bench3.addTest({
         fn: isMalicious = async (address, withConfig) => {
             return await convoInstance.omnid.kits.isMalicious(address, config)
-        }, withConfig: true, verbose: true,
+        }, withConfig: true, verbose: false,
     })
 
     let bench4 = new Benchmark("Auth", config);
@@ -307,8 +307,8 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getChainabuseData(address);
-        }, withConfig: false, verbose: true,
+            return convoInstance.omnid.adaptors.getTxnData(address, config);
+        }, withConfig: false, verbose: false,
     })
 
     await bench.run();

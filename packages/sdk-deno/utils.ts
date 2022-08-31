@@ -1,4 +1,4 @@
-import { Dictionary, ErrorType } from './types.ts';
+import { Dictionary, ErrorType } from './types';
 
 export async function fetcher(
   requestMethod: string,
