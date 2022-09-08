@@ -178,7 +178,7 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
-        disabledAdaptors.includes('credprotcol')
+        disabledAdaptors.includes('credprotocol')
           ? this.#disabledPromise()
           : this.#timeit(
               adaptorList.getCredProtocolData,
@@ -578,7 +578,7 @@ class Omnid {
         'coinvise',
         'commonsstack',
         'coordinape',
-        'credprotcol',
+        'credprotocol',
         'cryptorelief',
         'cryptoscamdb',
         'cyberconnect',

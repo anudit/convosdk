@@ -118,7 +118,7 @@ export type AdaptorKeys =
   | 'coinvise'
   | 'commonsstack'
   | 'coordinape'
-  | 'credprotcol'
+  | 'credprotocol'
   | 'cryptorelief'
   | 'cryptoscamdb'
   | 'cyberconnect'

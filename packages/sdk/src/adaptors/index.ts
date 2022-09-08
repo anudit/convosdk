@@ -13,7 +13,7 @@ import { ChainabuseAdaptorDeets } from './chainabuse';
 import { CoinviseAdaptorDeets } from './coinvise';
 import { CommonsstackAdaptorDeets } from './commonsstack';
 import { CoordinapeAdaptorDeets } from './coordinape';
-import { CredprotocolAdaptorDeets } from './credprotcol';
+import { CredprotocolAdaptorDeets } from './credprotocol';
 import { CryptoreliefAdaptorDeets } from './cryptorelief';
 import { CryptoscamdbAdaptorDeets } from './cryptoscamdb';
 import { CyberconnectAdaptorDeets } from './cyberconnect';
@@ -97,7 +97,7 @@ export {
 export {
   default as getCredProtocolData,
   CredprotocolAdaptorDeets,
-} from './credprotcol';
+} from './credprotocol';
 export {
   default as getCryptoreliefData,
   CryptoreliefAdaptorDeets,
