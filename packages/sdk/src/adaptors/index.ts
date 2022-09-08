@@ -13,6 +13,7 @@ import { ChainabuseAdaptorDeets } from './chainabuse';
 import { CoinviseAdaptorDeets } from './coinvise';
 import { CommonsstackAdaptorDeets } from './commonsstack';
 import { CoordinapeAdaptorDeets } from './coordinape';
+import { CredprotocolAdaptorDeets } from './credprotcol';
 import { CryptoreliefAdaptorDeets } from './cryptorelief';
 import { CryptoscamdbAdaptorDeets } from './cryptoscamdb';
 import { CyberconnectAdaptorDeets } from './cyberconnect';
@@ -93,6 +94,10 @@ export {
   default as getCoordinapeData,
   CoordinapeAdaptorDeets,
 } from './coordinape';
+export {
+  default as getCredProtocolData,
+  CredprotocolAdaptorDeets,
+} from './credprotcol';
 export {
   default as getCryptoreliefData,
   CryptoreliefAdaptorDeets,
@@ -206,6 +211,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   CoinviseAdaptorDeets,
   CommonsstackAdaptorDeets,
   CoordinapeAdaptorDeets,
+  CredprotocolAdaptorDeets,
   CryptoreliefAdaptorDeets,
   CryptoscamdbAdaptorDeets,
   CyberconnectAdaptorDeets,

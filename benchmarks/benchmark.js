@@ -209,7 +209,7 @@ async function runStuff() {
     bench
         .addTest({ fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getAlchemyData, withConfig: true })
-        // .addTest({ fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getBirdData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getBoardroomData, withConfig: false })
@@ -219,6 +219,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getCoinviseData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getCommonsstackData, withConfig: false })
         // .addTest({ fn: convoInstance.omnid.adaptors.getCoordinapeData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getCredProtocolData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getCryptoreliefData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getCryptoscamdbData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getCyberconnectData, withConfig: false })
@@ -266,7 +267,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getQuadrataData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getQuestbookData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getUpalaData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getUpshotData, withConfig: false })
+        // .addTest({ fn: convoInstance.omnid.adaptors.getUpshotData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getYupData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getZapperData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true })
@@ -277,7 +278,7 @@ async function runStuff() {
 
     bench2.addTest({
         fn: computeTrustScore = async (address, withConfig) => {
-            return await convoInstance.omnid.computeTrustScore(address, config, ['coordinape', 'arcx'])
+            return await convoInstance.omnid.computeTrustScore(address, config, ['coordinape', 'upshot', 'arcx'])
         }, withConfig: true, verbose: false,
     })
 
@@ -307,13 +308,13 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getTxnData(address, config);
-        }, withConfig: false, verbose: false,
+            return convoInstance.omnid.adaptors.getProjectGalaxyData(address);
+        }, withConfig: false, verbose: true,
     })
 
     await bench.run();
-    await bench2.run();
-    await bench3.run();
+    // await bench2.run();
+    // await bench3.run();
     // await bench4.run();
     // await bench5.run();
 }

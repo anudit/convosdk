@@ -178,6 +178,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('credprotcol')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getCredProtocolData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('cryptorelief')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -571,6 +578,7 @@ class Omnid {
         'coinvise',
         'commonsstack',
         'coordinape',
+        'credprotcol',
         'cryptorelief',
         'cryptoscamdb',
         'cyberconnect',

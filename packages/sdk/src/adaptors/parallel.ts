@@ -38,6 +38,6 @@ export const ParallelAdaptorDeets: AdaptorDeets = {
   name: 'Parallel Identity',
   projectThumbnail:
     'ipfs://bafybeicatpthjnieqrezua5naoeh3yyvboc4z5mirtwtztywvcgi6tsha4/projectgalaxy.webp',
-  projectUrl: 'https://parallelmarkets.com/',
+  projectUrl: 'https://parallelid.com/',
   requiredConfigKeys: [],
 };

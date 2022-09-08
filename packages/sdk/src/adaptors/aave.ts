@@ -43,7 +43,7 @@ export default async function getAaveData(
         }
       }
     }
-    return retData;
+    return Object.keys(retData).length == 0 ? false : retData;
   } catch (error) {
     return false;
   }

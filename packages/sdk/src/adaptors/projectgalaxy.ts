@@ -17,25 +17,30 @@ interface ProjectGalaxyResult {
 }
 
 export default async function getProjectGalaxyData(address: string) {
-  const jsonData = (await gqlFetcher(
-    'https://graphigo.prd.galaxy.eco/query',
-    `{
-      addressInfo(address: "${address.toLowerCase()}") {
-        id
-        username
-        eligibleCredentials {
-            list {
-                id
-                name
-            }
+  try {
+    const jsonData = (await gqlFetcher(
+      'https://graphigo.prd.galaxy.eco/query',
+      `{
+        addressInfo(address: "${address.toLowerCase()}") {
+          id
+          username
+          eligibleCredentials {
+              list {
+                  id
+                  name
+              }
+          }
         }
-      }
-    }`
-  )) as ProjectGalaxyResult;
+      }`
+    )) as ProjectGalaxyResult;
 
-  return Object.keys(jsonData['data']).includes('addressInfo')
-    ? jsonData['data']['addressInfo']
-    : {};
+    return Boolean(jsonData['data']['addressInfo']['eligibleCredentials']['list']?.length) === true
+      ? jsonData['data']['addressInfo']
+      : false;
+
+  } catch (error) {
+    return false;
+  }
 }
 
 export const ProjectgalaxyAdaptorDeets: AdaptorDeets = {
