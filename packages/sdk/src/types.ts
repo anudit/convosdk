@@ -110,6 +110,7 @@ export type AdaptorKeys =
   | 'alchemy'
   | 'arcx'
   | 'asyncart'
+  | 'babt'
   | 'bird'
   | 'boardroom'
   | 'brightid'

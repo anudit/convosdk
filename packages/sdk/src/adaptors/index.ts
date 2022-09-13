@@ -5,6 +5,7 @@ import { AaveAdaptorDeets } from './aave';
 import { AlchemyAdaptorDeets } from './alchemy';
 import { ArcxAdaptorDeets } from './arcx';
 import { AsyncartAdaptorDeets } from './asyncart';
+import { BabtAdaptorDeets } from './babt';
 import { BirdAdaptorDeets } from './bird';
 import { BoardroomAdaptorDeets } from './boardroom';
 import { BrightidAdaptorDeets } from './brightid';
@@ -74,6 +75,7 @@ export { default as getAaveData, AaveAdaptorDeets } from './aave';
 export { default as getAlchemyData, AlchemyAdaptorDeets } from './alchemy';
 export { default as getArcxData, ArcxAdaptorDeets } from './arcx';
 export { default as getAsyncartData, AsyncartAdaptorDeets } from './asyncart';
+export { default as getBabtData, BabtAdaptorDeets } from './babt';
 export { default as getBirdData, BirdAdaptorDeets } from './bird';
 export {
   default as getBoardroomData,
@@ -203,6 +205,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   AlchemyAdaptorDeets,
   ArcxAdaptorDeets,
   AsyncartAdaptorDeets,
+  BabtAdaptorDeets,
   BirdAdaptorDeets,
   BoardroomAdaptorDeets,
   BrightidAdaptorDeets,

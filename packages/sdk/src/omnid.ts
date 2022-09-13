@@ -122,6 +122,13 @@ class Omnid {
               [address, computeConfig],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('babt')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getBabtData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('bird')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -570,6 +577,7 @@ class Omnid {
         'alchemy',
         'arcx',
         'asyncart',
+        'babt',
         'bird',
         'boardroom',
         'brightid',

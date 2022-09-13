@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.6.0 [Unreleased]
+## 0.6.0
 - Drop support for Node v12.
-- Improvements.
+- Add adaptors and Improvements.
 - Update Dependencies.
 
 ## 0.5.19

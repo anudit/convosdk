@@ -211,6 +211,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getAlchemyData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getAsyncartData, withConfig: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getBabtData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getBirdData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getBoardroomData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false })
@@ -308,12 +309,12 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getProjectGalaxyData(address);
+            return convoInstance.omnid.adaptors.addressToEns(address);
         }, withConfig: false, verbose: true,
     })
 
     await bench.run();
-    // await bench2.run();
+    await bench2.run();
     // await bench3.run();
     // await bench4.run();
     // await bench5.run();
