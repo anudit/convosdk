@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.1
+- Add HumanBound Token (`hbt`) Adaptor.
+- Update Dependencies.
+
 ## 0.6.0
 - Drop support for Node v12.
 - Add adaptors and Improvements.

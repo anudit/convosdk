@@ -31,7 +31,7 @@ export const BabtAdaptorDeets: AdaptorDeets = {
   id: 'babt',
   name: 'Binance Account Bound Token',
   projectThumbnail:
-    'ipfs://bafybeidqff4pbexxlyfd5v3cevcscjtrcryuvr3ov656djv4hm27ozrawu/commonsstack.webp',
+    'ipfs://bafybeibtjdmpcs4rsdxjlvlb7iwxt4odvs72cuqa6emmfgrkvs3awxoaby/babt.webp',
   projectUrl:
     'https://www.binance.com/en/support/faq/bacaf9595b52440ea2b023195ba4a09c',
   requiredConfigKeys: [],

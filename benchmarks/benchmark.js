@@ -194,6 +194,7 @@ async function runStuff() {
         "0x166C7Ae68dc800De903f891a3bb2c9258d797CcA", // chainabuse
         "0x627a22ff70cb84e74c9c70e2d5b0b75af5a1dcb9", // Omni Expoilt
         "0x3faad8f2776dd17fa20d4d9707e7ab76b808adde", // Parallel Identity
+        "0x854ce16536cc41a0593a754f88a3eaf14eee9938", // violet hbt
         // "0x225b11096e5aec644bf1a0f09358d9534ce20903",
         // "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
         // "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
@@ -236,6 +237,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getGoldfinchData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getGoplusData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getGovernordaoData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getHbtData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getHiveOneData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.checkIdena, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getKarmaData, withConfig: false })

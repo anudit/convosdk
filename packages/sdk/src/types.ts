@@ -135,6 +135,7 @@ export type AdaptorKeys =
   | 'goldfinch'
   | 'goplus'
   | 'governordao'
+  | 'hbt'
   | 'hiveone'
   | 'huddln'
   | 'idena'

@@ -30,6 +30,7 @@ import { GivethAdaptorDeets } from './giveth';
 import { GoldfinchAdaptorDeets } from './goldfinch';
 import { GoplusAdaptorDeets } from './goplus';
 import { GovernordaoAdaptorDeets } from './governordao';
+import { HbtAdaptorDeets } from './hbt';
 import { HiveoneAdaptorDeets } from './hiveone';
 import { HuddlnAdaptorDeets } from './huddln';
 import { IdenaAdaptorDeets } from './idena';
@@ -136,6 +137,7 @@ export {
   default as getGovernordaoData,
   GovernordaoAdaptorDeets,
 } from './governordao';
+export { default as getHbtData, HbtAdaptorDeets } from './hbt';
 export { default as getHiveOneData, HiveoneAdaptorDeets } from './hiveone';
 export { default as getHuddlnData, HuddlnAdaptorDeets } from './huddln';
 export { default as checkIdena, IdenaAdaptorDeets } from './idena';
@@ -230,6 +232,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   GoldfinchAdaptorDeets,
   GoplusAdaptorDeets,
   GovernordaoAdaptorDeets,
+  HbtAdaptorDeets,
   HiveoneAdaptorDeets,
   HuddlnAdaptorDeets,
   IdenaAdaptorDeets,
