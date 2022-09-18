@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/react",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "description": "React Hooks and Components to build on theconvo.space",
   "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
@@ -56,8 +56,8 @@
   "homepage": "https://github.com/anudit/convosdk/tree/main/packages/react",
   "devDependencies": {
     "@typechain/ethers-v5": "^10.1.0",
-    "@types/node": "^18.7.17",
-    "@types/react": "^18.0.19",
+    "@types/node": "^18.7.18",
+    "@types/react": "^18.0.20",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "esbuild-visualizer": "^0.3.1",
@@ -85,13 +85,13 @@
     "lib": "lib"
   },
   "dependencies": {
-    "@ethersproject/providers": "^5.7.0",
-    "@theconvospace/sdk": "workspace:^0.6.0",
+    "@ethersproject/providers": "^5.7.1",
+    "@theconvospace/sdk": "^0.6.1",
     "ably": "^1.2.29",
     "copy-to-clipboard": "^3.3.2",
     "cross-fetch": "^3.1.5",
     "degen": "^0.0.112",
-    "ethers": "^5.7.0",
+    "ethers": "^5.7.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "swr": "^1.3.0"

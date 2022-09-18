@@ -15,7 +15,7 @@ importers:
   examples/nextjs:
     specifiers:
       '@rainbow-me/rainbowkit': ^0.6.0
-      '@theconvospace/react': ^0.2.7
+      '@theconvospace/react': workspace:0.2.8
       '@theconvospace/sdk': ^0.6.1
       degen: 0.0.112
       eslint: 8.23.1
@@ -41,11 +41,11 @@ importers:
 
   packages/react:
     specifiers:
-      '@ethersproject/providers': ^5.7.0
-      '@theconvospace/sdk': workspace:^0.6.0
+      '@ethersproject/providers': ^5.7.1
+      '@theconvospace/sdk': ^0.6.1
       '@typechain/ethers-v5': ^10.1.0
-      '@types/node': ^18.7.17
-      '@types/react': ^18.0.19
+      '@types/node': ^18.7.18
+      '@types/react': ^18.0.20
       '@typescript-eslint/eslint-plugin': ^5.37.0
       '@typescript-eslint/parser': ^5.37.0
       ably: ^1.2.29
@@ -57,7 +57,7 @@ importers:
       eslint-config-prettier: ^8.5.0
       eslint-plugin-node: ^11.1.0
       eslint-plugin-prettier: ^4.2.1
-      ethers: ^5.7.0
+      ethers: ^5.7.1
       lint-staged: ^13.0.3
       npm-run-all: ^4.1.5
       open-cli: ^7.0.1
@@ -69,20 +69,20 @@ importers:
       typechain: ^8.1.0
       typescript: 4.8.3
     dependencies:
-      '@ethersproject/providers': 5.7.0
+      '@ethersproject/providers': 5.7.1
       '@theconvospace/sdk': link:../sdk
       ably: 1.2.29
       copy-to-clipboard: 3.3.2
       cross-fetch: 3.1.5
       degen: 0.0.112_biqbaboplfbrettd7655fr4n2y
-      ethers: 5.7.0
+      ethers: 5.7.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       swr: 1.3.0_react@18.2.0
     devDependencies:
-      '@typechain/ethers-v5': 10.1.0_nlqlzrwqny46vr3vkpvwgg274y
-      '@types/node': 18.7.17
-      '@types/react': 18.0.19
+      '@typechain/ethers-v5': 10.1.0_5j3cn5d4yuptetwgnyhhcobakq
+      '@types/node': 18.7.18
+      '@types/react': 18.0.20
       '@typescript-eslint/eslint-plugin': 5.37.0_22c5fnooleyfkzrkkgdmel5kmi
       '@typescript-eslint/parser': 5.37.0_irgkl5vooow2ydyo6aokmferha
       esbuild-visualizer: 0.3.1
@@ -710,6 +710,7 @@ packages:
     resolution: {integrity: sha512-MG6oHSQHd4ebvJrleEQQ4HhVu8Ichr0RDYEfHzsVAVjHNM+w36x9wp9r+hf1JstMXtseXDtkiVoARAG6M959AA==}
     dependencies:
       '@ethersproject/logger': 5.7.0
+    dev: false
 
   /@ethersproject/networks/5.7.1:
     resolution: {integrity: sha512-n/MufjFYv3yFcUyfhnXotyDlNdFb7onmkSy8aQERi2PjNcnWQ66xXxa3XlS8nCcA8aJKJjIIMNJTC7tu80GwpQ==}
@@ -794,6 +795,7 @@ packages:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+    dev: false
 
   /@ethersproject/providers/5.7.1:
     resolution: {integrity: sha512-vZveG/DLyo+wk4Ga1yx6jSEHrLPgmTt+dFv0dv8URpVCRf0jVhalps1jq/emN/oXnMRsC7cQgAF32DcXLL7BPQ==}
@@ -1019,6 +1021,7 @@ packages:
       '@ethersproject/logger': 5.7.0
       '@ethersproject/properties': 5.7.0
       '@ethersproject/strings': 5.7.0
+    dev: false
 
   /@ethersproject/web/5.7.1:
     resolution: {integrity: sha512-Gueu8lSvyjBWL4cYsWsjh6MtMwM0+H4HvqFPZfB6dV8ctbP9zFAO73VG1cMWae0FLPCtz0peKPpZY8/ugJJX2w==}
@@ -1721,7 +1724,7 @@ packages:
     resolution: {integrity: sha512-yOlFc+7UtL/89t2ZhjPvvB/DeAr3r+Dq58IgzsFkOAvVC6NMJXmCGjbptdXdR9qsX7pKcTL+s87FtYREi2dEEQ==}
     dev: true
 
-  /@typechain/ethers-v5/10.1.0_nlqlzrwqny46vr3vkpvwgg274y:
+  /@typechain/ethers-v5/10.1.0_5j3cn5d4yuptetwgnyhhcobakq:
     resolution: {integrity: sha512-3LIb+eUpV3mNCrjUKT5oqp8PBsZYSnVrkfk6pY/ZM0boRs2mKxjFZ7bktx42vfDye8PPz3NxtW4DL5NsNsFqlg==}
     peerDependencies:
       '@ethersproject/abi': ^5.0.0
@@ -1731,8 +1734,8 @@ packages:
       typechain: ^8.1.0
       typescript: '>=4.3.0'
     dependencies:
-      '@ethersproject/providers': 5.7.0
-      ethers: 5.7.0
+      '@ethersproject/providers': 5.7.1
+      ethers: 5.7.1
       lodash: 4.17.21
       ts-essentials: 7.0.3_typescript@4.8.3
       typechain: 8.1.0_typescript@4.8.3
@@ -1782,7 +1785,7 @@ packages:
     dependencies:
       '@types/http-cache-semantics': 4.0.1
       '@types/keyv': 3.1.4
-      '@types/node': 18.7.17
+      '@types/node': 18.7.18
       '@types/responselike': 1.0.0
     dev: false
 
@@ -1827,7 +1830,7 @@ packages:
   /@types/keyv/3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 18.7.17
+      '@types/node': 18.7.18
     dev: false
 
   /@types/long/4.0.2:
@@ -1855,6 +1858,7 @@ packages:
 
   /@types/node/18.7.17:
     resolution: {integrity: sha512-0UyfUnt02zIuqp7yC8RYtDkp/vo8bFaQ13KkSEvUAohPOAlnVNbj5Fi3fgPSuwzakS+EvvnnZ4x9y7i6ASaSPQ==}
+    dev: false
 
   /@types/node/18.7.18:
     resolution: {integrity: sha512-m+6nTEOadJZuTPkKR/SYK3A2d7FZrgElol9UP1Kae90VVU4a6mxnPuLiIW1m4Cq4gZ/nWb9GrdVXJCoCazDAbg==}
@@ -1884,8 +1888,8 @@ packages:
     resolution: {integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==}
     dev: false
 
-  /@types/react/18.0.19:
-    resolution: {integrity: sha512-BDc3Q+4Q3zsn7k9xZrKfjWyJsSlEDMs38gD1qp2eDazLCdcPqAT+vq1ND+Z8AGel/UiwzNUk8ptpywgNQcJ1MQ==}
+  /@types/react/18.0.20:
+    resolution: {integrity: sha512-MWul1teSPxujEHVwZl4a5HxQ9vVNsjTchVA+xRqv/VYGCuKGAU6UhfrTdF5aBefwD1BHUD8i/zq+O/vyCm/FrA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.2
@@ -1895,7 +1899,7 @@ packages:
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 18.7.17
+      '@types/node': 18.7.18
     dev: false
 
   /@types/retry/0.12.0:
@@ -5250,6 +5254,7 @@ packages:
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
+    dev: false
 
   /ethers/5.7.1:
     resolution: {integrity: sha512-5krze4dRLITX7FpU8J4WscXqADiKmyeNlylmmDLbS95DaZpBhDe2YSwRQwKXWNyXcox7a3gBgm/MkGXV1O1S/Q==}
