@@ -26,7 +26,7 @@ class Auth {
     signerAddress: string,
     signature: any,
     timestamp: number,
-    chain: string,
+    chain: 'ethereum' | 'near' | 'flow' | 'solana',
     accountId = ''
   ): Promise<any | ErrorType> => {
     const ep = `${this.node}/auth`;

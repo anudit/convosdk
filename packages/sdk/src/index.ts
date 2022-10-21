@@ -21,3 +21,4 @@ class Convo extends ConvoBase {
 }
 
 export { Convo };
+export * from './types';

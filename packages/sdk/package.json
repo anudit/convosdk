@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "SDK containing all the functions you'll need to build on theconvo.space",
   "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
@@ -56,22 +56,22 @@
   "homepage": "https://github.com/anudit/convosdk/tree/main/packages/sdk",
   "devDependencies": {
     "@typechain/ethers-v5": "^10.1.0",
-    "@types/node": "^18.7.18",
-    "@typescript-eslint/eslint-plugin": "^5.37.0",
-    "@typescript-eslint/parser": "^5.37.0",
+    "@types/node": "^18.11.3",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
     "esbuild-visualizer": "^0.3.1",
-    "eslint": "^8.23.1",
+    "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
     "lint-staged": "^13.0.3",
     "npm-run-all": "^4.1.5",
-    "open-cli": "^7.0.1",
+    "open-cli": "^7.1.0",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
-    "tsup": "6.2.3",
+    "tsup": "6.3.0",
     "typechain": "^8.1.0",
-    "typescript": "4.8.3"
+    "typescript": "4.8.4"
   },
   "lint-staged": {
     "*.ts": "eslint --cache --cache-location .eslintcache --fix"
@@ -86,10 +86,10 @@
   },
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
-    "@ethersproject/providers": "^5.7.1",
-    "@solana/web3.js": "^1.62.0",
+    "@ethersproject/providers": "^5.7.2",
+    "@solana/web3.js": "^1.66.2",
     "cross-fetch": "^3.1.5",
-    "ethers": "^5.7.1",
+    "ethers": "^5.7.2",
     "siwe": "^1.1.6"
   }
 }

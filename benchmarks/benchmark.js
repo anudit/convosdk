@@ -1,6 +1,6 @@
 require('dotenv').config({ path: '.env.local' })
 const { createStream } = require('table');
-const { Convo } = require('../packages/sdk/lib/index');
+const { Convo, } = require('../packages/sdk/lib/index');
 const { ethers } = require('ethers');
 
 const { ALCHEMY_API_KEY, ZAPPER_API_KEY, OPTIMISMSCAN_API_KEY, ETHERSCAN_API_KEY, CNVSEC_ID, POLYGONSCAN_API_KEY } = process.env;
@@ -18,7 +18,7 @@ const config = {
     polygonMainnetRpc: "https://polygon-rpc.com",
     etherumMainnetRpc: "https://eth.public-rpc.com",
     avalancheMainnetRpc: "https://avalanche.public-rpc.com",
-    maticPriceInUsd: 0.4,
+    maticPriceInUsd: 0.8,
     etherumPriceInUsd: 1200,
     etherscanApiKey: ETHERSCAN_API_KEY,
     polygonscanApiKey: POLYGONSCAN_API_KEY,
@@ -259,7 +259,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getShowtimeData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getSuperrareData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getTokenBlacklistData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getTxnData, withConfig: true })
+        // .addTest({ fn: convoInstance.omnid.adaptors.getTxnData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getUnipassData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getSybilData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false })
@@ -311,7 +311,7 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.addressToEns(address);
+            return convoInstance.omnid.adaptors.getTokenBlacklistData(address);
         }, withConfig: false, verbose: true,
     })
 

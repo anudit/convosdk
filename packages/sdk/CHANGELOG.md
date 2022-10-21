@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.2
+- Improve `rss3`, `layer3`, `tokenblacklist` Adaptors.
+- Export types.
+- Update Dependencies.
+
 ## 0.6.1
 - Add HumanBound Token (`hbt`) Adaptor.
 - Update Dependencies.

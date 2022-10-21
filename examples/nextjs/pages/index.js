@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Convo } from "@theconvospace/sdk"
 import styles from '../styles/Home.module.css'
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount, useNetwork, useSigner  } from 'wagmi';
+import { useAccount, useNetwork, useSigner } from 'wagmi';
 import NextLink from 'next/link';
 
 export default function Home() {
@@ -129,7 +129,7 @@ export default function Home() {
               address,
               "",
               "New",
-              "KIGZUnR4RzXDFheXoOwo",
+              "gLr0RKrdPCjvWTW8C4XKQaCjmn",
               encodeURIComponent('https://theconvo.space/')
             ).then(console.log)
           }} className={styles.card}>
@@ -157,14 +157,26 @@ export default function Home() {
         <div className={styles.grid}>
 
           <div onClick={() => {
-
+            ConvoInstance.threads.getThreads(["gLr0RKrdPCjvWTW8C4XKQaCjmn"]).then(console.log);
           }} className={styles.card}>
             <h2>Get Threads &rarr;</h2>
             <p>Get Threads using the SDK.</p>
           </div>
 
           <div onClick={() => {
-
+            ConvoInstance.threads.create(
+              address,
+              "",
+              "This is a new testthread",
+              "Test Desc",
+              "https://example.anudit.dev",
+              true,
+              true,
+              [address],
+              [address],
+              [],
+              {},
+            ).then(console.log)
           }} className={styles.card}>
             <h2>Create Thread&rarr;</h2>
             <p>Create a new Thread using the SDK.</p>
@@ -216,7 +228,7 @@ export default function Home() {
 
 
         </div>
-      </main>
+      </main >
 
       <footer className={styles.footer}>
         <a
@@ -232,6 +244,6 @@ export default function Home() {
           The Convo Space
         </a>
       </footer>
-    </div>
+    </div >
   )
 }
