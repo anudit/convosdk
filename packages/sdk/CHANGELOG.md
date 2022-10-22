@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.3
+- Add `101badges` Adaptor.
+
 ## 0.6.2
 - Improve `rss3`, `layer3`, `tokenblacklist` Adaptors.
 - Export types.

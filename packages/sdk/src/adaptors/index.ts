@@ -1,6 +1,7 @@
 import { AdaptorDeets } from '../types';
 
 // Adaptor Details
+import { OneZeroOneBadgesAdaptorDeets } from './101badges';
 import { AaveAdaptorDeets } from './aave';
 import { AlchemyAdaptorDeets } from './alchemy';
 import { ArcxAdaptorDeets } from './arcx';
@@ -72,6 +73,10 @@ import { ZapperAdaptorDeets } from './zapper';
 import { ZoraAdaptorDeets } from './zora';
 
 // Adaptor Functions
+export {
+  default as get101badgesData,
+  OneZeroOneBadgesAdaptorDeets,
+} from './101badges';
 export { default as getAaveData, AaveAdaptorDeets } from './aave';
 export { default as getAlchemyData, AlchemyAdaptorDeets } from './alchemy';
 export { default as getArcxData, ArcxAdaptorDeets } from './arcx';
@@ -178,7 +183,10 @@ export {
 export { default as getRaribleData, RaribleAdaptorDeets } from './rarible';
 export { default as getRocifiData, RocifiAdaptorDeets } from './rocifi';
 export { default as getRss3Data, Rss3AdaptorDeets } from './rss3';
-export { default as getScanblocksData, ScanblocksAdaptorDeets } from './scanblocks';
+export {
+  default as getScanblocksData,
+  ScanblocksAdaptorDeets,
+} from './scanblocks';
 export { default as getSdnData, SdnAdaptorDeets } from './sdn';
 export { default as getShowtimeData, ShowtimeAdaptorDeets } from './showtime';
 export {
@@ -203,6 +211,7 @@ export { default as getZapperData, ZapperAdaptorDeets } from './zapper';
 export { default as getZoraData, ZoraAdaptorDeets } from './zora';
 
 export const AdaptorData: Array<AdaptorDeets> = [
+  OneZeroOneBadgesAdaptorDeets,
   AaveAdaptorDeets,
   AlchemyAdaptorDeets,
   ArcxAdaptorDeets,

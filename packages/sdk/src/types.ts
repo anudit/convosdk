@@ -106,6 +106,7 @@ export interface CommentResp {
 }
 
 export type AdaptorKeys =
+  | '101badges'
   | 'aave'
   | 'alchemy'
   | 'arcx'
