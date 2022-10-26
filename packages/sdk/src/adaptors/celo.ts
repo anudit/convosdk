@@ -3,38 +3,42 @@ import { gqlFetcher } from '../utils';
 
 interface CeloQueryResult {
   data: {
-    attestationsCompleteds: Array<{
-      id: number;
-      count: number;
-    }>;
+    attestations: Array<any>;
   };
 }
 
 export default async function getCeloData(address: string) {
   try {
-    // TODO: Migrate to Subgraph Studio, requires Celo support.
+    // TODO: Migrate to Subgraph Studio which requires Celo support.
     const response = (await gqlFetcher(
       'https://api.thegraph.com/subgraphs/name/anudit/celo-subgraph',
       `{
-          attestationsCompleteds (where: {id: "${address.toLowerCase()}"}) {
-              id
-              count
+          attestations(where: {id: "${address.toLowerCase()}"}) {
+            id
+            identifier
+            issuer
+            account
+            signer
+            issuedOn
+            publishedOn
+            txnHash
+            isRevoked
           }
       }`
     )) as CeloQueryResult;
 
-    if (response['data']['attestationsCompleteds'].length > 0) {
+    if (response['data']['attestations'].length > 0) {
       return {
-        attestations: response['data']['attestationsCompleteds'][0]['count'],
+        attestations: response['data']['attestations'],
       };
     } else {
       return {
-        attestations: 0,
+        attestations: false,
       };
     }
   } catch (error) {
     return {
-      attestations: 0,
+      attestations: false,
     };
   }
 }

@@ -9,14 +9,13 @@ interface QuadResp {
 
 export default async function getQuadrataData(address: string) {
   const { data } = (await gqlFetcher(
-    'https://api.studio.thegraph.com/query/1649/quadrata/v1.11',
+    'https://api.studio.thegraph.com/query/1649/quadrata/v2.2',
     `{
         quadrataPassports(where: {owner: "${address.toLowerCase()}"}) {
           tokenId
           aml
           quadDID
           country
-          isBusiness
         }
     }`
   )) as QuadResp;
