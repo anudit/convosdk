@@ -195,6 +195,8 @@ async function runStuff() {
         "0x627a22ff70cb84e74c9c70e2d5b0b75af5a1dcb9", // Omni Expoilt
         "0x3faad8f2776dd17fa20d4d9707e7ab76b808adde", // Parallel Identity
         "0x854ce16536cc41a0593a754f88a3eaf14eee9938", // violet hbt
+        "0x26071a19c8d5ecA20AB5C959F578095e1a776E18", // 101
+        "0x0c12522fCDa861460BF1BC223eCa108144EE5Df4", // Mazury
         // "0x225b11096e5aec644bf1a0f09358d9534ce20903",
         // "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
         // "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
@@ -208,6 +210,7 @@ async function runStuff() {
     bench.addTestCases(testCases);
 
     bench
+        .addTest({ fn: convoInstance.omnid.adaptors.get101badgesData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getAaveData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getAlchemyData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getArcxData, withConfig: false })
@@ -246,6 +249,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getLearnWeb3Data, withConfig: false, })
         .addTest({ fn: convoInstance.omnid.adaptors.getLensData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getMazuryData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMetagameData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMewData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getMirrorData, withConfig: false })

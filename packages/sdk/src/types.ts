@@ -147,6 +147,7 @@ export type AdaptorKeys =
   | 'layer3'
   | 'learnweb3'
   | 'lens'
+  | 'mazury'
   | 'metagame'
   | 'mew'
   | 'mirror'

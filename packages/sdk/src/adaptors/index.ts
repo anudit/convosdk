@@ -42,6 +42,7 @@ import { LabelAdaptorDeets } from './labels';
 import { Layer3AdaptorDeets } from './layer3';
 import { Learnweb3AdaptorDeets } from './learnweb3';
 import { LensAdaptorDeets } from './lens';
+import { MazuryAdaptorDeets } from './mazury';
 import { MetagameAdaptorDeets } from './metagame';
 import { MewAdaptorDeets } from './mew';
 import { MirrorAdaptorDeets } from './mirror';
@@ -159,6 +160,7 @@ export {
   Learnweb3AdaptorDeets,
 } from './learnweb3';
 export { default as getLensData, LensAdaptorDeets } from './lens';
+export { default as getMazuryData, MazuryAdaptorDeets } from './mazury';
 export { default as getMetagameData, MetagameAdaptorDeets } from './metagame';
 export { default as getMewData, MewAdaptorDeets } from './mew';
 export { default as getMirrorData, MirrorAdaptorDeets } from './mirror';
@@ -252,6 +254,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   Layer3AdaptorDeets,
   Learnweb3AdaptorDeets,
   LensAdaptorDeets,
+  MazuryAdaptorDeets,
   MetagameAdaptorDeets,
   MewAdaptorDeets,
   MirrorAdaptorDeets,

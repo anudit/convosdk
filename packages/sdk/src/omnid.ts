@@ -367,6 +367,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('mazury')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getMazuryData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('metagame')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -612,6 +619,7 @@ class Omnid {
         'layer3',
         'learnweb3',
         'lens',
+        'mazury',
         'metagame',
         'mew',
         'mirror',

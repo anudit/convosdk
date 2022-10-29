@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.4
+- Add `mazury` Support to Omnid.
+- Update Dependencies.
+
 ## 0.6.3
 - Add `101badges` Adaptor.
 - Update `celo`, `quadrata` Adaptor.
