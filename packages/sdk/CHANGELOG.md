@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.6.5
+- Fix `mazury` Adaptor.
+
 ## 0.6.4
 - Add `mazury` Support to Omnid.
 - Update Dependencies.

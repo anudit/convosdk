@@ -84,7 +84,7 @@ async function publishPackage(packageName, version) {
 
 const accountName = "theconvospace"
 let projectName = "sdk"
-let version = "0.6.4"
+let version = "0.6.5"
 
 publishPackage(`@${accountName}/${projectName}`, version).then(() => {
     process.exit(0);

@@ -8,7 +8,7 @@ interface MazuryResult {
 export default async function getMazuryBadges(address: string) {
   const resp = (await fetcher(
     'GET',
-    `https://mazury-production.hqerokuapp.com/badges/?issuer=mazury&limit=1000&offset=0&owner=${address}`
+    `https://mazury-production.herokuapp.com/badges/?issuer=mazury&limit=1000&offset=0&owner=${address}`
   )) as MazuryResult;
 
   return resp?.result.length > 0 ? resp?.result : false;

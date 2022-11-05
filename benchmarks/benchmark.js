@@ -315,7 +315,7 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getTokenBlacklistData(address);
+            return convoInstance.omnid.adaptors.getArcxData(address);
         }, withConfig: false, verbose: true,
     })
 
