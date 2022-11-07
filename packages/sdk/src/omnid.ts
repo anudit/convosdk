@@ -248,6 +248,13 @@ class Omnid {
               [address, computeConfig],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('ethrank')
+          ? this.#disabledPromise()
+          : this.#timeitWithConfig(
+              adaptorList.getETHRankData,
+              [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('forta')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -602,6 +609,7 @@ class Omnid {
         'deepdao',
         'ens',
         'etherscan',
+        'ethrank',
         'forta',
         'foundation',
         'gitcoin',

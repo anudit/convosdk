@@ -129,6 +129,7 @@ export type AdaptorKeys =
   | 'deepdao'
   | 'ens'
   | 'etherscan'
+  | 'ethrank'
   | 'forta'
   | 'foundation'
   | 'gitcoin'

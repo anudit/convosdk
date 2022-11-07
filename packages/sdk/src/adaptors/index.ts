@@ -24,6 +24,7 @@ import { DebankAdaptorDeets } from './debank';
 import { DeepdaodaptorDeets } from './deepdao';
 import { EnsAdaptorDeets } from './ens';
 import { EtherscanAdaptorDeets } from './etherscan';
+import { ETHRankAdaptorDeets } from './ethrank';
 import { FortaAdaptorDeets } from './forta';
 import { FoundationQueryResult } from './foundation';
 import { GitcoinAdaptorDeets } from './gitcoin';
@@ -127,6 +128,10 @@ export {
   default as getEtherscanData,
   EtherscanAdaptorDeets,
 } from './etherscan';
+export {
+  default as getETHRankData,
+  ETHRankAdaptorDeets,
+} from './ethrank';
 export { default as getFortaData, FortaAdaptorDeets } from './forta';
 export {
   default as getFoundationData,
@@ -236,6 +241,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   DeepdaodaptorDeets,
   EnsAdaptorDeets,
   EtherscanAdaptorDeets,
+  ETHRankAdaptorDeets,
   FortaAdaptorDeets,
   FoundationQueryResult,
   GitcoinAdaptorDeets,
