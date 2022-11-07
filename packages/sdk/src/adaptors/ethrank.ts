@@ -25,7 +25,7 @@ export const ETHRankAdaptorDeets: AdaptorDeets = {
   id: 'ethrank',
   name: 'ETHRank',
   projectThumbnail:
-    'ipfs://bafybeifeexiq5ra5hbmgwgqybncboz7mhaxrvyusn5z6svtml23dl4xpau/arcx.webp',
+    'ipfs://QmTD7CPqZLfBPKkfCXf8HBps9jYNhDyGLQLx1AMdzckMUV',
   projectUrl: 'https://ethrank.io',
   requiredConfigKeys: [],
 };
