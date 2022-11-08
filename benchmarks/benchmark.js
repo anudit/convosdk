@@ -197,6 +197,7 @@ async function runStuff() {
         "0x854ce16536cc41a0593a754f88a3eaf14eee9938", // violet hbt
         "0x26071a19c8d5ecA20AB5C959F578095e1a776E18", // 101
         "0x0c12522fCDa861460BF1BC223eCa108144EE5Df4", // Mazury
+        "0xf7287d45e290d11858d113fd0250b1c2c6aab044", // Ethrank
         // "0x225b11096e5aec644bf1a0f09358d9534ce20903",
         // "0xbCEaA0040764009fdCFf407e82Ad1f06465fd2C4",
         // "0x2fdc5ec86B1744F8884D08FE404AC2F8612d3528",
@@ -250,6 +251,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getLearnWeb3Data, withConfig: false, })
         .addTest({ fn: convoInstance.omnid.adaptors.getLensData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMazuryData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getETHRankData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMetagameData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getMewData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getMirrorData, withConfig: false })
@@ -315,7 +317,7 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getArcxData(address);
+            return convoInstance.omnid.adaptors.getETHRankData(address);
         }, withConfig: false, verbose: true,
     })
 

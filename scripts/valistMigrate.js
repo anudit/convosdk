@@ -8,6 +8,7 @@ const http = require('https')
 const { pipeline } = require('stream');
 const { promisify } = require('util');
 const Web3HttpProvider = require('web3-providers-http');
+const { getFilesFromPath } = require('@valist/sdk');
 
 
 const download = async ({ url, path }) => {
@@ -50,9 +51,9 @@ async function publishToValist(releaseDetails) {
         path: filePath,
     })
 
-    let fileStream = fs.createReadStream(filePath);
-
-    const metaURI = await valistClient.writeFile(fileStream);
+    const artifacts = await getFilesFromPath(filePath);
+    console.log('Uploading Release to Valist');
+    const metaURI = await valistClient.writeFolder(artifacts);
 
     const release = new ReleaseMeta();
     release.name = releaseDetails.version;
@@ -89,6 +90,6 @@ async function migratePackage(packageName) {
 // 1. Setup VALIST_RELEASER_PK in .env file
 // 2. Change Package Name below.
 // 3. Run Script.
-migratePackage('@theconvospace/sdk').then(() => {
+migratePackage('@omnid/snap').then(() => {
     process.exit(0);
 });

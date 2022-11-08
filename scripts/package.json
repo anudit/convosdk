@@ -4,7 +4,7 @@
   "description": "",
   "main": "benchmark.js",
   "scripts": {
-    "valistMigrate": "node valistMigrate.js",
+    "migrate": "node valistMigrate.js",
     "rel": "node valistRelease.js"
   },
   "author": "",

@@ -24,8 +24,7 @@ export default async function getETHRankData(address: string) {
 export const ETHRankAdaptorDeets: AdaptorDeets = {
   id: 'ethrank',
   name: 'ETHRank',
-  projectThumbnail:
-    'ipfs://QmTD7CPqZLfBPKkfCXf8HBps9jYNhDyGLQLx1AMdzckMUV',
+  projectThumbnail: 'ipfs://QmTD7CPqZLfBPKkfCXf8HBps9jYNhDyGLQLx1AMdzckMUV',
   projectUrl: 'https://ethrank.io',
   requiredConfigKeys: [],
 };
