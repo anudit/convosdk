@@ -12,7 +12,7 @@ export default async function getCredProtocolData(
   try {
     const data: CredResult = await fetcher(
       'GET',
-      `https://beta.credprotocol.com/api/sandbox/report/address/${address}`,
+      `https://beta.credprotocol.com/api/report/address/${address}`,
       '',
       {},
       {

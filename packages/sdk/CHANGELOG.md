@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.7
+- Update `cred` Adaptor.
+- Update Dependencies.
+
 ## 0.6.6
 - Add `ethrank` Adaptor.
 - Update Dependencies.
