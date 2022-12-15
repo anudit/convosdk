@@ -16,6 +16,9 @@ export default async function getBabtData(address = '') {
           tokenId
           owner
           tokenURI
+          timestamp
+          attestor
+          txnhash
         }
     }`
   )) as BabtResult;

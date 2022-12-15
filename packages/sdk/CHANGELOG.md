@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.8
+- Improve Adaptors.
+- Add `golden` Adaptor.
+- Update Dependencies.
+
 ## 0.6.7
 - Update `cred` Adaptor.
 - Update Dependencies.

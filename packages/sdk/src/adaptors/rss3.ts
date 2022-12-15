@@ -1,4 +1,4 @@
-import { AdaptorDeets, Dictionary } from '../types';
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 interface Rss3QueryResult {

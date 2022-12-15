@@ -4,6 +4,7 @@ import { fetcher } from '../utils';
 interface CredResult {
   account: string;
   report: Dictionary<any>;
+  status_code: number;
 }
 
 export default async function getCredProtocolData(
@@ -20,7 +21,8 @@ export default async function getCredProtocolData(
       }
     );
 
-    return data;
+    if (data?.status_code) return false;
+    else return data;
   } catch (error) {
     return false;
   }

@@ -1,30 +1,25 @@
-import { AdaptorDeets, Dictionary } from '../types';
+import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 interface DapplistResult {
-  dapps: Dictionary<object>;
-  points: number;
-  total: number;
+  statusCode: number;
+  message: string;
+  data?: any;
 }
 
 export default async function getDapplistData(address: string) {
   const json = (await fetcher(
     'GET',
-    `https://apis.thedapplist.com/api/hunter-data/${address}?limit=1&offset=0`
+    `https://api2.thedapplist.com/api/v2/users/${address}`
   )) as DapplistResult;
 
-  let resp = {
-    score: 0,
-    dapps: [] as Array<string>,
-  };
-
-  resp = {
-    ...resp,
-    score: json.total,
-    dapps: Object.keys(json.dapps),
-  };
-
-  return resp;
+  if (json?.statusCode == 404) {
+    return false;
+  } else if (json?.message === 'user profile details') {
+    return json?.data;
+  } else {
+    return false;
+  }
 }
 
 export const DapplistAdaptorDeets: AdaptorDeets = {

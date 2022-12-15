@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/react",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "React Hooks and Components to build on theconvo.space",
   "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
@@ -55,23 +55,23 @@
   },
   "homepage": "https://github.com/anudit/convosdk/tree/main/packages/react",
   "devDependencies": {
-    "@typechain/ethers-v5": "^10.1.0",
-    "@types/node": "^18.7.18",
-    "@types/react": "^18.0.20",
-    "@typescript-eslint/eslint-plugin": "^5.37.0",
-    "@typescript-eslint/parser": "^5.37.0",
-    "esbuild-visualizer": "^0.3.1",
-    "eslint": "^8.23.1",
+    "@typechain/ethers-v5": "^10.2.0",
+    "@types/node": "^18.11.15",
+    "@types/react": "^18.0.26",
+    "@typescript-eslint/eslint-plugin": "^5.46.1",
+    "@typescript-eslint/parser": "^5.46.1",
+    "esbuild-visualizer": "^0.4.0",
+    "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "lint-staged": "^13.0.3",
+    "lint-staged": "^13.1.0",
     "npm-run-all": "^4.1.5",
-    "open-cli": "^7.0.1",
-    "prettier": "^2.7.1",
-    "tsup": "^6.2.3",
-    "typechain": "^8.1.0",
-    "typescript": "4.8.3"
+    "open-cli": "^7.1.0",
+    "prettier": "^2.8.1",
+    "tsup": "^6.5.0",
+    "typechain": "^8.1.1",
+    "typescript": "4.9.4"
   },
   "lint-staged": {
     "*.ts": "eslint --cache --cache-location .eslintcache --fix"
@@ -85,15 +85,15 @@
     "lib": "lib"
   },
   "dependencies": {
-    "@ethersproject/providers": "^5.7.1",
-    "@theconvospace/sdk": "^0.6.1",
-    "ably": "^1.2.29",
-    "copy-to-clipboard": "^3.3.2",
+    "@ethersproject/providers": "^5.7.2",
+    "@theconvospace/sdk": "workspace:^0.6.8",
+    "ably": "^1.2.34",
+    "copy-to-clipboard": "^3.3.3",
     "cross-fetch": "^3.1.5",
-    "degen": "^0.0.112",
-    "ethers": "^5.7.1",
+    "degen": "^0.0.118",
+    "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "swr": "^1.3.0"
+    "swr": "^2.0.0"
   }
 }

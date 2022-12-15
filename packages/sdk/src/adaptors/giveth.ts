@@ -9,7 +9,7 @@ interface GivethResult {
 
 export default async function getGivethData(address: string) {
   const jsonData = (await gqlFetcher(
-    ' https://mainnet.serve.giveth.io/graphql',
+    'https://mainnet.serve.giveth.io/graphql',
     `query UserByAddress($address: String!) {
         userByAddress(address: $address) {
             id

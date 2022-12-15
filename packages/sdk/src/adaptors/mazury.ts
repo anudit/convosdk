@@ -2,7 +2,7 @@ import { AdaptorDeets } from '../types';
 import { fetcher } from '../utils';
 
 interface MazuryResult {
-  result: Array<any>;
+  results: Array<any>;
 }
 
 export default async function getMazuryBadges(address: string) {
@@ -11,7 +11,7 @@ export default async function getMazuryBadges(address: string) {
     `https://mazury-production.herokuapp.com/badges/?issuer=mazury&limit=1000&offset=0&owner=${address}`
   )) as MazuryResult;
 
-  return resp?.result.length > 0 ? resp?.result : false;
+  return resp?.results.length > 0 ? resp?.results : false;
 }
 
 export const MazuryAdaptorDeets: AdaptorDeets = {

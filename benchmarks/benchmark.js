@@ -238,6 +238,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getFoundationData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getGitcoinData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getGivethData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getGoldenData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getGoldfinchData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getGoplusData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getGovernordaoData, withConfig: false })

@@ -29,6 +29,7 @@ import { FortaAdaptorDeets } from './forta';
 import { FoundationQueryResult } from './foundation';
 import { GitcoinAdaptorDeets } from './gitcoin';
 import { GivethAdaptorDeets } from './giveth';
+import { GoldenAdaptorDeets } from './golden';
 import { GoldfinchAdaptorDeets } from './goldfinch';
 import { GoplusAdaptorDeets } from './goplus';
 import { GovernordaoAdaptorDeets } from './governordao';
@@ -140,6 +141,10 @@ export {
 export { default as getGitcoinData, GitcoinAdaptorDeets } from './gitcoin';
 export { default as getGivethData, GivethAdaptorDeets } from './giveth';
 export {
+  default as getGoldenData,
+  GoldenAdaptorDeets,
+} from './golden';
+export {
   default as getGoldfinchData,
   GoldfinchAdaptorDeets,
 } from './goldfinch';
@@ -246,6 +251,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   FoundationQueryResult,
   GitcoinAdaptorDeets,
   GivethAdaptorDeets,
+  GoldenAdaptorDeets,
   GoldfinchAdaptorDeets,
   GoplusAdaptorDeets,
   GovernordaoAdaptorDeets,

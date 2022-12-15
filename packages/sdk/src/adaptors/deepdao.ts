@@ -12,7 +12,7 @@ interface DeepdaoResp {
 export default async function getDeepDaoData(address: string) {
   const json = (await fetcher(
     'GET',
-    `https://golden-gate-server.deepdao.io/user/2/${address.toLowerCase()}`
+    `https://deepdao-server.deepdao.io/user/${address.toLowerCase()}`
   )) as DeepdaoResp;
   if ('message' in json) {
     return false;

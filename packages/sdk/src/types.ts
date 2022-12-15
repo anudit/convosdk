@@ -134,6 +134,7 @@ export type AdaptorKeys =
   | 'foundation'
   | 'gitcoin'
   | 'giveth'
+  | 'golden'
   | 'goldfinch'
   | 'goplus'
   | 'governordao'
