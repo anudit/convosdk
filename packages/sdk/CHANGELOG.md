@@ -1,8 +1,12 @@
 # Changelog
 
+## 0.6.9
+- Add `krebit`, `seedchain` Adaptors.
+- Update Dependencies.
+
 ## 0.6.8
 - Improve Adaptors.
-- Add `golden` Adaptor.
+- Add `golden`, `krebit` Adaptors.
 - Update Dependencies.
 
 ## 0.6.7

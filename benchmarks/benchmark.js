@@ -266,7 +266,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getShowtimeData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getSuperrareData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getTokenBlacklistData, withConfig: false })
-        // .addTest({ fn: convoInstance.omnid.adaptors.getTxnData, withConfig: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getTxnData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getUnipassData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getSybilData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false })

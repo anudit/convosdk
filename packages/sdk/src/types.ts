@@ -145,6 +145,7 @@ export type AdaptorKeys =
   | 'karma'
   | 'klima'
   | 'knownorigin'
+  | 'krebit'
   | 'labels'
   | 'layer3'
   | 'learnweb3'
