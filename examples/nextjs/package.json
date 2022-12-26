@@ -8,19 +8,20 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@rainbow-me/rainbowkit": "^0.6.0",
-    "@theconvospace/react": "^0.2.8",
-    "@theconvospace/sdk": "^0.6.1",
-    "degen": "0.0.112",
-    "ethers": "^5.7.1",
-    "next": "12.3.0",
+    "@next/font": "^13.1.1",
+    "@rainbow-me/rainbowkit": "^0.8.1",
+    "@theconvospace/react": "^0.2.9",
+    "@theconvospace/sdk": "^0.6.9",
+    "degen": "0.0.118",
+    "ethers": "^5.7.2",
+    "next": "13.1.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "wagmi": "^0.6.6"
+    "wagmi": "^0.9.5"
   },
   "devDependencies": {
-    "eslint": "8.23.1",
-    "eslint-config-next": "12.3.0"
+    "eslint": "8.30.0",
+    "eslint-config-next": "13.1.1"
   },
   "license": "MIT",
   "author": "Anudit Nagar <nagaranudit@gmail.com> (https://github.com/anudit)"

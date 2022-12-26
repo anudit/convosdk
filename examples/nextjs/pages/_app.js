@@ -6,6 +6,7 @@ import 'degen/styles'
 import {
   getDefaultWallets,
   RainbowKitProvider,
+  darkTheme
 } from '@rainbow-me/rainbowkit';
 import {
   chain,
@@ -15,9 +16,10 @@ import {
 } from 'wagmi';
 import { infuraProvider } from 'wagmi/providers/infura';
 import { publicProvider } from 'wagmi/providers/public';
+import { mainnet, polygon, optimism } from 'wagmi/chains'
 
 const { chains, provider } = configureChains(
-  [chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+  [mainnet, polygon, optimism],
   [
     infuraProvider({ infuraId: "1e7969225b2f4eefb3ae792aabf1cc17" }), publicProvider()
   ]
@@ -37,7 +39,7 @@ const wagmiClient = createClient({
 function MyApp({ Component, pageProps }) {
   return (
     <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} coolMode modalSize='compact' >
+      <RainbowKitProvider chains={chains} coolMode modalSize='compact' theme={darkTheme()}>
         <ThemeProvider>
           <Component {...pageProps} />
         </ThemeProvider>
