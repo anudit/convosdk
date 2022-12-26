@@ -1,7 +1,8 @@
 # Changelog
 
 ## 0.6.9
-- Add `krebit`, `seedchain` Adaptors.
+- Add `seedchain` Adaptor.
+- Update Adaptors.
 - Update Dependencies.
 
 ## 0.6.8

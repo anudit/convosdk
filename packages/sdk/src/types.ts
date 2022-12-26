@@ -168,6 +168,7 @@ export type AdaptorKeys =
   | 'rss3'
   | 'scanblocks'
   | 'sdn'
+  | 'seedchain'
   | 'showtime'
   | 'superrare'
   | 'tokenblacklists'

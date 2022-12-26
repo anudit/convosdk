@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.6.8",
+  "version": "0.6.9",
   "description": "SDK containing all the functions you'll need to build on theconvo.space",
   "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
@@ -87,7 +87,7 @@
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
-    "@solana/web3.js": "^1.71.0",
+    "@solana/web3.js": "^1.72.0",
     "cross-fetch": "^3.1.5",
     "ethers": "^5.7.2",
     "siwe": "^1.1.6"

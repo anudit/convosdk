@@ -283,6 +283,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('golden')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getGoldenData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('goldfinch')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -344,6 +351,13 @@ class Omnid {
           : this.#timeitWithConfig(
               adaptorList.getKnownOriginData,
               [address, computeConfig],
+              computeConfig?.DEBUG
+            ),
+        disabledAdaptors.includes('krebit')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getKrebitData,
+              [address],
               computeConfig?.DEBUG
             ),
         disabledAdaptors.includes('labels')
@@ -496,6 +510,13 @@ class Omnid {
               [address, computeConfig],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('seedchain')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getSeedchainData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('showtime')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -614,6 +635,7 @@ class Omnid {
         'foundation',
         'gitcoin',
         'giveth',
+        'golden',
         'goldfinch',
         'goplus',
         'governordao',
@@ -623,6 +645,7 @@ class Omnid {
         'karma',
         'klima',
         'knownorigin',
+        'krebit',
         'labels',
         'layer3',
         'learnweb3',
@@ -645,6 +668,7 @@ class Omnid {
         'rss3',
         'scanblocks',
         'sdn',
+        'seedchain',
         'showtime',
         'superrare',
         'tokenblacklists',

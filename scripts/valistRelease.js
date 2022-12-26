@@ -1,13 +1,12 @@
 require('dotenv').config({ path: '.env' });
 const { ethers } = require('ethers')
-const { create, ReleaseMeta, generateID } = require('@valist/sdk');
+const { create, ReleaseMeta, generateID, getFilesFromPath } = require('@valist/sdk');
 const fetch = require('cross-fetch');
 const fs = require('fs');
 const { createWriteStream } = require('fs');
 const { pipeline } = require('stream');
 const { promisify } = require('util');
 const Web3HttpProvider = require('web3-providers-http');
-const { getFilesFromPath } = require('@valist/sdk');
 
 const download = async ({ url, path }) => {
     const streamPipeline = promisify(pipeline);
@@ -26,7 +25,7 @@ async function publishToValist(packageName, version) {
 
     let releaseDetails = await fetch(`https://registry.npmjs.org/${packageName}/${version}`).then(r => r.json());
 
-    const web3 = new Web3HttpProvider('https://polygon-rpc.com');
+    const web3 = new Web3HttpProvider('https://polygon.llamarpc.com');
     const provider = new ethers.providers.Web3Provider(web3);
 
     const wallet = new ethers.Wallet(process.env.VALIST_RELEASER_PK, provider);
@@ -59,7 +58,7 @@ async function publishToValist(packageName, version) {
     const tx = await valistClient.createRelease(projectID, releaseDetails.version, release);
     console.log('Publishing Release:', `https://polygonscan.com/tx/${tx.hash}`);
 
-    tx.wait();
+    await tx.wait();
 
 }
 
@@ -84,7 +83,7 @@ async function publishPackage(packageName, version) {
 
 const accountName = "theconvospace"
 let projectName = "sdk"
-let version = "0.6.8"
+let version = "0.6.9"
 
 publishPackage(`@${accountName}/${projectName}`, version).then(() => {
     process.exit(0);

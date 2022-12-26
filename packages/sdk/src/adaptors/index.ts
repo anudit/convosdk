@@ -40,6 +40,7 @@ import { IdenaAdaptorDeets } from './idena';
 import { KarmaAdaptorDeets } from './karma';
 import { KlimaAdaptorDeets } from './klima';
 import { KnownoriginAdaptorDeets } from './knownorigin';
+import { KrebitAdaptorDeets } from './krebit';
 import { LabelAdaptorDeets } from './labels';
 import { Layer3AdaptorDeets } from './layer3';
 import { Learnweb3AdaptorDeets } from './learnweb3';
@@ -62,6 +63,7 @@ import { RocifiAdaptorDeets } from './rocifi';
 import { Rss3AdaptorDeets } from './rss3';
 import { ScanblocksAdaptorDeets } from './scanblocks';
 import { SdnAdaptorDeets } from './sdn';
+import { SeedchainAdaptorDeets } from './seedchain';
 import { ShowtimeAdaptorDeets } from './showtime';
 import { SuperrareAdaptorDeets } from './superrare';
 import { TokenblacklistsAdaptorDeets } from './tokenblacklists';
@@ -129,10 +131,7 @@ export {
   default as getEtherscanData,
   EtherscanAdaptorDeets,
 } from './etherscan';
-export {
-  default as getETHRankData,
-  ETHRankAdaptorDeets,
-} from './ethrank';
+export { default as getETHRankData, ETHRankAdaptorDeets } from './ethrank';
 export { default as getFortaData, FortaAdaptorDeets } from './forta';
 export {
   default as getFoundationData,
@@ -140,10 +139,7 @@ export {
 } from './foundation';
 export { default as getGitcoinData, GitcoinAdaptorDeets } from './gitcoin';
 export { default as getGivethData, GivethAdaptorDeets } from './giveth';
-export {
-  default as getGoldenData,
-  GoldenAdaptorDeets,
-} from './golden';
+export { default as getGoldenData, GoldenAdaptorDeets } from './golden';
 export {
   default as getGoldfinchData,
   GoldfinchAdaptorDeets,
@@ -163,6 +159,7 @@ export {
   default as getKnownOriginData,
   KnownoriginAdaptorDeets,
 } from './knownorigin';
+export { default as getKrebitData, KrebitAdaptorDeets } from './krebit';
 export { default as getLabelData, LabelAdaptorDeets } from './labels';
 export { default as getLayer3Data, Layer3AdaptorDeets } from './layer3';
 export {
@@ -200,6 +197,10 @@ export {
   ScanblocksAdaptorDeets,
 } from './scanblocks';
 export { default as getSdnData, SdnAdaptorDeets } from './sdn';
+export {
+  default as getSeedchainData,
+  SeedchainAdaptorDeets,
+} from './seedchain';
 export { default as getShowtimeData, ShowtimeAdaptorDeets } from './showtime';
 export {
   default as getSuperrareData,
@@ -262,6 +263,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   KarmaAdaptorDeets,
   KlimaAdaptorDeets,
   KnownoriginAdaptorDeets,
+  KrebitAdaptorDeets,
   LabelAdaptorDeets,
   Layer3AdaptorDeets,
   Learnweb3AdaptorDeets,
@@ -284,6 +286,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   Rss3AdaptorDeets,
   ScanblocksAdaptorDeets,
   SdnAdaptorDeets,
+  SeedchainAdaptorDeets,
   ShowtimeAdaptorDeets,
   SuperrareAdaptorDeets,
   TokenblacklistsAdaptorDeets,

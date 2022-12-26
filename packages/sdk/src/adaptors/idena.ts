@@ -5,8 +5,8 @@ interface IdenaResult {
   error?: {
     message: string;
   };
-  value?: {
-    result: boolean;
+  result?: {
+    state: string;
   };
 }
 
@@ -14,13 +14,13 @@ export default async function checkIdena(address: string) {
   try {
     const json = (await fetcher(
       'GET',
-      `https://api.idena.io/api/Address/${address}`
+      `https://api.idena.io/api/identity/${address}`
     )) as IdenaResult;
 
-    if (Boolean(json.error) === true) {
+    if (Boolean(json?.error) === true) {
       return false;
     } else {
-      return Boolean(json?.value?.result);
+      return json?.result;
     }
   } catch (error) {
     return false;
