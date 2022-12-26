@@ -10,7 +10,7 @@
   "dependencies": {
     "@next/font": "^13.1.1",
     "@rainbow-me/rainbowkit": "^0.8.1",
-    "@theconvospace/react": "^0.2.9",
+    "@theconvospace/react": "^0.2.8",
     "@theconvospace/sdk": "^0.6.9",
     "degen": "0.0.118",
     "ethers": "^5.7.2",
