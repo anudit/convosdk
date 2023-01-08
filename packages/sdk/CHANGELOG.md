@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.10
+- Update `seedchain` Adaptor.
+- Update Dependencies.
+
 ## 0.6.9
 - Add `seedchain` Adaptor.
 - Update Adaptors.

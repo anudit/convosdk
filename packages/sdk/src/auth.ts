@@ -1,5 +1,5 @@
 import { SiweMessage, generateNonce } from 'siwe';
-import { ErrorType } from './types';
+import { AuthResp, ErrorType } from './types';
 import { fetcher } from './utils';
 
 class Auth {
@@ -69,7 +69,7 @@ class Auth {
   authenticateV2 = async (
     message: string,
     signature: string
-  ): Promise<any | ErrorType> => {
+  ): Promise<AuthResp | ErrorType> => {
     return await fetcher('POST', `${this.node}/authV2`, this.apikey, {
       message,
       signature,

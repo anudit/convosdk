@@ -38,13 +38,13 @@ const wagmiClient = createClient({
 
 function MyApp({ Component, pageProps }) {
   return (
-    <WagmiConfig client={wagmiClient}>
-      <RainbowKitProvider chains={chains} coolMode modalSize='compact' theme={darkTheme()}>
-        <ThemeProvider>
+    <ThemeProvider>
+      <WagmiConfig client={wagmiClient}>
+        <RainbowKitProvider chains={chains} coolMode modalSize='compact' theme={darkTheme()}>
           <Component {...pageProps} />
-        </ThemeProvider>
-      </RainbowKitProvider>
-    </WagmiConfig>
+        </RainbowKitProvider>
+      </WagmiConfig>
+    </ThemeProvider>
   )
 }
 

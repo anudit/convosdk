@@ -64,6 +64,11 @@ export type ComputeConfig = {
   DEBUG: boolean;
 };
 
+export interface AuthResp {
+  success: boolean;
+  message: string;
+}
+
 export type AdaptorFunctionParamsType = {
   address: string;
 };

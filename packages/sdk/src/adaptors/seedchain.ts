@@ -14,12 +14,20 @@ interface SeedchainResult {
   };
 }
 
+function sum(arr: Array<number> = []): number{
+  let s = 0;
+  for (let index = 0; index < arr.length; index++) {
+    s+=arr[index];
+  }
+  return s;
+}
+
 export default async function getSeedchainData(address: string) {
   try {
     const { data } = (await gqlFetcher(
-      'https://api.studio.thegraph.com/query/1649/seedchain/v1',
+      'https://api.studio.thegraph.com/query/1649/seedchain/v1.1',
       `{
-        transfers(where: {to:"${address.toLowerCase()}"}) {
+        transfers(where: {to:"${address.toLowerCase()}", tokenId: "100"}) {
           id
           to{
             id
@@ -31,12 +39,9 @@ export default async function getSeedchainData(address: string) {
 
     if (data?.transfers.length === 0) return false;
     else
-      return data?.transfers.map((e) => {
-        return {
-          value: parseInt(e?.value),
-          tokenId: parseInt(e?.tokenId),
-        };
-      });
+      return sum(data?.transfers.map((e) => {
+        return parseInt(e?.value)
+      }));
   } catch (error) {
     return false;
   }
