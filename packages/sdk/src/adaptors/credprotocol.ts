@@ -5,6 +5,7 @@ interface CredResult {
   account: string;
   report: Dictionary<any>;
   status_code: number;
+  error?: any;
 }
 
 export default async function getCredProtocolData(
@@ -21,7 +22,7 @@ export default async function getCredProtocolData(
       }
     );
 
-    if (data?.status_code) return false;
+    if (data?.status_code || Boolean(data?.error)) return false;
     else return data;
   } catch (error) {
     return false;

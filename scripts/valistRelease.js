@@ -1,6 +1,6 @@
 require('dotenv').config({ path: '.env' });
 const { ethers } = require('ethers')
-const { create, ReleaseMeta, generateID, getFilesFromPath } = require('@valist/sdk');
+const { create, ReleaseMeta, generateID, getFilesFromPath, ReleaseConfig } = require('@valist/sdk');
 const fetch = require('cross-fetch');
 const fs = require('fs');
 const { createWriteStream } = require('fs');
@@ -25,13 +25,11 @@ async function publishToValist(packageName, version) {
 
     let releaseDetails = await fetch(`https://registry.npmjs.org/${packageName}/${version}`).then(r => r.json());
 
-    const web3 = new Web3HttpProvider('https://polygon.llamarpc.com');
-    const provider = new ethers.providers.Web3Provider(web3);
+    const rpc = new ethers.providers.JsonRpcProvider('https://polygon.llamarpc.com');
+    const wallet = new ethers.Wallet(process.env.VALIST_RELEASER_PK, rpc);
 
-    const wallet = new ethers.Wallet(process.env.VALIST_RELEASER_PK, provider);
-
-    const valistClient = await create(wallet.provider, { wallet, metaTx: true });
-    const { chainId } = await provider.getNetwork();
+    const valistClient = await create(wallet, { metaTx: true });
+    const { chainId } = await wallet.provider.getNetwork();
     const accountID = generateID(chainId, accountName);
     const projectID = generateID(accountID, projectName);
 
@@ -45,20 +43,20 @@ async function publishToValist(packageName, version) {
         path: filePath,
     })
 
-    const artifacts = await getFilesFromPath(filePath);
+    let config = new ReleaseConfig(accountName, projectName, version);
+    config.image = "";
+    config.description = "";
+
+    config.platforms.web = filePath;
+
     console.log('Uploading Release to Valist');
-    const metaURI = await valistClient.writeFolder(artifacts);
 
-    const release = new ReleaseMeta();
-    release.name = releaseDetails.version;
-    release.external_url = metaURI;
-    release.image = "";
-    release.description = "";
+    const release = await valistClient.uploadRelease(config);
 
-    const tx = await valistClient.createRelease(projectID, releaseDetails.version, release);
+    const tx = await valistClient.createRelease(projectID, version, release);
     console.log('Publishing Release:', `https://polygonscan.com/tx/${tx.hash}`);
 
-    await tx.wait();
+    // await tx.wait();
 
 }
 
@@ -83,7 +81,7 @@ async function publishPackage(packageName, version) {
 
 const accountName = "theconvospace"
 let projectName = "sdk"
-let version = "0.6.9"
+let version = "0.6.11"
 
 publishPackage(`@${accountName}/${projectName}`, version).then(() => {
     process.exit(0);

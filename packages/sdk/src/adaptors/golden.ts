@@ -15,25 +15,29 @@ interface GoldenResult {
 }
 
 export default async function getGoldenData(address: string) {
-  const jsonData = (await gqlFetcher(
-    'https://dapp.golden.xyz/graphql',
-    `{
-        leaderboardStats(
-          condition: {userId: "${getAddress(address)}"}
-        ) {
-          nodes {
-            userId
-            points
-            pointsWithoutReward
+  try {
+    const jsonData = (await gqlFetcher(
+      'https://dapp.golden.xyz/graphql',
+      `{
+          leaderboardStats(
+            condition: {userId: "${getAddress(address)}"}
+          ) {
+            nodes {
+              userId
+              points
+              pointsWithoutReward
+            }
           }
         }
-      }
-      `
-  )) as GoldenResult;
+        `
+    )) as GoldenResult;
 
-  if (jsonData['data'].leaderboardStats.nodes.length > 0) {
-    return jsonData['data'].leaderboardStats.nodes;
-  } else {
+    if (jsonData['data']?.leaderboardStats?.nodes.length > 0) {
+      return jsonData['data'].leaderboardStats.nodes;
+    } else {
+      return false;
+    }
+  } catch (error) {
     return false;
   }
 }

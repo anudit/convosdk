@@ -204,7 +204,7 @@ export default async function getFoundationData(
             links
       }`
   )) as FoundationQueryResult;
-  const artworks = resp['data']['artworks'];
+  const artworks = resp['data']?.artworks ? resp['data']?.artworks : [];
 
   let totalCountSold = 0;
   let totalAmountSold = 0;

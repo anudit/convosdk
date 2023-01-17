@@ -222,7 +222,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.checkBrightId, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getCeloData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getChainabuseData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.getCoinviseData, withConfig: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getCoinviseData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getCommonsstackData, withConfig: false })
         // .addTest({ fn: convoInstance.omnid.adaptors.getCoordinapeData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getCredProtocolData, withConfig: false })
@@ -290,7 +290,7 @@ async function runStuff() {
 
     bench2.addTest({
         fn: computeTrustScore = async (address, withConfig) => {
-            return await convoInstance.omnid.computeTrustScore(address, config, ['coordinape', 'upshot', 'arcx'])
+            return await convoInstance.omnid.computeTrustScore(address, config, ['coordinape', 'upshot', 'scanblocks'])
         }, withConfig: true, verbose: false,
     })
 
@@ -320,7 +320,7 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getETHRankData(address);
+            return convoInstance.omnid.adaptors.getScanblocksData(address);
         }, withConfig: false, verbose: true,
     })
 
