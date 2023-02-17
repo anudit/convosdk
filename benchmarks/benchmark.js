@@ -274,7 +274,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.resolveUnstoppableDomains, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getPolygonData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getProjectGalaxyData, withConfig: false })
-        .addTest({ fn: convoInstance.omnid.adaptors.checkPoH, withConfig: false })
+        // .addTest({ fn: convoInstance.omnid.adaptors.checkPoH, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getPopData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getQuadrataData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getQuestbookData, withConfig: false })
@@ -320,7 +320,7 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getScanblocksData(address);
+            return convoInstance.omnid.adaptors.getTxnData(address, config);
         }, withConfig: false, verbose: true,
     })
 

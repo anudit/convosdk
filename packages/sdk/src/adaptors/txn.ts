@@ -157,7 +157,7 @@ export default async function getTxnData(
     if (data[index].status === 'fulfilled') {
       const respData = (data[index] as PromiseFulfilledResult<ScanResp>).value;
 
-      if (Boolean(respData?.result) === true && respData.result.length > 0) {
+      if (Boolean(respData?.result) === true && respData?.status === '1' && respData.result.length > 0) {
         resp[name] = parseEtherscanResp(respData.result);
         resp[name].tornadoInteractions = respData.result.filter((e) => {
           return (
@@ -176,7 +176,7 @@ export default async function getTxnData(
     if (data[3 + index].status === 'fulfilled') {
       const respData = (data[3 + index] as PromiseFulfilledResult<ScanResp>)
         .value;
-      if (Boolean(respData?.result) === true && respData.result.length > 0) {
+      if (Boolean(respData?.result) === true && respData?.status === '1' && respData.result.length > 0) {
         resp[name].fundedByTornadoCash = respData?.result
           ?.map((e) => {
             return tornadoAdds.includes(getAddress(e.from));

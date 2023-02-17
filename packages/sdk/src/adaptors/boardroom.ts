@@ -16,7 +16,7 @@ interface BoardroomResult {
 export default async function getBoardroomData(address: string) {
   const { data } = (await fetcher(
     'GET',
-    `https://api.boardroom.info/v1/voters/${address}/votes`
+    `https://api.boardroom.info/v1/voters/${address}/votes?key=c909030d97aaa3f635a09eb4a3df58fc`
   )) as BoardroomResult;
 
   let totalVotes = 0;
