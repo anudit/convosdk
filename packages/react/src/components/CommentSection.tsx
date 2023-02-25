@@ -111,10 +111,10 @@ const CommentSection = ({
       signer
         .signMessage(sigMesage)
         .then(async (sig) => {
-          const token: AuthResp = await convo.auth.authenticateV2(
+          const token = await convo.auth.authenticateV2(
             sigMesage,
             sig
-          );
+          ) as AuthResp;
           if (token.success === true) {
             setAuthToken(token.message);
             console.log('authSuccess');

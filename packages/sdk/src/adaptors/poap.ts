@@ -7,7 +7,7 @@ export default async function getPoapData(address: string): Promise<number> {
     `https://frontend.poap.tech/actions/scan/${address}`
   )) as Array<string>;
 
-  return data.length;
+  return data?.length;
 }
 
 export const PoapAdaptorDeets: AdaptorDeets = {

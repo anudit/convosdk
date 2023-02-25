@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.13
+- Add `kycdao` adaptor.
+- Update Dependencies.
+
 ## 0.6.12
 - Update Adaptors.
 - Update Dependencies.

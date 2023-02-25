@@ -151,6 +151,7 @@ export type AdaptorKeys =
   | 'klima'
   | 'knownorigin'
   | 'krebit'
+  | 'kycdao'
   | 'labels'
   | 'layer3'
   | 'learnweb3'

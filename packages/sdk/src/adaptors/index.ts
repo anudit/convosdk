@@ -41,6 +41,7 @@ import { KarmaAdaptorDeets } from './karma';
 import { KlimaAdaptorDeets } from './klima';
 import { KnownoriginAdaptorDeets } from './knownorigin';
 import { KrebitAdaptorDeets } from './krebit';
+import { KycdaoAdaptorDeets } from './kycdao';
 import { LabelAdaptorDeets } from './labels';
 import { Layer3AdaptorDeets } from './layer3';
 import { Learnweb3AdaptorDeets } from './learnweb3';
@@ -160,6 +161,7 @@ export {
   KnownoriginAdaptorDeets,
 } from './knownorigin';
 export { default as getKrebitData, KrebitAdaptorDeets } from './krebit';
+export { default as getKycdaoData, KycdaoAdaptorDeets } from './kycdao';
 export { default as getLabelData, LabelAdaptorDeets } from './labels';
 export { default as getLayer3Data, Layer3AdaptorDeets } from './layer3';
 export {
@@ -264,6 +266,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   KlimaAdaptorDeets,
   KnownoriginAdaptorDeets,
   KrebitAdaptorDeets,
+  KycdaoAdaptorDeets,
   LabelAdaptorDeets,
   Layer3AdaptorDeets,
   Learnweb3AdaptorDeets,

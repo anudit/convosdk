@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/sdk",
-  "version": "0.6.12",
+  "version": "0.6.13",
   "description": "SDK containing all the functions you'll need to build on theconvo.space",
   "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
@@ -56,9 +56,9 @@
   "homepage": "https://github.com/anudit/convosdk/tree/main/packages/sdk",
   "devDependencies": {
     "@typechain/ethers-v5": "^10.2.0",
-    "@types/node": "^18.13.0",
-    "@typescript-eslint/eslint-plugin": "^5.52.0",
-    "@typescript-eslint/parser": "^5.52.0",
+    "@types/node": "^18.14.1",
+    "@typescript-eslint/eslint-plugin": "^5.53.0",
+    "@typescript-eslint/parser": "^5.53.0",
     "esbuild-visualizer": "^0.4.0",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
@@ -87,7 +87,7 @@
   "dependencies": {
     "@ethersproject/abi": "^5.7.0",
     "@ethersproject/providers": "^5.7.2",
-    "@solana/web3.js": "^1.73.2",
+    "@solana/web3.js": "^1.73.3",
     "cross-fetch": "^3.1.5",
     "ethers": "^5.7.2",
     "siwe": "^1.1.6"

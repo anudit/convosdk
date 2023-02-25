@@ -360,6 +360,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('kycdao')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getKycdaoData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('labels')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -646,6 +653,7 @@ class Omnid {
         'klima',
         'knownorigin',
         'krebit',
+        'kycdao',
         'labels',
         'layer3',
         'learnweb3',

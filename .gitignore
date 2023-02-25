@@ -118,3 +118,5 @@ out
 lib/
 note.txt
 .env*
+notes.txt
+.gitsigners

@@ -249,6 +249,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getKlimaData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getKnownOriginData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getKrebitData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getKycdaoData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getLayer3Data, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getLearnWeb3Data, withConfig: false, })
         .addTest({ fn: convoInstance.omnid.adaptors.getLensData, withConfig: false })
@@ -320,7 +321,7 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getTxnData(address, config);
+            return convoInstance.omnid.adaptors.getKycdaoData(address, config);
         }, withConfig: false, verbose: true,
     })
 
