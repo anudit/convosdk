@@ -176,6 +176,7 @@ export type AdaptorKeys =
   | 'sdn'
   | 'seedchain'
   | 'showtime'
+  | 'spectral'
   | 'superrare'
   | 'tokenblacklists'
   | 'txn'

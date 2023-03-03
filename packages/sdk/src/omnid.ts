@@ -531,6 +531,13 @@ class Omnid {
               [address, computeConfig],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('spectral')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getSpectralData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('superrare')
           ? this.#disabledPromise()
           : this.#timeit(
@@ -678,6 +685,7 @@ class Omnid {
         'sdn',
         'seedchain',
         'showtime',
+        'spectral',
         'superrare',
         'tokenblacklists',
         'txn',

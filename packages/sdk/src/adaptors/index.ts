@@ -66,6 +66,7 @@ import { ScanblocksAdaptorDeets } from './scanblocks';
 import { SdnAdaptorDeets } from './sdn';
 import { SeedchainAdaptorDeets } from './seedchain';
 import { ShowtimeAdaptorDeets } from './showtime';
+import { SpectralAdaptorDeets } from './spectral';
 import { SuperrareAdaptorDeets } from './superrare';
 import { TokenblacklistsAdaptorDeets } from './tokenblacklists';
 import { TxnAdaptorDeets } from './txn';
@@ -204,6 +205,7 @@ export {
   SeedchainAdaptorDeets,
 } from './seedchain';
 export { default as getShowtimeData, ShowtimeAdaptorDeets } from './showtime';
+export { default as getSpectralData, SpectralAdaptorDeets } from './spectral'
 export {
   default as getSuperrareData,
   SuperrareAdaptorDeets,

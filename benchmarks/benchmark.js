@@ -267,6 +267,7 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getSdnData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getSeedchainData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getShowtimeData, withConfig: true })
+        .addTest({ fn: convoInstance.omnid.adaptors.getSpectralData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getSuperrareData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getTokenBlacklistData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getTxnData, withConfig: true })
@@ -321,7 +322,7 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getKycdaoData(address, config);
+            return convoInstance.omnid.adaptors.getSpectralData(address, config);
         }, withConfig: false, verbose: true,
     })
 
