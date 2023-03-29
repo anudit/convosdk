@@ -594,6 +594,13 @@ class Omnid {
               [address],
               computeConfig?.DEBUG
             ),
+        disabledAdaptors.includes('wiw')
+          ? this.#disabledPromise()
+          : this.#timeit(
+              adaptorList.getWiwData,
+              [address],
+              computeConfig?.DEBUG
+            ),
         disabledAdaptors.includes('yup')
           ? this.#disabledPromise()
           : this.#timeitWithConfig(
@@ -694,6 +701,7 @@ class Omnid {
         'unstoppable',
         'upala',
         'upshot',
+        'wiw',
         'yup',
         'zapper',
         'zora',

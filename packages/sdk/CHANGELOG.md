@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.16
+- Add `wiw` adaptor.
+- Update Dependencies.
+
 ## 0.6.15
 - Add `spectral` adaptor.
 - Update Dependencies.

@@ -75,6 +75,7 @@ import { UniswapAdaptorDeets } from './uniswap';
 import { UnstoppableAdaptorDeets } from './unstoppable';
 import { UpalaAdaptorDeets } from './upala';
 import { UpshotAdaptorDeets } from './upshot';
+import { WiwAdaptorDeets } from './wiw';
 import { YupAdaptorDeets } from './yup';
 import { ZapperAdaptorDeets } from './zapper';
 import { ZoraAdaptorDeets } from './zora';
@@ -223,6 +224,7 @@ export {
 } from './unstoppable';
 export { default as getUpalaData, UpalaAdaptorDeets } from './upala';
 export { default as getUpshotData, UpshotAdaptorDeets } from './upshot';
+export { default as getWiwData, WiwAdaptorDeets } from './wiw';
 export { default as getYupData, YupAdaptorDeets } from './yup';
 export { default as getZapperData, ZapperAdaptorDeets } from './zapper';
 export { default as getZoraData, ZoraAdaptorDeets } from './zora';
@@ -301,6 +303,7 @@ export const AdaptorData: Array<AdaptorDeets> = [
   UnstoppableAdaptorDeets,
   UpalaAdaptorDeets,
   UpshotAdaptorDeets,
+  WiwAdaptorDeets,
   YupAdaptorDeets,
   ZapperAdaptorDeets,
   ZoraAdaptorDeets,

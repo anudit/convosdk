@@ -281,7 +281,8 @@ async function runStuff() {
         .addTest({ fn: convoInstance.omnid.adaptors.getQuadrataData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getQuestbookData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getUpalaData, withConfig: false })
-        // .addTest({ fn: convoInstance.omnid.adaptors.getUpshotData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getUpshotData, withConfig: false })
+        .addTest({ fn: convoInstance.omnid.adaptors.getWiwData, withConfig: false })
         .addTest({ fn: convoInstance.omnid.adaptors.getYupData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getZapperData, withConfig: true })
         .addTest({ fn: convoInstance.omnid.adaptors.getZoraData, withConfig: true })
@@ -322,7 +323,7 @@ async function runStuff() {
 
     bench5.addTest({
         fn: check = async (address, withConfig) => {
-            return convoInstance.omnid.adaptors.getSpectralData(address, config);
+            return convoInstance.omnid.adaptors.getWiwData(address, config);
         }, withConfig: false, verbose: true,
     })
 
