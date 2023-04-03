@@ -1,6 +1,6 @@
 {
   "name": "@theconvospace/react",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "React Hooks and Components to build on theconvo.space",
   "main": "./lib/index.js",
   "module": "./lib/esm/index.js",
@@ -56,22 +56,22 @@
   "homepage": "https://github.com/anudit/convosdk/tree/main/packages/react",
   "devDependencies": {
     "@typechain/ethers-v5": "^10.2.0",
-    "@types/node": "^18.14.1",
-    "@types/react": "^18.0.28",
-    "@typescript-eslint/eslint-plugin": "^5.53.0",
-    "@typescript-eslint/parser": "^5.53.0",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.32",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
     "esbuild-visualizer": "^0.4.0",
-    "eslint": "^8.35.0",
-    "eslint-config-prettier": "^8.6.0",
+    "eslint": "^8.37.0",
+    "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "lint-staged": "^13.1.2",
+    "lint-staged": "^13.2.0",
     "npm-run-all": "^4.1.5",
-    "open-cli": "^7.1.0",
-    "prettier": "^2.8.4",
-    "tsup": "^6.6.3",
+    "open-cli": "^7.2.0",
+    "prettier": "^2.8.7",
+    "tsup": "^6.7.0",
     "typechain": "^8.1.1",
-    "typescript": "4.9.5"
+    "typescript": "5.0.3"
   },
   "lint-staged": {
     "*.ts": "eslint --cache --cache-location .eslintcache --fix"
@@ -86,14 +86,14 @@
   },
   "dependencies": {
     "@ethersproject/providers": "^5.7.2",
-    "@theconvospace/sdk": "^0.6.13",
-    "ably": "^1.2.36",
+    "@theconvospace/sdk": "workspace:^0.6.16",
+    "ably": "^1.2.37",
     "copy-to-clipboard": "^3.3.3",
     "cross-fetch": "^3.1.5",
-    "degen": "^0.0.122",
+    "degen": "^0.0.125",
     "ethers": "^5.7.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "swr": "^2.0.4"
+    "swr": "^2.1.2"
   }
 }
