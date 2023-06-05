@@ -62,14 +62,14 @@ jobs:
       #     echo //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN >> ./packages/${PACKAGE_NAME}/.npmrc
       #     cd ./packages/${PACKAGE_NAME} && npm publish --provenance --access public
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v4
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          commit_message: Release ${{ github.event.inputs.package-name }}@${{ github.event.inputs.release_version }}
+      # - name: Commit changes
+      #   uses: stefanzweifel/git-auto-commit-action@v4
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     commit_message: Release ${{ github.event.inputs.package-name }}@${{ github.event.inputs.release_version }}
 
-      - uses: valist-io/valist-github-action@v2.1.0
+      - uses: valist-io/valist-github-action@v2
         env:
           PACKAGE_NAME: ${{ github.event.inputs.package-name }}
           VALIST_RELEASER_PK: ${{ secrets.VALIST_RELEASER_PK }}
