@@ -78,7 +78,7 @@ jobs:
           account: theconvospace
           project: ${{ github.event.inputs.package-name }}
           release: ${{ github.event.inputs.release_version }}
-          platform-web: './packages/${{ github.event.inputs.package-name }}/**/**'
+          platform-web: ./packages/${{ github.event.inputs.package-name }}
 
           
 
