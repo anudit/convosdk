@@ -68,8 +68,8 @@ jobs:
         run: |
           PACKAGE_NAME=${{ github.event.inputs.package-name }}
           NEXT_VERSION=${{ github.event.inputs.release_version }}
-          git config --local user.email "nagaranudit@gmail.com"
-          git config --local user.name "Anudit Nagar"
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           git add packages/$PACKAGE_NAME/package.json
           git commit -m "Release $PACKAGE_NAME@$NEXT_VERSION"
           git push
