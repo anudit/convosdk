@@ -16,9 +16,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    permissions: 
-      contents: read
-      id-token: write
+    permissions: write-all
 
     steps:
       - name: checkout
@@ -64,7 +62,10 @@ jobs:
       #     echo //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN >> ./packages/${PACKAGE_NAME}/.npmrc
       #     cd ./packages/${PACKAGE_NAME} && npm publish --provenance --access public
 
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Commit changes
+        uses: stefanzweifel/git-auto-commit-action@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           commit_message: Release ${{ github.event.inputs.package-name }}@${{ github.event.inputs.release_version }}
 
