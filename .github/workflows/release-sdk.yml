@@ -56,9 +56,11 @@ jobs:
           PACKAGE_NAME=${{ github.event.inputs.package-name }}
           cd ./packages/${PACKAGE_NAME} && pnpm build
 
-      - run: npm publish --provenance --access public
-        env:
+      - name: Publish Package
+      - env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - run: | 
+          cd ./packages/${PACKAGE_NAME} && npm publish --provenance --access public
 
       - name: Commit and Push Changes
         run: |
