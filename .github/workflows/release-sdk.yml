@@ -21,10 +21,6 @@ jobs:
       id-token: write
 
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v3
-        
-    steps:
       - name: checkout
         uses: actions/checkout@v3
       - name: Use Node.js 18
