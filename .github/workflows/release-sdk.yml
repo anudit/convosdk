@@ -71,7 +71,6 @@ jobs:
 
       - uses: valist-io/valist-github-action@v2
         env:
-          PACKAGE_NAME: ${{ github.event.inputs.package-name }}
           VALIST_RELEASER_PK: ${{ secrets.VALIST_RELEASER_PK }}
         with:
           rpc-url: https://rpc.valist.io/polygon
@@ -79,7 +78,7 @@ jobs:
           account: theconvospace
           project: ${{ github.event.inputs.package-name }}
           release: ${{ github.event.inputs.release_version }}
-          platform-web: './packages/$PACKAGE_NAME/**/**'
+          platform-web: './packages/${{ github.event.inputs.package-name }}/**/**'
 
           
 
