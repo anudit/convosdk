@@ -49,13 +49,13 @@ jobs:
         run: |
           PACKAGE_NAME=${{ github.event.inputs.package-name }}
           NEXT_VERSION=${{ github.event.inputs.release_version }}
-          sed -i '' 's/"version": ".*"/"version": "'"$NEXT_VERSION"'"/' packages/$PACKAGE_NAME/package.json
+          sed -i 's/"version": ".*"/"version": "'"$NEXT_VERSION"'"/' packages/$PACKAGE_NAME/package.json
 
       - name: Build Package
         run: |
           PACKAGE_NAME=${{ github.event.inputs.package-name }}
           cd ./packages/${PACKAGE_NAME} && pnpm build
-            
+
       - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
