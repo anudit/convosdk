@@ -59,7 +59,8 @@ jobs:
       - name: Publish Package
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: | 
+        run: |
+          PACKAGE_NAME=${{ github.event.inputs.package-name }}
           cd ./packages/${PACKAGE_NAME} && npm publish --provenance --access public
 
       - name: Commit and Push Changes
@@ -75,6 +76,7 @@ jobs:
       - uses: valist-io/valist-github-action@v2.1.0
         env:
           PACKAGE_NAME: ${{ github.event.inputs.package-name }}
+          VALIST_RELEASER_PK: ${{ secrets.VALIST_RELEASER_PK }}
         with:
           rpc-url: https://rpc.valist.io/polygon
           private-key: ${{ secrets.VALIST_RELEASER_PK }}
