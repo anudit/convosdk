@@ -57,9 +57,9 @@ jobs:
           cd ./packages/${PACKAGE_NAME} && pnpm build
 
       - name: Publish Package
-      - env:
+        env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - run: | 
+        run: | 
           cd ./packages/${PACKAGE_NAME} && npm publish --provenance --access public
 
       - name: Commit and Push Changes
