@@ -61,6 +61,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           PACKAGE_NAME=${{ github.event.inputs.package-name }}
+          npm adduser --registry=https://registry.npmjs.org/
           cd ./packages/${PACKAGE_NAME} && npm publish --provenance --access public
 
       - name: Commit and Push Changes
