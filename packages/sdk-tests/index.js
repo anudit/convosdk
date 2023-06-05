@@ -4,7 +4,6 @@ require('dotenv').config()
 
 let NODE = "http://127.0.0.1:3000/api";
 let APIKEY = "CONVO";
-let privkey = process.env.PRIVKEY;
 let commentString = "This is a new comment";
 let commentString2 = "This is updated comment";
 let threadId = "threadTemp";
@@ -29,7 +28,7 @@ async function testGetInfo() {
 
 async function testAuth() {
 
-    let wallet = new Wallet(privkey);
+    let wallet = Wallet.createRandom();
 
     let message = sdk.auth.getSignatureDataV2(
         'https://example.com',
@@ -50,7 +49,7 @@ async function testAuth() {
 
 async function testCommentFlow() {
 
-    let wallet = new Wallet(privkey);
+    let wallet = Wallet.createRandom();
 
     let message = sdk.auth.getSignatureDataV2(
         webUrl,
@@ -75,6 +74,7 @@ async function testCommentFlow() {
     if (resp?.tid !== threadId) console.log('🔴 [testCommentFlow/create]: threadId is incorrect');
     if (resp?.url !== webUrl) console.log('🔴 [testCommentFlow/create]: webUrl is incorrect');
 
+    console.log('ℹ️  Using id', resp._id);
     console.log('✅ testCommentFlow/create Complete');
 
     const updateResp = await sdk.comments.update(
@@ -211,10 +211,6 @@ async function testThreadsFlow() {
 
     const { message: tokenAlice } = await sdk.auth.authenticateV2(messageAlice, signedMessageAlice);
 
-    console.log({
-        address: admin.address,
-        tokenAdmin
-    })
 
     const resp = await sdk.threads.create(
         admin.address,
@@ -278,21 +274,25 @@ async function testThreadsFlow() {
     console.log('✅ testThreadsFlow/removeMembers Complete');
 
 
+    const deleteThread = await sdk.threads.delete(
+        admin.address,
+        tokenAdmin,
+        resp._id
+    )
 
-
-    // console.log()
-
+    if (deleteThread?.success !== true) console.log('✅ [testThreadsFlow/deleteThread]: Delete Thread Done');
+    if (deleteThread?.success !== false) console.log('🔴 [testThreadsFlow/deleteThread]: Delete Thread Failed', deleteThread?.error);
 
     console.log('✅ testThreadsFlow Complete');
 
 }
 
 async function runTests() {
-    // await testGetInfo();
-    // await testAuth();
-    // await testCommentFlow();
-    // await testNukeFlow();
+    await testGetInfo();
+    await testAuth();
+    await testCommentFlow();
     await testThreadsFlow();
+    await testNukeFlow();
 }
 
 

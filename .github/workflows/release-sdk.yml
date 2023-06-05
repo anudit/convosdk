@@ -1,0 +1,90 @@
+name: Publish Packages
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_version:
+        description: "Version of this release"
+        required: true
+      package-name:
+        description: 'Select package name'
+        required: true
+        default: 'sdk'
+        options: ['sdk', 'react', 'sdk-deno']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions: 
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+        
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: Use Node.js 18
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Cache pnpm modules
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-
+      - uses: pnpm/action-setup@v2
+        with:
+          version: latest
+      
+      - name: Install Package Dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          PACKAGE_NAME=${{ github.event.inputs.package-name }}
+          pnpm install --filter "{packages/$PACKAGE_NAME}"
+
+      - name: Update Package Version
+        run: |
+          PACKAGE_NAME=${{ github.event.inputs.package-name }}
+          NEXT_VERSION=${{ github.event.inputs.release_version }}
+          sed -i '' 's/"version": ".*"/"version": "'"$NEXT_VERSION"'"/' packages/$PACKAGE_NAME/package.json
+
+      - name: Build Package
+        run: |
+          PACKAGE_NAME=${{ github.event.inputs.package-name }}
+          cd ./packages/${PACKAGE_NAME} && pnpm build
+            
+      - run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Commit and Push Changes
+        run: |
+          PACKAGE_NAME=${{ github.event.inputs.package-name }}
+          NEXT_VERSION=${{ github.event.inputs.release_version }}
+          git config --local user.email "nagaranudit@gmail.com"
+          git config --local user.name "Anudit Nagar"
+          git add packages/$PACKAGE_NAME/package.json
+          git commit -m "Release $PACKAGE_NAME@$NEXT_VERSION"
+          git push
+
+      - uses: valist-io/valist-github-action@v2.1.0
+        env:
+          PACKAGE_NAME: ${{ github.event.inputs.package-name }}
+        with:
+          rpc-url: https://rpc.valist.io/polygon
+          private-key: ${{ secrets.VALIST_RELEASER_PK }}
+          account: theconvospace
+          project: ${{ github.event.inputs.package-name }}
+          release: ${{ github.event.inputs.release_version }}
+          files: './packages/$PACKAGE_NAME/**/**'
+
+          
+
+      

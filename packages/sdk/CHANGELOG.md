@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.6.17
+- Update Deps
+- Add Provenance
+
 ## 0.6.16
 - Add `wiw` adaptor.
 - Update Dependencies.
